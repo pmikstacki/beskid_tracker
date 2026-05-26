@@ -1,0 +1,16 @@
+{
+  "id": "package-source-explorer",
+  "number": 214,
+  "title": "Package source explorer and structured API preview in pckg",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "pckg-registry",
+  "domain": "tooling",
+  "completedAt": "2026-04-24",
+  "milestoneId": "v02-pckg-registry-foundation",
+  "source": {
+    "repo": "pckg",
+    "commit": "52dc7c9",
+    "subject": "pckg: package source explorer, docs/structured API, BlazorMonaco preview, artifact explorer"
+  }
+}

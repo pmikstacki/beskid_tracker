@@ -1,0 +1,17 @@
+{
+  "id": "ci-graph-std-linux-gate",
+  "number": 273,
+  "title": "Gate corelib lowering on Linux and fix graph Std shard expectations",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "ci-release",
+  "domain": "compiler",
+  "area": "ci",
+  "completedAt": "2026-05-18",
+  "milestoneId": "v02-ci-deploy-infra",
+  "source": {
+    "repo": "compiler",
+    "commit": "3cd4c93",
+    "subject": "fix(ci): update graph Std shard expectations and gate corelib lowering on Linux"
+  }
+}

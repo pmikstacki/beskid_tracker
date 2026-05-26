@@ -1,0 +1,17 @@
+{
+  "id": "corelib-system-io-split",
+  "number": 267,
+  "title": "Split System.IO; add console and concurrency packages",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "codegen-runtime",
+  "domain": "core-library",
+  "completedAt": "2026-05-20",
+  "specRelations": [],
+  "source": {
+    "repo": "corelib",
+    "commit": "09ac8fe",
+    "subject": "corelib: split System.IO, add console/concurrency packages and tests"
+  },
+  "milestoneId": "v02-concurrency-runtime"
+}

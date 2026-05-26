@@ -1,0 +1,16 @@
+{
+  "id": "cli-registry-semver-upload",
+  "number": 238,
+  "title": "CLI upload publishes with registry-assigned semver",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "pckg-registry",
+  "domain": "tooling",
+  "completedAt": "2026-04-24",
+  "milestoneId": "v02-pckg-registry-foundation",
+  "source": {
+    "repo": "compiler",
+    "commit": "459e018",
+    "subject": "feat(pckg): upload publishes with registry-assigned semver"
+  }
+}

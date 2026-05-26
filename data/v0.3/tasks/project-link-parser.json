@@ -1,0 +1,16 @@
+{
+  "id": "project-link-parser",
+  "number": 343,
+  "title": "Project link section parser and validator",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "compiler-mods",
+  "domain": "compiler",
+  "completedAt": "2026-05-23",
+  "milestoneId": "v03-merge-wave",
+  "source": {
+    "repo": "compiler",
+    "commit": "abb7bd4",
+    "subject": "feat(analysis): add project link section + parser/validator"
+  }
+}

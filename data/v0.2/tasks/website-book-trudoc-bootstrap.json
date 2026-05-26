@@ -1,0 +1,15 @@
+{
+  "id": "website-book-trudoc-bootstrap",
+  "number": 240,
+  "title": "Website book chapters, trudoc audit, and landing refresh",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "docs-site",
+  "completedAt": "2026-05-05",
+  "milestoneId": "v02-book-tutorial-wave",
+  "source": {
+    "repo": "beskid",
+    "commit": "cc46568",
+    "subject": "Website update"
+  }
+}

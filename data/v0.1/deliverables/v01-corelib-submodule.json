@@ -1,0 +1,7 @@
+{
+  "id": "v01-corelib-submodule",
+  "title": "Nested corelib submodule",
+  "number": 2,
+  "description": "Standalone compiler CI embeds stdlib via nested corelib submodule only.",
+  "closedOn": "2026-04-10"
+}

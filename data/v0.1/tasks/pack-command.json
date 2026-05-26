@@ -1,0 +1,16 @@
+{
+  "id": "pack-command",
+  "number": 103,
+  "title": "Pack command and package metadata",
+  "priority": "high",
+  "workstream": "corelib-packaging",
+  "domain": "tooling",
+  "completedAt": "2026-03-18",
+  "milestoneId": "v01-compiler-parity",
+  "source": {
+    "repo": "compiler",
+    "commit": "a0b7dbb",
+    "subject": "Pack command"
+  },
+  "statusColumn": "Done"
+}

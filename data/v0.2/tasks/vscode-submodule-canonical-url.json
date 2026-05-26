@@ -1,0 +1,16 @@
+{
+  "id": "vscode-submodule-canonical-url",
+  "number": 267,
+  "title": "Pin beskid_vscode submodule to canonical GitHub URL",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "dev-experience",
+  "domain": "tooling",
+  "completedAt": "2026-05-05",
+  "milestoneId": "v02-editor-extension",
+  "source": {
+    "repo": "beskid",
+    "commit": "a12e285",
+    "subject": "fix(git): pin beskid_vscode submodule to canonical GitHub URL"
+  }
+}

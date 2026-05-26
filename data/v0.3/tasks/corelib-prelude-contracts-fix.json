@@ -1,0 +1,17 @@
+{
+  "id": "corelib-prelude-contracts-fix",
+  "number": 360,
+  "title": "Resolve prelude Contracts clash and refresh Diagnostics facade",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "stabilization",
+  "domain": "core-library",
+  "completedAt": "2026-05-23",
+  "specRelations": [],
+  "source": {
+    "repo": "corelib",
+    "commit": "4b4cd74",
+    "subject": "fix(corelib): resolve prelude Contracts clash and refresh Diagnostics facade"
+  },
+  "milestoneId": "v03-corelib-tier-ship"
+}

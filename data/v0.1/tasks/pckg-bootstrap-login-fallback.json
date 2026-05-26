@@ -1,0 +1,14 @@
+{
+  "id": "pckg-bootstrap-login-fallback",
+  "number": 146,
+  "title": "Support bootstrap admin login env and email fallback resolution",
+  "priority": "medium",
+  "workstream": "corelib-packaging",
+  "completedAt": "2026-04-21",
+  "source": {
+    "repo": "pckg",
+    "commit": "c6d740a",
+    "subject": "seed: support bootstrap admin login env and login/email fallback"
+  },
+  "statusColumn": "Done"
+}

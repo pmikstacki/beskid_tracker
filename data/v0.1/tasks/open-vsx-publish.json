@@ -1,0 +1,15 @@
+{
+  "id": "open-vsx-publish",
+  "number": 110,
+  "title": "Open VSX publish workflow on main (v0.1.0 tag)",
+  "priority": "medium",
+  "workstream": "editor-extension",
+  "completedAt": "2026-04-22",
+  "milestoneId": "v01-open-vsx",
+  "source": {
+    "repo": "beskid",
+    "commit": "f777b79",
+    "subject": "fix(ci): avoid Windows decode crash in Open VSX namespace check"
+  },
+  "statusColumn": "Done"
+}

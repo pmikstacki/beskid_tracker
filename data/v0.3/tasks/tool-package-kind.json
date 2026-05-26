@@ -1,0 +1,15 @@
+{
+  "id": "tool-package-kind",
+  "number": 308,
+  "title": "packageKind tool profile + formatter spec (A8)",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "stabilization",
+  "domain": "tooling",
+  "completedAt": "2026-05-23",
+  "source": {
+    "repo": "beskid",
+    "commit": "057a100",
+    "subject": "feat(spec,pckg,compiler): packageKind tool Standard + formatter feature hub (A8)"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "open-vsx-version-derivation",
+  "number": 137,
+  "title": "Derive Open VSX extension version from tags and commits",
+  "priority": "medium",
+  "workstream": "editor-extension",
+  "completedAt": "2026-04-22",
+  "milestoneId": "v01-open-vsx",
+  "source": {
+    "repo": "beskid",
+    "commit": "23fbd84",
+    "subject": "ci(open-vsx): derive extension version from tags and commits"
+  },
+  "statusColumn": "Done"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "trudoc-packages-workflow",
+  "number": 217,
+  "title": "Add trudoc and docs-ui packages with CI workflow",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "ci-release",
+  "completedAt": "2026-05-05",
+  "milestoneId": "v02-platform-spec-cutover",
+  "source": {
+    "repo": "beskid",
+    "commit": "8aa2813",
+    "subject": "feat(docs+ci): add trudoc/docs UI packages and workflow updates"
+  }
+}

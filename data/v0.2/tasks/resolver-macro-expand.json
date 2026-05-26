@@ -1,0 +1,15 @@
+{
+  "id": "resolver-macro-expand",
+  "number": 225,
+  "title": "Resolver adjustments for macro expand",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "analysis-pipeline",
+  "domain": "compiler",
+  "completedAt": "2026-05-20",
+  "source": {
+    "repo": "compiler",
+    "commit": "2130e50",
+    "subject": "fix(compiler): resolver adjustments for macro expand"
+  }
+}

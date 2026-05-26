@@ -1,0 +1,6 @@
+{
+  "slug": "pckg-registry",
+  "title": "Package registry",
+  "summary": "Registry dashboard and public package pages, structured api.json ingest and publish gates, Microsoft Docs–style library tree UI, workspace publish with auto-provision, corelib workspace publish hardening, Fluent grid actions, and registry-assigned semver.",
+  "order": 3
+}

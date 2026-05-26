@@ -1,0 +1,16 @@
+{
+  "id": "trudoc-frontmatter-verify",
+  "number": 219,
+  "title": "trudoc platform-spec frontmatter verification",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "platform-spec",
+  "domain": "community",
+  "completedAt": "2026-05-09",
+  "milestoneId": "v02-platform-spec-cutover",
+  "source": {
+    "repo": "beskid",
+    "commit": "139166f",
+    "subject": "feat(trudoc): platform-spec frontmatter verification"
+  }
+}

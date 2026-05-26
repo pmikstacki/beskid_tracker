@@ -1,0 +1,24 @@
+{
+  "id": "export-ffi",
+  "number": 307,
+  "title": "Export FFI, dynamic types, AotBuildRequest link libraries",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "ffi-export",
+  "domain": "execution",
+  "completedAt": "2026-05-24",
+  "specRelations": [
+    {
+      "path": "/platform-spec/execution/ffi/export-ffi",
+      "title": "Export FFI",
+      "level": "feature",
+      "relation": "implements",
+      "required": true
+    }
+  ],
+  "source": {
+    "repo": "compiler",
+    "commit": "5e91147",
+    "subject": "feat(v0.3): export FFI, dynamic types, and AotBuildRequest link libraries"
+  }
+}

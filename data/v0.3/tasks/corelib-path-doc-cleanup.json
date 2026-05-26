@@ -1,0 +1,17 @@
+{
+  "id": "corelib-path-doc-cleanup",
+  "number": 365,
+  "title": "Repair Path.bd header doc and Tier1 test formatting",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "stabilization",
+  "domain": "core-library",
+  "completedAt": "2026-05-23",
+  "specRelations": [],
+  "source": {
+    "repo": "corelib",
+    "commit": "c1011b1",
+    "subject": "fix(corelib): repair Path.bd header doc and collapse blank lines in Tier1 tests"
+  },
+  "milestoneId": "v03-corelib-tier-ship"
+}

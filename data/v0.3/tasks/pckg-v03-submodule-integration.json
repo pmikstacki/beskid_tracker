@@ -1,0 +1,16 @@
+{
+  "id": "pckg-v03-submodule-integration",
+  "number": 346,
+  "title": "Pin pckg submodule to v0.3 integrated registry tip",
+  "statusColumn": "Done",
+  "priority": "low",
+  "workstream": "pckg-registry",
+  "domain": "tooling",
+  "completedAt": "2026-05-23",
+  "milestoneId": "v03-merge-wave",
+  "source": {
+    "repo": "beskid",
+    "commit": "3db38a2",
+    "subject": "chore(submodules): pin compiler and pckg to v0.3 integrated tips"
+  }
+}

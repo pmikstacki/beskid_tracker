@@ -1,0 +1,16 @@
+{
+  "id": "corelib-publish-bundle-filtering",
+  "number": 282,
+  "title": "Filter non-docs .beskid files from corelib publish bundle",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "pckg-registry",
+  "domain": "core-library",
+  "completedAt": "2026-05-21",
+  "milestoneId": "v02-corelib-workspace-publish",
+  "source": {
+    "repo": "corelib",
+    "commit": "483e7f4",
+    "subject": "fix(corelib): exclude non-docs .beskid files from workspace publish bundle"
+  }
+}

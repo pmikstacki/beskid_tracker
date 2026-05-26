@@ -1,0 +1,16 @@
+{
+  "id": "site-docker-bun-lockfile",
+  "number": 265,
+  "title": "Use monorepo bun lockfile in site image build",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "dev-experience",
+  "domain": "tooling",
+  "completedAt": "2026-05-05",
+  "milestoneId": "v02-ci-deploy-infra",
+  "source": {
+    "repo": "beskid",
+    "commit": "0c97fde",
+    "subject": "fix(deploy): use monorepo bun lockfile in site image build"
+  }
+}

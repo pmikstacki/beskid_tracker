@@ -1,0 +1,16 @@
+{
+  "id": "compiler-initial-commit",
+  "number": 101,
+  "title": "Bootstrap compiler repository",
+  "priority": "high",
+  "workstream": "compiler-foundation",
+  "domain": "compiler",
+  "completedAt": "2026-03-05",
+  "milestoneId": "v01-compiler-parity",
+  "source": {
+    "repo": "compiler",
+    "commit": "dd75bff",
+    "subject": "Initial Commit"
+  },
+  "statusColumn": "Done"
+}

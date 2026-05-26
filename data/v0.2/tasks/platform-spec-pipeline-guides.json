@@ -1,0 +1,15 @@
+{
+  "id": "platform-spec-pipeline-guides",
+  "number": 237,
+  "title": "Platform-spec build-pipeline, conformance, and guide sync",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "platform-spec",
+  "domain": "compiler",
+  "completedAt": "2026-05-11",
+  "source": {
+    "repo": "beskid",
+    "commit": "5b0f4e3",
+    "subject": "Superrepo: bump compiler submodule; platform-spec and guides; AGENTS memory."
+  }
+}

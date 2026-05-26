@@ -1,0 +1,14 @@
+{
+  "id": "roadmap-labels-docs",
+  "number": 315,
+  "title": "Roadmap GitHub labels documentation",
+  "statusColumn": "Done",
+  "priority": "low",
+  "workstream": "dev-experience",
+  "completedAt": "2026-05-25",
+  "source": {
+    "repo": "beskid",
+    "commit": "be6ca5e",
+    "subject": "chore(docs): add roadmap labels documentation and update Dockerfiles for Bun versioning"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "formatter-feature-hub-spec",
+  "number": 350,
+  "title": "Formatter feature hub and tool packageKind Standard spec",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "stabilization",
+  "domain": "tooling",
+  "completedAt": "2026-05-23",
+  "source": {
+    "repo": "beskid",
+    "commit": "057a100",
+    "subject": "feat(spec,pckg,compiler): packageKind tool Standard + formatter feature hub (A8)"
+  }
+}

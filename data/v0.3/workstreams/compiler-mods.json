@@ -1,0 +1,6 @@
+{
+  "slug": "compiler-mods",
+  "title": "Compiler mods & imports",
+  "summary": "compiler mod execution, ContractInvoker mod host, import lib CLI, Project.proj link reconciliation, and mod integration tests.",
+  "order": 3
+}

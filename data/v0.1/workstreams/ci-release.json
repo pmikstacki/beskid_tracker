@@ -1,0 +1,6 @@
+{
+  "slug": "ci-release",
+  "title": "CI & CLI release",
+  "summary": "Aggregate Nox workflows, multi-platform CLI release uploads, install scripts, and release pipeline hardening.",
+  "order": 3
+}

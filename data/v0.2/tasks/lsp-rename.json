@@ -1,0 +1,16 @@
+{
+  "id": "lsp-rename",
+  "number": 221,
+  "title": "LSP rename support",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "analysis-pipeline",
+  "domain": "tooling",
+  "completedAt": "2026-05-09",
+  "milestoneId": "v02-lsp-workspace",
+  "source": {
+    "repo": "compiler",
+    "commit": "582170b",
+    "subject": "compiler: LSP rename feature and corelib bump"
+  }
+}

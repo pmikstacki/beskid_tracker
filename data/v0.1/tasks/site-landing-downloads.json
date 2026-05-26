@@ -1,0 +1,14 @@
+{
+  "id": "site-landing-downloads",
+  "number": 109,
+  "title": "Redesign docs landing and downloads surfaces",
+  "priority": "medium",
+  "workstream": "ci-release",
+  "completedAt": "2026-04-22",
+  "source": {
+    "repo": "beskid",
+    "commit": "c92d17d",
+    "subject": "site: redesign landing and downloads surfaces"
+  },
+  "statusColumn": "Done"
+}

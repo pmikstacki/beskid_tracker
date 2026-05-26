@@ -1,0 +1,15 @@
+{
+  "id": "superrepo-compiler-submodule",
+  "number": 114,
+  "title": "Restructure superrepo around compiler submodule",
+  "priority": "high",
+  "workstream": "compiler-foundation",
+  "domain": "tooling",
+  "completedAt": "2026-03-05",
+  "source": {
+    "repo": "beskid",
+    "commit": "6fae27a",
+    "subject": "Remove CI/CD pipeline and Cargo workspace; restructure repository to use compiler submodule"
+  },
+  "statusColumn": "Done"
+}

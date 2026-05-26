@@ -1,0 +1,16 @@
+{
+  "id": "ci-artifact-sources-stack-bump",
+  "number": 277,
+  "title": "Bump pckg and compiler for artifact sources and stack overflow CI",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "ci-release",
+  "domain": "tooling",
+  "completedAt": "2026-05-18",
+  "milestoneId": "v02-ci-deploy-infra",
+  "source": {
+    "repo": "beskid",
+    "commit": "c857780",
+    "subject": "fix(ci): bump pckg and compiler for artifact sources and stack overflow"
+  }
+}

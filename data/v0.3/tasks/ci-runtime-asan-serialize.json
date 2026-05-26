@@ -1,0 +1,15 @@
+{
+  "id": "ci-runtime-asan-serialize",
+  "number": 332,
+  "title": "Serialize runtime tests and wire ASan bridge archive",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "ci-release",
+  "completedAt": "2026-05-24",
+  "milestoneId": "v03-post-merge-ci",
+  "source": {
+    "repo": "beskid",
+    "commit": "e8bc073",
+    "subject": "fix(ci): serialize runtime tests and wire ASan bridge archive in superrepo"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "pckg-tool-install-escape",
+  "number": 342,
+  "title": "Escape tool-package install card bpk token",
+  "statusColumn": "Done",
+  "priority": "low",
+  "workstream": "pckg-registry",
+  "milestoneId": "v03-pckg-tool-registry",
+  "completedAt": "2026-05-23",
+  "milestoneId": "v03-merge-wave",
+  "source": {
+    "repo": "pckg",
+    "commit": "135f7c9",
+    "subject": "fix(pckg): escape `./@(Package.Name).bpk` token in tool-package install card"
+  }
+}

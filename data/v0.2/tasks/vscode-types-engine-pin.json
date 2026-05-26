@@ -1,0 +1,16 @@
+{
+  "id": "vscode-types-engine-pin",
+  "number": 285,
+  "title": "Pin @types/vscode to match extension engine range",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "editor-extension",
+  "domain": "tooling",
+  "completedAt": "2026-05-08",
+  "milestoneId": "v02-editor-extension",
+  "source": {
+    "repo": "beskid_vscode",
+    "commit": "714871c",
+    "subject": "chore(deps): pin @types/vscode to 1.88.0 to satisfy engines.vscode"
+  }
+}

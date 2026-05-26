@@ -1,0 +1,26 @@
+{
+  "id": "composition-hir-mod-host",
+  "number": 235,
+  "title": "Composition HIR pass, mod-host query bridge, host definitions",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "analysis-pipeline",
+  "domain": "compiler",
+  "area": "composition",
+  "completedAt": "2026-05-20",
+  "milestoneId": "v02-composition-macros-hir",
+  "specRelations": [
+    {
+      "path": "/platform-spec/compiler/pipeline/composition-assembly",
+      "title": "Composition assembly",
+      "level": "feature",
+      "relation": "implements",
+      "required": true
+    }
+  ],
+  "source": {
+    "repo": "compiler",
+    "commit": "efb67a5",
+    "subject": "feat(compiler): composition, macros, structured API docs, and resolver fixes"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "import-lib-e2e-test",
+  "number": 320,
+  "title": "E2E tests for beskid import lib manifest mutation",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "compiler-mods",
+  "completedAt": "2026-05-23",
+  "milestoneId": "v03-merge-wave",
+  "source": {
+    "repo": "compiler",
+    "commit": "8e2eebe",
+    "subject": "test(cli): cover beskid import lib end-to-end manifest mutation"
+  }
+}

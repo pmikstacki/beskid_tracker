@@ -1,0 +1,17 @@
+{
+  "id": "api-doc-snapshot",
+  "number": 204,
+  "title": "Structured API doc snapshot in analysis",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "analysis-pipeline",
+  "domain": "compiler",
+  "area": "documentation",
+  "completedAt": "2026-05-18",
+  "milestoneId": "v02-api-json-contract",
+  "source": {
+    "repo": "compiler",
+    "commit": "5ff3d07",
+    "subject": "feat(analysis): structured API doc snapshot and registry doc pipeline"
+  }
+}

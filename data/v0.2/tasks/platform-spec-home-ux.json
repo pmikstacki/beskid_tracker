@@ -1,0 +1,15 @@
+{
+  "id": "platform-spec-home-ux",
+  "number": 220,
+  "title": "Platform-spec home browse/map UX polish",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "docs-site",
+  "completedAt": "2026-05-09",
+  "milestoneId": "v02-platform-spec-cutover",
+  "source": {
+    "repo": "beskid",
+    "commit": "6c5f200",
+    "subject": "fix(docs-ui): platform-spec home UX — tabs, map height, zoom, typography"
+  }
+}

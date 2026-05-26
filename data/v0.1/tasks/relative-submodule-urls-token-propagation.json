@@ -1,0 +1,15 @@
+{
+  "id": "relative-submodule-urls-token-propagation",
+  "number": 142,
+  "title": "Use relative GitHub submodule URLs to propagate CI auth tokens",
+  "priority": "medium",
+  "workstream": "editor-extension",
+  "completedAt": "2026-04-21",
+  "milestoneId": "v01-open-vsx",
+  "source": {
+    "repo": "beskid",
+    "commit": "c2526bb",
+    "subject": "git: use relative GitHub submodule URLs for token propagation"
+  },
+  "statusColumn": "Done"
+}

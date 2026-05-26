@@ -1,0 +1,15 @@
+{
+  "id": "api-json-publish-gate",
+  "number": 208,
+  "title": "Require structured api.json on package publish",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "pckg-registry",
+  "completedAt": "2026-05-20",
+  "milestoneId": "v02-api-json-contract",
+  "source": {
+    "repo": "pckg",
+    "commit": "b8e1500",
+    "subject": "Require structured api.json on publish and improve package docs UX."
+  }
+}

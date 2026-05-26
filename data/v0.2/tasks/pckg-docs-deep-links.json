@@ -1,0 +1,16 @@
+{
+  "id": "pckg-docs-deep-links",
+  "number": 240,
+  "title": "Package docs deep links and explorer dialog routes",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "pckg-registry",
+  "domain": "tooling",
+  "completedAt": "2026-04-24",
+  "milestoneId": "v02-pckg-registry-foundation",
+  "source": {
+    "repo": "pckg",
+    "commit": "8734655",
+    "subject": "Docs: deep links (/docs/.../api, /search), AppDocumentationRoutes; PackageDocs explorer dialog; Dialog variant for docs browser"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "registry-semver-publish",
+  "number": 216,
+  "title": "Registry-assigned semver on package publish",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "pckg-registry",
+  "completedAt": "2026-04-24",
+  "milestoneId": "v02-pckg-registry-foundation",
+  "source": {
+    "repo": "pckg",
+    "commit": "68a1a06",
+    "subject": "feat(packages): registry semver on publish and dashboard grid actions"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "member-resolution-docs",
+  "number": 218,
+  "title": "Member item resolution and docs pipeline updates",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "analysis-pipeline",
+  "domain": "compiler",
+  "completedAt": "2026-05-05",
+  "milestoneId": "v02-platform-spec-cutover",
+  "source": {
+    "repo": "compiler",
+    "commit": "dfe8ace",
+    "subject": "feat(compiler): add member item resolution and docs pipeline updates"
+  }
+}

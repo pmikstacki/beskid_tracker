@@ -1,0 +1,17 @@
+{
+  "id": "ci-runtime-ci-on-submodule-bump",
+  "number": 363,
+  "title": "Trigger Runtime CI on compiler submodule pointer bumps",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "ci-release",
+  "domain": "tooling",
+  "completedAt": "2026-05-23",
+  "specRelations": [],
+  "source": {
+    "repo": "beskid",
+    "commit": "c0ac8fd",
+    "subject": "fix(ci): trigger Runtime CI on compiler submodule pointer bumps"
+  },
+  "milestoneId": "v03-post-merge-ci"
+}

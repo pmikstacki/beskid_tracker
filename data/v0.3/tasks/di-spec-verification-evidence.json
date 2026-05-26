@@ -1,0 +1,15 @@
+{
+  "id": "di-spec-verification-evidence",
+  "number": 349,
+  "title": "Mark DI spec verification checklist landed with v0.3 evidence",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "stabilization",
+  "domain": "language-meta",
+  "completedAt": "2026-05-23",
+  "source": {
+    "repo": "beskid",
+    "commit": "6e2c110",
+    "subject": "docs(di-spec): mark verification checklist landed, link v0.3 evidence"
+  }
+}

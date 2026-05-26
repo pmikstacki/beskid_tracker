@@ -1,0 +1,14 @@
+{
+  "id": "dynamic-types-spec",
+  "number": 311,
+  "title": "Promote dynamic-types spec and export FFI traceability",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "ffi-export",
+  "completedAt": "2026-05-24",
+  "source": {
+    "repo": "beskid",
+    "commit": "8cffb33",
+    "subject": "feat(v0.3): bump compiler, promote dynamic-types spec, export FFI traceability"
+  }
+}

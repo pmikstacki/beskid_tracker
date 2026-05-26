@@ -1,0 +1,6 @@
+{
+  "slug": "ci-release",
+  "title": "CI & release verification",
+  "summary": "Runtime bridge e2e, ASan serialization, trudoc Node verify, formatter MDX CI, submodule-triggered Runtime CI, and verify-all-on-main evidence.",
+  "order": 8
+}

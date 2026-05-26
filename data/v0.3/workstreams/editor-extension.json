@@ -1,0 +1,6 @@
+{
+  "slug": "editor-extension",
+  "title": "Editor & CLI LSP",
+  "summary": "`beskid lsp` CLI and GitHub release wiring, VS Code cli-latest bootstrap, bundled LSP host scripts, and extension inventory docs.",
+  "order": 7
+}

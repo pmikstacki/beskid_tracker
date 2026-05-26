@@ -1,0 +1,16 @@
+{
+  "id": "pckg-registry-activity-log",
+  "number": 236,
+  "title": "Registry activity log and publish observability",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "pckg-registry",
+  "domain": "tooling",
+  "completedAt": "2026-04-23",
+  "milestoneId": "v02-pckg-registry-foundation",
+  "source": {
+    "repo": "pckg",
+    "commit": "f47efb7",
+    "subject": "feat(admin): registry activity log, publish observability"
+  }
+}

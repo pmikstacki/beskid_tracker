@@ -1,0 +1,14 @@
+{
+  "id": "workspace-publish-readme",
+  "number": 230,
+  "title": "Workspace publish, readme rendering, and manifest metadata",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "pckg-registry",
+  "completedAt": "2026-05-20",
+  "source": {
+    "repo": "pckg",
+    "commit": "a7d77fe",
+    "subject": "feat(server): workspace publish, readme rendering, and manifest metadata"
+  }
+}

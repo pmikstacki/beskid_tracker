@@ -1,0 +1,15 @@
+{
+  "id": "file-scoped-module-spec-docs",
+  "number": 243,
+  "title": "Clarify file-scoped module declarations in platform guides",
+  "statusColumn": "Done",
+  "priority": "low",
+  "workstream": "platform-spec",
+  "domain": "language-meta",
+  "completedAt": "2026-04-22",
+  "source": {
+    "repo": "beskid",
+    "commit": "77698fa",
+    "subject": "docs: clarify file-scoped module declarations and their implications"
+  }
+}

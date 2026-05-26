@@ -1,0 +1,7 @@
+{
+  "id": "v03-superrepo-orchestration",
+  "title": "v0.3 integration traceability",
+  "number": 9,
+  "description": "Integration traceability for v0.3 deliverables via pinned SHAs and repository-level verification context.",
+  "closedOn": "2026-05-23"
+}

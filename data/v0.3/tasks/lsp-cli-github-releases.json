@@ -1,0 +1,16 @@
+{
+  "id": "lsp-cli-github-releases",
+  "number": 357,
+  "title": "GitHub Actions LSP release tags alongside CLI publish",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "editor-extension",
+  "domain": "tooling",
+  "completedAt": "2026-05-25",
+  "milestoneId": "v03-editor-lsp-cli",
+  "source": {
+    "repo": "compiler",
+    "commit": "a86a6d6",
+    "subject": "feat(cli): add `beskid lsp` subcommand for editor stdio server"
+  }
+}

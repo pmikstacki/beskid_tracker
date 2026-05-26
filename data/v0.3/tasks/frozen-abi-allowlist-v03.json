@@ -1,0 +1,16 @@
+{
+  "id": "frozen-abi-allowlist-v03",
+  "number": 326,
+  "title": "Update frozen runtime export symbol allowlist for v0.3",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "concurrency-runtime",
+  "domain": "execution",
+  "completedAt": "2026-05-23",
+  "milestoneId": "v03-merge-wave",
+  "source": {
+    "repo": "compiler",
+    "commit": "79e6364",
+    "subject": "test(abi): update frozen runtime export symbol allowlist for v0.3 merge"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "slug": "dev-experience",
+  "title": "Deploy & roadmap ergonomics",
+  "summary": "Docs-site Docker git for platform-spec meta, roadmap label docs, Bun-aligned container builds, and VS Code CLI toolchain bootstrap.",
+  "order": 9
+}

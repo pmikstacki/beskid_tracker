@@ -1,0 +1,16 @@
+{
+  "id": "cli-lsp-test-hardening",
+  "number": 213,
+  "title": "CLI/LSP integration, formatter, and test harness hardening",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "analysis-pipeline",
+  "domain": "tooling",
+  "completedAt": "2026-04-23",
+  "milestoneId": "v02-platform-spec-cutover",
+  "source": {
+    "repo": "compiler",
+    "commit": "98aa6bc",
+    "subject": "Test harness, formatter, CLI/LSP integration, and CI hardening."
+  }
+}

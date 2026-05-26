@@ -1,0 +1,6 @@
+{
+  "slug": "concurrency-runtime",
+  "title": "Concurrency & runtime",
+  "summary": "Phase B GC opt-in, launch/with lowering, frozen ABI allowlists, runtime bridge CI, composition e2e suites, and Runtime CI on submodule bumps.",
+  "order": 2
+}

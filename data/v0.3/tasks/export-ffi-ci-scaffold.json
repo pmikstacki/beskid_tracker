@@ -1,0 +1,16 @@
+{
+  "id": "export-ffi-ci-scaffold",
+  "number": 335,
+  "title": "Green corelib scans, JIT composition, export FFI scaffold",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "ffi-export",
+  "domain": "compiler",
+  "completedAt": "2026-05-23",
+  "milestoneId": "v03-merge-wave",
+  "source": {
+    "repo": "compiler",
+    "commit": "2957086",
+    "subject": "fix(ci): green corelib scans, JIT composition, and export FFI scaffold"
+  }
+}

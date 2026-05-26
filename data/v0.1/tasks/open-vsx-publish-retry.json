@@ -1,0 +1,15 @@
+{
+  "id": "open-vsx-publish-retry",
+  "number": 138,
+  "title": "Retry logic for Open VSX publishing workflow",
+  "priority": "medium",
+  "workstream": "editor-extension",
+  "completedAt": "2026-04-22",
+  "milestoneId": "v01-open-vsx",
+  "source": {
+    "repo": "beskid",
+    "commit": "6dce9e6",
+    "subject": "feat(ci): implement retry logic for Open VSX publishing"
+  },
+  "statusColumn": "Done"
+}

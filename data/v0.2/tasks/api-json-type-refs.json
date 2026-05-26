@@ -1,0 +1,17 @@
+{
+  "id": "api-json-type-refs",
+  "number": 226,
+  "title": "Link api.json module tree and strengthen type references",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "analysis-pipeline",
+  "domain": "compiler",
+  "area": "documentation",
+  "completedAt": "2026-05-20",
+  "milestoneId": "v02-api-json-contract",
+  "source": {
+    "repo": "compiler",
+    "commit": "cf5ae82",
+    "subject": "feat(doc): link api.json module tree and strengthen type references"
+  }
+}

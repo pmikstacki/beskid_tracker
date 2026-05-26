@@ -1,0 +1,16 @@
+{
+  "id": "compiler-ci-abi-format-golden",
+  "number": 270,
+  "title": "Corelib root resolution, ABI snapshot, and format golden in CI",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "ci-release",
+  "domain": "compiler",
+  "completedAt": "2026-05-11",
+  "milestoneId": "v02-api-json-contract",
+  "source": {
+    "repo": "compiler",
+    "commit": "010981f",
+    "subject": "fix(ci): corelib root resolution, ABI snapshot, format golden"
+  }
+}

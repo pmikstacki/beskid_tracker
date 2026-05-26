@@ -1,0 +1,16 @@
+{
+  "id": "pckg-workspace-auto-provision",
+  "number": 250,
+  "title": "Auto-provision workspace member packages on publish",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "pckg-registry",
+  "domain": "tooling",
+  "completedAt": "2026-05-21",
+  "milestoneId": "v02-api-json-contract",
+  "source": {
+    "repo": "pckg",
+    "commit": "09542b2",
+    "subject": "fix(pckg): auto-provision workspace member packages on publish"
+  }
+}

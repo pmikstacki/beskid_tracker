@@ -1,0 +1,6 @@
+{
+  "slug": "corelib-packaging",
+  "title": "Corelib & registry",
+  "summary": "Corelib submodule wiring, stdlib provisioning, pack metadata, pckg manifest UI, and deploy/bootstrap flows.",
+  "order": 2
+}

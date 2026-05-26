@@ -1,0 +1,15 @@
+{
+  "id": "language-meta-interop-site-build",
+  "number": 239,
+  "title": "Expand language-meta interop tree and repair Astro site build",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "platform-spec",
+  "domain": "language-meta",
+  "completedAt": "2026-05-20",
+  "source": {
+    "repo": "beskid",
+    "commit": "c38a8e9",
+    "subject": "Fix site build and document corelib workspace publishing."
+  }
+}

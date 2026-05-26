@@ -1,0 +1,16 @@
+{
+  "id": "project-proj-link-merge",
+  "number": 318,
+  "title": "Non-destructive Project.proj link block reconciliation",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "compiler-mods",
+  "domain": "compiler",
+  "completedAt": "2026-05-23",
+  "milestoneId": "v03-merge-wave",
+  "source": {
+    "repo": "compiler",
+    "commit": "98b328e",
+    "subject": "feat(analysis): non-destructive Project.proj link block merge"
+  }
+}

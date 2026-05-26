@@ -1,0 +1,16 @@
+{
+  "id": "corelib-tiering",
+  "number": 306,
+  "title": "Corelib tiering collections & api-shape",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "stabilization",
+  "domain": "core-library",
+  "completedAt": "2026-05-23",
+  "milestoneId": "v03-merge-wave",
+  "source": {
+    "repo": "beskid",
+    "commit": "3b51b53",
+    "subject": "merge(v0.3): corelib-tiering-collections-fs-api-shape into main (keep integrated submodule tips)"
+  }
+}

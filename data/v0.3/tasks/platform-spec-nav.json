@@ -1,0 +1,14 @@
+{
+  "id": "platform-spec-nav",
+  "number": 312,
+  "title": "Platform-spec header and nav drawer polish",
+  "statusColumn": "Done",
+  "priority": "low",
+  "workstream": "stabilization",
+  "completedAt": "2026-05-24",
+  "source": {
+    "repo": "beskid",
+    "commit": "d800062",
+    "subject": "feat(platform-spec): enhance SpecPageHeader and layout styles for improved navigation and responsiveness"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "spec-api-json-tree",
+  "number": 209,
+  "title": "Platform spec: api.json library tree documentation",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "docs-site",
+  "domain": "tooling",
+  "completedAt": "2026-05-20",
+  "source": {
+    "repo": "beskid",
+    "commit": "af673dc",
+    "subject": "docs(spec): api.json library tree; bump compiler and pckg for API reference UI"
+  }
+}

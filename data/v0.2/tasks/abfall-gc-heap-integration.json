@@ -1,0 +1,17 @@
+{
+  "id": "abfall-gc-heap-integration",
+  "number": 264,
+  "title": "Vendored abfall GC and Beskid heap integration",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "codegen-runtime",
+  "domain": "execution",
+  "area": "gc",
+  "completedAt": "2026-05-20",
+  "milestoneId": "v02-concurrency-runtime",
+  "source": {
+    "repo": "compiler",
+    "commit": "6ecd493",
+    "subject": "feat(runtime): vendored abfall GC and Beskid heap integration"
+  }
+}

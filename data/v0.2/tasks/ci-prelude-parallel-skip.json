@@ -1,0 +1,17 @@
+{
+  "id": "ci-prelude-parallel-skip",
+  "number": 275,
+  "title": "Skip prelude lowering tests in parallel CI test pass",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "ci-release",
+  "domain": "compiler",
+  "area": "ci",
+  "completedAt": "2026-05-18",
+  "milestoneId": "v02-ci-deploy-infra",
+  "source": {
+    "repo": "compiler",
+    "commit": "ad6c13c",
+    "subject": "fix(ci): skip prelude lowering tests in parallel test pass"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "spec-frontmatter-yaml-quotes",
+  "number": 348,
+  "title": "Quote YAML frontmatter with colons and backticks in spec pages",
+  "statusColumn": "Done",
+  "priority": "low",
+  "workstream": "stabilization",
+  "domain": "tooling",
+  "completedAt": "2026-05-23",
+  "milestoneId": "v03-docs-reader-hardening",
+  "source": {
+    "repo": "beskid",
+    "commit": "c2dece3",
+    "subject": "fix(spec): quote YAML frontmatter strings containing colons / backticks"
+  }
+}

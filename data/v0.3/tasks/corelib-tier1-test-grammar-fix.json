@@ -1,0 +1,17 @@
+{
+  "id": "corelib-tier1-test-grammar-fix",
+  "number": 364,
+  "title": "Rename Tier1 tests to avoid grammar collision on false",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "stabilization",
+  "domain": "core-library",
+  "completedAt": "2026-05-23",
+  "specRelations": [],
+  "source": {
+    "repo": "corelib",
+    "commit": "5bc4e9a",
+    "subject": "fix(corelib): rename Tier1 tests to avoid grammar collision on `false`"
+  },
+  "milestoneId": "v03-corelib-tier-ship"
+}

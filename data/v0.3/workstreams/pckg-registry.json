@@ -1,0 +1,6 @@
+{
+  "slug": "pckg-registry",
+  "title": "Package registry",
+  "summary": "packageKind tool profiles in dashboard and CLI pack, structured api.json tier/artifact paths, and Fluent package docs UI hardening.",
+  "order": 5
+}

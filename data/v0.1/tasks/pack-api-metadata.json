@@ -1,0 +1,15 @@
+{
+  "id": "pack-api-metadata",
+  "number": 113,
+  "title": "Extend pack API model metadata fields",
+  "priority": "medium",
+  "workstream": "corelib-packaging",
+  "domain": "tooling",
+  "completedAt": "2026-03-18",
+  "source": {
+    "repo": "compiler",
+    "commit": "39b911e",
+    "subject": "added new metadata to api model"
+  },
+  "statusColumn": "Done"
+}

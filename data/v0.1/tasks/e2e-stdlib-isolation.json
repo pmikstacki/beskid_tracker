@@ -1,0 +1,14 @@
+{
+  "id": "e2e-stdlib-isolation",
+  "number": 136,
+  "title": "Isolate stdlib provisioning root per CLI e2e invoker",
+  "priority": "medium",
+  "workstream": "corelib-packaging",
+  "completedAt": "2026-04-22",
+  "source": {
+    "repo": "compiler",
+    "commit": "6e82a32",
+    "subject": "fix(e2e): isolate stdlib provisioning root per CLI invoker"
+  },
+  "statusColumn": "Done"
+}

@@ -1,0 +1,16 @@
+{
+  "id": "bsharp-references-submodule",
+  "number": 268,
+  "title": "Register references/bsharp as a proper submodule",
+  "statusColumn": "Done",
+  "priority": "low",
+  "workstream": "dev-experience",
+  "domain": "tooling",
+  "completedAt": "2026-04-24",
+  "milestoneId": "v02-ci-deploy-infra",
+  "source": {
+    "repo": "beskid",
+    "commit": "f6a814d",
+    "subject": "chore(git): register references/bsharp as a proper submodule"
+  }
+}

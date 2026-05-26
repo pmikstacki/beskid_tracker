@@ -1,0 +1,6 @@
+{
+  "slug": "ffi-export",
+  "title": "Export FFI & dynamic types",
+  "summary": "export FFI link-time deliverables, dynamic types spec promotion, AotBuildRequest link libraries, and ffi_v03 CI hardening.",
+  "order": 1
+}

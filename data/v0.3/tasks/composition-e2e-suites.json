@@ -1,0 +1,16 @@
+{
+  "id": "composition-e2e-suites",
+  "number": 327,
+  "title": "Composition runtime container and lowering e2e suites",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "concurrency-runtime",
+  "domain": "execution",
+  "completedAt": "2026-05-23",
+  "milestoneId": "v03-merge-wave",
+  "source": {
+    "repo": "compiler",
+    "commit": "5b65195",
+    "subject": "test(composition): runtime container + lowering + host e2e suites"
+  }
+}

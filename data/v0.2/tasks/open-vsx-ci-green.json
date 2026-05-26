@@ -1,0 +1,16 @@
+{
+  "id": "open-vsx-ci-green",
+  "number": 255,
+  "title": "Green Open VSX publish alongside docs site CI",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "editor-extension",
+  "domain": "tooling",
+  "completedAt": "2026-05-08",
+  "milestoneId": "v02-editor-extension",
+  "source": {
+    "repo": "beskid",
+    "commit": "6444332",
+    "subject": "ci: green pipelines for docs site, Open VSX publish, and Rust audit"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "api-json-artifact-paths",
+  "number": 339,
+  "title": "Resolve api.json paths from per-package artifact roots",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "pckg-registry",
+  "milestoneId": "v03-pckg-tool-registry",
+  "domain": "tooling",
+  "completedAt": "2026-05-24",
+  "milestoneId": "v03-post-merge-ci",
+  "source": {
+    "repo": "compiler",
+    "commit": "5f0f2c9",
+    "subject": "fix(doc): resolve api.json paths from per-package artifact roots"
+  }
+}

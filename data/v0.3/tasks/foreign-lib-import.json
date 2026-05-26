@@ -1,0 +1,26 @@
+{
+  "id": "foreign-lib-import",
+  "number": 302,
+  "title": "beskid import lib + ExternalLibrary registry",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "compiler-mods",
+  "domain": "language-meta",
+  "area": "interop",
+  "completedAt": "2026-05-23",
+  "milestoneId": "v03-merge-wave",
+  "specRelations": [
+    {
+      "path": "/platform-spec/language-meta/interop/foreign-libraries",
+      "title": "Foreign libraries",
+      "level": "feature",
+      "relation": "implements",
+      "required": true
+    }
+  ],
+  "source": {
+    "repo": "beskid",
+    "commit": "a150be3",
+    "subject": "feat(spec,compiler): beskid import lib + ExternalLibrary closed registry (v0.3)"
+  }
+}

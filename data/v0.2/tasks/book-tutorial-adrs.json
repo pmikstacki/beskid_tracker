@@ -1,0 +1,14 @@
+{
+  "id": "book-tutorial-adrs",
+  "number": 212,
+  "title": "Book tutorial, platform-spec ADRs, trudoc routing",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "docs-site",
+  "completedAt": "2026-05-22",
+  "source": {
+    "repo": "beskid",
+    "commit": "e16bd3a",
+    "subject": "docs(site): book tutorial, platform-spec ADRs, trudoc, and docs routing"
+  }
+}

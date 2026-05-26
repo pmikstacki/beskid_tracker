@@ -1,0 +1,15 @@
+{
+  "id": "platform-spec-expansion",
+  "number": 203,
+  "title": "Expand platform-spec pages and doc feedback guides",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "platform-spec",
+  "domain": "community",
+  "completedAt": "2026-05-09",
+  "source": {
+    "repo": "beskid",
+    "commit": "d25aa7a",
+    "subject": "docs(site): expand platform-spec pages and doc feedback guides"
+  }
+}

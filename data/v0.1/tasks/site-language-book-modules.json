@@ -1,0 +1,14 @@
+{
+  "id": "site-language-book-modules",
+  "number": 139,
+  "title": "Add language book and file-scoped module docs",
+  "priority": "medium",
+  "workstream": "ci-release",
+  "completedAt": "2026-04-22",
+  "source": {
+    "repo": "beskid",
+    "commit": "94240a3",
+    "subject": "site: add language book and align module docs with file-scoped semantics"
+  },
+  "statusColumn": "Done"
+}

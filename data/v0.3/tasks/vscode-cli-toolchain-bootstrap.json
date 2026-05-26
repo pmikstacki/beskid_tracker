@@ -1,0 +1,16 @@
+{
+  "id": "vscode-cli-toolchain-bootstrap",
+  "number": 356,
+  "title": "VS Code CLI release download and LSP toolchain bootstrap",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "editor-extension",
+  "domain": "tooling",
+  "completedAt": "2026-05-25",
+  "milestoneId": "v03-editor-lsp-cli",
+  "source": {
+    "repo": "beskid_vscode",
+    "commit": "0a8a73c",
+    "subject": "feat(toolchain): bootstrap CLI release download and dependency fetch"
+  }
+}

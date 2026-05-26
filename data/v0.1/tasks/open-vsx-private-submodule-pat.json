@@ -1,0 +1,15 @@
+{
+  "id": "open-vsx-private-submodule-pat",
+  "number": 143,
+  "title": "Switch Open VSX workflow submodule checkout to PAT secret",
+  "priority": "medium",
+  "workstream": "editor-extension",
+  "completedAt": "2026-04-21",
+  "milestoneId": "v01-open-vsx",
+  "source": {
+    "repo": "beskid",
+    "commit": "8e3b883",
+    "subject": "ci: use PAT secret for private pckg submodule checkout"
+  },
+  "statusColumn": "Done"
+}

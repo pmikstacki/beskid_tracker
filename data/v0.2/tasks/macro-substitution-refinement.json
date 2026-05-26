@@ -1,0 +1,16 @@
+{
+  "id": "macro-substitution-refinement",
+  "number": 284,
+  "title": "Refine compiler macro substitution implementation details",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "analysis-pipeline",
+  "domain": "compiler",
+  "completedAt": "2026-05-20",
+  "milestoneId": "v02-composition-macros-hir",
+  "source": {
+    "repo": "compiler",
+    "commit": "2518c48",
+    "subject": "fix(compiler): refine macro substitution implementation"
+  }
+}

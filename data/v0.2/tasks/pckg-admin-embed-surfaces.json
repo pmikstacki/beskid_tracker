@@ -1,0 +1,15 @@
+{
+  "id": "pckg-admin-embed-surfaces",
+  "number": 243,
+  "title": "Admin tooling and package embed surfaces",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "pckg-registry",
+  "domain": "tooling",
+  "completedAt": "2026-05-05",
+  "source": {
+    "repo": "pckg",
+    "commit": "3343967",
+    "subject": "feat(pckg): improve admin tooling and package embed surfaces"
+  }
+}

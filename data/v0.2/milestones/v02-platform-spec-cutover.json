@@ -1,0 +1,7 @@
+{
+  "id": "v02-platform-spec-cutover",
+  "title": "Platform-spec cutover",
+  "number": 2,
+  "description": "Legacy Starlight guides retired; /platform-spec/ is the sole normative docs tree with container build stabilized.",
+  "closedOn": "2026-05-06"
+}

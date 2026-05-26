@@ -1,0 +1,15 @@
+{
+  "id": "ci-nox-migration",
+  "number": 106,
+  "title": "Move GitHub Actions logic to Nox helpers",
+  "priority": "medium",
+  "workstream": "ci-release",
+  "domain": "tooling",
+  "completedAt": "2026-04-13",
+  "source": {
+    "repo": "compiler",
+    "commit": "de48f22",
+    "subject": "ci: move GitHub Actions logic to Nox and Python helpers"
+  },
+  "statusColumn": "Done"
+}

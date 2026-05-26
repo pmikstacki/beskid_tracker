@@ -1,0 +1,16 @@
+{
+  "id": "composition-assembly",
+  "number": 206,
+  "title": "Program assembly, front-end split, scheduler refactor",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "analysis-pipeline",
+  "domain": "compiler",
+  "area": "composition",
+  "completedAt": "2026-05-20",
+  "source": {
+    "repo": "compiler",
+    "commit": "76a58f5",
+    "subject": "feat(compiler): program assembly, front-end split, and scheduler refactor"
+  }
+}

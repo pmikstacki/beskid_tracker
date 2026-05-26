@@ -1,0 +1,16 @@
+{
+  "id": "pckg-api-json-ui",
+  "number": 207,
+  "title": "pckg structured api.json docs UI",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "pckg-registry",
+  "domain": "tooling",
+  "completedAt": "2026-05-20",
+  "milestoneId": "v02-api-json-contract",
+  "source": {
+    "repo": "pckg",
+    "commit": "2c0be25",
+    "subject": "feat(pckg): structured api.json docs UI and readonly source editor"
+  }
+}

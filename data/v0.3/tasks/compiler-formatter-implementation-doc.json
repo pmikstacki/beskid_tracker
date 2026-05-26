@@ -1,0 +1,17 @@
+{
+  "id": "compiler-formatter-implementation-doc",
+  "number": 347,
+  "title": "Compiler formatter implementation notes (packageKind tool)",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "analysis-pipeline",
+  "domain": "compiler",
+  "area": "tooling",
+  "completedAt": "2026-05-23",
+  "milestoneId": "v03-analysis-interop",
+  "source": {
+    "repo": "compiler",
+    "commit": "ebbe51d",
+    "subject": "feat(pckg,format): packageKind tool profile + formatter implementation doc (WIP, restored from stash)"
+  }
+}

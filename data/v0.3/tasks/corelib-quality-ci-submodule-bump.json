@@ -1,0 +1,17 @@
+{
+  "id": "corelib-quality-ci-submodule-bump",
+  "number": 374,
+  "title": "Bump compiler submodule for corelib-quality CI fix",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "ci-release",
+  "domain": "compiler",
+  "area": "ci",
+  "completedAt": "2026-05-24",
+  "milestoneId": "v03-post-merge-ci",
+  "source": {
+    "repo": "beskid",
+    "commit": "33e5d99",
+    "subject": "chore(compiler): bump submodule for corelib-quality CI fix"
+  }
+}

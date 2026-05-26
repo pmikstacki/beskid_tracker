@@ -1,0 +1,25 @@
+{
+  "id": "macro-registry",
+  "number": 205,
+  "title": "Macro registry, substitution, and HIR wiring",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "analysis-pipeline",
+  "domain": "language-meta",
+  "area": "macros",
+  "completedAt": "2026-05-20",
+  "specRelations": [
+    {
+      "path": "/platform-spec/language-meta/macros/",
+      "title": "Macros",
+      "level": "area",
+      "relation": "implements",
+      "required": true
+    }
+  ],
+  "source": {
+    "repo": "compiler",
+    "commit": "9f668d4",
+    "subject": "feat(compiler): macro registry, substitution, and HIR/format wiring"
+  }
+}

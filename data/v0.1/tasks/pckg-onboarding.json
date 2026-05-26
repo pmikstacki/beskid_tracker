@@ -1,0 +1,15 @@
+{
+  "id": "pckg-onboarding",
+  "number": 108,
+  "title": "pckg interactive first-run onboarding",
+  "priority": "medium",
+  "workstream": "corelib-packaging",
+  "domain": "tooling",
+  "completedAt": "2026-04-22",
+  "source": {
+    "repo": "pckg",
+    "commit": "1402410",
+    "subject": "feat: interactive first-run onboarding and migration service"
+  },
+  "statusColumn": "Done"
+}

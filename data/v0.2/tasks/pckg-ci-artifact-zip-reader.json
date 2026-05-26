@@ -1,0 +1,15 @@
+{
+  "id": "pckg-ci-artifact-zip-reader",
+  "number": 247,
+  "title": "CI artifact zip reader source paths for package ingest",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "pckg-registry",
+  "domain": "tooling",
+  "completedAt": "2026-05-18",
+  "source": {
+    "repo": "pckg",
+    "commit": "e3cc8a6",
+    "subject": "fix(ci): add missing Services/Artifacts sources for package zip reader"
+  }
+}

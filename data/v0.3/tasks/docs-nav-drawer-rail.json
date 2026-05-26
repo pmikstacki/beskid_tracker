@@ -1,0 +1,14 @@
+{
+  "id": "docs-nav-drawer-rail",
+  "number": 338,
+  "title": "Unify doc nav drawer and persist rail state",
+  "statusColumn": "Done",
+  "priority": "low",
+  "workstream": "stabilization",
+  "completedAt": "2026-05-24",
+  "source": {
+    "repo": "beskid",
+    "commit": "278da1b",
+    "subject": "fix(docs): unify doc nav drawer and persist rail state across navigation"
+  }
+}

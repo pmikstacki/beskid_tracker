@@ -1,0 +1,16 @@
+{
+  "id": "graph-std-injection-test",
+  "number": 121,
+  "title": "Fix graph dependency order for Std injection",
+  "priority": "medium",
+  "workstream": "compiler-foundation",
+  "domain": "compiler",
+  "completedAt": "2026-04-09",
+  "milestoneId": "v01-compiler-parity",
+  "source": {
+    "repo": "compiler",
+    "commit": "5ca840a",
+    "subject": "Fix graph dependency order test for Std injection"
+  },
+  "statusColumn": "Done"
+}

@@ -1,0 +1,16 @@
+{
+  "id": "corelib-test-assembly-fix",
+  "number": 340,
+  "title": "Corelib test assembly prelude and numeric compare fix",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "stabilization",
+  "domain": "core-library",
+  "completedAt": "2026-05-24",
+  "milestoneId": "v03-post-merge-ci",
+  "source": {
+    "repo": "compiler",
+    "commit": "94c0169",
+    "subject": "fix(analysis): corelib test assembly prelude and numeric compare"
+  }
+}

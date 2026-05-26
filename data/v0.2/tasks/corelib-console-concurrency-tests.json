@@ -1,0 +1,17 @@
+{
+  "id": "corelib-console-concurrency-tests",
+  "number": 270,
+  "title": "Extend corelib concurrency tests and console package coverage",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "codegen-runtime",
+  "domain": "core-library",
+  "completedAt": "2026-05-20",
+  "specRelations": [],
+  "source": {
+    "repo": "corelib",
+    "commit": "2ddddb3",
+    "subject": "test(corelib): extend concurrency tests and align concurrency packages"
+  },
+  "milestoneId": "v02-concurrency-runtime"
+}

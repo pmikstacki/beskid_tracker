@@ -1,0 +1,16 @@
+{
+  "id": "vscode-extension-packages-tracked",
+  "number": 254,
+  "title": "Track VS Code extension package sources in submodule",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "editor-extension",
+  "domain": "tooling",
+  "completedAt": "2026-04-24",
+  "milestoneId": "v02-editor-extension",
+  "source": {
+    "repo": "beskid",
+    "commit": "9d7891f",
+    "subject": "fix(vscode): track extension packages sources; pckg package tree"
+  }
+}

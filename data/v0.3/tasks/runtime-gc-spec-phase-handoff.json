@@ -1,0 +1,15 @@
+{
+  "id": "runtime-gc-spec-phase-handoff",
+  "number": 354,
+  "title": "Runtime GC phase-B handoff evidence in execution platform-spec",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "stabilization",
+  "domain": "execution",
+  "completedAt": "2026-05-23",
+  "source": {
+    "repo": "beskid",
+    "commit": "ea73773",
+    "subject": "orch(beskid-v0-3): runtime phase B GC opt-in handoff"
+  }
+}

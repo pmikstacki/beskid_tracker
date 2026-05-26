@@ -1,0 +1,16 @@
+{
+  "id": "cli-publish-stream-upload",
+  "number": 237,
+  "title": "CLI publish UX with streamed upload and API success hardening",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "pckg-registry",
+  "domain": "tooling",
+  "completedAt": "2026-04-23",
+  "milestoneId": "v02-pckg-registry-foundation",
+  "source": {
+    "repo": "compiler",
+    "commit": "126e8ca",
+    "subject": "feat(pckg): publish UX, streamed upload, API success hardening"
+  }
+}

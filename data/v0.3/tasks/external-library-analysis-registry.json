@@ -1,0 +1,26 @@
+{
+  "id": "external-library-analysis-registry",
+  "number": 346,
+  "title": "ExternalLibrary trait and closed C/POSIX registry in analysis",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "analysis-pipeline",
+  "domain": "compiler",
+  "area": "interop",
+  "completedAt": "2026-05-23",
+  "milestoneId": "v03-analysis-interop",
+  "specRelations": [
+    {
+      "path": "/platform-spec/language-meta/interop/foreign-libraries",
+      "title": "Foreign libraries",
+      "level": "feature",
+      "relation": "implements",
+      "required": true
+    }
+  ],
+  "source": {
+    "repo": "compiler",
+    "commit": "d292535",
+    "subject": "feat(analysis): add ExternalLibrary trait + closed C/POSIX registry"
+  }
+}

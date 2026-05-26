@@ -1,0 +1,16 @@
+{
+  "id": "sync-rolling-cli-version-website",
+  "number": 271,
+  "title": "Sync rolling CLI version across release and website",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "ci-release",
+  "domain": "tooling",
+  "completedAt": "2026-04-23",
+  "milestoneId": "v02-ci-deploy-infra",
+  "source": {
+    "repo": "beskid",
+    "commit": "f54b268",
+    "subject": "chore: sync rolling CLI version across release and website"
+  }
+}

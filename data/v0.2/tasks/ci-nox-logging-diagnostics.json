@@ -1,0 +1,16 @@
+{
+  "id": "ci-nox-logging-diagnostics",
+  "number": 263,
+  "title": "Centralize Nox/CI logging and submodule diagnostics",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "ci-release",
+  "domain": "tooling",
+  "completedAt": "2026-05-01",
+  "milestoneId": "v02-ci-deploy-infra",
+  "source": {
+    "repo": "beskid",
+    "commit": "295ebbe",
+    "subject": "refactor(ci): centralize Nox/CI logging and submodule diagnostics"
+  }
+}

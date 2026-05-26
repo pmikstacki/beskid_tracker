@@ -1,0 +1,16 @@
+{
+  "id": "pckg-package-docs-browser",
+  "number": 239,
+  "title": "Package docs browser, API routes, and Fluent UI polish",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "pckg-registry",
+  "domain": "tooling",
+  "completedAt": "2026-04-24",
+  "milestoneId": "v02-pckg-registry-foundation",
+  "source": {
+    "repo": "pckg",
+    "commit": "d003507",
+    "subject": "feat(docs): package docs browser, API, and Fluent UI polish"
+  }
+}

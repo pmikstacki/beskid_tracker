@@ -1,0 +1,14 @@
+{
+  "id": "giscus-spec-shell",
+  "number": 222,
+  "title": "Giscus comments and platform-spec shell styling",
+  "statusColumn": "Done",
+  "priority": "low",
+  "workstream": "docs-site",
+  "completedAt": "2026-05-09",
+  "source": {
+    "repo": "beskid",
+    "commit": "29de958",
+    "subject": "feat(docs-ui): Giscus comments and platform-spec shell styling"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "corelib-api-shape-standard",
+  "number": 328,
+  "title": "Promote corelib-api-shape to Standard with tier pipeline",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "stabilization",
+  "domain": "core-library",
+  "completedAt": "2026-05-23",
+  "milestoneId": "v03-merge-wave",
+  "specRelations": [
+    {
+      "path": "/platform-spec/core-library/api-shape",
+      "title": "API shape",
+      "level": "feature",
+      "relation": "tracks",
+      "required": true
+    }
+  ],
+  "source": {
+    "repo": "beskid",
+    "commit": "d137f11",
+    "subject": "orchestrate(beskid-v0-3): promote corelib-api-shape to Standard with tier pipeline"
+  }
+}

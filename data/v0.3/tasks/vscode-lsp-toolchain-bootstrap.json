@@ -1,0 +1,16 @@
+{
+  "id": "vscode-lsp-toolchain-bootstrap",
+  "number": 337,
+  "title": "Bump submodules for CLI-driven LSP and toolchain bootstrap",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "editor-extension",
+  "domain": "tooling",
+  "completedAt": "2026-05-25",
+  "milestoneId": "v03-editor-lsp-cli",
+  "source": {
+    "repo": "beskid",
+    "commit": "503223d",
+    "subject": "chore: bump submodules for CLI-driven LSP and toolchain bootstrap"
+  }
+}

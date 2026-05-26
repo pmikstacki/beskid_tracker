@@ -1,0 +1,16 @@
+{
+  "id": "corelib-publish-ci-submodule-bump",
+  "number": 276,
+  "title": "Bump compiler submodule for corelib publish CI",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "ci-release",
+  "domain": "tooling",
+  "completedAt": "2026-05-20",
+  "milestoneId": "v02-ci-deploy-infra",
+  "source": {
+    "repo": "beskid",
+    "commit": "f793c45",
+    "subject": "chore(compiler): bump submodule for corelib publish CI"
+  }
+}

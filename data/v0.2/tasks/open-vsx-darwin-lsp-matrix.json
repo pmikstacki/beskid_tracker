@@ -1,0 +1,16 @@
+{
+  "id": "open-vsx-darwin-lsp-matrix",
+  "number": 252,
+  "title": "Open VSX darwin-arm64 publish with cross-built Intel LSP",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "editor-extension",
+  "domain": "tooling",
+  "completedAt": "2026-04-23",
+  "milestoneId": "v02-editor-extension",
+  "source": {
+    "repo": "beskid",
+    "commit": "e174369",
+    "subject": "ci(open-vsx): publish darwin-arm64 VSIX and cross-build Intel LSP"
+  }
+}

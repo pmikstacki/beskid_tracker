@@ -1,0 +1,25 @@
+{
+  "id": "corelib-syscall-surfaces",
+  "number": 266,
+  "title": "Corelib syscall surfaces, docs, and tests",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "codegen-runtime",
+  "domain": "core-library",
+  "completedAt": "2026-05-09",
+  "specRelations": [
+    {
+      "path": "/platform-spec/execution/runtime/panic-io-and-syscalls",
+      "title": "Panic, I/O, and syscalls",
+      "level": "feature",
+      "relation": "implements",
+      "required": true
+    }
+  ],
+  "source": {
+    "repo": "corelib",
+    "commit": "3a9a083",
+    "subject": "corelib: syscall surfaces, docs, and tests"
+  },
+  "milestoneId": "v02-concurrency-runtime"
+}

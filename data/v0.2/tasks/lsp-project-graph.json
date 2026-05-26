@@ -1,0 +1,16 @@
+{
+  "id": "lsp-project-graph",
+  "number": 211,
+  "title": "LSP project explorer and project graph pipeline",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "analysis-pipeline",
+  "domain": "tooling",
+  "completedAt": "2026-05-22",
+  "milestoneId": "v02-lsp-workspace",
+  "source": {
+    "repo": "compiler",
+    "commit": "6ae272b",
+    "subject": "feat: workspace templates, LSP project explorer, and project graph pipeline"
+  }
+}

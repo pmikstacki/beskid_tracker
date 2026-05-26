@@ -1,0 +1,15 @@
+{
+  "id": "pckg-blazor-circuit-hardening",
+  "number": 249,
+  "title": "Harden Blazor circuits for profile upload and admin activity",
+  "statusColumn": "Done",
+  "priority": "low",
+  "workstream": "pckg-registry",
+  "domain": "tooling",
+  "completedAt": "2026-05-20",
+  "source": {
+    "repo": "pckg",
+    "commit": "2e97cd6",
+    "subject": "fix(pckg): harden Blazor circuits for profile upload and admin activity"
+  }
+}

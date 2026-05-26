@@ -1,0 +1,15 @@
+{
+  "id": "docs-ui-reader-shell-refactor",
+  "number": 352,
+  "title": "Refactor @beskid/docs-ui book and platform-spec reader shell",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "stabilization",
+  "completedAt": "2026-05-23",
+  "milestoneId": "v03-docs-reader-hardening",
+  "source": {
+    "repo": "beskid",
+    "commit": "377eb75",
+    "subject": "docs(AGENTS): update cross-cutting specifications and database migration details"
+  }
+}

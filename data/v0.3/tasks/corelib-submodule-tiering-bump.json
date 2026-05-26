@@ -1,0 +1,17 @@
+{
+  "id": "corelib-submodule-tiering-bump",
+  "number": 362,
+  "title": "Bump nested corelib submodule after v0.3 tiering merge",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "stabilization",
+  "domain": "core-library",
+  "completedAt": "2026-05-23",
+  "specRelations": [],
+  "source": {
+    "repo": "compiler",
+    "commit": "24845ff",
+    "subject": "chore(corelib): bump nested corelib submodule after v0.3 tiering merge"
+  },
+  "milestoneId": "v03-merge-wave"
+}

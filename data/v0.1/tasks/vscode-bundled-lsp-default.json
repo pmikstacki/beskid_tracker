@@ -1,0 +1,15 @@
+{
+  "id": "vscode-bundled-lsp-default",
+  "number": 128,
+  "title": "Default VS Code extension to bundled LSP server",
+  "priority": "high",
+  "workstream": "editor-extension",
+  "domain": "tooling",
+  "completedAt": "2026-04-21",
+  "source": {
+    "repo": "beskid",
+    "commit": "57fa823",
+    "subject": "lsp: default to bundled server and gate cargo launch behind devMode"
+  },
+  "statusColumn": "Done"
+}

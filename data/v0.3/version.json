@@ -1,0 +1,15 @@
+{
+  "id": "v0.3",
+  "title": "Macros, concurrency, and stabilization",
+  "summary": "v0.3 delivers compiler mods, export FFI and dynamic types, runtime phase B GC work, corelib tiering, tooling/packageKind hardening, CI verification, `beskid lsp` with VS Code cli-latest bootstrap, and extension inventory docs.",
+  "theme": "FFI/export, runtime GC, compiler mods, corelib tiering, LSP, stabilization",
+  "status": "In Progress",
+  "cutoff": {
+    "startDate": "2026-05-23",
+    "endDate": "2026-05-25",
+    "startCommitSha": "f57377a",
+    "endCommitSha": "aaddd32",
+    "endCommitRepo": "beskid",
+    "rationale": "Starts at v0.2 tip (2026-05-22); core v0.3 macro/runtime/ffi/tooling tracks land 2026-05-23; FFI/CI/spec hardening and CLI LSP continue through 2026-05-25 superrepo HEAD (aaddd32)."
+  }
+}

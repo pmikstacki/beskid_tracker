@@ -1,0 +1,14 @@
+{
+  "id": "file-scoped-module-docs",
+  "number": 132,
+  "title": "Document file-scoped module declaration semantics on site",
+  "priority": "medium",
+  "workstream": "compiler-foundation",
+  "completedAt": "2026-04-22",
+  "source": {
+    "repo": "beskid",
+    "commit": "77698fa",
+    "subject": "docs: clarify file-scoped module declarations and their implications"
+  },
+  "statusColumn": "Done"
+}

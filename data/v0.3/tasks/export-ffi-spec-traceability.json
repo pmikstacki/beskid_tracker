@@ -1,0 +1,15 @@
+{
+  "id": "export-ffi-spec-traceability",
+  "number": 351,
+  "title": "Promote dynamic-types and export FFI traceability in platform-spec",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "stabilization",
+  "domain": "language-meta",
+  "completedAt": "2026-05-24",
+  "source": {
+    "repo": "beskid",
+    "commit": "8cffb33",
+    "subject": "feat(v0.3): bump compiler, promote dynamic-types spec, export FFI traceability"
+  }
+}

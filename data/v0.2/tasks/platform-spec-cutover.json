@@ -1,0 +1,25 @@
+{
+  "id": "platform-spec-cutover",
+  "number": 201,
+  "title": "Consolidate platform-spec and stabilize website container build",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "platform-spec",
+  "domain": "community",
+  "completedAt": "2026-05-06",
+  "milestoneId": "v02-platform-spec-cutover",
+  "specRelations": [
+    {
+      "path": "/platform-spec/",
+      "title": "Platform specification",
+      "level": "domain",
+      "relation": "tracks",
+      "required": true
+    }
+  ],
+  "source": {
+    "repo": "beskid",
+    "commit": "19745d4",
+    "subject": "consolidate platform-spec cutover and stabilize website container build"
+  }
+}

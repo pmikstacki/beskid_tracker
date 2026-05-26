@@ -1,0 +1,15 @@
+{
+  "id": "runtime-gc-phase-b",
+  "number": 304,
+  "title": "Runtime phase B GC opt-in",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "concurrency-runtime",
+  "domain": "execution",
+  "completedAt": "2026-05-23",
+  "source": {
+    "repo": "compiler",
+    "commit": "1a85cee",
+    "subject": "runtime: phase B GC opt-in (multi-mutator, pointer channels, syscall-pool guard)"
+  }
+}

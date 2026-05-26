@@ -1,0 +1,15 @@
+{
+  "id": "native-di-codegen",
+  "number": 303,
+  "title": "Native DI codegen/runtime end-to-end",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "compiler-mods",
+  "completedAt": "2026-05-23",
+  "milestoneId": "v03-merge-wave",
+  "source": {
+    "repo": "beskid",
+    "commit": "8260a4a",
+    "subject": "feat(v0.3): native DI codegen/runtime end-to-end (A2)"
+  }
+}

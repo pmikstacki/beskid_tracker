@@ -1,0 +1,17 @@
+{
+  "id": "ci-prelude-release-profile-linux",
+  "number": 274,
+  "title": "Run corelib prelude lowering tests in release profile on Linux",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "ci-release",
+  "domain": "compiler",
+  "area": "ci",
+  "completedAt": "2026-05-18",
+  "milestoneId": "v02-ci-deploy-infra",
+  "source": {
+    "repo": "compiler",
+    "commit": "b7df839",
+    "subject": "fix(ci): run corelib prelude lowering tests in release profile on Linux"
+  }
+}

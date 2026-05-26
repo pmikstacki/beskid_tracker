@@ -1,0 +1,15 @@
+{
+  "id": "composition-lowering",
+  "number": 305,
+  "title": "Runtime container + codegen lowering for launch/with",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "concurrency-runtime",
+  "domain": "execution",
+  "completedAt": "2026-05-23",
+  "source": {
+    "repo": "compiler",
+    "commit": "052d6e2",
+    "subject": "feat(composition): runtime container, ABI builtins, and codegen lowering for launch/with"
+  }
+}

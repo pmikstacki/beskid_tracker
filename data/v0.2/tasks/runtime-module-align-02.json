@@ -1,0 +1,15 @@
+{
+  "id": "runtime-module-align-02",
+  "number": 241,
+  "title": "Runtime module layout alignment for v0.2",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "codegen-runtime",
+  "domain": "execution",
+  "completedAt": "2026-05-08",
+  "source": {
+    "repo": "compiler",
+    "commit": "ce70362",
+    "subject": "refactor: align runtime modules and docs for 0.2"
+  }
+}

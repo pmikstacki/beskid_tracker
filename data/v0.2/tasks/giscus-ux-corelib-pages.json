@@ -1,0 +1,14 @@
+{
+  "id": "giscus-ux-corelib-pages",
+  "number": 238,
+  "title": "Giscus UX polish and corelib reader pages on the docs site",
+  "statusColumn": "Done",
+  "priority": "low",
+  "workstream": "docs-site",
+  "completedAt": "2026-05-09",
+  "source": {
+    "repo": "beskid",
+    "commit": "1f5852e",
+    "subject": "docs and site: giscus UX, corelib docs, compiler bump"
+  }
+}

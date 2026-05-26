@@ -1,0 +1,16 @@
+{
+  "id": "compiler-cli-github-releases",
+  "number": 269,
+  "title": "Move CLI publishing to GitHub Releases action",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "ci-release",
+  "domain": "tooling",
+  "completedAt": "2026-04-23",
+  "milestoneId": "v02-ci-deploy-infra",
+  "source": {
+    "repo": "compiler",
+    "commit": "d63f938",
+    "subject": "ci: move CLI publishing to GitHub Releases action"
+  }
+}

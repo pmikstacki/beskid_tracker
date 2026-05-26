@@ -1,0 +1,15 @@
+{
+  "id": "api-library-tree-ui",
+  "number": 229,
+  "title": "Microsoft Docs–style api.json library tree in pckg",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "pckg-registry",
+  "completedAt": "2026-05-20",
+  "milestoneId": "v02-api-json-contract",
+  "source": {
+    "repo": "pckg",
+    "commit": "21a7be7",
+    "subject": "feat(docs): Microsoft Docs-style library tree for API reference"
+  }
+}

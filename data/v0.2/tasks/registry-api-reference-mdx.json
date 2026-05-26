@@ -1,0 +1,14 @@
+{
+  "id": "registry-api-reference-mdx",
+  "number": 232,
+  "title": "Repair registry API reference MDX for Astro build",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "docs-site",
+  "completedAt": "2026-05-21",
+  "source": {
+    "repo": "beskid",
+    "commit": "a735827",
+    "subject": "fix(site): repair registry-api-reference-ui MDX for Astro build"
+  }
+}

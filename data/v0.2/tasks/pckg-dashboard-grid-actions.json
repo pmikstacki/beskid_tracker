@@ -1,0 +1,16 @@
+{
+  "id": "pckg-dashboard-grid-actions",
+  "number": 248,
+  "title": "Unify dashboard data-grid row actions and registry activity layout",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "pckg-registry",
+  "domain": "tooling",
+  "completedAt": "2026-05-20",
+  "milestoneId": "v02-api-json-contract",
+  "source": {
+    "repo": "pckg",
+    "commit": "f9d2b48",
+    "subject": "fix(dashboard): unify data-grid row actions and registry activity layout"
+  }
+}

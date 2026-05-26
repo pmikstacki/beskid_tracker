@@ -1,0 +1,15 @@
+{
+  "id": "v0.2",
+  "title": "Analysis, packages, and platform spec",
+  "summary": "Typed analysis/doc pipeline, structured api.json in pckg, platform-spec cutover on beskid-lang.org, trudoc verification, compiler LSP workspace/project graph, and VS Code extension plus Open VSX CI.",
+  "theme": "analysis stack, packages, spec, editor LSP",
+  "status": "Released",
+  "cutoff": {
+    "startDate": "2026-04-23",
+    "endDate": "2026-05-22",
+    "startCommitSha": "f777b79",
+    "endCommitSha": "f57377a",
+    "endCommitRepo": "beskid",
+    "rationale": "Starts immediately after superrepo tag v0.1.0 (f777b79). Spans trudoc/docs-ui bootstrap (May 5), platform-spec cutover (May 6), pipeline/services split plus expanded LSP capabilities (May 9–11), api.json contract in compiler and pckg (May 18–21), macro/composition HIR work (May 20), and ends at f57377a (trudoc verification baseline on 2026-05-22)."
+  }
+}

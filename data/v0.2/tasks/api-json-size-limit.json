@@ -1,0 +1,15 @@
+{
+  "id": "api-json-size-limit",
+  "number": 231,
+  "title": "Raise structured api.json size limit for corelib-scale packages",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "pckg-registry",
+  "completedAt": "2026-05-20",
+  "milestoneId": "v02-api-json-contract",
+  "source": {
+    "repo": "pckg",
+    "commit": "88ee828",
+    "subject": "Raise structured api.json size limit for corelib-scale packages."
+  }
+}

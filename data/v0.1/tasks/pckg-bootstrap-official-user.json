@@ -1,0 +1,14 @@
+{
+  "id": "pckg-bootstrap-official-user",
+  "number": 140,
+  "title": "Bootstrap official pckg service account with API key",
+  "priority": "medium",
+  "workstream": "corelib-packaging",
+  "completedAt": "2026-04-22",
+  "source": {
+    "repo": "pckg",
+    "commit": "b61dd8b",
+    "subject": "seed: bootstrap official beskid user with API key"
+  },
+  "statusColumn": "Done"
+}

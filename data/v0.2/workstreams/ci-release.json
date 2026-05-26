@@ -1,0 +1,6 @@
+{
+  "slug": "ci-release",
+  "title": "CI & release pipelines",
+  "summary": "GitHub Actions and Nox workflows for docs site, Open VSX, Rust audit, compiler CLI releases, and superrepo workflow hardening.",
+  "order": 8
+}

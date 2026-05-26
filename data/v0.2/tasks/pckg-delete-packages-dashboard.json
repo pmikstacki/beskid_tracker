@@ -1,0 +1,15 @@
+{
+  "id": "pckg-delete-packages-dashboard",
+  "number": 246,
+  "title": "Delete packages, docs UI, and dashboard grids",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "pckg-registry",
+  "domain": "tooling",
+  "completedAt": "2026-05-09",
+  "source": {
+    "repo": "pckg",
+    "commit": "d34d854",
+    "subject": "feat(server): delete packages, docs UI, and dashboard grids"
+  }
+}

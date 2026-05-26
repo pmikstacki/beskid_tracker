@@ -1,0 +1,15 @@
+{
+  "id": "platform-spec-git-meta-docker",
+  "number": 346,
+  "title": "Docker git for platform-spec git-meta and docs-ui CSS sync",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "dev-experience",
+  "completedAt": "2026-05-24",
+  "milestoneId": "v03-docs-reader-hardening",
+  "source": {
+    "repo": "beskid",
+    "commit": "b219677",
+    "subject": "chore(docker): update Dockerfile to include git for platform-spec generation"
+  }
+}

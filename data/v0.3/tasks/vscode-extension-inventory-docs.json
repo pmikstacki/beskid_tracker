@@ -1,0 +1,16 @@
+{
+  "id": "vscode-extension-inventory-docs",
+  "number": 345,
+  "title": "Update inventory and VS Code extension documentation",
+  "statusColumn": "Done",
+  "priority": "low",
+  "workstream": "editor-extension",
+  "domain": "tooling",
+  "completedAt": "2026-05-25",
+  "milestoneId": "v03-editor-lsp-cli",
+  "source": {
+    "repo": "beskid",
+    "commit": "aaddd32",
+    "subject": "docs: update inventory and enhance VS Code extension documentation"
+  }
+}

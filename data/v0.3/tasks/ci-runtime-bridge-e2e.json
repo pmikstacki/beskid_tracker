@@ -1,0 +1,16 @@
+{
+  "id": "ci-runtime-bridge-e2e",
+  "number": 331,
+  "title": "Build release runtime bridge before AOT e2e tests",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "ci-release",
+  "domain": "tooling",
+  "completedAt": "2026-05-23",
+  "milestoneId": "v03-post-merge-ci",
+  "source": {
+    "repo": "beskid",
+    "commit": "a3d7cee",
+    "subject": "fix(ci): build release runtime bridge before AOT e2e tests"
+  }
+}

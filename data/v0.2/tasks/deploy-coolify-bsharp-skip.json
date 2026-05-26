@@ -1,0 +1,16 @@
+{
+  "id": "deploy-coolify-bsharp-skip",
+  "number": 266,
+  "title": "Skip inactive bsharp submodule on Coolify shallow clone",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "dev-experience",
+  "domain": "tooling",
+  "completedAt": "2026-05-20",
+  "milestoneId": "v02-ci-deploy-infra",
+  "source": {
+    "repo": "beskid",
+    "commit": "5fba2e9",
+    "subject": "fix(deploy): skip inactive bsharp submodule on Coolify shallow clone"
+  }
+}

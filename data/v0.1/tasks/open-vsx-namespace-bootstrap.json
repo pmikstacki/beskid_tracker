@@ -1,0 +1,15 @@
+{
+  "id": "open-vsx-namespace-bootstrap",
+  "number": 129,
+  "title": "Auto-create Open VSX namespace before publish",
+  "priority": "medium",
+  "workstream": "editor-extension",
+  "completedAt": "2026-04-21",
+  "milestoneId": "v01-open-vsx",
+  "source": {
+    "repo": "beskid",
+    "commit": "ba0732c",
+    "subject": "ci: auto-create Open VSX namespace before publish"
+  },
+  "statusColumn": "Done"
+}

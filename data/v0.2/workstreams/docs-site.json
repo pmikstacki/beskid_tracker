@@ -1,0 +1,6 @@
+{
+  "slug": "docs-site",
+  "title": "Docs site",
+  "summary": "trudoc + @beskid/docs-ui packages, platform-spec reader chrome (tabs, map, Giscus UX polish), early language book and corelib naming on the public site, tutorial/ADR routing, registry API reference MDX, and end-of-window trudoc verify + book frontmatter hardening.",
+  "order": 4
+}

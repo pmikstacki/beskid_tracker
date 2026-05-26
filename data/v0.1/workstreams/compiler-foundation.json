@@ -1,0 +1,6 @@
+{
+  "slug": "compiler-foundation",
+  "title": "Compiler foundations",
+  "summary": "Bootstrap compiler structure, AOT/pack baseline, optional/null and file-scoped module syntax semantics, and early resolver/analysis hardening.",
+  "order": 1
+}

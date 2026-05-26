@@ -1,0 +1,15 @@
+{
+  "id": "corelib-naming-site-docs",
+  "number": 241,
+  "title": "Corelib naming across book, site pages, and astro config",
+  "statusColumn": "Done",
+  "priority": "low",
+  "workstream": "docs-site",
+  "completedAt": "2026-04-23",
+  "milestoneId": "v02-book-tutorial-wave",
+  "source": {
+    "repo": "beskid",
+    "commit": "6140c7c",
+    "subject": "docs: corelib naming across site, workstreams, and CI notes"
+  }
+}

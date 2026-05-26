@@ -1,0 +1,17 @@
+{
+  "id": "abi-frozen-allowlist-order",
+  "number": 358,
+  "title": "Align frozen ABI allowlist order with RUNTIME_EXPORT_SYMBOLS",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "concurrency-runtime",
+  "domain": "execution",
+  "area": "abi",
+  "completedAt": "2026-05-23",
+  "milestoneId": "v03-merge-wave",
+  "source": {
+    "repo": "compiler",
+    "commit": "e9dd535",
+    "subject": "test(abi): align frozen allowlist order with RUNTIME_EXPORT_SYMBOLS"
+  }
+}

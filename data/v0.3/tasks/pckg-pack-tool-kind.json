@@ -1,0 +1,17 @@
+{
+  "id": "pckg-pack-tool-kind",
+  "number": 334,
+  "title": "beskid pckg pack --package-kind tool",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "pckg-registry",
+  "milestoneId": "v03-pckg-tool-registry",
+  "domain": "tooling",
+  "completedAt": "2026-05-23",
+  "milestoneId": "v03-merge-wave",
+  "source": {
+    "repo": "compiler",
+    "commit": "4579bab",
+    "subject": "feat(pckg): `beskid pckg pack --package-kind tool` and override-aware profile detection"
+  }
+}

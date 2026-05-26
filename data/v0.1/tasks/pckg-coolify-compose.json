@@ -1,0 +1,14 @@
+{
+  "id": "pckg-coolify-compose",
+  "number": 127,
+  "title": "Simplify pckg compose for Coolify deployment",
+  "priority": "medium",
+  "workstream": "corelib-packaging",
+  "completedAt": "2026-04-21",
+  "source": {
+    "repo": "pckg",
+    "commit": "3aaa182",
+    "subject": "deploy: simplify compose for Coolify runtime"
+  },
+  "statusColumn": "Done"
+}

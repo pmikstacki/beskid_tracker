@@ -1,0 +1,16 @@
+{
+  "id": "vscode-lsp-client-outline",
+  "number": 253,
+  "title": "VS Code LSP client, document outline, and status integration",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "editor-extension",
+  "domain": "tooling",
+  "completedAt": "2026-04-24",
+  "milestoneId": "v02-editor-extension",
+  "source": {
+    "repo": "beskid",
+    "commit": "264a3c0",
+    "subject": "chore: bump compiler and pckg submodules; VS Code extension runtime, LSP client, outline, status"
+  }
+}

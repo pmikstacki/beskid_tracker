@@ -1,0 +1,26 @@
+{
+  "id": "macro-expand-pass",
+  "number": 224,
+  "title": "Macro expand pass and HIR legality integration",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "analysis-pipeline",
+  "domain": "language-meta",
+  "area": "macros",
+  "completedAt": "2026-05-20",
+  "milestoneId": "v02-api-json-contract",
+  "specRelations": [
+    {
+      "path": "/platform-spec/language-meta/macros/",
+      "title": "Macros",
+      "level": "area",
+      "relation": "implements",
+      "required": true
+    }
+  ],
+  "source": {
+    "repo": "compiler",
+    "commit": "9ca5da3",
+    "subject": "feat(compiler): macro expand pass and HIR legality integration"
+  }
+}

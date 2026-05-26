@@ -1,0 +1,26 @@
+{
+  "id": "macro-expand-typecheck-wiring",
+  "number": 236,
+  "title": "Macro expand pass wired into type-check context",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "analysis-pipeline",
+  "domain": "compiler",
+  "area": "macros",
+  "completedAt": "2026-05-20",
+  "milestoneId": "v02-composition-macros-hir",
+  "specRelations": [
+    {
+      "path": "/platform-spec/language-meta/macros/",
+      "title": "Macros",
+      "level": "area",
+      "relation": "implements",
+      "required": true
+    }
+  ],
+  "source": {
+    "repo": "compiler",
+    "commit": "760098d",
+    "subject": "feat(compiler): extend macro expand and type-check context wiring"
+  }
+}

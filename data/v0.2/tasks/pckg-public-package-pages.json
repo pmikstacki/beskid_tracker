@@ -1,0 +1,16 @@
+{
+  "id": "pckg-public-package-pages",
+  "number": 235,
+  "title": "Public package pages and moderation safeguards",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "pckg-registry",
+  "domain": "tooling",
+  "completedAt": "2026-04-23",
+  "milestoneId": "v02-pckg-registry-foundation",
+  "source": {
+    "repo": "pckg",
+    "commit": "adff57b",
+    "subject": "feat: add moderation safeguards and public package pages"
+  }
+}

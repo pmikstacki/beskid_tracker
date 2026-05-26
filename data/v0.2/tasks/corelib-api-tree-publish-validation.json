@@ -1,0 +1,16 @@
+{
+  "id": "corelib-api-tree-publish-validation",
+  "number": 281,
+  "title": "Validate corelib api.json library tree before publish",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "ci-release",
+  "domain": "tooling",
+  "completedAt": "2026-05-20",
+  "milestoneId": "v02-corelib-workspace-publish",
+  "source": {
+    "repo": "corelib",
+    "commit": "361e370",
+    "subject": "ci: validate api.json library tree before corelib publish"
+  }
+}

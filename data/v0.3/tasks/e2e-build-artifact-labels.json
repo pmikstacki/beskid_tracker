@@ -1,0 +1,17 @@
+{
+  "id": "e2e-build-artifact-labels",
+  "number": 348,
+  "title": "Align e2e build output assertions with CLI artifact labels",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "analysis-pipeline",
+  "domain": "compiler",
+  "area": "e2e",
+  "completedAt": "2026-05-23",
+  "milestoneId": "v03-post-merge-ci",
+  "source": {
+    "repo": "compiler",
+    "commit": "bf32227",
+    "subject": "fix(e2e): align build output assertions with CLI artifact labels"
+  }
+}

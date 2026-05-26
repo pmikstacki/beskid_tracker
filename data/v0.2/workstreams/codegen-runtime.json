@@ -1,0 +1,6 @@
+{
+  "slug": "codegen-runtime",
+  "title": "Codegen & runtime",
+  "summary": "Spawn/fiber runtime and channels, abfall GC heap integration, runtime/ABI module alignment, and lowering-test CI stack hardening on the compiler side.",
+  "order": 5
+}

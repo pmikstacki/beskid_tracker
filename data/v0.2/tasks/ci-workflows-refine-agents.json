@@ -1,0 +1,16 @@
+{
+  "id": "ci-workflows-refine-agents",
+  "number": 264,
+  "title": "Refine GitHub Actions workflows and agents guidance",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "ci-release",
+  "domain": "tooling",
+  "completedAt": "2026-05-09",
+  "milestoneId": "v02-ci-deploy-infra",
+  "source": {
+    "repo": "beskid",
+    "commit": "0b36871",
+    "subject": "chore(ci): refine workflows and agents guidance"
+  }
+}

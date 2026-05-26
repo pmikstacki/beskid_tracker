@@ -1,0 +1,14 @@
+{
+  "id": "trudoc-verify-ci-audit",
+  "number": 234,
+  "title": "trudoc verify scripts, CI runtime, and audit hardening",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "ci-release",
+  "completedAt": "2026-05-22",
+  "source": {
+    "repo": "beskid",
+    "commit": "f57377a",
+    "subject": "fix(docs): restore book memes, trudoc verify scripts, CI runtime and audit"
+  }
+}

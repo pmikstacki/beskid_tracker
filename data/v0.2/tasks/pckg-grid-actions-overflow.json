@@ -1,0 +1,16 @@
+{
+  "id": "pckg-grid-actions-overflow",
+  "number": 241,
+  "title": "Fix package grid action overflow row visibility",
+  "statusColumn": "Done",
+  "priority": "low",
+  "workstream": "pckg-registry",
+  "domain": "tooling",
+  "completedAt": "2026-04-24",
+  "milestoneId": "v02-pckg-registry-foundation",
+  "source": {
+    "repo": "pckg",
+    "commit": "067d53a",
+    "subject": "fix(pckg): show grid action overflow row without VisibleOnLoad trap"
+  }
+}

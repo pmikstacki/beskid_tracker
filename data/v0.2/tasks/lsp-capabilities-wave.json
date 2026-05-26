@@ -1,0 +1,16 @@
+{
+  "id": "lsp-capabilities-wave",
+  "number": 215,
+  "title": "LSP code actions, inlay hints, signature help, and workspace symbols",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "analysis-pipeline",
+  "domain": "tooling",
+  "completedAt": "2026-04-24",
+  "milestoneId": "v02-lsp-workspace",
+  "source": {
+    "repo": "compiler",
+    "commit": "158215a",
+    "subject": "LSP: code actions, inlay hints, signature help, workspace symbols; protocol and session updates"
+  }
+}

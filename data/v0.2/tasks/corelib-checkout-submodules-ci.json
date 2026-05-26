@@ -1,0 +1,17 @@
+{
+  "id": "corelib-checkout-submodules-ci",
+  "number": 278,
+  "title": "Bump corelib submodule for CI checkout submodules fix",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "ci-release",
+  "domain": "compiler",
+  "area": "ci",
+  "completedAt": "2026-04-24",
+  "milestoneId": "v02-ci-deploy-infra",
+  "source": {
+    "repo": "compiler",
+    "commit": "f97e8e7",
+    "subject": "chore(corelib): bump submodule for CI checkout submodules fix."
+  }
+}

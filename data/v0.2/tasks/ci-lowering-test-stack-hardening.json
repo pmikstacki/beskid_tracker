@@ -1,0 +1,17 @@
+{
+  "id": "ci-lowering-test-stack-hardening",
+  "number": 240,
+  "title": "Serialize stack-heavy lowering tests and raise RUST_MIN_STACK",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "codegen-runtime",
+  "domain": "compiler",
+  "area": "ci",
+  "completedAt": "2026-05-18",
+  "milestoneId": "v02-api-json-contract",
+  "source": {
+    "repo": "compiler",
+    "commit": "2882016",
+    "subject": "fix(ci): serialize stack-heavy tests and raise RUST_MIN_STACK on Linux"
+  }
+}

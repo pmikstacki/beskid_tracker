@@ -1,0 +1,15 @@
+{
+  "id": "api-json-tree-publish-validation",
+  "number": 233,
+  "title": "api.json tree UI, template packages, and publish validation",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "pckg-registry",
+  "completedAt": "2026-05-22",
+  "milestoneId": "v02-api-json-contract",
+  "source": {
+    "repo": "pckg",
+    "commit": "2337393",
+    "subject": "feat(docs): api.json tree UI, template packages, and publish validation"
+  }
+}

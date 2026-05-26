@@ -1,0 +1,109 @@
+/**
+ * shadcn/ui semantic tokens → Beskid Material (site + platform-spec chrome).
+ * @see https://ui.shadcn.com/docs/theming
+ */
+
+html[data-theme="light"] {
+	--background: var(--beskid-surface);
+	--foreground: color-mix(
+		in srgb,
+		var(--beskid-on-primary-container) 94%,
+		black
+	);
+	--card: var(--platform-spec-card-bg);
+	--card-foreground: var(--foreground);
+	--popover: var(--platform-spec-surface-strong);
+	--popover-foreground: var(--foreground);
+	--primary: var(--beskid-primary);
+	--primary-foreground: var(--beskid-on-primary);
+	--secondary: color-mix(in srgb, var(--beskid-secondary-container) 72%, white);
+	--secondary-foreground: var(--beskid-on-primary-container);
+	--muted: var(--platform-spec-surface-muted);
+	--muted-foreground: color-mix(
+		in srgb,
+		var(--beskid-outline) 88%,
+		var(--beskid-on-primary-container)
+	);
+	--accent: color-mix(in srgb, var(--beskid-primary-container) 48%, white);
+	--accent-foreground: var(--beskid-primary);
+	--destructive: #b3261e;
+	--destructive-foreground: #fff;
+	--border: var(--platform-spec-divider);
+	--input: color-mix(in srgb, var(--beskid-outline-variant) 55%, white);
+	--ring: color-mix(in srgb, var(--beskid-primary) 55%, transparent);
+	--chart-1: var(--beskid-primary);
+	--chart-2: color-mix(
+		in srgb,
+		var(--beskid-primary) 65%,
+		var(--beskid-secondary)
+	);
+	--chart-3: var(--beskid-secondary);
+	--chart-4: color-mix(in srgb, var(--beskid-primary-container) 80%, white);
+	--chart-5: var(--beskid-outline);
+	--radius: 0.75rem;
+	--sidebar: var(--platform-spec-surface);
+	--sidebar-foreground: var(--foreground);
+	--sidebar-primary: var(--beskid-primary);
+	--sidebar-primary-foreground: var(--beskid-on-primary);
+	--sidebar-accent: var(--platform-spec-tab-active-bg);
+	--sidebar-accent-foreground: var(--platform-spec-tab-text-active);
+	--sidebar-border: var(--platform-spec-divider);
+	--sidebar-ring: var(--ring);
+}
+
+html[data-theme="dark"] {
+	--background: var(--beskid-surface);
+	--foreground: color-mix(in srgb, var(--beskid-secondary) 82%, white);
+	--card: var(--platform-spec-card-bg);
+	--card-foreground: var(--foreground);
+	--popover: var(--platform-spec-surface-strong);
+	--popover-foreground: var(--foreground);
+	--primary: var(--beskid-primary);
+	/* Dark theme: filled buttons need high contrast on teal primary */
+	--primary-foreground: var(--beskid-on-primary);
+	--secondary: color-mix(
+		in srgb,
+		var(--beskid-secondary-container) 55%,
+		transparent
+	);
+	--secondary-foreground: color-mix(
+		in srgb,
+		var(--beskid-secondary) 90%,
+		white
+	);
+	--muted: var(--platform-spec-surface-muted);
+	--muted-foreground: color-mix(
+		in srgb,
+		var(--beskid-outline) 78%,
+		var(--beskid-secondary)
+	);
+	--accent: color-mix(
+		in srgb,
+		var(--beskid-primary-container) 42%,
+		transparent
+	);
+	--accent-foreground: var(--beskid-primary);
+	--destructive: #f2b8b5;
+	--destructive-foreground: #601410;
+	--border: var(--platform-spec-divider);
+	--input: color-mix(in srgb, var(--beskid-surface-variant) 72%, transparent);
+	--ring: color-mix(in srgb, var(--beskid-primary) 45%, transparent);
+	--chart-1: var(--beskid-primary);
+	--chart-2: color-mix(
+		in srgb,
+		var(--beskid-primary) 70%,
+		var(--beskid-secondary)
+	);
+	--chart-3: var(--beskid-secondary);
+	--chart-4: var(--beskid-primary-container);
+	--chart-5: var(--beskid-outline);
+	--radius: 0.75rem;
+	--sidebar: var(--platform-spec-surface);
+	--sidebar-foreground: var(--foreground);
+	--sidebar-primary: var(--beskid-primary);
+	--sidebar-primary-foreground: var(--beskid-on-primary);
+	--sidebar-accent: var(--platform-spec-tab-active-bg);
+	--sidebar-accent-foreground: var(--platform-spec-tab-text-active);
+	--sidebar-border: var(--platform-spec-divider);
+	--sidebar-ring: var(--ring);
+}

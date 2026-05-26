@@ -1,0 +1,15 @@
+{
+  "id": "file-scoped-analysis-hardening",
+  "number": 131,
+  "title": "Harden file-scoped module analysis and diagnostics upload",
+  "priority": "medium",
+  "workstream": "compiler-foundation",
+  "domain": "compiler",
+  "completedAt": "2026-04-22",
+  "source": {
+    "repo": "compiler",
+    "commit": "1d12ee6",
+    "subject": "fix: harden file-scoped module analysis and upload diagnostics"
+  },
+  "statusColumn": "Done"
+}

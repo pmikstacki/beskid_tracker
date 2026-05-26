@@ -1,0 +1,15 @@
+{
+  "id": "pckg-stdlib-manifest-ui",
+  "number": 119,
+  "title": "Standard library artifact manifest in pckg UI",
+  "priority": "high",
+  "workstream": "corelib-packaging",
+  "domain": "tooling",
+  "completedAt": "2026-03-18",
+  "source": {
+    "repo": "pckg",
+    "commit": "aea8fe6",
+    "subject": "feat: standard library artifact manifest and UI consolidation"
+  },
+  "statusColumn": "Done"
+}

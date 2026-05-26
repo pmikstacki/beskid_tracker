@@ -1,0 +1,15 @@
+{
+  "id": "pckg-docs-ui-refactor",
+  "number": 341,
+  "title": "Streamline pckg docs UI component imports",
+  "statusColumn": "Done",
+  "priority": "low",
+  "workstream": "pckg-registry",
+  "completedAt": "2026-05-24",
+  "milestoneId": "v03-pckg-tool-registry",
+  "source": {
+    "repo": "pckg",
+    "commit": "c0bad88",
+    "subject": "refactor(docs): streamline component imports and enhance documentation UI"
+  }
+}

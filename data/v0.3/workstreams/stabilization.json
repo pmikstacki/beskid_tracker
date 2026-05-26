@@ -1,0 +1,6 @@
+{
+  "slug": "stabilization",
+  "title": "Stabilization & tooling",
+  "summary": "Corelib tier collections/FS/Path ship, api-shape Standard and tier coverage, syscall JIT smoke, tool packageKind and formatter hubs, verify-all-on-main, LSP bootstrap, trudoc/CI/doc-nav hardening.",
+  "order": 4
+}

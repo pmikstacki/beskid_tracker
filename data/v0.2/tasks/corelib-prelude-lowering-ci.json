@@ -1,0 +1,17 @@
+{
+  "id": "corelib-prelude-lowering-ci",
+  "number": 269,
+  "title": "Corelib prelude lowering CI on Linux (8 MiB stack, release)",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "codegen-runtime",
+  "domain": "compiler",
+  "completedAt": "2026-05-18",
+  "specRelations": [],
+  "source": {
+    "repo": "corelib",
+    "commit": "6db12d2",
+    "subject": "fix(ci): run corelib prelude lowering tests on an 8 MiB stack"
+  },
+  "milestoneId": "v02-concurrency-runtime"
+}

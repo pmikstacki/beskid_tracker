@@ -1,0 +1,15 @@
+{
+  "id": "open-vsx-submodule-token-checkout",
+  "number": 141,
+  "title": "Authenticate pckg submodule checkout in Open VSX publish CI",
+  "priority": "medium",
+  "workstream": "editor-extension",
+  "completedAt": "2026-04-21",
+  "milestoneId": "v01-open-vsx",
+  "source": {
+    "repo": "beskid",
+    "commit": "58b3d5e",
+    "subject": "ci: authenticate pckg submodule checkout with GITHUB_TOKEN"
+  },
+  "statusColumn": "Done"
+}

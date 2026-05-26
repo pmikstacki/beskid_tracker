@@ -1,0 +1,15 @@
+{
+  "id": "vscode-icon-vsce-compat",
+  "number": 144,
+  "title": "Prevent VSCE icon rejection by using compatible extension icon format",
+  "priority": "medium",
+  "workstream": "editor-extension",
+  "completedAt": "2026-04-21",
+  "milestoneId": "v01-open-vsx",
+  "source": {
+    "repo": "beskid",
+    "commit": "88fa986",
+    "subject": "fix(vscode): avoid vsce rejecting SVG favicon as icon"
+  },
+  "statusColumn": "Done"
+}

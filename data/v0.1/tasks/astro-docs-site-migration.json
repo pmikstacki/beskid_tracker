@@ -1,0 +1,14 @@
+{
+  "id": "astro-docs-site-migration",
+  "number": 116,
+  "title": "Migrate documentation to Astro site",
+  "priority": "medium",
+  "workstream": "ci-release",
+  "completedAt": "2026-03-07",
+  "source": {
+    "repo": "beskid",
+    "commit": "b1e0bc9",
+    "subject": "Remove documentation files; migrate to Astro-based documentation site"
+  },
+  "statusColumn": "Done"
+}

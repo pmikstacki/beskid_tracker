@@ -1,0 +1,16 @@
+{
+  "id": "aot-refactor",
+  "number": 102,
+  "title": "AOT refactor baseline",
+  "priority": "high",
+  "workstream": "compiler-foundation",
+  "domain": "compiler",
+  "completedAt": "2026-03-17",
+  "milestoneId": "v01-compiler-parity",
+  "source": {
+    "repo": "compiler",
+    "commit": "8079b2e",
+    "subject": "AOT Refactor"
+  },
+  "statusColumn": "Done"
+}

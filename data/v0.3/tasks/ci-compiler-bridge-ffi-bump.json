@@ -1,0 +1,16 @@
+{
+  "id": "ci-compiler-bridge-ffi-bump",
+  "number": 366,
+  "title": "Bump compiler for CI runtime bridge and ffi_v03 fixes",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "ci-release",
+  "domain": "tooling",
+  "completedAt": "2026-05-24",
+  "milestoneId": "v03-post-merge-ci",
+  "source": {
+    "repo": "beskid",
+    "commit": "8ba01c8",
+    "subject": "chore(submodules): bump compiler for CI runtime bridge and ffi_v03 fixes"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "assembly-pipeline-di-spec",
+  "number": 227,
+  "title": "Platform spec: assembly pipeline, DI hub, and macros",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "platform-spec",
+  "domain": "compiler",
+  "completedAt": "2026-05-20",
+  "source": {
+    "repo": "beskid",
+    "commit": "60fc81e",
+    "subject": "docs(platform-spec): assembly pipeline, DI hub, macros, and submodule bumps"
+  }
+}

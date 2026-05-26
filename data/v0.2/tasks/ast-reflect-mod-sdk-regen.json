@@ -1,0 +1,17 @@
+{
+  "id": "ast-reflect-mod-sdk-regen",
+  "number": 238,
+  "title": "ast_reflect_gen Mod SDK syntax emission refresh",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "analysis-pipeline",
+  "domain": "compiler",
+  "area": "mods",
+  "completedAt": "2026-05-11",
+  "milestoneId": "v02-platform-spec-cutover",
+  "source": {
+    "repo": "compiler",
+    "commit": "e16f55a",
+    "subject": "Improve ast_reflect_gen Mod SDK syntax emission and bump corelib."
+  }
+}

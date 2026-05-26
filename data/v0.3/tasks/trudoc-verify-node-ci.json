@@ -1,0 +1,15 @@
+{
+  "id": "trudoc-verify-node-ci",
+  "number": 347,
+  "title": "Restore trudoc verify via Node in CI",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "ci-release",
+  "completedAt": "2026-05-23",
+  "milestoneId": "v03-docs-reader-hardening",
+  "source": {
+    "repo": "beskid",
+    "commit": "0a173a6",
+    "subject": "fix(ci): restore trudoc verify via Node, build runtime bridge for e2e"
+  }
+}

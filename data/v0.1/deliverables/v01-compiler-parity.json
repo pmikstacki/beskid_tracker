@@ -1,0 +1,7 @@
+{
+  "id": "v01-compiler-parity",
+  "title": "Compiler syntax and analysis baseline",
+  "number": 1,
+  "description": "Compiler bootstrap, AOT path, module syntax semantics, and early analysis/graph-order stability landed for v0.1.",
+  "closedOn": "2026-04-09"
+}

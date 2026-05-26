@@ -1,0 +1,15 @@
+{
+  "id": "release-python-deps",
+  "number": 135,
+  "title": "Update release pipeline Python dependencies",
+  "priority": "low",
+  "workstream": "ci-release",
+  "completedAt": "2026-04-22",
+  "milestoneId": "v01-cli-release",
+  "source": {
+    "repo": "compiler",
+    "commit": "7ca73d0",
+    "subject": "ci: update release pipeline Python dependencies"
+  },
+  "statusColumn": "Done"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "verify-all-main",
+  "number": 313,
+  "title": "verify-all-on-main evidence for v0.3 completion",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "ci-release",
+  "completedAt": "2026-05-24",
+  "milestoneId": "v03-verify-main",
+  "source": {
+    "repo": "beskid",
+    "commit": "aba4331",
+    "subject": "docs(orchestrate): add verify-all-on-main evidence for v0.3 completion"
+  }
+}

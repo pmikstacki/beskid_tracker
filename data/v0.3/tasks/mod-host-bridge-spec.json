@@ -1,0 +1,25 @@
+{
+  "id": "mod-host-bridge-spec",
+  "number": 324,
+  "title": "Platform-spec mod-host-bridge anchors",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "compiler-mods",
+  "domain": "community",
+  "completedAt": "2026-05-23",
+  "milestoneId": "v03-merge-wave",
+  "specRelations": [
+    {
+      "path": "/platform-spec/compiler/mods/mod-host-bridge",
+      "title": "Mod host bridge",
+      "level": "feature",
+      "relation": "tracks",
+      "required": true
+    }
+  ],
+  "source": {
+    "repo": "beskid",
+    "commit": "aae516f",
+    "subject": "docs(platform-spec): mod-host-bridge anchors for compiler-mod execution"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "mod-host-contract-invoker",
+  "number": 316,
+  "title": "Wire mod host collect/generate/analyze/rewrite through ContractInvoker",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "compiler-mods",
+  "domain": "compiler",
+  "area": "mods",
+  "completedAt": "2026-05-23",
+  "milestoneId": "v03-merge-wave",
+  "specRelations": [
+    {
+      "path": "/platform-spec/compiler/mods/mod-host-bridge",
+      "title": "Mod host bridge",
+      "level": "feature",
+      "relation": "implements",
+      "required": true
+    }
+  ],
+  "source": {
+    "repo": "compiler",
+    "commit": "a91d258",
+    "subject": "feat(mod_host): wire mod.collect/generate/analyze/rewrite through ContractInvoker"
+  }
+}

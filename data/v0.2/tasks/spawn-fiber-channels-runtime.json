@@ -1,0 +1,26 @@
+{
+  "id": "spawn-fiber-channels-runtime",
+  "number": 237,
+  "title": "Spawn/fiber runtime, channels, and split System I/O",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "codegen-runtime",
+  "domain": "execution",
+  "area": "concurrency",
+  "completedAt": "2026-05-20",
+  "milestoneId": "v02-concurrency-runtime",
+  "specRelations": [
+    {
+      "path": "/platform-spec/execution/concurrency/fibers",
+      "title": "Fibers",
+      "level": "feature",
+      "relation": "implements",
+      "required": true
+    }
+  ],
+  "source": {
+    "repo": "compiler",
+    "commit": "12ee673",
+    "subject": "feat: spawn/fiber runtime, channels, and split System I/O surfaces"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "nox-baseline-upgrade",
+  "number": 272,
+  "title": "Upgrade Nox baseline and bump compiler submodule",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "ci-release",
+  "domain": "tooling",
+  "completedAt": "2026-04-22",
+  "milestoneId": "v02-ci-deploy-infra",
+  "source": {
+    "repo": "beskid",
+    "commit": "f1ba649",
+    "subject": "ci: upgrade nox baseline and bump compiler submodule"
+  }
+}

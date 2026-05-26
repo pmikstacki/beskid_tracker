@@ -1,0 +1,6 @@
+{
+  "slug": "dev-experience",
+  "title": "Superrepo & deploy ergonomics",
+  "summary": "Submodule pins, reference trees, Coolify shallow-clone fixes, and container build context for local and hosted deploys.",
+  "order": 9
+}

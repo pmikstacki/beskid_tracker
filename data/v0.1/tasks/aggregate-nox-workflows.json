@@ -1,0 +1,14 @@
+{
+  "id": "aggregate-nox-workflows",
+  "number": 124,
+  "title": "Nox-driven aggregate CI workflows in superrepo",
+  "priority": "high",
+  "workstream": "ci-release",
+  "completedAt": "2026-04-13",
+  "source": {
+    "repo": "beskid",
+    "commit": "60e84d3",
+    "subject": "ci: Nox-driven aggregate workflows; bump compiler and pckg"
+  },
+  "statusColumn": "Done"
+}

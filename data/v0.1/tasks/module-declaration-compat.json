@@ -1,0 +1,16 @@
+{
+  "id": "module-declaration-compat",
+  "number": 130,
+  "title": "Restore module declaration compatibility in resolver",
+  "priority": "high",
+  "workstream": "compiler-foundation",
+  "domain": "language-meta",
+  "area": "modules",
+  "completedAt": "2026-04-22",
+  "source": {
+    "repo": "compiler",
+    "commit": "3c754d3",
+    "subject": "fix: restore module declaration compatibility in resolver and semantics"
+  },
+  "statusColumn": "Done"
+}

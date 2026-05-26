@@ -1,0 +1,15 @@
+{
+  "id": "pckg-docs-stack-dry",
+  "number": 223,
+  "title": "DRY package docs/source server stack",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "pckg-registry",
+  "completedAt": "2026-05-18",
+  "milestoneId": "v02-api-json-contract",
+  "source": {
+    "repo": "pckg",
+    "commit": "cc39412",
+    "subject": "refactor(server): DRY package docs/source stack and FastEndpoints Send conventions"
+  }
+}

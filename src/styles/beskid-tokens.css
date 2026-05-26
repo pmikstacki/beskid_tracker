@@ -1,0 +1,5 @@
+/**
+ * Beskid brand tokens — shared with site/website (Starlight) via @beskid/docs-ui.
+ * Source of truth: packages/beskid-docs-ui/src/styles/theme.material.css
+ */
+@import "../../../packages/beskid-docs-ui/src/styles/theme.material.css";

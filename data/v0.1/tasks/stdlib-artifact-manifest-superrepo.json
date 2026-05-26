@@ -1,0 +1,14 @@
+{
+  "id": "stdlib-artifact-manifest-superrepo",
+  "number": 120,
+  "title": "Integrate stdlib artifact manifest across superrepo",
+  "priority": "medium",
+  "workstream": "corelib-packaging",
+  "completedAt": "2026-03-18",
+  "source": {
+    "repo": "beskid",
+    "commit": "c52da28",
+    "subject": "feat: standard library artifact manifest and UI consolidation"
+  },
+  "statusColumn": "Done"
+}

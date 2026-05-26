@@ -1,0 +1,25 @@
+{
+  "id": "file-scoped-modules",
+  "number": 107,
+  "title": "File-scoped module rules and resolver compatibility",
+  "priority": "high",
+  "workstream": "compiler-foundation",
+  "domain": "language-meta",
+  "area": "modules",
+  "completedAt": "2026-04-22",
+  "specRelations": [
+    {
+      "path": "/platform-spec/language-meta/modules/file-scoped-modules",
+      "title": "File-scoped modules",
+      "level": "feature",
+      "relation": "implements",
+      "required": true
+    }
+  ],
+  "source": {
+    "repo": "compiler",
+    "commit": "2e4f445",
+    "subject": "feat: add file-scoped module rules and diagnostics"
+  },
+  "statusColumn": "Done"
+}

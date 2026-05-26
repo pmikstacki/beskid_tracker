@@ -1,0 +1,14 @@
+{
+  "id": "book-my-story-frontmatter",
+  "number": 235,
+  "title": "Fix book my-story page title frontmatter",
+  "statusColumn": "Done",
+  "priority": "low",
+  "workstream": "docs-site",
+  "completedAt": "2026-05-22",
+  "source": {
+    "repo": "beskid",
+    "commit": "dfdb360",
+    "subject": "fix(book): my-story page title frontmatter"
+  }
+}

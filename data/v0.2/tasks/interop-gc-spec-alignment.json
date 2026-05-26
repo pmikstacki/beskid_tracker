@@ -1,0 +1,15 @@
+{
+  "id": "interop-gc-spec-alignment",
+  "number": 228,
+  "title": "language-meta interop tree and GC platform alignment",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "platform-spec",
+  "domain": "language-meta",
+  "completedAt": "2026-05-20",
+  "source": {
+    "repo": "beskid",
+    "commit": "abd197e",
+    "subject": "docs: language-meta interop tree and GC platform alignment"
+  }
+}

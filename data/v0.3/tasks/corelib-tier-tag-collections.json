@@ -1,0 +1,25 @@
+{
+  "id": "corelib-tier-tag-collections",
+  "number": 359,
+  "title": "Tier-tagged collections plus System.FS and Path packages",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "stabilization",
+  "domain": "core-library",
+  "completedAt": "2026-05-23",
+  "specRelations": [
+    {
+      "path": "/platform-spec/core-library/stability-and-api-shape/corelib-api-shape",
+      "title": "Corelib API shape",
+      "level": "feature",
+      "relation": "implements",
+      "required": true
+    }
+  ],
+  "source": {
+    "repo": "corelib",
+    "commit": "d706067",
+    "subject": "feat(corelib): tier-tag collections + System.{FS,Path} and add tier coverage suites"
+  },
+  "milestoneId": "v03-corelib-tier-ship"
+}

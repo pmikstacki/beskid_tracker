@@ -1,0 +1,17 @@
+{
+  "id": "runtime-abi-doc-command",
+  "number": 263,
+  "title": "Runtime/ABI updates, doc command, and corelib test sweep",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "codegen-runtime",
+  "domain": "execution",
+  "completedAt": "2026-04-24",
+  "specRelations": [],
+  "source": {
+    "repo": "compiler",
+    "commit": "0ded628",
+    "subject": "compiler: runtime/ABI updates, doc command, corelib submodule bump, tests"
+  },
+  "milestoneId": "v02-concurrency-runtime"
+}

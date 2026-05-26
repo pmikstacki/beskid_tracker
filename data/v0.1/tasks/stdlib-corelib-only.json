@@ -1,0 +1,16 @@
+{
+  "id": "stdlib-corelib-only",
+  "number": 122,
+  "title": "Resolve stdlib only from nested corelib submodule",
+  "priority": "high",
+  "workstream": "corelib-packaging",
+  "domain": "core-library",
+  "completedAt": "2026-04-10",
+  "milestoneId": "v01-corelib-submodule",
+  "source": {
+    "repo": "compiler",
+    "commit": "8fa00e9",
+    "subject": "refactor: stdlib only from nested corelib submodule"
+  },
+  "statusColumn": "Done"
+}

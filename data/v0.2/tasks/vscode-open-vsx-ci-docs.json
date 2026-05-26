@@ -1,0 +1,16 @@
+{
+  "id": "vscode-open-vsx-ci-docs",
+  "number": 279,
+  "title": "Document superrepo submodule and centralized Open VSX CI",
+  "statusColumn": "Done",
+  "priority": "low",
+  "workstream": "editor-extension",
+  "domain": "tooling",
+  "completedAt": "2026-05-01",
+  "milestoneId": "v02-editor-extension",
+  "source": {
+    "repo": "beskid_vscode",
+    "commit": "7a775e2",
+    "subject": "docs: document superrepo submodule and centralized Open VS X CI"
+  }
+}

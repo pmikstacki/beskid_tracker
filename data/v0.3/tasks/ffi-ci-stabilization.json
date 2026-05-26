@@ -1,0 +1,15 @@
+{
+  "id": "ffi-ci-stabilization",
+  "number": 310,
+  "title": "FFI v0.3 tests and runtime bridge discovery fixes",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "ci-release",
+  "completedAt": "2026-05-24",
+  "milestoneId": "v03-post-merge-ci",
+  "source": {
+    "repo": "compiler",
+    "commit": "f7361aa",
+    "subject": "fix(ci): Path import in ffi_v03 tests and runtime bridge discovery"
+  }
+}

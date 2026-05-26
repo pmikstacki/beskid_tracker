@@ -1,0 +1,6 @@
+{
+  "slug": "editor-extension",
+  "title": "Editor & Open VSX",
+  "summary": "beskid_vscode submodule, Open VSX publish matrix with cross-arch LSP bundles, extension runtime modularization, and CLI-driven language client launch.",
+  "order": 7
+}

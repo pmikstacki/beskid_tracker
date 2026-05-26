@@ -1,0 +1,16 @@
+{
+  "id": "vscode-submodule-open-vsx",
+  "number": 251,
+  "title": "Add beskid_vscode submodule and Open VSX publish init",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "editor-extension",
+  "domain": "tooling",
+  "completedAt": "2026-05-01",
+  "milestoneId": "v02-editor-extension",
+  "source": {
+    "repo": "beskid",
+    "commit": "d58dd44",
+    "subject": "feat(ci): add beskid_vscode submodule and init for Open VS X publish"
+  }
+}

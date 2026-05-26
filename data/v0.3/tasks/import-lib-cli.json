@@ -1,0 +1,16 @@
+{
+  "id": "import-lib-cli",
+  "number": 317,
+  "title": "beskid import lib CLI subcommand",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "compiler-mods",
+  "domain": "tooling",
+  "completedAt": "2026-05-23",
+  "milestoneId": "v03-merge-wave",
+  "source": {
+    "repo": "compiler",
+    "commit": "3896ded",
+    "subject": "feat(cli): add beskid import lib subcommand"
+  }
+}

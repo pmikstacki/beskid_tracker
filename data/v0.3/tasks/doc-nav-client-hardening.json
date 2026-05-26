@@ -1,0 +1,15 @@
+{
+  "id": "doc-nav-client-hardening",
+  "number": 353,
+  "title": "Harden book and platform-spec nav client scripts",
+  "statusColumn": "Done",
+  "priority": "low",
+  "workstream": "stabilization",
+  "completedAt": "2026-05-24",
+  "milestoneId": "v03-docs-reader-hardening",
+  "source": {
+    "repo": "beskid",
+    "commit": "33e5d99",
+    "subject": "chore(compiler): bump submodule for corelib-quality CI fix"
+  }
+}

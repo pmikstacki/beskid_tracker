@@ -1,0 +1,6 @@
+{
+  "slug": "editor-extension",
+  "title": "Editor & Open VSX",
+  "summary": "VS Code bundled LSP defaults, extension packaging, and Open VSX publish automation on main.",
+  "order": 4
+}

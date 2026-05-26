@@ -1,0 +1,16 @@
+{
+  "id": "pckg-packagedocs-unify",
+  "number": 242,
+  "title": "Unify package documentation as PackageDocs",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "pckg-registry",
+  "domain": "tooling",
+  "completedAt": "2026-04-25",
+  "milestoneId": "v02-pckg-registry-foundation",
+  "source": {
+    "repo": "pckg",
+    "commit": "71c5ec1",
+    "subject": "pckg: unify docs as PackageDocs, remove markdown browser and dialog"
+  }
+}

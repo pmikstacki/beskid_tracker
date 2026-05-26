@@ -1,0 +1,15 @@
+{
+  "id": "pckg-tool-package-kind",
+  "number": 309,
+  "title": "pckg packageKind tool standardization",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "pckg-registry",
+  "completedAt": "2026-05-23",
+  "milestoneId": "v03-pckg-tool-registry",
+  "source": {
+    "repo": "pckg",
+    "commit": "38648a4",
+    "subject": "feat(server,ui,tests): packageKind tool standardization (D-TOOL-PCKG-0004)"
+  }
+}

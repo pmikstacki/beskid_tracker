@@ -1,0 +1,15 @@
+{
+  "id": "pckg-nox-unit-tests",
+  "number": 123,
+  "title": "Add Nox-based pckg unit test workflow",
+  "priority": "medium",
+  "workstream": "corelib-packaging",
+  "domain": "tooling",
+  "completedAt": "2026-04-13",
+  "source": {
+    "repo": "pckg",
+    "commit": "86f3cb7",
+    "subject": "ci: add Nox-based unit test workflow and noxfile"
+  },
+  "statusColumn": "Done"
+}

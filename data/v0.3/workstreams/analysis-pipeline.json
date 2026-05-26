@@ -1,0 +1,6 @@
+{
+  "slug": "analysis-pipeline",
+  "title": "Analysis & pipeline",
+  "summary": "ExternalLibrary trait/registry in analysis, api.json tier and artifact paths, HIR legality for export FFI, formatter compiler docs, and e2e build output contracts.",
+  "order": 5
+}

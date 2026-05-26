@@ -1,0 +1,15 @@
+{
+  "id": "pckg-submodule-wire",
+  "number": 112,
+  "title": "Wire beskid_pckg submodule in compiler workspace",
+  "priority": "medium",
+  "workstream": "corelib-packaging",
+  "domain": "tooling",
+  "completedAt": "2026-03-18",
+  "source": {
+    "repo": "compiler",
+    "commit": "f26bc61",
+    "subject": "Add beskid_pckg submodule for package management; update compiler and corelib submodules"
+  },
+  "statusColumn": "Done"
+}

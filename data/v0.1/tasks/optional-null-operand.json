@@ -1,0 +1,15 @@
+{
+  "id": "optional-null-operand",
+  "number": 111,
+  "title": "Implement optional null-conditional (?.) operand",
+  "priority": "medium",
+  "workstream": "compiler-foundation",
+  "domain": "language-meta",
+  "completedAt": "2026-03-07",
+  "source": {
+    "repo": "compiler",
+    "commit": "91fbe73",
+    "subject": "Implement missing ? operand"
+  },
+  "statusColumn": "Done"
+}

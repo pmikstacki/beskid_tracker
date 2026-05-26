@@ -1,0 +1,15 @@
+{
+  "id": "cli-stdlib-cleanup-retry",
+  "number": 126,
+  "title": "Retry stdlib directory cleanup during CLI provisioning",
+  "priority": "medium",
+  "workstream": "corelib-packaging",
+  "domain": "tooling",
+  "completedAt": "2026-04-21",
+  "source": {
+    "repo": "compiler",
+    "commit": "0d88e26",
+    "subject": "cli: retry stdlib directory cleanup during provisioning"
+  },
+  "statusColumn": "Done"
+}

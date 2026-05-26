@@ -1,0 +1,15 @@
+{
+  "id": "book-file-scoped-modules",
+  "number": 242,
+  "title": "Language book bootstrap and file-scoped module semantics",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "docs-site",
+  "completedAt": "2026-04-22",
+  "milestoneId": "v02-book-tutorial-wave",
+  "source": {
+    "repo": "beskid",
+    "commit": "94240a3",
+    "subject": "site: add language book and align module docs with file-scoped semantics"
+  }
+}

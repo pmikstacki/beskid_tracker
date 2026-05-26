@@ -1,0 +1,15 @@
+{
+  "id": "trudoc-beskid-grammar",
+  "number": 336,
+  "title": "Trudoc Beskid grammar support",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "stabilization",
+  "completedAt": "2026-05-24",
+  "milestoneId": "v03-verify-main",
+  "source": {
+    "repo": "beskid",
+    "commit": "e679792",
+    "subject": "feat(trudoc): add Beskid grammar support and update package configuration"
+  }
+}

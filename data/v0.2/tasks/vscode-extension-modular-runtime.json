@@ -1,0 +1,16 @@
+{
+  "id": "vscode-extension-modular-runtime",
+  "number": 256,
+  "title": "Modular VS Code extension runtime and package workflow UI",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "editor-extension",
+  "domain": "tooling",
+  "completedAt": "2026-05-22",
+  "milestoneId": "v02-editor-extension",
+  "source": {
+    "repo": "beskid_vscode",
+    "commit": "f6eceb6",
+    "subject": "refactor: modular extension runtime, commands, and package workflow UI"
+  }
+}

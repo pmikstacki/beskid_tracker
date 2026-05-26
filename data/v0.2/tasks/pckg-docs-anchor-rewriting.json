@@ -1,0 +1,15 @@
+{
+  "id": "pckg-docs-anchor-rewriting",
+  "number": 245,
+  "title": "Package documentation anchor rewriting",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "pckg-registry",
+  "domain": "tooling",
+  "completedAt": "2026-05-09",
+  "source": {
+    "repo": "pckg",
+    "commit": "11ecde9",
+    "subject": "feat(docs): anchor rewriting and package documentation UI"
+  }
+}

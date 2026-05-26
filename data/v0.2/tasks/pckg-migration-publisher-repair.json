@@ -1,0 +1,15 @@
+{
+  "id": "pckg-migration-publisher-repair",
+  "number": 244,
+  "title": "Startup migration repair for publisher flag drift",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "pckg-registry",
+  "domain": "tooling",
+  "completedAt": "2026-05-08",
+  "source": {
+    "repo": "pckg",
+    "commit": "27621c1",
+    "subject": "fix: harden startup migration repair for publisher flag"
+  }
+}
