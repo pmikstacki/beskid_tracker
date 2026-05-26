@@ -1,0 +1,18 @@
+{
+  "id": "research-gc-simple-vs-parallel",
+  "number": 11,
+  "title": "Research simple GC baseline before parallel collector path",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "codegen-runtime",
+  "domain": "execution",
+  "area": "gc",
+  "completedAt": "2026-02-25",
+  "deliverableId": "v00-execution-jit-gc",
+  "body": "gc-arena served as the simple GC baseline; later delivery bands pursued parallel runtime collection (abfall and phase-B runtime).",
+  "source": {
+    "repo": "pekan",
+    "commit": "9bbf2f4",
+    "subject": "Mark Phase 5 complete with runtime allocator, GC scaffolding, interop builtins, and diagnostic improvements"
+  }
+}

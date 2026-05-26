@@ -1,0 +1,16 @@
+{
+  "id": "phase5-runtime-gc-complete",
+  "number": 12,
+  "title": "Complete execution plan phase 5 (allocator + GC hooks + interop builtins)",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "codegen-runtime",
+  "domain": "execution",
+  "completedAt": "2026-02-25",
+  "deliverableId": "v00-execution-jit-gc",
+  "source": {
+    "repo": "pekan",
+    "commit": "9bbf2f4",
+    "subject": "Mark Phase 5 complete with runtime allocator, GC scaffolding, interop builtins, and diagnostic improvements"
+  }
+}

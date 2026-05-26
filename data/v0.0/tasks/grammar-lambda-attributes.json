@@ -1,0 +1,16 @@
+{
+  "id": "grammar-lambda-attributes",
+  "number": 25,
+  "title": "Grammar and HIR support for attributes and lambdas",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "compiler-analysis",
+  "domain": "language-meta",
+  "completedAt": "2026-03-02",
+  "deliverableId": "v00-analysis-foundation",
+  "source": {
+    "repo": "pekan",
+    "commit": "47b24da",
+    "subject": "Add attribute and lambda expression support to grammar and HIR"
+  }
+}

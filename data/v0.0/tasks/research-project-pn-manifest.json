@@ -1,0 +1,18 @@
+{
+  "id": "research-project-pn-manifest",
+  "number": 16,
+  "title": "Research: Zig-style project.pn manifest vs path-driven layout",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "project-structure",
+  "domain": "tooling",
+  "area": "projects",
+  "completedAt": "2026-02-26",
+  "deliverableId": "v00-tooling-research",
+  "body": "Compared project.pn Build API with Go/Gleam layouts; superseded by Project.proj + pckg in later bands.",
+  "source": {
+    "repo": "pekan",
+    "commit": "28141af",
+    "subject": "Add build workflow, lockfile lifecycle, and Daggy-based dependency resolution to project system documentation"
+  }
+}

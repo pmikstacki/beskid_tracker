@@ -1,0 +1,17 @@
+{
+  "id": "lowering-trait-architecture",
+  "number": 7,
+  "title": "Trait-based CLIF lowering architecture roadmap",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "codegen-runtime",
+  "domain": "compiler",
+  "area": "codegen",
+  "completedAt": "2026-02-23",
+  "deliverableId": "v00-execution-jit-gc",
+  "source": {
+    "repo": "pekan",
+    "commit": "7b35a52",
+    "subject": "trait-based lowering architecture and node-by-node implementation roadmap"
+  }
+}

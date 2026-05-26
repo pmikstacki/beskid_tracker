@@ -1,0 +1,7 @@
+{
+  "slug": "codegen-runtime",
+  "title": "JIT/runtime and GC research",
+  "summary": "Lowering, JIT, allocator hooks, and simple GC experiments.",
+  "order": 2,
+  "deliverableIds": ["v00-execution-jit-gc"]
+}

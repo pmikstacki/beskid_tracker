@@ -1,0 +1,7 @@
+{
+  "slug": "metaprogramming-mods",
+  "title": "Metaprogramming and compiler mods",
+  "summary": "Stage-based compiler mod experimentation.",
+  "order": 4,
+  "deliverableIds": ["v00-tooling-research"]
+}

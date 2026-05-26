@@ -1,0 +1,18 @@
+{
+  "id": "research-lsp-pecan-prototype",
+  "number": 23,
+  "title": "Research: pecan_lsp in-process services prototype",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "editor-lsp",
+  "domain": "tooling",
+  "area": "lsp",
+  "completedAt": "2026-02-28",
+  "deliverableId": "v00-tooling-research",
+  "body": "Hover, definition, references, completions prototype inside historical pecan_lsp.",
+  "source": {
+    "repo": "pekan",
+    "commit": "9424509",
+    "subject": "Add LSP services module with hover, definition, references, completions, and symbol extraction utilities"
+  }
+}

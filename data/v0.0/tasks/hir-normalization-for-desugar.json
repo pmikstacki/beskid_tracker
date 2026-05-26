@@ -1,0 +1,17 @@
+{
+  "id": "hir-normalization-for-desugar",
+  "number": 8,
+  "title": "HIR normalization pass (for-loop desugaring)",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "compiler-analysis",
+  "domain": "compiler",
+  "area": "hir",
+  "completedAt": "2026-02-24",
+  "deliverableId": "v00-analysis-foundation",
+  "source": {
+    "repo": "pekan",
+    "commit": "68cb1fd",
+    "subject": "Add HIR normalization pass with for-loop desugaring to while-loop transformation"
+  }
+}

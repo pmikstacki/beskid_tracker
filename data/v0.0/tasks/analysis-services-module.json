@@ -1,0 +1,16 @@
+{
+  "id": "analysis-services-module",
+  "number": 19,
+  "title": "Analysis services module (input/project resolution and parsing utilities)",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "compiler-analysis",
+  "domain": "compiler",
+  "completedAt": "2026-02-27",
+  "deliverableId": "v00-analysis-foundation",
+  "source": {
+    "repo": "pekan",
+    "commit": "0fe2488",
+    "subject": "Add beskid_analysis services module with input/project resolution, parsing, and analysis utilities"
+  }
+}

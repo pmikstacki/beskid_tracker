@@ -1,0 +1,16 @@
+{
+  "id": "workspace-crates-restructure",
+  "number": 17,
+  "title": "Reorganize workspace from src/ to crates/ and add beskid_abi",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "compiler-analysis",
+  "domain": "compiler",
+  "completedAt": "2026-02-26",
+  "deliverableId": "v00-analysis-foundation",
+  "source": {
+    "repo": "pekan",
+    "commit": "c41b01e",
+    "subject": "Add beskid_abi crate and reorganize workspace from src/ to crates/ directory structure"
+  }
+}

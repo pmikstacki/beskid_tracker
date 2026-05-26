@@ -1,0 +1,17 @@
+{
+  "id": "hir-query-staged-analysis",
+  "number": 21,
+  "title": "HirQuery-based staged analysis traversal",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "compiler-analysis",
+  "domain": "compiler",
+  "area": "analysis",
+  "completedAt": "2026-02-28",
+  "deliverableId": "v00-analysis-foundation",
+  "source": {
+    "repo": "pekan",
+    "commit": "0de5fa0",
+    "subject": "Remove unused traversal module and refactor staged analysis to use HirQuery for HIR traversal"
+  }
+}

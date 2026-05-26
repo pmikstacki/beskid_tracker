@@ -15,7 +15,6 @@
     "format": "bunx biome format",
     "lint": "bunx biome lint",
     "check": "bunx biome check",
-    "seed:write": "bun run scripts/write-seed-catalog.ts",
     "seed:validate": "bun run scripts/validate-seed.ts",
     "sync:issues": "bun run scripts/sync-github-issues.ts"
   },
@@ -23,6 +22,7 @@
     "bun": ">=1.2.0"
   },
   "dependencies": {
+    "@beskid/docs-ui": "npm:@cyber-nomad-collective/docs-ui@^0.1.3",
     "@base-ui/react": "^1.5.0",
     "@dnd-kit/core": "^6.3.1",
     "@dnd-kit/sortable": "^10.0.0",

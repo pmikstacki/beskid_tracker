@@ -1,0 +1,16 @@
+{
+  "id": "pecan-initial-commit",
+  "number": 1,
+  "title": "Bootstrap Pecan repository",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "compiler-analysis",
+  "domain": "compiler",
+  "completedAt": "2026-02-18",
+  "deliverableId": "v00-analysis-foundation",
+  "source": {
+    "repo": "pekan",
+    "commit": "269ac9d",
+    "subject": "Initial Commit"
+  }
+}

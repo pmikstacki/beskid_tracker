@@ -1,0 +1,17 @@
+{
+  "id": "gc-arena-crate-integration",
+  "number": 10,
+  "title": "Integrate gc-arena crate with derive macro and JIT alloc hooks",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "codegen-runtime",
+  "domain": "execution",
+  "area": "gc",
+  "completedAt": "2026-02-24",
+  "deliverableId": "v00-execution-jit-gc",
+  "source": {
+    "repo": "pekan",
+    "commit": "a17c928",
+    "subject": "Add gc-arena crate with derive macro, licensing, and comprehensive documentation"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "slug": "editor-lsp",
+  "title": "Historical LSP prototype",
+  "summary": "pecan_lsp architecture and in-process language services.",
+  "order": 3,
+  "deliverableIds": ["v00-tooling-research"]
+}

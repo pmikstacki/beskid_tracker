@@ -1,0 +1,17 @@
+{
+  "id": "resolver-module-graph",
+  "number": 4,
+  "title": "Resolver module graph, scopes, and resolution tables",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "compiler-analysis",
+  "domain": "compiler",
+  "area": "resolution",
+  "completedAt": "2026-02-21",
+  "deliverableId": "v00-analysis-foundation",
+  "source": {
+    "repo": "pekan",
+    "commit": "0011c54",
+    "subject": "Update resolver with module graph, local scopes, resolution tables, and path/type resolution"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "execution-plan-phases-1-2",
+  "number": 6,
+  "title": "Close execution plan phases 1–2 (HIR + typing)",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "codegen-runtime",
+  "domain": "execution",
+  "completedAt": "2026-02-23",
+  "deliverableId": "v00-execution-jit-gc",
+  "source": {
+    "repo": "pekan",
+    "commit": "01db952",
+    "subject": "Update execution plan with Phase 1/2 completion status and Phase 3 kickoff scope"
+  }
+}

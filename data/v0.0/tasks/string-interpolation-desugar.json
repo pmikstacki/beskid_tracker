@@ -1,0 +1,16 @@
+{
+  "id": "string-interpolation-desugar",
+  "number": 24,
+  "title": "String interpolation desugaring to concatenation",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "compiler-analysis",
+  "domain": "language-meta",
+  "completedAt": "2026-02-28",
+  "deliverableId": "v00-analysis-foundation",
+  "source": {
+    "repo": "pekan",
+    "commit": "df0657c",
+    "subject": "Add string interpolation support with desugaring to binary concatenation expressions"
+  }
+}

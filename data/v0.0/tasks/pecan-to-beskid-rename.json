@@ -1,0 +1,16 @@
+{
+  "id": "pecan-to-beskid-rename",
+  "number": 15,
+  "title": "Rename project from Pecan to Beskid",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "project-structure",
+  "domain": "community",
+  "completedAt": "2026-02-26",
+  "deliverableId": "v00-tooling-research",
+  "source": {
+    "repo": "pekan",
+    "commit": "1d49ce5",
+    "subject": "Rename project from Pecan to Beskid across all documentation and workspace configuration"
+  }
+}

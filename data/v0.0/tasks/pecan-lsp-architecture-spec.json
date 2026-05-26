@@ -1,0 +1,18 @@
+{
+  "id": "pecan-lsp-architecture-spec",
+  "number": 14,
+  "title": "Author pecan_lsp architecture specification (historical)",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "editor-lsp",
+  "domain": "tooling",
+  "area": "lsp",
+  "completedAt": "2026-02-26",
+  "deliverableId": "v00-tooling-research",
+  "body": "Historical in-process pecan_lsp design predating workspace LSP and beskid lsp stdio CLI.",
+  "source": {
+    "repo": "pekan",
+    "commit": "29e1e80",
+    "subject": "Add pecan_lsp workspace member with LSP architecture spec, interop migration plan, and JIT execution documentation updates"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "diagnostic-kinds-enum",
+  "number": 22,
+  "title": "SemanticIssueKind diagnostic catalog (60+ variants)",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "compiler-analysis",
+  "domain": "compiler",
+  "area": "diagnostics",
+  "completedAt": "2026-02-28",
+  "deliverableId": "v00-analysis-foundation",
+  "source": {
+    "repo": "pekan",
+    "commit": "c308ffb",
+    "subject": "Add diagnostic_kinds module with SemanticIssueKind enum and 60+ error/warning variants for semantic analysis"
+  }
+}

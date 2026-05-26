@@ -1,0 +1,16 @@
+{
+  "id": "merge-compiler-mod-execution",
+  "number": 301,
+  "title": "Merge compiler-mod-execution into main",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "compiler-mods",
+  "domain": "compiler",
+  "completedAt": "2026-05-23",
+  "deliverableId": "v03-merge-wave",
+  "source": {
+    "repo": "beskid",
+    "commit": "bf03401",
+    "subject": "merge(v0.3): compiler-mod-execution into main"
+  }
+}

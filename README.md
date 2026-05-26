@@ -12,7 +12,7 @@
 
 ## Theming
 
-Visual design follows **beskid-lang.org** and **pckg** Material teal tokens from [`packages/beskid-docs-ui/src/styles/theme.material.css`](../../packages/beskid-docs-ui/src/styles/theme.material.css):
+Visual design follows **beskid-lang.org** and **pckg** Material teal tokens from [`@beskid/docs-ui`](https://github.com/Cyber-Nomad-Collective/beskid_web_common) (`theme.material.css` via GitHub Packages):
 
 - `src/styles/beskid-tokens.css` — imports shared brand variables
 - `src/styles/shadcn-theme.css` — maps shadcn `--primary`, `--background`, etc. to those tokens
@@ -57,7 +57,7 @@ Create a GitHub OAuth App with callback URL matching `GITHUB_OAUTH_CALLBACK_URL`
 
 | Command | Action |
 |---------|--------|
-| `bun install` | Install dependencies |
+| `bun install` | Install dependencies (required before first `bun run dev`; needs GitHub Packages auth for `@beskid/docs-ui`) |
 | `bun run dev` | Dev server at http://localhost:3000 |
 | `bun run build` | Production build (runs `prebuild` sync) |
 | `bun run start` | Production server on port 3000 |
@@ -122,7 +122,7 @@ Sidebar **Bugs** is global (no delivery version). **Hub** opens the cross-site B
 
 ## Seed catalog (git-derived)
 
-Historical completed work for **v0.1–v0.3** lives under [`data/seed/`](data/seed/) as JSON (one file per entity). See [`data/seed/README.md`](data/seed/README.md) for layout, cutoffs, and `bun run seed:write` / `seed:validate`.
+Historical completed work for **v0.0–v0.3** lives under [`data/`](data/) as JSON (one file per entity). See [`data/README.md`](data/README.md). Validate with `bun run seed:validate`.
 
 Set `ROADMAP_USE_SEED=1` to serve the kanban and workstreams dashboards from that catalog locally (read-only; issue create/approve still require GitHub when seed mode is off).
 

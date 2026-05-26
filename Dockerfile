@@ -3,14 +3,12 @@ FROM oven/bun:latest AS build
 
 WORKDIR /app/beskid_tracker
 
-# Workspace-linked packages must exist before `bun install` (trudoc, docs-ui).
+COPY .npmrc beskid_tracker/.npmrc ./
 COPY beskid_tracker/package.json beskid_tracker/bun.lock ./
-COPY packages/beskid-docs-ui/package.json /app/packages/beskid-docs-ui/package.json
-COPY packages/trudoc/package.json /app/packages/trudoc/package.json
+ARG NODE_AUTH_TOKEN
+ENV NODE_AUTH_TOKEN=${NODE_AUTH_TOKEN}
 RUN bun install --frozen-lockfile
 
-COPY packages/beskid-docs-ui /app/packages/beskid-docs-ui
-COPY packages/trudoc /app/packages/trudoc
 COPY beskid_tracker/ ./
 
 ENV SKIP_ENV_VALIDATION=1

@@ -1,0 +1,17 @@
+{
+  "id": "visitor-pattern-analysis-refactor",
+  "number": 20,
+  "title": "Visitor-pattern refactors for control flow and type checking",
+  "statusColumn": "Done",
+  "priority": "medium",
+  "workstream": "compiler-analysis",
+  "domain": "compiler",
+  "area": "analysis",
+  "completedAt": "2026-02-27",
+  "deliverableId": "v00-analysis-foundation",
+  "source": {
+    "repo": "pekan",
+    "commit": "8780c42",
+    "subject": "Refactor control flow, name resolution, and type checking to use traversal visitor pattern"
+  }
+}

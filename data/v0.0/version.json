@@ -1,0 +1,15 @@
+{
+  "id": "v0.0",
+  "title": "Pecan prototype",
+  "summary": "Pecan-era research baseline: parser and semantic pipeline, JIT/runtime with simple GC spikes, early LSP prototype, and project structure exploration before the Beskid rename.",
+  "theme": "prototype spikes and historical research",
+  "stage": "delivered",
+  "cutoff": {
+    "startDate": "2026-02-18",
+    "endDate": "2026-03-05",
+    "startCommitSha": "269ac9d",
+    "endCommitSha": "dd75bff",
+    "endCommitRepo": "compiler",
+    "rationale": "Pecan prototype history up to compiler submodule handoff (2026-03-05). Historical Pecan repo was deleted; commit SHAs preserved from archived history (Cascade snapshot commits omitted)."
+  }
+}

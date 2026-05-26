@@ -1,0 +1,17 @@
+{
+  "id": "semantic-analysis-spec",
+  "number": 2,
+  "title": "Author semantic analysis specification and workspace layout",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "compiler-analysis",
+  "domain": "compiler",
+  "area": "analysis",
+  "completedAt": "2026-02-21",
+  "deliverableId": "v00-analysis-foundation",
+  "source": {
+    "repo": "pekan",
+    "commit": "cc55d59",
+    "subject": "Add workspace members and semantic analysis documentation"
+  }
+}

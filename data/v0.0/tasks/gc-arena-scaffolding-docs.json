@@ -1,0 +1,17 @@
+{
+  "id": "gc-arena-scaffolding-docs",
+  "number": 9,
+  "title": "Document gc-arena runtime GC scaffolding",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "codegen-runtime",
+  "domain": "execution",
+  "area": "gc",
+  "completedAt": "2026-02-24",
+  "deliverableId": "v00-execution-jit-gc",
+  "source": {
+    "repo": "pekan",
+    "commit": "98240ca",
+    "subject": "Add gc-arena workspace members and runtime GC scaffolding documentation"
+  }
+}

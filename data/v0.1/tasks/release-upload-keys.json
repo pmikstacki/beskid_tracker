@@ -5,7 +5,6 @@
   "priority": "high",
   "workstream": "ci-release",
   "completedAt": "2026-04-22",
-  "milestoneId": "v01-cli-release",
   "source": {
     "repo": "compiler",
     "commit": "090156e",

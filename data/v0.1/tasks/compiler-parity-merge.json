@@ -1,0 +1,16 @@
+{
+  "id": "compiler-parity-merge",
+  "number": 104,
+  "title": "Finalize compiler parity and stdlib/runtime tests",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "compiler-foundation",
+  "domain": "compiler",
+  "completedAt": "2026-04-09",
+  "deliverableId": "v01-compiler-parity",
+  "source": {
+    "repo": "compiler",
+    "commit": "1f8d62d",
+    "subject": "Finalize compiler parity and stdlib/runtime test updates"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "slug": "concurrency-research",
+  "title": "Concurrency research",
+  "summary": "Early execution-plan research on fibers, channels, and parallel runtime models deferred to later delivery bands.",
+  "order": 3,
+  "deliverableIds": ["v00-execution-jit-gc"]
+}

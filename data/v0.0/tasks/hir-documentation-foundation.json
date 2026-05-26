@@ -1,0 +1,17 @@
+{
+  "id": "hir-documentation-foundation",
+  "number": 3,
+  "title": "Document HIR phase-indexed shared-core model",
+  "statusColumn": "Done",
+  "priority": "high",
+  "workstream": "compiler-analysis",
+  "domain": "compiler",
+  "area": "hir",
+  "completedAt": "2026-02-21",
+  "deliverableId": "v00-analysis-foundation",
+  "source": {
+    "repo": "pekan",
+    "commit": "230269f",
+    "subject": "Add HIR documentation structure and phase-indexed shared-core model foundation"
+  }
+}

@@ -8,7 +8,7 @@ Use [`docker-compose.yml`](docker-compose.yml) or [`infra/docker-compose.yml`](i
 
 ## Submodule clone failures
 
-Coolify may clone with `--recurse-submodules --shallow-submodules`. The **tracker image does not need submodules** — only `beskid_tracker/`, `packages/beskid-docs-ui/`, and `packages/trudoc/`. Recommended settings:
+Coolify may clone with `--recurse-submodules --shallow-submodules`. The **tracker image does not need submodules** — only `beskid_tracker/` plus GitHub Packages auth for `@cyber-nomad-collective/docs-ui` (root [`.npmrc`](../.npmrc), `NODE_AUTH_TOKEN` at build). Recommended settings:
 
 1. **Disable recursive submodules** for this application, or limit init to none.
 2. If submodules stay enabled, prefer a **non-shallow** clone when fetches fail on pinned SHAs.

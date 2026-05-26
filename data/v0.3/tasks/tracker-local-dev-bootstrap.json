@@ -1,0 +1,16 @@
+{
+  "id": "tracker-local-dev-bootstrap",
+  "number": 370,
+  "title": "Tracker local dev: run bun install before bun dev",
+  "statusColumn": "Backlog",
+  "priority": "medium",
+  "workstream": "dev-experience",
+  "domain": "tooling",
+  "area": "dx",
+  "body": "Fresh `beskid_tracker` checkouts fail `bun run dev` with `Script not found \"vite\"` until `bun install` completes. `@beskid/docs-ui` resolves from GitHub Packages and needs npm auth (`NPM_TOKEN` / `.npmrc`) or the install aborts before vite is linked.",
+  "source": {
+    "repo": "beskid",
+    "commit": "6438ae8",
+    "subject": "feat(superrepo): add beskid_tracker submodule, repo manifests, and Beskid hub UI."
+  }
+}

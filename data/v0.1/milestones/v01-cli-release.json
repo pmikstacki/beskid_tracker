@@ -1,7 +1,0 @@
-{
-  "id": "v01-cli-release",
-  "title": "CLI release pipeline stable",
-  "number": 3,
-  "description": "Multi-platform CLI artifacts upload reliably to SeaweedFS with retried transport.",
-  "closedOn": "2026-04-22"
-}
