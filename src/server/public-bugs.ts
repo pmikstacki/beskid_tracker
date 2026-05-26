@@ -8,7 +8,7 @@ import {
 import { createPublicBugIssue } from "#/lib/github/issues-service";
 import type { PublicBug, PublicBugStats } from "#/lib/github/types";
 import { readSyncState } from "#/lib/storage/issues-repository";
-import { triggerGitHubIssuesSync } from "#/lib/sync/github-issues-sync";
+import { triggerBoardSyncPull } from "#/lib/sync/board-sync-service";
 
 export interface PublicBugsPayload {
 	bugs: PublicBug[];
@@ -106,5 +106,5 @@ export const getPublicBugStatsFn = createServerFn({ method: "GET" }).handler(
 export const syncIssuesFn = createServerFn({ method: "POST" }).handler(async () => {
 	const { requireSession } = await import("#/server/auth-guard.server");
 	await requireSession();
-	return triggerGitHubIssuesSync(true);
+	return triggerBoardSyncPull(true);
 });

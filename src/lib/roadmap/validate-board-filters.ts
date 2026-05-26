@@ -9,11 +9,13 @@ export function assertBoardFilters(
 		areas: string[];
 		features: string[];
 	},
+	catalogWorkstreamSlugs: string[] = [],
 ): void {
-	if (
-		filters.workstream &&
-		!meta.workstreams.includes(filters.workstream)
-	) {
+	const knownWorkstreams = new Set([
+		...meta.workstreams,
+		...catalogWorkstreamSlugs,
+	]);
+	if (filters.workstream && !knownWorkstreams.has(filters.workstream)) {
 		throw new RoadmapScopeNotFoundError(
 			"workstream",
 			filters.version,

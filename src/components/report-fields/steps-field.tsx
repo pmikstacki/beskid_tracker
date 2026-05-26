@@ -1,7 +1,24 @@
 "use client";
 
+import {
+	DndContext,
+	closestCenter,
+	type DragEndEvent,
+	KeyboardSensor,
+	PointerSensor,
+	useSensor,
+	useSensors,
+} from "@dnd-kit/core";
+import {
+	arrayMove,
+	SortableContext,
+	sortableKeyboardCoordinates,
+	useSortable,
+	verticalListSortingStrategy,
+} from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
 import { GripVertical, Plus, Trash2 } from "lucide-react";
-import { useCallback } from "react";
+import { useCallback, useRef } from "react";
 
 import { ReportFieldChrome } from "#/components/report-fields/report-field-chrome";
 import { Button } from "#/components/ui/button";
@@ -9,7 +26,9 @@ import { Input } from "#/components/ui/input";
 import {
 	parseStepsValue,
 	serializeStepsValue,
+	type StepRow,
 } from "#/lib/report-issue/field-values";
+import { cn } from "#/lib/utils";
 
 interface StepsFieldProps {
 	id: string;
@@ -30,77 +49,198 @@ export function StepsField({
 	hint,
 	disabled,
 }: StepsFieldProps) {
-	const steps = parseStepsValue(value);
+	const rows = parseStepsValue(value);
+	const inputRefs = useRef<Map<string, HTMLInputElement>>(new Map());
+
+	const sensors = useSensors(
+		useSensor(PointerSensor, { activationConstraint: { distance: 6 } }),
+		useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates }),
+	);
 
 	const commit = useCallback(
-		(next: string[]) => {
+		(next: StepRow[]) => {
 			onChange(serializeStepsValue(next));
 		},
 		[onChange],
 	);
 
-	const updateStep = (index: number, text: string) => {
-		const next = [...steps];
-		next[index] = text;
+	const focusRow = (rowId: string) => {
+		requestAnimationFrame(() => {
+			inputRefs.current.get(rowId)?.focus();
+		});
+	};
+
+	const updateRow = (rowId: string, text: string) => {
+		commit(rows.map((row) => (row.id === rowId ? { ...row, text } : row)));
+	};
+
+	const addRowAfter = (index: number) => {
+		const nextRow: StepRow = { id: crypto.randomUUID(), text: "" };
+		const next = [...rows];
+		next.splice(index + 1, 0, nextRow);
 		commit(next);
+		focusRow(nextRow.id);
 	};
 
-	const addStep = () => {
-		commit([...steps, ""]);
+	const removeRow = (rowId: string) => {
+		const next = rows.filter((row) => row.id !== rowId);
+		commit(next.length > 0 ? next : [{ id: crypto.randomUUID(), text: "" }]);
 	};
 
-	const removeStep = (index: number) => {
-		const next = steps.filter((_, i) => i !== index);
-		commit(next.length > 0 ? next : [""]);
+	const onDragEnd = (event: DragEndEvent) => {
+		const { active, over } = event;
+		if (!over || active.id === over.id) return;
+		const oldIndex = rows.findIndex((row) => row.id === active.id);
+		const newIndex = rows.findIndex((row) => row.id === over.id);
+		if (oldIndex < 0 || newIndex < 0) return;
+		commit(arrayMove(rows, oldIndex, newIndex));
 	};
 
 	return (
 		<ReportFieldChrome id={id} label={label} hint={hint} className="work-item-steps">
-			<ul className="space-y-2">
-				{steps.map((step, index) => (
-					<li
-						key={`${id}-step-${index}`}
-						className="bg-muted/20 flex items-start gap-2 rounded-lg border border-border/60 p-2"
-					>
-						<span className="text-muted-foreground mt-2 flex shrink-0 items-center gap-1">
-							<GripVertical className="size-3.5 opacity-40" aria-hidden />
-							<span className="bg-primary/10 text-primary flex size-6 items-center justify-center rounded-full text-xs font-semibold">
-								{index + 1}
-							</span>
-						</span>
-						<Input
-							value={step}
-							onChange={(e) => updateStep(index, e.target.value)}
-							placeholder={placeholder}
-							disabled={disabled}
-							className="border-0 bg-transparent shadow-none focus-visible:ring-0"
-							aria-label={`Step ${index + 1}`}
-						/>
-						<Button
-							type="button"
-							variant="ghost"
-							size="icon-sm"
-							className="text-muted-foreground hover:text-destructive mt-0.5 shrink-0"
-							disabled={disabled || steps.length <= 1}
-							aria-label={`Remove step ${index + 1}`}
-							onClick={() => removeStep(index)}
-						>
-							<Trash2 className="size-4" />
-						</Button>
-					</li>
-				))}
-			</ul>
+			<DndContext
+				sensors={sensors}
+				collisionDetection={closestCenter}
+				onDragEnd={onDragEnd}
+			>
+				<SortableContext
+					items={rows.map((row) => row.id)}
+					strategy={verticalListSortingStrategy}
+				>
+					<ul className="space-y-2">
+						{rows.map((row, index) => (
+							<SortableStepRow
+								key={row.id}
+								row={row}
+								index={index}
+								placeholder={placeholder}
+								disabled={disabled}
+								canRemove={rows.length > 1}
+								setInputRef={(el) => {
+									if (el) inputRefs.current.set(row.id, el);
+									else inputRefs.current.delete(row.id);
+								}}
+								onTextChange={(text) => updateRow(row.id, text)}
+								onEnter={() => addRowAfter(index)}
+								onBackspaceEmpty={() => {
+									if (row.text.trim() === "" && rows.length > 1) {
+										removeRow(row.id);
+										const prev = rows[index - 1];
+										if (prev) focusRow(prev.id);
+									}
+								}}
+								onRemove={() => removeRow(row.id)}
+							/>
+						))}
+					</ul>
+				</SortableContext>
+			</DndContext>
 			<Button
 				type="button"
 				variant="outline"
 				size="sm"
 				className="mt-2 h-8"
 				disabled={disabled}
-				onClick={addStep}
+				onClick={() => addRowAfter(rows.length - 1)}
 			>
 				<Plus className="size-3.5" />
 				Add step
 			</Button>
 		</ReportFieldChrome>
+	);
+}
+
+function SortableStepRow({
+	row,
+	index,
+	placeholder,
+	disabled,
+	canRemove,
+	setInputRef,
+	onTextChange,
+	onEnter,
+	onBackspaceEmpty,
+	onRemove,
+}: {
+	row: StepRow;
+	index: number;
+	placeholder: string;
+	disabled?: boolean;
+	canRemove: boolean;
+	setInputRef: (el: HTMLInputElement | null) => void;
+	onTextChange: (text: string) => void;
+	onEnter: () => void;
+	onBackspaceEmpty: () => void;
+	onRemove: () => void;
+}) {
+	const {
+		attributes,
+		listeners,
+		setNodeRef,
+		setActivatorNodeRef,
+		transform,
+		transition,
+		isDragging,
+	} = useSortable({ id: row.id, disabled });
+
+	const style = {
+		transform: CSS.Transform.toString(transform),
+		transition,
+	};
+
+	return (
+		<li
+			ref={setNodeRef}
+			style={style}
+			className={cn(
+				"bg-muted/20 flex items-start gap-2 rounded-lg border border-border/60 p-2",
+				isDragging && "z-10 opacity-60 shadow-md",
+			)}
+		>
+			<button
+				type="button"
+				ref={setActivatorNodeRef}
+				className="text-muted-foreground mt-2 flex shrink-0 cursor-grab touch-none items-center gap-1 active:cursor-grabbing"
+				disabled={disabled}
+				aria-label={`Drag step ${index + 1}`}
+				{...attributes}
+				{...listeners}
+			>
+				<GripVertical className="size-3.5" />
+				<span className="bg-primary/10 text-primary flex size-6 items-center justify-center rounded-full text-xs font-semibold">
+					{index + 1}
+				</span>
+			</button>
+			<Input
+				ref={setInputRef}
+				value={row.text}
+				onChange={(e) => onTextChange(e.target.value)}
+				onKeyDown={(e) => {
+					if (e.key === "Enter" && !e.shiftKey) {
+						e.preventDefault();
+						onEnter();
+					}
+					if (e.key === "Backspace" && row.text === "") {
+						e.preventDefault();
+						onBackspaceEmpty();
+					}
+				}}
+				placeholder={placeholder}
+				disabled={disabled}
+				className="border-0 bg-transparent shadow-none focus-visible:ring-0"
+				aria-label={`Step ${index + 1}`}
+			/>
+			<Button
+				type="button"
+				variant="ghost"
+				size="icon-sm"
+				className="text-muted-foreground hover:text-destructive mt-0.5 shrink-0"
+				disabled={disabled || !canRemove}
+				aria-label={`Remove step ${index + 1}`}
+				onClick={onRemove}
+			>
+				<Trash2 className="size-4" />
+			</Button>
+		</li>
 	);
 }

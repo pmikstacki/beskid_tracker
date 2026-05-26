@@ -66,6 +66,35 @@ export function persistGithubIssue(issue: GitHubIssuePayload): void {
 	upsertGithubIssue(getIssuesDatabase(), issue);
 }
 
+export function deleteStoredIssue(number: number): boolean {
+	const db = getIssuesDatabase();
+	const result = db.run("DELETE FROM github_issues WHERE number = ?", [number]);
+	return result.changes > 0;
+}
+
+/** Recompute sync_state issue counts from the local mirror (after webhook or import). */
+export function recomputeSyncStateFromStore(): void {
+	const db = getIssuesDatabase();
+	const openRow = db
+		.query<{ count: number }, []>(
+			`
+			SELECT COUNT(*) AS count FROM github_issues
+			WHERE state = 'open' AND is_pull_request = 0
+			`,
+		)
+		.get();
+	const bugRow = db
+		.query<{ count: number }, []>(
+			`
+			SELECT COUNT(*) AS count FROM github_issues
+			WHERE has_bug_label = 1 AND is_pull_request = 0
+			`,
+		)
+		.get();
+
+	writeSyncSuccess(openRow?.count ?? 0, bugRow?.count ?? 0);
+}
+
 export function deleteIssuesExcept(numbers: Set<number>): number {
 	const db = getIssuesDatabase();
 	const rows = db.query<{ number: number }, []>("SELECT number FROM github_issues").all();

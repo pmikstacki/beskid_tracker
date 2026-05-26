@@ -91,16 +91,26 @@ function VersionOverviewPage() {
 										<CardHeader className="pb-2">
 											<CardTitle className="text-base">
 												<Link
-													to="/versions/$version/workstreams/$slug"
-													params={{ version: version.id, slug: ws.slug }}
+													to="/v/$version/w/$workstream"
+													params={{
+														version: version.id,
+														workstream: ws.slug,
+													}}
 													className="hover:underline"
 												>
 													{ws.title}
 												</Link>
 											</CardTitle>
 										</CardHeader>
-										<CardContent className="text-muted-foreground pt-0 text-xs">
-											{ws.summary}
+										<CardContent className="text-muted-foreground flex flex-col gap-2 pt-0 text-xs">
+											<p>{ws.summary}</p>
+											<Link
+												to="/versions/$version/workstreams/$slug"
+												params={{ version: version.id, slug: ws.slug }}
+												className="text-primary text-xs hover:underline"
+											>
+												Overview
+											</Link>
 										</CardContent>
 									</Card>
 								</li>

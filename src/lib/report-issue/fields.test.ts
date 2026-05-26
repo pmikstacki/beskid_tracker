@@ -8,7 +8,7 @@ import {
 	reportSection,
 } from "#/lib/report-issue/fields";
 import type { ReportAttachmentDraft } from "#/lib/report-issue/field-values";
-import { serializeStepsValue } from "#/lib/report-issue/field-values";
+import { serializeStepsValue, type StepRow } from "#/lib/report-issue/field-values";
 
 describe("report form layout", () => {
 	it("collects fields from nested groups and sections", () => {
@@ -45,7 +45,10 @@ describe("report form layout", () => {
 			reportField({ id: "steps", kind: "steps", label: "Steps to reproduce" }),
 		];
 
-		const stepsJson = serializeStepsValue(["Open CLI", "Run build"]);
+		const stepsJson = serializeStepsValue([
+			{ id: "1", text: "Open CLI" },
+			{ id: "2", text: "Run build" },
+		] satisfies StepRow[]);
 		expect(buildReportBody(layout, { steps: stepsJson })).toBe(
 			"### Steps to reproduce\n\n1. Open CLI\n2. Run build",
 		);

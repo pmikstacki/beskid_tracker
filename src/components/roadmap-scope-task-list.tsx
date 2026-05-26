@@ -63,9 +63,20 @@ export function RoadmapScopeTaskList({
 								</a>
 							) : null}
 							<Link
-								to="/v/$version"
-								params={{ version: versionId }}
-								search={{ q: `#${task.number}` }}
+								{...(task.workstream
+									? {
+											to: "/v/$version/w/$workstream" as const,
+											params: {
+												version: versionId,
+												workstream: task.workstream,
+											},
+											search: { q: `#${task.number}` },
+										}
+									: {
+											to: "/v/$version" as const,
+											params: { version: versionId },
+											search: { q: `#${task.number}` },
+										})}
 								className="text-primary ml-auto hover:underline"
 							>
 								Open on board →

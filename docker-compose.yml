@@ -1,19 +1,20 @@
+# Coolify entrypoint (see COOLIFY.md). Build context is the superrepo root.
 services:
-  roadmap:
+  tracker:
     build:
-      context: .
-      dockerfile: Dockerfile.local
+      context: ..
+      dockerfile: beskid_tracker/Dockerfile
     restart: unless-stopped
-    env_file:
-      - path: .env
-        required: false
-    ports:
-      - "3000:3000"
+    expose:
+      - "3000"
     volumes:
-      - ./data/runtime:/app/beskid_tracker/data/runtime
+      - tracker-data:/app/beskid_tracker/data/runtime
     healthcheck:
       test: ["CMD-SHELL", "wget -q --spider http://127.0.0.1:3000/ || exit 1"]
       interval: 30s
       timeout: 5s
       retries: 3
       start_period: 15s
+
+volumes:
+  tracker-data:

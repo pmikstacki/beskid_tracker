@@ -1,6 +1,6 @@
-# Coolify entrypoint (see beskid_tracker/README.md). Build context is the superrepo root.
+# Coolify entrypoint (see beskid_tracker/COOLIFY.md). Build context is the superrepo root.
 services:
-  roadmap:
+  tracker:
     build:
       context: ../..
       dockerfile: beskid_tracker/Dockerfile

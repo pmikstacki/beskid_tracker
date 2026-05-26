@@ -13,6 +13,8 @@ import { Route as LoginRouteImport } from './routes/login'
 import { Route as ShellRouteImport } from './routes/_shell'
 import { Route as ShellIndexRouteImport } from './routes/_shell/index'
 import { Route as ShellBugsRouteImport } from './routes/_shell/bugs'
+import { Route as ShellDocsIndexRouteImport } from './routes/_shell/docs/index'
+import { Route as ApiWebhooksGithubRouteImport } from './routes/api/webhooks/github'
 import { Route as ApiAuthMeRouteImport } from './routes/api/auth/me'
 import { Route as ApiAuthLogoutRouteImport } from './routes/api/auth/logout'
 import { Route as ApiAuthGithubRouteImport } from './routes/api/auth/github'
@@ -20,13 +22,23 @@ import { Route as ApiAuthCallbackRouteImport } from './routes/api/auth/callback'
 import { Route as ShellVersionsVersionRouteImport } from './routes/_shell/versions/$version'
 import { Route as ShellVVersionRouteImport } from './routes/_shell/v/$version'
 import { Route as ShellVersionsVersionIndexRouteImport } from './routes/_shell/versions/$version/index'
+import { Route as ShellDocsProposalsIndexRouteImport } from './routes/_shell/docs/proposals/index'
+import { Route as ShellDocsCatalogIndexRouteImport } from './routes/_shell/docs/catalog/index'
 import { Route as ShellWorkstreamsVVersionRouteImport } from './routes/_shell/workstreams/v/$version'
+import { Route as ShellDocsProposalsNewRouteImport } from './routes/_shell/docs/proposals/new'
+import { Route as ShellDocsCatalogSlugRouteImport } from './routes/_shell/docs/catalog/$slug'
+import { Route as ShellDocsProposalsIdIndexRouteImport } from './routes/_shell/docs/proposals/$id/index'
 import { Route as ShellVersionsVersionWorkstreamsSlugRouteImport } from './routes/_shell/versions/$version/workstreams/$slug'
 import { Route as ShellVersionsVersionMilestonesMilestoneIdRouteImport } from './routes/_shell/versions/$version/milestones/$milestoneId'
 import { Route as ShellVersionsVersionFeatureSlugRouteImport } from './routes/_shell/versions/$version/feature/$slug'
 import { Route as ShellVersionsVersionDomainSlugRouteImport } from './routes/_shell/versions/$version/domain/$slug'
 import { Route as ShellVersionsVersionDeliverablesDeliverableIdRouteImport } from './routes/_shell/versions/$version/deliverables/$deliverableId'
 import { Route as ShellVersionsVersionAreaSlugRouteImport } from './routes/_shell/versions/$version/area/$slug'
+import { Route as ShellVVersionWWorkstreamRouteImport } from './routes/_shell/v/$version/w/$workstream'
+import { Route as ShellVVersionTasksNewRouteImport } from './routes/_shell/v/$version/tasks/new'
+import { Route as ShellDocsProposalsIdChangesNewRouteImport } from './routes/_shell/docs/proposals/$id/changes/new'
+import { Route as ShellDocsProposalsIdChangesChangeIdRouteImport } from './routes/_shell/docs/proposals/$id/changes/$changeId'
+import { Route as ShellVVersionWWorkstreamTasksNewRouteImport } from './routes/_shell/v/$version/w/$workstream/tasks/new'
 
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
@@ -46,6 +58,16 @@ const ShellBugsRoute = ShellBugsRouteImport.update({
   id: '/bugs',
   path: '/bugs',
   getParentRoute: () => ShellRoute,
+} as any)
+const ShellDocsIndexRoute = ShellDocsIndexRouteImport.update({
+  id: '/docs/',
+  path: '/docs/',
+  getParentRoute: () => ShellRoute,
+} as any)
+const ApiWebhooksGithubRoute = ApiWebhooksGithubRouteImport.update({
+  id: '/api/webhooks/github',
+  path: '/api/webhooks/github',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const ApiAuthMeRoute = ApiAuthMeRouteImport.update({
   id: '/api/auth/me',
@@ -83,10 +105,36 @@ const ShellVersionsVersionIndexRoute =
     path: '/',
     getParentRoute: () => ShellVersionsVersionRoute,
   } as any)
+const ShellDocsProposalsIndexRoute = ShellDocsProposalsIndexRouteImport.update({
+  id: '/docs/proposals/',
+  path: '/docs/proposals/',
+  getParentRoute: () => ShellRoute,
+} as any)
+const ShellDocsCatalogIndexRoute = ShellDocsCatalogIndexRouteImport.update({
+  id: '/docs/catalog/',
+  path: '/docs/catalog/',
+  getParentRoute: () => ShellRoute,
+} as any)
 const ShellWorkstreamsVVersionRoute =
   ShellWorkstreamsVVersionRouteImport.update({
     id: '/workstreams/v/$version',
     path: '/workstreams/v/$version',
+    getParentRoute: () => ShellRoute,
+  } as any)
+const ShellDocsProposalsNewRoute = ShellDocsProposalsNewRouteImport.update({
+  id: '/docs/proposals/new',
+  path: '/docs/proposals/new',
+  getParentRoute: () => ShellRoute,
+} as any)
+const ShellDocsCatalogSlugRoute = ShellDocsCatalogSlugRouteImport.update({
+  id: '/docs/catalog/$slug',
+  path: '/docs/catalog/$slug',
+  getParentRoute: () => ShellRoute,
+} as any)
+const ShellDocsProposalsIdIndexRoute =
+  ShellDocsProposalsIdIndexRouteImport.update({
+    id: '/docs/proposals/$id/',
+    path: '/docs/proposals/$id/',
     getParentRoute: () => ShellRoute,
   } as any)
 const ShellVersionsVersionWorkstreamsSlugRoute =
@@ -125,43 +173,96 @@ const ShellVersionsVersionAreaSlugRoute =
     path: '/area/$slug',
     getParentRoute: () => ShellVersionsVersionRoute,
   } as any)
+const ShellVVersionWWorkstreamRoute =
+  ShellVVersionWWorkstreamRouteImport.update({
+    id: '/w/$workstream',
+    path: '/w/$workstream',
+    getParentRoute: () => ShellVVersionRoute,
+  } as any)
+const ShellVVersionTasksNewRoute = ShellVVersionTasksNewRouteImport.update({
+  id: '/tasks/new',
+  path: '/tasks/new',
+  getParentRoute: () => ShellVVersionRoute,
+} as any)
+const ShellDocsProposalsIdChangesNewRoute =
+  ShellDocsProposalsIdChangesNewRouteImport.update({
+    id: '/docs/proposals/$id/changes/new',
+    path: '/docs/proposals/$id/changes/new',
+    getParentRoute: () => ShellRoute,
+  } as any)
+const ShellDocsProposalsIdChangesChangeIdRoute =
+  ShellDocsProposalsIdChangesChangeIdRouteImport.update({
+    id: '/docs/proposals/$id/changes/$changeId',
+    path: '/docs/proposals/$id/changes/$changeId',
+    getParentRoute: () => ShellRoute,
+  } as any)
+const ShellVVersionWWorkstreamTasksNewRoute =
+  ShellVVersionWWorkstreamTasksNewRouteImport.update({
+    id: '/tasks/new',
+    path: '/tasks/new',
+    getParentRoute: () => ShellVVersionWWorkstreamRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof ShellIndexRoute
   '/login': typeof LoginRoute
   '/bugs': typeof ShellBugsRoute
-  '/v/$version': typeof ShellVVersionRoute
+  '/v/$version': typeof ShellVVersionRouteWithChildren
   '/versions/$version': typeof ShellVersionsVersionRouteWithChildren
   '/api/auth/callback': typeof ApiAuthCallbackRoute
   '/api/auth/github': typeof ApiAuthGithubRoute
   '/api/auth/logout': typeof ApiAuthLogoutRoute
   '/api/auth/me': typeof ApiAuthMeRoute
+  '/api/webhooks/github': typeof ApiWebhooksGithubRoute
+  '/docs/': typeof ShellDocsIndexRoute
+  '/docs/catalog/$slug': typeof ShellDocsCatalogSlugRoute
+  '/docs/proposals/new': typeof ShellDocsProposalsNewRoute
   '/workstreams/v/$version': typeof ShellWorkstreamsVVersionRoute
+  '/docs/catalog/': typeof ShellDocsCatalogIndexRoute
+  '/docs/proposals/': typeof ShellDocsProposalsIndexRoute
   '/versions/$version/': typeof ShellVersionsVersionIndexRoute
+  '/v/$version/tasks/new': typeof ShellVVersionTasksNewRoute
+  '/v/$version/w/$workstream': typeof ShellVVersionWWorkstreamRouteWithChildren
   '/versions/$version/area/$slug': typeof ShellVersionsVersionAreaSlugRoute
   '/versions/$version/deliverables/$deliverableId': typeof ShellVersionsVersionDeliverablesDeliverableIdRoute
   '/versions/$version/domain/$slug': typeof ShellVersionsVersionDomainSlugRoute
   '/versions/$version/feature/$slug': typeof ShellVersionsVersionFeatureSlugRoute
   '/versions/$version/milestones/$milestoneId': typeof ShellVersionsVersionMilestonesMilestoneIdRoute
   '/versions/$version/workstreams/$slug': typeof ShellVersionsVersionWorkstreamsSlugRoute
+  '/docs/proposals/$id/': typeof ShellDocsProposalsIdIndexRoute
+  '/docs/proposals/$id/changes/$changeId': typeof ShellDocsProposalsIdChangesChangeIdRoute
+  '/docs/proposals/$id/changes/new': typeof ShellDocsProposalsIdChangesNewRoute
+  '/v/$version/w/$workstream/tasks/new': typeof ShellVVersionWWorkstreamTasksNewRoute
 }
 export interface FileRoutesByTo {
   '/login': typeof LoginRoute
   '/bugs': typeof ShellBugsRoute
   '/': typeof ShellIndexRoute
-  '/v/$version': typeof ShellVVersionRoute
+  '/v/$version': typeof ShellVVersionRouteWithChildren
   '/api/auth/callback': typeof ApiAuthCallbackRoute
   '/api/auth/github': typeof ApiAuthGithubRoute
   '/api/auth/logout': typeof ApiAuthLogoutRoute
   '/api/auth/me': typeof ApiAuthMeRoute
+  '/api/webhooks/github': typeof ApiWebhooksGithubRoute
+  '/docs': typeof ShellDocsIndexRoute
+  '/docs/catalog/$slug': typeof ShellDocsCatalogSlugRoute
+  '/docs/proposals/new': typeof ShellDocsProposalsNewRoute
   '/workstreams/v/$version': typeof ShellWorkstreamsVVersionRoute
+  '/docs/catalog': typeof ShellDocsCatalogIndexRoute
+  '/docs/proposals': typeof ShellDocsProposalsIndexRoute
   '/versions/$version': typeof ShellVersionsVersionIndexRoute
+  '/v/$version/tasks/new': typeof ShellVVersionTasksNewRoute
+  '/v/$version/w/$workstream': typeof ShellVVersionWWorkstreamRouteWithChildren
   '/versions/$version/area/$slug': typeof ShellVersionsVersionAreaSlugRoute
   '/versions/$version/deliverables/$deliverableId': typeof ShellVersionsVersionDeliverablesDeliverableIdRoute
   '/versions/$version/domain/$slug': typeof ShellVersionsVersionDomainSlugRoute
   '/versions/$version/feature/$slug': typeof ShellVersionsVersionFeatureSlugRoute
   '/versions/$version/milestones/$milestoneId': typeof ShellVersionsVersionMilestonesMilestoneIdRoute
   '/versions/$version/workstreams/$slug': typeof ShellVersionsVersionWorkstreamsSlugRoute
+  '/docs/proposals/$id': typeof ShellDocsProposalsIdIndexRoute
+  '/docs/proposals/$id/changes/$changeId': typeof ShellDocsProposalsIdChangesChangeIdRoute
+  '/docs/proposals/$id/changes/new': typeof ShellDocsProposalsIdChangesNewRoute
+  '/v/$version/w/$workstream/tasks/new': typeof ShellVVersionWWorkstreamTasksNewRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -169,20 +270,32 @@ export interface FileRoutesById {
   '/login': typeof LoginRoute
   '/_shell/bugs': typeof ShellBugsRoute
   '/_shell/': typeof ShellIndexRoute
-  '/_shell/v/$version': typeof ShellVVersionRoute
+  '/_shell/v/$version': typeof ShellVVersionRouteWithChildren
   '/_shell/versions/$version': typeof ShellVersionsVersionRouteWithChildren
   '/api/auth/callback': typeof ApiAuthCallbackRoute
   '/api/auth/github': typeof ApiAuthGithubRoute
   '/api/auth/logout': typeof ApiAuthLogoutRoute
   '/api/auth/me': typeof ApiAuthMeRoute
+  '/api/webhooks/github': typeof ApiWebhooksGithubRoute
+  '/_shell/docs/': typeof ShellDocsIndexRoute
+  '/_shell/docs/catalog/$slug': typeof ShellDocsCatalogSlugRoute
+  '/_shell/docs/proposals/new': typeof ShellDocsProposalsNewRoute
   '/_shell/workstreams/v/$version': typeof ShellWorkstreamsVVersionRoute
+  '/_shell/docs/catalog/': typeof ShellDocsCatalogIndexRoute
+  '/_shell/docs/proposals/': typeof ShellDocsProposalsIndexRoute
   '/_shell/versions/$version/': typeof ShellVersionsVersionIndexRoute
+  '/_shell/v/$version/tasks/new': typeof ShellVVersionTasksNewRoute
+  '/_shell/v/$version/w/$workstream': typeof ShellVVersionWWorkstreamRouteWithChildren
   '/_shell/versions/$version/area/$slug': typeof ShellVersionsVersionAreaSlugRoute
   '/_shell/versions/$version/deliverables/$deliverableId': typeof ShellVersionsVersionDeliverablesDeliverableIdRoute
   '/_shell/versions/$version/domain/$slug': typeof ShellVersionsVersionDomainSlugRoute
   '/_shell/versions/$version/feature/$slug': typeof ShellVersionsVersionFeatureSlugRoute
   '/_shell/versions/$version/milestones/$milestoneId': typeof ShellVersionsVersionMilestonesMilestoneIdRoute
   '/_shell/versions/$version/workstreams/$slug': typeof ShellVersionsVersionWorkstreamsSlugRoute
+  '/_shell/docs/proposals/$id/': typeof ShellDocsProposalsIdIndexRoute
+  '/_shell/docs/proposals/$id/changes/$changeId': typeof ShellDocsProposalsIdChangesChangeIdRoute
+  '/_shell/docs/proposals/$id/changes/new': typeof ShellDocsProposalsIdChangesNewRoute
+  '/_shell/v/$version/w/$workstream/tasks/new': typeof ShellVVersionWWorkstreamTasksNewRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -196,14 +309,26 @@ export interface FileRouteTypes {
     | '/api/auth/github'
     | '/api/auth/logout'
     | '/api/auth/me'
+    | '/api/webhooks/github'
+    | '/docs/'
+    | '/docs/catalog/$slug'
+    | '/docs/proposals/new'
     | '/workstreams/v/$version'
+    | '/docs/catalog/'
+    | '/docs/proposals/'
     | '/versions/$version/'
+    | '/v/$version/tasks/new'
+    | '/v/$version/w/$workstream'
     | '/versions/$version/area/$slug'
     | '/versions/$version/deliverables/$deliverableId'
     | '/versions/$version/domain/$slug'
     | '/versions/$version/feature/$slug'
     | '/versions/$version/milestones/$milestoneId'
     | '/versions/$version/workstreams/$slug'
+    | '/docs/proposals/$id/'
+    | '/docs/proposals/$id/changes/$changeId'
+    | '/docs/proposals/$id/changes/new'
+    | '/v/$version/w/$workstream/tasks/new'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/login'
@@ -214,14 +339,26 @@ export interface FileRouteTypes {
     | '/api/auth/github'
     | '/api/auth/logout'
     | '/api/auth/me'
+    | '/api/webhooks/github'
+    | '/docs'
+    | '/docs/catalog/$slug'
+    | '/docs/proposals/new'
     | '/workstreams/v/$version'
+    | '/docs/catalog'
+    | '/docs/proposals'
     | '/versions/$version'
+    | '/v/$version/tasks/new'
+    | '/v/$version/w/$workstream'
     | '/versions/$version/area/$slug'
     | '/versions/$version/deliverables/$deliverableId'
     | '/versions/$version/domain/$slug'
     | '/versions/$version/feature/$slug'
     | '/versions/$version/milestones/$milestoneId'
     | '/versions/$version/workstreams/$slug'
+    | '/docs/proposals/$id'
+    | '/docs/proposals/$id/changes/$changeId'
+    | '/docs/proposals/$id/changes/new'
+    | '/v/$version/w/$workstream/tasks/new'
   id:
     | '__root__'
     | '/_shell'
@@ -234,14 +371,26 @@ export interface FileRouteTypes {
     | '/api/auth/github'
     | '/api/auth/logout'
     | '/api/auth/me'
+    | '/api/webhooks/github'
+    | '/_shell/docs/'
+    | '/_shell/docs/catalog/$slug'
+    | '/_shell/docs/proposals/new'
     | '/_shell/workstreams/v/$version'
+    | '/_shell/docs/catalog/'
+    | '/_shell/docs/proposals/'
     | '/_shell/versions/$version/'
+    | '/_shell/v/$version/tasks/new'
+    | '/_shell/v/$version/w/$workstream'
     | '/_shell/versions/$version/area/$slug'
     | '/_shell/versions/$version/deliverables/$deliverableId'
     | '/_shell/versions/$version/domain/$slug'
     | '/_shell/versions/$version/feature/$slug'
     | '/_shell/versions/$version/milestones/$milestoneId'
     | '/_shell/versions/$version/workstreams/$slug'
+    | '/_shell/docs/proposals/$id/'
+    | '/_shell/docs/proposals/$id/changes/$changeId'
+    | '/_shell/docs/proposals/$id/changes/new'
+    | '/_shell/v/$version/w/$workstream/tasks/new'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -251,6 +400,7 @@ export interface RootRouteChildren {
   ApiAuthGithubRoute: typeof ApiAuthGithubRoute
   ApiAuthLogoutRoute: typeof ApiAuthLogoutRoute
   ApiAuthMeRoute: typeof ApiAuthMeRoute
+  ApiWebhooksGithubRoute: typeof ApiWebhooksGithubRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -282,6 +432,20 @@ declare module '@tanstack/react-router' {
       fullPath: '/bugs'
       preLoaderRoute: typeof ShellBugsRouteImport
       parentRoute: typeof ShellRoute
+    }
+    '/_shell/docs/': {
+      id: '/_shell/docs/'
+      path: '/docs'
+      fullPath: '/docs/'
+      preLoaderRoute: typeof ShellDocsIndexRouteImport
+      parentRoute: typeof ShellRoute
+    }
+    '/api/webhooks/github': {
+      id: '/api/webhooks/github'
+      path: '/api/webhooks/github'
+      fullPath: '/api/webhooks/github'
+      preLoaderRoute: typeof ApiWebhooksGithubRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/api/auth/me': {
       id: '/api/auth/me'
@@ -332,11 +496,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ShellVersionsVersionIndexRouteImport
       parentRoute: typeof ShellVersionsVersionRoute
     }
+    '/_shell/docs/proposals/': {
+      id: '/_shell/docs/proposals/'
+      path: '/docs/proposals'
+      fullPath: '/docs/proposals/'
+      preLoaderRoute: typeof ShellDocsProposalsIndexRouteImport
+      parentRoute: typeof ShellRoute
+    }
+    '/_shell/docs/catalog/': {
+      id: '/_shell/docs/catalog/'
+      path: '/docs/catalog'
+      fullPath: '/docs/catalog/'
+      preLoaderRoute: typeof ShellDocsCatalogIndexRouteImport
+      parentRoute: typeof ShellRoute
+    }
     '/_shell/workstreams/v/$version': {
       id: '/_shell/workstreams/v/$version'
       path: '/workstreams/v/$version'
       fullPath: '/workstreams/v/$version'
       preLoaderRoute: typeof ShellWorkstreamsVVersionRouteImport
+      parentRoute: typeof ShellRoute
+    }
+    '/_shell/docs/proposals/new': {
+      id: '/_shell/docs/proposals/new'
+      path: '/docs/proposals/new'
+      fullPath: '/docs/proposals/new'
+      preLoaderRoute: typeof ShellDocsProposalsNewRouteImport
+      parentRoute: typeof ShellRoute
+    }
+    '/_shell/docs/catalog/$slug': {
+      id: '/_shell/docs/catalog/$slug'
+      path: '/docs/catalog/$slug'
+      fullPath: '/docs/catalog/$slug'
+      preLoaderRoute: typeof ShellDocsCatalogSlugRouteImport
+      parentRoute: typeof ShellRoute
+    }
+    '/_shell/docs/proposals/$id/': {
+      id: '/_shell/docs/proposals/$id/'
+      path: '/docs/proposals/$id'
+      fullPath: '/docs/proposals/$id/'
+      preLoaderRoute: typeof ShellDocsProposalsIdIndexRouteImport
       parentRoute: typeof ShellRoute
     }
     '/_shell/versions/$version/workstreams/$slug': {
@@ -381,8 +580,72 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ShellVersionsVersionAreaSlugRouteImport
       parentRoute: typeof ShellVersionsVersionRoute
     }
+    '/_shell/v/$version/w/$workstream': {
+      id: '/_shell/v/$version/w/$workstream'
+      path: '/w/$workstream'
+      fullPath: '/v/$version/w/$workstream'
+      preLoaderRoute: typeof ShellVVersionWWorkstreamRouteImport
+      parentRoute: typeof ShellVVersionRoute
+    }
+    '/_shell/v/$version/tasks/new': {
+      id: '/_shell/v/$version/tasks/new'
+      path: '/tasks/new'
+      fullPath: '/v/$version/tasks/new'
+      preLoaderRoute: typeof ShellVVersionTasksNewRouteImport
+      parentRoute: typeof ShellVVersionRoute
+    }
+    '/_shell/docs/proposals/$id/changes/new': {
+      id: '/_shell/docs/proposals/$id/changes/new'
+      path: '/docs/proposals/$id/changes/new'
+      fullPath: '/docs/proposals/$id/changes/new'
+      preLoaderRoute: typeof ShellDocsProposalsIdChangesNewRouteImport
+      parentRoute: typeof ShellRoute
+    }
+    '/_shell/docs/proposals/$id/changes/$changeId': {
+      id: '/_shell/docs/proposals/$id/changes/$changeId'
+      path: '/docs/proposals/$id/changes/$changeId'
+      fullPath: '/docs/proposals/$id/changes/$changeId'
+      preLoaderRoute: typeof ShellDocsProposalsIdChangesChangeIdRouteImport
+      parentRoute: typeof ShellRoute
+    }
+    '/_shell/v/$version/w/$workstream/tasks/new': {
+      id: '/_shell/v/$version/w/$workstream/tasks/new'
+      path: '/tasks/new'
+      fullPath: '/v/$version/w/$workstream/tasks/new'
+      preLoaderRoute: typeof ShellVVersionWWorkstreamTasksNewRouteImport
+      parentRoute: typeof ShellVVersionWWorkstreamRoute
+    }
   }
 }
+
+interface ShellVVersionWWorkstreamRouteChildren {
+  ShellVVersionWWorkstreamTasksNewRoute: typeof ShellVVersionWWorkstreamTasksNewRoute
+}
+
+const ShellVVersionWWorkstreamRouteChildren: ShellVVersionWWorkstreamRouteChildren =
+  {
+    ShellVVersionWWorkstreamTasksNewRoute:
+      ShellVVersionWWorkstreamTasksNewRoute,
+  }
+
+const ShellVVersionWWorkstreamRouteWithChildren =
+  ShellVVersionWWorkstreamRoute._addFileChildren(
+    ShellVVersionWWorkstreamRouteChildren,
+  )
+
+interface ShellVVersionRouteChildren {
+  ShellVVersionTasksNewRoute: typeof ShellVVersionTasksNewRoute
+  ShellVVersionWWorkstreamRoute: typeof ShellVVersionWWorkstreamRouteWithChildren
+}
+
+const ShellVVersionRouteChildren: ShellVVersionRouteChildren = {
+  ShellVVersionTasksNewRoute: ShellVVersionTasksNewRoute,
+  ShellVVersionWWorkstreamRoute: ShellVVersionWWorkstreamRouteWithChildren,
+}
+
+const ShellVVersionRouteWithChildren = ShellVVersionRoute._addFileChildren(
+  ShellVVersionRouteChildren,
+)
 
 interface ShellVersionsVersionRouteChildren {
   ShellVersionsVersionIndexRoute: typeof ShellVersionsVersionIndexRoute
@@ -413,17 +676,34 @@ const ShellVersionsVersionRouteWithChildren =
 interface ShellRouteChildren {
   ShellBugsRoute: typeof ShellBugsRoute
   ShellIndexRoute: typeof ShellIndexRoute
-  ShellVVersionRoute: typeof ShellVVersionRoute
+  ShellVVersionRoute: typeof ShellVVersionRouteWithChildren
   ShellVersionsVersionRoute: typeof ShellVersionsVersionRouteWithChildren
+  ShellDocsIndexRoute: typeof ShellDocsIndexRoute
+  ShellDocsCatalogSlugRoute: typeof ShellDocsCatalogSlugRoute
+  ShellDocsProposalsNewRoute: typeof ShellDocsProposalsNewRoute
   ShellWorkstreamsVVersionRoute: typeof ShellWorkstreamsVVersionRoute
+  ShellDocsCatalogIndexRoute: typeof ShellDocsCatalogIndexRoute
+  ShellDocsProposalsIndexRoute: typeof ShellDocsProposalsIndexRoute
+  ShellDocsProposalsIdIndexRoute: typeof ShellDocsProposalsIdIndexRoute
+  ShellDocsProposalsIdChangesChangeIdRoute: typeof ShellDocsProposalsIdChangesChangeIdRoute
+  ShellDocsProposalsIdChangesNewRoute: typeof ShellDocsProposalsIdChangesNewRoute
 }
 
 const ShellRouteChildren: ShellRouteChildren = {
   ShellBugsRoute: ShellBugsRoute,
   ShellIndexRoute: ShellIndexRoute,
-  ShellVVersionRoute: ShellVVersionRoute,
+  ShellVVersionRoute: ShellVVersionRouteWithChildren,
   ShellVersionsVersionRoute: ShellVersionsVersionRouteWithChildren,
+  ShellDocsIndexRoute: ShellDocsIndexRoute,
+  ShellDocsCatalogSlugRoute: ShellDocsCatalogSlugRoute,
+  ShellDocsProposalsNewRoute: ShellDocsProposalsNewRoute,
   ShellWorkstreamsVVersionRoute: ShellWorkstreamsVVersionRoute,
+  ShellDocsCatalogIndexRoute: ShellDocsCatalogIndexRoute,
+  ShellDocsProposalsIndexRoute: ShellDocsProposalsIndexRoute,
+  ShellDocsProposalsIdIndexRoute: ShellDocsProposalsIdIndexRoute,
+  ShellDocsProposalsIdChangesChangeIdRoute:
+    ShellDocsProposalsIdChangesChangeIdRoute,
+  ShellDocsProposalsIdChangesNewRoute: ShellDocsProposalsIdChangesNewRoute,
 }
 
 const ShellRouteWithChildren = ShellRoute._addFileChildren(ShellRouteChildren)
@@ -435,6 +715,7 @@ const rootRouteChildren: RootRouteChildren = {
   ApiAuthGithubRoute: ApiAuthGithubRoute,
   ApiAuthLogoutRoute: ApiAuthLogoutRoute,
   ApiAuthMeRoute: ApiAuthMeRoute,
+  ApiWebhooksGithubRoute: ApiWebhooksGithubRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

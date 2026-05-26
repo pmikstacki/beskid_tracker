@@ -12,7 +12,10 @@ export type ReportFieldKind =
 	| "select"
 	| "markdown"
 	| "steps"
-	| "attachments";
+	| "attachments"
+	| "spec-parent"
+	| "related-topics"
+	| "layout-preset";
 
 export type ReportGroupLayout = "vertical" | "horizontal";
 

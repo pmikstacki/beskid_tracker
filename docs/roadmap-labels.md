@@ -31,7 +31,7 @@ Each roadmap issue belongs to exactly one delivery band:
 | `roadmap/version/v0.3` | v0.3 delivery |
 | `roadmap/version/v0.4` | v0.4 delivery |
 
-The kanban board at `/v/v0.2` (for example) lists open issues with the matching version label. Only the **repository owner** (or org admin) can register additional `roadmap/version/*` labels from the UI.
+The **global** kanban board at `/v/v0.2` lists all open issues for that delivery version. Each catalog workstream also has a dedicated board at `/v/v0.2/w/<slug>` (for example `/v/v0.2/w/platform-spec`) scoped to `roadmap/workstream/<slug>`. Only the **repository owner** (or org admin) can register additional `roadmap/version/*` labels from the UI.
 
 ## Workstream
 

@@ -13,6 +13,7 @@ import {
 } from "#/lib/report-issue/fields";
 import {
 	fileToBase64,
+	serializeStepsValue,
 	type ReportAttachmentDraft,
 } from "#/lib/report-issue/field-values";
 
@@ -52,7 +53,13 @@ export function ReportIssueForm({
 	const initialValues = useMemo(() => {
 		const next: Record<string, string> = {};
 		for (const field of fieldList) {
-			next[field.id] = field.kind === "steps" ? "[]" : "";
+			if (field.kind === "steps") {
+				next[field.id] = serializeStepsValue([
+					{ id: crypto.randomUUID(), text: "" },
+				]);
+			} else {
+				next[field.id] = "";
+			}
 		}
 		return next;
 	}, [fieldList]);

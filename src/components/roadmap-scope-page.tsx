@@ -48,6 +48,15 @@ export function RoadmapScopePage({
 				</div>
 				<div className="flex flex-wrap items-center gap-2">
 					<Badge variant="outline">{tasks.length} tasks</Badge>
+					{scope === "workstream" ? (
+						<Link
+							to="/v/$version/w/$workstream"
+							params={{ version: version.id, workstream: slug }}
+							className="text-sm font-medium hover:underline"
+						>
+							Open board →
+						</Link>
+					) : null}
 					<Link
 						to="/versions/$version"
 						params={{ version: version.id }}

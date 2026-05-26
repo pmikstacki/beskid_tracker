@@ -15,13 +15,14 @@ import {
 import { collectBoardMeta } from "#/lib/github/mappers";
 import { canManageRoadmap } from "#/lib/github/permissions";
 import type { BoardPayload } from "#/lib/github/types";
+import { catalogWorkstreamSlugs } from "#/lib/roadmap/build-catalog";
 import { assertBoardFilters } from "#/lib/roadmap/validate-board-filters";
+import { useSeedData } from "#/lib/seed/config";
 import {
 	listSeedVersionLabels,
 	loadAllSeedRoadmapTasks,
 	tasksToColumns,
-	useSeedData,
-} from "#/lib/seed";
+} from "#/lib/seed/load";
 import { getAuthUser } from "#/server/auth";
 
 async function withAuth<T>(
@@ -52,7 +53,11 @@ export const getBoard = createServerFn({ method: "GET" })
 				const scoped = collectBoardMeta(
 					all.filter((t) => t.version === data.version),
 				);
-				assertBoardFilters(data, scoped);
+				assertBoardFilters(
+					data,
+					scoped,
+					catalogWorkstreamSlugs(data.version),
+				);
 				return {
 					meta: {
 						versions: listSeedVersionLabels(),
@@ -71,7 +76,11 @@ export const getBoard = createServerFn({ method: "GET" })
 			const scoped = collectBoardMeta(
 				all.filter((t) => t.version === data.version),
 			);
-			assertBoardFilters(data, scoped);
+			assertBoardFilters(
+				data,
+				scoped,
+				catalogWorkstreamSlugs(data.version),
+			);
 			const canManage = await canManageRoadmap(octokit, login);
 
 			return {

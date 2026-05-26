@@ -136,6 +136,12 @@ function fallbackCatalog(): RoadmapCatalog {
 	};
 }
 
+export function catalogWorkstreamSlugs(versionId: string): string[] {
+	const catalog = buildRoadmapCatalog(versionId);
+	const version = catalog.versions.find((v) => v.id === versionId);
+	return version?.workstreams.map((w) => w.slug) ?? [];
+}
+
 export function buildRoadmapCatalog(
 	preferredVersionId?: string,
 ): RoadmapCatalog {

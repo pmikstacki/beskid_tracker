@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "bun --bun vite dev --port 3000",
     "build": "bun --bun vite build",
-    "start": "bun --bun vite preview --host 0.0.0.0 --port 3000",
+    "start": "bun --bun vite preview --host 0.0.0.0 --port ${PORT:-3000}",
     "preview": "bun --bun vite preview",
     "test": "bun --bun vitest run",
     "format": "bunx biome format",
@@ -64,7 +64,9 @@
     "tailwind-merge": "^3.0.2",
     "tailwindcss": "^4.1.18",
     "tw-animate-css": "^1.3.6",
+    "trudoc": "file:../packages/trudoc",
     "vaul": "^1.1.2",
+    "yaml": "^2.7.0",
     "zod": "^4.3.6"
   },
   "devDependencies": {

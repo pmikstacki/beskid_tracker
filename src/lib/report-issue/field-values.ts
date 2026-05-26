@@ -1,30 +1,52 @@
-/** Serialized reproduction steps (stored in form values JSON). */
-export function parseStepsValue(raw: string): string[] {
-	if (!raw.trim()) return [""];
+/** One row in the reproduction-steps editor (stable id for DnD). */
+export interface StepRow {
+	id: string;
+	text: string;
+}
+
+function newStepId(): string {
+	return crypto.randomUUID();
+}
+
+function rowsFromStrings(steps: string[]): StepRow[] {
+	if (steps.length === 0) return [{ id: newStepId(), text: "" }];
+	return steps.map((text) => ({ id: newStepId(), text }));
+}
+
+/** Parse form value into editable rows (keeps empty trailing steps). */
+export function parseStepsValue(raw: string): StepRow[] {
+	if (!raw.trim()) return [{ id: newStepId(), text: "" }];
 	try {
 		const parsed = JSON.parse(raw) as unknown;
-		if (Array.isArray(parsed) && parsed.length > 0) {
-			return parsed.map((step) => String(step));
+		if (!Array.isArray(parsed) || parsed.length === 0) {
+			return [{ id: newStepId(), text: "" }];
 		}
+		if (typeof parsed[0] === "object" && parsed[0] !== null && "id" in parsed[0]) {
+			return (parsed as StepRow[]).map((row) => ({
+				id: String(row.id),
+				text: String(row.text ?? ""),
+			}));
+		}
+		return rowsFromStrings((parsed as unknown[]).map((step) => String(step)));
 	} catch {
-		// Legacy plain-text fallback
 		const lines = raw
 			.split("\n")
-			.map((line) => line.replace(/^\s*\d+\.\s*/, "").trim())
-			.filter(Boolean);
-		if (lines.length > 0) return lines;
+			.map((line) => line.replace(/^\s*\d+\.\s*/, "").trim());
+		if (lines.length === 0) return [{ id: newStepId(), text: "" }];
+		return rowsFromStrings(lines);
 	}
-	return [""];
 }
 
-export function serializeStepsValue(steps: string[]): string {
-	const trimmed = steps.map((s) => s.trim()).filter(Boolean);
-	return JSON.stringify(trimmed.length > 0 ? trimmed : []);
+/** Persist editor rows (includes empty steps so Add / Enter can append). */
+export function serializeStepsValue(rows: StepRow[]): string {
+	return JSON.stringify(
+		rows.length > 0 ? rows : [{ id: newStepId(), text: "" }],
+	);
 }
 
-export function stepsToMarkdown(steps: string[]): string {
-	return steps
-		.map((step) => step.trim())
+export function stepsToMarkdown(rows: StepRow[]): string {
+	return rows
+		.map((row) => row.text.trim())
 		.filter(Boolean)
 		.map((step, index) => `${index + 1}. ${step}`)
 		.join("\n");

@@ -63,17 +63,23 @@ function WorkstreamsPage() {
 								<Badge variant="secondary">{ws.issueCount} tasks</Badge>
 								<Badge variant="outline">{ws.inProgressCount} in progress</Badge>
 								<Badge>{ws.doneCount} done</Badge>
-								<Link
-									to="/v/$version"
-									params={{ version }}
-									search={{
-										workstream:
-											ws.slug === "_unassigned" ? undefined : ws.slug,
-									}}
-									className="text-primary mt-2 text-sm hover:underline"
-								>
-									Open on board →
-								</Link>
+								{ws.slug === "_unassigned" ? (
+									<Link
+										to="/v/$version"
+										params={{ version }}
+										className="text-primary mt-2 text-sm hover:underline"
+									>
+										Open on global board →
+									</Link>
+								) : (
+									<Link
+										to="/v/$version/w/$workstream"
+										params={{ version, workstream: ws.slug }}
+										className="text-primary mt-2 text-sm hover:underline"
+									>
+										Open board →
+									</Link>
+								)}
 							</CardContent>
 						</Card>
 					))}

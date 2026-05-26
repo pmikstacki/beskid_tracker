@@ -1,7 +1,7 @@
 "use client";
 
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Bug, ChevronUp, ExternalLink, LogOut, Map } from "lucide-react";
+import { Bug, ChevronUp, ExternalLink, FileText, LogOut, Map } from "lucide-react";
 
 import { ReportIssueDialog } from "#/components/report-issue-dialog";
 import { RoadmapNavTree } from "#/components/roadmap-nav-tree";
@@ -50,6 +50,7 @@ export function AppSidebar({
 	const pathname = useRouterState({ select: (s) => s.location.pathname });
 	const onRoadmapHome = pathname === "/";
 	const onBugs = pathname.startsWith("/bugs");
+	const onDocs = pathname.startsWith("/docs");
 	const activeVersion =
 		version ??
 		(pathname.match(/\/versions\/([^/]+)/)?.[1] as string | undefined) ??
@@ -191,6 +192,18 @@ export function AppSidebar({
 									</Link>
 								</SidebarMenuButton>
 							</SidebarMenuItem>
+							<SidebarMenuItem>
+								<SidebarMenuButton
+									asChild
+									isActive={onDocs}
+									tooltip="Platform spec"
+								>
+									<Link to="/docs/catalog">
+										<FileText />
+										<span>Platform spec</span>
+									</Link>
+								</SidebarMenuButton>
+							</SidebarMenuItem>
 						</SidebarMenu>
 					</SidebarGroupContent>
 				</SidebarGroup>
@@ -222,6 +235,7 @@ export function AppSidebar({
 						</SidebarMenu>
 					</SidebarGroupContent>
 				</SidebarGroup>
+
 			</SidebarContent>
 
 			<SidebarFooter className="border-t border-sidebar-border">

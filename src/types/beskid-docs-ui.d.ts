@@ -1,5 +1,11 @@
-declare module "@beskid/docs-ui/react/BeskidHub" {
-	import type { FC } from "react";
+import type { HTMLAttributes } from "react";
 
-	export const BeskidHub: FC;
+declare module "react" {
+	namespace JSX {
+		interface IntrinsicElements {
+			"beskid-hub": HTMLAttributes<HTMLElement> & {
+				services?: string;
+			};
+		}
+	}
 }

@@ -43,7 +43,9 @@ export function RoadmapNavTree({
 	const deliverableOpen =
 		pathname.includes(`${versionPrefix}/deliverables/`) ||
 		pathname.includes(`${versionPrefix}/milestones/`);
-	const workstreamOpen = pathname.includes(`${versionPrefix}/workstreams/`);
+	const workstreamOpen =
+		pathname.includes(`${versionPrefix}/workstreams/`) ||
+		pathname.includes(`/v/${version.id}/w/`);
 
 	return (
 		<SidebarGroup className="group-data-[collapsible=icon]:hidden">
@@ -78,12 +80,15 @@ export function RoadmapNavTree({
 						<SidebarMenuItem>
 							<SidebarMenuButton
 								asChild
-								isActive={pathname === `/v/${version.id}`}
-								tooltip="Kanban board"
+								isActive={
+									pathname === `/v/${version.id}` ||
+									pathname === `/v/${version.id}/`
+								}
+								tooltip="All workstreams"
 							>
 								<Link to="/v/$version" params={{ version: version.id }}>
 									<KanbanSquare />
-									<span>Board</span>
+									<span>Global board</span>
 								</Link>
 							</SidebarMenuButton>
 						</SidebarMenuItem>
@@ -165,14 +170,17 @@ export function RoadmapNavTree({
 													asChild
 													isActive={
 														pathname ===
-														`${versionPrefix}/workstreams/${ws.slug}`
+															`/v/${version.id}/w/${ws.slug}` ||
+														pathname.startsWith(
+															`/v/${version.id}/w/${ws.slug}/`,
+														)
 													}
 												>
 													<Link
-														to="/versions/$version/workstreams/$slug"
+														to="/v/$version/w/$workstream"
 														params={{
 															version: version.id,
-															slug: ws.slug,
+															workstream: ws.slug,
 														}}
 													>
 														<span className="truncate">{ws.title}</span>

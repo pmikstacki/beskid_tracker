@@ -1,8 +1,11 @@
 "use client";
 
 import { AttachmentsField } from "#/components/report-fields/attachments-field";
+import { LayoutPresetField } from "#/components/report-fields/layout-preset-field";
 import { MarkdownField } from "#/components/report-fields/markdown-field";
+import { RelatedTopicsField } from "#/components/report-fields/related-topics-field";
 import { ReportFormSection } from "#/components/report-fields/report-field-chrome";
+import { SpecParentField } from "#/components/report-fields/spec-parent-field";
 import { StepsField } from "#/components/report-fields/steps-field";
 import { Input } from "#/components/ui/input";
 import {
@@ -363,6 +366,45 @@ function ReportFieldControl({
 					className="min-h-[5rem] resize-y"
 				/>
 			</div>
+		);
+	}
+
+	if (field.kind === "spec-parent") {
+		return (
+			<SpecParentField
+				id={fieldId}
+				label={field.label}
+				value={value}
+				hint={field.hint}
+				required={field.required}
+				disabled={pending}
+				onChange={(next) => onValueChange(field.id, next)}
+			/>
+		);
+	}
+
+	if (field.kind === "related-topics") {
+		return (
+			<RelatedTopicsField
+				id={fieldId}
+				label={field.label}
+				value={value || "[]"}
+				hint={field.hint}
+				disabled={pending}
+				onChange={(next) => onValueChange(field.id, next)}
+			/>
+		);
+	}
+
+	if (field.kind === "layout-preset") {
+		return (
+			<LayoutPresetField
+				label={field.label}
+				value={value}
+				hint={field.hint}
+				disabled={pending}
+				onChange={(next) => onValueChange(field.id, next)}
+			/>
 		);
 	}
 

@@ -1,6 +1,6 @@
 # Beskid Tracker
 
-[TanStack Start](https://tanstack.com/start) tracker and roadmap planner for the [Cyber-Nomad-Collective/beskid](https://github.com/Cyber-Nomad-Collective/beskid) superrepo. Public bug reports and the delivery timeline are version-agnostic; kanban boards are per delivery version. **GitHub Issues remain the source of truth** for creates and updates; the app mirrors open issues (and closed `bug`-labeled issues) in a local **SQLite** store and serves reads from that mirror so anonymous traffic does not hammer the GitHub REST API. Each issue belongs to a **delivery version** (`v0.1`–`v0.4`); the kanban board is per version. [Platform specification](https://beskid-lang.org/platform-spec/) nodes are linked with typed relations in issue bodies; the repo owner approves spec linkages.
+[TanStack Start](https://tanstack.com/start) tracker and roadmap planner for the [Cyber-Nomad-Collective/beskid](https://github.com/Cyber-Nomad-Collective/beskid) superrepo. Public bug reports and the delivery timeline are version-agnostic; kanban boards are per delivery version. **GitHub Issues remain the source of truth** for creates and updates; the app mirrors open issues (and closed `bug`-labeled issues) in a local **SQLite** store and serves reads from that mirror so anonymous traffic does not hammer the GitHub REST API. Issue changes arrive via **GitHub webhooks** (no background REST polling). Configure the webhook on the **Settings** tab in the sync drawer, or set `GITHUB_WEBHOOK_SECRET` in the environment. Each issue belongs to a **delivery version** (`v0.1`–`v0.4`); the kanban board is per version. [Platform specification](https://beskid-lang.org/platform-spec/) nodes are linked with typed relations in issue bodies; the repo owner approves spec linkages.
 
 ## Stack
 
@@ -46,8 +46,8 @@ cp .env.example .env
 | `GITHUB_SYNC_TOKEN` | PAT for background issue sync (falls back to `GITHUB_PUBLIC_READ_TOKEN`) |
 | `GITHUB_PUBLIC_READ_TOKEN` | Optional PAT used for sync when `GITHUB_SYNC_TOKEN` is unset |
 | `TRACKER_DATA_DIR` | SQLite directory (default `data/runtime`) — mount as a volume in Docker |
-| `ISSUES_SYNC_STALE_MS` | Background refresh interval (default 5 minutes) |
-| `ISSUES_SYNC_ON_START` | Set `0` to skip eager sync after the store is warm |
+| `GITHUB_WEBHOOK_SECRET` | Webhook HMAC secret (overrides Settings tab; optional in dev) |
+| `TRACKER_PUBLIC_URL` | Public origin for webhook URL (optional; Settings tab can override) |
 | `ISSUES_SYNC_DISABLED` | Set `1` to disable sync (read-only empty store) |
 | *(none)* | Platform spec pages and nav JSON always use `https://beskid-lang.org` |
 
@@ -66,22 +66,25 @@ Create a GitHub OAuth App with callback URL matching `GITHUB_OAUTH_CALLBACK_URL`
 
 ## Docker
 
-**Local** (from `beskid_tracker/`, uses `Dockerfile.local` + `oven/bun:latest`):
+**Coolify** (recommended): base directory **`/beskid_tracker`**, compose file [`docker-compose.yml`](docker-compose.yml) or [`infra/docker-compose.yml`](infra/docker-compose.yml). See **[COOLIFY.md](COOLIFY.md)** for secrets, volumes, and submodule settings.
+
+**Local smoke test** (superrepo root, same image as production):
+
+```bash
+docker compose -f beskid_tracker/docker-compose.yml up --build
+# or: docker compose -f beskid_tracker/infra/docker-compose.yml up --build
+```
+
+**Local dev** (hot reload, not the production image):
 
 ```bash
 cd beskid_tracker
-cp .env.example .env   # optional for container OAuth
-podman compose up --build
-# or: docker compose up --build
+cp .env.example .env
+bun install
+bun run dev
 ```
 
-Do not run compose from the superrepo root unless you use `infra/docker-compose.yml` (that build copies `beskid_tracker/`, not `site/website/`).
-
-**Coolify / superrepo** (context = repo root):
-
-```bash
-docker compose -f beskid_tracker/infra/docker-compose.yml up --build
-```
+Optional: [`docker-compose.local.yml`](docker-compose.local.yml) from `beskid_tracker/` (maps port 3000, bind-mounts `data/runtime`). Requires running `docker compose` from the superrepo root so `context: ..` resolves correctly.
 
 Runtime requires the same env vars as above (set in Coolify secrets). Register the production callback URL on the OAuth App (for example `https://tracker.beskid-lang.org/api/auth/callback`).
 
@@ -102,9 +105,13 @@ Build uses `SKIP_ENV_VALIDATION=1`; validation runs at runtime when the containe
 |------|---------|
 | `/` | Delivery timeline (public) |
 | `/bugs` | **Public bug tracker** (open issues labeled `bug`; report via in-app dialog when signed in) |
-| `/v/$version` | Version kanban + filters (auth required) |
-| `/workstreams/v/$version` | Workstream dashboard (auth required) |
+| `/v/$version` | Global version kanban (all workstreams; auth required) |
+| `/v/$version/w/$workstream` | Per-workstream kanban (auth required) |
+| `/workstreams/v/$version` | Workstream summary cards (auth required) |
+| `/versions/$version/workstreams/$slug` | Workstream catalog overview (auth required) |
 | `/login` | GitHub OAuth sign-in |
+| `/docs/catalog` | Platform-spec catalog (all documents, including ADRs) |
+| `/docs/proposals` | Spec change proposals (draft → validate → PR) |
 
 Sidebar **Bugs** is global (no delivery version). **Hub** opens the cross-site Beskid services overlay (shared with docs and pckg).
 
@@ -124,11 +131,12 @@ Set `ROADMAP_USE_SEED=1` to serve the kanban and workstreams dashboards from tha
 - `src/routes/` — UI and `/api/auth/*` server routes
 - `src/server/` — `createServerFn` handlers (`roadmap.ts`, `issues.ts`, `public-bugs.ts`)
 - `src/lib/storage/` — SQLite schema and issue repository
-- `src/lib/sync/` — GitHub → SQLite sync job
+- `src/lib/sync/` — GitHub → SQLite sync (webhooks + manual bootstrap)
+- `src/routes/api/webhooks/` — GitHub issue webhook receiver
 - `src/lib/issues/` — read path from the local mirror
 - `src/lib/github/` — labels, mappers, filters, GitHub write helpers
 - `src/lib/seed/` — Zod schemas, disk loader, `RoadmapTask` mapping
-- `src/lib/platform-spec/` — spec relations block and nav search (fetches nav tree from docs site)
+- `src/lib/platform-spec/` — spec relations block, nav search, and **docs management** (full catalog + per-doc bundles from `/generated/platform-spec-catalog.json`, proposal drafts in SQLite, PR submit via GitHub API)
 
 ## Auth flow
 
