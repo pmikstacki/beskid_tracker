@@ -5,13 +5,13 @@
   "statusColumn": "Done",
   "priority": "medium",
   "workstream": "pckg-registry",
-  "milestoneId": "v03-pckg-tool-registry",
+  "milestoneId": "v03-merge-wave",
   "domain": "tooling",
   "completedAt": "2026-05-23",
-  "milestoneId": "v03-merge-wave",
   "source": {
     "repo": "compiler",
     "commit": "4579bab",
     "subject": "feat(pckg): `beskid pckg pack --package-kind tool` and override-aware profile detection"
-  }
+  },
+  "body": "## What shipped\n\nCLI supports `beskid pckg pack --package-kind tool` with override-aware profile detection for tool packages.\n\n## Source commit\n\nRepository **`compiler`** \u00b7 commit `4579bab`\n\n> feat(pckg): `beskid pckg pack --package-kind tool` and override-aware profile detection\n\n## Completed\n\n2026-05-23 (catalog cutoff window)."
 }

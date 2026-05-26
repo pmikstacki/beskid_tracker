@@ -12,5 +12,6 @@
     "repo": "beskid",
     "commit": "a12e285",
     "subject": "fix(git): pin beskid_vscode submodule to canonical GitHub URL"
-  }
+  },
+  "body": "## Outcome\n\nPin beskid_vscode submodule to canonical GitHub URL.\n\n## Context\n\n- Workstream **dev-experience** — see workstream summary on the catalog.\n- Contributes to deliverable **VS Code extension & Open VSX** (`v02-editor-extension`).\n- Open VSX matrix includes **darwin-arm64** and **darwin-x64** with cross-built Intel LSP where needed.\n\n## Provenance\n\n- **Repository:** `beskid`\n- **Commit:** [`a12e285`](https://github.com/Cyber-Nomad-Collective/beskid/commit/a12e285) — fix(git): pin beskid_vscode submodule to canonical GitHub URL"
 }

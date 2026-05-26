@@ -10,7 +10,9 @@
   "source": {
     "repo": "compiler",
     "commit": "8fa00e9",
-    "subject": "refactor: stdlib only from nested corelib submodule"
+    "subject": "refactor: stdlib only from nested corelib submodule",
+    "url": "https://github.com/Cyber-Nomad-Collective/compiler/commit/8fa00e9"
   },
-  "statusColumn": "Done"
+  "statusColumn": "Done",
+  "body": "Refactors CLI/stdlib resolution so artifacts come **only** from the nested corelib submodule path.\n\n## Provenance\n- **Repository:** `compiler`\n- **Commit:** [`8fa00e9`](https://github.com/Cyber-Nomad-Collective/compiler/commit/8fa00e9)\n- **Subject:** refactor: stdlib only from nested corelib submodule\n- **Completed:** 2026-04-10\n\n## Catalog scope\n- **Delivery version:** v0.1 (Compiler foundation)\n- **Workstream:** `corelib-packaging`\n- **Deliverable:** `v01-corelib-submodule`\n\n## Relation\nFinalizes **v01-corelib-submodule** stdlib single-source policy."
 }

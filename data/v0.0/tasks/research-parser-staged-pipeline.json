@@ -9,7 +9,7 @@
   "area": "analysis",
   "completedAt": "2026-02-23",
   "deliverableId": "v00-analysis-foundation",
-  "body": "Validated PecanParser feeding staged rules; informed later beskid_pipeline phase model.",
+  "body": "## What was done\n\nValidated **PecanParser** (Pest) feeding a **staged semantic rule pipeline**: rules run in explicit phases with documented ordering and diagnostic integration status.\n\n## Why it mattered\n\nConfirmed that parse output could flow into HIR-backed rules without a second ad-hoc AST—direct precursor to Beskid’s typed-HIR spine and `beskid_pipeline` phase IDs.\n\n## Research conclusion\n\nStaged rules + span-backed diagnostics are viable; later bands replaced Pecan-specific naming but kept the phase model.",
   "source": {
     "repo": "pekan",
     "commit": "33eaa35",

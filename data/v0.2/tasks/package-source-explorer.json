@@ -12,5 +12,6 @@
     "repo": "pckg",
     "commit": "52dc7c9",
     "subject": "pckg: package source explorer, docs/structured API, BlazorMonaco preview, artifact explorer"
-  }
+  },
+  "body": "## Outcome\n\nPackage source explorer, docs/structured API, BlazorMonaco preview, artifact explorer.\n\n## Context\n\n- Workstream **pckg-registry** — registry and PackageDocs UI.\n- Contributes to deliverable **Registry dashboard and package docs foundation** (`v02-pckg-registry-foundation`).\n\n## Provenance\n\n- **Repository:** `pckg`\n- **Commit:** [`52dc7c9`](https://github.com/Cyber-Nomad-Collective/pckg/commit/52dc7c9) — pckg: package source explorer, docs/structured API, BlazorMonaco preview, artifact explorer"
 }

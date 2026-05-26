@@ -10,5 +10,6 @@
     "repo": "beskid",
     "commit": "278da1b",
     "subject": "fix(docs): unify doc nav drawer and persist rail state across navigation"
-  }
+  },
+  "body": "## What shipped\n\nBook and platform-spec share one off-canvas drawer pattern; rail collapse state persists in `localStorage` across in-site navigations.\n\n## Source commit\n\nRepository **`beskid`** \u00b7 commit `278da1b`\n\n> fix(docs): unify doc nav drawer and persist rail state across navigation\n\n## Completed\n\n2026-05-24 (catalog cutoff window)."
 }

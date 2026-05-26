@@ -22,5 +22,6 @@
     "repo": "compiler",
     "commit": "efb67a5",
     "subject": "feat(compiler): composition, macros, structured API docs, and resolver fixes"
-  }
+  },
+  "body": "## Outcome\n\nComposition, macros, structured API docs, and resolver fixes.\n\n## Context\n\n- Workstream **analysis-pipeline** — compiler pipeline and api.json spine.\n- Contributes to deliverable **Composition HIR & macro expansion** (`v02-composition-macros-hir`).\n- Macro work follows platform-spec **language-meta/macros** semantics (registry, expand pass, resolver re-resolve).\n\n## Platform specification\n\n- Implements [Composition assembly](https://beskid-lang.org/platform-spec/compiler/pipeline/composition-assembly) (`/platform-spec/compiler/pipeline/composition-assembly`) *(required)*\n\n## Provenance\n\n- **Repository:** `compiler`\n- **Commit:** [`efb67a5`](https://github.com/Cyber-Nomad-Collective/compiler/commit/efb67a5) — feat(compiler): composition, macros, structured API docs, and resolver fixes"
 }

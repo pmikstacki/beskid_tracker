@@ -22,5 +22,6 @@
     "repo": "compiler",
     "commit": "a91d258",
     "subject": "feat(mod_host): wire mod.collect/generate/analyze/rewrite through ContractInvoker"
-  }
+  },
+  "body": "## What shipped\n\nMod host routes `collect`, `generate`, `analyze`, and `rewrite` through **ContractInvoker** so Beskid mods use SDK contracts uniformly.\n\n## Platform specification\n\n- **Mod host bridge** \u2014 `/platform-spec/compiler/mods/mod-host-bridge` \u2014 *implements* (required)\n\n## Source commit\n\nRepository **`compiler`** \u00b7 commit `a91d258`\n\n> feat(mod_host): wire mod.collect/generate/analyze/rewrite through ContractInvoker\n\n## Completed\n\n2026-05-23 (catalog cutoff window)."
 }

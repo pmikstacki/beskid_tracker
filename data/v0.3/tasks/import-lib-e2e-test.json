@@ -11,5 +11,6 @@
     "repo": "compiler",
     "commit": "8e2eebe",
     "subject": "test(cli): cover beskid import lib end-to-end manifest mutation"
-  }
+  },
+  "body": "## What shipped\n\nE2e test covers `beskid import lib` end-to-end manifest mutation and registry consistency.\n\n## Source commit\n\nRepository **`compiler`** \u00b7 commit `8e2eebe`\n\n> test(cli): cover beskid import lib end-to-end manifest mutation\n\n## Completed\n\n2026-05-23 (catalog cutoff window)."
 }

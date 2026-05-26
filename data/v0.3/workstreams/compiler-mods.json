@@ -1,6 +1,7 @@
 {
   "slug": "compiler-mods",
   "title": "Compiler mods & imports",
-  "summary": "compiler mod execution, ContractInvoker mod host, import lib CLI, Project.proj link reconciliation, and mod integration tests.",
-  "order": 3
+  "summary": "Compiler-mod execution merge: ContractInvoker mod host wiring, SampleMod fixture and pipeline integration tests, platform-spec mod-host-bridge anchors, `beskid import lib` CLI with ExternalLibrary closed registry, Project.proj link parser/merge, and native DI codegen/runtime E2E.",
+  "order": 3,
+  "deliverableIds": ["v03-merge-wave", "v03-analysis-interop", "v03-superrepo-orchestration"]
 }

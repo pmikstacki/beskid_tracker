@@ -2,6 +2,6 @@
   "id": "v03-post-merge-ci",
   "title": "CI and integration hardening",
   "number": 6,
-  "description": "Runtime bridge e2e, ASan serialization, ffi_v03 fixes, and verify-all evidence across v0.3 hardening.",
+  "description": "Post-merge CI on main: build release runtime bridge before AOT e2e, wire ASan bridge archive and serialize runtime tests, ffi_v03 and compiler submodule bumps, formatter MDX CI, Runtime CI on compiler pointer changes, corelib-quality submodule fix, and trudoc verify via Node.",
   "closedOn": "2026-05-24"
 }

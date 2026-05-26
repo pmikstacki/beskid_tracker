@@ -1,7 +1,7 @@
 {
   "id": "v03-corelib-tier-ship",
   "title": "Corelib tier collections ship",
-  "number": 7,
-  "description": "Tier-tagged collections, System.FS/Path packages, prelude contract fixes, and syscall JIT smoke coverage.",
+  "number": 3,
+  "description": "Tier-tagged collection types, new System.FS and System.Path packages, prelude Contracts/Diagnostics fixes, Tier1 grammar-safe test renames, Path.bd doc repair, nested corelib submodule bump after tiering merge, and syscall JIT smoke without cross-module asserts.",
   "closedOn": "2026-05-24"
 }

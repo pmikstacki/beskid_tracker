@@ -13,5 +13,6 @@
     "repo": "compiler",
     "commit": "ebbe51d",
     "subject": "feat(pckg,format): packageKind tool profile + formatter implementation doc (WIP, restored from stash)"
-  }
+  },
+  "body": "## What shipped\n\nCompiler tree carries implementation notes for the packageKind `tool` formatter profile (restored WIP doc) guiding A8 tooling spec alignment.\n\n## Source commit\n\nRepository **`compiler`** \u00b7 commit `ebbe51d`\n\n> feat(pckg,format): packageKind tool profile + formatter implementation doc (WIP, restored from stash)\n\n## Completed\n\n2026-05-23 (catalog cutoff window)."
 }

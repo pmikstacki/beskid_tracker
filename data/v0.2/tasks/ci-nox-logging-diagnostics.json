@@ -12,5 +12,6 @@
     "repo": "beskid",
     "commit": "295ebbe",
     "subject": "refactor(ci): centralize Nox/CI logging and submodule diagnostics"
-  }
+  },
+  "body": "## Outcome\n\nCentralize Nox/CI logging and submodule diagnostics.\n\n## Context\n\n- Workstream **ci-release** — see workstream summary on the catalog.\n- Contributes to deliverable **CI workflows and deploy infra** (`v02-ci-deploy-infra`).\n\n## Provenance\n\n- **Repository:** `beskid`\n- **Commit:** [`295ebbe`](https://github.com/Cyber-Nomad-Collective/beskid/commit/295ebbe) — refactor(ci): centralize Nox/CI logging and submodule diagnostics"
 }

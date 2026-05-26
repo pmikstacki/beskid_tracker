@@ -13,5 +13,6 @@
     "repo": "compiler",
     "commit": "e9dd535",
     "subject": "test(abi): align frozen allowlist order with RUNTIME_EXPORT_SYMBOLS"
-  }
+  },
+  "body": "## What shipped\n\nFrozen ABI golden tests now list symbols in the same order as `RUNTIME_EXPORT_SYMBOLS`, preventing spurious allowlist drift when Phase B exports expand.\n\n## Source commit\n\nRepository **`compiler`** \u00b7 commit `e9dd535`\n\n> test(abi): align frozen allowlist order with RUNTIME_EXPORT_SYMBOLS\n\n## Completed\n\n2026-05-23 (catalog cutoff window)."
 }

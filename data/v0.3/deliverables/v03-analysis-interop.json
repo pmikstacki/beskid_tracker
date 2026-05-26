@@ -2,6 +2,6 @@
   "id": "v03-analysis-interop",
   "title": "Analysis interop & codegen polish",
   "number": 7,
-  "description": "ExternalLibrary analysis registry, export-FFI HIR legality, formatter implementation notes, and e2e CLI artifact label alignment in the compiler.",
+  "description": "ExternalLibrary analysis trait/registry, export-FFI HIR legality, frozen ABI allowlist ordering, compiler formatter notes for packageKind tool profile, and e2e CLI artifact label alignment—compiler-side interop completing the 23 May FFI/import tracks.",
   "closedOn": "2026-05-23"
 }

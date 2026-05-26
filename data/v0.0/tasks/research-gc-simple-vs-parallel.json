@@ -9,7 +9,7 @@
   "area": "gc",
   "completedAt": "2026-02-25",
   "deliverableId": "v00-execution-jit-gc",
-  "body": "gc-arena served as the simple GC baseline; later delivery bands pursued parallel runtime collection (abfall and phase-B runtime).",
+  "body": "## What was done\n\nRecorded the decision to treat **gc-arena** as the v0.0 GC baseline and defer **parallel** collection and production runtime policies to later repos and phases.\n\n## Why it mattered\n\nPrevented prototype scope creep: Pecan needed runnable JIT demos, not a shipping parallel GC.\n\n## Research conclusion\n\n**Simple GC in v0.0; parallel GC later** (abfall and phase-B runtime). Same commit marks Phase 5 execution-plan completion.",
   "source": {
     "repo": "pekan",
     "commit": "9bbf2f4",

@@ -12,5 +12,6 @@
     "repo": "corelib",
     "commit": "361e370",
     "subject": "ci: validate api.json library tree before corelib publish"
-  }
+  },
+  "body": "## Outcome\n\nValidate api.json library tree before corelib publish.\n\n## Context\n\n- Workstream **ci-release** — see workstream summary on the catalog.\n- Contributes to deliverable **Corelib workspace publish hardening** (`v02-corelib-workspace-publish`).\n- Structured **api.json** is the hierarchical contract for package docs (types, members, **typeRef** links)—not parallel string-key tables outside the schema.\n- Corelib sources live in the **corelib** submodule; package identity is **corelib** with workspace publish to pckg.\n\n## Provenance\n\n- **Repository:** `corelib`\n- **Commit:** [`361e370`](https://github.com/Cyber-Nomad-Collective/beskid_standard/commit/361e370) — ci: validate api.json library tree before corelib publish"
 }

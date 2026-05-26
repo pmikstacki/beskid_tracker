@@ -13,5 +13,6 @@
     "repo": "compiler",
     "commit": "3cd4c93",
     "subject": "fix(ci): update graph Std shard expectations and gate corelib lowering on Linux"
-  }
+  },
+  "body": "## Outcome\n\nUpdate graph Std shard expectations and gate corelib lowering on Linux.\n\n## Context\n\n- Workstream **ci-release** — see workstream summary on the catalog.\n- Contributes to deliverable **CI workflows and deploy infra** (`v02-ci-deploy-infra`).\n- Corelib sources live in the **corelib** submodule; package identity is **corelib** with workspace publish to pckg.\n\n## Provenance\n\n- **Repository:** `compiler`\n- **Commit:** [`3cd4c93`](https://github.com/Cyber-Nomad-Collective/compiler/commit/3cd4c93) — fix(ci): update graph Std shard expectations and gate corelib lowering on Linux"
 }

@@ -11,5 +11,6 @@
     "repo": "beskid",
     "commit": "057a100",
     "subject": "feat(spec,pckg,compiler): packageKind tool Standard + formatter feature hub (A8)"
-  }
+  },
+  "body": "## What shipped\n\nCross-repo A8 landing: packageKind `tool` promoted to **Standard** in platform-spec with pckg and compiler formatter hub wiring.\n\n## Source commit\n\nRepository **`beskid`** \u00b7 commit `057a100`\n\n> feat(spec,pckg,compiler): packageKind tool Standard + formatter feature hub (A8)\n\n## Completed\n\n2026-05-23 (catalog cutoff window)."
 }

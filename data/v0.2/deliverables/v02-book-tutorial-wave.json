@@ -2,6 +2,6 @@
   "id": "v02-book-tutorial-wave",
   "title": "Book tutorial rollout",
   "number": 4,
-  "description": "Early v0.2 language book chapters, corelib naming on the public site, and trudoc/bootstrap wiring ahead of the May platform-spec cutover.",
+  "description": "Early v0.2 language book chapters, corelib naming on the public site, file-scoped module semantics in book/reference material, and trudoc/bootstrap wiring ahead of the May platform-spec cutover.\n\n**Closed:** 2026-05-05 — trudoc/docs-ui packages land in CI before normative spec expansion accelerates.",
   "closedOn": "2026-05-05"
 }

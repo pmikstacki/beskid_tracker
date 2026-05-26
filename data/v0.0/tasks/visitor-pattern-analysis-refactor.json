@@ -9,6 +9,7 @@
   "area": "analysis",
   "completedAt": "2026-02-27",
   "deliverableId": "v00-analysis-foundation",
+  "body": "## What was done\n\nRefactored **control flow**, **name resolution**, and **type checking** to use a shared **traversal visitor** pattern instead of ad-hoc recursive walks.\n\n## Why it mattered\n\nReduced duplicate HIR walk logic before `HirQuery` became the single traversal API—easier to add rules and diagnostics consistently.\n\n## Outcome\n\nComplemented `hir-query-staged-analysis` removal of the legacy traversal module.",
   "source": {
     "repo": "pekan",
     "commit": "8780c42",

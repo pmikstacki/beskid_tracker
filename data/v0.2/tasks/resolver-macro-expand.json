@@ -11,5 +11,6 @@
     "repo": "compiler",
     "commit": "2130e50",
     "subject": "fix(compiler): resolver adjustments for macro expand"
-  }
+  },
+  "body": "## Outcome\n\nResolver adjustments for macro expand.\n\n## Context\n\n- Workstream **analysis-pipeline** — compiler pipeline and api.json spine.\n- Macro work follows platform-spec **language-meta/macros** semantics (registry, expand pass, resolver re-resolve).\n\n## Provenance\n\n- **Repository:** `compiler`\n- **Commit:** [`2130e50`](https://github.com/Cyber-Nomad-Collective/compiler/commit/2130e50) — fix(compiler): resolver adjustments for macro expand"
 }

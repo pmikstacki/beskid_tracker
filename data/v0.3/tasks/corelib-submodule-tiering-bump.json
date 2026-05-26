@@ -13,5 +13,6 @@
     "commit": "24845ff",
     "subject": "chore(corelib): bump nested corelib submodule after v0.3 tiering merge"
   },
-  "milestoneId": "v03-merge-wave"
+  "milestoneId": "v03-merge-wave",
+  "body": "## What shipped\n\nNested `compiler/corelib` submodule pointer updates after the v0.3 tiering merge so CI and pack jobs see tier-tagged collections and FS/Path packages.\n\n## Source commit\n\nRepository **`compiler`** \u00b7 commit `24845ff`\n\n> chore(corelib): bump nested corelib submodule after v0.3 tiering merge\n\n## Completed\n\n2026-05-23 (catalog cutoff window)."
 }

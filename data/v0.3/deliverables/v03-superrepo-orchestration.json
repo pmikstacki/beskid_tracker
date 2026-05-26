@@ -2,6 +2,6 @@
   "id": "v03-superrepo-orchestration",
   "title": "v0.3 integration traceability",
   "number": 9,
-  "description": "Integration traceability for v0.3 deliverables via pinned SHAs and repository-level verification context.",
+  "description": "Cross-repo orchestration for v0.3: subplanner plan and handoff documents, per-track final SHAs, merge-wave commit ordering, DI spec verification checklist with v0.3 evidence links, and submodule pins (compiler, pckg, corelib) documenting integrated tips on main.",
   "closedOn": "2026-05-23"
 }

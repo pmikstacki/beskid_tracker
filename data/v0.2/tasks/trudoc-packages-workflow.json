@@ -11,5 +11,6 @@
     "repo": "beskid",
     "commit": "8aa2813",
     "subject": "feat(docs+ci): add trudoc/docs UI packages and workflow updates"
-  }
+  },
+  "body": "## Outcome\n\nAdd trudoc/docs UI packages and workflow updates.\n\n## Context\n\n- Workstream **ci-release** — see workstream summary on the catalog.\n- Contributes to deliverable **Platform-spec cutover** (`v02-platform-spec-cutover`).\n- **trudoc** Zod/frontmatter verification guards platform-spec metadata in CI.\n\n## Provenance\n\n- **Repository:** `beskid`\n- **Commit:** [`8aa2813`](https://github.com/Cyber-Nomad-Collective/beskid/commit/8aa2813) — feat(docs+ci): add trudoc/docs UI packages and workflow updates"
 }

@@ -11,5 +11,6 @@
     "repo": "beskid",
     "commit": "d25aa7a",
     "subject": "docs(site): expand platform-spec pages and doc feedback guides"
-  }
+  },
+  "body": "## Outcome\n\nExpand platform-spec pages and doc feedback guides.\n\n## Context\n\n- Workstream **platform-spec** — normative spec on beskid-lang.org.\n- Normative updates live under `site/website/src/content/docs/platform-spec/` and ship via beskid-lang.org.\n\n## Provenance\n\n- **Repository:** `beskid`\n- **Commit:** [`d25aa7a`](https://github.com/Cyber-Nomad-Collective/beskid/commit/d25aa7a) — docs(site): expand platform-spec pages and doc feedback guides"
 }

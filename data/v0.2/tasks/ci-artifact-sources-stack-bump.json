@@ -12,5 +12,6 @@
     "repo": "beskid",
     "commit": "c857780",
     "subject": "fix(ci): bump pckg and compiler for artifact sources and stack overflow"
-  }
+  },
+  "body": "## Outcome\n\nBump pckg and compiler for artifact sources and stack overflow.\n\n## Context\n\n- Workstream **ci-release** — see workstream summary on the catalog.\n- Contributes to deliverable **CI workflows and deploy infra** (`v02-ci-deploy-infra`).\n\n## Provenance\n\n- **Repository:** `beskid`\n- **Commit:** [`c857780`](https://github.com/Cyber-Nomad-Collective/beskid/commit/c857780) — fix(ci): bump pckg and compiler for artifact sources and stack overflow"
 }

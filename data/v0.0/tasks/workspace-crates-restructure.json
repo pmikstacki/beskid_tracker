@@ -8,6 +8,7 @@
   "domain": "compiler",
   "completedAt": "2026-02-26",
   "deliverableId": "v00-analysis-foundation",
+  "body": "## What was done\n\nReorganized the Rust workspace from monolithic **`src/`** into **`crates/`** and introduced **`beskid_abi`** for stable runtime/interop boundaries.\n\n## Why it mattered\n\nMatched how the later **compiler** submodule scales (many `beskid_*` crates) and separated ABI concerns from analysis/codegen crates.\n\n## Outcome\n\nStructure carried into v0.1 compiler foundation; prerequisite for CI workspace checks and AOT smoke tests.",
   "source": {
     "repo": "pekan",
     "commit": "c41b01e",

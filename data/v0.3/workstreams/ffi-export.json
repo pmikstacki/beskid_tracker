@@ -1,6 +1,7 @@
 {
   "slug": "ffi-export",
   "title": "Export FFI & dynamic types",
-  "summary": "export FFI link-time deliverables, dynamic types spec promotion, AotBuildRequest link libraries, and ffi_v03 CI hardening.",
-  "order": 1
+  "summary": "Link-time export FFI in the compiler, dynamic-types spec promotion to Standard, AotBuildRequest link-library fields, export-FFI HIR legality, ffi_v03 CI scaffold, and superrepo traceability commits after the 23 May merge wave.",
+  "order": 1,
+  "deliverableIds": ["v03-merge-wave", "v03-analysis-interop", "v03-post-merge-ci"]
 }

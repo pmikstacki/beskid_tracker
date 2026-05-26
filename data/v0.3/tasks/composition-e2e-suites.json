@@ -12,5 +12,6 @@
     "repo": "compiler",
     "commit": "5b65195",
     "subject": "test(composition): runtime container + lowering + host e2e suites"
-  }
+  },
+  "body": "## What shipped\n\nEnd-to-end tests cover composition runtime container wiring, lowering, and host integration for `launch`/`with` concurrency forms.\n\n## Source commit\n\nRepository **`compiler`** \u00b7 commit `5b65195`\n\n> test(composition): runtime container + lowering + host e2e suites\n\n## Completed\n\n2026-05-23 (catalog cutoff window)."
 }

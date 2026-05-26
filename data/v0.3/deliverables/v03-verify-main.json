@@ -2,5 +2,6 @@
   "id": "v03-verify-main",
   "title": "verify-all-on-main evidence",
   "number": 5,
+  "description": "Repository-level verification that main is green after v0.3 landings: orchestration evidence doc (`verify-all-on-main`), trudoc Beskid grammar support for fenced samples in book/spec, and cross-workflow confidence for the 24–25 May stabilization slice.",
   "closedOn": "2026-05-24"
 }

@@ -12,5 +12,6 @@
     "repo": "beskid",
     "commit": "c2dece3",
     "subject": "fix(spec): quote YAML frontmatter strings containing colons / backticks"
-  }
+  },
+  "body": "## What shipped\n\nQuotes YAML frontmatter strings containing colons or backticks so Starlight/trudoc MDX validation passes.\n\n## Source commit\n\nRepository **`beskid`** \u00b7 commit `c2dece3`\n\n> fix(spec): quote YAML frontmatter strings containing colons / backticks\n\n## Completed\n\n2026-05-23 (catalog cutoff window)."
 }

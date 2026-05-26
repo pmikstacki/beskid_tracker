@@ -9,7 +9,9 @@
   "source": {
     "repo": "beskid",
     "commit": "c2526bb",
-    "subject": "git: use relative GitHub submodule URLs for token propagation"
+    "subject": "git: use relative GitHub submodule URLs for token propagation",
+    "url": "https://github.com/Cyber-Nomad-Collective/beskid/commit/c2526bb"
   },
-  "statusColumn": "Done"
+  "statusColumn": "Done",
+  "body": "Uses **relative GitHub submodule URLs** so CI token auth propagates to nested submodule fetches.\n\n## Provenance\n- **Repository:** `beskid`\n- **Commit:** [`c2526bb`](https://github.com/Cyber-Nomad-Collective/beskid/commit/c2526bb)\n- **Subject:** git: use relative GitHub submodule URLs for token propagation\n- **Completed:** 2026-04-21\n\n## Catalog scope\n- **Delivery version:** v0.1 (Compiler foundation)\n- **Workstream:** `editor-extension`\n- **Deliverable:** `v01-open-vsx`\n\n## Relation\nGit configuration fix supporting Open VSX and aggregate CI."
 }

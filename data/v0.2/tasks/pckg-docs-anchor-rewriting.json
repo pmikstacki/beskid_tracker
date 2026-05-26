@@ -11,5 +11,6 @@
     "repo": "pckg",
     "commit": "11ecde9",
     "subject": "feat(docs): anchor rewriting and package documentation UI"
-  }
+  },
+  "body": "## Outcome\n\nAnchor rewriting and package documentation UI.\n\n## Context\n\n- Workstream **pckg-registry** — registry and PackageDocs UI.\n\n## Provenance\n\n- **Repository:** `pckg`\n- **Commit:** [`11ecde9`](https://github.com/Cyber-Nomad-Collective/pckg/commit/11ecde9) — feat(docs): anchor rewriting and package documentation UI"
 }

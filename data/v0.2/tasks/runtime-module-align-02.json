@@ -11,5 +11,6 @@
     "repo": "compiler",
     "commit": "ce70362",
     "subject": "refactor: align runtime modules and docs for 0.2"
-  }
+  },
+  "body": "## Outcome\n\nAlign runtime modules and docs for 0.2.\n\n## Context\n\n- Workstream **codegen-runtime** — see workstream summary on the catalog.\n\n## Provenance\n\n- **Repository:** `compiler`\n- **Commit:** [`ce70362`](https://github.com/Cyber-Nomad-Collective/compiler/commit/ce70362) — refactor: align runtime modules and docs for 0.2"
 }

@@ -9,6 +9,7 @@
   "area": "codegen",
   "completedAt": "2026-02-23",
   "deliverableId": "v00-execution-jit-gc",
+  "body": "## What was done\n\nAuthored a **trait-based lowering** design and node-by-node implementation roadmap for emitting **CLIF** from typed HIR—each HIR construct maps to a lowering trait implementation.\n\n## Why it mattered\n\nAvoided a monolithic lowering match that would not scale as Pecan’s HIR grew (attributes, lambdas, interpolation desugar, etc.).\n\n## Outcome\n\nInformed later AOT codegen and CI smoke tests; aligns with Beskid’s direction of shared lowering entry points for analyze/build/run.",
   "source": {
     "repo": "pekan",
     "commit": "7b35a52",

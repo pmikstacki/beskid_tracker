@@ -11,5 +11,6 @@
     "repo": "beskid",
     "commit": "abd197e",
     "subject": "docs: language-meta interop tree and GC platform alignment"
-  }
+  },
+  "body": "## Outcome\n\nLanguage-meta interop tree and GC platform alignment.\n\n## Context\n\n- Workstream **platform-spec** — normative spec on beskid-lang.org.\n- **abfall** is vendored for Beskid heap/GC integration; platform-spec GC chapters track runtime alignment.\n\n## Provenance\n\n- **Repository:** `beskid`\n- **Commit:** [`abd197e`](https://github.com/Cyber-Nomad-Collective/beskid/commit/abd197e) — docs: language-meta interop tree and GC platform alignment"
 }

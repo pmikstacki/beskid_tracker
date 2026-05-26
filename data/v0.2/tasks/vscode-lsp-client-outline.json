@@ -12,5 +12,6 @@
     "repo": "beskid",
     "commit": "264a3c0",
     "subject": "chore: bump compiler and pckg submodules; VS Code extension runtime, LSP client, outline, status"
-  }
+  },
+  "body": "## Outcome\n\nBump compiler and pckg submodules; VS Code extension runtime, LSP client, outline, status.\n\n## Context\n\n- Workstream **editor-extension** — see workstream summary on the catalog.\n- Contributes to deliverable **VS Code extension & Open VSX** (`v02-editor-extension`).\n- LSP work shares the typed HIR spine with analyze/build; workspace templates feed the project graph pipeline.\n\n## Provenance\n\n- **Repository:** `beskid`\n- **Commit:** [`264a3c0`](https://github.com/Cyber-Nomad-Collective/beskid/commit/264a3c0) — chore: bump compiler and pckg submodules; VS Code extension runtime, LSP client, outline, status"
 }

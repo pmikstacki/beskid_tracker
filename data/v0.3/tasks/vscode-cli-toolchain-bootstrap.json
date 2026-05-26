@@ -12,5 +12,6 @@
     "repo": "beskid_vscode",
     "commit": "0a8a73c",
     "subject": "feat(toolchain): bootstrap CLI release download and dependency fetch"
-  }
+  },
+  "body": "## What shipped\n\nVS Code extension downloads cli-latest, materializes toolchain dependencies, and launches `beskid lsp` with logged install failures.\n\n## Source commit\n\nRepository **`beskid_vscode`** \u00b7 commit `0a8a73c`\n\n> feat(toolchain): bootstrap CLI release download and dependency fetch\n\n## Completed\n\n2026-05-25 (catalog cutoff window)."
 }

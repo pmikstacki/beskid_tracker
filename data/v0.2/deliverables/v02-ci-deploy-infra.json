@@ -2,6 +2,6 @@
   "id": "v02-ci-deploy-infra",
   "title": "CI workflows and deploy infra",
   "number": 10,
-  "description": "Nox logging, workflow refinements, site image lockfile, Coolify compose, and compiler CLI GitHub Releases publishing.",
+  "description": "Nox logging centralization, workflow refinements, site image **bun** lockfile, Coolify compose fixes, compiler CLI **GitHub Releases** publishing, and rolling version sync to the downloads page.\n\n**Closed:** 2026-05-20 — deploy and CI hardening wrap the v0.2 window.",
   "closedOn": "2026-05-20"
 }

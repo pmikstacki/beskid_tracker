@@ -8,6 +8,7 @@
   "domain": "execution",
   "completedAt": "2026-02-23",
   "deliverableId": "v00-execution-jit-gc",
+  "body": "## What was done\n\nUpdated the execution plan to mark **Phase 1** (HIR foundations) and **Phase 2** (typing integration) complete and scoped **Phase 3** kickoff (lowering/runtime).\n\n## Why it mattered\n\nThe execution plan was the program-management spine for JIT/runtime work—linking analysis milestones to codegen and GC tasks in the same deliverable.\n\n## Outcome\n\nUnblocked lowering architecture, gc-arena integration, and Phase 5 runtime/GC completion tasks.",
   "source": {
     "repo": "pekan",
     "commit": "01db952",

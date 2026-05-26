@@ -2,6 +2,6 @@
   "id": "v03-pckg-tool-registry",
   "title": "Tool packageKind and registry integration",
   "number": 7,
-  "description": "packageKind tool across pckg UI and CLI pack; docs UI refactor; api.json tier and per-package artifact paths.",
+  "description": "Normative packageKind `tool` in platform-spec and pckg (dashboard, server, tests), `beskid pckg pack --package-kind tool`, install-card bpk token escaping, docs-ui Fluent refactor, api.json `tier` field and per-package artifact roots, and pckg submodule pin to v0.3 integrated tip.",
   "closedOn": "2026-05-24"
 }

@@ -11,5 +11,6 @@
     "repo": "beskid",
     "commit": "33e5d99",
     "subject": "chore(compiler): bump submodule for corelib-quality CI fix"
-  }
+  },
+  "body": "## What shipped\n\nHardens `@beskid/docs-ui` book and platform-spec nav client scripts (`book-nav.ts`, `platform-spec-doc-tabs.ts`, layout re-init on `astro:after-swap`) so rail state and tab selection survive ClientRouter navigation. Related landings include drawer/rail unification (`278da1b`) and SpecPageHeader polish (`d800062`).\n\n## Source commit\n\nRepository **`beskid`** \u00b7 commit `33e5d99`\n\n> chore(compiler): bump submodule for corelib-quality CI fix\n\n## Completed\n\n2026-05-24 (catalog cutoff window)."
 }

@@ -11,5 +11,6 @@
     "repo": "pckg",
     "commit": "2e97cd6",
     "subject": "fix(pckg): harden Blazor circuits for profile upload and admin activity"
-  }
+  },
+  "body": "## Outcome\n\nHarden Blazor circuits for profile upload and admin activity.\n\n## Context\n\n- Workstream **pckg-registry** — registry and PackageDocs UI.\n\n## Provenance\n\n- **Repository:** `pckg`\n- **Commit:** [`2e97cd6`](https://github.com/Cyber-Nomad-Collective/pckg/commit/2e97cd6) — fix(pckg): harden Blazor circuits for profile upload and admin activity"
 }

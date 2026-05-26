@@ -10,5 +10,6 @@
     "repo": "beskid",
     "commit": "1f5852e",
     "subject": "docs and site: giscus UX, corelib docs, compiler bump"
-  }
+  },
+  "body": "## Outcome\n\nDocs and site: giscus UX, corelib docs, compiler bump.\n\n## Context\n\n- Workstream **docs-site** — see workstream summary on the catalog.\n- Corelib sources live in the **corelib** submodule; package identity is **corelib** with workspace publish to pckg.\n\n## Provenance\n\n- **Repository:** `beskid`\n- **Commit:** [`1f5852e`](https://github.com/Cyber-Nomad-Collective/beskid/commit/1f5852e) — docs and site: giscus UX, corelib docs, compiler bump"
 }

@@ -9,6 +9,7 @@
   "area": "gc",
   "completedAt": "2026-02-24",
   "deliverableId": "v00-execution-jit-gc",
+  "body": "## What was done\n\nLanded the **gc-arena** crate with a derive macro, licensing, docs, and hooks into JIT allocation paths so prototype objects could be traced or arena-managed.\n\n## Why it mattered\n\nProved the **minimal GC baseline** for Pecan: enough machinery to experiment without committing to a parallel runtime collector in this band.\n\n## Research conclusion\n\nSimple arena/tracing GC is sufficient for prototype JIT; parallel GC deferred to later delivery bands.",
   "source": {
     "repo": "pekan",
     "commit": "a17c928",

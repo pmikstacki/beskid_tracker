@@ -21,5 +21,6 @@
     "commit": "4e5bfca",
     "subject": "docs(abfall): document Beskid vendoring and upstream repository link"
   },
-  "milestoneId": "v02-concurrency-runtime"
+  "milestoneId": "v02-concurrency-runtime",
+  "body": "## Outcome\n\nDocument Beskid vendoring and upstream repository link.\n\n## Context\n\n- Workstream **codegen-runtime** — see workstream summary on the catalog.\n- Contributes to deliverable **Fibers, channels, and GC runtime** (`v02-concurrency-runtime`).\n- **abfall** is vendored for Beskid heap/GC integration; platform-spec GC chapters track runtime alignment.\n\n## Platform specification\n\n- Tracks normative content in [Memory and GC runtime contract](https://beskid-lang.org/platform-spec/execution/runtime/memory-and-gc-runtime-contract) (`/platform-spec/execution/runtime/memory-and-gc-runtime-contract`) *(required)*\n\n## Provenance\n\n- **Repository:** `compiler`\n- **Commit:** [`4e5bfca`](https://github.com/Cyber-Nomad-Collective/compiler/commit/4e5bfca) — docs(abfall): document Beskid vendoring and upstream repository link"
 }

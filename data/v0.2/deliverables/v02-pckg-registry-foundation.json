@@ -2,6 +2,6 @@
   "id": "v02-pckg-registry-foundation",
   "title": "Registry dashboard and package docs foundation",
   "number": 7,
-  "description": "Public package pages, registry activity and semver-on-publish, PackageDocs explorer with Fluent grids, and early publish UX hardening.",
+  "description": "Registry dashboard, public package pages, package source explorer with BlazorMonaco preview, registry activity log, registry-assigned semver on publish, and unified Fluent data-grid row actions.\n\n**Closed:** 2026-04-24 — foundation before api.json contract work intensifies in May.",
   "closedOn": "2026-04-24"
 }

@@ -10,5 +10,6 @@
     "repo": "beskid",
     "commit": "be6ca5e",
     "subject": "chore(docs): add roadmap labels documentation and update Dockerfiles for Bun versioning"
-  }
+  },
+  "body": "## What shipped\n\nDocuments GitHub **roadmap/** labels used by beskid_tracker kanban columns and updates Dockerfiles for consistent Bun versioning.\n\n## Source commit\n\nRepository **`beskid`** \u00b7 commit `be6ca5e`\n\n> chore(docs): add roadmap labels documentation and update Dockerfiles for Bun versioning\n\n## Completed\n\n2026-05-25 (catalog cutoff window)."
 }

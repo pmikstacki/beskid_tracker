@@ -9,6 +9,7 @@
   "area": "diagnostics",
   "completedAt": "2026-02-28",
   "deliverableId": "v00-analysis-foundation",
+  "body": "## What was done\n\nAdded **`diagnostic_kinds`** with **`SemanticIssueKind`**—60+ error and warning variants covering semantic analysis failures with stable codes for docs and IDE surfacing.\n\n## Why it mattered\n\nStaged rules need stable diagnostic identities for spec tables, LSP publishing, and CI snapshot tests.\n\n## Outcome\n\nCatalog grew with parser/semantic research commits (e.g. `33eaa35` doc updates listing integration status).",
   "source": {
     "repo": "pekan",
     "commit": "c308ffb",

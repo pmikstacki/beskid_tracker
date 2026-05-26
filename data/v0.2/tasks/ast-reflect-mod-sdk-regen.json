@@ -13,5 +13,6 @@
     "repo": "compiler",
     "commit": "e16f55a",
     "subject": "Improve ast_reflect_gen Mod SDK syntax emission and bump corelib."
-  }
+  },
+  "body": "## Outcome\n\nImprove ast_reflect_gen Mod SDK syntax emission and bump corelib.\n\n## Context\n\n- Workstream **analysis-pipeline** — compiler pipeline and api.json spine.\n- Contributes to deliverable **Platform-spec cutover** (`v02-platform-spec-cutover`).\n- Corelib sources live in the **corelib** submodule; package identity is **corelib** with workspace publish to pckg.\n\n## Provenance\n\n- **Repository:** `compiler`\n- **Commit:** [`e16f55a`](https://github.com/Cyber-Nomad-Collective/compiler/commit/e16f55a) — Improve ast_reflect_gen Mod SDK syntax emission and bump corelib."
 }

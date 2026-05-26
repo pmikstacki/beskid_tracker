@@ -12,5 +12,6 @@
     "repo": "beskid_vscode",
     "commit": "f6eceb6",
     "subject": "refactor: modular extension runtime, commands, and package workflow UI"
-  }
+  },
+  "body": "## Outcome\n\nModular extension runtime, commands, and package workflow UI.\n\n## Context\n\n- Workstream **editor-extension** — see workstream summary on the catalog.\n- Contributes to deliverable **VS Code extension & Open VSX** (`v02-editor-extension`).\n\n## Provenance\n\n- **Repository:** `beskid_vscode`\n- **Commit:** [`f6eceb6`](https://github.com/Cyber-Nomad-Collective/beskid_vscode/commit/f6eceb6) — refactor: modular extension runtime, commands, and package workflow UI"
 }

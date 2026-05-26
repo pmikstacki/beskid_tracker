@@ -8,7 +8,9 @@
   "source": {
     "repo": "beskid",
     "commit": "60e84d3",
-    "subject": "ci: Nox-driven aggregate workflows; bump compiler and pckg"
+    "subject": "ci: Nox-driven aggregate workflows; bump compiler and pckg",
+    "url": "https://github.com/Cyber-Nomad-Collective/beskid/commit/60e84d3"
   },
-  "statusColumn": "Done"
+  "statusColumn": "Done",
+  "body": "Introduces **Nox-driven aggregate CI workflows** on the superrepo and bumps compiler/pckg submodule SHAs.\n\n## Provenance\n- **Repository:** `beskid`\n- **Commit:** [`60e84d3`](https://github.com/Cyber-Nomad-Collective/beskid/commit/60e84d3)\n- **Subject:** ci: Nox-driven aggregate workflows; bump compiler and pckg\n- **Completed:** 2026-04-13\n\n## Catalog scope\n- **Delivery version:** v0.1 (Compiler foundation)\n- **Workstream:** `ci-release`\n\n## Relation\nCentralizes cross-repo CI entry points for v0.1."
 }

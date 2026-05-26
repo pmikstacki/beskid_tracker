@@ -11,5 +11,6 @@
     "repo": "compiler",
     "commit": "052d6e2",
     "subject": "feat(composition): runtime container, ABI builtins, and codegen lowering for launch/with"
-  }
+  },
+  "body": "## What shipped\n\nCodegen lowers `launch` and `with` into runtime container ABI builtins, connecting the composition language surface to the Phase B runtime.\n\n## Source commit\n\nRepository **`compiler`** \u00b7 commit `052d6e2`\n\n> feat(composition): runtime container, ABI builtins, and codegen lowering for launch/with\n\n## Completed\n\n2026-05-23 (catalog cutoff window)."
 }

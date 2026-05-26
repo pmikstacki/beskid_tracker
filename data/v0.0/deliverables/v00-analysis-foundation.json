@@ -2,5 +2,6 @@
   "id": "v00-analysis-foundation",
   "title": "Analysis and parser foundation",
   "number": 1,
+  "description": "Established the Pecan compiler analysis spine: workspace bootstrap, semantic-analysis specification, HIR phase-indexed shared-core documentation, module-graph resolver, Pest plus staged semantic rules, normalization and desugar passes, visitor-based control-flow and type checking, HirQuery traversal, a 60+ variant diagnostic catalog, string-interpolation desugar, attribute/lambda grammar support, and migration from monolithic src/ to crates/ including beskid_abi.",
   "closedOn": "2026-02-23"
 }

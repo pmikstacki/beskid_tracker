@@ -7,7 +7,7 @@
   "workstream": "dev-experience",
   "domain": "tooling",
   "area": "dx",
-  "body": "Fresh `beskid_tracker` checkouts fail `bun run dev` with `Script not found \"vite\"` until `bun install` completes. `@beskid/docs-ui` resolves from GitHub Packages and needs npm auth (`NPM_TOKEN` / `.npmrc`) or the install aborts before vite is linked.",
+  "body": "## What shipped\n\nFresh `beskid_tracker` checkouts fail `bun run dev` with `Script not found \"vite\"` until `bun install` completes. `@beskid/docs-ui` resolves from GitHub Packages and needs npm auth (`NPM_TOKEN` / `.npmrc`) or install aborts before Vite is linked.\n\n**Proposed fix (Backlog):** document the install step in README/COOLIFY, optionally add a `predev` script that checks for `node_modules/vite`, or surface a clear error directing contributors to `bun install`.\n\n## Source commit\n\nRepository **`beskid`** \u00b7 commit `6438ae8`\n\n> feat(superrepo): add beskid_tracker submodule, repo manifests, and Beskid hub UI.",
   "source": {
     "repo": "beskid",
     "commit": "6438ae8",

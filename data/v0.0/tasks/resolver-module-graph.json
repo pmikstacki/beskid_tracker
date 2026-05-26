@@ -9,6 +9,7 @@
   "area": "resolution",
   "completedAt": "2026-02-21",
   "deliverableId": "v00-analysis-foundation",
+  "body": "## What was done\n\nExtended the resolver with a **module graph**, local scopes, resolution tables, and path/type resolution hooks so semantic rules could query symbols deterministically across files.\n\n## Why it mattered\n\nStaged semantic analysis depends on stable **name and module binding** before type checking. This commit is the first production-shaped resolver in the Pecan lineage.\n\n## Outcome\n\nEnabled later name-resolution visitor refactors and foreshadowed file-scoped module work in v0.1 (`file-scoped-modules`).",
   "source": {
     "repo": "pekan",
     "commit": "0011c54",

@@ -2,6 +2,6 @@
   "id": "v02-api-json-contract",
   "title": "api.json primary contract",
   "number": 3,
-  "description": "Compiler emits hierarchical api.json; pckg requires it on publish and renders the structured docs UI.",
+  "description": "Compiler emits hierarchical **api.json** (types, members, compiler-derived signatures, **typeRef** links for resolved symbols). **pckg** requires structured api.json on publish and renders PackageDocs from that JSON—not parallel ad-hoc grouping.\n\n**Closed:** 2026-05-20 — publish gate, library tree UI, and typeRef linking ship together.",
   "closedOn": "2026-05-20"
 }

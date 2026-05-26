@@ -12,5 +12,6 @@
     "repo": "compiler",
     "commit": "010981f",
     "subject": "fix(ci): corelib root resolution, ABI snapshot, format golden"
-  }
+  },
+  "body": "## Outcome\n\nCorelib root resolution, ABI snapshot, format golden.\n\n## Context\n\n- Workstream **ci-release** — see workstream summary on the catalog.\n- Contributes to deliverable **api.json primary contract** (`v02-api-json-contract`).\n- Corelib sources live in the **corelib** submodule; package identity is **corelib** with workspace publish to pckg.\n\n## Provenance\n\n- **Repository:** `compiler`\n- **Commit:** [`010981f`](https://github.com/Cyber-Nomad-Collective/compiler/commit/010981f) — fix(ci): corelib root resolution, ABI snapshot, format golden"
 }

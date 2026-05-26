@@ -12,5 +12,6 @@
     "repo": "compiler",
     "commit": "a86a6d6",
     "subject": "feat(cli): add `beskid lsp` subcommand for editor stdio server"
-  }
+  },
+  "body": "## What shipped\n\nEditors launch the language server through `beskid lsp` over stdio, replacing ad-hoc binary paths and aligning with the rolling `cli-latest` release model.\n\n## Source commit\n\nRepository **`compiler`** \u00b7 commit `a86a6d6`\n\n> feat(cli): add `beskid lsp` subcommand for editor stdio server\n\n## Completed\n\n2026-05-25 (catalog cutoff window)."
 }

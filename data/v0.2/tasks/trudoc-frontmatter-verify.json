@@ -12,5 +12,6 @@
     "repo": "beskid",
     "commit": "139166f",
     "subject": "feat(trudoc): platform-spec frontmatter verification"
-  }
+  },
+  "body": "## Outcome\n\nPlatform-spec frontmatter verification.\n\n## Context\n\n- Workstream **platform-spec** — normative spec on beskid-lang.org.\n- Contributes to deliverable **Platform-spec cutover** (`v02-platform-spec-cutover`).\n- **trudoc** Zod/frontmatter verification guards platform-spec metadata in CI.\n- Normative updates live under `site/website/src/content/docs/platform-spec/` and ship via beskid-lang.org.\n\n## Provenance\n\n- **Repository:** `beskid`\n- **Commit:** [`139166f`](https://github.com/Cyber-Nomad-Collective/beskid/commit/139166f) — feat(trudoc): platform-spec frontmatter verification"
 }

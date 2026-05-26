@@ -1,6 +1,7 @@
 {
   "slug": "ci-release",
   "title": "CI & release verification",
-  "summary": "Runtime bridge e2e, ASan serialization, trudoc Node verify, formatter MDX CI, submodule-triggered Runtime CI, and verify-all-on-main evidence.",
-  "order": 8
+  "summary": "Release runtime bridge before AOT e2e, ASan bridge archive wiring and serialized runtime tests, trudoc verify via Node, formatter MDX CI fixes, Runtime CI on compiler submodule pointer bumps, ffi_v03/compiler submodule hardening, and verify-all-on-main completion evidence.",
+  "order": 8,
+  "deliverableIds": ["v03-post-merge-ci", "v03-verify-main"]
 }

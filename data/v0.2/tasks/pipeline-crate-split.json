@@ -13,5 +13,6 @@
     "repo": "compiler",
     "commit": "2cd54c5",
     "subject": "Compiler: array type lowering, services split, pipeline crate, rustdoc sweep, Mod SDK regen."
-  }
+  },
+  "body": "## Outcome\n\nArray type lowering, services split, pipeline crate, rustdoc sweep, Mod SDK regen.\n\n## Context\n\n- Workstream **analysis-pipeline** — compiler pipeline and api.json spine.\n- Contributes to deliverable **Platform-spec cutover** (`v02-platform-spec-cutover`).\n\n## Provenance\n\n- **Repository:** `compiler`\n- **Commit:** [`2cd54c5`](https://github.com/Cyber-Nomad-Collective/compiler/commit/2cd54c5) — Compiler: array type lowering, services split, pipeline crate, rustdoc sweep, Mod SDK regen."
 }

@@ -12,5 +12,6 @@
     "repo": "compiler",
     "commit": "53487b3",
     "subject": "feat(analysis,tests): enforce corelib api-shape tier coverage in beskid_tests"
-  }
+  },
+  "body": "## What shipped\n\n`beskid_tests` enforces api-shape tier coverage so new corelib APIs cannot ship without an assigned tier tag.\n\n## Source commit\n\nRepository **`compiler`** \u00b7 commit `53487b3`\n\n> feat(analysis,tests): enforce corelib api-shape tier coverage in beskid_tests\n\n## Completed\n\n2026-05-23 (catalog cutoff window)."
 }

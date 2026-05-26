@@ -12,5 +12,6 @@
     "repo": "beskid",
     "commit": "0c97fde",
     "subject": "fix(deploy): use monorepo bun lockfile in site image build"
-  }
+  },
+  "body": "## Outcome\n\nUse monorepo bun lockfile in site image build.\n\n## Context\n\n- Workstream **dev-experience** — see workstream summary on the catalog.\n- Contributes to deliverable **CI workflows and deploy infra** (`v02-ci-deploy-infra`).\n\n## Provenance\n\n- **Repository:** `beskid`\n- **Commit:** [`0c97fde`](https://github.com/Cyber-Nomad-Collective/beskid/commit/0c97fde) — fix(deploy): use monorepo bun lockfile in site image build"
 }

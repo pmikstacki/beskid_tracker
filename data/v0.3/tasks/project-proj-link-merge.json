@@ -12,5 +12,6 @@
     "repo": "compiler",
     "commit": "98b328e",
     "subject": "feat(analysis): non-destructive Project.proj link block merge"
-  }
+  },
+  "body": "## What shipped\n\nNon-destructive merge reconciles `import lib` link blocks in **Project.proj** without wiping unrelated project settings.\n\n## Source commit\n\nRepository **`compiler`** \u00b7 commit `98b328e`\n\n> feat(analysis): non-destructive Project.proj link block merge\n\n## Completed\n\n2026-05-23 (catalog cutoff window)."
 }

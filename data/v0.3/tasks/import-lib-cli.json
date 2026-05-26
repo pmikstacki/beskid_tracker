@@ -12,5 +12,6 @@
     "repo": "compiler",
     "commit": "3896ded",
     "subject": "feat(cli): add beskid import lib subcommand"
-  }
+  },
+  "body": "## What shipped\n\nCLI subcommand `beskid import lib` mutates project manifests to reference foreign libraries with validated metadata.\n\n## Source commit\n\nRepository **`compiler`** \u00b7 commit `3896ded`\n\n> feat(cli): add beskid import lib subcommand\n\n## Completed\n\n2026-05-23 (catalog cutoff window)."
 }

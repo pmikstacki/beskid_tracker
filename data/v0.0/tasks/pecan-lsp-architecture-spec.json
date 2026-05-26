@@ -9,7 +9,7 @@
   "area": "lsp",
   "completedAt": "2026-02-26",
   "deliverableId": "v00-tooling-research",
-  "body": "Historical in-process pecan_lsp design predating workspace LSP and beskid lsp stdio CLI.",
+  "body": "## What was done\n\nAdded **pecan_lsp** as a workspace member with an **architecture specification**: in-process language services, interop migration notes, and how JIT execution docs relate to editor features.\n\n## Why it mattered\n\nDocumented the **historical** LSP shape (library-linked, not stdio workspace server) so later Beskid work could diff against it when designing `beskid_lsp` and the VS Code extension.\n\n## Outcome\n\n**Historical only**—superseded by workspace LSP + `beskid lsp` CLI in v0.1+.",
   "source": {
     "repo": "pekan",
     "commit": "29e1e80",

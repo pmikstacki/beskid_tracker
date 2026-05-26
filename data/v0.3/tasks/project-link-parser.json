@@ -12,5 +12,6 @@
     "repo": "compiler",
     "commit": "abb7bd4",
     "subject": "feat(analysis): add project link section + parser/validator"
-  }
+  },
+  "body": "## What shipped\n\nAnalysis parses and validates **Project.proj** link sections for foreign libraries and mod references.\n\n## Source commit\n\nRepository **`compiler`** \u00b7 commit `abb7bd4`\n\n> feat(analysis): add project link section + parser/validator\n\n## Completed\n\n2026-05-23 (catalog cutoff window)."
 }

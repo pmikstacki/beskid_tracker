@@ -12,5 +12,6 @@
     "repo": "corelib",
     "commit": "3845ef3",
     "subject": "chore(corelib): add workspace.package.json member metadata for pckg publish"
-  }
+  },
+  "body": "## Outcome\n\nAdd workspace.package.json member metadata for pckg publish.\n\n## Context\n\n- Workstream **pckg-registry** — registry and PackageDocs UI.\n- Contributes to deliverable **Corelib workspace publish hardening** (`v02-corelib-workspace-publish`).\n- LSP work shares the typed HIR spine with analyze/build; workspace templates feed the project graph pipeline.\n- Corelib sources live in the **corelib** submodule; package identity is **corelib** with workspace publish to pckg.\n\n## Provenance\n\n- **Repository:** `corelib`\n- **Commit:** [`3845ef3`](https://github.com/Cyber-Nomad-Collective/beskid_standard/commit/3845ef3) — chore(corelib): add workspace.package.json member metadata for pckg publish"
 }

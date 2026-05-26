@@ -12,5 +12,6 @@
     "repo": "compiler",
     "commit": "79e6364",
     "subject": "test(abi): update frozen runtime export symbol allowlist for v0.3 merge"
-  }
+  },
+  "body": "## What shipped\n\nUpdates v0.3 frozen ABI allowlist entries for new Phase B exports and channel/preempt symbols.\n\n## Source commit\n\nRepository **`compiler`** \u00b7 commit `79e6364`\n\n> test(abi): update frozen runtime export symbol allowlist for v0.3 merge\n\n## Completed\n\n2026-05-23 (catalog cutoff window)."
 }

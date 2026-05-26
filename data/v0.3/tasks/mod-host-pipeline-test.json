@@ -12,5 +12,6 @@
     "repo": "compiler",
     "commit": "43c9620",
     "subject": "test(engine): mod_host pipeline integration test against SampleMod fixture"
-  }
+  },
+  "body": "## What shipped\n\nIntegration test runs SampleMod through the full mod host pipeline inside `beskid_tests::mods`.\n\n## Source commit\n\nRepository **`compiler`** \u00b7 commit `43c9620`\n\n> test(engine): mod_host pipeline integration test against SampleMod fixture\n\n## Completed\n\n2026-05-23 (catalog cutoff window)."
 }

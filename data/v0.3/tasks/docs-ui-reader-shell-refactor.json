@@ -11,5 +11,6 @@
     "repo": "beskid",
     "commit": "377eb75",
     "subject": "docs(AGENTS): update cross-cutting specifications and database migration details"
-  }
+  },
+  "body": "## What shipped\n\nRefactors `@beskid/docs-ui` reader shells for book and platform-spec, updating AGENTS cross-cutting notes and migration context for shared chrome.\n\n## Source commit\n\nRepository **`beskid`** \u00b7 commit `377eb75`\n\n> docs(AGENTS): update cross-cutting specifications and database migration details\n\n## Completed\n\n2026-05-23 (catalog cutoff window)."
 }

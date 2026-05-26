@@ -1,6 +1,7 @@
 {
   "slug": "pckg-registry",
   "title": "Package registry",
-  "summary": "packageKind tool profiles in dashboard and CLI pack, structured api.json tier/artifact paths, and Fluent package docs UI hardening.",
-  "order": 5
+  "summary": "packageKind `tool` standardization in pckg server/UI, `beskid pckg pack --package-kind tool`, install-card token escaping, Fluent docs-ui import refactor, api.json `tier` field, and submodule pin to the v0.3 integrated registry tip.",
+  "order": 6,
+  "deliverableIds": ["v03-pckg-tool-registry", "v03-merge-wave"]
 }

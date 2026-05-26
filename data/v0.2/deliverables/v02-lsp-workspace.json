@@ -2,6 +2,6 @@
   "id": "v02-lsp-workspace",
   "title": "LSP workspace & project graph",
   "number": 6,
-  "description": "Compiler LSP capabilities (rename, symbols, code actions, workspace execute commands) delivered through workspace templates and project graph pipeline.",
+  "description": "Compiler LSP: rename, code actions, inlay hints, signature help, workspace symbols, workspace templates, project explorer, and project graph pipeline—consumed by VS Code extension client middleware.\n\n**Closed:** 2026-05-22 — project graph and capability wave complete the v0.2 editor story.",
   "closedOn": "2026-05-22"
 }

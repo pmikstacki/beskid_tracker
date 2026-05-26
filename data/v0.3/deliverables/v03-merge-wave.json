@@ -2,5 +2,6 @@
   "id": "v03-merge-wave",
   "title": "v0.3 macro/runtime/ffi/tooling delivery",
   "number": 4,
+  "description": "23 May 2026 merge wave: eight subplanner tracks integrated on main (compiler-mod-execution, native-di-codegen, export-ffi-link-time, foreign-lib-import-cli, runtime-phase-b-gc, corelib-tiering, tooling-packageKind). Anchors mod host, export FFI, import lib, phase B GC, and tier-tagged corelib landings before post-merge CI.",
   "closedOn": "2026-05-23"
 }

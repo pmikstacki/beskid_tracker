@@ -2,6 +2,6 @@
   "id": "v01-corelib-submodule",
   "title": "Nested corelib submodule",
   "number": 2,
-  "description": "Standalone compiler CI embeds stdlib via nested corelib submodule only.",
-  "closedOn": "2026-04-10"
+  "closedOn": "2026-04-10",
+  "description": "Closed **2026-04-10** when compiler [`8fa00e9`](https://github.com/Cyber-Nomad-Collective/compiler/commit/8fa00e9) enforced **stdlib only from nested corelib submodule**.\n\n**corelib-packaging** tasks: superrepo `beskid_standard` submodule, compiler-embedded `corelib` for standalone CI, stdlib artifact manifest across superrepo and pckg UI, CLI provisioning isolation, and cleanup retries. Removes duplicate in-tree `standard_library` implementations."
 }

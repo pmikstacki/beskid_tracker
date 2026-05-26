@@ -9,6 +9,7 @@
   "area": "hir",
   "completedAt": "2026-02-21",
   "deliverableId": "v00-analysis-foundation",
+  "body": "## What was done\n\nDocumented the **HIR** as a phase-indexed shared core: which nodes exist at which pipeline stage, how later passes mutate or replace subtrees, and where normalization/desugar plugs in.\n\n## Why it mattered\n\nPecan was experimenting with **staged** analysis (parse → lower → resolve → type) before Beskid unified those phases under `beskid_pipeline`. The HIR doc prevented ad-hoc AST copies per pass.\n\n## Outcome\n\nFoundation for normalization (`hir-normalization-for-desugar`), `HirQuery` traversal, and visitor refactors in the same deliverable.",
   "source": {
     "repo": "pekan",
     "commit": "230269f",

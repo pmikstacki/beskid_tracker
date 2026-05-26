@@ -12,5 +12,6 @@
     "repo": "beskid",
     "commit": "3db38a2",
     "subject": "chore(submodules): pin compiler and pckg to v0.3 integrated tips"
-  }
+  },
+  "body": "## What shipped\n\nPins pckg submodule to the v0.3 integrated registry tip alongside compiler after merge-wave integration.\n\n## Source commit\n\nRepository **`beskid`** \u00b7 commit `3db38a2`\n\n> chore(submodules): pin compiler and pckg to v0.3 integrated tips\n\n## Completed\n\n2026-05-23 (catalog cutoff window)."
 }

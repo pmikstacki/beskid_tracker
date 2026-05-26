@@ -12,5 +12,6 @@
     "repo": "beskid",
     "commit": "9d7891f",
     "subject": "fix(vscode): track extension packages sources; pckg package tree"
-  }
+  },
+  "body": "## Outcome\n\nTrack extension packages sources; pckg package tree.\n\n## Context\n\n- Workstream **editor-extension** — see workstream summary on the catalog.\n- Contributes to deliverable **VS Code extension & Open VSX** (`v02-editor-extension`).\n- Open VSX matrix includes **darwin-arm64** and **darwin-x64** with cross-built Intel LSP where needed.\n\n## Provenance\n\n- **Repository:** `beskid`\n- **Commit:** [`9d7891f`](https://github.com/Cyber-Nomad-Collective/beskid/commit/9d7891f) — fix(vscode): track extension packages sources; pckg package tree"
 }

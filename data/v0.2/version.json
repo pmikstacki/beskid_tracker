@@ -1,7 +1,7 @@
 {
   "id": "v0.2",
   "title": "Analysis, packages, and platform spec",
-  "summary": "Typed analysis/doc pipeline, structured api.json in pckg, platform-spec cutover on beskid-lang.org, trudoc verification, compiler LSP workspace/project graph, and VS Code extension plus Open VSX CI.",
+  "summary": "v0.2 ships the typed analysis/doc pipeline, hierarchical **api.json** as the pckg docs contract, **platform-spec** cutover on beskid-lang.org, trudoc verification, compiler LSP workspace/project graph, macro/composition HIR, **abfall** GC integration, Open VSX extension CI, and book/tutorial waves (2026-04-23 → 2026-05-22).",
   "theme": "analysis stack, packages, spec, editor LSP",
   "status": "Released",
   "cutoff": {

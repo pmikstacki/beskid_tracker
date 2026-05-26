@@ -9,6 +9,7 @@
   "area": "analysis",
   "completedAt": "2026-02-28",
   "deliverableId": "v00-analysis-foundation",
+  "body": "## What was done\n\nRemoved an unused traversal module and refactored **staged analysis** to traverse HIR via **`HirQuery`**—a single query API for parent/child/sibling navigation during rules.\n\n## Why it mattered\n\n`HirQuery` became the canonical traversal surface for semantic passes, replacing one-off walkers and aligning with the phase-indexed HIR model.\n\n## Outcome\n\nInformed later Beskid analyze/normalize/type passes on one typed-HIR spine.",
   "source": {
     "repo": "pekan",
     "commit": "0de5fa0",

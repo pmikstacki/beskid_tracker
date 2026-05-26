@@ -11,5 +11,6 @@
     "repo": "pckg",
     "commit": "38648a4",
     "subject": "feat(server,ui,tests): packageKind tool standardization (D-TOOL-PCKG-0004)"
-  }
+  },
+  "body": "## What shipped\n\npckg server and dashboard treat **packageKind: tool** as a first-class registry profile (D-TOOL-PCKG-0004).\n\n## Source commit\n\nRepository **`pckg`** \u00b7 commit `38648a4`\n\n> feat(server,ui,tests): packageKind tool standardization (D-TOOL-PCKG-0004)\n\n## Completed\n\n2026-05-23 (catalog cutoff window)."
 }

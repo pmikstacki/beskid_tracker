@@ -12,5 +12,6 @@
     "repo": "compiler",
     "commit": "459e018",
     "subject": "feat(pckg): upload publishes with registry-assigned semver"
-  }
+  },
+  "body": "## Outcome\n\nUpload publishes with registry-assigned semver.\n\n## Context\n\n- Workstream **pckg-registry** — registry and PackageDocs UI.\n- Contributes to deliverable **Registry dashboard and package docs foundation** (`v02-pckg-registry-foundation`).\n\n## Provenance\n\n- **Repository:** `compiler`\n- **Commit:** [`459e018`](https://github.com/Cyber-Nomad-Collective/compiler/commit/459e018) — feat(pckg): upload publishes with registry-assigned semver"
 }

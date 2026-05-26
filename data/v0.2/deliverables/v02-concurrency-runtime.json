@@ -2,6 +2,6 @@
   "id": "v02-concurrency-runtime",
   "title": "Fibers, channels, and GC runtime",
   "number": 8,
-  "description": "Spawn/fiber runtime surfaces, channel primitives, vendored abfall GC heap integration, and runtime module alignment for v0.2 execution.",
+  "description": "Spawn/fiber runtime surfaces, channel primitives, vendored **abfall** GC heap integration, runtime module alignment, and platform-spec GC/interop alignment.\n\n**Closed:** 2026-05-20 — corelib console/concurrency packages and syscall coverage extend the runtime story.",
   "closedOn": "2026-05-20"
 }

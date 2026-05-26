@@ -12,5 +12,6 @@
     "repo": "compiler",
     "commit": "76a58f5",
     "subject": "feat(compiler): program assembly, front-end split, and scheduler refactor"
-  }
+  },
+  "body": "## Outcome\n\nProgram assembly, front-end split, and scheduler refactor.\n\n## Context\n\n- Workstream **analysis-pipeline** — compiler pipeline and api.json spine.\n\n## Provenance\n\n- **Repository:** `compiler`\n- **Commit:** [`76a58f5`](https://github.com/Cyber-Nomad-Collective/compiler/commit/76a58f5) — feat(compiler): program assembly, front-end split, and scheduler refactor"
 }

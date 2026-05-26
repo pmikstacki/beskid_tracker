@@ -10,5 +10,6 @@
     "repo": "beskid",
     "commit": "d800062",
     "subject": "feat(platform-spec): enhance SpecPageHeader and layout styles for improved navigation and responsiveness"
-  }
+  },
+  "body": "## What shipped\n\nSpecPageHeader and responsive layout styles improve platform-spec browse/map navigation and mobile drawer behavior.\n\n## Source commit\n\nRepository **`beskid`** \u00b7 commit `d800062`\n\n> feat(platform-spec): enhance SpecPageHeader and layout styles for improved navigation and responsiveness\n\n## Completed\n\n2026-05-24 (catalog cutoff window)."
 }

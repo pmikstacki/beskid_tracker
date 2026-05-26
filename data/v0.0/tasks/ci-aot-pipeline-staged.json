@@ -8,6 +8,7 @@
   "domain": "tooling",
   "completedAt": "2026-02-27",
   "deliverableId": "v00-execution-jit-gc",
+  "body": "## What was done\n\nAdded CI with workspace checks, **interop freshness** validation, ABI/dispatch parity tests, and **AOT smoke** tests—reflecting a staged compile pipeline rather than a single `cargo test` blob.\n\n## Why it mattered\n\nPrototype JIT/lowering work regressed easily without automated smoke coverage; CI encoded the minimum bar before compiler history moved to the dedicated submodule.\n\n## Outcome\n\nPatterns reused in compiler repo CI for v0.1+ release and pack flows.",
   "source": {
     "repo": "pekan",
     "commit": "24baf3b",

@@ -9,7 +9,7 @@
   "area": "projects",
   "completedAt": "2026-02-26",
   "deliverableId": "v00-tooling-research",
-  "body": "Compared project.pn Build API with Go/Gleam layouts; superseded by Project.proj + pckg in later bands.",
+  "body": "## What was done\n\nDocumented a **project.pn** Build API (Zig-influenced), lockfile lifecycle, and Daggy-based dependency resolution—compared against Go/Gleam path-driven layouts.\n\n## Why it mattered\n\nExplored whether Pecan/Beskid needed a single manifest file vs convention-based project trees before committing platform packaging.\n\n## Research conclusion\n\n**Not adopted.** Later bands standardized on **`Project.proj`** and **pckg** registry flows instead of `project.pn`.",
   "source": {
     "repo": "pekan",
     "commit": "28141af",

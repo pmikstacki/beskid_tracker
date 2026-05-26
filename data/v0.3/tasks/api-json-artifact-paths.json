@@ -5,13 +5,13 @@
   "statusColumn": "Done",
   "priority": "medium",
   "workstream": "pckg-registry",
-  "milestoneId": "v03-pckg-tool-registry",
+  "milestoneId": "v03-post-merge-ci",
   "domain": "tooling",
   "completedAt": "2026-05-24",
-  "milestoneId": "v03-post-merge-ci",
   "source": {
     "repo": "compiler",
     "commit": "5f0f2c9",
     "subject": "fix(doc): resolve api.json paths from per-package artifact roots"
-  }
+  },
+  "body": "## What shipped\n\nDocumentation emission resolves `api.json` relative to each package's artifact root instead of a single workspace-relative path, fixing pckg ingestion for multi-package workspaces.\n\n## Source commit\n\nRepository **`compiler`** \u00b7 commit `5f0f2c9`\n\n> fix(doc): resolve api.json paths from per-package artifact roots\n\n## Completed\n\n2026-05-24 (catalog cutoff window)."
 }

@@ -12,5 +12,6 @@
     "repo": "beskid",
     "commit": "aaddd32",
     "subject": "docs: update inventory and enhance VS Code extension documentation"
-  }
+  },
+  "body": "## What shipped\n\nUpdates superrepo inventory and VS Code extension docs for LSP bootstrap, Open VSX matrix, and F5 dev paths.\n\n## Source commit\n\nRepository **`beskid`** \u00b7 commit `aaddd32`\n\n> docs: update inventory and enhance VS Code extension documentation\n\n## Completed\n\n2026-05-25 (catalog cutoff window)."
 }

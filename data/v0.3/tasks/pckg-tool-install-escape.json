@@ -5,12 +5,12 @@
   "statusColumn": "Done",
   "priority": "low",
   "workstream": "pckg-registry",
-  "milestoneId": "v03-pckg-tool-registry",
-  "completedAt": "2026-05-23",
   "milestoneId": "v03-merge-wave",
+  "completedAt": "2026-05-23",
   "source": {
     "repo": "pckg",
     "commit": "135f7c9",
     "subject": "fix(pckg): escape `./@(Package.Name).bpk` token in tool-package install card"
-  }
+  },
+  "body": "## What shipped\n\nEscapes the `./@(Package.Name).bpk` token in tool-package install cards so Razor/Blazor does not treat `@` as code.\n\n## Source commit\n\nRepository **`pckg`** \u00b7 commit `135f7c9`\n\n> fix(pckg): escape `./@(Package.Name).bpk` token in tool-package install card\n\n## Completed\n\n2026-05-23 (catalog cutoff window)."
 }

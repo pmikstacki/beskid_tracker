@@ -12,5 +12,6 @@
     "repo": "compiler",
     "commit": "dfe8ace",
     "subject": "feat(compiler): add member item resolution and docs pipeline updates"
-  }
+  },
+  "body": "## Outcome\n\nAdd member item resolution and docs pipeline updates.\n\n## Context\n\n- Workstream **analysis-pipeline** — compiler pipeline and api.json spine.\n- Contributes to deliverable **Platform-spec cutover** (`v02-platform-spec-cutover`).\n\n## Provenance\n\n- **Repository:** `compiler`\n- **Commit:** [`dfe8ace`](https://github.com/Cyber-Nomad-Collective/compiler/commit/dfe8ace) — feat(compiler): add member item resolution and docs pipeline updates"
 }

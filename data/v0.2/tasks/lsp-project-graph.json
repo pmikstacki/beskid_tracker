@@ -12,5 +12,6 @@
     "repo": "compiler",
     "commit": "6ae272b",
     "subject": "feat: workspace templates, LSP project explorer, and project graph pipeline"
-  }
+  },
+  "body": "## Outcome\n\nWorkspace templates, LSP project explorer, and project graph pipeline.\n\n## Context\n\n- Workstream **analysis-pipeline** — compiler pipeline and api.json spine.\n- Contributes to deliverable **LSP workspace & project graph** (`v02-lsp-workspace`).\n- LSP work shares the typed HIR spine with analyze/build; workspace templates feed the project graph pipeline.\n\n## Provenance\n\n- **Repository:** `compiler`\n- **Commit:** [`6ae272b`](https://github.com/Cyber-Nomad-Collective/compiler/commit/6ae272b) — feat: workspace templates, LSP project explorer, and project graph pipeline"
 }

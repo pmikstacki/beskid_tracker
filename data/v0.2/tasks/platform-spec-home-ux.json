@@ -11,5 +11,6 @@
     "repo": "beskid",
     "commit": "6c5f200",
     "subject": "fix(docs-ui): platform-spec home UX — tabs, map height, zoom, typography"
-  }
+  },
+  "body": "## Outcome\n\nPlatform-spec home UX — tabs, map height, zoom, typography.\n\n## Context\n\n- Workstream **docs-site** — see workstream summary on the catalog.\n- Contributes to deliverable **Platform-spec cutover** (`v02-platform-spec-cutover`).\n- Normative updates live under `site/website/src/content/docs/platform-spec/` and ship via beskid-lang.org.\n\n## Provenance\n\n- **Repository:** `beskid`\n- **Commit:** [`6c5f200`](https://github.com/Cyber-Nomad-Collective/beskid/commit/6c5f200) — fix(docs-ui): platform-spec home UX — tabs, map height, zoom, typography"
 }

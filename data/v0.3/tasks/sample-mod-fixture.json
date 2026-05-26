@@ -12,5 +12,6 @@
     "repo": "compiler",
     "commit": "0e310d4",
     "subject": "test(mod_host): reference SampleMod fixture and beskid_tests::mods suite"
-  }
+  },
+  "body": "## What shipped\n\nSampleMod reference fixture and `beskid_tests::mods` suite guard mod host regressions.\n\n## Source commit\n\nRepository **`compiler`** \u00b7 commit `0e310d4`\n\n> test(mod_host): reference SampleMod fixture and beskid_tests::mods suite\n\n## Completed\n\n2026-05-23 (catalog cutoff window)."
 }

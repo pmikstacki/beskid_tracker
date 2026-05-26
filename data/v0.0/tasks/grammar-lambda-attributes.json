@@ -8,6 +8,7 @@
   "domain": "language-meta",
   "completedAt": "2026-03-02",
   "deliverableId": "v00-analysis-foundation",
+  "body": "## What was done\n\nExtended the **grammar** and **HIR** to support **attributes** and **lambda expressions** end-to-end through parse and HIR lowering shapes.\n\n## Why it mattered\n\nModern Beskid surface syntax depends on attributes and lambdas; this commit is the Pecan-era proof that the parser/HIR pipeline could absorb them before the compiler submodule handoff.\n\n## Outcome\n\nLast major analysis-foundation language-meta spike before v0.0 cutoff end (`dd75bff`).",
   "source": {
     "repo": "pekan",
     "commit": "47b24da",

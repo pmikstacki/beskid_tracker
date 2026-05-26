@@ -13,5 +13,6 @@
     "repo": "compiler",
     "commit": "ad6c13c",
     "subject": "fix(ci): skip prelude lowering tests in parallel test pass"
-  }
+  },
+  "body": "## Outcome\n\nSkip prelude lowering tests in parallel test pass.\n\n## Context\n\n- Workstream **ci-release** — see workstream summary on the catalog.\n- Contributes to deliverable **CI workflows and deploy infra** (`v02-ci-deploy-infra`).\n\n## Provenance\n\n- **Repository:** `compiler`\n- **Commit:** [`ad6c13c`](https://github.com/Cyber-Nomad-Collective/compiler/commit/ad6c13c) — fix(ci): skip prelude lowering tests in parallel test pass"
 }

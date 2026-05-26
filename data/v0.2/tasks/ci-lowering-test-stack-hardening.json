@@ -13,5 +13,6 @@
     "repo": "compiler",
     "commit": "2882016",
     "subject": "fix(ci): serialize stack-heavy tests and raise RUST_MIN_STACK on Linux"
-  }
+  },
+  "body": "## Outcome\n\nSerialize stack-heavy tests and raise RUST_MIN_STACK on Linux.\n\n## Context\n\n- Workstream **codegen-runtime** — see workstream summary on the catalog.\n- Contributes to deliverable **api.json primary contract** (`v02-api-json-contract`).\n\n## Provenance\n\n- **Repository:** `compiler`\n- **Commit:** [`2882016`](https://github.com/Cyber-Nomad-Collective/compiler/commit/2882016) — fix(ci): serialize stack-heavy tests and raise RUST_MIN_STACK on Linux"
 }

@@ -12,5 +12,6 @@
     "repo": "compiler",
     "commit": "44aed91",
     "subject": "chore(deps): bump rustls/rustls-webpki/rand to clear cargo-audit advisories"
-  }
+  },
+  "body": "## Outcome\n\nBump rustls/rustls-webpki/rand to clear cargo-audit advisories.\n\n## Context\n\n- Workstream **ci-release** — see workstream summary on the catalog.\n- Contributes to deliverable **CI workflows and deploy infra** (`v02-ci-deploy-infra`).\n\n## Provenance\n\n- **Repository:** `compiler`\n- **Commit:** [`44aed91`](https://github.com/Cyber-Nomad-Collective/compiler/commit/44aed91) — chore(deps): bump rustls/rustls-webpki/rand to clear cargo-audit advisories"
 }

@@ -21,5 +21,6 @@
     "repo": "beskid",
     "commit": "d137f11",
     "subject": "orchestrate(beskid-v0-3): promote corelib-api-shape to Standard with tier pipeline"
-  }
+  },
+  "body": "## What shipped\n\nOrchestration promotes the **corelib-api-shape** platform-spec feature to **Standard** and documents the tier tagging pipeline used by publish and coverage gates.\n\n## Platform specification\n\n- **API shape** \u2014 `/platform-spec/core-library/api-shape` \u2014 *tracks* (required)\n\n## Source commit\n\nRepository **`beskid`** \u00b7 commit `d137f11`\n\n> orchestrate(beskid-v0-3): promote corelib-api-shape to Standard with tier pipeline\n\n## Completed\n\n2026-05-23 (catalog cutoff window)."
 }

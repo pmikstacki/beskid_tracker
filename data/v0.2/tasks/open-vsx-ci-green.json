@@ -12,5 +12,6 @@
     "repo": "beskid",
     "commit": "6444332",
     "subject": "ci: green pipelines for docs site, Open VSX publish, and Rust audit"
-  }
+  },
+  "body": "## Outcome\n\nGreen pipelines for docs site, Open VSX publish, and Rust audit.\n\n## Context\n\n- Workstream **editor-extension** — see workstream summary on the catalog.\n- Contributes to deliverable **VS Code extension & Open VSX** (`v02-editor-extension`).\n- Open VSX matrix includes **darwin-arm64** and **darwin-x64** with cross-built Intel LSP where needed.\n\n## Provenance\n\n- **Repository:** `beskid`\n- **Commit:** [`6444332`](https://github.com/Cyber-Nomad-Collective/beskid/commit/6444332) — ci: green pipelines for docs site, Open VSX publish, and Rust audit"
 }

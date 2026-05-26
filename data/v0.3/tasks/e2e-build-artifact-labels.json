@@ -13,5 +13,6 @@
     "repo": "compiler",
     "commit": "bf32227",
     "subject": "fix(e2e): align build output assertions with CLI artifact labels"
-  }
+  },
+  "body": "## What shipped\n\nE2e CLI tests assert build output using the same artifact labels the `beskid build` CLI emits, reducing brittle path checks.\n\n## Source commit\n\nRepository **`compiler`** \u00b7 commit `bf32227`\n\n> fix(e2e): align build output assertions with CLI artifact labels\n\n## Completed\n\n2026-05-23 (catalog cutoff window)."
 }

@@ -9,6 +9,7 @@
   "area": "mods",
   "completedAt": "2026-02-23",
   "deliverableId": "v00-tooling-research",
+  "body": "## What was done\n\nResearched **stage-8** metaprogramming for **compiler mods**: how generators, analyzers, and rewriters attach to pipeline stages without language-level `meta` blocks (Rust host owns composition).\n\n## Why it mattered\n\nBeskid mods are **AOT-only** and SDK-driven (`Generator`, `Analyzer`, `Rewritter`); stage-8 work explored where Beskid code runs vs Rust-only pipeline wiring.\n\n## Research conclusion\n\nMods integrate at defined compiler stages; language `meta` grammar was **not** revived. Documented alongside semantic-analysis progress in the same research window as staged parser rules.",
   "source": {
     "repo": "pekan",
     "commit": "33eaa35",

@@ -12,5 +12,6 @@
     "repo": "compiler",
     "commit": "98aa6bc",
     "subject": "Test harness, formatter, CLI/LSP integration, and CI hardening."
-  }
+  },
+  "body": "## Outcome\n\nTest harness, formatter, CLI/LSP integration, and CI hardening.\n\n## Context\n\n- Workstream **analysis-pipeline** — compiler pipeline and api.json spine.\n- Contributes to deliverable **Platform-spec cutover** (`v02-platform-spec-cutover`).\n- LSP work shares the typed HIR spine with analyze/build; workspace templates feed the project graph pipeline.\n\n## Provenance\n\n- **Repository:** `compiler`\n- **Commit:** [`98aa6bc`](https://github.com/Cyber-Nomad-Collective/compiler/commit/98aa6bc) — Test harness, formatter, CLI/LSP integration, and CI hardening."
 }

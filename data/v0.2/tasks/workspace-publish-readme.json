@@ -10,5 +10,6 @@
     "repo": "pckg",
     "commit": "a7d77fe",
     "subject": "feat(server): workspace publish, readme rendering, and manifest metadata"
-  }
+  },
+  "body": "## Outcome\n\nWorkspace publish, readme rendering, and manifest metadata.\n\n## Context\n\n- Workstream **pckg-registry** — registry and PackageDocs UI.\n- LSP work shares the typed HIR spine with analyze/build; workspace templates feed the project graph pipeline.\n\n## Provenance\n\n- **Repository:** `pckg`\n- **Commit:** [`a7d77fe`](https://github.com/Cyber-Nomad-Collective/pckg/commit/a7d77fe) — feat(server): workspace publish, readme rendering, and manifest metadata"
 }

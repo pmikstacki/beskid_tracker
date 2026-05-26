@@ -9,7 +9,9 @@
   "source": {
     "repo": "beskid",
     "commit": "2948606",
-    "subject": "Add CI/CD pipeline for multi-platform CLI releases with SeaweedFS distribution; add install scripts and downloads documentation"
+    "subject": "Add CI/CD pipeline for multi-platform CLI releases with SeaweedFS distribution; add install scripts and downloads documentation",
+    "url": "https://github.com/Cyber-Nomad-Collective/beskid/commit/2948606"
   },
-  "statusColumn": "Done"
+  "statusColumn": "Done",
+  "body": "Adds superrepo **CI/CD for multi-platform CLI releases** with SeaweedFS distribution, install scripts, and downloads documentation.\n\n## Provenance\n- **Repository:** `beskid`\n- **Commit:** [`2948606`](https://github.com/Cyber-Nomad-Collective/beskid/commit/2948606)\n- **Subject:** Add CI/CD pipeline for multi-platform CLI releases with SeaweedFS distribution; add install scripts and downloads documentation\n- **Completed:** 2026-03-05\n\n## Catalog scope\n- **Delivery version:** v0.1 (Compiler foundation)\n- **Workstream:** `ci-release`\n\n## Relation\nFoundation for all **ci-release** upload/retry tasks (no v01-cli-release deliverable)."
 }

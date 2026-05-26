@@ -12,5 +12,6 @@
     "repo": "compiler",
     "commit": "582170b",
     "subject": "compiler: LSP rename feature and corelib bump"
-  }
+  },
+  "body": "## Outcome\n\nLSP rename feature and corelib bump.\n\n## Context\n\n- Workstream **analysis-pipeline** — compiler pipeline and api.json spine.\n- Contributes to deliverable **LSP workspace & project graph** (`v02-lsp-workspace`).\n- LSP work shares the typed HIR spine with analyze/build; workspace templates feed the project graph pipeline.\n- Corelib sources live in the **corelib** submodule; package identity is **corelib** with workspace publish to pckg.\n\n## Provenance\n\n- **Repository:** `compiler`\n- **Commit:** [`582170b`](https://github.com/Cyber-Nomad-Collective/compiler/commit/582170b) — compiler: LSP rename feature and corelib bump"
 }

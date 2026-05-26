@@ -13,5 +13,6 @@
     "commit": "4b4cd74",
     "subject": "fix(corelib): resolve prelude Contracts clash and refresh Diagnostics facade"
   },
-  "milestoneId": "v03-corelib-tier-ship"
+  "milestoneId": "v03-corelib-tier-ship",
+  "body": "## What shipped\n\nResolves a prelude `Contracts` name clash and refreshes the Diagnostics facade so Tier0 prelude imports compose cleanly.\n\n## Source commit\n\nRepository **`corelib`** \u00b7 commit `4b4cd74`\n\n> fix(corelib): resolve prelude Contracts clash and refresh Diagnostics facade\n\n## Completed\n\n2026-05-23 (catalog cutoff window)."
 }

@@ -13,5 +13,6 @@
     "commit": "5bc4e9a",
     "subject": "fix(corelib): rename Tier1 tests to avoid grammar collision on `false`"
   },
-  "milestoneId": "v03-corelib-tier-ship"
+  "milestoneId": "v03-corelib-tier-ship",
+  "body": "## What shipped\n\nRenames Tier1 tests that used identifiers colliding with the `false` keyword after grammar tightening.\n\n## Source commit\n\nRepository **`corelib`** \u00b7 commit `5bc4e9a`\n\n> fix(corelib): rename Tier1 tests to avoid grammar collision on `false`\n\n## Completed\n\n2026-05-23 (catalog cutoff window)."
 }

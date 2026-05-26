@@ -11,5 +11,6 @@
     "repo": "compiler",
     "commit": "1a85cee",
     "subject": "runtime: phase B GC opt-in (multi-mutator, pointer channels, syscall-pool guard)"
-  }
+  },
+  "body": "## What shipped\n\nRuntime enables Phase B GC opt-in: multi-mutator collection, pointer channels, and syscall-pool guard integration.\n\n## Source commit\n\nRepository **`compiler`** \u00b7 commit `1a85cee`\n\n> runtime: phase B GC opt-in (multi-mutator, pointer channels, syscall-pool guard)\n\n## Completed\n\n2026-05-23 (catalog cutoff window)."
 }

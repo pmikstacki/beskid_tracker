@@ -5,13 +5,13 @@
   "statusColumn": "Done",
   "priority": "high",
   "workstream": "pckg-registry",
-  "milestoneId": "v03-pckg-tool-registry",
+  "milestoneId": "v03-merge-wave",
   "domain": "tooling",
   "completedAt": "2026-05-23",
-  "milestoneId": "v03-merge-wave",
   "source": {
     "repo": "compiler",
     "commit": "3614154",
     "subject": "feat(doc): add api-shape tier resolver and `tier` field on api.json items"
-  }
+  },
+  "body": "## What shipped\n\nThe doc pipeline adds a tier resolver and writes a `tier` field on api.json items so registry UI and coverage tests can distinguish Tier0\u2013Tier2 corelib surface.\n\n## Source commit\n\nRepository **`compiler`** \u00b7 commit `3614154`\n\n> feat(doc): add api-shape tier resolver and `tier` field on api.json items\n\n## Completed\n\n2026-05-23 (catalog cutoff window)."
 }

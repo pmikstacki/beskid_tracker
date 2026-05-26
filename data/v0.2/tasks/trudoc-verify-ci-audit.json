@@ -10,5 +10,6 @@
     "repo": "beskid",
     "commit": "f57377a",
     "subject": "fix(docs): restore book memes, trudoc verify scripts, CI runtime and audit"
-  }
+  },
+  "body": "## Outcome\n\nRestore book memes, trudoc verify scripts, CI runtime and audit.\n\n## Context\n\n- Workstream **ci-release** — see workstream summary on the catalog.\n- **trudoc** Zod/frontmatter verification guards platform-spec metadata in CI.\n\n## Provenance\n\n- **Repository:** `beskid`\n- **Commit:** [`f57377a`](https://github.com/Cyber-Nomad-Collective/beskid/commit/f57377a) — fix(docs): restore book memes, trudoc verify scripts, CI runtime and audit"
 }

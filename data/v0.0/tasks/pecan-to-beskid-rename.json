@@ -8,6 +8,7 @@
   "domain": "community",
   "completedAt": "2026-02-26",
   "deliverableId": "v00-tooling-research",
+  "body": "## What was done\n\nRenamed the project from **Pecan** to **Beskid** across documentation, crate names where applicable, and workspace configuration—preserving git history under the old `pekan` remote until the repo was later deleted.\n\n## Why it mattered\n\nBrand and naming alignment before the compiler submodule split and public superrepo messaging; closes the “Pecan prototype” narrative while v0.0 catalog still labels the band historically.\n\n## Outcome\n\nSubsequent delivery bands use **Beskid** naming; seed tasks retain `source.repo: \"pekan\"` for provenance.",
   "source": {
     "repo": "pekan",
     "commit": "1d49ce5",

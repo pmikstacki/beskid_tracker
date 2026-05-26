@@ -12,5 +12,6 @@
     "repo": "beskid",
     "commit": "3b51b53",
     "subject": "merge(v0.3): corelib-tiering-collections-fs-api-shape into main (keep integrated submodule tips)"
-  }
+  },
+  "body": "## What shipped\n\nSuperrepo merge commit **corelib-tiering-collections-fs-api-shape** lands tier collections, FS/Path, and api-shape work on main with integrated submodule tips.\n\n## Source commit\n\nRepository **`beskid`** \u00b7 commit `3b51b53`\n\n> merge(v0.3): corelib-tiering-collections-fs-api-shape into main (keep integrated submodule tips)\n\n## Completed\n\n2026-05-23 (catalog cutoff window)."
 }

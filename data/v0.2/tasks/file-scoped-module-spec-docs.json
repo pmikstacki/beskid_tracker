@@ -11,5 +11,6 @@
     "repo": "beskid",
     "commit": "77698fa",
     "subject": "docs: clarify file-scoped module declarations and their implications"
-  }
+  },
+  "body": "## Outcome\n\nClarify file-scoped module declarations and their implications.\n\n## Context\n\n- Workstream **platform-spec** — normative spec on beskid-lang.org.\n\n## Provenance\n\n- **Repository:** `beskid`\n- **Commit:** [`77698fa`](https://github.com/Cyber-Nomad-Collective/beskid/commit/77698fa) — docs: clarify file-scoped module declarations and their implications"
 }

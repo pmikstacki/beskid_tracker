@@ -13,5 +13,6 @@
     "repo": "compiler",
     "commit": "cf5ae82",
     "subject": "feat(doc): link api.json module tree and strengthen type references"
-  }
+  },
+  "body": "## Outcome\n\nLink api.json module tree and strengthen type references.\n\n## Context\n\n- Workstream **analysis-pipeline** — compiler pipeline and api.json spine.\n- Contributes to deliverable **api.json primary contract** (`v02-api-json-contract`).\n- Structured **api.json** is the hierarchical contract for package docs (types, members, **typeRef** links)—not parallel string-key tables outside the schema.\n\n## Provenance\n\n- **Repository:** `compiler`\n- **Commit:** [`cf5ae82`](https://github.com/Cyber-Nomad-Collective/compiler/commit/cf5ae82) — feat(doc): link api.json module tree and strengthen type references"
 }

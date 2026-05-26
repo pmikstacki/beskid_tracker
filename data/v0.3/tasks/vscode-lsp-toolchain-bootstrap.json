@@ -12,5 +12,6 @@
     "repo": "beskid",
     "commit": "503223d",
     "subject": "chore: bump submodules for CLI-driven LSP and toolchain bootstrap"
-  }
+  },
+  "body": "## What shipped\n\nSuperrepo submodule bumps wire extension and compiler repos to CLI-driven LSP bootstrap landed in v0.3.\n\n## Source commit\n\nRepository **`beskid`** \u00b7 commit `503223d`\n\n> chore: bump submodules for CLI-driven LSP and toolchain bootstrap\n\n## Completed\n\n2026-05-25 (catalog cutoff window)."
 }

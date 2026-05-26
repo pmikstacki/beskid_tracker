@@ -11,5 +11,6 @@
     "repo": "beskid",
     "commit": "ea73773",
     "subject": "orch(beskid-v0-3): runtime phase B GC opt-in handoff"
-  }
+  },
+  "body": "## What shipped\n\nOrchestration handoff links runtime Phase B GC implementation to execution platform-spec phase evidence.\n\n## Source commit\n\nRepository **`beskid`** \u00b7 commit `ea73773`\n\n> orch(beskid-v0-3): runtime phase B GC opt-in handoff\n\n## Completed\n\n2026-05-23 (catalog cutoff window)."
 }

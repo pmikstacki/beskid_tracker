@@ -21,5 +21,6 @@
     "repo": "compiler",
     "commit": "9f668d4",
     "subject": "feat(compiler): macro registry, substitution, and HIR/format wiring"
-  }
+  },
+  "body": "## Outcome\n\nMacro registry, substitution, and HIR/format wiring.\n\n## Context\n\n- Workstream **analysis-pipeline** — compiler pipeline and api.json spine.\n- Macro work follows platform-spec **language-meta/macros** semantics (registry, expand pass, resolver re-resolve).\n\n## Platform specification\n\n- Implements [Macros](https://beskid-lang.org/platform-spec/language-meta/macros/) (`/platform-spec/language-meta/macros/`) *(required)*\n\n## Provenance\n\n- **Repository:** `compiler`\n- **Commit:** [`9f668d4`](https://github.com/Cyber-Nomad-Collective/compiler/commit/9f668d4) — feat(compiler): macro registry, substitution, and HIR/format wiring"
 }

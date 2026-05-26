@@ -12,5 +12,6 @@
     "repo": "beskid",
     "commit": "0b36871",
     "subject": "chore(ci): refine workflows and agents guidance"
-  }
+  },
+  "body": "## Outcome\n\nRefine workflows and agents guidance.\n\n## Context\n\n- Workstream **ci-release** — see workstream summary on the catalog.\n- Contributes to deliverable **CI workflows and deploy infra** (`v02-ci-deploy-infra`).\n\n## Provenance\n\n- **Repository:** `beskid`\n- **Commit:** [`0b36871`](https://github.com/Cyber-Nomad-Collective/beskid/commit/0b36871) — chore(ci): refine workflows and agents guidance"
 }

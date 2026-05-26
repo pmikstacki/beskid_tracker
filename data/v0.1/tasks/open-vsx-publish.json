@@ -9,7 +9,9 @@
   "source": {
     "repo": "beskid",
     "commit": "f777b79",
-    "subject": "fix(ci): avoid Windows decode crash in Open VSX namespace check"
+    "subject": "fix(ci): avoid Windows decode crash in Open VSX namespace check",
+    "url": "https://github.com/Cyber-Nomad-Collective/beskid/commit/f777b79"
   },
-  "statusColumn": "Done"
+  "statusColumn": "Done",
+  "body": "Fixes Windows decode crash in Open VSX **namespace check** — last CI fix before superrepo tag **v0.1.0**.\n\n## Provenance\n- **Repository:** `beskid`\n- **Commit:** [`f777b79`](https://github.com/Cyber-Nomad-Collective/beskid/commit/f777b79)\n- **Subject:** fix(ci): avoid Windows decode crash in Open VSX namespace check\n- **Completed:** 2026-04-22\n\n## Catalog scope\n- **Delivery version:** v0.1 (Compiler foundation)\n- **Workstream:** `editor-extension`\n- **Deliverable:** `v01-open-vsx`\n\n## Relation\nTerminal commit for **v01-open-vsx** and v0.1 cutoff (`f777b79`)."
 }

@@ -8,7 +8,9 @@
   "source": {
     "repo": "compiler",
     "commit": "6e82a32",
-    "subject": "fix(e2e): isolate stdlib provisioning root per CLI invoker"
+    "subject": "fix(e2e): isolate stdlib provisioning root per CLI invoker",
+    "url": "https://github.com/Cyber-Nomad-Collective/compiler/commit/6e82a32"
   },
-  "statusColumn": "Done"
+  "statusColumn": "Done",
+  "body": "Isolates **stdlib provisioning root** per CLI e2e test invoker to prevent cross-test pollution.\n\n## Provenance\n- **Repository:** `compiler`\n- **Commit:** [`6e82a32`](https://github.com/Cyber-Nomad-Collective/compiler/commit/6e82a32)\n- **Subject:** fix(e2e): isolate stdlib provisioning root per CLI invoker\n- **Completed:** 2026-04-22\n\n## Catalog scope\n- **Delivery version:** v0.1 (Compiler foundation)\n- **Workstream:** `corelib-packaging`\n\n## Relation\nEnd-of-band test stability for nested corelib provisioning."
 }

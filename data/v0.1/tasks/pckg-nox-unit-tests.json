@@ -9,7 +9,9 @@
   "source": {
     "repo": "pckg",
     "commit": "86f3cb7",
-    "subject": "ci: add Nox-based unit test workflow and noxfile"
+    "subject": "ci: add Nox-based unit test workflow and noxfile",
+    "url": "https://github.com/Cyber-Nomad-Collective/pckg/commit/86f3cb7"
   },
-  "statusColumn": "Done"
+  "statusColumn": "Done",
+  "body": "Adds **Nox**-based unit test workflow and `noxfile` to the pckg repository.\n\n## Provenance\n- **Repository:** `pckg`\n- **Commit:** [`86f3cb7`](https://github.com/Cyber-Nomad-Collective/pckg/commit/86f3cb7)\n- **Subject:** ci: add Nox-based unit test workflow and noxfile\n- **Completed:** 2026-04-13\n\n## Catalog scope\n- **Delivery version:** v0.1 (Compiler foundation)\n- **Workstream:** `corelib-packaging`\n\n## Relation\nAligns pckg CI with superrepo/compiler Nox migration."
 }

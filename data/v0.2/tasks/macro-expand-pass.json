@@ -22,5 +22,6 @@
     "repo": "compiler",
     "commit": "9ca5da3",
     "subject": "feat(compiler): macro expand pass and HIR legality integration"
-  }
+  },
+  "body": "## Outcome\n\nMacro expand pass and HIR legality integration.\n\n## Context\n\n- Workstream **analysis-pipeline** — compiler pipeline and api.json spine.\n- Contributes to deliverable **api.json primary contract** (`v02-api-json-contract`).\n- Macro work follows platform-spec **language-meta/macros** semantics (registry, expand pass, resolver re-resolve).\n\n## Platform specification\n\n- Implements [Macros](https://beskid-lang.org/platform-spec/language-meta/macros/) (`/platform-spec/language-meta/macros/`) *(required)*\n\n## Provenance\n\n- **Repository:** `compiler`\n- **Commit:** [`9ca5da3`](https://github.com/Cyber-Nomad-Collective/compiler/commit/9ca5da3) — feat(compiler): macro expand pass and HIR legality integration"
 }

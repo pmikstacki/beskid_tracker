@@ -12,5 +12,6 @@
     "repo": "beskid",
     "commit": "5fba2e9",
     "subject": "fix(deploy): skip inactive bsharp submodule on Coolify shallow clone"
-  }
+  },
+  "body": "## Outcome\n\nSkip inactive bsharp submodule on Coolify shallow clone.\n\n## Context\n\n- Workstream **dev-experience** — see workstream summary on the catalog.\n- Contributes to deliverable **CI workflows and deploy infra** (`v02-ci-deploy-infra`).\n\n## Provenance\n\n- **Repository:** `beskid`\n- **Commit:** [`5fba2e9`](https://github.com/Cyber-Nomad-Collective/beskid/commit/5fba2e9) — fix(deploy): skip inactive bsharp submodule on Coolify shallow clone"
 }

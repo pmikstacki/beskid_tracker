@@ -12,5 +12,6 @@
     "repo": "compiler",
     "commit": "2957086",
     "subject": "fix(ci): green corelib scans, JIT composition, and export FFI scaffold"
-  }
+  },
+  "body": "## What shipped\n\nAdds `ffi_v03` CI scaffold jobs exercising export FFI paths without blocking unrelated compiler workflows.\n\n## Source commit\n\nRepository **`compiler`** \u00b7 commit `2957086`\n\n> fix(ci): green corelib scans, JIT composition, and export FFI scaffold\n\n## Completed\n\n2026-05-23 (catalog cutoff window)."
 }

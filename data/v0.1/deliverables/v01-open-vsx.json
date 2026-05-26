@@ -2,6 +2,6 @@
   "id": "v01-open-vsx",
   "title": "Open VSX publish on main",
   "number": 4,
-  "description": "Extension version derivation, namespace bootstrap, and v0.1.0 tag publish workflow.",
-  "closedOn": "2026-04-22"
+  "closedOn": "2026-04-22",
+  "description": "Closed **2026-04-22** on superrepo [`f777b79`](https://github.com/Cyber-Nomad-Collective/beskid/commit/f777b79) (tag **v0.1.0**).\n\n**editor-extension** deliverable: bundled LSP default, Open VSX workflow scaffold → version derivation → namespace bootstrap → authenticated submodule checkout → VSCE icon fix → publish retries. CI must publish the VS Code extension from `main` without manual Open VSX steps."
 }

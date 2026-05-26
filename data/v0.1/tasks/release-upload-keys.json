@@ -8,7 +8,9 @@
   "source": {
     "repo": "compiler",
     "commit": "090156e",
-    "subject": "ci: fix release upload keys and avoid multipart failures"
+    "subject": "ci: fix release upload keys and avoid multipart failures",
+    "url": "https://github.com/Cyber-Nomad-Collective/compiler/commit/090156e"
   },
-  "statusColumn": "Done"
+  "statusColumn": "Done",
+  "body": "Fixes **CLI release upload keys** and avoids multipart upload failures against object storage.\n\n## Provenance\n- **Repository:** `compiler`\n- **Commit:** [`090156e`](https://github.com/Cyber-Nomad-Collective/compiler/commit/090156e)\n- **Subject:** ci: fix release upload keys and avoid multipart failures\n- **Completed:** 2026-04-22\n\n## Catalog scope\n- **Delivery version:** v0.1 (Compiler foundation)\n- **Workstream:** `ci-release`\n\n## Relation\nRelease hardening under **ci-release**."
 }

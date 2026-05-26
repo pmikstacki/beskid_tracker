@@ -21,5 +21,6 @@
     "commit": "36778ec",
     "subject": "fix(corelib_tests): syscall JIT smoke tests without cross-module asserts"
   },
-  "milestoneId": "v03-post-merge-ci"
+  "milestoneId": "v03-post-merge-ci",
+  "body": "## What shipped\n\nSyscall-backed JIT smoke tests run without cross-module assertions that previously failed under tier-separated assemblies.\n\n## Platform specification\n\n- **Panic, I/O, and syscalls** \u2014 `/platform-spec/execution/runtime/panic-io-and-syscalls` \u2014 *implements* (required)\n\n## Source commit\n\nRepository **`corelib`** \u00b7 commit `36778ec`\n\n> fix(corelib_tests): syscall JIT smoke tests without cross-module asserts\n\n## Completed\n\n2026-05-24 (catalog cutoff window)."
 }

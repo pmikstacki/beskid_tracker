@@ -10,5 +10,6 @@
     "repo": "beskid",
     "commit": "dfdb360",
     "subject": "fix(book): my-story page title frontmatter"
-  }
+  },
+  "body": "## Outcome\n\nMy-story page title frontmatter.\n\n## Context\n\n- Workstream **docs-site** — see workstream summary on the catalog.\n- **trudoc** Zod/frontmatter verification guards platform-spec metadata in CI.\n\n## Provenance\n\n- **Repository:** `beskid`\n- **Commit:** [`dfdb360`](https://github.com/Cyber-Nomad-Collective/beskid/commit/dfdb360) — fix(book): my-story page title frontmatter"
 }

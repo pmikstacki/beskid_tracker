@@ -22,5 +22,6 @@
     "repo": "beskid",
     "commit": "a150be3",
     "subject": "feat(spec,compiler): beskid import lib + ExternalLibrary closed registry (v0.3)"
-  }
+  },
+  "body": "## What shipped\n\nShips `beskid import lib` and a closed **ExternalLibrary** registry in compiler + platform-spec, normative under foreign-libraries feature.\n\n## Platform specification\n\n- **Foreign libraries** \u2014 `/platform-spec/language-meta/interop/foreign-libraries` \u2014 *implements* (required)\n\n## Source commit\n\nRepository **`beskid`** \u00b7 commit `a150be3`\n\n> feat(spec,compiler): beskid import lib + ExternalLibrary closed registry (v0.3)\n\n## Completed\n\n2026-05-23 (catalog cutoff window)."
 }

@@ -11,5 +11,6 @@
     "repo": "beskid",
     "commit": "cc46568",
     "subject": "Website update"
-  }
+  },
+  "body": "## Outcome\n\nWebsite update.\n\n## Context\n\n- Workstream **docs-site** — see workstream summary on the catalog.\n- Contributes to deliverable **Book tutorial rollout** (`v02-book-tutorial-wave`).\n\n## Provenance\n\n- **Repository:** `beskid`\n- **Commit:** [`cc46568`](https://github.com/Cyber-Nomad-Collective/beskid/commit/cc46568) — Website update"
 }

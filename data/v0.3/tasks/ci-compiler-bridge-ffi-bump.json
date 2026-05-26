@@ -12,5 +12,6 @@
     "repo": "beskid",
     "commit": "8ba01c8",
     "subject": "chore(submodules): bump compiler for CI runtime bridge and ffi_v03 fixes"
-  }
+  },
+  "body": "## What shipped\n\nSuperrepo submodule pointer advances the compiler to pick up runtime-bridge e2e fixes and `ffi_v03` CI stabilization landed in the compiler repo.\n\n## Source commit\n\nRepository **`beskid`** \u00b7 commit `8ba01c8`\n\n> chore(submodules): bump compiler for CI runtime bridge and ffi_v03 fixes\n\n## Completed\n\n2026-05-24 (catalog cutoff window)."
 }

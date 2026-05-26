@@ -12,5 +12,6 @@
     "repo": "compiler",
     "commit": "94c0169",
     "subject": "fix(analysis): corelib test assembly prelude and numeric compare"
-  }
+  },
+  "body": "## What shipped\n\nCorelib test assemblies receive the correct prelude injection and numeric compare fixes in the analysis pipeline.\n\n## Source commit\n\nRepository **`compiler`** \u00b7 commit `94c0169`\n\n> fix(analysis): corelib test assembly prelude and numeric compare\n\n## Completed\n\n2026-05-24 (catalog cutoff window)."
 }

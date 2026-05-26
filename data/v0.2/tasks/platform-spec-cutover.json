@@ -21,5 +21,6 @@
     "repo": "beskid",
     "commit": "19745d4",
     "subject": "consolidate platform-spec cutover and stabilize website container build"
-  }
+  },
+  "body": "## Outcome\n\nConsolidate platform-spec cutover and stabilize website container build.\n\n## Context\n\n- Workstream **platform-spec** — normative spec on beskid-lang.org.\n- Contributes to deliverable **Platform-spec cutover** (`v02-platform-spec-cutover`).\n- Normative updates live under `site/website/src/content/docs/platform-spec/` and ship via beskid-lang.org.\n\n## Platform specification\n\n- Tracks normative content in [Platform specification](https://beskid-lang.org/platform-spec/) (`/platform-spec/`) *(required)*\n\n## Provenance\n\n- **Repository:** `beskid`\n- **Commit:** [`19745d4`](https://github.com/Cyber-Nomad-Collective/beskid/commit/19745d4) — consolidate platform-spec cutover and stabilize website container build"
 }

@@ -1,7 +1,7 @@
 {
   "slug": "project-structure",
   "title": "Project structure research",
-  "summary": "project.pn and project layout research for future design.",
+  "summary": "Compared Zig-style project.pn manifests and path-driven layouts against Go/Gleam patterns, then executed the Pecan-to-Beskid rename. project.pn research was superseded by Project.proj and pckg in later bands.",
   "order": 5,
   "deliverableIds": ["v00-tooling-research"]
 }

@@ -12,5 +12,6 @@
     "repo": "beskid",
     "commit": "bf03401",
     "subject": "merge(v0.3): compiler-mod-execution into main"
-  }
+  },
+  "body": "## What shipped\n\nMerge commit lands **compiler-mod-execution** on main: mod host, SampleMod, and ContractInvoker integration at integrated compiler tip.\n\n## Source commit\n\nRepository **`beskid`** \u00b7 commit `bf03401`\n\n> merge(v0.3): compiler-mod-execution into main\n\n## Completed\n\n2026-05-23 (catalog cutoff window)."
 }

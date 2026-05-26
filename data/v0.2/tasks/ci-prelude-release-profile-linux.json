@@ -13,5 +13,6 @@
     "repo": "compiler",
     "commit": "b7df839",
     "subject": "fix(ci): run corelib prelude lowering tests in release profile on Linux"
-  }
+  },
+  "body": "## Outcome\n\nRun corelib prelude lowering tests in release profile on Linux.\n\n## Context\n\n- Workstream **ci-release** — see workstream summary on the catalog.\n- Contributes to deliverable **CI workflows and deploy infra** (`v02-ci-deploy-infra`).\n- Corelib sources live in the **corelib** submodule; package identity is **corelib** with workspace publish to pckg.\n\n## Provenance\n\n- **Repository:** `compiler`\n- **Commit:** [`b7df839`](https://github.com/Cyber-Nomad-Collective/compiler/commit/b7df839) — fix(ci): run corelib prelude lowering tests in release profile on Linux"
 }

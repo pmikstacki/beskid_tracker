@@ -9,6 +9,7 @@
   "area": "analysis",
   "completedAt": "2026-02-21",
   "deliverableId": "v00-analysis-foundation",
+  "body": "## What was done\n\nAdded workspace members for analysis crates and authored the first **semantic analysis specification**: rule categories, integration points with the parser/HIR, and how diagnostics would attach to spans.\n\n## Why it mattered\n\nBefore implementing dozens of semantic rules, the prototype needed a written contract for **what “semantic analysis” means** in Pecan—mirroring how later Beskid bands treat platform-spec and `beskid_analysis` as normative.\n\n## Outcome\n\nEstablished the documentation spine later expanded by HIR docs, staged rules, and the `SemanticIssueKind` catalog.",
   "source": {
     "repo": "pekan",
     "commit": "cc55d59",

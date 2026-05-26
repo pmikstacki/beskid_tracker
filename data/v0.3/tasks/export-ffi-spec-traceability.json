@@ -11,5 +11,6 @@
     "repo": "beskid",
     "commit": "8cffb33",
     "subject": "feat(v0.3): bump compiler, promote dynamic-types spec, export FFI traceability"
-  }
+  },
+  "body": "## What shipped\n\nPlatform-spec and orchestration docs cross-link export FFI decisions to compiler commits for v0.3 auditability.\n\n## Source commit\n\nRepository **`beskid`** \u00b7 commit `8cffb33`\n\n> feat(v0.3): bump compiler, promote dynamic-types spec, export FFI traceability\n\n## Completed\n\n2026-05-24 (catalog cutoff window)."
 }

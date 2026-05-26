@@ -20,5 +20,6 @@
     "repo": "compiler",
     "commit": "5e91147",
     "subject": "feat(v0.3): export FFI, dynamic types, and AotBuildRequest link libraries"
-  }
+  },
+  "body": "## What shipped\n\nCompiler implements link-time **export FFI**: dynamic types, exportable symbols, and `AotBuildRequest` link-library fields for native interop.\n\n## Platform specification\n\n- **Export FFI** \u2014 `/platform-spec/execution/ffi/export-ffi` \u2014 *implements* (required)\n\n## Source commit\n\nRepository **`compiler`** \u00b7 commit `5e91147`\n\n> feat(v0.3): export FFI, dynamic types, and AotBuildRequest link libraries\n\n## Completed\n\n2026-05-24 (catalog cutoff window)."
 }

@@ -12,5 +12,6 @@
     "repo": "beskid",
     "commit": "f54b268",
     "subject": "chore: sync rolling CLI version across release and website"
-  }
+  },
+  "body": "## Outcome\n\nSync rolling CLI version across release and website.\n\n## Context\n\n- Workstream **ci-release** — see workstream summary on the catalog.\n- Contributes to deliverable **CI workflows and deploy infra** (`v02-ci-deploy-infra`).\n\n## Provenance\n\n- **Repository:** `beskid`\n- **Commit:** [`f54b268`](https://github.com/Cyber-Nomad-Collective/beskid/commit/f54b268) — chore: sync rolling CLI version across release and website"
 }

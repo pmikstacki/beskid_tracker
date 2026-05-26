@@ -10,5 +10,6 @@
     "repo": "beskid",
     "commit": "29de958",
     "subject": "feat(docs-ui): Giscus comments and platform-spec shell styling"
-  }
+  },
+  "body": "## Outcome\n\nGiscus comments and platform-spec shell styling.\n\n## Context\n\n- Workstream **docs-site** — see workstream summary on the catalog.\n- Normative updates live under `site/website/src/content/docs/platform-spec/` and ship via beskid-lang.org.\n\n## Provenance\n\n- **Repository:** `beskid`\n- **Commit:** [`29de958`](https://github.com/Cyber-Nomad-Collective/beskid/commit/29de958) — feat(docs-ui): Giscus comments and platform-spec shell styling"
 }

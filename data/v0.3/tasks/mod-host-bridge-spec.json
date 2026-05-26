@@ -21,5 +21,6 @@
     "repo": "beskid",
     "commit": "aae516f",
     "subject": "docs(platform-spec): mod-host-bridge anchors for compiler-mod execution"
-  }
+  },
+  "body": "## What shipped\n\nPlatform-spec **mod-host-bridge** anchors document how compiler-mod execution maps to host pipeline phases.\n\n## Platform specification\n\n- **Mod host bridge** \u2014 `/platform-spec/compiler/mods/mod-host-bridge` \u2014 *tracks* (required)\n\n## Source commit\n\nRepository **`beskid`** \u00b7 commit `aae516f`\n\n> docs(platform-spec): mod-host-bridge anchors for compiler-mod execution\n\n## Completed\n\n2026-05-23 (catalog cutoff window)."
 }

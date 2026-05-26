@@ -2,6 +2,6 @@
   "id": "v03-docs-reader-hardening",
   "title": "Docs reader hardening",
   "number": 4,
-  "description": "trudoc CI on Node, platform-spec git-meta in container builds, YAML frontmatter fixes, and docs-ui nav shell polish through v0.3 tip.",
+  "description": "@beskid/docs-ui book and platform-spec reader shell refactor, unified nav drawer with persisted rail state, SpecPageHeader layout polish, YAML frontmatter quoting for MDX, Docker git for platform-spec git-meta prebuild, and nav client hardening across ClientRouter swaps.",
   "closedOn": "2026-05-24"
 }

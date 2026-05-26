@@ -13,5 +13,6 @@
     "commit": "c0ac8fd",
     "subject": "fix(ci): trigger Runtime CI on compiler submodule pointer bumps"
   },
-  "milestoneId": "v03-post-merge-ci"
+  "milestoneId": "v03-post-merge-ci",
+  "body": "## What shipped\n\nGitHub Actions triggers Runtime CI when the superrepo compiler submodule SHA changes, catching runtime-only regressions after integration merges.\n\n## Source commit\n\nRepository **`beskid`** \u00b7 commit `c0ac8fd`\n\n> fix(ci): trigger Runtime CI on compiler submodule pointer bumps\n\n## Completed\n\n2026-05-23 (catalog cutoff window)."
 }

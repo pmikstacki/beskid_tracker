@@ -2,5 +2,6 @@
   "id": "v00-execution-jit-gc",
   "title": "Execution and GC prototype",
   "number": 2,
+  "description": "Delivered execution-plan milestones for HIR typing and runtime phases, a trait-based CLIF lowering roadmap, gc-arena crate integration with derive macro and JIT allocation hooks, Phase 5 allocator/GC scaffolding, CI with staged AOT smoke tests, and research notes on simple vs parallel GC plus deferred fiber/channel concurrency models.",
   "closedOn": "2026-02-25"
 }

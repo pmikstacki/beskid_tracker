@@ -10,5 +10,6 @@
     "repo": "beskid",
     "commit": "a735827",
     "subject": "fix(site): repair registry-api-reference-ui MDX for Astro build"
-  }
+  },
+  "body": "## Outcome\n\nRepair registry-api-reference-ui MDX for Astro build.\n\n## Context\n\n- Workstream **docs-site** — see workstream summary on the catalog.\n\n## Provenance\n\n- **Repository:** `beskid`\n- **Commit:** [`a735827`](https://github.com/Cyber-Nomad-Collective/beskid/commit/a735827) — fix(site): repair registry-api-reference-ui MDX for Astro build"
 }

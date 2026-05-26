@@ -12,5 +12,6 @@
     "repo": "beskid",
     "commit": "a3d7cee",
     "subject": "fix(ci): build release runtime bridge before AOT e2e tests"
-  }
+  },
+  "body": "## What shipped\n\nAOT e2e workflows build the **release** runtime bridge artifact before running tests, matching local developer and production codegen paths.\n\n## Source commit\n\nRepository **`beskid`** \u00b7 commit `a3d7cee`\n\n> fix(ci): build release runtime bridge before AOT e2e tests\n\n## Completed\n\n2026-05-23 (catalog cutoff window)."
 }

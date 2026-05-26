@@ -13,5 +13,6 @@
     "commit": "c1011b1",
     "subject": "fix(corelib): repair Path.bd header doc and collapse blank lines in Tier1 tests"
   },
-  "milestoneId": "v03-corelib-tier-ship"
+  "milestoneId": "v03-corelib-tier-ship",
+  "body": "## What shipped\n\nRepairs `Path.bd` header documentation and collapses stray blank lines in Tier1 tests so trudoc and corelib CI stay green.\n\n## Source commit\n\nRepository **`corelib`** \u00b7 commit `c1011b1`\n\n> fix(corelib): repair Path.bd header doc and collapse blank lines in Tier1 tests\n\n## Completed\n\n2026-05-23 (catalog cutoff window)."
 }

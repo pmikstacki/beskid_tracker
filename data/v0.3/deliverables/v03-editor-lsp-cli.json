@@ -2,6 +2,6 @@
   "id": "v03-editor-lsp-cli",
   "title": "CLI LSP launch & VS Code toolchain",
   "number": 8,
-  "description": "Ship `beskid lsp` for stdio editor sessions, LSP release CI, extension download of cli-latest with verify/bootstrap, and superrepo inventory docs.",
+  "description": "Ship `beskid lsp` for editor stdio sessions, GitHub Actions LSP release tags with CLI publish matrix, VS Code extension download of cli-latest with dependency bootstrap, superrepo submodule bumps for toolchain scripts, and inventory/docs refresh through aaddd32.",
   "closedOn": "2026-05-25"
 }

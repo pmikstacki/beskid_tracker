@@ -12,5 +12,6 @@
     "repo": "compiler",
     "commit": "d63f938",
     "subject": "ci: move CLI publishing to GitHub Releases action"
-  }
+  },
+  "body": "## Outcome\n\nMove CLI publishing to GitHub Releases action.\n\n## Context\n\n- Workstream **ci-release** — see workstream summary on the catalog.\n- Contributes to deliverable **CI workflows and deploy infra** (`v02-ci-deploy-infra`).\n\n## Provenance\n\n- **Repository:** `compiler`\n- **Commit:** [`d63f938`](https://github.com/Cyber-Nomad-Collective/compiler/commit/d63f938) — ci: move CLI publishing to GitHub Releases action"
 }

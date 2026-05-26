@@ -2,6 +2,6 @@
   "id": "v02-editor-extension",
   "title": "VS Code extension & Open VSX",
   "number": 9,
-  "description": "Wire beskid_vscode into the superrepo, green Open VSX CI with platform LSP matrix, LSP client/outline/status UX, and modular extension runtime ahead of v0.3 CLI launch.",
+  "description": "Wire **beskid_vscode** into the superrepo, green Open VSX CI with platform LSP matrix, LSP client/outline/status UX, modular extension runtime, and engine-aligned `@types/vscode` pin.\n\n**Closed:** 2026-05-22 — extension submodule and CI docs precede v0.3 CLI bootstrap work.",
   "closedOn": "2026-05-22"
 }

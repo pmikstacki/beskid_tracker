@@ -12,5 +12,6 @@
     "repo": "compiler",
     "commit": "158215a",
     "subject": "LSP: code actions, inlay hints, signature help, workspace symbols; protocol and session updates"
-  }
+  },
+  "body": "## Outcome\n\nLSP: code actions, inlay hints, signature help, workspace symbols; protocol and session updates.\n\n## Context\n\n- Workstream **analysis-pipeline** — compiler pipeline and api.json spine.\n- Contributes to deliverable **LSP workspace & project graph** (`v02-lsp-workspace`).\n- LSP work shares the typed HIR spine with analyze/build; workspace templates feed the project graph pipeline.\n\n## Provenance\n\n- **Repository:** `compiler`\n- **Commit:** [`158215a`](https://github.com/Cyber-Nomad-Collective/compiler/commit/158215a) — LSP: code actions, inlay hints, signature help, workspace symbols; protocol and session updates"
 }

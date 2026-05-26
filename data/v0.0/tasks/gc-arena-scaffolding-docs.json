@@ -9,6 +9,7 @@
   "area": "gc",
   "completedAt": "2026-02-24",
   "deliverableId": "v00-execution-jit-gc",
+  "body": "## What was done\n\nAdded **gc-arena** workspace members and documented how runtime GC **scaffolding** connects to the JIT allocator hooks—what is traced, what is arena-allocated, and where collection may run.\n\n## Why it mattered\n\nv0.0 deliberately pursued a **simple** GC research line (`gc-arena`) before any parallel collector work (later **abfall** / phase-B runtime).\n\n## Outcome\n\nPaired with `gc-arena-crate-integration` and Phase 5 completion to close the execution/GC deliverable.",
   "source": {
     "repo": "pekan",
     "commit": "98240ca",

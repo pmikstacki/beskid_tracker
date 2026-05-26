@@ -11,5 +11,6 @@
     "repo": "beskid",
     "commit": "e679792",
     "subject": "feat(trudoc): add Beskid grammar support and update package configuration"
-  }
+  },
+  "body": "## What shipped\n\nTrudoc gains Beskid grammar highlighting/validation for fenced code blocks in book and platform-spec content.\n\n## Source commit\n\nRepository **`beskid`** \u00b7 commit `e679792`\n\n> feat(trudoc): add Beskid grammar support and update package configuration\n\n## Completed\n\n2026-05-24 (catalog cutoff window)."
 }

@@ -2,6 +2,6 @@
   "id": "v01-compiler-parity",
   "title": "Compiler syntax and analysis baseline",
   "number": 1,
-  "description": "Compiler bootstrap, AOT path, module syntax semantics, and early analysis/graph-order stability landed for v0.1.",
-  "closedOn": "2026-04-09"
+  "closedOn": "2026-04-09",
+  "description": "Closed **2026-04-09** at compiler [`1f8d62d`](https://github.com/Cyber-Nomad-Collective/compiler/commit/1f8d62d) (*Finalize compiler parity and stdlib/runtime test updates*).\n\nSpans **compiler-foundation** tasks from [`dd75bff`](https://github.com/Cyber-Nomad-Collective/compiler/commit/dd75bff) (Initial Commit) through AOT refactor, **pack** command, optional `?.`, file-scoped modules, module-declaration resolver fixes, graph **Std** injection test, and analysis hardening. Establishes the syntax/analysis baseline required before v0.2 pipeline and platform-spec work."
 }

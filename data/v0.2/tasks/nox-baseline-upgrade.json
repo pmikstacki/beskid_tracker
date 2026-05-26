@@ -12,5 +12,6 @@
     "repo": "beskid",
     "commit": "f1ba649",
     "subject": "ci: upgrade nox baseline and bump compiler submodule"
-  }
+  },
+  "body": "## Outcome\n\nUpgrade nox baseline and bump compiler submodule.\n\n## Context\n\n- Workstream **ci-release** — see workstream summary on the catalog.\n- Contributes to deliverable **CI workflows and deploy infra** (`v02-ci-deploy-infra`).\n\n## Provenance\n\n- **Repository:** `beskid`\n- **Commit:** [`f1ba649`](https://github.com/Cyber-Nomad-Collective/beskid/commit/f1ba649) — ci: upgrade nox baseline and bump compiler submodule"
 }

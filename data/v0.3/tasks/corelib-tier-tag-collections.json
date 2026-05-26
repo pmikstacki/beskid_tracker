@@ -21,5 +21,6 @@
     "commit": "d706067",
     "subject": "feat(corelib): tier-tag collections + System.{FS,Path} and add tier coverage suites"
   },
-  "milestoneId": "v03-corelib-tier-ship"
+  "milestoneId": "v03-corelib-tier-ship",
+  "body": "## What shipped\n\nIntroduces tier-tagged collection types plus **System.FS** and **System.Path** packages with tier coverage suites in corelib.\n\n## Platform specification\n\n- **Corelib API shape** \u2014 `/platform-spec/core-library/stability-and-api-shape/corelib-api-shape` \u2014 *implements* (required)\n\n## Source commit\n\nRepository **`corelib`** \u00b7 commit `d706067`\n\n> feat(corelib): tier-tag collections + System.{FS,Path} and add tier coverage suites\n\n## Completed\n\n2026-05-23 (catalog cutoff window)."
 }
