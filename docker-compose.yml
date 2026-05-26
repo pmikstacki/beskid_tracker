@@ -1,12 +1,32 @@
-# Coolify entrypoint (see COOLIFY.md). Build context is the superrepo root.
+# Coolify entrypoint (see COOLIFY.md). Build context is this repository root.
+# Database URL and OAuth secrets are driven by environment (see .env.example). Coolify: inject the same variables there.
 services:
   tracker:
     build:
-      context: ..
-      dockerfile: beskid_tracker/Dockerfile
+      context: .
+      dockerfile: Dockerfile
+      args:
+        NODE_AUTH_TOKEN: ${NODE_AUTH_TOKEN:-}
+        VITE_GITHUB_REPO_DISPLAY_NAME: ${VITE_GITHUB_REPO_DISPLAY_NAME:-beskid}
     restart: unless-stopped
     expose:
       - "3000"
+    environment:
+      NODE_ENV: production
+      PORT: "3000"
+      GITHUB_CLIENT_ID: ${GITHUB_CLIENT_ID:-}
+      GITHUB_CLIENT_SECRET: ${GITHUB_CLIENT_SECRET:-}
+      SESSION_SECRET: ${SESSION_SECRET:-}
+      GITHUB_OAUTH_CALLBACK_URL: ${GITHUB_OAUTH_CALLBACK_URL:-}
+      GITHUB_REPO_OWNER: ${GITHUB_REPO_OWNER:-Cyber-Nomad-Collective}
+      GITHUB_REPO_NAME: ${GITHUB_REPO_NAME:-beskid}
+      GITHUB_SYNC_TOKEN: ${GITHUB_SYNC_TOKEN:-}
+      GITHUB_PUBLIC_READ_TOKEN: ${GITHUB_PUBLIC_READ_TOKEN:-}
+      TRACKER_DATA_DIR: ${TRACKER_DATA_DIR:-/app/beskid_tracker/data/runtime}
+      TRACKER_PUBLIC_URL: ${TRACKER_PUBLIC_URL:-}
+      GITHUB_WEBHOOK_SECRET: ${GITHUB_WEBHOOK_SECRET:-}
+      ISSUES_SYNC_DISABLED: ${ISSUES_SYNC_DISABLED:-}
+      VITE_GITHUB_REPO_DISPLAY_NAME: ${VITE_GITHUB_REPO_DISPLAY_NAME:-beskid}
     volumes:
       - tracker-data:/app/beskid_tracker/data/runtime
     healthcheck:

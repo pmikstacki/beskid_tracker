@@ -1,16 +1,17 @@
-# Superrepo build (Coolify): context = repo root, file = beskid_tracker/Dockerfile
+# Coolify / standalone repo: context = repository root, file = Dockerfile
 FROM oven/bun:latest AS build
 
 WORKDIR /app/beskid_tracker
 
-COPY .npmrc beskid_tracker/.npmrc ./
-COPY beskid_tracker/package.json beskid_tracker/bun.lock ./
+COPY package.json bun.lock ./
 ARG NODE_AUTH_TOKEN
 ENV NODE_AUTH_TOKEN=${NODE_AUTH_TOKEN}
 RUN bun install --frozen-lockfile
 
-COPY beskid_tracker/ ./
+COPY ./ ./
 
+ARG VITE_GITHUB_REPO_DISPLAY_NAME=beskid
+ENV VITE_GITHUB_REPO_DISPLAY_NAME=${VITE_GITHUB_REPO_DISPLAY_NAME}
 ENV SKIP_ENV_VALIDATION=1
 RUN bun run build
 
