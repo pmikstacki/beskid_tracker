@@ -5,10 +5,12 @@ import { env } from "#/env";
 export const SESSION_COOKIE_NAME = "beskid_tracker_session";
 
 export interface SessionPayload {
-	accessToken: string;
 	login: string;
 	avatarUrl: string;
 	name: string | null;
+	/** Handoff JWT — GitHub API via auth hub proxy. */
+	hubUserToken: string;
+	hubSessionId: string;
 }
 
 function sessionSecret(): Uint8Array {
@@ -28,17 +30,23 @@ export async function unsealSession(
 ): Promise<SessionPayload | null> {
 	try {
 		const { payload } = await jwtVerify(token, sessionSecret());
+		if (typeof payload.login !== "string") {
+			return null;
+		}
 		if (
-			typeof payload.accessToken !== "string" ||
-			typeof payload.login !== "string"
+			typeof payload.hubUserToken !== "string" ||
+			typeof payload.hubSessionId !== "string"
 		) {
 			return null;
 		}
+
 		return {
-			accessToken: payload.accessToken,
 			login: payload.login,
-			avatarUrl: typeof payload.avatarUrl === "string" ? payload.avatarUrl : "",
+			avatarUrl:
+				typeof payload.avatarUrl === "string" ? payload.avatarUrl : "",
 			name: typeof payload.name === "string" ? payload.name : null,
+			hubUserToken: payload.hubUserToken,
+			hubSessionId: payload.hubSessionId,
 		};
 	} catch {
 		return null;

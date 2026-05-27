@@ -11,7 +11,11 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "#/components/ui/select";
-import { buildReportBody, findTitleField } from "#/lib/report-issue/fields";
+import { buildReportBody, findTitleField, collectReportFields } from "#/lib/report-issue/fields";
+import {
+	subtasksFromFormValue,
+	upsertSubtasksInBody,
+} from "#/lib/roadmap/subtasks";
 import {
 	formatTrackerScopeHeader,
 	resolveReportLayout,
@@ -169,9 +173,19 @@ export function TrackerReportForm({
 						const title = titleField ? values[titleField.id]?.trim() : "";
 						if (!title) return;
 
-						const body =
+						let body =
 							formatTrackerScopeHeader(componentId, subcomponentId) +
 							buildReportBody(layout, values, attachmentsByField);
+
+						const subtasksField = collectReportFields(layout).find(
+							(field) => field.kind === "subtasks",
+						);
+						if (subtasksField) {
+							body = upsertSubtasksInBody(
+								body,
+								subtasksFromFormValue(values[subtasksField.id] ?? ""),
+							);
+						}
 
 						onSubmit({
 							title,

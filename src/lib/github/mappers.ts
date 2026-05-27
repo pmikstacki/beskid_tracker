@@ -17,6 +17,7 @@ import {
 	workstreamFromLabel,
 } from "#/lib/github/roadmap-labels";
 import type { RoadmapColumns, RoadmapTask } from "#/lib/github/types";
+import { parseSubtasksBlock } from "#/lib/roadmap/subtasks";
 import { parseSpecLinks } from "#/lib/platform-spec/parse";
 import {
 	hierarchyFromSlug,
@@ -54,6 +55,7 @@ export function issueToRoadmapTask(issue: GitHubIssue): RoadmapTask | null {
 		title: link.title,
 	}));
 	const specRelations = mergeLegacySpecLinks(parsedBlock.relations, legacy);
+	const subtasks = parseSubtasksBlock(body).items;
 
 	const primary = specRelations.find((r) => r.required) ?? specRelations[0];
 	const hierarchy = primary
@@ -71,6 +73,7 @@ export function issueToRoadmapTask(issue: GitHubIssue): RoadmapTask | null {
 		statusColumn,
 		body,
 		specRelations,
+		subtasks,
 		specApproval: specApprovalFromLabels(labelNames),
 		version,
 		workstream: labelNames.map(workstreamFromLabel).find(Boolean),

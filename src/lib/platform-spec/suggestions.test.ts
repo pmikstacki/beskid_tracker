@@ -44,6 +44,7 @@ function makeTask(patch: Partial<RoadmapTask>): RoadmapTask {
 		statusColumn: "Backlog",
 		body: "Build workspace project graph support for lsp.",
 		specRelations: [],
+		subtasks: [],
 		specApproval: "pending",
 		version: "v0.3",
 		htmlUrl: "https://example.com/issue/12",

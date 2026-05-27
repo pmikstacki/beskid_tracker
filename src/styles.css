@@ -5,11 +5,10 @@
 @import "shadcn/tailwind.css";
 @import "@svar-ui/react-filter/all.css";
 @import "./styles/svar-filter-theme.css";
-@import "./styles/beskid-tokens.css";
-@import "./styles/shadcn-theme.css";
+@import "@beskid/ui-react/styles/shadcn-entry.css";
 @import "./styles/roadmap-app.css";
 @import "./styles/work-item-form.css";
-@import "@beskid/docs-ui/styles/hub.css";
+@import "@beskid/beskid-ui/styles/hub.css";
 
 /* Match site Starlight + shadcn dark variant (data-theme, not .dark only). */
 @custom-variant dark (&:is([data-theme="dark"] *));

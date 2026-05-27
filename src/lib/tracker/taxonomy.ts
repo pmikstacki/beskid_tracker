@@ -130,6 +130,20 @@ const baseTaskLayout = (extra: ReportFormLayout = []): ReportFormLayout => [
 		],
 		"Use markdown for lists, code blocks, and links.",
 	),
+	reportSection(
+		"task-subtasks",
+		"Subtasks",
+		[
+			reportField({
+				id: "subtasks",
+				kind: "subtasks",
+				label: "Subtasks",
+				placeholder: "Describe this subtask…",
+				hint: "Checklist items sync to GitHub task lists and a roadmap-subtasks block in the issue body.",
+			}),
+		],
+		"Break work into trackable steps. Checked items map to GitHub `- [x]` syntax.",
+	),
 ];
 
 /** Static taxonomy — update when superrepo layout changes materially. */
@@ -200,7 +214,7 @@ export const TRACKER_COMPONENTS: TrackerComponent[] = [
 		label: "Packages",
 		description: "Shared JS/TS libraries under `packages/`.",
 		subcomponents: [
-			{ id: "beskid-docs-ui", label: "beskid-docs-ui" },
+			{ id: "beskid-ui", label: "beskid-ui" },
 			{ id: "trudoc", label: "trudoc" },
 		],
 		bugLayout: baseBugLayout([

@@ -1,4 +1,5 @@
 import type { RoadmapColumnId } from "#/lib/github/roadmap-labels";
+import type { SubtaskRow } from "#/lib/report-issue/field-values";
 import type { SpecRelation } from "#/lib/platform-spec/relations";
 
 export type RoadmapPriority = "high" | "medium" | "low";
@@ -14,6 +15,7 @@ export interface RoadmapTask {
 	statusColumn: RoadmapColumnId;
 	body: string;
 	specRelations: SpecRelation[];
+	subtasks: SubtaskRow[];
 	specApproval: SpecApprovalStatus;
 	version: string;
 	workstream?: string;

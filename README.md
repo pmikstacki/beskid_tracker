@@ -5,21 +5,21 @@
 ## Stack
 
 - TanStack Start + Router + Query
-- GitHub OAuth + REST API (`@octokit/rest`) for auth, writes, and background sync
+- [Beskid Auth hub](../site/auth/README.md) for GitHub sign-in; `@octokit/rest` via hub proxy for writes and reads
 - SQLite issue mirror (`bun:sqlite`, default `data/runtime/issues.sqlite`)
 - Encrypted session cookie (`jose`)
 - Tailwind CSS v4, shadcn/ui (Radix Maia), ReUI Kanban
 
 ## Theming
 
-Visual design follows **beskid-lang.org** and **pckg** Material teal tokens from [`@beskid/docs-ui`](https://github.com/Cyber-Nomad-Collective/beskid_web_common) (`theme.material.css` via GitHub Packages):
+Visual design follows **beskid-lang.org** and **pckg** Material teal tokens from [`@beskid/beskid-ui`](https://github.com/Cyber-Nomad-Collective/beskid_web_common) (`theme.material.css` via GitHub Packages):
 
 - `src/styles/beskid-tokens.css` — imports shared brand variables
 - `src/styles/shadcn-theme.css` — maps shadcn `--primary`, `--background`, etc. to those tokens
 - `src/styles/roadmap-app.css` — app shell (header, kanban cards, typography)
 - Theme toggle uses `data-theme` (`light` / `dark`) like the docs site (`next-themes`)
 
-When updating site chrome, keep `shadcn-theme.css` in sync or extend shared tokens in docs-ui (`--beskid-material-seed`, `--beskid-fluent-accent`, `--beskid-fluent-neutral` in `theme.material.css`). **pckg** maps the same seed into Fluent UI Blazor via `FluentDesignTheme` / `loading-theme` `primary-color` and `neutral-color`.
+When updating site chrome, keep `shadcn-theme.css` in sync or extend shared tokens in beskid-ui (`--beskid-material-seed`, `--beskid-fluent-accent`, `--beskid-fluent-neutral` in `theme.material.css`). **pckg** maps the same seed into Fluent UI Blazor via `FluentDesignTheme` / `loading-theme` `primary-color` and `neutral-color`.
 
 ## GitHub labels
 
@@ -39,8 +39,7 @@ cp .env.example .env
 
 | Variable | Purpose |
 |----------|---------|
-| `GITHUB_CLIENT_ID` / `GITHUB_CLIENT_SECRET` | OAuth App credentials |
-| `GITHUB_OAUTH_CALLBACK_URL` | e.g. `http://localhost:3000/api/auth/callback` |
+| `AUTH_HUB_PUBLIC_URL` | Shared auth hub (GitHub OAuth lives there only) |
 | `SESSION_SECRET` | 32+ byte secret (`openssl rand -base64 32`) |
 | `GITHUB_REPO_OWNER` / `GITHUB_REPO_NAME` | Default: `Cyber-Nomad-Collective` / `beskid` |
 | `GITHUB_SYNC_TOKEN` | PAT for background issue sync (falls back to `GITHUB_PUBLIC_READ_TOKEN`) |
@@ -51,13 +50,13 @@ cp .env.example .env
 | `ISSUES_SYNC_DISABLED` | Set `1` to disable sync (read-only empty store) |
 | *(none)* | Platform spec pages and nav JSON always use `https://beskid-lang.org` |
 
-Create a GitHub OAuth App with callback URL matching `GITHUB_OAUTH_CALLBACK_URL` and scopes **`read:user`** and **`repo`** (or **`public_repo`** for a public repository).
+Pair the tracker with the hub (see [COOLIFY.md](COOLIFY.md)). The hub’s GitHub OAuth app needs scopes **`read:user`** and **`repo`** (or **`public_repo`** for a public repository).
 
 ## Commands
 
 | Command | Action |
 |---------|--------|
-| `bun install` | Install dependencies (required before first `bun run dev`; needs GitHub Packages auth for `@beskid/docs-ui`) |
+| `bun install` | Install dependencies (required before first `bun run dev`; needs GitHub Packages auth for `@beskid/beskid-ui`) |
 | `bun run dev` | Dev server at http://localhost:3000 |
 | `bun run build` | Production build (runs `prebuild` sync) |
 | `bun run start` | Production server on port 3000 |
@@ -86,14 +85,12 @@ bun run dev
 
 Optional: [`docker-compose.local.yml`](docker-compose.local.yml) from `beskid_tracker/` (maps port 3000, bind-mounts `data/runtime`). Requires running `docker compose` from the superrepo root so `context: ..` resolves correctly.
 
-Runtime requires the same env vars as above (set in Coolify secrets). Register the production callback URL on the OAuth App (for example `https://tracker.beskid-lang.org/api/auth/callback`).
+Runtime requires `AUTH_HUB_PUBLIC_URL`, `SESSION_SECRET`, and hub pairing (see [COOLIFY.md](COOLIFY.md)).
 
 ### Coolify secrets
 
-- `GITHUB_CLIENT_ID`
-- `GITHUB_CLIENT_SECRET`
+- `AUTH_HUB_PUBLIC_URL`
 - `SESSION_SECRET`
-- `GITHUB_OAUTH_CALLBACK_URL` (public URL + `/api/auth/callback`)
 - Optional: `GITHUB_REPO_OWNER`, `GITHUB_REPO_NAME`, `GITHUB_SYNC_TOKEN` or `GITHUB_PUBLIC_READ_TOKEN`
 - Persistent volume on `data/runtime` (or `TRACKER_DATA_DIR`) so the issue mirror survives redeploys
 
@@ -109,7 +106,7 @@ Build uses `SKIP_ENV_VALIDATION=1`; validation runs at runtime when the containe
 | `/v/$version/w/$workstream` | Per-workstream kanban (auth required) |
 | `/workstreams/v/$version` | Workstream summary cards (auth required) |
 | `/versions/$version/workstreams/$slug` | Workstream catalog overview (auth required) |
-| `/login` | GitHub OAuth sign-in |
+| `/login` | Sign in via auth hub |
 | `/docs/catalog` | Platform-spec catalog (all documents, including ADRs) |
 | `/docs/proposals` | Spec change proposals (draft → validate → PR) |
 
@@ -138,9 +135,15 @@ Set `ROADMAP_USE_SEED=1` to serve the kanban and workstreams dashboards from tha
 - `src/lib/seed/` — Zod schemas, disk loader, `RoadmapTask` mapping
 - `src/lib/platform-spec/` — spec relations block, nav search, and **docs management** (full catalog + per-doc bundles from `/generated/platform-spec-catalog.json`, proposal drafts in SQLite, PR submit via GitHub API)
 
+## UI packages vs app components
+
+Shared **design-system** primitives live in [`@beskid/ui-react`](../beskid_web_common/packages/beskid-ui-react) (Button, Input, Sheet, theme CSS). The tracker imports them via path aliases (`#/components/ui/*` → the package) so shadcn-style imports stay consistent across Beskid apps.
+
+**App-specific** UI remains under `src/components/` (~60 files): kanban board, roadmap navigation, report/issue forms (`StepsField`, subtasks checklist), spec relation editors, seed import, app shell, and ReUI wrappers. Those modules encode tracker domain behavior and GitHub issue workflows—not generic layout primitives—so they were not moved into the shared package during the ui-react migration.
+
 ## Auth flow
 
-1. `GET /api/auth/github` — redirect to GitHub (CSRF state cookie)
-2. `GET /api/auth/callback` — exchange code, set session cookie, redirect `/v/v0.2`
+1. `GET /api/auth/github` — redirect to auth hub (`/login?app=tracker`)
+2. Hub OAuth → `GET /api/auth/hub-finish` — verify handoff, set session cookie, redirect `/v/v0.2`
 3. `POST /api/auth/logout` — clear session
 4. `/` is public; kanban and workstreams require sign-in

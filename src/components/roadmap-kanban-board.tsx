@@ -19,6 +19,7 @@ import { Badge } from "#/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "#/components/ui/card";
 import type { RoadmapColumnId } from "#/lib/github/roadmap-labels";
 import type { RoadmapColumns, RoadmapTask } from "#/lib/github/types";
+import { subtasksProgress } from "#/lib/roadmap/subtasks";
 import { moveIssueColumn } from "#/server/issues";
 
 const PRIORITY_LABEL = {
@@ -139,7 +140,9 @@ export function RoadmapKanbanBoard({
 								value={columnId}
 								className="flex min-h-48 flex-col gap-3"
 							>
-								{items.map((item) => (
+								{items.map((item) => {
+									const subtaskStats = subtasksProgress(item.subtasks);
+									return (
 									<KanbanItem key={item.id} value={item.id}>
 										<KanbanItemHandle>
 											<Card
@@ -178,6 +181,11 @@ export function RoadmapKanbanBoard({
 																Spec pending
 															</Badge>
 														) : null}
+														{subtaskStats.total > 0 ? (
+															<Badge variant="outline" className="font-normal">
+																{subtaskStats.done}/{subtaskStats.total} subtasks
+															</Badge>
+														) : null}
 													</div>
 													{item.specRelations.length > 0 ? (
 														<SpecRelationsList
@@ -192,7 +200,8 @@ export function RoadmapKanbanBoard({
 											</Card>
 										</KanbanItemHandle>
 									</KanbanItem>
-								))}
+									);
+								})}
 							</KanbanColumnContent>
 						</KanbanColumn>
 					))}

@@ -69,6 +69,15 @@ export const updateIssue = createServerFn({ method: "POST" })
 				)
 				.optional(),
 			workstream: z.string().optional(),
+			subtasks: z
+				.array(
+					z.object({
+						id: z.string(),
+						text: z.string(),
+						done: z.boolean(),
+					}),
+				)
+				.optional(),
 		}),
 	)
 	.handler(async ({ data }): Promise<RoadmapTask> => withAuth((octokit) => updateRoadmapIssue(octokit, data)));

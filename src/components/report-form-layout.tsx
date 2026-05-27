@@ -303,6 +303,23 @@ function ReportFieldControl({
 				placeholder={field.placeholder}
 				hint={field.hint}
 				disabled={pending}
+				variant="numbered"
+			/>
+		);
+	}
+
+	if (field.kind === "subtasks") {
+		return (
+			<StepsField
+				id={fieldId}
+				label={field.label}
+				value={value}
+				onChange={(next) => onValueChange(field.id, next)}
+				placeholder={field.placeholder ?? "Describe this subtask…"}
+				hint={field.hint}
+				disabled={pending}
+				variant="checklist"
+				addLabel="Add subtask"
 			/>
 		);
 	}

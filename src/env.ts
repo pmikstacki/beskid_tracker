@@ -3,12 +3,12 @@ import { z } from "zod";
 
 export const env = createEnv({
 	server: {
-		GITHUB_CLIENT_ID: z.string().min(1),
-		GITHUB_CLIENT_SECRET: z.string().min(1),
+		AUTH_HUB_PUBLIC_URL: z.string().url(),
 		SESSION_SECRET: z.string().min(32),
 		GITHUB_REPO_OWNER: z.string().min(1).default("Cyber-Nomad-Collective"),
 		GITHUB_REPO_NAME: z.string().min(1).default("beskid"),
-		GITHUB_OAUTH_CALLBACK_URL: z.string().url(),
+		/** Legacy: prefer pairing-stored service token. */
+		AUTH_HUB_SECRET: z.string().min(32).optional(),
 		GITHUB_PUBLIC_READ_TOKEN: z.string().min(1).optional(),
 		GITHUB_SYNC_TOKEN: z.string().min(1).optional(),
 		TRACKER_DATA_DIR: z.string().min(1).optional(),
@@ -21,12 +21,11 @@ export const env = createEnv({
 		VITE_GITHUB_REPO_DISPLAY_NAME: z.string().min(1).default("beskid"),
 	},
 	runtimeEnv: {
-		GITHUB_CLIENT_ID: process.env.GITHUB_CLIENT_ID,
-		GITHUB_CLIENT_SECRET: process.env.GITHUB_CLIENT_SECRET,
+		AUTH_HUB_PUBLIC_URL: process.env.AUTH_HUB_PUBLIC_URL,
 		SESSION_SECRET: process.env.SESSION_SECRET,
 		GITHUB_REPO_OWNER: process.env.GITHUB_REPO_OWNER,
 		GITHUB_REPO_NAME: process.env.GITHUB_REPO_NAME,
-		GITHUB_OAUTH_CALLBACK_URL: process.env.GITHUB_OAUTH_CALLBACK_URL,
+		AUTH_HUB_SECRET: process.env.AUTH_HUB_SECRET,
 		GITHUB_PUBLIC_READ_TOKEN: process.env.GITHUB_PUBLIC_READ_TOKEN,
 		GITHUB_SYNC_TOKEN: process.env.GITHUB_SYNC_TOKEN,
 		TRACKER_DATA_DIR: process.env.TRACKER_DATA_DIR,

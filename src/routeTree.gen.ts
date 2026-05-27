@@ -14,11 +14,12 @@ import { Route as ShellRouteImport } from './routes/_shell'
 import { Route as ShellIndexRouteImport } from './routes/_shell/index'
 import { Route as ShellBugsRouteImport } from './routes/_shell/bugs'
 import { Route as ShellDocsIndexRouteImport } from './routes/_shell/docs/index'
+import { Route as SettingsAuthPairRouteImport } from './routes/settings/auth/pair'
 import { Route as ApiWebhooksGithubRouteImport } from './routes/api/webhooks/github'
 import { Route as ApiAuthMeRouteImport } from './routes/api/auth/me'
 import { Route as ApiAuthLogoutRouteImport } from './routes/api/auth/logout'
+import { Route as ApiAuthHubFinishRouteImport } from './routes/api/auth/hub-finish'
 import { Route as ApiAuthGithubRouteImport } from './routes/api/auth/github'
-import { Route as ApiAuthCallbackRouteImport } from './routes/api/auth/callback'
 import { Route as ShellVersionsVersionRouteImport } from './routes/_shell/versions/$version'
 import { Route as ShellVVersionRouteImport } from './routes/_shell/v/$version'
 import { Route as ShellVersionsVersionIndexRouteImport } from './routes/_shell/versions/$version/index'
@@ -64,6 +65,11 @@ const ShellDocsIndexRoute = ShellDocsIndexRouteImport.update({
   path: '/docs/',
   getParentRoute: () => ShellRoute,
 } as any)
+const SettingsAuthPairRoute = SettingsAuthPairRouteImport.update({
+  id: '/settings/auth/pair',
+  path: '/settings/auth/pair',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiWebhooksGithubRoute = ApiWebhooksGithubRouteImport.update({
   id: '/api/webhooks/github',
   path: '/api/webhooks/github',
@@ -79,14 +85,14 @@ const ApiAuthLogoutRoute = ApiAuthLogoutRouteImport.update({
   path: '/api/auth/logout',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiAuthHubFinishRoute = ApiAuthHubFinishRouteImport.update({
+  id: '/api/auth/hub-finish',
+  path: '/api/auth/hub-finish',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiAuthGithubRoute = ApiAuthGithubRouteImport.update({
   id: '/api/auth/github',
   path: '/api/auth/github',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ApiAuthCallbackRoute = ApiAuthCallbackRouteImport.update({
-  id: '/api/auth/callback',
-  path: '/api/auth/callback',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ShellVersionsVersionRoute = ShellVersionsVersionRouteImport.update({
@@ -209,11 +215,12 @@ export interface FileRoutesByFullPath {
   '/bugs': typeof ShellBugsRoute
   '/v/$version': typeof ShellVVersionRouteWithChildren
   '/versions/$version': typeof ShellVersionsVersionRouteWithChildren
-  '/api/auth/callback': typeof ApiAuthCallbackRoute
   '/api/auth/github': typeof ApiAuthGithubRoute
+  '/api/auth/hub-finish': typeof ApiAuthHubFinishRoute
   '/api/auth/logout': typeof ApiAuthLogoutRoute
   '/api/auth/me': typeof ApiAuthMeRoute
   '/api/webhooks/github': typeof ApiWebhooksGithubRoute
+  '/settings/auth/pair': typeof SettingsAuthPairRoute
   '/docs/': typeof ShellDocsIndexRoute
   '/docs/catalog/$slug': typeof ShellDocsCatalogSlugRoute
   '/docs/proposals/new': typeof ShellDocsProposalsNewRoute
@@ -239,11 +246,12 @@ export interface FileRoutesByTo {
   '/bugs': typeof ShellBugsRoute
   '/': typeof ShellIndexRoute
   '/v/$version': typeof ShellVVersionRouteWithChildren
-  '/api/auth/callback': typeof ApiAuthCallbackRoute
   '/api/auth/github': typeof ApiAuthGithubRoute
+  '/api/auth/hub-finish': typeof ApiAuthHubFinishRoute
   '/api/auth/logout': typeof ApiAuthLogoutRoute
   '/api/auth/me': typeof ApiAuthMeRoute
   '/api/webhooks/github': typeof ApiWebhooksGithubRoute
+  '/settings/auth/pair': typeof SettingsAuthPairRoute
   '/docs': typeof ShellDocsIndexRoute
   '/docs/catalog/$slug': typeof ShellDocsCatalogSlugRoute
   '/docs/proposals/new': typeof ShellDocsProposalsNewRoute
@@ -272,11 +280,12 @@ export interface FileRoutesById {
   '/_shell/': typeof ShellIndexRoute
   '/_shell/v/$version': typeof ShellVVersionRouteWithChildren
   '/_shell/versions/$version': typeof ShellVersionsVersionRouteWithChildren
-  '/api/auth/callback': typeof ApiAuthCallbackRoute
   '/api/auth/github': typeof ApiAuthGithubRoute
+  '/api/auth/hub-finish': typeof ApiAuthHubFinishRoute
   '/api/auth/logout': typeof ApiAuthLogoutRoute
   '/api/auth/me': typeof ApiAuthMeRoute
   '/api/webhooks/github': typeof ApiWebhooksGithubRoute
+  '/settings/auth/pair': typeof SettingsAuthPairRoute
   '/_shell/docs/': typeof ShellDocsIndexRoute
   '/_shell/docs/catalog/$slug': typeof ShellDocsCatalogSlugRoute
   '/_shell/docs/proposals/new': typeof ShellDocsProposalsNewRoute
@@ -305,11 +314,12 @@ export interface FileRouteTypes {
     | '/bugs'
     | '/v/$version'
     | '/versions/$version'
-    | '/api/auth/callback'
     | '/api/auth/github'
+    | '/api/auth/hub-finish'
     | '/api/auth/logout'
     | '/api/auth/me'
     | '/api/webhooks/github'
+    | '/settings/auth/pair'
     | '/docs/'
     | '/docs/catalog/$slug'
     | '/docs/proposals/new'
@@ -335,11 +345,12 @@ export interface FileRouteTypes {
     | '/bugs'
     | '/'
     | '/v/$version'
-    | '/api/auth/callback'
     | '/api/auth/github'
+    | '/api/auth/hub-finish'
     | '/api/auth/logout'
     | '/api/auth/me'
     | '/api/webhooks/github'
+    | '/settings/auth/pair'
     | '/docs'
     | '/docs/catalog/$slug'
     | '/docs/proposals/new'
@@ -367,11 +378,12 @@ export interface FileRouteTypes {
     | '/_shell/'
     | '/_shell/v/$version'
     | '/_shell/versions/$version'
-    | '/api/auth/callback'
     | '/api/auth/github'
+    | '/api/auth/hub-finish'
     | '/api/auth/logout'
     | '/api/auth/me'
     | '/api/webhooks/github'
+    | '/settings/auth/pair'
     | '/_shell/docs/'
     | '/_shell/docs/catalog/$slug'
     | '/_shell/docs/proposals/new'
@@ -396,11 +408,12 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   ShellRoute: typeof ShellRouteWithChildren
   LoginRoute: typeof LoginRoute
-  ApiAuthCallbackRoute: typeof ApiAuthCallbackRoute
   ApiAuthGithubRoute: typeof ApiAuthGithubRoute
+  ApiAuthHubFinishRoute: typeof ApiAuthHubFinishRoute
   ApiAuthLogoutRoute: typeof ApiAuthLogoutRoute
   ApiAuthMeRoute: typeof ApiAuthMeRoute
   ApiWebhooksGithubRoute: typeof ApiWebhooksGithubRoute
+  SettingsAuthPairRoute: typeof SettingsAuthPairRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -440,6 +453,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ShellDocsIndexRouteImport
       parentRoute: typeof ShellRoute
     }
+    '/settings/auth/pair': {
+      id: '/settings/auth/pair'
+      path: '/settings/auth/pair'
+      fullPath: '/settings/auth/pair'
+      preLoaderRoute: typeof SettingsAuthPairRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/webhooks/github': {
       id: '/api/webhooks/github'
       path: '/api/webhooks/github'
@@ -461,18 +481,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiAuthLogoutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/auth/hub-finish': {
+      id: '/api/auth/hub-finish'
+      path: '/api/auth/hub-finish'
+      fullPath: '/api/auth/hub-finish'
+      preLoaderRoute: typeof ApiAuthHubFinishRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/auth/github': {
       id: '/api/auth/github'
       path: '/api/auth/github'
       fullPath: '/api/auth/github'
       preLoaderRoute: typeof ApiAuthGithubRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/api/auth/callback': {
-      id: '/api/auth/callback'
-      path: '/api/auth/callback'
-      fullPath: '/api/auth/callback'
-      preLoaderRoute: typeof ApiAuthCallbackRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_shell/versions/$version': {
@@ -711,11 +731,12 @@ const ShellRouteWithChildren = ShellRoute._addFileChildren(ShellRouteChildren)
 const rootRouteChildren: RootRouteChildren = {
   ShellRoute: ShellRouteWithChildren,
   LoginRoute: LoginRoute,
-  ApiAuthCallbackRoute: ApiAuthCallbackRoute,
   ApiAuthGithubRoute: ApiAuthGithubRoute,
+  ApiAuthHubFinishRoute: ApiAuthHubFinishRoute,
   ApiAuthLogoutRoute: ApiAuthLogoutRoute,
   ApiAuthMeRoute: ApiAuthMeRoute,
   ApiWebhooksGithubRoute: ApiWebhooksGithubRoute,
+  SettingsAuthPairRoute: SettingsAuthPairRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

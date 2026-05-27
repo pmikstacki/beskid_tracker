@@ -1,6 +1,6 @@
 "use client";
 
-import "@beskid/docs-ui/client/beskid-hub-element-entry";
+import { BeskidHub } from "@beskid/beskid-ui/react/BeskidHub";
 import { useRouterState } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
 
@@ -72,7 +72,7 @@ function AppShellInner({
 								onOpenChange={setSyncOpen}
 							/>
 						) : null}
-						<beskid-hub />
+						<BeskidHub />
 					</div>
 				</header>
 				<div className="app-shell__body flex min-h-0 flex-1">

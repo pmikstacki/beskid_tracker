@@ -14,6 +14,7 @@ import {
 import {
 	fileToBase64,
 	serializeStepsValue,
+	serializeSubtasksValue,
 	type ReportAttachmentDraft,
 } from "#/lib/report-issue/field-values";
 
@@ -56,6 +57,10 @@ export function ReportIssueForm({
 			if (field.kind === "steps") {
 				next[field.id] = serializeStepsValue([
 					{ id: crypto.randomUUID(), text: "" },
+				]);
+			} else if (field.kind === "subtasks") {
+				next[field.id] = serializeSubtasksValue([
+					{ id: crypto.randomUUID(), text: "", done: false },
 				]);
 			} else {
 				next[field.id] = "";

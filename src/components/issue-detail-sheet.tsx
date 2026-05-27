@@ -6,6 +6,7 @@ import { ExternalLink } from "lucide-react";
 import { useEffect, useState } from "react";
 
 import { IssueSpecSuggestionsWidget } from "#/components/issue-spec-suggestions-widget";
+import { StepsField } from "#/components/report-fields/steps-field";
 import { SpecRelationEditor } from "#/components/spec-relation-editor";
 import { SpecRelationsList } from "#/components/spec-relations-list";
 import { Badge } from "#/components/ui/badge";
@@ -29,6 +30,11 @@ import {
 import { Textarea } from "#/components/ui/textarea";
 import type { RoadmapTask } from "#/lib/github/types";
 import type { SpecRelation } from "#/lib/platform-spec/relations";
+import {
+	stripSubtasksFromBody,
+	subtasksFromFormValue,
+	subtasksToFormValue,
+} from "#/lib/roadmap/subtasks";
 import { updateIssue } from "#/server/issues";
 import { approveSpec } from "#/server/roadmap";
 
@@ -53,12 +59,14 @@ export function IssueDetailSheet({
 }: IssueDetailSheetProps) {
 	const router = useRouter();
 	const [body, setBody] = useState("");
+	const [subtasksValue, setSubtasksValue] = useState("");
 	const [specRelations, setSpecRelations] = useState<SpecRelation[]>([]);
 	const [workstream, setWorkstream] = useState<string | undefined>();
 
 	useEffect(() => {
 		if (task) {
-			setBody(task.body);
+			setBody(stripSubtasksFromBody(task.body));
+			setSubtasksValue(subtasksToFormValue(task.subtasks));
 			setSpecRelations(task.specRelations);
 			setWorkstream(task.workstream);
 		}
@@ -72,6 +80,7 @@ export function IssueDetailSheet({
 					issueNumber: task.number,
 					body,
 					specRelations,
+					subtasks: subtasksFromFormValue(subtasksValue),
 					workstream,
 				},
 			});
@@ -189,6 +198,17 @@ export function IssueDetailSheet({
 							rows={10}
 						/>
 					</div>
+					<StepsField
+						id="issue-detail-subtasks"
+						label="Subtasks"
+						value={subtasksValue}
+						onChange={setSubtasksValue}
+						placeholder="Describe this subtask…"
+						hint="Checked items use GitHub `- [x]` task-list syntax on save."
+						disabled={saveMutation.isPending}
+						variant="checklist"
+						addLabel="Add subtask"
+					/>
 					<SpecRelationEditor
 						relations={specRelations}
 						onChange={setSpecRelations}

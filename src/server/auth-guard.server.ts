@@ -1,7 +1,7 @@
 import { createMiddleware } from "@tanstack/react-start";
 import { getRequest } from "@tanstack/react-start/server";
 
-import { createOctokit } from "#/lib/github/octokit";
+import { createHubOctokit } from "#/lib/github/hub-octokit";
 import {
 	getSessionFromRequest,
 	type SessionPayload,
@@ -23,9 +23,13 @@ export const authMiddleware = createMiddleware({ type: "function" }).server(
 	},
 );
 
+export function createOctokitForSession(session: SessionPayload) {
+	return createHubOctokit(session.hubUserToken);
+}
+
 export async function withOctokit<T>(
-	fn: (octokit: ReturnType<typeof createOctokit>) => Promise<T>,
+	fn: (octokit: ReturnType<typeof createHubOctokit>) => Promise<T>,
 ): Promise<T> {
 	const session = await requireSession();
-	return fn(createOctokit(session.accessToken));
+	return fn(createOctokitForSession(session));
 }

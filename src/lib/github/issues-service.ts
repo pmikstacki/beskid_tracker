@@ -20,6 +20,11 @@ import {
 	type SpecRelation,
 	upsertSpecRelationsInBody,
 } from "#/lib/platform-spec/relations";
+import {
+	type SubtaskRow,
+	stripSubtasksFromBody,
+	upsertSubtasksInBody,
+} from "#/lib/roadmap/subtasks";
 import { persistGithubIssue } from "#/lib/storage/issues-repository";
 import type { GitHubIssuePayload } from "#/lib/storage/stored-issue";
 
@@ -230,6 +235,7 @@ export interface UpdateIssueInput {
 	body?: string;
 	priority?: "high" | "medium" | "low";
 	specRelations?: SpecRelation[];
+	subtasks?: SubtaskRow[];
 	workstream?: string;
 }
 
@@ -242,12 +248,19 @@ export async function updateRoadmapIssue(
 		throw new Error(`Issue #${input.issueNumber} not found`);
 	}
 
-	let body = input.body ?? existing.body;
+	let body = stripSubtasksFromBody(input.body ?? existing.body);
 	if (input.specRelations) {
 		body = upsertSpecRelationsInBody(body, input.specRelations);
 	}
+	const subtasks = input.subtasks ?? existing.subtasks;
+	body = upsertSubtasksInBody(body, subtasks);
 
-	if (input.title !== undefined || input.body !== undefined || input.specRelations) {
+	if (
+		input.title !== undefined ||
+		input.body !== undefined ||
+		input.specRelations !== undefined ||
+		input.subtasks !== undefined
+	) {
 		await octokit.rest.issues.update({
 			...repoParams(),
 			issue_number: input.issueNumber,

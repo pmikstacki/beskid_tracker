@@ -4,6 +4,13 @@ export interface StepRow {
 	text: string;
 }
 
+/** Checklist row for roadmap subtasks (GitHub task list + roadmap-subtasks fence). */
+export interface SubtaskRow {
+	id: string;
+	text: string;
+	done: boolean;
+}
+
 function newStepId(): string {
 	return crypto.randomUUID();
 }
@@ -49,6 +56,53 @@ export function stepsToMarkdown(rows: StepRow[]): string {
 		.map((row) => row.text.trim())
 		.filter(Boolean)
 		.map((step, index) => `${index + 1}. ${step}`)
+		.join("\n");
+}
+
+function newSubtaskId(): string {
+	return crypto.randomUUID();
+}
+
+function emptySubtaskRow(): SubtaskRow {
+	return { id: newSubtaskId(), text: "", done: false };
+}
+
+/** Parse subtask editor value (JSON rows or GitHub `- [ ]` lines). */
+export function parseSubtasksValue(raw: string): SubtaskRow[] {
+	if (!raw.trim()) return [emptySubtaskRow()];
+	try {
+		const parsed = JSON.parse(raw) as unknown;
+		if (!Array.isArray(parsed) || parsed.length === 0) {
+			return [emptySubtaskRow()];
+		}
+		return (parsed as SubtaskRow[]).map((row) => ({
+			id: String(row.id ?? newSubtaskId()),
+			text: String(row.text ?? ""),
+			done: Boolean(row.done),
+		}));
+	} catch {
+		const lines = raw
+			.split("\n")
+			.map((line) => line.match(/^- \[([ xX])\]\s+(.*)$/))
+			.filter(Boolean) as RegExpMatchArray[];
+		if (lines.length === 0) return [emptySubtaskRow()];
+		return lines.map((match) => ({
+			id: newSubtaskId(),
+			text: match[2]?.trim() ?? "",
+			done: match[1]?.toLowerCase() === "x",
+		}));
+	}
+}
+
+export function serializeSubtasksValue(rows: SubtaskRow[]): string {
+	return JSON.stringify(rows.length > 0 ? rows : [emptySubtaskRow()]);
+}
+
+/** GitHub-flavored task list for issue bodies (native checklist UI on github.com). */
+export function subtasksToMarkdown(rows: SubtaskRow[]): string {
+	return rows
+		.filter((row) => row.text.trim())
+		.map((row) => `- [${row.done ? "x" : " "}] ${row.text.trim()}`)
 		.join("\n");
 }
 

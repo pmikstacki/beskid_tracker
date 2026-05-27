@@ -1,7 +1,9 @@
 import {
 	formatFileSize,
 	parseStepsValue,
+	parseSubtasksValue,
 	stepsToMarkdown,
+	subtasksToMarkdown,
 	type ReportAttachmentDraft,
 } from "#/lib/report-issue/field-values";
 
@@ -12,6 +14,7 @@ export type ReportFieldKind =
 	| "select"
 	| "markdown"
 	| "steps"
+	| "subtasks"
 	| "attachments"
 	| "spec-parent"
 	| "related-topics"
@@ -171,6 +174,11 @@ function formatFieldBody(field: ReportFieldNode, value: string): string | null {
 
 	if (field.kind === "steps") {
 		const markdown = stepsToMarkdown(parseStepsValue(value));
+		return markdown ? `### ${field.label}\n\n${markdown}` : null;
+	}
+
+	if (field.kind === "subtasks") {
+		const markdown = subtasksToMarkdown(parseSubtasksValue(value));
 		return markdown ? `### ${field.label}\n\n${markdown}` : null;
 	}
 
