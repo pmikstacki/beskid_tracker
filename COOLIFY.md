@@ -4,12 +4,14 @@ Application: **beskid tracker** (`Cyber-Nomad-Collective/beskid_tracker`, branch
 
 ## Compose entry
 
-[`docker-compose.yml`](docker-compose.yml)
+**Coolify (GHCR):** [`docker-compose.coolify.yml`](docker-compose.coolify.yml) — `ghcr.io/cyber-nomad-collective/beskid-tracker:${IMAGE_TAG}`
+
+**Local build:** [`docker-compose.yml`](docker-compose.yml)
 
 ## Build
 
-- Image: [`Dockerfile`](Dockerfile)
-- **`NODE_AUTH_TOKEN`** (build secret, required): GitHub PAT or fine-grained token with **`read:packages`** for `@beskid/*` and `@cyber-nomad-collective/*` during `bun install` (see [`.npmrc.example`](.npmrc.example))
+- **Drone CI** builds and pushes the image (`.drone.yml`); Coolify pulls only.
+- **`NODE_AUTH_TOKEN`** is a Drone secret for build, not a Coolify build secret.
 
 ## Runtime secrets
 
