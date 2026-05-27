@@ -1,6 +1,7 @@
 import type { Octokit } from "@octokit/rest";
 import { registerVersionLabel } from "#/lib/github/issues-service";
 import { repoParams } from "#/lib/github/octokit";
+import { createSuperrepoVersionTags } from "#/lib/github/version-release";
 import type { ParsedSeedBundle } from "#/lib/seed/parse-uploaded-bundle";
 import { roadmapTaskToIssuePayload } from "#/lib/seed/roadmap-task-to-issue-payload";
 import { seedTaskToRoadmapTask } from "#/lib/seed/to-roadmap-task";
@@ -29,6 +30,10 @@ export interface SeedImportResult {
 	skipped: number;
 	errors: string[];
 	runId: string;
+	tagsCreated: number;
+	tagsPlanned: number;
+	tagsSkipped: number;
+	tagErrors: string[];
 }
 
 export async function importSeedBundlesToGitHub(
@@ -170,12 +175,35 @@ export async function importSeedBundlesToGitHub(
 		}
 	}
 
+	const tagResult = await createSuperrepoVersionTags(
+		octokit,
+		bundles.map((bundle) => bundle.version),
+		run,
+		{ dryRun: options?.dryRun },
+	);
+
 	if (!options?.dryRun) {
 		recomputeSyncStateFromStore();
 	}
 
-	const summary = `Import finished: ${created} created, ${updated} updated, ${skipped} skipped, ${errors.length} errors`;
+	const tagSummary = options?.dryRun
+		? `${tagResult.planned} tag(s) planned`
+		: `${tagResult.created} tag(s) created`;
+
+	const summary =
+		`Import finished: ${created} created, ${updated} updated, ${skipped} skipped, ${errors.length} issue error(s); ` +
+		`${tagSummary}, ${tagResult.skipped} tag(s) skipped, ${tagResult.errors.length} tag error(s)`;
 	run.complete(summary);
 
-	return { created, updated, skipped, errors, runId: run.id };
+	return {
+		created,
+		updated,
+		skipped,
+		errors,
+		runId: run.id,
+		tagsCreated: tagResult.created,
+		tagsPlanned: tagResult.planned,
+		tagsSkipped: tagResult.skipped,
+		tagErrors: tagResult.errors,
+	};
 }

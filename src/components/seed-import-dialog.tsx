@@ -73,10 +73,19 @@ export function SeedImportDialog({
 		},
 		onSuccess: (result) => {
 			setTrackedRunId(result.runId);
+			const tagSummary =
+				result.tagsPlanned > 0
+					? ` · ${result.tagsPlanned} tag(s) planned`
+					: result.tagsCreated > 0
+						? ` · ${result.tagsCreated} tag(s) created`
+						: "";
 			setStatusMessage(
-				`Done: ${result.created} created, ${result.updated} updated, ${result.skipped} skipped` +
+				`Done: ${result.created} created, ${result.updated} updated, ${result.skipped} skipped${tagSummary}` +
 					(result.errors.length > 0
-						? ` · ${result.errors.length} error(s)`
+						? ` · ${result.errors.length} issue error(s)`
+						: "") +
+					(result.tagErrors.length > 0
+						? ` · ${result.tagErrors.length} tag error(s)`
 						: ""),
 			);
 			onComplete();
@@ -154,7 +163,7 @@ export function SeedImportDialog({
 		setPickedCount(loaded.length);
 		resetImportProgress();
 		setStatusMessage(
-			`Loaded ${loaded.length} JSON file(s). Run dry-run to validate, then import (DB first, then GitHub).`,
+			`Loaded ${loaded.length} JSON file(s). Run dry-run to validate, then import (DB first, GitHub issues, then release tags).`,
 		);
 	};
 
@@ -170,7 +179,11 @@ export function SeedImportDialog({
 						<code className="text-xs">v0.x/version.json</code>,{" "}
 						<code className="text-xs">tasks/*.json</code>, and related entities.
 						Tasks are written to the local cache first, then pushed to GitHub.
-						Webhook sync (when configured) keeps the mirror up to date.
+						Released versions with a beskid cutoff commit get superrepo tags (
+						<code className="text-xs">v0.1</code>,{" "}
+						<code className="text-xs">v0.2</code>, …) in ascending order after
+						the issue push. Webhook sync (when configured) keeps the mirror up
+						to date.
 					</DialogDescription>
 				</DialogHeader>
 
