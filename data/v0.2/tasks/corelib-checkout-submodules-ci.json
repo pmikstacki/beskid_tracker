@@ -12,7 +12,8 @@
   "source": {
     "repo": "compiler",
     "commit": "f97e8e7",
-    "subject": "chore(corelib): bump submodule for CI checkout submodules fix."
+    "subject": "chore(corelib): bump submodule for CI checkout submodules fix.",
+    "url": "https://github.com/Cyber-Nomad-Collective/compiler/commit/f97e8e7"
   },
-  "body": "## Outcome\n\nBump submodule for CI checkout submodules fix.\n\n## Context\n\n- Workstream **ci-release** — see workstream summary on the catalog.\n- Contributes to deliverable **CI workflows and deploy infra** (`v02-ci-deploy-infra`).\n- Corelib sources live in the **corelib** submodule; package identity is **corelib** with workspace publish to pckg.\n\n## Provenance\n\n- **Repository:** `compiler`\n- **Commit:** [`f97e8e7`](https://github.com/Cyber-Nomad-Collective/compiler/commit/f97e8e7) — chore(corelib): bump submodule for CI checkout submodules fix."
+  "body": "Bump submodule for CI checkout submodules fix.\n\n## Provenance\n- **Repository:** `compiler`\n- **Commit:** [`f97e8e7`](https://github.com/Cyber-Nomad-Collective/compiler/commit/f97e8e7)\n- **Subject:** chore(corelib): bump submodule for CI checkout submodules fix.\n- **Completed:** 2026-04-24\n\n## Catalog scope\n- **Delivery version:** v0.2 (Analysis, packages, and platform spec)\n- **Workstream:** `ci-release`\n- **Deliverable:** `v02-ci-deploy-infra`\n- **Domain:** `compiler`\n- **Area:** `ci`\n\n## Relation\nContributes to deliverable **CI workflows and deploy infra** (`v02-ci-deploy-infra`).\n"
 }

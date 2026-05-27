@@ -10,7 +10,8 @@
   "source": {
     "repo": "beskid",
     "commit": "875f0d5",
-    "subject": "chore: bump compiler, pckg, and vscode submodules; align platform spec"
+    "subject": "chore: bump compiler, pckg, and vscode submodules; align platform spec",
+    "url": "https://github.com/Cyber-Nomad-Collective/beskid/commit/875f0d5"
   },
-  "body": "## Outcome\n\nBump compiler, pckg, and vscode submodules; align platform spec.\n\n## Context\n\n- Workstream **platform-spec** — normative spec on beskid-lang.org.\n- Open VSX matrix includes **darwin-arm64** and **darwin-x64** with cross-built Intel LSP where needed.\n\n## Provenance\n\n- **Repository:** `beskid`\n- **Commit:** [`875f0d5`](https://github.com/Cyber-Nomad-Collective/beskid/commit/875f0d5) — chore: bump compiler, pckg, and vscode submodules; align platform spec"
+  "body": "Bump compiler, pckg, and vscode submodules; align platform spec.\n\n## Provenance\n- **Repository:** `beskid`\n- **Commit:** [`875f0d5`](https://github.com/Cyber-Nomad-Collective/beskid/commit/875f0d5)\n- **Subject:** chore: bump compiler, pckg, and vscode submodules; align platform spec\n- **Completed:** 2026-05-20\n\n## Catalog scope\n- **Delivery version:** v0.2 (Analysis, packages, and platform spec)\n- **Workstream:** `platform-spec`\n- **Domain:** `tooling`\n\n## Relation\nSupports **v0.2 (Analysis, packages, and platform spec)** on workstream `platform-spec`.\n"
 }

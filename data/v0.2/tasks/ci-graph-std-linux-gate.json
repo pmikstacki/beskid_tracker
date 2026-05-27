@@ -12,7 +12,8 @@
   "source": {
     "repo": "compiler",
     "commit": "3cd4c93",
-    "subject": "fix(ci): update graph Std shard expectations and gate corelib lowering on Linux"
+    "subject": "fix(ci): update graph Std shard expectations and gate corelib lowering on Linux",
+    "url": "https://github.com/Cyber-Nomad-Collective/compiler/commit/3cd4c93"
   },
-  "body": "## Outcome\n\nUpdate graph Std shard expectations and gate corelib lowering on Linux.\n\n## Context\n\n- Workstream **ci-release** — see workstream summary on the catalog.\n- Contributes to deliverable **CI workflows and deploy infra** (`v02-ci-deploy-infra`).\n- Corelib sources live in the **corelib** submodule; package identity is **corelib** with workspace publish to pckg.\n\n## Provenance\n\n- **Repository:** `compiler`\n- **Commit:** [`3cd4c93`](https://github.com/Cyber-Nomad-Collective/compiler/commit/3cd4c93) — fix(ci): update graph Std shard expectations and gate corelib lowering on Linux"
+  "body": "Update graph Std shard expectations and gate corelib lowering on Linux.\n\n## Provenance\n- **Repository:** `compiler`\n- **Commit:** [`3cd4c93`](https://github.com/Cyber-Nomad-Collective/compiler/commit/3cd4c93)\n- **Subject:** fix(ci): update graph Std shard expectations and gate corelib lowering on Linux\n- **Completed:** 2026-05-18\n\n## Catalog scope\n- **Delivery version:** v0.2 (Analysis, packages, and platform spec)\n- **Workstream:** `ci-release`\n- **Deliverable:** `v02-ci-deploy-infra`\n- **Domain:** `compiler`\n- **Area:** `ci`\n\n## Relation\nContributes to deliverable **CI workflows and deploy infra** (`v02-ci-deploy-infra`).\n"
 }

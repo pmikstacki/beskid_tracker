@@ -11,7 +11,8 @@
   "source": {
     "repo": "compiler",
     "commit": "abb7bd4",
-    "subject": "feat(analysis): add project link section + parser/validator"
+    "subject": "feat(analysis): add project link section + parser/validator",
+    "url": "https://github.com/Cyber-Nomad-Collective/beskid_compiler/commit/abb7bd4"
   },
-  "body": "## What shipped\n\nAnalysis parses and validates **Project.proj** link sections for foreign libraries and mod references.\n\n## Source commit\n\nRepository **`compiler`** \u00b7 commit `abb7bd4`\n\n> feat(analysis): add project link section + parser/validator\n\n## Completed\n\n2026-05-23 (catalog cutoff window)."
+  "body": "Analysis parses and validates **Project.proj** link sections for foreign libraries and mod references.\n\n## Provenance\n- **Repository:** `compiler`\n- **Commit:** [`abb7bd4`](https://github.com/Cyber-Nomad-Collective/beskid_compiler/commit/abb7bd4)\n- **Subject:** feat(analysis): add project link section + parser/validator\n- **Completed:** 2026-05-23\n\n## Catalog scope\n- **Delivery version:** v0.3 (Macros, concurrency, and stabilization)\n- **Workstream:** `compiler-mods`\n- **Domain:** `compiler`\n- **Deliverable:** `v03-merge-wave`\n\n## Relation\nContributes to deliverable **v0.3 macro/runtime/ffi/tooling delivery** (`v03-merge-wave`)."
 }

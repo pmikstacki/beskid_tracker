@@ -11,7 +11,8 @@
   "source": {
     "repo": "beskid",
     "commit": "c2dece3",
-    "subject": "fix(spec): quote YAML frontmatter strings containing colons / backticks"
+    "subject": "fix(spec): quote YAML frontmatter strings containing colons / backticks",
+    "url": "https://github.com/Cyber-Nomad-Collective/beskid/commit/c2dece3"
   },
-  "body": "## What shipped\n\nQuotes YAML frontmatter strings containing colons or backticks so Starlight/trudoc MDX validation passes.\n\n## Source commit\n\nRepository **`beskid`** \u00b7 commit `c2dece3`\n\n> fix(spec): quote YAML frontmatter strings containing colons / backticks\n\n## Completed\n\n2026-05-23 (catalog cutoff window)."
+  "body": "Quotes YAML frontmatter strings containing colons or backticks so Starlight/trudoc MDX validation passes.\n\n## Provenance\n- **Repository:** `beskid`\n- **Commit:** [`c2dece3`](https://github.com/Cyber-Nomad-Collective/beskid/commit/c2dece3)\n- **Subject:** fix(spec): quote YAML frontmatter strings containing colons / backticks\n- **Completed:** 2026-05-23\n\n## Catalog scope\n- **Delivery version:** v0.3 (Macros, concurrency, and stabilization)\n- **Workstream:** `stabilization`\n- **Domain:** `tooling`\n- **Deliverable:** `v03-docs-reader-hardening`\n\n## Relation\nContributes to deliverable **Docs reader hardening** (`v03-docs-reader-hardening`)."
 }

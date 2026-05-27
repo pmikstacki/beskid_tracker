@@ -11,7 +11,8 @@
   "source": {
     "repo": "beskid",
     "commit": "d58dd44",
-    "subject": "feat(ci): add beskid_vscode submodule and init for Open VS X publish"
+    "subject": "feat(ci): add beskid_vscode submodule and init for Open VS X publish",
+    "url": "https://github.com/Cyber-Nomad-Collective/beskid/commit/d58dd44"
   },
-  "body": "## Outcome\n\nAdd beskid_vscode submodule and init for Open VS X publish.\n\n## Context\n\n- Workstream **editor-extension** — see workstream summary on the catalog.\n- Contributes to deliverable **VS Code extension & Open VSX** (`v02-editor-extension`).\n- Open VSX matrix includes **darwin-arm64** and **darwin-x64** with cross-built Intel LSP where needed.\n\n## Provenance\n\n- **Repository:** `beskid`\n- **Commit:** [`d58dd44`](https://github.com/Cyber-Nomad-Collective/beskid/commit/d58dd44) — feat(ci): add beskid_vscode submodule and init for Open VS X publish"
+  "body": "Add beskid_vscode submodule and init for Open VS X publish.\n\n## Provenance\n- **Repository:** `beskid`\n- **Commit:** [`d58dd44`](https://github.com/Cyber-Nomad-Collective/beskid/commit/d58dd44)\n- **Subject:** feat(ci): add beskid_vscode submodule and init for Open VS X publish\n- **Completed:** 2026-05-01\n\n## Catalog scope\n- **Delivery version:** v0.2 (Analysis, packages, and platform spec)\n- **Workstream:** `editor-extension`\n- **Deliverable:** `v02-editor-extension`\n- **Domain:** `tooling`\n\n## Relation\nContributes to deliverable **VS Code extension & Open VSX** (`v02-editor-extension`).\n"
 }

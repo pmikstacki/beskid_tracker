@@ -10,7 +10,8 @@
   "source": {
     "repo": "beskid",
     "commit": "e8bc073",
-    "subject": "fix(ci): serialize runtime tests and wire ASan bridge archive in superrepo"
+    "subject": "fix(ci): serialize runtime tests and wire ASan bridge archive in superrepo",
+    "url": "https://github.com/Cyber-Nomad-Collective/beskid/commit/e8bc073"
   },
-  "body": "## What shipped\n\nRuntime test jobs serialize execution and link the ASan bridge archive so AddressSanitizer builds do not race or miss symbols on Linux CI.\n\n## Source commit\n\nRepository **`beskid`** \u00b7 commit `e8bc073`\n\n> fix(ci): serialize runtime tests and wire ASan bridge archive in superrepo\n\n## Completed\n\n2026-05-24 (catalog cutoff window)."
+  "body": "Runtime test jobs serialize execution and link the ASan bridge archive so AddressSanitizer builds do not race or miss symbols on Linux CI.\n\n## Provenance\n- **Repository:** `beskid`\n- **Commit:** [`e8bc073`](https://github.com/Cyber-Nomad-Collective/beskid/commit/e8bc073)\n- **Subject:** fix(ci): serialize runtime tests and wire ASan bridge archive in superrepo\n- **Completed:** 2026-05-24\n\n## Catalog scope\n- **Delivery version:** v0.3 (Macros, concurrency, and stabilization)\n- **Workstream:** `ci-release`\n- **Deliverable:** `v03-post-merge-ci`\n\n## Relation\nContributes to deliverable **CI and integration hardening** (`v03-post-merge-ci`)."
 }

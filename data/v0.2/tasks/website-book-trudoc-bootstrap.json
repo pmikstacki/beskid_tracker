@@ -10,7 +10,8 @@
   "source": {
     "repo": "beskid",
     "commit": "cc46568",
-    "subject": "Website update"
+    "subject": "Website update",
+    "url": "https://github.com/Cyber-Nomad-Collective/beskid/commit/cc46568"
   },
-  "body": "## Outcome\n\nWebsite update.\n\n## Context\n\n- Workstream **docs-site** — see workstream summary on the catalog.\n- Contributes to deliverable **Book tutorial rollout** (`v02-book-tutorial-wave`).\n\n## Provenance\n\n- **Repository:** `beskid`\n- **Commit:** [`cc46568`](https://github.com/Cyber-Nomad-Collective/beskid/commit/cc46568) — Website update"
+  "body": "Website update.\n\n## Provenance\n- **Repository:** `beskid`\n- **Commit:** [`cc46568`](https://github.com/Cyber-Nomad-Collective/beskid/commit/cc46568)\n- **Subject:** Website update\n- **Completed:** 2026-05-05\n\n## Catalog scope\n- **Delivery version:** v0.2 (Analysis, packages, and platform spec)\n- **Workstream:** `docs-site`\n- **Deliverable:** `v02-book-tutorial-wave`\n\n## Relation\nContributes to deliverable **Book tutorial rollout** (`v02-book-tutorial-wave`).\n"
 }

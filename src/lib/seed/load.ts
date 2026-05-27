@@ -12,6 +12,8 @@ import {
 	type SeedTask,
 	type SeedVersion,
 	type SeedWorkstream,
+	compareSeedDeliverables,
+	compareSeedTasks,
 	seedDeliverableSchema,
 	seedTaskSchema,
 	seedVersionSchema,
@@ -47,7 +49,8 @@ export function loadVersionSeed(versionId: string): LoadedVersionSeed {
 	);
 
 	workstreams.sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
-	tasks.sort((a, b) => a.number - b.number);
+	tasks.sort(compareSeedTasks);
+	deliverables.sort(compareSeedDeliverables);
 
 	return { version, workstreams, deliverables, tasks };
 }
@@ -58,15 +61,23 @@ export function loadAllVersionSeeds(): LoadedVersionSeed[] {
 
 export function loadAllSeedRoadmapTasks(): RoadmapTask[] {
 	const tasks: RoadmapTask[] = [];
+	let displayNumber = 1;
 	for (const bundle of loadAllVersionSeeds()) {
 		const deliverableMap = new Map(
 			bundle.deliverables.map((deliverable) => [deliverable.id, deliverable]),
 		);
 		for (const task of bundle.tasks) {
-			tasks.push(seedTaskToRoadmapTask(bundle.version, task, deliverableMap));
+			tasks.push(
+				seedTaskToRoadmapTask(
+					bundle.version,
+					task,
+					deliverableMap,
+					displayNumber++,
+				),
+			);
 		}
 	}
-	return tasks.sort((a, b) => a.number - b.number);
+	return tasks;
 }
 
 export function listSeedVersionLabels(): string[] {

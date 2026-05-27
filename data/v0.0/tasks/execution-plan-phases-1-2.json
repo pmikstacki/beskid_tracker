@@ -8,10 +8,11 @@
   "domain": "execution",
   "completedAt": "2026-02-23",
   "deliverableId": "v00-execution-jit-gc",
-  "body": "## What was done\n\nUpdated the execution plan to mark **Phase 1** (HIR foundations) and **Phase 2** (typing integration) complete and scoped **Phase 3** kickoff (lowering/runtime).\n\n## Why it mattered\n\nThe execution plan was the program-management spine for JIT/runtime work—linking analysis milestones to codegen and GC tasks in the same deliverable.\n\n## Outcome\n\nUnblocked lowering architecture, gc-arena integration, and Phase 5 runtime/GC completion tasks.",
+  "body": "Updated the execution plan to mark **Phase 1** (HIR foundations) and **Phase 2** (typing integration) complete and scoped **Phase 3** kickoff (lowering/runtime).\n\n## Provenance\n- **Repository:** `pekan`\n- **Commit:** [`01db952`](https://github.com/Cyber-Nomad-Collective/pekan/commit/01db952)\n- **Subject:** Update execution plan with Phase 1/2 completion status and Phase 3 kickoff scope\n- **Completed:** 2026-02-23\n\n## Catalog scope\n- **Delivery version:** v0.0 (Pecan prototype)\n- **Workstream:** `codegen-runtime`\n- **Deliverable:** `v00-execution-jit-gc`\n\n## Relation\nThe execution plan was the program-management spine for JIT/runtime work—linking analysis milestones to codegen and GC tasks in the same deliverable. Unblocked lowering architecture, gc-arena integration, and Phase 5 runtime/GC completion tasks.",
   "source": {
     "repo": "pekan",
     "commit": "01db952",
-    "subject": "Update execution plan with Phase 1/2 completion status and Phase 3 kickoff scope"
+    "subject": "Update execution plan with Phase 1/2 completion status and Phase 3 kickoff scope",
+    "url": "https://github.com/Cyber-Nomad-Collective/pekan/commit/01db952"
   }
 }

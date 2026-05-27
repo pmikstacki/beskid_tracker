@@ -11,7 +11,8 @@
   "source": {
     "repo": "beskid",
     "commit": "e174369",
-    "subject": "ci(open-vsx): publish darwin-arm64 VSIX and cross-build Intel LSP"
+    "subject": "ci(open-vsx): publish darwin-arm64 VSIX and cross-build Intel LSP",
+    "url": "https://github.com/Cyber-Nomad-Collective/beskid/commit/e174369"
   },
-  "body": "## Outcome\n\nPublish darwin-arm64 VSIX and cross-build Intel LSP.\n\n## Context\n\n- Workstream **editor-extension** — see workstream summary on the catalog.\n- Contributes to deliverable **VS Code extension & Open VSX** (`v02-editor-extension`).\n- LSP work shares the typed HIR spine with analyze/build; workspace templates feed the project graph pipeline.\n- Open VSX matrix includes **darwin-arm64** and **darwin-x64** with cross-built Intel LSP where needed.\n\n## Provenance\n\n- **Repository:** `beskid`\n- **Commit:** [`e174369`](https://github.com/Cyber-Nomad-Collective/beskid/commit/e174369) — ci(open-vsx): publish darwin-arm64 VSIX and cross-build Intel LSP"
+  "body": "Publish darwin-arm64 VSIX and cross-build Intel LSP.\n\n## Provenance\n- **Repository:** `beskid`\n- **Commit:** [`e174369`](https://github.com/Cyber-Nomad-Collective/beskid/commit/e174369)\n- **Subject:** ci(open-vsx): publish darwin-arm64 VSIX and cross-build Intel LSP\n- **Completed:** 2026-04-23\n\n## Catalog scope\n- **Delivery version:** v0.2 (Analysis, packages, and platform spec)\n- **Workstream:** `editor-extension`\n- **Deliverable:** `v02-editor-extension`\n- **Domain:** `tooling`\n\n## Relation\nContributes to deliverable **VS Code extension & Open VSX** (`v02-editor-extension`).\n"
 }

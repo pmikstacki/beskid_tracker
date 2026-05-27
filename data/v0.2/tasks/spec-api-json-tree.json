@@ -10,7 +10,8 @@
   "source": {
     "repo": "beskid",
     "commit": "af673dc",
-    "subject": "docs(spec): api.json library tree; bump compiler and pckg for API reference UI"
+    "subject": "docs(spec): api.json library tree; bump compiler and pckg for API reference UI",
+    "url": "https://github.com/Cyber-Nomad-Collective/beskid/commit/af673dc"
   },
-  "body": "## Outcome\n\nApi.json library tree; bump compiler and pckg for API reference UI.\n\n## Context\n\n- Workstream **docs-site** — see workstream summary on the catalog.\n- Structured **api.json** is the hierarchical contract for package docs (types, members, **typeRef** links)—not parallel string-key tables outside the schema.\n- Normative updates live under `site/website/src/content/docs/platform-spec/` and ship via beskid-lang.org.\n\n## Provenance\n\n- **Repository:** `beskid`\n- **Commit:** [`af673dc`](https://github.com/Cyber-Nomad-Collective/beskid/commit/af673dc) — docs(spec): api.json library tree; bump compiler and pckg for API reference UI"
+  "body": "Api.json library tree; bump compiler and pckg for API reference UI.\n\n## Provenance\n- **Repository:** `beskid`\n- **Commit:** [`af673dc`](https://github.com/Cyber-Nomad-Collective/beskid/commit/af673dc)\n- **Subject:** docs(spec): api.json library tree; bump compiler and pckg for API reference UI\n- **Completed:** 2026-05-20\n\n## Catalog scope\n- **Delivery version:** v0.2 (Analysis, packages, and platform spec)\n- **Workstream:** `docs-site`\n- **Domain:** `tooling`\n\n## Relation\nSupports **v0.2 (Analysis, packages, and platform spec)** on workstream `docs-site`.\n"
 }

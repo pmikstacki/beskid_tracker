@@ -12,7 +12,8 @@
   "source": {
     "repo": "beskid",
     "commit": "33e5d99",
-    "subject": "chore(compiler): bump submodule for corelib-quality CI fix"
+    "subject": "chore(compiler): bump submodule for corelib-quality CI fix",
+    "url": "https://github.com/Cyber-Nomad-Collective/beskid/commit/33e5d99"
   },
-  "body": "## What shipped\n\nBumps the compiler submodule after a corelib-quality CI fix so superrepo main runs tests against the corrected analysis/prelude path.\n\n## Source commit\n\nRepository **`beskid`** \u00b7 commit `33e5d99`\n\n> chore(compiler): bump submodule for corelib-quality CI fix\n\n## Completed\n\n2026-05-24 (catalog cutoff window)."
+  "body": "Bumps the compiler submodule after a corelib-quality CI fix so superrepo main runs tests against the corrected analysis/prelude path.\n\n## Provenance\n- **Repository:** `beskid`\n- **Commit:** [`33e5d99`](https://github.com/Cyber-Nomad-Collective/beskid/commit/33e5d99)\n- **Subject:** chore(compiler): bump submodule for corelib-quality CI fix\n- **Completed:** 2026-05-24\n\n## Catalog scope\n- **Delivery version:** v0.3 (Macros, concurrency, and stabilization)\n- **Workstream:** `ci-release`\n- **Domain:** `compiler`\n- **Deliverable:** `v03-post-merge-ci`\n\n## Relation\nContributes to deliverable **CI and integration hardening** (`v03-post-merge-ci`)."
 }

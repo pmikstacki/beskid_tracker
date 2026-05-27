@@ -11,7 +11,8 @@
   "source": {
     "repo": "compiler",
     "commit": "126e8ca",
-    "subject": "feat(pckg): publish UX, streamed upload, API success hardening"
+    "subject": "feat(pckg): publish UX, streamed upload, API success hardening",
+    "url": "https://github.com/Cyber-Nomad-Collective/compiler/commit/126e8ca"
   },
-  "body": "## Outcome\n\nPublish UX, streamed upload, API success hardening.\n\n## Context\n\n- Workstream **pckg-registry** — registry and PackageDocs UI.\n- Contributes to deliverable **Registry dashboard and package docs foundation** (`v02-pckg-registry-foundation`).\n\n## Provenance\n\n- **Repository:** `compiler`\n- **Commit:** [`126e8ca`](https://github.com/Cyber-Nomad-Collective/compiler/commit/126e8ca) — feat(pckg): publish UX, streamed upload, API success hardening"
+  "body": "Publish UX, streamed upload, API success hardening.\n\n## Provenance\n- **Repository:** `compiler`\n- **Commit:** [`126e8ca`](https://github.com/Cyber-Nomad-Collective/compiler/commit/126e8ca)\n- **Subject:** feat(pckg): publish UX, streamed upload, API success hardening\n- **Completed:** 2026-04-23\n\n## Catalog scope\n- **Delivery version:** v0.2 (Analysis, packages, and platform spec)\n- **Workstream:** `pckg-registry`\n- **Deliverable:** `v02-pckg-registry-foundation`\n- **Domain:** `tooling`\n\n## Relation\nContributes to deliverable **Registry dashboard and package docs foundation** (`v02-pckg-registry-foundation`).\n"
 }

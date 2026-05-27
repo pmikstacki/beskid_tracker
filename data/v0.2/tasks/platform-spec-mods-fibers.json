@@ -9,7 +9,8 @@
   "source": {
     "repo": "beskid",
     "commit": "ac8b574",
-    "subject": "docs(platform-spec): restructure compiler mods, fibers, and terminal/console"
+    "subject": "docs(platform-spec): restructure compiler mods, fibers, and terminal/console",
+    "url": "https://github.com/Cyber-Nomad-Collective/beskid/commit/ac8b574"
   },
-  "body": "## Outcome\n\nRestructure compiler mods, fibers, and terminal/console.\n\n## Context\n\n- Workstream **platform-spec** — normative spec on beskid-lang.org.\n- Normative updates live under `site/website/src/content/docs/platform-spec/` and ship via beskid-lang.org.\n- Concurrency surfaces align platform-spec execution chapters with compiler runtime modules.\n\n## Provenance\n\n- **Repository:** `beskid`\n- **Commit:** [`ac8b574`](https://github.com/Cyber-Nomad-Collective/beskid/commit/ac8b574) — docs(platform-spec): restructure compiler mods, fibers, and terminal/console"
+  "body": "Restructure compiler mods, fibers, and terminal/console.\n\n## Provenance\n- **Repository:** `beskid`\n- **Commit:** [`ac8b574`](https://github.com/Cyber-Nomad-Collective/beskid/commit/ac8b574)\n- **Subject:** docs(platform-spec): restructure compiler mods, fibers, and terminal/console\n- **Completed:** 2026-05-20\n\n## Catalog scope\n- **Delivery version:** v0.2 (Analysis, packages, and platform spec)\n- **Workstream:** `platform-spec`\n\n## Relation\nSupports **v0.2 (Analysis, packages, and platform spec)** on workstream `platform-spec`.\n"
 }

@@ -11,7 +11,8 @@
   "source": {
     "repo": "compiler",
     "commit": "53487b3",
-    "subject": "feat(analysis,tests): enforce corelib api-shape tier coverage in beskid_tests"
+    "subject": "feat(analysis,tests): enforce corelib api-shape tier coverage in beskid_tests",
+    "url": "https://github.com/Cyber-Nomad-Collective/beskid_compiler/commit/53487b3"
   },
-  "body": "## What shipped\n\n`beskid_tests` enforces api-shape tier coverage so new corelib APIs cannot ship without an assigned tier tag.\n\n## Source commit\n\nRepository **`compiler`** \u00b7 commit `53487b3`\n\n> feat(analysis,tests): enforce corelib api-shape tier coverage in beskid_tests\n\n## Completed\n\n2026-05-23 (catalog cutoff window)."
+  "body": "`beskid_tests` enforces api-shape tier coverage so new corelib APIs cannot ship without an assigned tier tag.\n\n## Provenance\n- **Repository:** `compiler`\n- **Commit:** [`53487b3`](https://github.com/Cyber-Nomad-Collective/beskid_compiler/commit/53487b3)\n- **Subject:** feat(analysis,tests): enforce corelib api-shape tier coverage in beskid_tests\n- **Completed:** 2026-05-23\n\n## Catalog scope\n- **Delivery version:** v0.3 (Macros, concurrency, and stabilization)\n- **Workstream:** `stabilization`\n- **Domain:** `core-library`\n- **Deliverable:** `v03-merge-wave`\n\n## Relation\nContributes to deliverable **v0.3 macro/runtime/ffi/tooling delivery** (`v03-merge-wave`)."
 }

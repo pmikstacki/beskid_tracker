@@ -9,7 +9,8 @@
   "source": {
     "repo": "beskid",
     "commit": "29de958",
-    "subject": "feat(docs-ui): Giscus comments and platform-spec shell styling"
+    "subject": "feat(docs-ui): Giscus comments and platform-spec shell styling",
+    "url": "https://github.com/Cyber-Nomad-Collective/beskid/commit/29de958"
   },
-  "body": "## Outcome\n\nGiscus comments and platform-spec shell styling.\n\n## Context\n\n- Workstream **docs-site** — see workstream summary on the catalog.\n- Normative updates live under `site/website/src/content/docs/platform-spec/` and ship via beskid-lang.org.\n\n## Provenance\n\n- **Repository:** `beskid`\n- **Commit:** [`29de958`](https://github.com/Cyber-Nomad-Collective/beskid/commit/29de958) — feat(docs-ui): Giscus comments and platform-spec shell styling"
+  "body": "Giscus comments and platform-spec shell styling.\n\n## Provenance\n- **Repository:** `beskid`\n- **Commit:** [`29de958`](https://github.com/Cyber-Nomad-Collective/beskid/commit/29de958)\n- **Subject:** feat(docs-ui): Giscus comments and platform-spec shell styling\n- **Completed:** 2026-05-09\n\n## Catalog scope\n- **Delivery version:** v0.2 (Analysis, packages, and platform spec)\n- **Workstream:** `docs-site`\n\n## Relation\nSupports **v0.2 (Analysis, packages, and platform spec)** on workstream `docs-site`.\n"
 }

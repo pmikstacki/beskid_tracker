@@ -21,7 +21,8 @@
   "source": {
     "repo": "compiler",
     "commit": "12ee673",
-    "subject": "feat: spawn/fiber runtime, channels, and split System I/O surfaces"
+    "subject": "feat: spawn/fiber runtime, channels, and split System I/O surfaces",
+    "url": "https://github.com/Cyber-Nomad-Collective/compiler/commit/12ee673"
   },
-  "body": "## Outcome\n\nSpawn/fiber runtime, channels, and split System I/O surfaces.\n\n## Context\n\n- Workstream **codegen-runtime** — see workstream summary on the catalog.\n- Contributes to deliverable **Fibers, channels, and GC runtime** (`v02-concurrency-runtime`).\n- Concurrency surfaces align platform-spec execution chapters with compiler runtime modules.\n\n## Platform specification\n\n- Implements [Fibers](https://beskid-lang.org/platform-spec/execution/concurrency/fibers) (`/platform-spec/execution/concurrency/fibers`) *(required)*\n\n## Provenance\n\n- **Repository:** `compiler`\n- **Commit:** [`12ee673`](https://github.com/Cyber-Nomad-Collective/compiler/commit/12ee673) — feat: spawn/fiber runtime, channels, and split System I/O surfaces"
+  "body": "Spawn/fiber runtime, channels, and split System I/O surfaces.\n\n## Platform specification\n- Implements [Fibers](https://beskid-lang.org/platform-spec/execution/concurrency/fibers) (`/platform-spec/execution/concurrency/fibers`) *(required)*\n\n## Provenance\n- **Repository:** `compiler`\n- **Commit:** [`12ee673`](https://github.com/Cyber-Nomad-Collective/compiler/commit/12ee673)\n- **Subject:** feat: spawn/fiber runtime, channels, and split System I/O surfaces\n- **Completed:** 2026-05-20\n\n## Catalog scope\n- **Delivery version:** v0.2 (Analysis, packages, and platform spec)\n- **Workstream:** `codegen-runtime`\n- **Deliverable:** `v02-concurrency-runtime`\n- **Domain:** `execution`\n- **Area:** `concurrency`\n\n## Relation\nContributes to deliverable **Fibers, channels, and GC runtime** (`v02-concurrency-runtime`).\n"
 }

@@ -11,7 +11,8 @@
   "source": {
     "repo": "pckg",
     "commit": "71c5ec1",
-    "subject": "pckg: unify docs as PackageDocs, remove markdown browser and dialog"
+    "subject": "pckg: unify docs as PackageDocs, remove markdown browser and dialog",
+    "url": "https://github.com/Cyber-Nomad-Collective/pckg/commit/71c5ec1"
   },
-  "body": "## Outcome\n\nUnify docs as PackageDocs, remove markdown browser and dialog.\n\n## Context\n\n- Workstream **pckg-registry** — registry and PackageDocs UI.\n- Contributes to deliverable **Registry dashboard and package docs foundation** (`v02-pckg-registry-foundation`).\n\n## Provenance\n\n- **Repository:** `pckg`\n- **Commit:** [`71c5ec1`](https://github.com/Cyber-Nomad-Collective/pckg/commit/71c5ec1) — pckg: unify docs as PackageDocs, remove markdown browser and dialog"
+  "body": "Unify docs as PackageDocs, remove markdown browser and dialog.\n\n## Provenance\n- **Repository:** `pckg`\n- **Commit:** [`71c5ec1`](https://github.com/Cyber-Nomad-Collective/pckg/commit/71c5ec1)\n- **Subject:** pckg: unify docs as PackageDocs, remove markdown browser and dialog\n- **Completed:** 2026-04-25\n\n## Catalog scope\n- **Delivery version:** v0.2 (Analysis, packages, and platform spec)\n- **Workstream:** `pckg-registry`\n- **Deliverable:** `v02-pckg-registry-foundation`\n- **Domain:** `tooling`\n\n## Relation\nContributes to deliverable **Registry dashboard and package docs foundation** (`v02-pckg-registry-foundation`).\n"
 }

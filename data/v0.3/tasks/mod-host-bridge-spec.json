@@ -20,7 +20,8 @@
   "source": {
     "repo": "beskid",
     "commit": "aae516f",
-    "subject": "docs(platform-spec): mod-host-bridge anchors for compiler-mod execution"
+    "subject": "docs(platform-spec): mod-host-bridge anchors for compiler-mod execution",
+    "url": "https://github.com/Cyber-Nomad-Collective/beskid/commit/aae516f"
   },
-  "body": "## What shipped\n\nPlatform-spec **mod-host-bridge** anchors document how compiler-mod execution maps to host pipeline phases.\n\n## Platform specification\n\n- **Mod host bridge** \u2014 `/platform-spec/compiler/mods/mod-host-bridge` \u2014 *tracks* (required)\n\n## Source commit\n\nRepository **`beskid`** \u00b7 commit `aae516f`\n\n> docs(platform-spec): mod-host-bridge anchors for compiler-mod execution\n\n## Completed\n\n2026-05-23 (catalog cutoff window)."
+  "body": "Platform-spec **mod-host-bridge** anchors document how compiler-mod execution maps to host pipeline phases.\n\n## Platform specification\n\n- **Mod host bridge** — `/platform-spec/compiler/mods/mod-host-bridge` — *tracks* (required)\n\n## Provenance\n- **Repository:** `beskid`\n- **Commit:** [`aae516f`](https://github.com/Cyber-Nomad-Collective/beskid/commit/aae516f)\n- **Subject:** docs(platform-spec): mod-host-bridge anchors for compiler-mod execution\n- **Completed:** 2026-05-23\n\n## Catalog scope\n- **Delivery version:** v0.3 (Macros, concurrency, and stabilization)\n- **Workstream:** `compiler-mods`\n- **Domain:** `community`\n- **Deliverable:** `v03-merge-wave`\n\n## Relation\nContributes to deliverable **v0.3 macro/runtime/ffi/tooling delivery** (`v03-merge-wave`). Normative spec: **Mod host bridge** (*tracks*)."
 }

@@ -10,7 +10,8 @@
   "source": {
     "repo": "pckg",
     "commit": "38648a4",
-    "subject": "feat(server,ui,tests): packageKind tool standardization (D-TOOL-PCKG-0004)"
+    "subject": "feat(server,ui,tests): packageKind tool standardization (D-TOOL-PCKG-0004)",
+    "url": "https://github.com/Cyber-Nomad-Collective/beskid_pckg/commit/38648a4"
   },
-  "body": "## What shipped\n\npckg server and dashboard treat **packageKind: tool** as a first-class registry profile (D-TOOL-PCKG-0004).\n\n## Source commit\n\nRepository **`pckg`** \u00b7 commit `38648a4`\n\n> feat(server,ui,tests): packageKind tool standardization (D-TOOL-PCKG-0004)\n\n## Completed\n\n2026-05-23 (catalog cutoff window)."
+  "body": "pckg server and dashboard treat **packageKind: tool** as a first-class registry profile (D-TOOL-PCKG-0004).\n\n## Provenance\n- **Repository:** `pckg`\n- **Commit:** [`38648a4`](https://github.com/Cyber-Nomad-Collective/beskid_pckg/commit/38648a4)\n- **Subject:** feat(server,ui,tests): packageKind tool standardization (D-TOOL-PCKG-0004)\n- **Completed:** 2026-05-23\n\n## Catalog scope\n- **Delivery version:** v0.3 (Macros, concurrency, and stabilization)\n- **Workstream:** `pckg-registry`\n- **Deliverable:** `v03-pckg-tool-registry`\n\n## Relation\nContributes to deliverable **Tool packageKind and registry integration** (`v03-pckg-tool-registry`)."
 }

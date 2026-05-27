@@ -11,7 +11,8 @@
   "source": {
     "repo": "beskid",
     "commit": "a3d7cee",
-    "subject": "fix(ci): build release runtime bridge before AOT e2e tests"
+    "subject": "fix(ci): build release runtime bridge before AOT e2e tests",
+    "url": "https://github.com/Cyber-Nomad-Collective/beskid/commit/a3d7cee"
   },
-  "body": "## What shipped\n\nAOT e2e workflows build the **release** runtime bridge artifact before running tests, matching local developer and production codegen paths.\n\n## Source commit\n\nRepository **`beskid`** \u00b7 commit `a3d7cee`\n\n> fix(ci): build release runtime bridge before AOT e2e tests\n\n## Completed\n\n2026-05-23 (catalog cutoff window)."
+  "body": "AOT e2e workflows build the **release** runtime bridge artifact before running tests, matching local developer and production codegen paths.\n\n## Provenance\n- **Repository:** `beskid`\n- **Commit:** [`a3d7cee`](https://github.com/Cyber-Nomad-Collective/beskid/commit/a3d7cee)\n- **Subject:** fix(ci): build release runtime bridge before AOT e2e tests\n- **Completed:** 2026-05-23\n\n## Catalog scope\n- **Delivery version:** v0.3 (Macros, concurrency, and stabilization)\n- **Workstream:** `ci-release`\n- **Domain:** `tooling`\n- **Deliverable:** `v03-post-merge-ci`\n\n## Relation\nContributes to deliverable **CI and integration hardening** (`v03-post-merge-ci`)."
 }

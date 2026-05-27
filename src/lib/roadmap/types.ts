@@ -15,7 +15,6 @@ export interface RoadmapVersionStats {
 export interface RoadmapCatalogDeliverable {
 	id: string;
 	title: string;
-	number: number;
 	description?: string;
 	closedOn?: string;
 	workstreamSlugs: string[];

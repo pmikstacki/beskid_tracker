@@ -21,7 +21,8 @@
   "source": {
     "repo": "beskid",
     "commit": "a150be3",
-    "subject": "feat(spec,compiler): beskid import lib + ExternalLibrary closed registry (v0.3)"
+    "subject": "feat(spec,compiler): beskid import lib + ExternalLibrary closed registry (v0.3)",
+    "url": "https://github.com/Cyber-Nomad-Collective/beskid/commit/a150be3"
   },
-  "body": "## What shipped\n\nShips `beskid import lib` and a closed **ExternalLibrary** registry in compiler + platform-spec, normative under foreign-libraries feature.\n\n## Platform specification\n\n- **Foreign libraries** \u2014 `/platform-spec/language-meta/interop/foreign-libraries` \u2014 *implements* (required)\n\n## Source commit\n\nRepository **`beskid`** \u00b7 commit `a150be3`\n\n> feat(spec,compiler): beskid import lib + ExternalLibrary closed registry (v0.3)\n\n## Completed\n\n2026-05-23 (catalog cutoff window)."
+  "body": "Ships `beskid import lib` and a closed **ExternalLibrary** registry in compiler + platform-spec, normative under foreign-libraries feature.\n\n## Platform specification\n\n- **Foreign libraries** — `/platform-spec/language-meta/interop/foreign-libraries` — *implements* (required)\n\n## Provenance\n- **Repository:** `beskid`\n- **Commit:** [`a150be3`](https://github.com/Cyber-Nomad-Collective/beskid/commit/a150be3)\n- **Subject:** feat(spec,compiler): beskid import lib + ExternalLibrary closed registry (v0.3)\n- **Completed:** 2026-05-23\n\n## Catalog scope\n- **Delivery version:** v0.3 (Macros, concurrency, and stabilization)\n- **Workstream:** `compiler-mods`\n- **Domain:** `language-meta`\n- **Deliverable:** `v03-merge-wave`\n\n## Relation\nContributes to deliverable **v0.3 macro/runtime/ffi/tooling delivery** (`v03-merge-wave`). Normative spec: **Foreign libraries** (*implements*)."
 }

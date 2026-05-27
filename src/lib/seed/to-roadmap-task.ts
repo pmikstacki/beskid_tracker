@@ -14,9 +14,11 @@ import {
 	type SpecRelation,
 	serializeSpecRelationsBlock,
 } from "#/lib/platform-spec/relations";
+import type { SubtaskRow } from "#/lib/report-issue/field-values";
 
 import type {
 	SeedDeliverable,
+	SeedSubtask,
 	SeedTask,
 	SeedVersion,
 } from "#/lib/seed/schemas";
@@ -28,6 +30,8 @@ const REPO_COMMIT_URL: Record<string, string> = {
 	site: "https://github.com/Cyber-Nomad-Collective/beskid/commit",
 	beskid_vscode:
 		"https://github.com/Cyber-Nomad-Collective/beskid_vscode/commit",
+	pekan: "https://github.com/Cyber-Nomad-Collective/pekan/commit",
+	corelib: "https://github.com/Cyber-Nomad-Collective/beskid_standard/commit",
 };
 
 function commitUrl(repo: string, sha: string): string {
@@ -45,6 +49,14 @@ function normalizeRelations(
 		level: relation.level,
 		relation: relation.relation,
 		required: relation.required,
+	}));
+}
+
+function seedSubtasksToRows(subtasks: SeedSubtask[]): SubtaskRow[] {
+	return subtasks.map((step, index) => ({
+		id: `seed-step-${index}`,
+		text: step.text,
+		done: step.done,
 	}));
 }
 
@@ -90,6 +102,7 @@ export function seedTaskToRoadmapTask(
 	version: SeedVersion,
 	task: SeedTask,
 	deliverables: Map<string, SeedDeliverable>,
+	displayNumber: number,
 ): RoadmapTask {
 	const specRelations = normalizeRelations(task.specRelations);
 	const deliverableId = task.deliverableId ?? task.milestoneId;
@@ -98,15 +111,15 @@ export function seedTaskToRoadmapTask(
 		: undefined;
 
 	return {
-		id: String(task.number),
-		number: task.number,
+		id: `seed:${version.id}:${task.id}`,
+		number: displayNumber,
 		title: task.title,
 		owner: task.owner ?? "beskid",
 		priority: task.priority,
 		statusColumn: task.statusColumn,
 		body: buildBody(version, task),
 		specRelations,
-		subtasks: [],
+		subtasks: seedSubtasksToRows(task.subtasks),
 		specApproval:
 			task.specApproval ?? (specRelations.length > 0 ? "approved" : undefined),
 		version: version.id,
@@ -116,7 +129,7 @@ export function seedTaskToRoadmapTask(
 		feature: task.feature,
 		htmlUrl: task.source.url ?? commitUrl(task.source.repo, task.source.commit),
 		milestone: deliverable
-			? { title: deliverable.title, number: deliverable.number }
+			? { title: deliverable.title, number: 0 }
 			: undefined,
 		labelNames: buildLabelNames(version.id, task),
 	};

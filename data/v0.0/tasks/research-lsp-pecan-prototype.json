@@ -9,10 +9,11 @@
   "area": "lsp",
   "completedAt": "2026-02-28",
   "deliverableId": "v00-tooling-research",
-  "body": "## What was done\n\nImplemented **pecan_lsp** services: hover, definition, references, completions, and symbol extraction utilities—**in-process** with the compiler, not a stdio language server.\n\n## Why it mattered\n\nValidated IDE feature shapes and data requirements before investing in workspace-wide `beskid_lsp` and extension packaging.\n\n## Research conclusion\n\nPrototype proved UX value; production path uses **stdio LSP** + bundled `beskid_lsp` (v0.1+). **pecan_lsp** remains historical.",
+  "body": "Implemented **pecan_lsp** services: hover, definition, references, completions, and symbol extraction utilities—**in-process** with the compiler, not a stdio language server.\n\n## Provenance\n- **Repository:** `pekan`\n- **Commit:** [`9424509`](https://github.com/Cyber-Nomad-Collective/pekan/commit/9424509)\n- **Subject:** Add LSP services module with hover, definition, references, completions, and symbol extraction utilities\n- **Completed:** 2026-02-28\n\n## Catalog scope\n- **Delivery version:** v0.0 (Pecan prototype)\n- **Workstream:** `editor-lsp`\n- **Deliverable:** `v00-tooling-research`\n\n## Relation\nPrototype proved UX value; production path uses **stdio LSP** + bundled `beskid_lsp` (v0.1+). **pecan_lsp** remains historical.",
   "source": {
     "repo": "pekan",
     "commit": "9424509",
-    "subject": "Add LSP services module with hover, definition, references, completions, and symbol extraction utilities"
+    "subject": "Add LSP services module with hover, definition, references, completions, and symbol extraction utilities",
+    "url": "https://github.com/Cyber-Nomad-Collective/pekan/commit/9424509"
   }
 }

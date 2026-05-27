@@ -10,7 +10,8 @@
   "source": {
     "repo": "beskid",
     "commit": "6e2c110",
-    "subject": "docs(di-spec): mark verification checklist landed, link v0.3 evidence"
+    "subject": "docs(di-spec): mark verification checklist landed, link v0.3 evidence",
+    "url": "https://github.com/Cyber-Nomad-Collective/beskid/commit/6e2c110"
   },
-  "body": "## What shipped\n\nDI platform-spec verification checklist is marked landed with links to v0.3 implementation evidence on main.\n\n## Source commit\n\nRepository **`beskid`** \u00b7 commit `6e2c110`\n\n> docs(di-spec): mark verification checklist landed, link v0.3 evidence\n\n## Completed\n\n2026-05-23 (catalog cutoff window)."
+  "body": "DI platform-spec verification checklist is marked landed with links to v0.3 implementation evidence on main.\n\n## Provenance\n- **Repository:** `beskid`\n- **Commit:** [`6e2c110`](https://github.com/Cyber-Nomad-Collective/beskid/commit/6e2c110)\n- **Subject:** docs(di-spec): mark verification checklist landed, link v0.3 evidence\n- **Completed:** 2026-05-23\n\n## Catalog scope\n- **Delivery version:** v0.3 (Macros, concurrency, and stabilization)\n- **Workstream:** `stabilization`\n- **Domain:** `language-meta`\n\n## Relation\nLands in the v0.3 cutoff window (`f57377a`→`aaddd32`) under workstream `stabilization`."
 }

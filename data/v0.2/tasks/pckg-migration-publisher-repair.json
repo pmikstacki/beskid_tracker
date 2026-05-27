@@ -10,7 +10,8 @@
   "source": {
     "repo": "pckg",
     "commit": "27621c1",
-    "subject": "fix: harden startup migration repair for publisher flag"
+    "subject": "fix: harden startup migration repair for publisher flag",
+    "url": "https://github.com/Cyber-Nomad-Collective/pckg/commit/27621c1"
   },
-  "body": "## Outcome\n\nHarden startup migration repair for publisher flag.\n\n## Context\n\n- Workstream **pckg-registry** — registry and PackageDocs UI.\n\n## Provenance\n\n- **Repository:** `pckg`\n- **Commit:** [`27621c1`](https://github.com/Cyber-Nomad-Collective/pckg/commit/27621c1) — fix: harden startup migration repair for publisher flag"
+  "body": "Harden startup migration repair for publisher flag.\n\n## Provenance\n- **Repository:** `pckg`\n- **Commit:** [`27621c1`](https://github.com/Cyber-Nomad-Collective/pckg/commit/27621c1)\n- **Subject:** fix: harden startup migration repair for publisher flag\n- **Completed:** 2026-05-08\n\n## Catalog scope\n- **Delivery version:** v0.2 (Analysis, packages, and platform spec)\n- **Workstream:** `pckg-registry`\n- **Domain:** `tooling`\n\n## Relation\nSupports **v0.2 (Analysis, packages, and platform spec)** on workstream `pckg-registry`.\n"
 }

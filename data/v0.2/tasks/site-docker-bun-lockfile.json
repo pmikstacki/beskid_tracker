@@ -11,7 +11,8 @@
   "source": {
     "repo": "beskid",
     "commit": "0c97fde",
-    "subject": "fix(deploy): use monorepo bun lockfile in site image build"
+    "subject": "fix(deploy): use monorepo bun lockfile in site image build",
+    "url": "https://github.com/Cyber-Nomad-Collective/beskid/commit/0c97fde"
   },
-  "body": "## Outcome\n\nUse monorepo bun lockfile in site image build.\n\n## Context\n\n- Workstream **dev-experience** — see workstream summary on the catalog.\n- Contributes to deliverable **CI workflows and deploy infra** (`v02-ci-deploy-infra`).\n\n## Provenance\n\n- **Repository:** `beskid`\n- **Commit:** [`0c97fde`](https://github.com/Cyber-Nomad-Collective/beskid/commit/0c97fde) — fix(deploy): use monorepo bun lockfile in site image build"
+  "body": "Use monorepo bun lockfile in site image build.\n\n## Provenance\n- **Repository:** `beskid`\n- **Commit:** [`0c97fde`](https://github.com/Cyber-Nomad-Collective/beskid/commit/0c97fde)\n- **Subject:** fix(deploy): use monorepo bun lockfile in site image build\n- **Completed:** 2026-05-05\n\n## Catalog scope\n- **Delivery version:** v0.2 (Analysis, packages, and platform spec)\n- **Workstream:** `dev-experience`\n- **Deliverable:** `v02-ci-deploy-infra`\n- **Domain:** `tooling`\n\n## Relation\nContributes to deliverable **CI workflows and deploy infra** (`v02-ci-deploy-infra`).\n"
 }

@@ -10,7 +10,8 @@
   "source": {
     "repo": "pckg",
     "commit": "cc39412",
-    "subject": "refactor(server): DRY package docs/source stack and FastEndpoints Send conventions"
+    "subject": "refactor(server): DRY package docs/source stack and FastEndpoints Send conventions",
+    "url": "https://github.com/Cyber-Nomad-Collective/pckg/commit/cc39412"
   },
-  "body": "## Outcome\n\nDRY package docs/source stack and FastEndpoints Send conventions.\n\n## Context\n\n- Workstream **pckg-registry** — registry and PackageDocs UI.\n- Contributes to deliverable **api.json primary contract** (`v02-api-json-contract`).\n\n## Provenance\n\n- **Repository:** `pckg`\n- **Commit:** [`cc39412`](https://github.com/Cyber-Nomad-Collective/pckg/commit/cc39412) — refactor(server): DRY package docs/source stack and FastEndpoints Send conventions"
+  "body": "DRY package docs/source stack and FastEndpoints Send conventions.\n\n## Provenance\n- **Repository:** `pckg`\n- **Commit:** [`cc39412`](https://github.com/Cyber-Nomad-Collective/pckg/commit/cc39412)\n- **Subject:** refactor(server): DRY package docs/source stack and FastEndpoints Send conventions\n- **Completed:** 2026-05-18\n\n## Catalog scope\n- **Delivery version:** v0.2 (Analysis, packages, and platform spec)\n- **Workstream:** `pckg-registry`\n- **Deliverable:** `v02-api-json-contract`\n\n## Relation\nContributes to deliverable **api.json primary contract** (`v02-api-json-contract`).\n"
 }

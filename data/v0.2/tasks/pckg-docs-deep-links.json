@@ -11,7 +11,8 @@
   "source": {
     "repo": "pckg",
     "commit": "8734655",
-    "subject": "Docs: deep links (/docs/.../api, /search), AppDocumentationRoutes; PackageDocs explorer dialog; Dialog variant for docs browser"
+    "subject": "Docs: deep links (/docs/.../api, /search), AppDocumentationRoutes; PackageDocs explorer dialog; Dialog variant for docs browser",
+    "url": "https://github.com/Cyber-Nomad-Collective/pckg/commit/8734655"
   },
-  "body": "## Outcome\n\nDeep links (/docs/.../api, /search), AppDocumentationRoutes; PackageDocs explorer dialog; Dialog variant for docs browser.\n\n## Context\n\n- Workstream **pckg-registry** — registry and PackageDocs UI.\n- Contributes to deliverable **Registry dashboard and package docs foundation** (`v02-pckg-registry-foundation`).\n\n## Provenance\n\n- **Repository:** `pckg`\n- **Commit:** [`8734655`](https://github.com/Cyber-Nomad-Collective/pckg/commit/8734655) — Docs: deep links (/docs/.../api, /search), AppDocumentationRoutes; PackageDocs explorer dialog; Dialog variant for docs browser"
+  "body": "Deep links (/docs/.../api, /search), AppDocumentationRoutes; PackageDocs explorer dialog; Dialog variant for docs browser.\n\n## Provenance\n- **Repository:** `pckg`\n- **Commit:** [`8734655`](https://github.com/Cyber-Nomad-Collective/pckg/commit/8734655)\n- **Subject:** Docs: deep links (/docs/.../api, /search), AppDocumentationRoutes; PackageDocs explorer dialog; Dialog variant for docs browser\n- **Completed:** 2026-04-24\n\n## Catalog scope\n- **Delivery version:** v0.2 (Analysis, packages, and platform spec)\n- **Workstream:** `pckg-registry`\n- **Deliverable:** `v02-pckg-registry-foundation`\n- **Domain:** `tooling`\n\n## Relation\nContributes to deliverable **Registry dashboard and package docs foundation** (`v02-pckg-registry-foundation`).\n"
 }

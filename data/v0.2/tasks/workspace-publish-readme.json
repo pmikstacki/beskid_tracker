@@ -9,7 +9,8 @@
   "source": {
     "repo": "pckg",
     "commit": "a7d77fe",
-    "subject": "feat(server): workspace publish, readme rendering, and manifest metadata"
+    "subject": "feat(server): workspace publish, readme rendering, and manifest metadata",
+    "url": "https://github.com/Cyber-Nomad-Collective/pckg/commit/a7d77fe"
   },
-  "body": "## Outcome\n\nWorkspace publish, readme rendering, and manifest metadata.\n\n## Context\n\n- Workstream **pckg-registry** — registry and PackageDocs UI.\n- LSP work shares the typed HIR spine with analyze/build; workspace templates feed the project graph pipeline.\n\n## Provenance\n\n- **Repository:** `pckg`\n- **Commit:** [`a7d77fe`](https://github.com/Cyber-Nomad-Collective/pckg/commit/a7d77fe) — feat(server): workspace publish, readme rendering, and manifest metadata"
+  "body": "Workspace publish, readme rendering, and manifest metadata.\n\n## Provenance\n- **Repository:** `pckg`\n- **Commit:** [`a7d77fe`](https://github.com/Cyber-Nomad-Collective/pckg/commit/a7d77fe)\n- **Subject:** feat(server): workspace publish, readme rendering, and manifest metadata\n- **Completed:** 2026-05-20\n\n## Catalog scope\n- **Delivery version:** v0.2 (Analysis, packages, and platform spec)\n- **Workstream:** `pckg-registry`\n\n## Relation\nSupports **v0.2 (Analysis, packages, and platform spec)** on workstream `pckg-registry`.\n"
 }

@@ -1,0 +1,16 @@
+{
+  "id": "roadmap-labels-v04-tracker",
+  "number": 407,
+  "title": "roadmap/version/v0.4 labels in tracker and GitHub",
+  "statusColumn": "Backlog",
+  "priority": "low",
+  "workstream": "tracker-implementation",
+  "deliverableId": "v04-tracker-ship",
+  "source": {
+    "repo": "beskid",
+    "commit": "c8e5fc4",
+    "subject": "fix: add references/bsharp to .gitmodules with update=none",
+    "url": "https://github.com/Cyber-Nomad-Collective/beskid/commit/c8e5fc4"
+  },
+  "body": "roadmap/version/v0.4 labels in tracker and GitHub\n\n## Scope\n\nRestore/sync `docs/roadmap-labels.md` content removed in auth refactor (`510f302`); ensure `roadmap/version/v0.4` label exists on Cyber-Nomad-Collective/beskid and tracker taxonomy matches seed versions.\n\n## Provenance\n- **Repository:** `beskid`\n- **Commit:** [`c8e5fc4`](https://github.com/Cyber-Nomad-Collective/beskid/commit/c8e5fc4)\n- **Subject:** fix: add references/bsharp to .gitmodules with update=none\n- **Catalog tip:** [`c8e5fc4`](https://github.com/Cyber-Nomad-Collective/beskid/commit/c8e5fc4) (v0.4 cutoff 2026-05-27)\n- **Status:** Backlog\n\n## Catalog scope\n- **Delivery version:** v0.4 (Platform services, auth, and delivery tooling)\n- **Workstream:** `tracker-implementation`\n- **Deliverable:** `v04-tracker-ship`"
+}

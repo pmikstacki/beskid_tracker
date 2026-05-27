@@ -10,7 +10,8 @@
   "source": {
     "repo": "beskid",
     "commit": "94240a3",
-    "subject": "site: add language book and align module docs with file-scoped semantics"
+    "subject": "site: add language book and align module docs with file-scoped semantics",
+    "url": "https://github.com/Cyber-Nomad-Collective/beskid/commit/94240a3"
   },
-  "body": "## Outcome\n\nAdd language book and align module docs with file-scoped semantics.\n\n## Context\n\n- Workstream **docs-site** — see workstream summary on the catalog.\n- Contributes to deliverable **Book tutorial rollout** (`v02-book-tutorial-wave`).\n\n## Provenance\n\n- **Repository:** `beskid`\n- **Commit:** [`94240a3`](https://github.com/Cyber-Nomad-Collective/beskid/commit/94240a3) — site: add language book and align module docs with file-scoped semantics"
+  "body": "Add language book and align module docs with file-scoped semantics.\n\n## Provenance\n- **Repository:** `beskid`\n- **Commit:** [`94240a3`](https://github.com/Cyber-Nomad-Collective/beskid/commit/94240a3)\n- **Subject:** site: add language book and align module docs with file-scoped semantics\n- **Completed:** 2026-04-22\n\n## Catalog scope\n- **Delivery version:** v0.2 (Analysis, packages, and platform spec)\n- **Workstream:** `docs-site`\n- **Deliverable:** `v02-book-tutorial-wave`\n\n## Relation\nContributes to deliverable **Book tutorial rollout** (`v02-book-tutorial-wave`).\n"
 }

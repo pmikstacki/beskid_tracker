@@ -11,8 +11,9 @@
   "source": {
     "repo": "corelib",
     "commit": "09ac8fe",
-    "subject": "corelib: split System.IO, add console/concurrency packages and tests"
+    "subject": "corelib: split System.IO, add console/concurrency packages and tests",
+    "url": "https://github.com/Cyber-Nomad-Collective/beskid_standard/commit/09ac8fe"
   },
   "milestoneId": "v02-concurrency-runtime",
-  "body": "## Outcome\n\nCorelib: split System.IO, add console/concurrency packages and tests.\n\n## Context\n\n- Workstream **codegen-runtime** — see workstream summary on the catalog.\n- Contributes to deliverable **Fibers, channels, and GC runtime** (`v02-concurrency-runtime`).\n- Corelib sources live in the **corelib** submodule; package identity is **corelib** with workspace publish to pckg.\n\n## Provenance\n\n- **Repository:** `corelib`\n- **Commit:** [`09ac8fe`](https://github.com/Cyber-Nomad-Collective/beskid_standard/commit/09ac8fe) — corelib: split System.IO, add console/concurrency packages and tests"
+  "body": "Corelib: split System.IO, add console/concurrency packages and tests.\n\n## Provenance\n- **Repository:** `corelib`\n- **Commit:** [`09ac8fe`](https://github.com/Cyber-Nomad-Collective/beskid_standard/commit/09ac8fe)\n- **Subject:** corelib: split System.IO, add console/concurrency packages and tests\n- **Completed:** 2026-05-20\n\n## Catalog scope\n- **Delivery version:** v0.2 (Analysis, packages, and platform spec)\n- **Workstream:** `codegen-runtime`\n- **Deliverable:** `v02-concurrency-runtime`\n- **Domain:** `core-library`\n\n## Relation\nContributes to deliverable **Fibers, channels, and GC runtime** (`v02-concurrency-runtime`).\n"
 }

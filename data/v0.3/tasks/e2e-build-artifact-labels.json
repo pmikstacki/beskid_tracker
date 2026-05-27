@@ -12,7 +12,8 @@
   "source": {
     "repo": "compiler",
     "commit": "bf32227",
-    "subject": "fix(e2e): align build output assertions with CLI artifact labels"
+    "subject": "fix(e2e): align build output assertions with CLI artifact labels",
+    "url": "https://github.com/Cyber-Nomad-Collective/beskid_compiler/commit/bf32227"
   },
-  "body": "## What shipped\n\nE2e CLI tests assert build output using the same artifact labels the `beskid build` CLI emits, reducing brittle path checks.\n\n## Source commit\n\nRepository **`compiler`** \u00b7 commit `bf32227`\n\n> fix(e2e): align build output assertions with CLI artifact labels\n\n## Completed\n\n2026-05-23 (catalog cutoff window)."
+  "body": "E2e CLI tests assert build output using the same artifact labels the `beskid build` CLI emits, reducing brittle path checks.\n\n## Provenance\n- **Repository:** `compiler`\n- **Commit:** [`bf32227`](https://github.com/Cyber-Nomad-Collective/beskid_compiler/commit/bf32227)\n- **Subject:** fix(e2e): align build output assertions with CLI artifact labels\n- **Completed:** 2026-05-23\n\n## Catalog scope\n- **Delivery version:** v0.3 (Macros, concurrency, and stabilization)\n- **Workstream:** `analysis-pipeline`\n- **Domain:** `compiler`\n- **Deliverable:** `v03-post-merge-ci`\n\n## Relation\nContributes to deliverable **CI and integration hardening** (`v03-post-merge-ci`)."
 }

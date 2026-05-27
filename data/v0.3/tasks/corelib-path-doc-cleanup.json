@@ -11,8 +11,9 @@
   "source": {
     "repo": "corelib",
     "commit": "c1011b1",
-    "subject": "fix(corelib): repair Path.bd header doc and collapse blank lines in Tier1 tests"
+    "subject": "fix(corelib): repair Path.bd header doc and collapse blank lines in Tier1 tests",
+    "url": "https://github.com/Cyber-Nomad-Collective/beskid_standard/commit/c1011b1"
   },
   "milestoneId": "v03-corelib-tier-ship",
-  "body": "## What shipped\n\nRepairs `Path.bd` header documentation and collapses stray blank lines in Tier1 tests so trudoc and corelib CI stay green.\n\n## Source commit\n\nRepository **`corelib`** \u00b7 commit `c1011b1`\n\n> fix(corelib): repair Path.bd header doc and collapse blank lines in Tier1 tests\n\n## Completed\n\n2026-05-23 (catalog cutoff window)."
+  "body": "Repairs `Path.bd` header documentation and collapses stray blank lines in Tier1 tests so trudoc and corelib CI stay green.\n\n## Provenance\n- **Repository:** `corelib`\n- **Commit:** [`c1011b1`](https://github.com/Cyber-Nomad-Collective/beskid_standard/commit/c1011b1)\n- **Subject:** fix(corelib): repair Path.bd header doc and collapse blank lines in Tier1 tests\n- **Completed:** 2026-05-23\n\n## Catalog scope\n- **Delivery version:** v0.3 (Macros, concurrency, and stabilization)\n- **Workstream:** `stabilization`\n- **Domain:** `core-library`\n- **Deliverable:** `v03-corelib-tier-ship`\n\n## Relation\nContributes to deliverable **Corelib tier collections ship** (`v03-corelib-tier-ship`)."
 }

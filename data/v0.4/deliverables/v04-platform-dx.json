@@ -1,0 +1,6 @@
+{
+  "id": "v04-platform-dx",
+  "title": "Smooth platform-wide developer & visitor DX",
+  "number": 1,
+  "description": "Unified navigation via beskid-hub, legacy redirects, multi-service hosting model (site, auth, tracker, nexus, pckg), and Coolify guidance so every Beskid web surface feels consistent for contributors and readers.\n\n## Provenance\n- **Catalog cutoff:** [`aaddd32`](https://github.com/Cyber-Nomad-Collective/beskid/commit/aaddd32) → [`c8e5fc4`](https://github.com/Cyber-Nomad-Collective/beskid/commit/c8e5fc4) on **beskid** (2026-05-26 – 2026-05-27)\n- **Anchor commit:** [`1e73032`](https://github.com/Cyber-Nomad-Collective/beskid/commit/1e73032)\n\n## Catalog scope\n- **Delivery version:** v0.4 (Platform services, auth, and delivery tooling)\n- **Status:** Partial — hub, redirects, and hosting model landed; auth hub and Coolify matrix ongoing\n- **Workstreams:** `web-auth-web-common`, `platform-docs-dx`"
+}

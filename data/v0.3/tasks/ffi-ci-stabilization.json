@@ -10,7 +10,8 @@
   "source": {
     "repo": "compiler",
     "commit": "f7361aa",
-    "subject": "fix(ci): Path import in ffi_v03 tests and runtime bridge discovery"
+    "subject": "fix(ci): Path import in ffi_v03 tests and runtime bridge discovery",
+    "url": "https://github.com/Cyber-Nomad-Collective/beskid_compiler/commit/f7361aa"
   },
-  "body": "## What shipped\n\nStabilizes ffi_v03 workflow flakes (timeouts, missing symbols) so export FFI coverage is reliable on main.\n\n## Source commit\n\nRepository **`compiler`** \u00b7 commit `f7361aa`\n\n> fix(ci): Path import in ffi_v03 tests and runtime bridge discovery\n\n## Completed\n\n2026-05-24 (catalog cutoff window)."
+  "body": "Stabilizes ffi_v03 workflow flakes (timeouts, missing symbols) so export FFI coverage is reliable on main.\n\n## Provenance\n- **Repository:** `compiler`\n- **Commit:** [`f7361aa`](https://github.com/Cyber-Nomad-Collective/beskid_compiler/commit/f7361aa)\n- **Subject:** fix(ci): Path import in ffi_v03 tests and runtime bridge discovery\n- **Completed:** 2026-05-24\n\n## Catalog scope\n- **Delivery version:** v0.3 (Macros, concurrency, and stabilization)\n- **Workstream:** `ci-release`\n- **Deliverable:** `v03-post-merge-ci`\n\n## Relation\nContributes to deliverable **CI and integration hardening** (`v03-post-merge-ci`)."
 }

@@ -9,7 +9,8 @@
   "source": {
     "repo": "beskid",
     "commit": "dfdb360",
-    "subject": "fix(book): my-story page title frontmatter"
+    "subject": "fix(book): my-story page title frontmatter",
+    "url": "https://github.com/Cyber-Nomad-Collective/beskid/commit/dfdb360"
   },
-  "body": "## Outcome\n\nMy-story page title frontmatter.\n\n## Context\n\n- Workstream **docs-site** — see workstream summary on the catalog.\n- **trudoc** Zod/frontmatter verification guards platform-spec metadata in CI.\n\n## Provenance\n\n- **Repository:** `beskid`\n- **Commit:** [`dfdb360`](https://github.com/Cyber-Nomad-Collective/beskid/commit/dfdb360) — fix(book): my-story page title frontmatter"
+  "body": "My-story page title frontmatter.\n\n## Provenance\n- **Repository:** `beskid`\n- **Commit:** [`dfdb360`](https://github.com/Cyber-Nomad-Collective/beskid/commit/dfdb360)\n- **Subject:** fix(book): my-story page title frontmatter\n- **Completed:** 2026-05-22\n\n## Catalog scope\n- **Delivery version:** v0.2 (Analysis, packages, and platform spec)\n- **Workstream:** `docs-site`\n\n## Relation\nSupports **v0.2 (Analysis, packages, and platform spec)** on workstream `docs-site`.\n"
 }

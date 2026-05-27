@@ -10,7 +10,8 @@
   "source": {
     "repo": "beskid",
     "commit": "c38a8e9",
-    "subject": "Fix site build and document corelib workspace publishing."
+    "subject": "Fix site build and document corelib workspace publishing.",
+    "url": "https://github.com/Cyber-Nomad-Collective/beskid/commit/c38a8e9"
   },
-  "body": "## Outcome\n\nFix site build and document corelib workspace publishing.\n\n## Context\n\n- Workstream **platform-spec** — normative spec on beskid-lang.org.\n- LSP work shares the typed HIR spine with analyze/build; workspace templates feed the project graph pipeline.\n- Corelib sources live in the **corelib** submodule; package identity is **corelib** with workspace publish to pckg.\n\n## Provenance\n\n- **Repository:** `beskid`\n- **Commit:** [`c38a8e9`](https://github.com/Cyber-Nomad-Collective/beskid/commit/c38a8e9) — Fix site build and document corelib workspace publishing."
+  "body": "Fix site build and document corelib workspace publishing.\n\n## Provenance\n- **Repository:** `beskid`\n- **Commit:** [`c38a8e9`](https://github.com/Cyber-Nomad-Collective/beskid/commit/c38a8e9)\n- **Subject:** Fix site build and document corelib workspace publishing.\n- **Completed:** 2026-05-20\n\n## Catalog scope\n- **Delivery version:** v0.2 (Analysis, packages, and platform spec)\n- **Workstream:** `platform-spec`\n- **Domain:** `language-meta`\n\n## Relation\nSupports **v0.2 (Analysis, packages, and platform spec)** on workstream `platform-spec`.\n"
 }

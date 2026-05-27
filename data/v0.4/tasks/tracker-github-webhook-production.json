@@ -1,0 +1,16 @@
+{
+  "id": "tracker-github-webhook-production",
+  "number": 398,
+  "title": "Production GitHub webhook mirror for roadmap issues",
+  "statusColumn": "Backlog",
+  "priority": "high",
+  "workstream": "tracker-implementation",
+  "deliverableId": "v04-tracker-ship",
+  "source": {
+    "repo": "beskid",
+    "commit": "c8e5fc4",
+    "subject": "fix: add references/bsharp to .gitmodules with update=none",
+    "url": "https://github.com/Cyber-Nomad-Collective/beskid/commit/c8e5fc4"
+  },
+  "body": "Production GitHub webhook mirror for roadmap issues\n\n## Scope\n\nConfigure `GITHUB_WEBHOOK_SECRET` on Coolify tracker deploy; verify SQLite mirror updates on issue open/edit/close without REST polling. Document webhook URL in sync drawer Settings tab.\n\n## Provenance\n- **Repository:** `beskid`\n- **Commit:** [`c8e5fc4`](https://github.com/Cyber-Nomad-Collective/beskid/commit/c8e5fc4)\n- **Subject:** fix: add references/bsharp to .gitmodules with update=none\n- **Catalog tip:** [`c8e5fc4`](https://github.com/Cyber-Nomad-Collective/beskid/commit/c8e5fc4) (v0.4 cutoff 2026-05-27)\n- **Status:** Backlog\n\n## Catalog scope\n- **Delivery version:** v0.4 (Platform services, auth, and delivery tooling)\n- **Workstream:** `tracker-implementation`\n- **Deliverable:** `v04-tracker-ship`"
+}

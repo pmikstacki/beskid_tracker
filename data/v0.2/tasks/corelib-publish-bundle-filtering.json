@@ -11,7 +11,8 @@
   "source": {
     "repo": "corelib",
     "commit": "483e7f4",
-    "subject": "fix(corelib): exclude non-docs .beskid files from workspace publish bundle"
+    "subject": "fix(corelib): exclude non-docs .beskid files from workspace publish bundle",
+    "url": "https://github.com/Cyber-Nomad-Collective/beskid_standard/commit/483e7f4"
   },
-  "body": "## Outcome\n\nExclude non-docs .beskid files from workspace publish bundle.\n\n## Context\n\n- Workstream **pckg-registry** — registry and PackageDocs UI.\n- Contributes to deliverable **Corelib workspace publish hardening** (`v02-corelib-workspace-publish`).\n- LSP work shares the typed HIR spine with analyze/build; workspace templates feed the project graph pipeline.\n- Corelib sources live in the **corelib** submodule; package identity is **corelib** with workspace publish to pckg.\n\n## Provenance\n\n- **Repository:** `corelib`\n- **Commit:** [`483e7f4`](https://github.com/Cyber-Nomad-Collective/beskid_standard/commit/483e7f4) — fix(corelib): exclude non-docs .beskid files from workspace publish bundle"
+  "body": "Exclude non-docs .beskid files from workspace publish bundle.\n\n## Provenance\n- **Repository:** `corelib`\n- **Commit:** [`483e7f4`](https://github.com/Cyber-Nomad-Collective/beskid_standard/commit/483e7f4)\n- **Subject:** fix(corelib): exclude non-docs .beskid files from workspace publish bundle\n- **Completed:** 2026-05-21\n\n## Catalog scope\n- **Delivery version:** v0.2 (Analysis, packages, and platform spec)\n- **Workstream:** `pckg-registry`\n- **Deliverable:** `v02-corelib-workspace-publish`\n- **Domain:** `core-library`\n\n## Relation\nContributes to deliverable **Corelib workspace publish hardening** (`v02-corelib-workspace-publish`).\n"
 }

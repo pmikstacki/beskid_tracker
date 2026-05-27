@@ -10,7 +10,8 @@
   "source": {
     "repo": "pckg",
     "commit": "2337393",
-    "subject": "feat(docs): api.json tree UI, template packages, and publish validation"
+    "subject": "feat(docs): api.json tree UI, template packages, and publish validation",
+    "url": "https://github.com/Cyber-Nomad-Collective/pckg/commit/2337393"
   },
-  "body": "## Outcome\n\nApi.json tree UI, template packages, and publish validation.\n\n## Context\n\n- Workstream **pckg-registry** — registry and PackageDocs UI.\n- Contributes to deliverable **api.json primary contract** (`v02-api-json-contract`).\n- Structured **api.json** is the hierarchical contract for package docs (types, members, **typeRef** links)—not parallel string-key tables outside the schema.\n\n## Provenance\n\n- **Repository:** `pckg`\n- **Commit:** [`2337393`](https://github.com/Cyber-Nomad-Collective/pckg/commit/2337393) — feat(docs): api.json tree UI, template packages, and publish validation"
+  "body": "Api.json tree UI, template packages, and publish validation.\n\n## Provenance\n- **Repository:** `pckg`\n- **Commit:** [`2337393`](https://github.com/Cyber-Nomad-Collective/pckg/commit/2337393)\n- **Subject:** feat(docs): api.json tree UI, template packages, and publish validation\n- **Completed:** 2026-05-22\n\n## Catalog scope\n- **Delivery version:** v0.2 (Analysis, packages, and platform spec)\n- **Workstream:** `pckg-registry`\n- **Deliverable:** `v02-api-json-contract`\n\n## Relation\nContributes to deliverable **api.json primary contract** (`v02-api-json-contract`).\n"
 }

@@ -10,7 +10,8 @@
   "source": {
     "repo": "beskid",
     "commit": "6140c7c",
-    "subject": "docs: corelib naming across site, workstreams, and CI notes"
+    "subject": "docs: corelib naming across site, workstreams, and CI notes",
+    "url": "https://github.com/Cyber-Nomad-Collective/beskid/commit/6140c7c"
   },
-  "body": "## Outcome\n\nCorelib naming across site, workstreams, and CI notes.\n\n## Context\n\n- Workstream **docs-site** — see workstream summary on the catalog.\n- Contributes to deliverable **Book tutorial rollout** (`v02-book-tutorial-wave`).\n- Corelib sources live in the **corelib** submodule; package identity is **corelib** with workspace publish to pckg.\n\n## Provenance\n\n- **Repository:** `beskid`\n- **Commit:** [`6140c7c`](https://github.com/Cyber-Nomad-Collective/beskid/commit/6140c7c) — docs: corelib naming across site, workstreams, and CI notes"
+  "body": "Corelib naming across site, workstreams, and CI notes.\n\n## Provenance\n- **Repository:** `beskid`\n- **Commit:** [`6140c7c`](https://github.com/Cyber-Nomad-Collective/beskid/commit/6140c7c)\n- **Subject:** docs: corelib naming across site, workstreams, and CI notes\n- **Completed:** 2026-04-23\n\n## Catalog scope\n- **Delivery version:** v0.2 (Analysis, packages, and platform spec)\n- **Workstream:** `docs-site`\n- **Deliverable:** `v02-book-tutorial-wave`\n\n## Relation\nContributes to deliverable **Book tutorial rollout** (`v02-book-tutorial-wave`).\n"
 }

@@ -11,8 +11,9 @@
   "source": {
     "repo": "compiler",
     "commit": "0ded628",
-    "subject": "compiler: runtime/ABI updates, doc command, corelib submodule bump, tests"
+    "subject": "compiler: runtime/ABI updates, doc command, corelib submodule bump, tests",
+    "url": "https://github.com/Cyber-Nomad-Collective/compiler/commit/0ded628"
   },
   "milestoneId": "v02-concurrency-runtime",
-  "body": "## Outcome\n\nRuntime/ABI updates, doc command, corelib submodule bump, tests.\n\n## Context\n\n- Workstream **codegen-runtime** — see workstream summary on the catalog.\n- Contributes to deliverable **Fibers, channels, and GC runtime** (`v02-concurrency-runtime`).\n- Corelib sources live in the **corelib** submodule; package identity is **corelib** with workspace publish to pckg.\n\n## Provenance\n\n- **Repository:** `compiler`\n- **Commit:** [`0ded628`](https://github.com/Cyber-Nomad-Collective/compiler/commit/0ded628) — compiler: runtime/ABI updates, doc command, corelib submodule bump, tests"
+  "body": "Runtime/ABI updates, doc command, corelib submodule bump, tests.\n\n## Provenance\n- **Repository:** `compiler`\n- **Commit:** [`0ded628`](https://github.com/Cyber-Nomad-Collective/compiler/commit/0ded628)\n- **Subject:** compiler: runtime/ABI updates, doc command, corelib submodule bump, tests\n- **Completed:** 2026-04-24\n\n## Catalog scope\n- **Delivery version:** v0.2 (Analysis, packages, and platform spec)\n- **Workstream:** `codegen-runtime`\n- **Deliverable:** `v02-concurrency-runtime`\n- **Domain:** `execution`\n\n## Relation\nContributes to deliverable **Fibers, channels, and GC runtime** (`v02-concurrency-runtime`).\n"
 }

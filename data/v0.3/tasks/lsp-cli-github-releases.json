@@ -11,7 +11,8 @@
   "source": {
     "repo": "compiler",
     "commit": "a86a6d6",
-    "subject": "feat(cli): add `beskid lsp` subcommand for editor stdio server"
+    "subject": "feat(cli): add `beskid lsp` subcommand for editor stdio server",
+    "url": "https://github.com/Cyber-Nomad-Collective/beskid_compiler/commit/a86a6d6"
   },
-  "body": "## What shipped\n\nGitHub Actions publish LSP binaries with versioned tags alongside existing CLI release assets for editor bootstrap.\n\n## Source commit\n\nRepository **`compiler`** \u00b7 commit `a86a6d6`\n\n> feat(cli): add `beskid lsp` subcommand for editor stdio server\n\n## Completed\n\n2026-05-25 (catalog cutoff window)."
+  "body": "GitHub Actions publish LSP binaries with versioned tags alongside existing CLI release assets for editor bootstrap.\n\n## Provenance\n- **Repository:** `compiler`\n- **Commit:** [`a86a6d6`](https://github.com/Cyber-Nomad-Collective/beskid_compiler/commit/a86a6d6)\n- **Subject:** feat(cli): add `beskid lsp` subcommand for editor stdio server\n- **Completed:** 2026-05-25\n\n## Catalog scope\n- **Delivery version:** v0.3 (Macros, concurrency, and stabilization)\n- **Workstream:** `editor-extension`\n- **Domain:** `tooling`\n- **Deliverable:** `v03-editor-lsp-cli`\n\n## Relation\nContributes to deliverable **CLI LSP launch & VS Code toolchain** (`v03-editor-lsp-cli`)."
 }

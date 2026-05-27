@@ -11,7 +11,8 @@
   "source": {
     "repo": "compiler",
     "commit": "98b328e",
-    "subject": "feat(analysis): non-destructive Project.proj link block merge"
+    "subject": "feat(analysis): non-destructive Project.proj link block merge",
+    "url": "https://github.com/Cyber-Nomad-Collective/beskid_compiler/commit/98b328e"
   },
-  "body": "## What shipped\n\nNon-destructive merge reconciles `import lib` link blocks in **Project.proj** without wiping unrelated project settings.\n\n## Source commit\n\nRepository **`compiler`** \u00b7 commit `98b328e`\n\n> feat(analysis): non-destructive Project.proj link block merge\n\n## Completed\n\n2026-05-23 (catalog cutoff window)."
+  "body": "Non-destructive merge reconciles `import lib` link blocks in **Project.proj** without wiping unrelated project settings.\n\n## Provenance\n- **Repository:** `compiler`\n- **Commit:** [`98b328e`](https://github.com/Cyber-Nomad-Collective/beskid_compiler/commit/98b328e)\n- **Subject:** feat(analysis): non-destructive Project.proj link block merge\n- **Completed:** 2026-05-23\n\n## Catalog scope\n- **Delivery version:** v0.3 (Macros, concurrency, and stabilization)\n- **Workstream:** `compiler-mods`\n- **Domain:** `compiler`\n- **Deliverable:** `v03-merge-wave`\n\n## Relation\nContributes to deliverable **v0.3 macro/runtime/ffi/tooling delivery** (`v03-merge-wave`)."
 }

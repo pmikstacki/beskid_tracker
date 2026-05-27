@@ -10,7 +10,8 @@
   "source": {
     "repo": "beskid",
     "commit": "377eb75",
-    "subject": "docs(AGENTS): update cross-cutting specifications and database migration details"
+    "subject": "docs(AGENTS): update cross-cutting specifications and database migration details",
+    "url": "https://github.com/Cyber-Nomad-Collective/beskid/commit/377eb75"
   },
-  "body": "## What shipped\n\nRefactors `@beskid/docs-ui` reader shells for book and platform-spec, updating AGENTS cross-cutting notes and migration context for shared chrome.\n\n## Source commit\n\nRepository **`beskid`** \u00b7 commit `377eb75`\n\n> docs(AGENTS): update cross-cutting specifications and database migration details\n\n## Completed\n\n2026-05-23 (catalog cutoff window)."
+  "body": "Refactors `@beskid/docs-ui` reader shells for book and platform-spec, updating AGENTS cross-cutting notes and migration context for shared chrome.\n\n## Provenance\n- **Repository:** `beskid`\n- **Commit:** [`377eb75`](https://github.com/Cyber-Nomad-Collective/beskid/commit/377eb75)\n- **Subject:** docs(AGENTS): update cross-cutting specifications and database migration details\n- **Completed:** 2026-05-23\n\n## Catalog scope\n- **Delivery version:** v0.3 (Macros, concurrency, and stabilization)\n- **Workstream:** `stabilization`\n- **Deliverable:** `v03-docs-reader-hardening`\n\n## Relation\nContributes to deliverable **Docs reader hardening** (`v03-docs-reader-hardening`)."
 }

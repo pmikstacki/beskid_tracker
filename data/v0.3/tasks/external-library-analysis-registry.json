@@ -21,7 +21,8 @@
   "source": {
     "repo": "compiler",
     "commit": "d292535",
-    "subject": "feat(analysis): add ExternalLibrary trait + closed C/POSIX registry"
+    "subject": "feat(analysis): add ExternalLibrary trait + closed C/POSIX registry",
+    "url": "https://github.com/Cyber-Nomad-Collective/beskid_compiler/commit/d292535"
   },
-  "body": "## What shipped\n\nAnalysis pipeline registers **ExternalLibrary** metadata through a closed registry consumed by foreign import and FFI lowering.\n\n## Platform specification\n\n- **Foreign libraries** \u2014 `/platform-spec/language-meta/interop/foreign-libraries` \u2014 *implements* (required)\n\n## Source commit\n\nRepository **`compiler`** \u00b7 commit `d292535`\n\n> feat(analysis): add ExternalLibrary trait + closed C/POSIX registry\n\n## Completed\n\n2026-05-23 (catalog cutoff window)."
+  "body": "Analysis pipeline registers **ExternalLibrary** metadata through a closed registry consumed by foreign import and FFI lowering.\n\n## Platform specification\n\n- **Foreign libraries** — `/platform-spec/language-meta/interop/foreign-libraries` — *implements* (required)\n\n## Provenance\n- **Repository:** `compiler`\n- **Commit:** [`d292535`](https://github.com/Cyber-Nomad-Collective/beskid_compiler/commit/d292535)\n- **Subject:** feat(analysis): add ExternalLibrary trait + closed C/POSIX registry\n- **Completed:** 2026-05-23\n\n## Catalog scope\n- **Delivery version:** v0.3 (Macros, concurrency, and stabilization)\n- **Workstream:** `analysis-pipeline`\n- **Domain:** `compiler`\n- **Deliverable:** `v03-analysis-interop`\n\n## Relation\nContributes to deliverable **Analysis interop & codegen polish** (`v03-analysis-interop`). Normative spec: **Foreign libraries** (*implements*)."
 }

@@ -9,10 +9,11 @@
   "area": "concurrency",
   "completedAt": "2026-02-25",
   "deliverableId": "v00-execution-jit-gc",
-  "body": "## What was done\n\nUpdated **Plan.md** with concurrency models: preemptible fibers, pointer channels, and syscall-pool guards—implementation explicitly out of v0.0 scope.\n\n## Why it mattered\n\nCaptured design intent before Beskid execution bands so later work would not rediscover requirements from scratch.\n\n## Research conclusion\n\n**Document only in v0.0**; shipping fiber/channel runtime deferred to **v0.2+** execution planning.",
+  "body": "Updated **Plan.md** with concurrency models: preemptible fibers, pointer channels, and syscall-pool guards—implementation explicitly out of v0.0 scope.\n\n## Provenance\n- **Repository:** `pekan`\n- **Commit:** [`c6e0d5a`](https://github.com/Cyber-Nomad-Collective/pekan/commit/c6e0d5a)\n- **Subject:** Update Plan.md\n- **Completed:** 2026-02-25\n\n## Catalog scope\n- **Delivery version:** v0.0 (Pecan prototype)\n- **Workstream:** `concurrency-research`\n- **Deliverable:** `v00-execution-jit-gc`\n\n## Relation\n**Document only in v0.0**; shipping fiber/channel runtime deferred to **v0.2+** execution planning.",
   "source": {
     "repo": "pekan",
     "commit": "c6e0d5a",
-    "subject": "Update Plan.md"
+    "subject": "Update Plan.md",
+    "url": "https://github.com/Cyber-Nomad-Collective/pekan/commit/c6e0d5a"
   }
 }

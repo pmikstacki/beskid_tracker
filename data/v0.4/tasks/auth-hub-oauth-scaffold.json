@@ -1,0 +1,16 @@
+{
+  "id": "auth-hub-oauth-scaffold",
+  "number": 392,
+  "title": "site/auth GitHub OAuth hub scaffold (Docker, env, UI)",
+  "statusColumn": "In Progress",
+  "priority": "high",
+  "workstream": "web-auth-web-common",
+  "deliverableId": "v04-platform-dx",
+  "source": {
+    "repo": "beskid",
+    "commit": "c8e5fc4",
+    "subject": "fix: add references/bsharp to .gitmodules with update=none",
+    "url": "https://github.com/Cyber-Nomad-Collective/beskid/commit/c8e5fc4"
+  },
+  "body": "site/auth GitHub OAuth hub scaffold (Docker, env, UI)\n\n## Scope\n\nComplete shared GitHub OAuth hub for tracker, nexus, and pckg: production `AUTH_HUB_*` secrets, session cookies on production domains, and `beskid-auth-hub` issuer documentation in platform-spec/tooling.\n\n## Provenance\n- **Repository:** `beskid`\n- **Commit:** [`c8e5fc4`](https://github.com/Cyber-Nomad-Collective/beskid/commit/c8e5fc4)\n- **Subject:** fix: add references/bsharp to .gitmodules with update=none\n- **Catalog tip:** [`c8e5fc4`](https://github.com/Cyber-Nomad-Collective/beskid/commit/c8e5fc4) (v0.4 cutoff 2026-05-27)\n- **Status:** In Progress\n\n## Catalog scope\n- **Delivery version:** v0.4 (Platform services, auth, and delivery tooling)\n- **Workstream:** `web-auth-web-common`\n- **Deliverable:** `v04-platform-dx`\n\n## Landed\n\nAdds `site/auth/` TanStack app with Dockerfile, docker-compose, `.env.example`, theme provider, and COOLIFY/README docs. Removes obsolete root `examples/` and legacy `manifests/*.xml` in favor of simplified superrepo layout.\n\n## Remaining\n\n- Wire `AUTH_HUB_PUBLIC_URL` + `AUTH_HUB_SECRET` across tracker, nexus, pckg\n- End-to-end OAuth handoff and session cookies on production domains\n- Document issuer `beskid-auth-hub` in platform-spec/tooling"
+}

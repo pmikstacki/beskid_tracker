@@ -9,7 +9,8 @@
   "source": {
     "repo": "beskid",
     "commit": "f57377a",
-    "subject": "fix(docs): restore book memes, trudoc verify scripts, CI runtime and audit"
+    "subject": "fix(docs): restore book memes, trudoc verify scripts, CI runtime and audit",
+    "url": "https://github.com/Cyber-Nomad-Collective/beskid/commit/f57377a"
   },
-  "body": "## Outcome\n\nRestore book memes, trudoc verify scripts, CI runtime and audit.\n\n## Context\n\n- Workstream **ci-release** — see workstream summary on the catalog.\n- **trudoc** Zod/frontmatter verification guards platform-spec metadata in CI.\n\n## Provenance\n\n- **Repository:** `beskid`\n- **Commit:** [`f57377a`](https://github.com/Cyber-Nomad-Collective/beskid/commit/f57377a) — fix(docs): restore book memes, trudoc verify scripts, CI runtime and audit"
+  "body": "Restore book memes, trudoc verify scripts, CI runtime and audit.\n\n## Provenance\n- **Repository:** `beskid`\n- **Commit:** [`f57377a`](https://github.com/Cyber-Nomad-Collective/beskid/commit/f57377a)\n- **Subject:** fix(docs): restore book memes, trudoc verify scripts, CI runtime and audit\n- **Completed:** 2026-05-22\n\n## Catalog scope\n- **Delivery version:** v0.2 (Analysis, packages, and platform spec)\n- **Workstream:** `ci-release`\n\n## Relation\nSupports **v0.2 (Analysis, packages, and platform spec)** on workstream `ci-release`.\n"
 }

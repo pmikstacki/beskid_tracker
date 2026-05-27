@@ -11,7 +11,8 @@
   "source": {
     "repo": "beskid",
     "commit": "f793c45",
-    "subject": "chore(compiler): bump submodule for corelib publish CI"
+    "subject": "chore(compiler): bump submodule for corelib publish CI",
+    "url": "https://github.com/Cyber-Nomad-Collective/beskid/commit/f793c45"
   },
-  "body": "## Outcome\n\nBump submodule for corelib publish CI.\n\n## Context\n\n- Workstream **ci-release** — see workstream summary on the catalog.\n- Contributes to deliverable **CI workflows and deploy infra** (`v02-ci-deploy-infra`).\n- Corelib sources live in the **corelib** submodule; package identity is **corelib** with workspace publish to pckg.\n\n## Provenance\n\n- **Repository:** `beskid`\n- **Commit:** [`f793c45`](https://github.com/Cyber-Nomad-Collective/beskid/commit/f793c45) — chore(compiler): bump submodule for corelib publish CI"
+  "body": "Bump submodule for corelib publish CI.\n\n## Provenance\n- **Repository:** `beskid`\n- **Commit:** [`f793c45`](https://github.com/Cyber-Nomad-Collective/beskid/commit/f793c45)\n- **Subject:** chore(compiler): bump submodule for corelib publish CI\n- **Completed:** 2026-05-20\n\n## Catalog scope\n- **Delivery version:** v0.2 (Analysis, packages, and platform spec)\n- **Workstream:** `ci-release`\n- **Deliverable:** `v02-ci-deploy-infra`\n- **Domain:** `tooling`\n\n## Relation\nContributes to deliverable **CI workflows and deploy infra** (`v02-ci-deploy-infra`).\n"
 }

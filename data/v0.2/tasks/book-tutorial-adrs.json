@@ -9,7 +9,8 @@
   "source": {
     "repo": "beskid",
     "commit": "e16bd3a",
-    "subject": "docs(site): book tutorial, platform-spec ADRs, trudoc, and docs routing"
+    "subject": "docs(site): book tutorial, platform-spec ADRs, trudoc, and docs routing",
+    "url": "https://github.com/Cyber-Nomad-Collective/beskid/commit/e16bd3a"
   },
-  "body": "## Outcome\n\nBook tutorial, platform-spec ADRs, trudoc, and docs routing.\n\n## Context\n\n- Workstream **docs-site** — see workstream summary on the catalog.\n- **trudoc** Zod/frontmatter verification guards platform-spec metadata in CI.\n- Normative updates live under `site/website/src/content/docs/platform-spec/` and ship via beskid-lang.org.\n\n## Provenance\n\n- **Repository:** `beskid`\n- **Commit:** [`e16bd3a`](https://github.com/Cyber-Nomad-Collective/beskid/commit/e16bd3a) — docs(site): book tutorial, platform-spec ADRs, trudoc, and docs routing"
+  "body": "Book tutorial, platform-spec ADRs, trudoc, and docs routing.\n\n## Provenance\n- **Repository:** `beskid`\n- **Commit:** [`e16bd3a`](https://github.com/Cyber-Nomad-Collective/beskid/commit/e16bd3a)\n- **Subject:** docs(site): book tutorial, platform-spec ADRs, trudoc, and docs routing\n- **Completed:** 2026-05-22\n\n## Catalog scope\n- **Delivery version:** v0.2 (Analysis, packages, and platform spec)\n- **Workstream:** `docs-site`\n\n## Relation\nSupports **v0.2 (Analysis, packages, and platform spec)** on workstream `docs-site`.\n"
 }

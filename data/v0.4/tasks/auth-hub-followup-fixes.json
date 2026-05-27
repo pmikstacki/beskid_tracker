@@ -1,0 +1,16 @@
+{
+  "id": "auth-hub-followup-fixes",
+  "number": 393,
+  "title": "Auth hub follow-up fixes (setup-beskid-web, submodules)",
+  "statusColumn": "In Progress",
+  "priority": "high",
+  "workstream": "web-auth-web-common",
+  "deliverableId": "v04-platform-dx",
+  "source": {
+    "repo": "beskid",
+    "commit": "c8e5fc4",
+    "subject": "fix: add references/bsharp to .gitmodules with update=none",
+    "url": "https://github.com/Cyber-Nomad-Collective/beskid/commit/c8e5fc4"
+  },
+  "body": "Auth hub follow-up fixes (setup-beskid-web, submodules)\n\n## Scope\n\nHarden auth hub rollout across web consumers: bump `beskid_web_common`, tracker, and nexus submodule pointers; align setup-beskid-web and AGENTS auth guidance after the initial scaffold.\n\n## Provenance\n- **Repository:** `beskid`\n- **Commit:** [`c8e5fc4`](https://github.com/Cyber-Nomad-Collective/beskid/commit/c8e5fc4)\n- **Subject:** fix: add references/bsharp to .gitmodules with update=none\n- **Catalog tip:** [`c8e5fc4`](https://github.com/Cyber-Nomad-Collective/beskid/commit/c8e5fc4) (v0.4 cutoff 2026-05-27)\n- **Status:** In Progress\n\n## Catalog scope\n- **Delivery version:** v0.4 (Platform services, auth, and delivery tooling)\n- **Workstream:** `web-auth-web-common`\n- **Deliverable:** `v04-platform-dx`\n\n## In progress\n\nIterates auth hub integration: bumps `beskid_web_common`, `beskid_tracker`, and `beskid_nexus` pointers; adjusts setup-beskid-web action and AGENTS auth guidance after initial scaffold."
+}

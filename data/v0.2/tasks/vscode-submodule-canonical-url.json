@@ -11,7 +11,8 @@
   "source": {
     "repo": "beskid",
     "commit": "a12e285",
-    "subject": "fix(git): pin beskid_vscode submodule to canonical GitHub URL"
+    "subject": "fix(git): pin beskid_vscode submodule to canonical GitHub URL",
+    "url": "https://github.com/Cyber-Nomad-Collective/beskid/commit/a12e285"
   },
-  "body": "## Outcome\n\nPin beskid_vscode submodule to canonical GitHub URL.\n\n## Context\n\n- Workstream **dev-experience** — see workstream summary on the catalog.\n- Contributes to deliverable **VS Code extension & Open VSX** (`v02-editor-extension`).\n- Open VSX matrix includes **darwin-arm64** and **darwin-x64** with cross-built Intel LSP where needed.\n\n## Provenance\n\n- **Repository:** `beskid`\n- **Commit:** [`a12e285`](https://github.com/Cyber-Nomad-Collective/beskid/commit/a12e285) — fix(git): pin beskid_vscode submodule to canonical GitHub URL"
+  "body": "Pin beskid_vscode submodule to canonical GitHub URL.\n\n## Provenance\n- **Repository:** `beskid`\n- **Commit:** [`a12e285`](https://github.com/Cyber-Nomad-Collective/beskid/commit/a12e285)\n- **Subject:** fix(git): pin beskid_vscode submodule to canonical GitHub URL\n- **Completed:** 2026-05-05\n\n## Catalog scope\n- **Delivery version:** v0.2 (Analysis, packages, and platform spec)\n- **Workstream:** `dev-experience`\n- **Deliverable:** `v02-editor-extension`\n- **Domain:** `tooling`\n\n## Relation\nContributes to deliverable **VS Code extension & Open VSX** (`v02-editor-extension`).\n"
 }

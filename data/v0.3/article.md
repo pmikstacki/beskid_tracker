@@ -57,9 +57,13 @@ After the merge wave, work shifts to **CI truth on main** and **editor/tooling p
 - **dev-experience** — tracker bootstrap (backlog), roadmap labels, Docker/Bun alignment.
 - **superrepo-orchestration** — pinned submodule tips and orchestration docs.
 
+## Cut-off note
+
+v0.3 delivery was **truncated at `aaddd32` (2026-05-25)**; platform auth, `beskid_web_common`, nexus, and full tracker productization continue under **v0.4** (`data/v0.4/`).
+
 ## Out of scope for this catalog slice
 
-- **v0.4+** delivery versions and public **bug** issues (separate route).
+- **v0.5+** delivery versions and public **bug** issues (separate route).
 - In-flight **tracker-local-dev-bootstrap** (Backlog): document `bun install` before `bun run dev` and GitHub Packages auth for `@beskid/docs-ui` — not a v0.3 merge deliverable.
 
 ## Source axis

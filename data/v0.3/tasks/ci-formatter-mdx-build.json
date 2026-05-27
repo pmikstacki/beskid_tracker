@@ -10,7 +10,8 @@
   "source": {
     "repo": "beskid",
     "commit": "f030910",
-    "subject": "fix(ci): formatter MDX build and v0.3 merge progress handoff"
+    "subject": "fix(ci): formatter MDX build and v0.3 merge progress handoff",
+    "url": "https://github.com/Cyber-Nomad-Collective/beskid/commit/f030910"
   },
-  "body": "## What shipped\n\nCI builds formatter-related platform-spec MDX without MDX parse failures and records v0.3 merge-progress handoff notes for orchestration.\n\n## Source commit\n\nRepository **`beskid`** \u00b7 commit `f030910`\n\n> fix(ci): formatter MDX build and v0.3 merge progress handoff\n\n## Completed\n\n2026-05-23 (catalog cutoff window)."
+  "body": "CI builds formatter-related platform-spec MDX without MDX parse failures and records v0.3 merge-progress handoff notes for orchestration.\n\n## Provenance\n- **Repository:** `beskid`\n- **Commit:** [`f030910`](https://github.com/Cyber-Nomad-Collective/beskid/commit/f030910)\n- **Subject:** fix(ci): formatter MDX build and v0.3 merge progress handoff\n- **Completed:** 2026-05-23\n\n## Catalog scope\n- **Delivery version:** v0.3 (Macros, concurrency, and stabilization)\n- **Workstream:** `ci-release`\n- **Deliverable:** `v03-post-merge-ci`\n\n## Relation\nContributes to deliverable **CI and integration hardening** (`v03-post-merge-ci`)."
 }

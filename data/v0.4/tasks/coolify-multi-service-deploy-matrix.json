@@ -1,0 +1,16 @@
+{
+  "id": "coolify-multi-service-deploy-matrix",
+  "number": 406,
+  "title": "Coolify deploy matrix for site, auth, tracker, nexus, pckg",
+  "statusColumn": "Backlog",
+  "priority": "medium",
+  "workstream": "platform-docs-dx",
+  "deliverableId": "v04-platform-dx",
+  "source": {
+    "repo": "beskid",
+    "commit": "c8e5fc4",
+    "subject": "fix: add references/bsharp to .gitmodules with update=none",
+    "url": "https://github.com/Cyber-Nomad-Collective/beskid/commit/c8e5fc4"
+  },
+  "body": "Coolify deploy matrix for site, auth, tracker, nexus, pckg\n\n## Scope\n\nDocument and verify one-click deploy paths per service with shared auth hub secrets, trailing-slash URLs, and beskid-hub service catalog entries for each production URL.\n\n## Provenance\n- **Repository:** `beskid`\n- **Commit:** [`c8e5fc4`](https://github.com/Cyber-Nomad-Collective/beskid/commit/c8e5fc4)\n- **Subject:** fix: add references/bsharp to .gitmodules with update=none\n- **Catalog tip:** [`c8e5fc4`](https://github.com/Cyber-Nomad-Collective/beskid/commit/c8e5fc4) (v0.4 cutoff 2026-05-27)\n- **Status:** Backlog\n\n## Catalog scope\n- **Delivery version:** v0.4 (Platform services, auth, and delivery tooling)\n- **Workstream:** `platform-docs-dx`\n- **Deliverable:** `v04-platform-dx`"
+}

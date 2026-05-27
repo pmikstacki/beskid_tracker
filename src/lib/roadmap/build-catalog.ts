@@ -62,7 +62,6 @@ function buildVersionEntry(bundle: LoadedVersionSeed): RoadmapCatalogVersion {
 			return {
 				id: deliverable.id,
 				title: deliverable.title,
-				number: deliverable.number,
 				description: deliverable.description,
 				closedOn: deliverable.closedOn,
 				workstreamSlugs,

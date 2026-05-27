@@ -10,7 +10,8 @@
   "source": {
     "repo": "beskid",
     "commit": "60fc81e",
-    "subject": "docs(platform-spec): assembly pipeline, DI hub, macros, and submodule bumps"
+    "subject": "docs(platform-spec): assembly pipeline, DI hub, macros, and submodule bumps",
+    "url": "https://github.com/Cyber-Nomad-Collective/beskid/commit/60fc81e"
   },
-  "body": "## Outcome\n\nAssembly pipeline, DI hub, macros, and submodule bumps.\n\n## Context\n\n- Workstream **platform-spec** — normative spec on beskid-lang.org.\n- Macro work follows platform-spec **language-meta/macros** semantics (registry, expand pass, resolver re-resolve).\n- Normative updates live under `site/website/src/content/docs/platform-spec/` and ship via beskid-lang.org.\n\n## Provenance\n\n- **Repository:** `beskid`\n- **Commit:** [`60fc81e`](https://github.com/Cyber-Nomad-Collective/beskid/commit/60fc81e) — docs(platform-spec): assembly pipeline, DI hub, macros, and submodule bumps"
+  "body": "Assembly pipeline, DI hub, macros, and submodule bumps.\n\n## Provenance\n- **Repository:** `beskid`\n- **Commit:** [`60fc81e`](https://github.com/Cyber-Nomad-Collective/beskid/commit/60fc81e)\n- **Subject:** docs(platform-spec): assembly pipeline, DI hub, macros, and submodule bumps\n- **Completed:** 2026-05-20\n\n## Catalog scope\n- **Delivery version:** v0.2 (Analysis, packages, and platform spec)\n- **Workstream:** `platform-spec`\n- **Domain:** `compiler`\n\n## Relation\nSupports **v0.2 (Analysis, packages, and platform spec)** on workstream `platform-spec`.\n"
 }

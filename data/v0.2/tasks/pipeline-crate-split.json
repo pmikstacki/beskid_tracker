@@ -12,7 +12,8 @@
   "source": {
     "repo": "compiler",
     "commit": "2cd54c5",
-    "subject": "Compiler: array type lowering, services split, pipeline crate, rustdoc sweep, Mod SDK regen."
+    "subject": "Compiler: array type lowering, services split, pipeline crate, rustdoc sweep, Mod SDK regen.",
+    "url": "https://github.com/Cyber-Nomad-Collective/compiler/commit/2cd54c5"
   },
-  "body": "## Outcome\n\nArray type lowering, services split, pipeline crate, rustdoc sweep, Mod SDK regen.\n\n## Context\n\n- Workstream **analysis-pipeline** — compiler pipeline and api.json spine.\n- Contributes to deliverable **Platform-spec cutover** (`v02-platform-spec-cutover`).\n\n## Provenance\n\n- **Repository:** `compiler`\n- **Commit:** [`2cd54c5`](https://github.com/Cyber-Nomad-Collective/compiler/commit/2cd54c5) — Compiler: array type lowering, services split, pipeline crate, rustdoc sweep, Mod SDK regen."
+  "body": "Array type lowering, services split, pipeline crate, rustdoc sweep, Mod SDK regen.\n\n## Provenance\n- **Repository:** `compiler`\n- **Commit:** [`2cd54c5`](https://github.com/Cyber-Nomad-Collective/compiler/commit/2cd54c5)\n- **Subject:** Compiler: array type lowering, services split, pipeline crate, rustdoc sweep, Mod SDK regen.\n- **Completed:** 2026-05-11\n\n## Catalog scope\n- **Delivery version:** v0.2 (Analysis, packages, and platform spec)\n- **Workstream:** `analysis-pipeline`\n- **Deliverable:** `v02-platform-spec-cutover`\n- **Domain:** `compiler`\n- **Area:** `pipeline`\n\n## Relation\nContributes to deliverable **Platform-spec cutover** (`v02-platform-spec-cutover`).\n"
 }

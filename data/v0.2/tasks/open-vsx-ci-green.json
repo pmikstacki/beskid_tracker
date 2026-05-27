@@ -11,7 +11,8 @@
   "source": {
     "repo": "beskid",
     "commit": "6444332",
-    "subject": "ci: green pipelines for docs site, Open VSX publish, and Rust audit"
+    "subject": "ci: green pipelines for docs site, Open VSX publish, and Rust audit",
+    "url": "https://github.com/Cyber-Nomad-Collective/beskid/commit/6444332"
   },
-  "body": "## Outcome\n\nGreen pipelines for docs site, Open VSX publish, and Rust audit.\n\n## Context\n\n- Workstream **editor-extension** — see workstream summary on the catalog.\n- Contributes to deliverable **VS Code extension & Open VSX** (`v02-editor-extension`).\n- Open VSX matrix includes **darwin-arm64** and **darwin-x64** with cross-built Intel LSP where needed.\n\n## Provenance\n\n- **Repository:** `beskid`\n- **Commit:** [`6444332`](https://github.com/Cyber-Nomad-Collective/beskid/commit/6444332) — ci: green pipelines for docs site, Open VSX publish, and Rust audit"
+  "body": "Green pipelines for docs site, Open VSX publish, and Rust audit.\n\n## Provenance\n- **Repository:** `beskid`\n- **Commit:** [`6444332`](https://github.com/Cyber-Nomad-Collective/beskid/commit/6444332)\n- **Subject:** ci: green pipelines for docs site, Open VSX publish, and Rust audit\n- **Completed:** 2026-05-08\n\n## Catalog scope\n- **Delivery version:** v0.2 (Analysis, packages, and platform spec)\n- **Workstream:** `editor-extension`\n- **Deliverable:** `v02-editor-extension`\n- **Domain:** `tooling`\n\n## Relation\nContributes to deliverable **VS Code extension & Open VSX** (`v02-editor-extension`).\n"
 }

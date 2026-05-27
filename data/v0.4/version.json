@@ -1,0 +1,15 @@
+{
+  "id": "v0.4",
+  "title": "Platform services, auth, and delivery tooling",
+  "summary": "v0.4 pivots after the truncated v0.3 line (aaddd32) into four workstreams: shared web auth and beskid_web_common, beskid_tracker as the roadmap product, beskid_nexus knowledge graph hosting, and superrepo CI/CD plus manifest cleanup. Through c8e5fc4 (2026-05-26–27) the superrepo lands beskid_hub/trudoc extraction, site/auth OAuth hub, nexus submodule with green Docker CI, treesitter registration, lazygit recursive push, and ongoing tracker/auth/nexus hosting hardening. Remaining delivery: full platform DX, verify-all CI, tracker production mirror, nexus serve path, corelib stub completion, and VS Code ↔ pckg/docs integration.",
+  "theme": "Auth hub, web_common, tracker, nexus, CI/CD, corelib, editor DX",
+  "status": "In Progress",
+  "cutoff": {
+    "startDate": "2026-05-26",
+    "endDate": "2026-05-27",
+    "startCommitSha": "aaddd32",
+    "endCommitSha": "c8e5fc4",
+    "endCommitRepo": "beskid",
+    "rationale": "Starts at v0.3 cut-off tip aaddd32 (2026-05-25). v0.4 work begins 2026-05-26 with tracker submodule, repo manifests, beskid-hub, and nexus registration; peaks with beskid_web_common extraction, web CI/Coolify trudoc paths, auth hub scaffold, and nexus hosting-model commits through HEAD c8e5fc4 (2026-05-27)."
+  }
+}

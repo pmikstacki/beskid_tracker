@@ -10,7 +10,8 @@
   "source": {
     "repo": "beskid",
     "commit": "e679792",
-    "subject": "feat(trudoc): add Beskid grammar support and update package configuration"
+    "subject": "feat(trudoc): add Beskid grammar support and update package configuration",
+    "url": "https://github.com/Cyber-Nomad-Collective/beskid/commit/e679792"
   },
-  "body": "## What shipped\n\nTrudoc gains Beskid grammar highlighting/validation for fenced code blocks in book and platform-spec content.\n\n## Source commit\n\nRepository **`beskid`** \u00b7 commit `e679792`\n\n> feat(trudoc): add Beskid grammar support and update package configuration\n\n## Completed\n\n2026-05-24 (catalog cutoff window)."
+  "body": "Trudoc gains Beskid grammar highlighting/validation for fenced code blocks in book and platform-spec content.\n\n## Provenance\n- **Repository:** `beskid`\n- **Commit:** [`e679792`](https://github.com/Cyber-Nomad-Collective/beskid/commit/e679792)\n- **Subject:** feat(trudoc): add Beskid grammar support and update package configuration\n- **Completed:** 2026-05-24\n\n## Catalog scope\n- **Delivery version:** v0.3 (Macros, concurrency, and stabilization)\n- **Workstream:** `stabilization`\n- **Deliverable:** `v03-verify-main`\n\n## Relation\nContributes to deliverable **verify-all-on-main evidence** (`v03-verify-main`)."
 }

@@ -11,7 +11,8 @@
   "source": {
     "repo": "compiler",
     "commit": "582170b",
-    "subject": "compiler: LSP rename feature and corelib bump"
+    "subject": "compiler: LSP rename feature and corelib bump",
+    "url": "https://github.com/Cyber-Nomad-Collective/compiler/commit/582170b"
   },
-  "body": "## Outcome\n\nLSP rename feature and corelib bump.\n\n## Context\n\n- Workstream **analysis-pipeline** — compiler pipeline and api.json spine.\n- Contributes to deliverable **LSP workspace & project graph** (`v02-lsp-workspace`).\n- LSP work shares the typed HIR spine with analyze/build; workspace templates feed the project graph pipeline.\n- Corelib sources live in the **corelib** submodule; package identity is **corelib** with workspace publish to pckg.\n\n## Provenance\n\n- **Repository:** `compiler`\n- **Commit:** [`582170b`](https://github.com/Cyber-Nomad-Collective/compiler/commit/582170b) — compiler: LSP rename feature and corelib bump"
+  "body": "LSP rename feature and corelib bump.\n\n## Provenance\n- **Repository:** `compiler`\n- **Commit:** [`582170b`](https://github.com/Cyber-Nomad-Collective/compiler/commit/582170b)\n- **Subject:** compiler: LSP rename feature and corelib bump\n- **Completed:** 2026-05-09\n\n## Catalog scope\n- **Delivery version:** v0.2 (Analysis, packages, and platform spec)\n- **Workstream:** `analysis-pipeline`\n- **Deliverable:** `v02-lsp-workspace`\n- **Domain:** `tooling`\n\n## Relation\nContributes to deliverable **LSP workspace & project graph** (`v02-lsp-workspace`).\n"
 }

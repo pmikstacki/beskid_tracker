@@ -9,7 +9,8 @@
   "source": {
     "repo": "beskid",
     "commit": "1f5852e",
-    "subject": "docs and site: giscus UX, corelib docs, compiler bump"
+    "subject": "docs and site: giscus UX, corelib docs, compiler bump",
+    "url": "https://github.com/Cyber-Nomad-Collective/beskid/commit/1f5852e"
   },
-  "body": "## Outcome\n\nDocs and site: giscus UX, corelib docs, compiler bump.\n\n## Context\n\n- Workstream **docs-site** — see workstream summary on the catalog.\n- Corelib sources live in the **corelib** submodule; package identity is **corelib** with workspace publish to pckg.\n\n## Provenance\n\n- **Repository:** `beskid`\n- **Commit:** [`1f5852e`](https://github.com/Cyber-Nomad-Collective/beskid/commit/1f5852e) — docs and site: giscus UX, corelib docs, compiler bump"
+  "body": "Docs and site: giscus UX, corelib docs, compiler bump.\n\n## Provenance\n- **Repository:** `beskid`\n- **Commit:** [`1f5852e`](https://github.com/Cyber-Nomad-Collective/beskid/commit/1f5852e)\n- **Subject:** docs and site: giscus UX, corelib docs, compiler bump\n- **Completed:** 2026-05-09\n\n## Catalog scope\n- **Delivery version:** v0.2 (Analysis, packages, and platform spec)\n- **Workstream:** `docs-site`\n\n## Relation\nSupports **v0.2 (Analysis, packages, and platform spec)** on workstream `docs-site`.\n"
 }

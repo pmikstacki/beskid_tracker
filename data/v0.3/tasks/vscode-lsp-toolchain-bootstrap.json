@@ -11,7 +11,8 @@
   "source": {
     "repo": "beskid",
     "commit": "503223d",
-    "subject": "chore: bump submodules for CLI-driven LSP and toolchain bootstrap"
+    "subject": "chore: bump submodules for CLI-driven LSP and toolchain bootstrap",
+    "url": "https://github.com/Cyber-Nomad-Collective/beskid/commit/503223d"
   },
-  "body": "## What shipped\n\nSuperrepo submodule bumps wire extension and compiler repos to CLI-driven LSP bootstrap landed in v0.3.\n\n## Source commit\n\nRepository **`beskid`** \u00b7 commit `503223d`\n\n> chore: bump submodules for CLI-driven LSP and toolchain bootstrap\n\n## Completed\n\n2026-05-25 (catalog cutoff window)."
+  "body": "Superrepo submodule bumps wire extension and compiler repos to CLI-driven LSP bootstrap landed in v0.3.\n\n## Provenance\n- **Repository:** `beskid`\n- **Commit:** [`503223d`](https://github.com/Cyber-Nomad-Collective/beskid/commit/503223d)\n- **Subject:** chore: bump submodules for CLI-driven LSP and toolchain bootstrap\n- **Completed:** 2026-05-25\n\n## Catalog scope\n- **Delivery version:** v0.3 (Macros, concurrency, and stabilization)\n- **Workstream:** `editor-extension`\n- **Domain:** `tooling`\n- **Deliverable:** `v03-editor-lsp-cli`\n\n## Relation\nContributes to deliverable **CLI LSP launch & VS Code toolchain** (`v03-editor-lsp-cli`)."
 }

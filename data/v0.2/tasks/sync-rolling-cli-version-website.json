@@ -11,7 +11,8 @@
   "source": {
     "repo": "beskid",
     "commit": "f54b268",
-    "subject": "chore: sync rolling CLI version across release and website"
+    "subject": "chore: sync rolling CLI version across release and website",
+    "url": "https://github.com/Cyber-Nomad-Collective/beskid/commit/f54b268"
   },
-  "body": "## Outcome\n\nSync rolling CLI version across release and website.\n\n## Context\n\n- Workstream **ci-release** — see workstream summary on the catalog.\n- Contributes to deliverable **CI workflows and deploy infra** (`v02-ci-deploy-infra`).\n\n## Provenance\n\n- **Repository:** `beskid`\n- **Commit:** [`f54b268`](https://github.com/Cyber-Nomad-Collective/beskid/commit/f54b268) — chore: sync rolling CLI version across release and website"
+  "body": "Sync rolling CLI version across release and website.\n\n## Provenance\n- **Repository:** `beskid`\n- **Commit:** [`f54b268`](https://github.com/Cyber-Nomad-Collective/beskid/commit/f54b268)\n- **Subject:** chore: sync rolling CLI version across release and website\n- **Completed:** 2026-04-23\n\n## Catalog scope\n- **Delivery version:** v0.2 (Analysis, packages, and platform spec)\n- **Workstream:** `ci-release`\n- **Deliverable:** `v02-ci-deploy-infra`\n- **Domain:** `tooling`\n\n## Relation\nContributes to deliverable **CI workflows and deploy infra** (`v02-ci-deploy-infra`).\n"
 }

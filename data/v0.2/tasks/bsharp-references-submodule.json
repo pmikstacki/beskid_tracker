@@ -11,7 +11,8 @@
   "source": {
     "repo": "beskid",
     "commit": "f6a814d",
-    "subject": "chore(git): register references/bsharp as a proper submodule"
+    "subject": "chore(git): register references/bsharp as a proper submodule",
+    "url": "https://github.com/Cyber-Nomad-Collective/beskid/commit/f6a814d"
   },
-  "body": "## Outcome\n\nRegister references/bsharp as a proper submodule.\n\n## Context\n\n- Workstream **dev-experience** — see workstream summary on the catalog.\n- Contributes to deliverable **CI workflows and deploy infra** (`v02-ci-deploy-infra`).\n\n## Provenance\n\n- **Repository:** `beskid`\n- **Commit:** [`f6a814d`](https://github.com/Cyber-Nomad-Collective/beskid/commit/f6a814d) — chore(git): register references/bsharp as a proper submodule"
+  "body": "Register references/bsharp as a proper submodule.\n\n## Provenance\n- **Repository:** `beskid`\n- **Commit:** [`f6a814d`](https://github.com/Cyber-Nomad-Collective/beskid/commit/f6a814d)\n- **Subject:** chore(git): register references/bsharp as a proper submodule\n- **Completed:** 2026-04-24\n\n## Catalog scope\n- **Delivery version:** v0.2 (Analysis, packages, and platform spec)\n- **Workstream:** `dev-experience`\n- **Deliverable:** `v02-ci-deploy-infra`\n- **Domain:** `tooling`\n\n## Relation\nContributes to deliverable **CI workflows and deploy infra** (`v02-ci-deploy-infra`).\n"
 }

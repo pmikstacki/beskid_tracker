@@ -11,7 +11,8 @@
   "source": {
     "repo": "compiler",
     "commit": "0e310d4",
-    "subject": "test(mod_host): reference SampleMod fixture and beskid_tests::mods suite"
+    "subject": "test(mod_host): reference SampleMod fixture and beskid_tests::mods suite",
+    "url": "https://github.com/Cyber-Nomad-Collective/beskid_compiler/commit/0e310d4"
   },
-  "body": "## What shipped\n\nSampleMod reference fixture and `beskid_tests::mods` suite guard mod host regressions.\n\n## Source commit\n\nRepository **`compiler`** \u00b7 commit `0e310d4`\n\n> test(mod_host): reference SampleMod fixture and beskid_tests::mods suite\n\n## Completed\n\n2026-05-23 (catalog cutoff window)."
+  "body": "SampleMod reference fixture and `beskid_tests::mods` suite guard mod host regressions.\n\n## Provenance\n- **Repository:** `compiler`\n- **Commit:** [`0e310d4`](https://github.com/Cyber-Nomad-Collective/beskid_compiler/commit/0e310d4)\n- **Subject:** test(mod_host): reference SampleMod fixture and beskid_tests::mods suite\n- **Completed:** 2026-05-23\n\n## Catalog scope\n- **Delivery version:** v0.3 (Macros, concurrency, and stabilization)\n- **Workstream:** `compiler-mods`\n- **Domain:** `compiler`\n- **Deliverable:** `v03-merge-wave`\n\n## Relation\nContributes to deliverable **v0.3 macro/runtime/ffi/tooling delivery** (`v03-merge-wave`)."
 }

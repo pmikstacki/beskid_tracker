@@ -11,7 +11,8 @@
   "source": {
     "repo": "compiler",
     "commit": "4579bab",
-    "subject": "feat(pckg): `beskid pckg pack --package-kind tool` and override-aware profile detection"
+    "subject": "feat(pckg): `beskid pckg pack --package-kind tool` and override-aware profile detection",
+    "url": "https://github.com/Cyber-Nomad-Collective/beskid_compiler/commit/4579bab"
   },
-  "body": "## What shipped\n\nCLI supports `beskid pckg pack --package-kind tool` with override-aware profile detection for tool packages.\n\n## Source commit\n\nRepository **`compiler`** \u00b7 commit `4579bab`\n\n> feat(pckg): `beskid pckg pack --package-kind tool` and override-aware profile detection\n\n## Completed\n\n2026-05-23 (catalog cutoff window)."
+  "body": "CLI supports `beskid pckg pack --package-kind tool` with override-aware profile detection for tool packages.\n\n## Provenance\n- **Repository:** `compiler`\n- **Commit:** [`4579bab`](https://github.com/Cyber-Nomad-Collective/beskid_compiler/commit/4579bab)\n- **Subject:** feat(pckg): `beskid pckg pack --package-kind tool` and override-aware profile detection\n- **Completed:** 2026-05-23\n\n## Catalog scope\n- **Delivery version:** v0.3 (Macros, concurrency, and stabilization)\n- **Workstream:** `pckg-registry`\n- **Domain:** `tooling`\n- **Deliverable:** `v03-merge-wave`\n\n## Relation\nContributes to deliverable **v0.3 macro/runtime/ffi/tooling delivery** (`v03-merge-wave`)."
 }

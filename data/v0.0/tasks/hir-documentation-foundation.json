@@ -9,10 +9,11 @@
   "area": "hir",
   "completedAt": "2026-02-21",
   "deliverableId": "v00-analysis-foundation",
-  "body": "## What was done\n\nDocumented the **HIR** as a phase-indexed shared core: which nodes exist at which pipeline stage, how later passes mutate or replace subtrees, and where normalization/desugar plugs in.\n\n## Why it mattered\n\nPecan was experimenting with **staged** analysis (parse → lower → resolve → type) before Beskid unified those phases under `beskid_pipeline`. The HIR doc prevented ad-hoc AST copies per pass.\n\n## Outcome\n\nFoundation for normalization (`hir-normalization-for-desugar`), `HirQuery` traversal, and visitor refactors in the same deliverable.",
+  "body": "Documented the **HIR** as a phase-indexed shared core: which nodes exist at which pipeline stage, how later passes mutate or replace subtrees, and where normalization/desugar plugs in.\n\n## Provenance\n- **Repository:** `pekan`\n- **Commit:** [`230269f`](https://github.com/Cyber-Nomad-Collective/pekan/commit/230269f)\n- **Subject:** Add HIR documentation structure and phase-indexed shared-core model foundation\n- **Completed:** 2026-02-21\n\n## Catalog scope\n- **Delivery version:** v0.0 (Pecan prototype)\n- **Workstream:** `compiler-analysis`\n- **Deliverable:** `v00-analysis-foundation`\n\n## Relation\nPecan was experimenting with **staged** analysis (parse → lower → resolve → type) before Beskid unified those phases under `beskid_pipeline`. The HIR doc prevented ad-hoc AST copies per pass. Foundation for normalization (`hir-normalization-for-desugar`), `HirQuery` traversal, and visitor refactors in the same deliverable.",
   "source": {
     "repo": "pekan",
     "commit": "230269f",
-    "subject": "Add HIR documentation structure and phase-indexed shared-core model foundation"
+    "subject": "Add HIR documentation structure and phase-indexed shared-core model foundation",
+    "url": "https://github.com/Cyber-Nomad-Collective/pekan/commit/230269f"
   }
 }

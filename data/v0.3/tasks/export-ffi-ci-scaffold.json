@@ -11,7 +11,8 @@
   "source": {
     "repo": "compiler",
     "commit": "2957086",
-    "subject": "fix(ci): green corelib scans, JIT composition, and export FFI scaffold"
+    "subject": "fix(ci): green corelib scans, JIT composition, and export FFI scaffold",
+    "url": "https://github.com/Cyber-Nomad-Collective/beskid_compiler/commit/2957086"
   },
-  "body": "## What shipped\n\nAdds `ffi_v03` CI scaffold jobs exercising export FFI paths without blocking unrelated compiler workflows.\n\n## Source commit\n\nRepository **`compiler`** \u00b7 commit `2957086`\n\n> fix(ci): green corelib scans, JIT composition, and export FFI scaffold\n\n## Completed\n\n2026-05-23 (catalog cutoff window)."
+  "body": "Adds `ffi_v03` CI scaffold jobs exercising export FFI paths without blocking unrelated compiler workflows.\n\n## Provenance\n- **Repository:** `compiler`\n- **Commit:** [`2957086`](https://github.com/Cyber-Nomad-Collective/beskid_compiler/commit/2957086)\n- **Subject:** fix(ci): green corelib scans, JIT composition, and export FFI scaffold\n- **Completed:** 2026-05-23\n\n## Catalog scope\n- **Delivery version:** v0.3 (Macros, concurrency, and stabilization)\n- **Workstream:** `ffi-export`\n- **Domain:** `compiler`\n- **Deliverable:** `v03-merge-wave`\n\n## Relation\nContributes to deliverable **v0.3 macro/runtime/ffi/tooling delivery** (`v03-merge-wave`)."
 }

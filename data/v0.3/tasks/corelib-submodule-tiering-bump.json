@@ -11,8 +11,9 @@
   "source": {
     "repo": "compiler",
     "commit": "24845ff",
-    "subject": "chore(corelib): bump nested corelib submodule after v0.3 tiering merge"
+    "subject": "chore(corelib): bump nested corelib submodule after v0.3 tiering merge",
+    "url": "https://github.com/Cyber-Nomad-Collective/beskid_compiler/commit/24845ff"
   },
   "milestoneId": "v03-merge-wave",
-  "body": "## What shipped\n\nNested `compiler/corelib` submodule pointer updates after the v0.3 tiering merge so CI and pack jobs see tier-tagged collections and FS/Path packages.\n\n## Source commit\n\nRepository **`compiler`** \u00b7 commit `24845ff`\n\n> chore(corelib): bump nested corelib submodule after v0.3 tiering merge\n\n## Completed\n\n2026-05-23 (catalog cutoff window)."
+  "body": "Nested `compiler/corelib` submodule pointer updates after the v0.3 tiering merge so CI and pack jobs see tier-tagged collections and FS/Path packages.\n\n## Provenance\n- **Repository:** `compiler`\n- **Commit:** [`24845ff`](https://github.com/Cyber-Nomad-Collective/beskid_compiler/commit/24845ff)\n- **Subject:** chore(corelib): bump nested corelib submodule after v0.3 tiering merge\n- **Completed:** 2026-05-23\n\n## Catalog scope\n- **Delivery version:** v0.3 (Macros, concurrency, and stabilization)\n- **Workstream:** `stabilization`\n- **Domain:** `core-library`\n- **Deliverable:** `v03-merge-wave`\n\n## Relation\nContributes to deliverable **v0.3 macro/runtime/ffi/tooling delivery** (`v03-merge-wave`)."
 }

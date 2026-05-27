@@ -3,6 +3,8 @@ import {
 	type SeedTask,
 	type SeedVersion,
 	type SeedWorkstream,
+	compareSeedDeliverables,
+	compareSeedTasks,
 	seedDeliverableSchema,
 	seedTaskSchema,
 	seedVersionSchema,
@@ -95,8 +97,8 @@ export function parseUploadedSeedBundles(
 			throw new Error(`Missing version.json for ${versionId}`);
 		}
 		bucket.workstreams.sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
-		bucket.tasks.sort((a, b) => a.number - b.number);
-		bucket.deliverables.sort((a, b) => a.number - b.number);
+		bucket.tasks.sort(compareSeedTasks);
+		bucket.deliverables.sort(compareSeedDeliverables);
 
 		bundles.push({
 			versionId,

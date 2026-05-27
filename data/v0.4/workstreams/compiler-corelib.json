@@ -1,0 +1,6 @@
+{
+  "slug": "compiler-corelib",
+  "title": "Compiler & corelib completion",
+  "summary": "Finish corelib Standard APIs and replace remaining stubs in compiler/corelib; submodule bumps with corelib-quality CI and pckg publish evidence on main.",
+  "order": 5
+}

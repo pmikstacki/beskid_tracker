@@ -1,0 +1,16 @@
+{
+  "id": "vscode-lsp-status-bar-dx",
+  "number": 404,
+  "title": "VS Code: status bar progress for LSP and pckg operations",
+  "statusColumn": "Backlog",
+  "priority": "medium",
+  "workstream": "vscode-editor",
+  "deliverableId": "v04-vscode-pckg-docs",
+  "source": {
+    "repo": "beskid",
+    "commit": "c8e5fc4",
+    "subject": "fix: add references/bsharp to .gitmodules with update=none",
+    "url": "https://github.com/Cyber-Nomad-Collective/beskid/commit/c8e5fc4"
+  },
+  "body": "VS Code: status bar progress for LSP and pckg operations\n\n## Scope\n\nModular extension status bar reports LSP install/bootstrap, pckg index progress, and `beskid lsp` log paths per AGENTS VS Code guidance.\n\n## Provenance\n- **Repository:** `beskid`\n- **Commit:** [`c8e5fc4`](https://github.com/Cyber-Nomad-Collective/beskid/commit/c8e5fc4)\n- **Subject:** fix: add references/bsharp to .gitmodules with update=none\n- **Catalog tip:** [`c8e5fc4`](https://github.com/Cyber-Nomad-Collective/beskid/commit/c8e5fc4) (v0.4 cutoff 2026-05-27)\n- **Status:** Backlog\n\n## Catalog scope\n- **Delivery version:** v0.4 (Platform services, auth, and delivery tooling)\n- **Workstream:** `vscode-editor`\n- **Deliverable:** `v04-vscode-pckg-docs`"
+}

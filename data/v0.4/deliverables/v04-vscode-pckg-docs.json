@@ -1,0 +1,6 @@
+{
+  "id": "v04-vscode-pckg-docs",
+  "title": "VS Code ↔ pckg, docs, smooth editor DX",
+  "number": 6,
+  "description": "beskid_vscode integrates pckg registry browsing, platform-spec and book navigation, LSP from cli-latest releases, and status-bar feedback for long-running toolchain operations.\n\n## Provenance\n- **Catalog cutoff:** [`aaddd32`](https://github.com/Cyber-Nomad-Collective/beskid/commit/aaddd32) → [`c8e5fc4`](https://github.com/Cyber-Nomad-Collective/beskid/commit/c8e5fc4) on **beskid** (2026-05-26 – 2026-05-27)\n- **Anchor commit:** [`aaddd32`](https://github.com/Cyber-Nomad-Collective/beskid/commit/aaddd32)\n\n## Catalog scope\n- **Delivery version:** v0.4 (Platform services, auth, and delivery tooling)\n- **Status:** Backlog — v0.3 docs baseline at cutoff start; editor integration planned\n- **Workstreams:** `vscode-editor`"
+}
