@@ -143,63 +143,73 @@ export function RoadmapKanbanBoard({
 								{items.map((item) => {
 									const subtaskStats = subtasksProgress(item.subtasks);
 									return (
-									<KanbanItem key={item.id} value={item.id}>
-										<KanbanItemHandle>
-											<Card
-												size="sm"
-												className="kanban-card cursor-grab py-4 active:cursor-grabbing"
-												onClick={() => openTask(item.id)}
-											>
-												<CardHeader className="border-0 px-4 py-0">
-													<CardTitle className="text-sm leading-snug">
-														<span className="text-muted-foreground mr-1.5 font-mono text-xs">
-															#{item.number}
-														</span>
-														{item.title}
-													</CardTitle>
-												</CardHeader>
-												<CardContent className="flex flex-col gap-2 px-4 pt-3">
-													<div className="flex flex-wrap gap-1.5">
-														<Badge
-															variant={
-																item.priority === "high"
-																	? "destructive"
-																	: item.priority === "medium"
-																		? "default"
-																		: "secondary"
-															}
-														>
-															{PRIORITY_LABEL[item.priority]}
-														</Badge>
-														{item.workstream ? (
-															<Badge variant="outline" className="font-normal">
-																{item.workstream}
+										<KanbanItem key={item.id} value={item.id}>
+											<KanbanItemHandle>
+												<Card
+													size="sm"
+													className="kanban-card cursor-grab py-4 active:cursor-grabbing"
+													onClick={() => openTask(item.id)}
+												>
+													<CardHeader className="border-0 px-4 py-0">
+														<CardTitle className="text-sm leading-snug">
+															<span className="text-muted-foreground mr-1.5 font-mono text-xs">
+																#{item.number}
+															</span>
+															{item.title}
+														</CardTitle>
+													</CardHeader>
+													<CardContent className="flex flex-col gap-2 px-4 pt-3">
+														<div className="flex flex-wrap gap-1.5">
+															<Badge
+																variant={
+																	item.priority === "high"
+																		? "destructive"
+																		: item.priority === "medium"
+																			? "default"
+																			: "secondary"
+																}
+															>
+																{PRIORITY_LABEL[item.priority]}
 															</Badge>
+															{item.workstream ? (
+																<Badge
+																	variant="outline"
+																	className="font-normal"
+																>
+																	{item.workstream}
+																</Badge>
+															) : null}
+															{item.specApproval === "pending" ? (
+																<Badge
+																	variant="secondary"
+																	className="font-normal"
+																>
+																	Spec pending
+																</Badge>
+															) : null}
+															{subtaskStats.total > 0 ? (
+																<Badge
+																	variant="outline"
+																	className="font-normal"
+																>
+																	{subtaskStats.done}/{subtaskStats.total}{" "}
+																	subtasks
+																</Badge>
+															) : null}
+														</div>
+														{item.specRelations.length > 0 ? (
+															<SpecRelationsList
+																relations={item.specRelations}
+																compact
+															/>
 														) : null}
-														{item.specApproval === "pending" ? (
-															<Badge variant="secondary" className="font-normal">
-																Spec pending
-															</Badge>
-														) : null}
-														{subtaskStats.total > 0 ? (
-															<Badge variant="outline" className="font-normal">
-																{subtaskStats.done}/{subtaskStats.total} subtasks
-															</Badge>
-														) : null}
-													</div>
-													{item.specRelations.length > 0 ? (
-														<SpecRelationsList
-															relations={item.specRelations}
-															compact
-														/>
-													) : null}
-													<p className="text-muted-foreground text-xs">
-														{item.owner || "Unassigned"}
-													</p>
-												</CardContent>
-											</Card>
-										</KanbanItemHandle>
-									</KanbanItem>
+														<p className="text-muted-foreground text-xs">
+															{item.owner || "Unassigned"}
+														</p>
+													</CardContent>
+												</Card>
+											</KanbanItemHandle>
+										</KanbanItem>
 									);
 								})}
 							</KanbanColumnContent>

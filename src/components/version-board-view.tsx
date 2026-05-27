@@ -12,11 +12,11 @@ import type {
 	BoardFilterState,
 	BoardSearchParams,
 } from "#/lib/roadmap/board-search";
-import { boardSearchFromFilters } from "#/lib/work-item-shell/paths";
 import { filterColumnsByMetaQuery } from "#/lib/roadmap/meta-search";
 import { parseMetaQuery } from "#/lib/roadmap/meta-search-query";
 import {
 	boardRouteTo,
+	boardSearchFromFilters,
 	createTaskFullscreenTo,
 } from "#/lib/work-item-shell/paths";
 

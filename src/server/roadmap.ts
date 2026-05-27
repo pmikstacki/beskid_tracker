@@ -7,14 +7,14 @@ import {
 	createRoadmapIssue,
 	registerVersionLabel,
 } from "#/lib/github/issues-service";
+import { collectBoardMeta } from "#/lib/github/mappers";
+import { canManageRoadmap } from "#/lib/github/permissions";
+import type { BoardPayload } from "#/lib/github/types";
 import {
 	listAllRoadmapTasksFromStore,
 	listRoadmapBoardFromStore,
 	listVersionLabelsFromStore,
 } from "#/lib/issues/read-service";
-import { collectBoardMeta } from "#/lib/github/mappers";
-import { canManageRoadmap } from "#/lib/github/permissions";
-import type { BoardPayload } from "#/lib/github/types";
 import { catalogWorkstreamSlugs } from "#/lib/roadmap/build-catalog";
 import { assertBoardFilters } from "#/lib/roadmap/validate-board-filters";
 import { useSeedData } from "#/lib/seed/config";
@@ -53,11 +53,7 @@ export const getBoard = createServerFn({ method: "GET" })
 				const scoped = collectBoardMeta(
 					all.filter((t) => t.version === data.version),
 				);
-				assertBoardFilters(
-					data,
-					scoped,
-					catalogWorkstreamSlugs(data.version),
-				);
+				assertBoardFilters(data, scoped, catalogWorkstreamSlugs(data.version));
 				return {
 					meta: {
 						versions: listSeedVersionLabels(),
@@ -76,11 +72,7 @@ export const getBoard = createServerFn({ method: "GET" })
 			const scoped = collectBoardMeta(
 				all.filter((t) => t.version === data.version),
 			);
-			assertBoardFilters(
-				data,
-				scoped,
-				catalogWorkstreamSlugs(data.version),
-			);
+			assertBoardFilters(data, scoped, catalogWorkstreamSlugs(data.version));
 			const canManage = await canManageRoadmap(octokit, login);
 
 			return {

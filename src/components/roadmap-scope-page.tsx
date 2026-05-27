@@ -1,9 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
-
-import { ShellVersionsSync } from "#/components/shell-versions-sync";
 import { RoadmapScopeTaskList } from "#/components/roadmap-scope-task-list";
 import { RoadmapStatWidgets } from "#/components/roadmap-stat-widgets";
+import { ShellVersionsSync } from "#/components/shell-versions-sync";
 import { Badge } from "#/components/ui/badge";
 import type { RoadmapScopeKind } from "#/lib/roadmap/scope-not-found";
 import { scopeKindLabel } from "#/lib/roadmap/scope-not-found";

@@ -19,8 +19,8 @@ import {
 	SidebarMenuSubButton,
 	SidebarMenuSubItem,
 } from "#/components/ui/sidebar";
-import type { RoadmapCatalogVersion } from "#/lib/roadmap/types";
 import type { AuthUser } from "#/lib/github/types";
+import type { RoadmapCatalogVersion } from "#/lib/roadmap/types";
 
 interface RoadmapNavTreeProps {
 	version: RoadmapCatalogVersion;
@@ -169,8 +169,7 @@ export function RoadmapNavTree({
 												<SidebarMenuSubButton
 													asChild
 													isActive={
-														pathname ===
-															`/v/${version.id}/w/${ws.slug}` ||
+														pathname === `/v/${version.id}/w/${ws.slug}` ||
 														pathname.startsWith(
 															`/v/${version.id}/w/${ws.slug}/`,
 														)

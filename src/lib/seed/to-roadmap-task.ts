@@ -15,7 +15,11 @@ import {
 	serializeSpecRelationsBlock,
 } from "#/lib/platform-spec/relations";
 
-import type { SeedDeliverable, SeedTask, SeedVersion } from "#/lib/seed/schemas";
+import type {
+	SeedDeliverable,
+	SeedTask,
+	SeedVersion,
+} from "#/lib/seed/schemas";
 
 const REPO_COMMIT_URL: Record<string, string> = {
 	beskid: "https://github.com/Cyber-Nomad-Collective/beskid/commit",

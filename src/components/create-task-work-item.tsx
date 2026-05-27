@@ -2,8 +2,8 @@
 
 import { CreateTaskForm } from "#/components/create-task-form";
 import {
-	WorkItemShell,
 	type WorkItemPresentation,
+	WorkItemShell,
 	type WorkItemShellRouteTarget,
 } from "#/components/work-item-shell/work-item-shell";
 
@@ -13,8 +13,8 @@ function taskDescription(version: string) {
 	return (
 		<>
 			Tasks are GitHub issues labeled for version{" "}
-			<span className="font-mono">{version}</span>, workstream, and spec relations.
-			Fields depend on the component you select.
+			<span className="font-mono">{version}</span>, workstream, and spec
+			relations. Fields depend on the component you select.
 		</>
 	);
 }

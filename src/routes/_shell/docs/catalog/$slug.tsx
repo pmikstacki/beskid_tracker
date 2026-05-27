@@ -42,12 +42,16 @@ function DocsCatalogDocumentPage() {
 					{String(doc.frontmatter.title ?? slug)}
 				</h1>
 				<div className="flex flex-wrap gap-2">
-					<Badge variant="outline">{String(doc.frontmatter.specLevel ?? "—")}</Badge>
+					<Badge variant="outline">
+						{String(doc.frontmatter.specLevel ?? "—")}
+					</Badge>
 					{doc.frontmatter.status ? (
 						<Badge variant="secondary">{String(doc.frontmatter.status)}</Badge>
 					) : null}
 				</div>
-				<p className="text-muted-foreground font-mono text-xs">{doc.repoPath}</p>
+				<p className="text-muted-foreground font-mono text-xs">
+					{doc.repoPath}
+				</p>
 			</header>
 			<article className="prose prose-neutral dark:prose-invert max-w-none">
 				<ReactMarkdown remarkPlugins={[remarkGfm]}>{doc.body}</ReactMarkdown>

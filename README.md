@@ -56,7 +56,7 @@ Pair the tracker with the hub (see [COOLIFY.md](COOLIFY.md)). The hub’s GitHub
 
 | Command | Action |
 |---------|--------|
-| `bun install` | Install dependencies (required before first `bun run dev`; needs GitHub Packages auth for `@beskid/beskid-ui`) |
+| `bun install` | Install dependencies (`NODE_AUTH_TOKEN` or `.npmrc` with GitHub Packages `read:packages`; see [`.npmrc.example`](.npmrc.example)) |
 | `bun run dev` | Dev server at http://localhost:3000 |
 | `bun run build` | Production build (runs `prebuild` sync) |
 | `bun run start` | Production server on port 3000 |

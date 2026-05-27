@@ -39,8 +39,8 @@ export function loadVersionSeed(versionId: string): LoadedVersionSeed {
 		deliverableFiles.length > 0
 			? []
 			: listEntityJsonFiles(versionId, "milestones");
-	const deliverables = [...deliverableFiles, ...legacyMilestoneFiles].map((file) =>
-		seedDeliverableSchema.parse(readJsonFile(file)),
+	const deliverables = [...deliverableFiles, ...legacyMilestoneFiles].map(
+		(file) => seedDeliverableSchema.parse(readJsonFile(file)),
 	);
 	const tasks = listEntityJsonFiles(versionId, "tasks").map((file) =>
 		seedTaskSchema.parse(readJsonFile(file)),

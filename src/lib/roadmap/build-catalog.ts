@@ -7,12 +7,12 @@ import {
 import type {
 	RoadmapCatalog,
 	RoadmapCatalogDeliverable,
+	RoadmapCatalogTotals,
 	RoadmapCatalogVersion,
 	RoadmapCatalogWorkstream,
-	RoadmapCatalogTotals,
 } from "#/lib/roadmap/types";
 import type { VersionStatus } from "#/lib/roadmap/version-status";
-import { loadAllVersionSeeds, type LoadedVersionSeed } from "#/lib/seed/load";
+import { type LoadedVersionSeed, loadAllVersionSeeds } from "#/lib/seed/load";
 import type { SeedTask, SeedVersion } from "#/lib/seed/schemas";
 
 function inferStatus(version: SeedVersion): VersionStatus {
@@ -161,8 +161,7 @@ export function buildRoadmapCatalog(
 	}
 
 	const activeVersionId =
-		preferredVersionId &&
-		versions.some((v) => v.id === preferredVersionId)
+		preferredVersionId && versions.some((v) => v.id === preferredVersionId)
 			? preferredVersionId
 			: (versions.at(-1)?.id ?? "v0.2");
 

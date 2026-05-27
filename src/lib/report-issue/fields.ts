@@ -2,9 +2,9 @@ import {
 	formatFileSize,
 	parseStepsValue,
 	parseSubtasksValue,
+	type ReportAttachmentDraft,
 	stepsToMarkdown,
 	subtasksToMarkdown,
-	type ReportAttachmentDraft,
 } from "#/lib/report-issue/field-values";
 
 export type ReportFieldKind =
@@ -110,7 +110,9 @@ export function reportSection(
 	return { type: "section", id, title, description, children };
 }
 
-export function layoutFromFields(fields: ReportFieldConfig[]): ReportFormLayout {
+export function layoutFromFields(
+	fields: ReportFieldConfig[],
+): ReportFormLayout {
 	return fields.map((field) => reportField(field));
 }
 
@@ -126,7 +128,9 @@ export function isReportSection(
 	return node.type === "section";
 }
 
-export function collectReportFields(layout: ReportFormLayout): ReportFieldNode[] {
+export function collectReportFields(
+	layout: ReportFormLayout,
+): ReportFieldNode[] {
 	const fields: ReportFieldNode[] = [];
 	const walk = (nodes: ReportFormNode[]) => {
 		for (const node of nodes) {
@@ -143,9 +147,7 @@ export function collectReportFields(layout: ReportFormLayout): ReportFieldNode[]
 	return fields;
 }
 
-export function collectAttachmentFieldIds(
-	layout: ReportFormLayout,
-): string[] {
+export function collectAttachmentFieldIds(layout: ReportFormLayout): string[] {
 	const ids: string[] = [];
 	const walk = (nodes: ReportFormNode[]) => {
 		for (const node of nodes) {

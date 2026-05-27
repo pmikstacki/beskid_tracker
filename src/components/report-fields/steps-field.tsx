@@ -1,8 +1,8 @@
 "use client";
 
 import {
-	DndContext,
 	closestCenter,
+	DndContext,
 	type DragEndEvent,
 	KeyboardSensor,
 	PointerSensor,
@@ -26,10 +26,10 @@ import { Input } from "#/components/ui/input";
 import {
 	parseStepsValue,
 	parseSubtasksValue,
-	serializeStepsValue,
-	serializeSubtasksValue,
 	type StepRow,
 	type SubtaskRow,
+	serializeStepsValue,
+	serializeSubtasksValue,
 } from "#/lib/report-issue/field-values";
 import { cn } from "#/lib/utils";
 
@@ -58,14 +58,14 @@ export function StepsField({
 	addLabel,
 }: StepsFieldProps) {
 	const isChecklist = variant === "checklist";
-	const rows = isChecklist
-		? parseSubtasksValue(value)
-		: parseStepsValue(value);
+	const rows = isChecklist ? parseSubtasksValue(value) : parseStepsValue(value);
 	const inputRefs = useRef<Map<string, HTMLInputElement>>(new Map());
 
 	const sensors = useSensors(
 		useSensor(PointerSensor, { activationConstraint: { distance: 6 } }),
-		useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates }),
+		useSensor(KeyboardSensor, {
+			coordinateGetter: sortableKeyboardCoordinates,
+		}),
 	);
 
 	const commit = useCallback(
@@ -244,7 +244,9 @@ function SortableStepRow({
 				ref={setActivatorNodeRef}
 				className="text-muted-foreground mt-2 flex shrink-0 cursor-grab touch-none items-center gap-1 active:cursor-grabbing"
 				disabled={disabled}
-				aria-label={isChecklist ? `Drag subtask ${index + 1}` : `Drag step ${index + 1}`}
+				aria-label={
+					isChecklist ? `Drag subtask ${index + 1}` : `Drag step ${index + 1}`
+				}
 				{...attributes}
 				{...listeners}
 			>

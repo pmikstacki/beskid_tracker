@@ -42,8 +42,7 @@ export async function unsealSession(
 
 		return {
 			login: payload.login,
-			avatarUrl:
-				typeof payload.avatarUrl === "string" ? payload.avatarUrl : "",
+			avatarUrl: typeof payload.avatarUrl === "string" ? payload.avatarUrl : "",
 			name: typeof payload.name === "string" ? payload.name : null,
 			hubUserToken: payload.hubUserToken,
 			hubSessionId: payload.hubSessionId,

@@ -1,9 +1,13 @@
-import type { RoadmapColumns, RoadmapTask, PublicBug } from "#/lib/github/types";
+import type {
+	PublicBug,
+	RoadmapColumns,
+	RoadmapTask,
+} from "#/lib/github/types";
 
 import {
 	metaQueryIsEmpty,
-	parseMetaQuery,
 	type ParsedMetaQuery,
+	parseMetaQuery,
 } from "#/lib/roadmap/meta-search-query";
 
 export type { ParsedMetaQuery } from "#/lib/roadmap/meta-search-query";
@@ -79,19 +83,28 @@ export function filterColumnsByMetaQuery(
 	return next;
 }
 
-export function bugMatchesMetaQuery(bug: PublicBug, query: ParsedMetaQuery): boolean {
+export function bugMatchesMetaQuery(
+	bug: PublicBug,
+	query: ParsedMetaQuery,
+): boolean {
 	if (metaQueryIsEmpty(query)) return true;
 	if (query.issue !== undefined && bug.number !== query.issue) return false;
 	if (query.text) {
-		const blob = [bug.title, bug.bodyExcerpt, bug.author ?? "", ...bug.labels].join(
-			" ",
-		);
+		const blob = [
+			bug.title,
+			bug.bodyExcerpt,
+			bug.author ?? "",
+			...bug.labels,
+		].join(" ");
 		if (!textMatches(blob, query.text)) return false;
 	}
 	return true;
 }
 
-export function filterBugsByMetaQuery(bugs: PublicBug[], rawQuery: string): PublicBug[] {
+export function filterBugsByMetaQuery(
+	bugs: PublicBug[],
+	rawQuery: string,
+): PublicBug[] {
 	const parsed = parseMetaQuery(rawQuery);
 	if (metaQueryIsEmpty(parsed)) return bugs;
 	return bugs.filter((bug) => bugMatchesMetaQuery(bug, parsed));
@@ -107,13 +120,27 @@ export function activeMetaFilterChips(
 		chips.push({ key, label, removeToken: `${tokenPrefix}` });
 	};
 
-	if (parsed.workstream) add("workstream", `Workstream: ${parsed.workstream}`, `workstream:${parsed.workstream}`);
-	if (parsed.domain) add("domain", `Domain: ${parsed.domain}`, `domain:${parsed.domain}`);
+	if (parsed.workstream)
+		add(
+			"workstream",
+			`Workstream: ${parsed.workstream}`,
+			`workstream:${parsed.workstream}`,
+		);
+	if (parsed.domain)
+		add("domain", `Domain: ${parsed.domain}`, `domain:${parsed.domain}`);
 	if (parsed.area) add("area", `Area: ${parsed.area}`, `area:${parsed.area}`);
-	if (parsed.feature) add("feature", `Feature: ${parsed.feature}`, `feature:${parsed.feature}`);
-	if (parsed.status) add("status", `Status: ${parsed.status}`, `status:${parsed.status}`);
-	if (parsed.priority) add("priority", `Priority: ${parsed.priority}`, `priority:${parsed.priority}`);
-	if (parsed.owner) add("owner", `Owner: @${parsed.owner}`, `owner:${parsed.owner}`);
+	if (parsed.feature)
+		add("feature", `Feature: ${parsed.feature}`, `feature:${parsed.feature}`);
+	if (parsed.status)
+		add("status", `Status: ${parsed.status}`, `status:${parsed.status}`);
+	if (parsed.priority)
+		add(
+			"priority",
+			`Priority: ${parsed.priority}`,
+			`priority:${parsed.priority}`,
+		);
+	if (parsed.owner)
+		add("owner", `Owner: @${parsed.owner}`, `owner:${parsed.owner}`);
 	if (parsed.issue) add("issue", `#${parsed.issue}`, `#${parsed.issue}`);
 	if (parsed.specLinked === true) add("spec", "Spec linked", "spec:linked");
 	if (parsed.specLinked === false) add("spec", "No spec link", "spec:none");
@@ -123,8 +150,5 @@ export function activeMetaFilterChips(
 }
 
 export function removeTokenFromQuery(raw: string, token: string): string {
-	return raw
-		.replace(token, " ")
-		.replace(/\s+/g, " ")
-		.trim();
+	return raw.replace(token, " ").replace(/\s+/g, " ").trim();
 }

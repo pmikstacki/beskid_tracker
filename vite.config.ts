@@ -1,5 +1,5 @@
-import path from "node:path";
 import { createRequire } from "node:module";
+import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 import tailwindcss from "@tailwindcss/vite";
@@ -10,16 +10,24 @@ import { defineConfig } from "vite";
 
 const rootDir = path.dirname(fileURLToPath(import.meta.url));
 const require = createRequire(import.meta.url);
-const beskidUiRoot = path.dirname(require.resolve("@beskid/beskid-ui/package.json"));
+const beskidUiRoot = path.dirname(
+	require.resolve("@beskid/beskid-ui/package.json"),
+);
 const beskidUiSrc = path.join(beskidUiRoot, "src");
-const uiReactRoot = path.dirname(require.resolve("@beskid/ui-react/package.json"));
+const uiReactRoot = path.dirname(
+	require.resolve("@beskid/ui-react/package.json"),
+);
 const uiReactSrc = path.join(uiReactRoot, "src");
+const authClientEntry = path.resolve(
+	rootDir,
+	"node_modules/@beskid/auth-client/src/index.ts",
+);
 /** ESM build — `yaml/dist/index.js` is CJS and breaks Vite SSR under Bun (`require is not defined`). */
 const yamlEsm = path.resolve(rootDir, "node_modules/yaml/browser/index.js");
-const trudocSrc = path.resolve(
-	rootDir,
-	"../beskid_web_common/packages/trudoc/src",
+const trudocRoot = path.dirname(
+	require.resolve("@cyber-nomad-collective/trudoc/package.json"),
 );
+const trudocSrc = path.join(trudocRoot, "src");
 
 const resolveAlias = [
 	{
@@ -27,12 +35,19 @@ const resolveAlias = [
 		replacement: `${trudocSrc}/$1`,
 	},
 	{ find: "@beskid/beskid-ui", replacement: beskidUiSrc },
+	{ find: "@beskid/auth-client", replacement: authClientEntry },
 	{
 		find: "@beskid/material-theme",
 		replacement: path.join(beskidUiSrc, "styles/theme.material.css"),
 	},
-	{ find: "#/components/ui", replacement: path.join(uiReactSrc, "components/ui") },
-	{ find: "#/lib/utils.ts", replacement: path.join(uiReactSrc, "lib/utils.ts") },
+	{
+		find: "#/components/ui",
+		replacement: path.join(uiReactSrc, "components/ui"),
+	},
+	{
+		find: "#/lib/utils.ts",
+		replacement: path.join(uiReactSrc, "lib/utils.ts"),
+	},
 	{ find: "#/lib/utils", replacement: path.join(uiReactSrc, "lib/utils.ts") },
 	{
 		find: "#/hooks/use-mobile.ts",
@@ -47,9 +62,6 @@ const config = defineConfig({
 		alias: resolveAlias,
 	},
 	ssr: {
-		resolve: {
-			alias: resolveAlias,
-		},
 		noExternal: ["trudoc", "yaml"],
 	},
 	optimizeDeps: {

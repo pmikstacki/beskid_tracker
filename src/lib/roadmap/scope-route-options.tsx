@@ -7,7 +7,6 @@ function ScopePending() {
 	return (
 		<div
 			className="roadmap-scope-pending page-wrap flex min-h-[min(28rem,60vh)] flex-col items-center justify-center gap-5 py-16"
-			role="status"
 			aria-live="polite"
 			aria-busy="true"
 		>
@@ -48,7 +47,9 @@ function ScopeProcessFailure({
 		<div className="roadmap-process-failure page-wrap flex min-h-[min(28rem,60vh)] flex-col items-center justify-center py-16">
 			<div className="roadmap-process-failure__panel island-shell w-full max-w-lg rounded-2xl p-8 text-center">
 				<div className="bg-destructive/10 text-destructive mx-auto flex size-14 items-center justify-center rounded-full">
-					<span className="text-xl" aria-hidden="true">!</span>
+					<span className="text-xl" aria-hidden="true">
+						!
+					</span>
 				</div>
 				<p className="island-kicker mt-6">Process failure</p>
 				<h1 className="display-title text-foreground mt-2 text-xl font-bold">

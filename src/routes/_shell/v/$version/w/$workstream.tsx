@@ -27,11 +27,7 @@ export const Route = createFileRoute("/_shell/v/$version/w/$workstream")({
 			data: { version: params.version, slug: params.workstream },
 		});
 		const board = await getBoard({
-			data: resolveBoardLoaderFilters(
-				params.version,
-				deps,
-				params.workstream,
-			),
+			data: resolveBoardLoaderFilters(params.version, deps, params.workstream),
 		});
 		return {
 			board,

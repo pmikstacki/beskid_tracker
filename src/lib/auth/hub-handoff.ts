@@ -1,8 +1,5 @@
 import type { HandoffPayload } from "@beskid/auth-client";
-import {
-	buildLoginUrl,
-	verifyHandoffToken,
-} from "@beskid/auth-client";
+import { buildLoginUrl, verifyHandoffToken } from "@beskid/auth-client";
 
 import { getAuthHubServiceToken, getAuthHubUrl } from "#/lib/auth/hub-settings";
 

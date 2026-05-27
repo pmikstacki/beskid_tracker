@@ -1,6 +1,6 @@
 "use client";
 
-import { Link, type ErrorComponentProps } from "@tanstack/react-router";
+import { type ErrorComponentProps, Link } from "@tanstack/react-router";
 import { AlertTriangle, Bug, History, Home, RotateCcw } from "lucide-react";
 import { useState } from "react";
 
@@ -60,7 +60,12 @@ export function RoadmapRouteError({
 					{friendlyErrorMessage(error)}
 				</p>
 				<div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-					<Button type="button" variant="default" size="sm" onClick={() => reset()}>
+					<Button
+						type="button"
+						variant="default"
+						size="sm"
+						onClick={() => reset()}
+					>
 						<RotateCcw className="size-4" />
 						Try again
 					</Button>
@@ -90,7 +95,9 @@ export function RoadmapRouteError({
 							className="text-muted-foreground hover:text-foreground text-xs underline-offset-4 hover:underline"
 							onClick={() => setShowDetails((open) => !open)}
 						>
-							{showDetails ? "Hide technical details" : "Show technical details"}
+							{showDetails
+								? "Hide technical details"
+								: "Show technical details"}
 						</button>
 						{showDetails ? (
 							<pre className="bg-muted text-foreground mt-3 max-h-48 overflow-auto rounded-lg border border-border p-3 text-left text-xs leading-relaxed">

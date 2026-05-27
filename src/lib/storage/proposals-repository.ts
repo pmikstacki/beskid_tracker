@@ -257,7 +257,10 @@ export function updateSpecProposalChange(
 	}
 
 	values.push(id);
-	db.run(`UPDATE spec_proposal_changes SET ${fields.join(", ")} WHERE id = ?`, values);
+	db.run(
+		`UPDATE spec_proposal_changes SET ${fields.join(", ")} WHERE id = ?`,
+		values,
+	);
 }
 
 export function deleteSpecProposalChange(db: Database, id: string): void {
@@ -269,7 +272,9 @@ export function getSpecProposalChange(
 	id: string,
 ): SpecProposalChange | null {
 	const row = db
-		.query<ChangeRow, [string]>(`SELECT * FROM spec_proposal_changes WHERE id = ?`)
+		.query<ChangeRow, [string]>(
+			`SELECT * FROM spec_proposal_changes WHERE id = ?`,
+		)
 		.get(id);
 	return row ? mapChange(row) : null;
 }

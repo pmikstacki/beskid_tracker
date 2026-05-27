@@ -1,4 +1,7 @@
-import type { BoardFilterState, BoardSearchParams } from "#/lib/roadmap/board-search";
+import type {
+	BoardFilterState,
+	BoardSearchParams,
+} from "#/lib/roadmap/board-search";
 
 export function boardSearchFromFilters(
 	filters: BoardFilterState,
@@ -56,7 +59,9 @@ export function createTaskFullscreenTo(
 	};
 }
 
-function stripCreateFlag(search?: BoardSearchParams): BoardSearchParams | undefined {
+function stripCreateFlag(
+	search?: BoardSearchParams,
+): BoardSearchParams | undefined {
 	if (!search) return undefined;
 	const { create: _create, ...rest } = search;
 	return Object.keys(rest).length > 0 ? rest : undefined;

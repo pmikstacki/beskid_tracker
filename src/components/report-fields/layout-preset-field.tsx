@@ -1,5 +1,7 @@
 "use client";
 
+import { useId } from "react";
+
 import {
 	Select,
 	SelectContent,
@@ -33,11 +35,22 @@ export function LayoutPresetField({
 	disabled,
 	onChange,
 }: LayoutPresetFieldProps) {
+	const selectId = useId();
+
 	return (
 		<div className="work-item-field min-w-0">
-			<label className="text-foreground/90 mb-1.5 block text-sm font-medium">{label}</label>
-			<Select value={value || undefined} onValueChange={onChange} disabled={disabled}>
-				<SelectTrigger>
+			<label
+				htmlFor={selectId}
+				className="text-foreground/90 mb-1.5 block text-sm font-medium"
+			>
+				{label}
+			</label>
+			<Select
+				value={value || undefined}
+				onValueChange={onChange}
+				disabled={disabled}
+			>
+				<SelectTrigger id={selectId}>
 					<SelectValue placeholder="Choose layout preset…" />
 				</SelectTrigger>
 				<SelectContent>
@@ -48,7 +61,9 @@ export function LayoutPresetField({
 					))}
 				</SelectContent>
 			</Select>
-			{hint ? <p className="text-muted-foreground mt-1.5 text-xs">{hint}</p> : null}
+			{hint ? (
+				<p className="text-muted-foreground mt-1.5 text-xs">{hint}</p>
+			) : null}
 		</div>
 	);
 }

@@ -6,8 +6,12 @@ export default defineConfig({
 		include: ["src/**/*.test.ts"],
 	},
 	resolve: {
-		alias: {
-			"#": new URL("./src", import.meta.url).pathname,
-		},
+		alias: [
+			{ find: "#", replacement: new URL("./src", import.meta.url).pathname },
+			{
+				find: /^trudoc\/(.+)$/,
+				replacement: "@cyber-nomad-collective/trudoc/$1",
+			},
+		],
 	},
 });

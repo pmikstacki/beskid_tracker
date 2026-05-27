@@ -21,8 +21,8 @@ function DocsCatalogPage() {
 				<p className="island-kicker">Platform specification</p>
 				<h1 className="text-2xl font-semibold">Docs management</h1>
 				<p className="text-muted-foreground max-w-2xl text-sm">
-					Browse the full normative tree (including ADRs). Draft changes as proposals and
-					open pull requests to the superrepo.
+					Browse the full normative tree (including ADRs). Draft changes as
+					proposals and open pull requests to the superrepo.
 				</p>
 			</header>
 			<DocsHubTabs />

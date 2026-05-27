@@ -3,7 +3,7 @@ FROM oven/bun:latest AS build
 
 WORKDIR /app/beskid_tracker
 
-COPY package.json bun.lock ./
+COPY package.json bun.lock .npmrc ./
 ARG NODE_AUTH_TOKEN
 ENV NODE_AUTH_TOKEN=${NODE_AUTH_TOKEN}
 RUN bun install --frozen-lockfile

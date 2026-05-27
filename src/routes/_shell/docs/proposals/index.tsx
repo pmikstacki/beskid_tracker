@@ -25,8 +25,8 @@ function DocsProposalsPage() {
 					<p className="island-kicker">Platform specification</p>
 					<h1 className="text-2xl font-semibold">Proposals</h1>
 					<p className="text-muted-foreground max-w-2xl text-sm">
-						Draft platform-spec edits locally, validate with trudoc, then open a GitHub
-						pull request.
+						Draft platform-spec edits locally, validate with trudoc, then open a
+						GitHub pull request.
 					</p>
 				</div>
 				{user ? (
@@ -43,7 +43,9 @@ function DocsProposalsPage() {
 			{user ? (
 				<SpecProposalList proposals={proposals} />
 			) : (
-				<p className="text-muted-foreground text-sm">Sign in to view and manage proposals.</p>
+				<p className="text-muted-foreground text-sm">
+					Sign in to view and manage proposals.
+				</p>
 			)}
 		</main>
 	);

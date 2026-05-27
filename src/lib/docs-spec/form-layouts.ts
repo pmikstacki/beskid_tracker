@@ -1,10 +1,10 @@
+import type { SpecLevel, SpecProposalChangeKind } from "#/lib/docs-spec/types";
 import type { ReportFormLayout } from "#/lib/report-issue/fields";
 import {
 	reportField,
 	reportGroup,
 	reportSection,
 } from "#/lib/report-issue/fields";
-import type { SpecLevel, SpecProposalChangeKind } from "#/lib/docs-spec/types";
 
 function ownershipFields(): ReportFormLayout {
 	return [
@@ -149,7 +149,11 @@ export function resolveSpecFormLayout(
 		...ownershipFields(),
 	];
 
-	if (specLevel === "feature" || specLevel === "article" || specLevel === "adr") {
+	if (
+		specLevel === "feature" ||
+		specLevel === "article" ||
+		specLevel === "adr"
+	) {
 		layout.push(
 			reportSection("normative", "Normative status", [...statusField()]),
 		);
@@ -203,7 +207,11 @@ export function formValuesToFrontmatter(
 		},
 	};
 
-	if (specLevel === "feature" || specLevel === "article" || specLevel === "adr") {
+	if (
+		specLevel === "feature" ||
+		specLevel === "article" ||
+		specLevel === "adr"
+	) {
 		fm.status = values.status?.trim() || "Proposed";
 	}
 
@@ -229,7 +237,9 @@ export function frontmatterToFormValues(
 	frontmatter: Record<string, unknown>,
 	bodyMd: string,
 ): Record<string, string> {
-	const owner = frontmatter.owner as { name?: string; email?: string } | undefined;
+	const owner = frontmatter.owner as
+		| { name?: string; email?: string }
+		| undefined;
 	const submitter = frontmatter.submitter as
 		| { name?: string; email?: string }
 		| undefined;

@@ -34,7 +34,10 @@ interface SpecRelationEditorProps {
 	onChange: (relations: SpecRelation[]) => void;
 }
 
-export function SpecRelationEditor({ relations, onChange }: SpecRelationEditorProps) {
+export function SpecRelationEditor({
+	relations,
+	onChange,
+}: SpecRelationEditorProps) {
 	const [query, setQuery] = useState("");
 
 	const { data: entries = [], isFetching } = useQuery({
@@ -76,13 +79,13 @@ export function SpecRelationEditor({ relations, onChange }: SpecRelationEditorPr
 		<div className="space-y-3">
 			<Label>Platform spec relations</Label>
 			<p className="text-muted-foreground text-xs">
-				Link normative spec nodes. Mark at least one as required. Metadata follows
-				platform-spec hierarchy (domain, area, feature).
+				Link normative spec nodes. Mark at least one as required. Metadata
+				follows platform-spec hierarchy (domain, area, feature).
 			</p>
 
 			{relations.map((relation, index) => (
 				<div
-					key={`${relation.path}-${index}`}
+					key={`${relation.path}-${relation.relation}-${relation.required ? "required" : "optional"}`}
 					className="border-border grid gap-2 rounded-lg border p-3"
 				>
 					<div className="flex items-start justify-between gap-2">

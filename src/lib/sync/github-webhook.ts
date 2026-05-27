@@ -15,8 +15,8 @@ import {
 export {
 	getGithubWebhookSecret,
 	githubWebhookUrl,
-	isGithubWebhookConfigured,
 	isGithubSyncDisabled,
+	isGithubWebhookConfigured,
 	resolveTrackerPublicOrigin,
 } from "#/lib/sync/github-webhook-config";
 

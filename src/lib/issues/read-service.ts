@@ -1,5 +1,5 @@
-import { filterTasks, type BoardFilters } from "#/lib/github/filters";
 import { issueToPublicBug } from "#/lib/github/bug-mappers";
+import { type BoardFilters, filterTasks } from "#/lib/github/filters";
 import { issueToRoadmapTask } from "#/lib/github/mappers";
 import {
 	DEFAULT_DELIVERY_VERSIONS,
@@ -66,7 +66,9 @@ export async function listRoadmapBoardFromStore(
 	return { tasks, columns };
 }
 
-export function getRoadmapIssueFromStore(issueNumber: number): RoadmapTask | null {
+export function getRoadmapIssueFromStore(
+	issueNumber: number,
+): RoadmapTask | null {
 	const stored = getStoredIssue(issueNumber);
 	if (!stored) return null;
 	return issueToRoadmapTask(stored);

@@ -51,13 +51,17 @@ export function GithubWebhookSettingsPanel() {
 				`Webhook ${result.action} on GitHub (hook #${result.hookId}). ` +
 					`Verify deliveries on GitHub or wait for the next issue event.`,
 			);
-			void queryClient.invalidateQueries({ queryKey: ["github-webhook-settings"] });
+			void queryClient.invalidateQueries({
+				queryKey: ["github-webhook-settings"],
+			});
 			void queryClient.invalidateQueries({ queryKey: ["board-sync-status"] });
 		},
 		onError: (error) => {
 			setStatusIsError(true);
 			setStatusMessage(
-				error instanceof Error ? error.message : "Failed to create webhook on GitHub",
+				error instanceof Error
+					? error.message
+					: "Failed to create webhook on GitHub",
 			);
 		},
 	});
@@ -76,7 +80,9 @@ export function GithubWebhookSettingsPanel() {
 			setWebhookSecret("");
 			setStatusIsError(false);
 			setStatusMessage("Settings saved.");
-			void queryClient.invalidateQueries({ queryKey: ["github-webhook-settings"] });
+			void queryClient.invalidateQueries({
+				queryKey: ["github-webhook-settings"],
+			});
 			void queryClient.invalidateQueries({ queryKey: ["board-sync-status"] });
 		},
 		onError: (error) => {
@@ -128,7 +134,8 @@ export function GithubWebhookSettingsPanel() {
 				)}
 				{settings.secretSource !== "none" ? (
 					<Badge variant="outline" className="font-normal">
-						Secret: {settings.secretSource === "env" ? "environment" : "database"}
+						Secret:{" "}
+						{settings.secretSource === "env" ? "environment" : "database"}
 					</Badge>
 				) : null}
 			</div>
@@ -233,8 +240,9 @@ export function GithubWebhookSettingsPanel() {
 				/>
 				<p className="text-muted-foreground text-[11px]">
 					Used to build the webhook URL shown above. Override when the app sits
-					behind a proxy, or set <code className="text-xs">TRACKER_PUBLIC_URL</code>{" "}
-					in the environment.
+					behind a proxy, or set{" "}
+					<code className="text-xs">TRACKER_PUBLIC_URL</code> in the
+					environment.
 				</p>
 			</div>
 
@@ -294,12 +302,9 @@ export function GithubWebhookSettingsPanel() {
 			)}
 
 			{statusMessage ? (
-				<p
-					className={cn("text-sm", statusIsError && "text-destructive")}
-					role="status"
-				>
+				<output className={cn("text-sm", statusIsError && "text-destructive")}>
 					{statusMessage}
-				</p>
+				</output>
 			) : null}
 
 			<Button

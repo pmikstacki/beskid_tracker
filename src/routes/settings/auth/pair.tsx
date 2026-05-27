@@ -1,8 +1,15 @@
+import {
+	Button,
+	Card,
+	CardContent,
+	CardHeader,
+	CardTitle,
+	Input,
+	Label,
+} from "@beskid/ui-react";
 import { createFileRoute, Link, redirect } from "@tanstack/react-router";
 import { useState } from "react";
 import { z } from "zod";
-
-import { Button, Card, CardContent, CardHeader, CardTitle, Input, Label } from "@beskid/ui-react";
 import { isAuthHubPaired } from "#/lib/auth/hub-settings";
 import { approveAuthHubPairing } from "#/server/auth-hub-pairing";
 import { getSessionInfo } from "#/server/roadmap";
@@ -58,13 +65,16 @@ function AuthHubPairPage() {
 	return (
 		<div className="mx-auto max-w-lg space-y-6 p-6">
 			<div>
-				<Link to="/v/v0.2" className="text-sm text-muted-foreground hover:underline">
+				<Link
+					to="/v/v0.2"
+					className="text-sm text-muted-foreground hover:underline"
+				>
 					← Back to roadmap
 				</Link>
 				<h1 className="mt-2 text-2xl font-semibold">Auth hub pairing</h1>
 				<p className="text-sm text-muted-foreground">
-					Approve a pairing code from the auth hub admin. The handoff secret is stored
-					locally and never shown in the browser.
+					Approve a pairing code from the auth hub admin. The handoff secret is
+					stored locally and never shown in the browser.
 				</p>
 			</div>
 
@@ -101,7 +111,9 @@ function AuthHubPairPage() {
 							/>
 						</div>
 						{error ? <p className="text-sm text-destructive">{error}</p> : null}
-						{message ? <p className="text-sm text-green-600">{message}</p> : null}
+						{message ? (
+							<p className="text-sm text-green-600">{message}</p>
+						) : null}
 						<Button type="submit" disabled={busy}>
 							{busy ? "Approving…" : "Approve pairing"}
 						</Button>

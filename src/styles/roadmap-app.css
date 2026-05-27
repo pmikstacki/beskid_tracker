@@ -166,7 +166,11 @@ pre code {
 	height: 100%;
 	flex-shrink: 0;
 	border-left: 1px solid var(--platform-spec-card-border);
-	background: color-mix(in srgb, var(--platform-spec-surface) 96%, var(--background));
+	background: color-mix(
+		in srgb,
+		var(--platform-spec-surface) 96%,
+		var(--background)
+	);
 }
 
 /* App shell — GitHub sync drawer (header trigger) */
@@ -184,7 +188,11 @@ pre code {
 .board-sync-drawer[data-expanded="true"] {
 	width: min(22rem, 100vw);
 	border-left: 1px solid var(--platform-spec-card-border);
-	background: color-mix(in srgb, var(--platform-spec-surface) 96%, var(--background));
+	background: color-mix(
+		in srgb,
+		var(--platform-spec-surface) 96%,
+		var(--background)
+	);
 }
 
 .board-sync-drawer__panel {
@@ -201,7 +209,7 @@ pre code {
 
 .board-sync-drawer__header {
 	display: flex;
-	shrink: 0;
+	flex-shrink: 0;
 	align-items: flex-start;
 	justify-content: space-between;
 	gap: 0.75rem;
@@ -280,8 +288,7 @@ pre code {
 	border: 1px solid var(--platform-spec-card-border);
 	background: var(--platform-spec-surface-strong);
 	color: var(--foreground);
-	box-shadow: 0 1px 3px
-		color-mix(in srgb, var(--foreground) 10%, transparent);
+	box-shadow: 0 1px 3px color-mix(in srgb, var(--foreground) 10%, transparent);
 	transition:
 		border-color 160ms ease,
 		box-shadow 160ms ease,
@@ -386,7 +393,8 @@ a {
 }
 
 .dashboard-widget {
-	border: 1px solid color-mix(in srgb, var(--platform-spec-card-border) 92%, transparent);
+	border: 1px solid
+		color-mix(in srgb, var(--platform-spec-card-border) 92%, transparent);
 	background: color-mix(in srgb, var(--platform-spec-card-bg) 92%, transparent);
 	box-shadow:
 		0 1px 0 color-mix(in srgb, var(--foreground) 6%, transparent) inset,

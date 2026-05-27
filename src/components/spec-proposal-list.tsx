@@ -36,7 +36,8 @@ export function SpecProposalList({ proposals }: SpecProposalListProps) {
 	if (proposals.length === 0) {
 		return (
 			<p className="text-muted-foreground text-sm">
-				No proposals yet. Create one to draft platform-spec changes and open a PR.
+				No proposals yet. Create one to draft platform-spec changes and open a
+				PR.
 			</p>
 		);
 	}
@@ -65,7 +66,9 @@ export function SpecProposalList({ proposals }: SpecProposalListProps) {
 								</Link>
 							</TableCell>
 							<TableCell>
-								<Badge variant={statusVariant(proposal.status)}>{proposal.status}</Badge>
+								<Badge variant={statusVariant(proposal.status)}>
+									{proposal.status}
+								</Badge>
 							</TableCell>
 							<TableCell className="text-muted-foreground text-sm">
 								{proposal.authorLogin}

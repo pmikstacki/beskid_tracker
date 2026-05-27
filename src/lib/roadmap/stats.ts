@@ -1,6 +1,5 @@
-import type { SeedTask } from "#/lib/seed/schemas";
-
 import type { RoadmapVersionStats } from "#/lib/roadmap/types";
+import type { SeedTask } from "#/lib/seed/schemas";
 
 export function emptyVersionStats(): RoadmapVersionStats {
 	return {

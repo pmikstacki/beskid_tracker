@@ -28,7 +28,11 @@ export function SpecRelationsList({
 		return (
 			<div className="flex flex-wrap gap-1">
 				{relations.slice(0, 2).map((relation) => (
-					<Badge key={relation.path} variant="outline" className="max-w-full truncate font-normal">
+					<Badge
+						key={relation.path}
+						variant="outline"
+						className="max-w-full truncate font-normal"
+					>
 						{RELATION_LABEL[relation.relation]}:{" "}
 						{relation.title ?? relation.path.split("/").at(-1)}
 					</Badge>

@@ -1,7 +1,9 @@
 import type { Octokit } from "@octokit/rest";
-
-import { buildMdxFile, parseFrontmatterJson } from "#/lib/docs-spec/frontmatter";
 import { env } from "#/env";
+import {
+	buildMdxFile,
+	parseFrontmatterJson,
+} from "#/lib/docs-spec/frontmatter";
 import type { SpecProposal, SpecProposalChange } from "#/lib/docs-spec/types";
 
 const OWNER = () => env.GITHUB_REPO_OWNER;

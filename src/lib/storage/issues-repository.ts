@@ -22,7 +22,10 @@ function isPullRequest(issue: GitHubIssuePayload): boolean {
 	return Boolean(issue.pull_request);
 }
 
-export function upsertGithubIssue(db: Database, issue: GitHubIssuePayload): void {
+export function upsertGithubIssue(
+	db: Database,
+	issue: GitHubIssuePayload,
+): void {
 	const now = new Date().toISOString();
 	const payload = serializeIssuePayload(issue);
 	const labelNames = labelNamesFromPayload(issue);
@@ -97,7 +100,9 @@ export function recomputeSyncStateFromStore(): void {
 
 export function deleteIssuesExcept(numbers: Set<number>): number {
 	const db = getIssuesDatabase();
-	const rows = db.query<{ number: number }, []>("SELECT number FROM github_issues").all();
+	const rows = db
+		.query<{ number: number }, []>("SELECT number FROM github_issues")
+		.all();
 	let removed = 0;
 	for (const row of rows) {
 		if (!numbers.has(row.number)) {
@@ -156,22 +161,24 @@ export function countStoredIssues(): number {
 
 export function countPublicBugStats(): { open: number; closed: number } {
 	const db = getIssuesDatabase();
-	const open = db
-		.query<{ count: number }, []>(
-			`
+	const open =
+		db
+			.query<{ count: number }, []>(
+				`
 			SELECT COUNT(*) AS count FROM github_issues
 			WHERE has_bug_label = 1 AND is_pull_request = 0 AND state = 'open'
 			`,
-		)
-		.get()?.count ?? 0;
-	const closed = db
-		.query<{ count: number }, []>(
-			`
+			)
+			.get()?.count ?? 0;
+	const closed =
+		db
+			.query<{ count: number }, []>(
+				`
 			SELECT COUNT(*) AS count FROM github_issues
 			WHERE has_bug_label = 1 AND is_pull_request = 0 AND state = 'closed'
 			`,
-		)
-		.get()?.count ?? 0;
+			)
+			.get()?.count ?? 0;
 	return { open, closed };
 }
 
@@ -193,7 +200,9 @@ export function replaceRepoLabels(names: string[]): void {
 export function listStoredRepoLabels(): string[] {
 	const db = getIssuesDatabase();
 	return db
-		.query<{ name: string }, []>("SELECT name FROM repo_labels ORDER BY name ASC")
+		.query<{ name: string }, []>(
+			"SELECT name FROM repo_labels ORDER BY name ASC",
+		)
 		.all()
 		.map((row) => row.name);
 }
@@ -237,9 +246,10 @@ export function readSyncState(): SyncStateSnapshot {
 
 export function writeSyncAttempt(): void {
 	const db = getIssuesDatabase();
-	db.run("UPDATE sync_state SET last_attempt_at = ?, last_error = NULL WHERE id = 1", [
-		new Date().toISOString(),
-	]);
+	db.run(
+		"UPDATE sync_state SET last_attempt_at = ?, last_error = NULL WHERE id = 1",
+		[new Date().toISOString()],
+	);
 }
 
 export function writeSyncSuccess(openCount: number, bugCount: number): void {

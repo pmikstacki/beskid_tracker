@@ -9,11 +9,14 @@ import {
 } from "#/lib/roadmap/build-catalog";
 import { buildRoadmapSearchIndex } from "#/lib/roadmap/build-search-index";
 import {
-	RoadmapScopeNotFoundError,
 	type RoadmapScopeKind,
+	RoadmapScopeNotFoundError,
 } from "#/lib/roadmap/scope-not-found";
 import type { RoadmapSearchHit } from "#/lib/roadmap/search-index";
-import type { RoadmapCatalog, RoadmapCatalogVersion } from "#/lib/roadmap/types";
+import type {
+	RoadmapCatalog,
+	RoadmapCatalogVersion,
+} from "#/lib/roadmap/types";
 import { loadAllSeedRoadmapTasks, loadVersionSeed } from "#/lib/seed/load";
 import type { SeedTask } from "#/lib/seed/schemas";
 
@@ -125,9 +128,7 @@ export const getDeliverableDashboard = createServerFn({ method: "GET" })
 			);
 		}
 		const tasks = seedTasksForVersion(data.version)
-			.filter(
-				(t) => (t.deliverableId ?? t.milestoneId) === data.deliverableId,
-			)
+			.filter((t) => (t.deliverableId ?? t.milestoneId) === data.deliverableId)
 			.sort((a, b) => a.number - b.number);
 		return { version, deliverable, tasks, catalog };
 	});
@@ -139,10 +140,11 @@ export const getMilestoneDashboard = createServerFn({ method: "GET" })
 			milestoneId: z.string().min(1),
 		}),
 	)
-	.handler(async ({ data }): Promise<DeliverableDashboardPayload> =>
-		getDeliverableDashboard({
-			data: { version: data.version, deliverableId: data.milestoneId },
-		}),
+	.handler(
+		async ({ data }): Promise<DeliverableDashboardPayload> =>
+			getDeliverableDashboard({
+				data: { version: data.version, deliverableId: data.milestoneId },
+			}),
 	);
 
 export interface WorkstreamDashboardPayload {
@@ -164,7 +166,11 @@ export const getWorkstreamDashboard = createServerFn({ method: "GET" })
 		const version = assertCatalogVersion(catalog, data.version);
 		const workstream = version.workstreams.find((w) => w.slug === data.slug);
 		if (!workstream) {
-			throw new RoadmapScopeNotFoundError("workstream", data.version, data.slug);
+			throw new RoadmapScopeNotFoundError(
+				"workstream",
+				data.version,
+				data.slug,
+			);
 		}
 		const tasks = seedTasksForVersion(data.version)
 			.filter((t) => t.workstream === data.slug)
@@ -200,8 +206,9 @@ export const getDomainDashboard = createServerFn({ method: "GET" })
 			slug: z.string().min(1),
 		}),
 	)
-	.handler(async ({ data }): Promise<TaxonomyDashboardPayload> =>
-		taxonomyDashboard(data.version, "domain", data.slug),
+	.handler(
+		async ({ data }): Promise<TaxonomyDashboardPayload> =>
+			taxonomyDashboard(data.version, "domain", data.slug),
 	);
 
 export const getAreaDashboard = createServerFn({ method: "GET" })
@@ -211,8 +218,9 @@ export const getAreaDashboard = createServerFn({ method: "GET" })
 			slug: z.string().min(1),
 		}),
 	)
-	.handler(async ({ data }): Promise<TaxonomyDashboardPayload> =>
-		taxonomyDashboard(data.version, "area", data.slug),
+	.handler(
+		async ({ data }): Promise<TaxonomyDashboardPayload> =>
+			taxonomyDashboard(data.version, "area", data.slug),
 	);
 
 export const getFeatureDashboard = createServerFn({ method: "GET" })
@@ -222,8 +230,9 @@ export const getFeatureDashboard = createServerFn({ method: "GET" })
 			slug: z.string().min(1),
 		}),
 	)
-	.handler(async ({ data }): Promise<TaxonomyDashboardPayload> =>
-		taxonomyDashboard(data.version, "feature", data.slug),
+	.handler(
+		async ({ data }): Promise<TaxonomyDashboardPayload> =>
+			taxonomyDashboard(data.version, "feature", data.slug),
 	);
 
 export const getRoadmapSearchIndex = createServerFn({ method: "GET" }).handler(

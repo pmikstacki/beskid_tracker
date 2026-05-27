@@ -11,14 +11,18 @@ export function migrateSchema(db: Database): void {
 	`);
 
 	const versionRow = db
-		.query<{ value: string }, []>("SELECT value FROM schema_meta WHERE key = 'version'")
+		.query<{ value: string }, []>(
+			"SELECT value FROM schema_meta WHERE key = 'version'",
+		)
 		.get();
 
 	const current = versionRow ? Number.parseInt(versionRow.value, 10) : 0;
 
 	if (current < 1) {
 		applyV1(db);
-		db.run("INSERT OR REPLACE INTO schema_meta (key, value) VALUES ('version', '1')");
+		db.run(
+			"INSERT OR REPLACE INTO schema_meta (key, value) VALUES ('version', '1')",
+		);
 	}
 
 	if (current < 2) {

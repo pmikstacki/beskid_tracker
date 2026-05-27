@@ -44,7 +44,9 @@ export function SpecChangeForm({
 	const [changeKind, setChangeKind] = useState<SpecProposalChangeKind>(
 		initial?.changeKind ?? "update",
 	);
-	const [specLevel, setSpecLevel] = useState<SpecLevel>(initial?.specLevel ?? "article");
+	const [specLevel, setSpecLevel] = useState<SpecLevel>(
+		initial?.specLevel ?? "article",
+	);
 
 	const initialValues = useMemo(() => {
 		const fm = parseFrontmatterJson(initial?.frontmatterJson ?? "{}");
@@ -108,7 +110,10 @@ export function SpecChangeForm({
 					</div>
 					<div className="space-y-1">
 						<p className="text-sm font-medium">Document type</p>
-						<Select value={specLevel} onValueChange={(v) => setSpecLevel(v as SpecLevel)}>
+						<Select
+							value={specLevel}
+							onValueChange={(v) => setSpecLevel(v as SpecLevel)}
+						>
 							<SelectTrigger className="w-40">
 								<SelectValue />
 							</SelectTrigger>
@@ -129,7 +134,9 @@ export function SpecChangeForm({
 				values={values}
 				attachments={{}}
 				pending={mutation.isPending}
-				onValueChange={(id, next) => setValues((prev) => ({ ...prev, [id]: next }))}
+				onValueChange={(id, next) =>
+					setValues((prev) => ({ ...prev, [id]: next }))
+				}
 				onAttachmentsChange={() => {}}
 			/>
 
@@ -149,7 +156,10 @@ export function SpecChangeForm({
 					type="button"
 					variant="outline"
 					onClick={() =>
-						router.navigate({ to: "/docs/proposals/$id", params: { id: proposalId } })
+						router.navigate({
+							to: "/docs/proposals/$id",
+							params: { id: proposalId },
+						})
 					}
 				>
 					Cancel

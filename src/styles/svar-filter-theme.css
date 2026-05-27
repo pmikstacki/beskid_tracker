@@ -27,7 +27,8 @@
 	--wx-background-alt: var(--card);
 	--wx-background-hover: var(--accent);
 	--wx-border: 1px solid var(--border);
-	--wx-border-light: 1px solid color-mix(in srgb, var(--border) 65%, transparent);
+	--wx-border-light: 1px solid
+		color-mix(in srgb, var(--border) 65%, transparent);
 	--wx-border-medium: 1px solid var(--border);
 	--wx-border-radius: var(--radius-md);
 
@@ -37,7 +38,11 @@
 	--wx-input-font-weight: 400;
 	--wx-input-font-color: var(--foreground);
 	--wx-input-placeholder-color: var(--muted-foreground);
-	--wx-input-background: color-mix(in srgb, var(--background) 88%, var(--muted));
+	--wx-input-background: color-mix(
+		in srgb,
+		var(--background) 88%,
+		var(--muted)
+	);
 	--wx-input-background-disabled: var(--muted);
 	--wx-input-border: 1px solid var(--platform-spec-card-border);
 	--wx-input-border-focus: 1px solid

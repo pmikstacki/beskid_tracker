@@ -1,9 +1,8 @@
+import { AuthPageShell, Button } from "@beskid/ui-react";
 import { createFileRoute } from "@tanstack/react-router";
 import { z } from "zod";
-
-import { AuthPageShell, Button } from "@beskid/ui-react";
-import { authHubLoginUrl } from "#/lib/auth/hub-handoff";
 import { ThemeToggle } from "#/components/theme-toggle";
+import { authHubLoginUrl } from "#/lib/auth/hub-handoff";
 
 const loginSearchSchema = z.object({
 	error: z.string().optional(),

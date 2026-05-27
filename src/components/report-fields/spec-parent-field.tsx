@@ -38,7 +38,10 @@ export function SpecParentField({
 
 	return (
 		<div className="work-item-field min-w-0 space-y-2">
-			<label htmlFor={id} className="text-foreground/90 block text-sm font-medium">
+			<label
+				htmlFor={id}
+				className="text-foreground/90 block text-sm font-medium"
+			>
 				{label}
 				{required ? <span className="text-destructive ml-0.5">*</span> : null}
 			</label>

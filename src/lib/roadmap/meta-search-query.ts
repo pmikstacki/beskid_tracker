@@ -112,7 +112,12 @@ export function parseMetaQuery(raw: string): ParsedMetaQuery {
 					value === "yes" ||
 					value === "true" ||
 					value === "1";
-				if (value === "none" || value === "no" || value === "false" || value === "0") {
+				if (
+					value === "none" ||
+					value === "no" ||
+					value === "false" ||
+					value === "0"
+				) {
 					parsed.specLinked = false;
 				}
 				break;
@@ -154,5 +159,5 @@ export function metaQueryIsEmpty(query: ParsedMetaQuery): boolean {
 }
 
 export function formatMetaQueryHint(): string {
-	return 'Try workstream:docs-site status:done priority:high #220 spec:linked or free text';
+	return "Try workstream:docs-site status:done priority:high #220 spec:linked or free text";
 }

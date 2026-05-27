@@ -36,7 +36,7 @@ export function SyncRunLogPanel({
 		if (followTail && tailRef.current) {
 			tailRef.current.scrollIntoView({ block: "nearest", behavior: "smooth" });
 		}
-	}, [followTail, logs.length, run?.phase, run?.progressCurrent]);
+	}, [followTail]);
 
 	return (
 		<div className={cn("space-y-2", className)}>

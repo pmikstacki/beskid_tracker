@@ -1,30 +1,29 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
-
+import { canManageRoadmap } from "#/lib/github/permissions";
+import { importSeedBundlesToGitHub } from "#/lib/seed/import-to-github";
 import {
 	parseUploadedSeedBundles,
 	type UploadedSeedFile,
 } from "#/lib/seed/parse-uploaded-bundle";
-import { importSeedBundlesToGitHub } from "#/lib/seed/import-to-github";
-import { canManageRoadmap } from "#/lib/github/permissions";
 import { readSyncState } from "#/lib/storage/issues-repository";
+import { triggerBoardSyncPull } from "#/lib/sync/board-sync-service";
 import {
+	isGithubSyncDisabled,
+	isGithubWebhookConfigured,
+} from "#/lib/sync/github-webhook-config";
+import { hasGithubSyncCredentials } from "#/lib/sync/sync-octokit";
+import {
+	createSyncRun,
 	getActiveSyncRun,
 	getSyncRunById,
 	listRecentSyncRuns,
 	listSyncLogsForRun,
 	listSyncLogsForRunAfter,
-	createSyncRun,
 	type SyncLogLine,
 	type SyncRunRecord,
 } from "#/lib/sync/sync-run-repository";
 import type { SyncStatusPayload } from "#/lib/sync/sync-run-types";
-import { triggerBoardSyncPull } from "#/lib/sync/board-sync-service";
-import { hasGithubSyncCredentials } from "#/lib/sync/sync-octokit";
-import {
-	isGithubSyncDisabled,
-	isGithubWebhookConfigured,
-} from "#/lib/sync/github-webhook-config";
 
 const uploadedFileSchema = z.object({
 	relativePath: z.string().min(1).max(512),
@@ -74,18 +73,12 @@ export const getSyncRunProgressFn = createServerFn({ method: "GET" })
 		}),
 	)
 	.handler(async ({ data }): Promise<SyncRunProgressPayload> => {
-		const run = data.runId
-			? getSyncRunById(data.runId)
-			: getActiveSyncRun();
+		const run = data.runId ? getSyncRunById(data.runId) : getActiveSyncRun();
 		if (!run) {
 			return { run: null, logs: [], done: true };
 		}
 
-		const logs = listSyncLogsForRunAfter(
-			run.id,
-			data.afterLogId ?? 0,
-			300,
-		);
+		const logs = listSyncLogsForRunAfter(run.id, data.afterLogId ?? 0, 300);
 		return {
 			run,
 			logs,
@@ -125,10 +118,14 @@ export const importSeedBundleFn = createServerFn({ method: "POST" })
 			}
 
 			if (getActiveSyncRun()) {
-				throw new Error("Another sync is already running. Wait for it to finish.");
+				throw new Error(
+					"Another sync is already running. Wait for it to finish.",
+				);
 			}
 
-			const bundles = parseUploadedSeedBundles(data.files as UploadedSeedFile[]);
+			const bundles = parseUploadedSeedBundles(
+				data.files as UploadedSeedFile[],
+			);
 			const run = createSyncRun("import");
 			run.log(
 				`Import requested by ${session.login}: ${bundles.length} version(s), dryRun=${Boolean(data.dryRun)}`,

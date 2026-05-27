@@ -3,8 +3,8 @@
  * Re-exports preserve existing call sites.
  */
 export {
+	type BoardSyncPullResult as IssuesSyncResult,
 	ensureBoardSyncedReady as ensureIssuesSyncedReady,
 	runBoardSyncPull as runGitHubIssuesSync,
 	triggerBoardSyncPull as triggerGitHubIssuesSync,
-	type BoardSyncPullResult as IssuesSyncResult,
 } from "#/lib/sync/board-sync-service";

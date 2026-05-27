@@ -3,8 +3,8 @@ import { describe, expect, it } from "vitest";
 import {
 	catalogDomains,
 	filterCatalogEntries,
-	searchCatalogEntries,
 	type PlatformSpecCatalogEntry,
+	searchCatalogEntries,
 } from "#/lib/platform-spec/catalog";
 
 const sample: PlatformSpecCatalogEntry[] = [
@@ -19,7 +19,8 @@ const sample: PlatformSpecCatalogEntry[] = [
 		adrId: null,
 		adrStatus: null,
 		repoPath: "src/content/docs/platform-spec/compiler/mods/index.mdx",
-		contentPath: "/generated/platform-spec-docs/platform-spec--compiler--mods.json",
+		contentPath:
+			"/generated/platform-spec-docs/platform-spec--compiler--mods.json",
 		parentSlug: "platform-spec/compiler",
 		hasLayoutJson: true,
 	},
@@ -33,8 +34,7 @@ const sample: PlatformSpecCatalogEntry[] = [
 		status: "Proposed",
 		adrId: "ADR-0001",
 		adrStatus: "Proposed",
-		repoPath:
-			"src/content/docs/platform-spec/compiler/mods/adr/example.mdx",
+		repoPath: "src/content/docs/platform-spec/compiler/mods/adr/example.mdx",
 		contentPath:
 			"/generated/platform-spec-docs/platform-spec--compiler--mods--adr--example.json",
 		parentSlug: "platform-spec/compiler/mods",

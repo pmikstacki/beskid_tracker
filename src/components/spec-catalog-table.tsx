@@ -1,7 +1,7 @@
 "use client";
 
 import { Link } from "@tanstack/react-router";
-
+import { useMemo, useState } from "react";
 import { Badge } from "#/components/ui/badge";
 import { Input } from "#/components/ui/input";
 import {
@@ -20,14 +20,13 @@ import {
 	TableRow,
 } from "#/components/ui/table";
 import { beskidDocsUrl } from "#/lib/beskid-docs-origin";
-import { encodeCatalogDocSlug } from "#/lib/platform-spec/catalog-url";
 import {
 	catalogDomains,
 	filterCatalogEntries,
-	searchCatalogEntries,
 	type PlatformSpecCatalogEntry,
+	searchCatalogEntries,
 } from "#/lib/platform-spec/catalog";
-import { useMemo, useState } from "react";
+import { encodeCatalogDocSlug } from "#/lib/platform-spec/catalog-url";
 
 interface SpecCatalogTableProps {
 	entries: PlatformSpecCatalogEntry[];
@@ -115,7 +114,9 @@ export function SpecCatalogTable({ entries }: SpecCatalogTableProps) {
 									</Link>
 								</TableCell>
 								<TableCell>
-									<Badge variant="outline">{entry.specLevel ?? entry.pathClass}</Badge>
+									<Badge variant="outline">
+										{entry.specLevel ?? entry.pathClass}
+									</Badge>
 								</TableCell>
 								<TableCell>
 									{entry.status ? (

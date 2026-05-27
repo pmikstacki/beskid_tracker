@@ -1,10 +1,4 @@
-import {
-	Bug,
-	CheckCircle2,
-	GitCommit,
-	ListTodo,
-	Target,
-} from "lucide-react";
+import { Bug, CheckCircle2, GitCommit, ListTodo, Target } from "lucide-react";
 
 import { Card, CardContent, CardHeader, CardTitle } from "#/components/ui/card";
 import type { RoadmapVersionStats } from "#/lib/roadmap/types";

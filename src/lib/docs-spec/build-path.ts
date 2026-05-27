@@ -1,5 +1,5 @@
-import type { SpecLevel } from "#/lib/docs-spec/types";
 import { repoPathFromSpecRel } from "#/lib/docs-spec/path-rules";
+import type { SpecLevel } from "#/lib/docs-spec/types";
 
 export function buildRepoPathFromForm(
 	specLevel: SpecLevel,

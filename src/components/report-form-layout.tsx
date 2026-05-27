@@ -32,7 +32,10 @@ export interface ReportFormLayoutProps {
 	attachments: Record<string, ReportAttachmentDraft[]>;
 	pending?: boolean;
 	onValueChange: (id: string, value: string) => void;
-	onAttachmentsChange: (fieldId: string, files: ReportAttachmentDraft[]) => void;
+	onAttachmentsChange: (
+		fieldId: string,
+		files: ReportAttachmentDraft[],
+	) => void;
 }
 
 export function ReportFormLayoutView({
@@ -73,7 +76,10 @@ function ReportFormNodeView({
 	attachments: Record<string, ReportAttachmentDraft[]>;
 	pending?: boolean;
 	onValueChange: (id: string, value: string) => void;
-	onAttachmentsChange: (fieldId: string, files: ReportAttachmentDraft[]) => void;
+	onAttachmentsChange: (
+		fieldId: string,
+		files: ReportAttachmentDraft[],
+	) => void;
 }) {
 	if (node.type === "section") {
 		return (
@@ -126,7 +132,10 @@ function ReportSectionView({
 	attachments: Record<string, ReportAttachmentDraft[]>;
 	pending?: boolean;
 	onValueChange: (id: string, value: string) => void;
-	onAttachmentsChange: (fieldId: string, files: ReportAttachmentDraft[]) => void;
+	onAttachmentsChange: (
+		fieldId: string,
+		files: ReportAttachmentDraft[],
+	) => void;
 }) {
 	return (
 		<ReportFormSection title={section.title} description={section.description}>
@@ -165,7 +174,10 @@ function ReportFieldGroupView({
 	attachments: Record<string, ReportAttachmentDraft[]>;
 	pending?: boolean;
 	onValueChange: (id: string, value: string) => void;
-	onAttachmentsChange: (fieldId: string, files: ReportAttachmentDraft[]) => void;
+	onAttachmentsChange: (
+		fieldId: string,
+		files: ReportAttachmentDraft[],
+	) => void;
 }) {
 	const isHorizontal = group.layout === "horizontal";
 	const childCount = group.children.length;
@@ -220,9 +232,16 @@ function ReportFieldGroupView({
 	}
 
 	return (
-		<div className={cn("work-item-group min-w-0", group.label ? "space-y-1.5" : undefined)}>
+		<div
+			className={cn(
+				"work-item-group min-w-0",
+				group.label ? "space-y-1.5" : undefined,
+			)}
+		>
 			{group.label ? (
-				<p className="text-muted-foreground text-xs font-medium">{group.label}</p>
+				<p className="text-muted-foreground text-xs font-medium">
+					{group.label}
+				</p>
 			) : null}
 			{grid}
 		</div>
@@ -242,7 +261,10 @@ function ReportFieldControl({
 	attachmentFiles: ReportAttachmentDraft[];
 	pending?: boolean;
 	onValueChange: (id: string, value: string) => void;
-	onAttachmentsChange: (fieldId: string, files: ReportAttachmentDraft[]) => void;
+	onAttachmentsChange: (
+		fieldId: string,
+		files: ReportAttachmentDraft[],
+	) => void;
 }) {
 	const fieldId = `report-${field.id}`;
 	const rows = field.rows ?? (field.kind === "textarea" ? 4 : undefined);
@@ -426,9 +448,14 @@ function ReportFieldControl({
 	}
 
 	if (field.kind === "select" && field.options?.length) {
+		const selectId = `${field.id}-select`;
+
 		return (
 			<div className="work-item-field min-w-0">
-				<label className="text-foreground/90 mb-1.5 block text-sm font-medium">
+				<label
+					htmlFor={selectId}
+					className="text-foreground/90 mb-1.5 block text-sm font-medium"
+				>
 					{field.label}
 				</label>
 				<Select
@@ -436,7 +463,7 @@ function ReportFieldControl({
 					onValueChange={(next) => onValueChange(field.id, next)}
 					disabled={pending}
 				>
-					<SelectTrigger>
+					<SelectTrigger id={selectId}>
 						<SelectValue placeholder={field.placeholder ?? "Choose…"} />
 					</SelectTrigger>
 					<SelectContent>

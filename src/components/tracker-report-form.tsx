@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState, type ReactNode } from "react";
+import { type ReactNode, useEffect, useMemo, useState } from "react";
 
 import { ReportIssueForm } from "#/components/report-issue-form";
 import { Label } from "#/components/ui/label";
@@ -11,7 +11,11 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "#/components/ui/select";
-import { buildReportBody, findTitleField, collectReportFields } from "#/lib/report-issue/fields";
+import {
+	buildReportBody,
+	collectReportFields,
+	findTitleField,
+} from "#/lib/report-issue/fields";
 import {
 	subtasksFromFormValue,
 	upsertSubtasksInBody,
@@ -139,7 +143,7 @@ export function TrackerReportForm({
 		setSubcomponentId((current) =>
 			subcomponents.some((s) => s.id === current) ? current : first,
 		);
-	}, [componentId, subcomponents]);
+	}, [subcomponents]);
 
 	const layout = useMemo(
 		() => resolveReportLayout(kind, componentId),

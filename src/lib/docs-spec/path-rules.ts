@@ -1,4 +1,4 @@
-import { classifyPlatformSpecRel } from "trudoc/layout";
+import { classifyPlatformSpecRel } from "@cyber-nomad-collective/trudoc/layout";
 
 export type PathClass =
 	| "domain-root"
@@ -25,7 +25,10 @@ export function specRelFromRepoPath(repoPath: string): string {
 	return repoPath.slice(idx + marker.length);
 }
 
-export function repoPathFromSpecRel(rel: string, ext: "mdx" | "md" = "mdx"): string {
+export function repoPathFromSpecRel(
+	rel: string,
+	ext: "mdx" | "md" = "mdx",
+): string {
 	const normalized = rel.replace(/\\/g, "/").replace(/^\//, "");
 	return `site/website/src/content/docs/platform-spec/${normalized}${normalized.endsWith(`.${ext}`) ? "" : `.${ext}`}`;
 }
@@ -49,7 +52,10 @@ export function validateSpecLevelPath(
 	};
 	const want = expected[specLevel];
 	if (!want) return `Unknown specLevel: ${specLevel}`;
-	if (pathClass !== want && !(specLevel === "domain" && pathClass === "domain-root")) {
+	if (
+		pathClass !== want &&
+		!(specLevel === "domain" && pathClass === "domain-root")
+	) {
 		return `Path class ${pathClass} does not match specLevel ${specLevel} for ${repoPath}`;
 	}
 	return null;

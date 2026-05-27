@@ -1,7 +1,14 @@
 "use client";
 
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Bug, ChevronUp, ExternalLink, FileText, LogOut, Map } from "lucide-react";
+import {
+	Bug,
+	ChevronUp,
+	ExternalLink,
+	FileText,
+	LogOut,
+	MapIcon,
+} from "lucide-react";
 
 import { ReportIssueDialog } from "#/components/report-issue-dialog";
 import { RoadmapNavTree } from "#/components/roadmap-nav-tree";
@@ -179,7 +186,7 @@ export function AppSidebar({
 									tooltip="Roadmap"
 								>
 									<Link to="/">
-										<Map />
+										<MapIcon />
 										<span>Roadmap</span>
 									</Link>
 								</SidebarMenuButton>
@@ -235,7 +242,6 @@ export function AppSidebar({
 						</SidebarMenu>
 					</SidebarGroupContent>
 				</SidebarGroup>
-
 			</SidebarContent>
 
 			<SidebarFooter className="border-t border-sidebar-border">

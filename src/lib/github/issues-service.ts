@@ -1,20 +1,22 @@
 import type { Octokit } from "@octokit/rest";
-
-import { issueToRoadmapTask, scopeLabelsFromRelation } from "#/lib/github/mappers";
+import { BUG_LABEL, issueToPublicBug } from "#/lib/github/bug-mappers";
+import {
+	issueToRoadmapTask,
+	scopeLabelsFromRelation,
+} from "#/lib/github/mappers";
+import { repoParams } from "#/lib/github/octokit";
 import {
 	DEFAULT_DELIVERY_VERSIONS,
 	isRoadmapStatusLabel,
 	isRoadmapVersionLabel,
 	priorityLabel,
 	ROADMAP_SPEC_APPROVAL,
-	stripRoadmapScopedLabels,
 	type RoadmapColumnId,
 	statusLabelForColumn,
+	stripRoadmapScopedLabels,
 	versionLabel,
 	workstreamLabel,
 } from "#/lib/github/roadmap-labels";
-import { repoParams } from "#/lib/github/octokit";
-import { BUG_LABEL, issueToPublicBug } from "#/lib/github/bug-mappers";
 import type { PublicBug, RoadmapTask } from "#/lib/github/types";
 import {
 	type SpecRelation,
@@ -45,7 +47,9 @@ export async function getRoadmapIssue(
 	octokit: Octokit,
 	issueNumber: number,
 ): Promise<RoadmapTask | null> {
-	const { getRoadmapIssueFromStore } = await import("#/lib/issues/read-service");
+	const { getRoadmapIssueFromStore } = await import(
+		"#/lib/issues/read-service"
+	);
 	const cached = getRoadmapIssueFromStore(issueNumber);
 	if (cached) return cached;
 
@@ -58,7 +62,9 @@ export async function listVersionLabels(octokit: Octokit): Promise<string[]> {
 	const { data } = await octokit.issues.listLabelsForRepo(repoParams());
 	const fromGithub = data
 		.map((l) => l.name)
-		.filter((name): name is string => Boolean(name && isRoadmapVersionLabel(name)))
+		.filter((name): name is string =>
+			Boolean(name && isRoadmapVersionLabel(name)),
+		)
 		.map((name) => name.slice("roadmap/version/".length));
 
 	const merged = new Set([...DEFAULT_DELIVERY_VERSIONS, ...fromGithub]);

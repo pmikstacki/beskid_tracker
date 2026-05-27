@@ -14,8 +14,8 @@ import {
 	DialogTitle,
 } from "#/components/ui/dialog";
 import type { SyncLogLine, SyncRunRecord } from "#/lib/sync/sync-run-types";
-import { getSyncRunProgressFn, importSeedBundleFn } from "#/server/sync";
 import { cn } from "#/lib/utils";
+import { getSyncRunProgressFn, importSeedBundleFn } from "#/server/sync";
 
 interface SeedImportDialogProps {
 	open: boolean;
@@ -158,8 +158,7 @@ export function SeedImportDialog({
 		);
 	};
 
-	const showLogPanel =
-		importing || importLogs.length > 0 || Boolean(importRun);
+	const showLogPanel = importing || importLogs.length > 0 || Boolean(importRun);
 
 	return (
 		<Dialog open={open} onOpenChange={onOpenChange}>
@@ -213,23 +212,20 @@ export function SeedImportDialog({
 							followTail={importing}
 							logClassName="h-52"
 							emptyMessage={
-								importing
-									? "Starting import…"
-									: "No log lines for this run."
+								importing ? "Starting import…" : "No log lines for this run."
 							}
 						/>
 					) : null}
 
 					{statusMessage ? (
-						<p
+						<output
 							className={cn(
 								"text-sm leading-relaxed",
 								mutation.isError && "text-destructive",
 							)}
-							role="status"
 						>
 							{statusMessage}
-						</p>
+						</output>
 					) : null}
 				</div>
 

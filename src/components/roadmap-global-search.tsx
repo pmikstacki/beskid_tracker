@@ -20,7 +20,10 @@ import {
 	CommandList,
 	CommandSeparator,
 } from "#/components/ui/command";
-import { searchRoadmapIndex, type RoadmapSearchHit } from "#/lib/roadmap/search-index";
+import {
+	type RoadmapSearchHit,
+	searchRoadmapIndex,
+} from "#/lib/roadmap/search-index";
 
 const KIND_LABELS: Record<RoadmapSearchHit["kind"], string> = {
 	nav: "Navigate",
@@ -117,7 +120,9 @@ export function RoadmapGlobalSearch({ hits }: RoadmapGlobalSearchProps) {
 					onValueChange={setQuery}
 				/>
 				<CommandList>
-					<CommandEmpty>No matches. Try a version id or workstream name.</CommandEmpty>
+					<CommandEmpty>
+						No matches. Try a version id or workstream name.
+					</CommandEmpty>
 					{[...grouped.entries()].map(([kind, items], index) => {
 						const Icon = KIND_ICONS[kind];
 						return (
@@ -132,7 +137,9 @@ export function RoadmapGlobalSearch({ hits }: RoadmapGlobalSearchProps) {
 										>
 											<Icon className="size-4 opacity-70" />
 											<div className="flex min-w-0 flex-col gap-0.5">
-												<span className="truncate font-medium">{hit.title}</span>
+												<span className="truncate font-medium">
+													{hit.title}
+												</span>
 												<span className="text-muted-foreground truncate text-xs">
 													{hit.subtitle}
 												</span>

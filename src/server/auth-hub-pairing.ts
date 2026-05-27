@@ -1,12 +1,10 @@
+import { BeskidAuthClient } from "@beskid/auth-client";
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
-
-import { BeskidAuthClient } from "@beskid/auth-client";
-
+import { env } from "#/env";
 import { saveAuthHubPairing } from "#/lib/auth/hub-settings";
 import { createOctokit } from "#/lib/github/octokit";
 import { canManageRoadmap } from "#/lib/github/permissions";
-import { env } from "#/env";
 
 const approveSchema = z.object({
 	code: z.string().min(4),

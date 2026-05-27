@@ -1,12 +1,11 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
-
-import type { RoadmapColumnId } from "#/lib/github/roadmap-labels";
 import {
 	getRoadmapIssue,
 	moveIssueToColumn,
 	updateRoadmapIssue,
 } from "#/lib/github/issues-service";
+import type { RoadmapColumnId } from "#/lib/github/roadmap-labels";
 import type { RoadmapTask } from "#/lib/github/types";
 
 async function withAuth<T>(
@@ -80,4 +79,7 @@ export const updateIssue = createServerFn({ method: "POST" })
 				.optional(),
 		}),
 	)
-	.handler(async ({ data }): Promise<RoadmapTask> => withAuth((octokit) => updateRoadmapIssue(octokit, data)));
+	.handler(
+		async ({ data }): Promise<RoadmapTask> =>
+			withAuth((octokit) => updateRoadmapIssue(octokit, data)),
+	);

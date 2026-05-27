@@ -36,13 +36,7 @@ export function RoadmapReactFilterBar({
 				{ workstreams, domains, areas, features },
 				showStructuredFilters,
 			),
-		[
-			workstreams,
-			domains,
-			areas,
-			features,
-			showStructuredFilters,
-		],
+		[workstreams, domains, areas, features, showStructuredFilters],
 	);
 	return (
 		<div className="beskid-svar-filter space-y-2">

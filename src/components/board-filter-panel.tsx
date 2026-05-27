@@ -3,7 +3,7 @@
 import { FilterBuilder, Willow, WillowDark } from "@svar-ui/react-filter";
 import { ChevronLeft, ChevronRight, Filter, X } from "lucide-react";
 import { useTheme } from "next-themes";
-import { useEffect, useMemo, useState, type ReactNode } from "react";
+import { type ReactNode, useEffect, useMemo, useState } from "react";
 
 import { Badge } from "#/components/ui/badge";
 import { Button } from "#/components/ui/button";
@@ -62,10 +62,7 @@ export function BoardFilterPanel({
 	const [expanded, setExpanded] = useState(false);
 	const fields = useMemo(
 		() =>
-			buildRoadmapFilterFields(
-				{ workstreams, domains, areas, features },
-				true,
-			),
+			buildRoadmapFilterFields({ workstreams, domains, areas, features }, true),
 		[workstreams, domains, areas, features],
 	);
 	const chips = useMemo(() => activeMetaFilterChips(query), [query]);
@@ -144,9 +141,7 @@ export function BoardFilterPanel({
 								key={preset.id}
 								type="button"
 								size="sm"
-								variant={
-									isPresetActive(preset, query) ? "default" : "outline"
-								}
+								variant={isPresetActive(preset, query) ? "default" : "outline"}
 								className="h-7 px-2.5 text-xs"
 								onClick={() => onQueryChange(preset.query)}
 							>

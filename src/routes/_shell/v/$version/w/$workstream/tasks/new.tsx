@@ -2,6 +2,7 @@ import { createFileRoute, redirect } from "@tanstack/react-router";
 
 import { CreateTaskWorkItem } from "#/components/create-task-work-item";
 import { ShellVersionsSync } from "#/components/shell-versions-sync";
+import { resolveBoardLoaderFilters } from "#/components/version-board-view";
 import { boardSearchSchema } from "#/lib/roadmap/board-search";
 import { roadmapScopeRouteOptions } from "#/lib/roadmap/scope-route-options";
 import {
@@ -11,7 +12,6 @@ import {
 import { getAuthUser } from "#/server/auth";
 import { getWorkstreamDashboard } from "#/server/catalog";
 import { getBoard } from "#/server/roadmap";
-import { resolveBoardLoaderFilters } from "#/components/version-board-view";
 
 export const Route = createFileRoute(
 	"/_shell/v/$version/w/$workstream/tasks/new",
@@ -31,11 +31,7 @@ export const Route = createFileRoute(
 			data: { version: params.version, slug: params.workstream },
 		});
 		const board = await getBoard({
-			data: resolveBoardLoaderFilters(
-				params.version,
-				deps,
-				params.workstream,
-			),
+			data: resolveBoardLoaderFilters(params.version, deps, params.workstream),
 		});
 		return {
 			version: params.version,
@@ -68,10 +64,14 @@ function WorkstreamCreateTaskPage() {
 				defaultWorkstream={workstream}
 				collapseTo={collapseTo}
 				onCreated={() => {
-					void navigate(workstreamBoardRouteTo(version, workstream, boardSearch));
+					void navigate(
+						workstreamBoardRouteTo(version, workstream, boardSearch),
+					);
 				}}
 				onClose={() => {
-					void navigate(workstreamBoardRouteTo(version, workstream, boardSearch));
+					void navigate(
+						workstreamBoardRouteTo(version, workstream, boardSearch),
+					);
 				}}
 			/>
 		</div>

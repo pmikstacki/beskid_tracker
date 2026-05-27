@@ -9,12 +9,9 @@ import { Badge } from "#/components/ui/badge";
 import { Button } from "#/components/ui/button";
 import { Progress } from "#/components/ui/progress";
 import { ScrollArea } from "#/components/ui/scroll-area";
-import {
-	getBoardSyncStatusFn,
-	triggerBoardSyncFn,
-} from "#/server/sync";
 import type { SyncStatusPayload } from "#/lib/sync/sync-run-types";
 import { cn } from "#/lib/utils";
+import { getBoardSyncStatusFn, triggerBoardSyncFn } from "#/server/sync";
 
 function SyncModeBadge({
 	mode,
@@ -50,7 +47,10 @@ interface BoardSyncPanelProps {
 	embedded?: boolean;
 }
 
-export function BoardSyncPanel({ canManage, embedded = false }: BoardSyncPanelProps) {
+export function BoardSyncPanel({
+	canManage,
+	embedded = false,
+}: BoardSyncPanelProps) {
 	const queryClient = useQueryClient();
 	const [importOpen, setImportOpen] = useState(false);
 
@@ -109,9 +109,9 @@ export function BoardSyncPanel({ canManage, embedded = false }: BoardSyncPanelPr
 			) : null}
 
 			{payload?.syncMode === "unconfigured" ? (
-				<p className="text-amber-700 text-xs dark:text-amber-400" role="status">
+				<output className="text-amber-700 text-xs dark:text-amber-400">
 					Webhook secret is not configured. Open Settings to finish setup.
-				</p>
+				</output>
 			) : null}
 
 			{payload?.state.lastSuccessAt ? (
@@ -215,7 +215,9 @@ export function BoardSyncPanel({ canManage, embedded = false }: BoardSyncPanelPr
 					open={importOpen}
 					onOpenChange={setImportOpen}
 					onComplete={() => {
-						void queryClient.invalidateQueries({ queryKey: ["board-sync-status"] });
+						void queryClient.invalidateQueries({
+							queryKey: ["board-sync-status"],
+						});
 						void queryClient.invalidateQueries();
 					}}
 				/>

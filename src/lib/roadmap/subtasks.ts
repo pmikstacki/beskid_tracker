@@ -1,8 +1,8 @@
 import {
 	parseSubtasksValue,
+	type SubtaskRow,
 	serializeSubtasksValue,
 	subtasksToMarkdown,
-	type SubtaskRow,
 } from "#/lib/report-issue/field-values";
 
 export type { SubtaskRow };
@@ -37,7 +37,9 @@ export function parseSubtasksBlock(body: string): RoadmapSubtasksBlock {
 		}
 	}
 
-	const sectionMatch = body.match(/### Subtasks\s*\n([\s\S]*?)(?:\n### |\n```|$)/);
+	const sectionMatch = body.match(
+		/### Subtasks\s*\n([\s\S]*?)(?:\n### |\n```|$)/,
+	);
 	if (!sectionMatch?.[1]) {
 		return { items: [] };
 	}
@@ -72,7 +74,10 @@ export function stripSubtasksFromBody(body: string): string {
 }
 
 /** Write GitHub task-list markdown + roadmap-subtasks fence into issue body. */
-export function upsertSubtasksInBody(body: string, items: SubtaskRow[]): string {
+export function upsertSubtasksInBody(
+	body: string,
+	items: SubtaskRow[],
+): string {
 	const without = stripSubtasksFromBody(body).trimEnd();
 	const nonEmpty = items.filter((item) => item.text.trim().length > 0);
 	if (nonEmpty.length === 0) {
@@ -101,7 +106,9 @@ export function subtasksFromFormValue(raw: string): SubtaskRow[] {
 
 export function subtasksToFormValue(items: SubtaskRow[]): string {
 	if (items.length === 0) {
-		return serializeSubtasksValue([{ id: crypto.randomUUID(), text: "", done: false }]);
+		return serializeSubtasksValue([
+			{ id: crypto.randomUUID(), text: "", done: false },
+		]);
 	}
 	return serializeSubtasksValue(items);
 }

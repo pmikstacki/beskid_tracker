@@ -20,7 +20,11 @@ interface BugDetailSheetProps {
 	onOpenChange: (open: boolean) => void;
 }
 
-export function BugDetailSheet({ bug, open, onOpenChange }: BugDetailSheetProps) {
+export function BugDetailSheet({
+	bug,
+	open,
+	onOpenChange,
+}: BugDetailSheetProps) {
 	if (!bug) return null;
 
 	return (
@@ -52,7 +56,9 @@ export function BugDetailSheet({ bug, open, onOpenChange }: BugDetailSheetProps)
 							{bug.bodyExcerpt}
 						</p>
 					) : (
-						<p className="text-muted-foreground text-sm">No description preview.</p>
+						<p className="text-muted-foreground text-sm">
+							No description preview.
+						</p>
 					)}
 				</div>
 				<SheetFooter>

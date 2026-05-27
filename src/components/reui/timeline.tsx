@@ -8,7 +8,10 @@ export function Timeline({
 }: ComponentPropsWithoutRef<"ol">) {
 	return (
 		<ol
-			className={cn("relative ml-1 space-y-6 border-s border-border ps-6", className)}
+			className={cn(
+				"relative ml-1 space-y-6 border-s border-border ps-6",
+				className,
+			)}
 			{...props}
 		/>
 	);

@@ -21,7 +21,10 @@ export function RelatedTopicsField({
 }: RelatedTopicsFieldProps) {
 	return (
 		<div className="work-item-field min-w-0">
-			<label htmlFor={id} className="text-foreground/90 mb-1.5 block text-sm font-medium">
+			<label
+				htmlFor={id}
+				className="text-foreground/90 mb-1.5 block text-sm font-medium"
+			>
 				{label}
 			</label>
 			<Textarea
@@ -31,7 +34,9 @@ export function RelatedTopicsField({
 				rows={6}
 				disabled={disabled}
 				className="font-mono text-xs"
-				placeholder={'[{"type":"Feature","title":"…","href":"/platform-spec/…/"}]'}
+				placeholder={
+					'[{"type":"Feature","title":"…","href":"/platform-spec/…/"}]'
+				}
 			/>
 			{hint ? (
 				<p className="text-muted-foreground mt-1.5 text-xs">{hint}</p>

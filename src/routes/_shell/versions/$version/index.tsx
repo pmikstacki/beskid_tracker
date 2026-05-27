@@ -71,8 +71,7 @@ function VersionOverviewPage() {
 										</CardHeader>
 										<CardContent className="text-muted-foreground pt-0 text-xs">
 											{deliverable.stats.tasksDone} /{" "}
-											{deliverable.stats.tasksTotal}{" "}
-											tasks done
+											{deliverable.stats.tasksTotal} tasks done
 										</CardContent>
 									</Card>
 								</li>

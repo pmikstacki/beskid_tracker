@@ -1,11 +1,12 @@
 import fs from "node:fs";
 import path from "node:path";
-
 import {
 	parseCatalogFile,
 	parseDocumentBundle,
-	type PlatformSpecCatalogIndex,
-	type PlatformSpecDocumentBundle,
+} from "@cyber-nomad-collective/trudoc/platform-spec/catalog";
+import type {
+	PlatformSpecCatalogIndex,
+	PlatformSpecDocumentBundle,
 } from "#/lib/platform-spec/catalog";
 import {
 	platformSpecCatalogUrl,
@@ -30,7 +31,9 @@ function loadCatalogFromDisk(websiteRoot: string): PlatformSpecCatalogIndex {
 		"platform-spec-catalog.json",
 	);
 	if (!fs.existsSync(catalogPath)) {
-		throw new Error(`Missing catalog at ${catalogPath} — run generate:platform-spec-catalog`);
+		throw new Error(
+			`Missing catalog at ${catalogPath} — run generate:platform-spec-catalog`,
+		);
 	}
 	const raw = JSON.parse(fs.readFileSync(catalogPath, "utf8")) as unknown;
 	return parseCatalogFile(raw) as PlatformSpecCatalogIndex;
@@ -69,10 +72,14 @@ export async function loadPlatformSpecCatalog(): Promise<PlatformSpecCatalogInde
 	}
 
 	const url = platformSpecCatalogUrl();
-	const response = await fetch(url, { headers: { Accept: "application/json" } });
+	const response = await fetch(url, {
+		headers: { Accept: "application/json" },
+	});
 	if (!response.ok) {
 		if (cachedCatalog) return cachedCatalog;
-		throw new Error(`Failed to load platform-spec catalog (${response.status}) from ${url}`);
+		throw new Error(
+			`Failed to load platform-spec catalog (${response.status}) from ${url}`,
+		);
 	}
 
 	const parsed = parseCatalogFile(await response.json());
@@ -90,7 +97,9 @@ export async function loadPlatformSpecDocument(
 	}
 
 	const url = platformSpecDocBundleUrl(slug);
-	const response = await fetch(url, { headers: { Accept: "application/json" } });
+	const response = await fetch(url, {
+		headers: { Accept: "application/json" },
+	});
 	if (!response.ok) {
 		throw new Error(`Failed to load document (${response.status}) from ${url}`);
 	}

@@ -1,13 +1,13 @@
 import type { RestEndpointMethodTypes } from "@octokit/rest";
 
 import {
-	areaLabel,
 	areaFromLabel,
+	areaLabel,
 	columnIdForStatusLabel,
-	domainLabel,
 	domainFromLabel,
-	featureLabel,
+	domainLabel,
 	featureFromLabel,
+	featureLabel,
 	isRoadmapStatusLabel,
 	priorityFromLabels,
 	ROADMAP_COLUMNS,
@@ -17,7 +17,6 @@ import {
 	workstreamFromLabel,
 } from "#/lib/github/roadmap-labels";
 import type { RoadmapColumns, RoadmapTask } from "#/lib/github/types";
-import { parseSubtasksBlock } from "#/lib/roadmap/subtasks";
 import { parseSpecLinks } from "#/lib/platform-spec/parse";
 import {
 	hierarchyFromSlug,
@@ -25,6 +24,7 @@ import {
 	parseSpecRelationsBlock,
 	type SpecRelation,
 } from "#/lib/platform-spec/relations";
+import { parseSubtasksBlock } from "#/lib/roadmap/subtasks";
 
 type GitHubIssue =
 	RestEndpointMethodTypes["issues"]["listForRepo"]["response"]["data"][number];
@@ -46,8 +46,7 @@ export function issueToRoadmapTask(issue: GitHubIssue): RoadmapTask | null {
 		? columnIdForStatusLabel(statusLabel)
 		: "Backlog";
 
-	const version =
-		labelNames.map(versionFromLabel).find(Boolean) ?? "v0.2";
+	const version = labelNames.map(versionFromLabel).find(Boolean) ?? "v0.2";
 
 	const parsedBlock = parseSpecRelationsBlock(body);
 	const legacy = parseSpecLinks(body).map((link) => ({
@@ -77,8 +76,7 @@ export function issueToRoadmapTask(issue: GitHubIssue): RoadmapTask | null {
 		specApproval: specApprovalFromLabels(labelNames),
 		version,
 		workstream: labelNames.map(workstreamFromLabel).find(Boolean),
-		domain:
-			labelNames.map(domainFromLabel).find(Boolean) ?? hierarchy?.domain,
+		domain: labelNames.map(domainFromLabel).find(Boolean) ?? hierarchy?.domain,
 		area: labelNames.map(areaFromLabel).find(Boolean) ?? hierarchy?.area,
 		feature:
 			labelNames.map(featureFromLabel).find(Boolean) ?? hierarchy?.feature,

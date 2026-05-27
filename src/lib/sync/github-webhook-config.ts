@@ -18,7 +18,9 @@ export function getGithubWebhookSecretFromDatabase(): string | null {
 
 /** Active webhook secret: environment variable overrides database. */
 export function getGithubWebhookSecret(): string | null {
-	return getGithubWebhookSecretFromEnv() ?? getGithubWebhookSecretFromDatabase();
+	return (
+		getGithubWebhookSecretFromEnv() ?? getGithubWebhookSecretFromDatabase()
+	);
 }
 
 export function getGithubWebhookSecretSource(): GithubWebhookSecretSource {
@@ -74,7 +76,10 @@ export function githubRepositoryWebhookAdminUrl(hookId: number): string {
 }
 
 export function setTrackerPublicOrigin(origin: string): void {
-	setAppSetting(APP_SETTING_KEYS.trackerPublicOrigin, origin.replace(/\/$/, ""));
+	setAppSetting(
+		APP_SETTING_KEYS.trackerPublicOrigin,
+		origin.replace(/\/$/, ""),
+	);
 }
 
 export function setGithubWebhookSecretInDatabase(secret: string): void {

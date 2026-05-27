@@ -3,11 +3,11 @@ import { createFileRoute, redirect } from "@tanstack/react-router";
 import { CreateTaskWorkItem } from "#/components/create-task-work-item";
 import { ShellVersionsSync } from "#/components/shell-versions-sync";
 import { boardSearchSchema } from "#/lib/roadmap/board-search";
+import { roadmapScopeRouteOptions } from "#/lib/roadmap/scope-route-options";
 import {
 	boardRouteTo,
 	boardSearchFromFilters,
 } from "#/lib/work-item-shell/paths";
-import { roadmapScopeRouteOptions } from "#/lib/roadmap/scope-route-options";
 import { getAuthUser } from "#/server/auth";
 import { getBoard } from "#/server/roadmap";
 

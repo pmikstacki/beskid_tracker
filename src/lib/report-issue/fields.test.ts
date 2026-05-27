@@ -1,5 +1,9 @@
 import { describe, expect, it } from "vitest";
-
+import type { ReportAttachmentDraft } from "#/lib/report-issue/field-values";
+import {
+	type StepRow,
+	serializeStepsValue,
+} from "#/lib/report-issue/field-values";
 import {
 	buildReportBody,
 	collectReportFields,
@@ -7,14 +11,17 @@ import {
 	reportGroup,
 	reportSection,
 } from "#/lib/report-issue/fields";
-import type { ReportAttachmentDraft } from "#/lib/report-issue/field-values";
-import { serializeStepsValue, type StepRow } from "#/lib/report-issue/field-values";
 
 describe("report form layout", () => {
 	it("collects fields from nested groups and sections", () => {
 		const layout = [
 			reportSection("s", "Section", [
-				reportField({ id: "title", kind: "title", label: "Title", required: true }),
+				reportField({
+					id: "title",
+					kind: "title",
+					label: "Title",
+					required: true,
+				}),
 				reportGroup("pair", "horizontal", [
 					reportField({ id: "a", kind: "text", label: "A" }),
 					reportField({ id: "b", kind: "text", label: "B" }),
@@ -37,7 +44,9 @@ describe("report form layout", () => {
 			]),
 		];
 
-		expect(buildReportBody(layout, { note: "hello" })).toBe("### Note\n\nhello");
+		expect(buildReportBody(layout, { note: "hello" })).toBe(
+			"### Note\n\nhello",
+		);
 	});
 
 	it("serializes reproduction steps into numbered markdown", () => {

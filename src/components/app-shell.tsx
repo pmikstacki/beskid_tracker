@@ -2,7 +2,7 @@
 
 import { BeskidHub } from "@beskid/beskid-ui/react/BeskidHub";
 import { useRouterState } from "@tanstack/react-router";
-import { useState, type ReactNode } from "react";
+import { type ReactNode, useState } from "react";
 
 import { AppSidebar } from "#/components/app-sidebar";
 import {

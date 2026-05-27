@@ -39,7 +39,8 @@ export function hierarchyFromSlug(slug: string): {
 	if (parts[0] !== "platform-spec") {
 		return { level: "unknown" };
 	}
-	const level = parts.length <= 2 ? "domain" : parts.length === 3 ? "area" : "feature";
+	const level =
+		parts.length <= 2 ? "domain" : parts.length === 3 ? "area" : "feature";
 	return {
 		domain: parts[1],
 		area: parts.length >= 3 ? parts[2] : undefined,
@@ -60,7 +61,9 @@ export function parseSpecRelationsBlock(body: string): SpecRelationsBlock {
 		}
 		return {
 			relations: parsed.relations
-				.filter((r) => typeof r.path === "string" && r.path.includes("platform-spec"))
+				.filter(
+					(r) => typeof r.path === "string" && r.path.includes("platform-spec"),
+				)
 				.map((r) => ({
 					path: r.path,
 					href: r.href ?? specPathToHref(r.path),

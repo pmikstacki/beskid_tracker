@@ -2,8 +2,8 @@
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Link, useRouter } from "@tanstack/react-router";
-import { useState, type ReactNode } from "react";
-
+import { type ReactNode, useState } from "react";
+import { TrackerReportForm } from "#/components/tracker-report-form";
 import { Button } from "#/components/ui/button";
 import {
 	Dialog,
@@ -13,7 +13,6 @@ import {
 	DialogTitle,
 	DialogTrigger,
 } from "#/components/ui/dialog";
-import { TrackerReportForm } from "#/components/tracker-report-form";
 import type { AuthUser } from "#/lib/github/types";
 import { createPublicBugFn } from "#/server/public-bugs";
 
@@ -99,8 +98,8 @@ export function ReportIssueDialog({
 				) : (
 					<div className="space-y-4">
 						<p className="text-muted-foreground text-sm">
-							Sign in with GitHub to file a bug through the tracker. Your account
-							will be attributed on the task.
+							Sign in with GitHub to file a bug through the tracker. Your
+							account will be attributed on the task.
 						</p>
 						<div className="flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
 							<Button

@@ -31,9 +31,7 @@ export function VersionSwitcher({
 			value={current}
 			onValueChange={(v) => navigate({ to, params: { version: v } })}
 		>
-			<SelectTrigger
-				className={className ?? "w-[7.5rem] font-mono text-sm"}
-			>
+			<SelectTrigger className={className ?? "w-[7.5rem] font-mono text-sm"}>
 				<SelectValue />
 			</SelectTrigger>
 			<SelectContent>

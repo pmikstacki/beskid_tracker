@@ -14,7 +14,11 @@ export interface WorkItemShellHeaderProps {
 	description?: string;
 	onClose?: () => void;
 	expandTo?: { to: string; params?: Record<string, string>; search?: unknown };
-	collapseTo?: { to: string; params?: Record<string, string>; search?: unknown };
+	collapseTo?: {
+		to: string;
+		params?: Record<string, string>;
+		search?: unknown;
+	};
 	actions?: ReactNode;
 }
 
@@ -35,15 +39,25 @@ export function WorkItemShellHeader({
 		<header
 			className={cn(
 				"work-item-shell__header shrink-0",
-				presentation === "page" && "border-b border-border/60 px-4 py-3 md:px-6",
+				presentation === "page" &&
+					"border-b border-border/60 px-4 py-3 md:px-6",
 				presentation === "pane" && "border-b border-border/60 px-3 py-2.5",
 				presentation === "dialog" && "pr-8",
 			)}
 		>
 			<div className="flex items-start gap-2">
 				{showCollapse && collapseTo ? (
-					<Button variant="ghost" size="icon-sm" className="mt-0.5 shrink-0" asChild>
-						<Link to={collapseTo.to} params={collapseTo.params} search={collapseTo.search}>
+					<Button
+						variant="ghost"
+						size="icon-sm"
+						className="mt-0.5 shrink-0"
+						asChild
+					>
+						<Link
+							to={collapseTo.to}
+							params={collapseTo.params}
+							search={collapseTo.search}
+						>
 							<ArrowLeft className="size-4" />
 							<span className="sr-only">Back to board</span>
 						</Link>
@@ -67,15 +81,29 @@ export function WorkItemShellHeader({
 				<div className="flex shrink-0 items-center gap-0.5">
 					{actions}
 					{showExpand && expandTo ? (
-						<Button variant="ghost" size="icon-sm" asChild title="Open full page">
-							<Link to={expandTo.to} params={expandTo.params} search={expandTo.search}>
+						<Button
+							variant="ghost"
+							size="icon-sm"
+							asChild
+							title="Open full page"
+						>
+							<Link
+								to={expandTo.to}
+								params={expandTo.params}
+								search={expandTo.search}
+							>
 								<Maximize2 className="size-4" />
 								<span className="sr-only">Open full page</span>
 							</Link>
 						</Button>
 					) : null}
 					{showCollapse && collapseTo ? (
-						<Button variant="ghost" size="icon-sm" asChild title="Dock to board pane">
+						<Button
+							variant="ghost"
+							size="icon-sm"
+							asChild
+							title="Dock to board pane"
+						>
 							<Link
 								to={collapseTo.to}
 								params={collapseTo.params}

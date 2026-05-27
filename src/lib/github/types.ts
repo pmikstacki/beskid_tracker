@@ -1,6 +1,6 @@
 import type { RoadmapColumnId } from "#/lib/github/roadmap-labels";
-import type { SubtaskRow } from "#/lib/report-issue/field-values";
 import type { SpecRelation } from "#/lib/platform-spec/relations";
+import type { SubtaskRow } from "#/lib/report-issue/field-values";
 
 export type RoadmapPriority = "high" | "medium" | "low";
 

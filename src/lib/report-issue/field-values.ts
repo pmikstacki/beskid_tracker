@@ -28,7 +28,11 @@ export function parseStepsValue(raw: string): StepRow[] {
 		if (!Array.isArray(parsed) || parsed.length === 0) {
 			return [{ id: newStepId(), text: "" }];
 		}
-		if (typeof parsed[0] === "object" && parsed[0] !== null && "id" in parsed[0]) {
+		if (
+			typeof parsed[0] === "object" &&
+			parsed[0] !== null &&
+			"id" in parsed[0]
+		) {
 			return (parsed as StepRow[]).map((row) => ({
 				id: String(row.id),
 				text: String(row.text ?? ""),

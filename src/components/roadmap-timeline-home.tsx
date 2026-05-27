@@ -2,17 +2,21 @@ import { Link } from "@tanstack/react-router";
 import { CircleDot } from "lucide-react";
 
 import { GitHubRateLimitAlert } from "#/components/github-rate-limit-alert";
-import { Timeline, TimelineDot, TimelineItem } from "#/components/reui/timeline";
+import {
+	Timeline,
+	TimelineDot,
+	TimelineItem,
+} from "#/components/reui/timeline";
 import { RoadmapStatWidgets } from "#/components/roadmap-stat-widgets";
 import { Badge } from "#/components/ui/badge";
 import { Button } from "#/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "#/components/ui/card";
+import type { AuthUser } from "#/lib/github/types";
 import type { RoadmapCatalog } from "#/lib/roadmap/types";
 import {
 	versionStatusBadgeVariant,
 	versionStatusLabel,
 } from "#/lib/roadmap/version-status";
-import type { AuthUser } from "#/lib/github/types";
 import type { PublicBugStatsPayload } from "#/server/public-bugs";
 
 interface RoadmapTimelineHomeProps {
@@ -34,9 +38,9 @@ export function RoadmapTimelineHome({
 					Beskid delivery roadmap
 				</h1>
 				<p className="text-muted-foreground mt-3 max-w-2xl text-sm leading-relaxed">
-					Public view of delivery versions, deliverables, and workstreams from the
-					planning catalog. Sign in to open the kanban board and manage roadmap
-					tasks.
+					Public view of delivery versions, deliverables, and workstreams from
+					the planning catalog. Sign in to open the kanban board and manage
+					roadmap tasks.
 				</p>
 				<div className="mt-6 flex flex-wrap gap-2">
 					<Button variant="outline" size="sm" asChild>
@@ -62,7 +66,9 @@ export function RoadmapTimelineHome({
 				</div>
 			</header>
 
-			<GitHubRateLimitAlert message={bugStats.rateLimited ? bugStats.message : undefined} />
+			<GitHubRateLimitAlert
+				message={bugStats.rateLimited ? bugStats.message : undefined}
+			/>
 
 			<section className="dashboard-section mb-10">
 				<h2 className="dashboard-section__title mb-4 text-sm font-semibold tracking-wide text-muted-foreground uppercase">
@@ -85,7 +91,10 @@ export function RoadmapTimelineHome({
 				<Timeline>
 					{catalog.versions.map((version) => (
 						<TimelineItem key={version.id}>
-							<TimelineDot aria-hidden className="text-primary border-primary/40">
+							<TimelineDot
+								aria-hidden
+								className="text-primary border-primary/40"
+							>
 								<CircleDot className="size-3.5" />
 							</TimelineDot>
 							<Card className="dashboard-widget island-shell flex-1">

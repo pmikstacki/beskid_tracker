@@ -1,11 +1,12 @@
 import fs from "node:fs";
-import path from "node:path";
 import os from "node:os";
-
-import type { SpecProposalChange } from "#/lib/docs-spec/types";
-import { buildMdxFile } from "#/lib/docs-spec/frontmatter";
-import { parseFrontmatterJson } from "#/lib/docs-spec/frontmatter";
+import path from "node:path";
+import {
+	buildMdxFile,
+	parseFrontmatterJson,
+} from "#/lib/docs-spec/frontmatter";
 import { specRelFromRepoPath } from "#/lib/docs-spec/path-rules";
+import type { SpecProposalChange } from "#/lib/docs-spec/types";
 import { loadPlatformSpecDocument } from "#/lib/platform-spec/catalog-loader";
 
 export interface MaterializedWorkspace {
@@ -37,7 +38,11 @@ async function seedBaselineFile(
 		if (bundle.layoutJson) {
 			const layoutPath = path.join(path.dirname(abs), "layout.json");
 			if (!fs.existsSync(layoutPath)) {
-				fs.writeFileSync(layoutPath, `${JSON.stringify(bundle.layoutJson, null, 2)}\n`, "utf8");
+				fs.writeFileSync(
+					layoutPath,
+					`${JSON.stringify(bundle.layoutJson, null, 2)}\n`,
+					"utf8",
+				);
 			}
 		}
 	} catch {
@@ -50,7 +55,13 @@ export async function materializeProposalWorkspace(
 ): Promise<MaterializedWorkspace> {
 	const rootDir = fs.mkdtempSync(path.join(os.tmpdir(), "beskid-proposal-"));
 	const websiteRoot = path.join(rootDir, "site", "website");
-	const specRoot = path.join(websiteRoot, "src", "content", "docs", "platform-spec");
+	const specRoot = path.join(
+		websiteRoot,
+		"src",
+		"content",
+		"docs",
+		"platform-spec",
+	);
 	fs.mkdirSync(specRoot, { recursive: true });
 
 	const changedRelPaths: string[] = [];
@@ -74,7 +85,11 @@ export async function materializeProposalWorkspace(
 		if (change.layoutJson) {
 			const layout = JSON.parse(change.layoutJson) as Record<string, unknown>;
 			const layoutPath = path.join(path.dirname(abs), "layout.json");
-			fs.writeFileSync(layoutPath, `${JSON.stringify(layout, null, 2)}\n`, "utf8");
+			fs.writeFileSync(
+				layoutPath,
+				`${JSON.stringify(layout, null, 2)}\n`,
+				"utf8",
+			);
 		}
 	}
 
@@ -88,6 +103,8 @@ export async function materializeProposalWorkspace(
 	return { rootDir, websiteRoot, changedRelPaths };
 }
 
-export function cleanupMaterializedWorkspace(workspace: MaterializedWorkspace): void {
+export function cleanupMaterializedWorkspace(
+	workspace: MaterializedWorkspace,
+): void {
 	fs.rmSync(workspace.rootDir, { recursive: true, force: true });
 }

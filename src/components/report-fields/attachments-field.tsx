@@ -24,7 +24,6 @@ interface AttachmentsFieldProps {
 }
 
 export function AttachmentsField({
-	id,
 	label,
 	hint,
 	files,
@@ -81,15 +80,8 @@ export function AttachmentsField({
 				}}
 			/>
 
-			<div
-				role="button"
-				tabIndex={0}
-				onKeyDown={(e) => {
-					if (e.key === "Enter" || e.key === " ") {
-						e.preventDefault();
-						inputRef.current?.click();
-					}
-				}}
+			<button
+				type="button"
 				onClick={() => inputRef.current?.click()}
 				onDragOver={(e) => {
 					e.preventDefault();
@@ -116,7 +108,7 @@ export function AttachmentsField({
 				<p className="text-muted-foreground mt-1 text-xs">
 					{files.length}/{MAX_FILES} files
 				</p>
-			</div>
+			</button>
 
 			{error ? (
 				<p className="text-destructive mt-2 text-xs" role="alert">

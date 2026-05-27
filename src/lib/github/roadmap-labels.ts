@@ -16,7 +16,12 @@ export const ROADMAP_PRIORITY_LABELS = {
 
 export const ROADMAP_VERSION_PREFIX = "roadmap/version/";
 
-export const DEFAULT_DELIVERY_VERSIONS = ["v0.1", "v0.2", "v0.3", "v0.4"] as const;
+export const DEFAULT_DELIVERY_VERSIONS = [
+	"v0.1",
+	"v0.2",
+	"v0.3",
+	"v0.4",
+] as const;
 
 export type DeliveryVersion = (typeof DEFAULT_DELIVERY_VERSIONS)[number];
 

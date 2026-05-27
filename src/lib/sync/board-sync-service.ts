@@ -13,15 +13,15 @@ import {
 import type { GitHubIssuePayload } from "#/lib/storage/stored-issue";
 import { isGithubSyncDisabled } from "#/lib/sync/github-webhook-config";
 import {
+	createSyncOctokit,
+	hasGithubSyncCredentials,
+} from "#/lib/sync/sync-octokit";
+import {
 	createSyncRun,
 	getActiveSyncRun,
 	pruneOldSyncRuns,
 	type SyncRunHandle,
 } from "#/lib/sync/sync-run-repository";
-import {
-	createSyncOctokit,
-	hasGithubSyncCredentials,
-} from "#/lib/sync/sync-octokit";
 
 export interface BoardSyncPullResult {
 	ok: boolean;
@@ -49,11 +49,16 @@ async function paginateIssues(
 	}) as Promise<GitHubIssuePayload[]>;
 }
 
-async function syncRepoLabels(octokit: Octokit, run: SyncRunHandle): Promise<void> {
+async function syncRepoLabels(
+	octokit: Octokit,
+	run: SyncRunHandle,
+): Promise<void> {
 	run.setPhase("Fetching repository labels");
 	const { data } = await octokit.issues.listLabelsForRepo(repoParams());
 	replaceRepoLabels(
-		data.map((label) => label.name).filter((name): name is string => Boolean(name)),
+		data
+			.map((label) => label.name)
+			.filter((name): name is string => Boolean(name)),
 	);
 	run.log(`Cached ${data.length} labels`);
 }
@@ -68,7 +73,9 @@ export async function runBoardSyncPull(options?: {
 	const source = options?.source ?? "manual";
 
 	writeSyncAttempt();
-	run.log(`Pull from GitHub (${source}) — one-time bootstrap or manual refresh`);
+	run.log(
+		`Pull from GitHub (${source}) — one-time bootstrap or manual refresh`,
+	);
 
 	try {
 		run.setPhase("Fetching open issues");
@@ -132,7 +139,9 @@ export async function runBoardSyncPull(options?: {
 	}
 }
 
-export function triggerBoardSyncPull(force = false): Promise<BoardSyncPullResult> {
+export function triggerBoardSyncPull(
+	force = false,
+): Promise<BoardSyncPullResult> {
 	if (!force && pullInFlight) return pullInFlight;
 
 	const run = createSyncRun("pull");

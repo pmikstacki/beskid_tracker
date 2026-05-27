@@ -9,7 +9,7 @@ Application: **beskid tracker** (`Cyber-Nomad-Collective/beskid_tracker`, branch
 ## Build
 
 - Image: [`Dockerfile`](Dockerfile)
-- **`NODE_AUTH_TOKEN`** (build secret): GitHub Packages read token for `@beskid/*` during `bun install`
+- **`NODE_AUTH_TOKEN`** (build secret, required): GitHub PAT or fine-grained token with **`read:packages`** for `@beskid/*` and `@cyber-nomad-collective/*` during `bun install` (see [`.npmrc.example`](.npmrc.example))
 
 ## Runtime secrets
 

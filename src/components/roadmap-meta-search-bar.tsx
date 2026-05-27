@@ -70,19 +70,28 @@ export function RoadmapMetaSearchBar({
 	};
 
 	const setStatus = (status: RoadmapColumnId | undefined) => {
-		let next = value.replace(/\bstatus:\S+/gi, "").replace(/\s+/g, " ").trim();
+		let next = value
+			.replace(/\bstatus:\S+/gi, "")
+			.replace(/\s+/g, " ")
+			.trim();
 		if (status) next = `${next} status:${status}`.trim();
 		onChange(next);
 	};
 
 	const setPriority = (priority: RoadmapPriority | undefined) => {
-		let next = value.replace(/\bpriority:\S+/gi, "").replace(/\s+/g, " ").trim();
+		let next = value
+			.replace(/\bpriority:\S+/gi, "")
+			.replace(/\s+/g, " ")
+			.trim();
 		if (priority) next = `${next} priority:${priority}`.trim();
 		onChange(next);
 	};
 
 	const setSpec = (linked: "linked" | "none" | undefined) => {
-		let next = value.replace(/\bspec:\S+/gi, "").replace(/\s+/g, " ").trim();
+		let next = value
+			.replace(/\bspec:\S+/gi, "")
+			.replace(/\s+/g, " ")
+			.trim();
 		if (linked) next = `${next} spec:${linked}`.trim();
 		onChange(next);
 	};
@@ -116,7 +125,12 @@ export function RoadmapMetaSearchBar({
 				{showStructuredFilters ? (
 					<Popover open={filtersOpen} onOpenChange={setFiltersOpen}>
 						<PopoverTrigger asChild>
-							<Button type="button" variant="outline" size="sm" className="gap-1.5">
+							<Button
+								type="button"
+								variant="outline"
+								size="sm"
+								className="gap-1.5"
+							>
 								<SlidersHorizontal className="size-3.5" />
 								Filters
 							</Button>
@@ -141,13 +155,17 @@ export function RoadmapMetaSearchBar({
 									label="Domain"
 									value={parsed.domain ?? ALL}
 									options={domains}
-									onChange={(v) => appendToken("domain", v === ALL ? undefined : v)}
+									onChange={(v) =>
+										appendToken("domain", v === ALL ? undefined : v)
+									}
 								/>
 								<FilterSelect
 									label="Area"
 									value={parsed.area ?? ALL}
 									options={areas}
-									onChange={(v) => appendToken("area", v === ALL ? undefined : v)}
+									onChange={(v) =>
+										appendToken("area", v === ALL ? undefined : v)
+									}
 								/>
 								<FilterSelect
 									label="Feature"
@@ -162,9 +180,7 @@ export function RoadmapMetaSearchBar({
 									value={parsed.status ?? ALL}
 									options={["Backlog", "In Progress", "Done"]}
 									onChange={(v) =>
-										setStatus(
-											v === ALL ? undefined : (v as RoadmapColumnId),
-										)
+										setStatus(v === ALL ? undefined : (v as RoadmapColumnId))
 									}
 								/>
 								<FilterSelect
@@ -172,9 +188,7 @@ export function RoadmapMetaSearchBar({
 									value={parsed.priority ?? ALL}
 									options={["high", "medium", "low"]}
 									onChange={(v) =>
-										setPriority(
-											v === ALL ? undefined : (v as RoadmapPriority),
-										)
+										setPriority(v === ALL ? undefined : (v as RoadmapPriority))
 									}
 								/>
 								<FilterSelect
@@ -188,11 +202,7 @@ export function RoadmapMetaSearchBar({
 									}
 									options={["linked", "none"]}
 									onChange={(v) =>
-										setSpec(
-											v === ALL
-												? undefined
-												: (v as "linked" | "none"),
-										)
+										setSpec(v === ALL ? undefined : (v as "linked" | "none"))
 									}
 								/>
 							</div>
@@ -222,7 +232,9 @@ export function RoadmapMetaSearchBar({
 							<button
 								type="button"
 								className="hover:bg-muted rounded-sm p-0.5"
-								onClick={() => onChange(removeTokenFromQuery(value, chip.removeToken))}
+								onClick={() =>
+									onChange(removeTokenFromQuery(value, chip.removeToken))
+								}
 								aria-label={`Remove ${chip.label}`}
 							>
 								<X className="size-3" />

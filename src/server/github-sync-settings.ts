@@ -67,7 +67,9 @@ function buildGithubWebhookSettings(): GithubWebhookSettingsPayload {
 }
 
 async function requireMaintainer() {
-	const { withOctokit, requireSession } = await import("#/server/auth-guard.server");
+	const { withOctokit, requireSession } = await import(
+		"#/server/auth-guard.server"
+	);
 	const session = await requireSession();
 
 	return withOctokit(async (octokit) => {
@@ -78,12 +80,12 @@ async function requireMaintainer() {
 	});
 }
 
-export const getGithubWebhookSettingsFn = createServerFn({ method: "GET" }).handler(
-	async (): Promise<GithubWebhookSettingsPayload> => {
-		await requireMaintainer();
-		return buildGithubWebhookSettings();
-	},
-);
+export const getGithubWebhookSettingsFn = createServerFn({
+	method: "GET",
+}).handler(async (): Promise<GithubWebhookSettingsPayload> => {
+	await requireMaintainer();
+	return buildGithubWebhookSettings();
+});
 
 export const updateGithubWebhookSettingsFn = createServerFn({ method: "POST" })
 	.inputValidator(
@@ -118,11 +120,13 @@ export const updateGithubWebhookSettingsFn = createServerFn({ method: "POST" })
 		return buildGithubWebhookSettings();
 	});
 
-export const provisionGithubWebhookFn = createServerFn({ method: "POST" }).handler(
-	async (): Promise<ProvisionGithubWebhookPayload> => {
-		const { withOctokit } = await import("#/server/auth-guard.server");
-		await requireMaintainer();
+export const provisionGithubWebhookFn = createServerFn({
+	method: "POST",
+}).handler(async (): Promise<ProvisionGithubWebhookPayload> => {
+	const { withOctokit } = await import("#/server/auth-guard.server");
+	await requireMaintainer();
 
-		return withOctokit(async (octokit) => provisionRepositoryIssuesWebhook(octokit));
-	},
-);
+	return withOctokit(async (octokit) =>
+		provisionRepositoryIssuesWebhook(octokit),
+	);
+});

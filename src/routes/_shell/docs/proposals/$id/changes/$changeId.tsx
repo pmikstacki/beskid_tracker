@@ -6,7 +6,9 @@ import { Button } from "#/components/ui/button";
 import { getAuthUser } from "#/server/auth";
 import { getSpecProposalFn } from "#/server/spec-proposals";
 
-export const Route = createFileRoute("/_shell/docs/proposals/$id/changes/$changeId")({
+export const Route = createFileRoute(
+	"/_shell/docs/proposals/$id/changes/$changeId",
+)({
 	loader: async ({ params }) => {
 		const [proposal, user] = await Promise.all([
 			getSpecProposalFn({ data: { id: params.id } }),
@@ -37,13 +39,21 @@ function EditProposalChangePage() {
 				changeId={changeId}
 				initial={{
 					changeKind: change.changeKind,
-					specLevel: change.specLevel as "domain" | "area" | "feature" | "article" | "adr",
+					specLevel: change.specLevel as
+						| "domain"
+						| "area"
+						| "feature"
+						| "article"
+						| "adr",
 					frontmatterJson: change.frontmatterJson,
 					bodyMd: change.bodyMd,
 				}}
 				defaultOwner={
 					user
-						? { name: user.name ?? user.login, email: `${user.login}@users.noreply.github.com` }
+						? {
+								name: user.name ?? user.login,
+								email: `${user.login}@users.noreply.github.com`,
+							}
 						: undefined
 				}
 			/>

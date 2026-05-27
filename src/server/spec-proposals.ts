@@ -1,7 +1,10 @@
+import { verifyProposalWorkspace } from "@cyber-nomad-collective/trudoc/verify";
 import { createServerFn } from "@tanstack/react-start";
-import { verifyProposalWorkspace } from "trudoc/verify";
 
-import { buildRepoPathFromForm, buildSlugFromRepoPath } from "#/lib/docs-spec/build-path";
+import {
+	buildRepoPathFromForm,
+	buildSlugFromRepoPath,
+} from "#/lib/docs-spec/build-path";
 import {
 	formValuesToFrontmatter,
 	frontmatterToFormValues,
@@ -10,7 +13,10 @@ import {
 	parseFrontmatterJson,
 	validateFrontmatterForLevel,
 } from "#/lib/docs-spec/frontmatter";
-import { pathClassFromRepoPath, validateSpecLevelPath } from "#/lib/docs-spec/path-rules";
+import {
+	pathClassFromRepoPath,
+	validateSpecLevelPath,
+} from "#/lib/docs-spec/path-rules";
 import type {
 	ProposalValidationResult,
 	SpecLevel,
@@ -38,20 +44,26 @@ import {
 } from "#/lib/storage/proposals-repository";
 
 async function withAuthUser<T>(
-	fn: (ctx: { login: string; octokit: import("@octokit/rest").Octokit }) => Promise<T>,
+	fn: (ctx: {
+		login: string;
+		octokit: import("@octokit/rest").Octokit;
+	}) => Promise<T>,
 ): Promise<T> {
-	const { withOctokit, requireSession } = await import("#/server/auth-guard.server");
+	const { withOctokit, requireSession } = await import(
+		"#/server/auth-guard.server"
+	);
 	return withOctokit(async (octokit) => {
 		const session = await requireSession();
 		return fn({ login: session.login, octokit });
 	});
 }
 
-export const listSpecProposalsFn = createServerFn({ method: "GET" }).handler(async () =>
-	withAuthUser(async () => {
-		const db = getIssuesDatabase();
-		return listSpecProposals(db);
-	}),
+export const listSpecProposalsFn = createServerFn({ method: "GET" }).handler(
+	async () =>
+		withAuthUser(async () => {
+			const db = getIssuesDatabase();
+			return listSpecProposals(db);
+		}),
 );
 
 export const getSpecProposalFn = createServerFn({ method: "GET" })
@@ -66,7 +78,9 @@ export const getSpecProposalFn = createServerFn({ method: "GET" })
 	);
 
 export const createSpecProposalFn = createServerFn({ method: "POST" })
-	.inputValidator((data: { title: string; summary?: string; baseRef?: string }) => data)
+	.inputValidator(
+		(data: { title: string; summary?: string; baseRef?: string }) => data,
+	)
 	.handler(async ({ data }) =>
 		withAuthUser(async ({ login }) => {
 			const db = getIssuesDatabase();
@@ -205,58 +219,59 @@ export const deleteSpecProposalChangeFn = createServerFn({ method: "POST" })
 
 export const validateSpecProposalFn = createServerFn({ method: "POST" })
 	.inputValidator((data: { id: string }) => data)
-	.handler(async ({ data }): Promise<ProposalValidationResult> =>
-		withAuthUser(async () => {
-			const db = getIssuesDatabase();
-			const proposal = getSpecProposal(db, data.id);
-			if (!proposal) throw new Error("Proposal not found");
+	.handler(
+		async ({ data }): Promise<ProposalValidationResult> =>
+			withAuthUser(async () => {
+				const db = getIssuesDatabase();
+				const proposal = getSpecProposal(db, data.id);
+				if (!proposal) throw new Error("Proposal not found");
 
-			updateSpecProposal(db, data.id, { status: "validating" });
+				updateSpecProposal(db, data.id, { status: "validating" });
 
-			if (proposal.changes.length === 0) {
-				const result: ProposalValidationResult = {
-					ok: false,
-					issues: [
-						{
-							code: "PROP001",
-							severity: "error",
-							file: "",
-							message: "Proposal has no document changes",
-							source: "proposal",
-						},
-					],
-					validatedAt: new Date().toISOString(),
-				};
-				updateSpecProposal(db, data.id, {
-					status: "failed",
-					validationJson: JSON.stringify(result),
-				});
-				return result;
-			}
+				if (proposal.changes.length === 0) {
+					const result: ProposalValidationResult = {
+						ok: false,
+						issues: [
+							{
+								code: "PROP001",
+								severity: "error",
+								file: "",
+								message: "Proposal has no document changes",
+								source: "proposal",
+							},
+						],
+						validatedAt: new Date().toISOString(),
+					};
+					updateSpecProposal(db, data.id, {
+						status: "failed",
+						validationJson: JSON.stringify(result),
+					});
+					return result;
+				}
 
-			const workspace = await materializeProposalWorkspace(proposal.changes);
-			try {
-				const verify = verifyProposalWorkspace({
-					websiteRoot: workspace.websiteRoot,
-					changedRelPaths: workspace.changedRelPaths,
-				});
+				const workspace = await materializeProposalWorkspace(proposal.changes);
+				try {
+					const verify = verifyProposalWorkspace({
+						websiteRoot: workspace.websiteRoot,
+						changedRelPaths: workspace.changedRelPaths,
+					});
 
-				const result: ProposalValidationResult = {
-					ok: verify.ok,
-					issues: verify.issues,
-					validatedAt: new Date().toISOString(),
-				};
+					const result: ProposalValidationResult = {
+						ok: verify.ok,
+						issues: verify.issues,
+						validatedAt: new Date().toISOString(),
+					};
 
-				updateSpecProposal(db, data.id, {
-					status: result.ok ? "draft" : "failed",
-					validationJson: JSON.stringify(result),
-				});
+					updateSpecProposal(db, data.id, {
+						status: result.ok ? "draft" : "failed",
+						validationJson: JSON.stringify(result),
+					});
 
-				return result;
-			} finally {
-				cleanupMaterializedWorkspace(workspace);
-			}
-		}),
+					return result;
+				} finally {
+					cleanupMaterializedWorkspace(workspace);
+				}
+			}),
 	);
 
 export const submitSpecProposalFn = createServerFn({ method: "POST" })

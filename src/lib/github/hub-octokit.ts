@@ -1,5 +1,5 @@
-import { Octokit } from "@octokit/rest";
 import { githubProxyBaseUrl } from "@beskid/auth-client";
+import { Octokit } from "@octokit/rest";
 
 import { getAuthHubUrl } from "#/lib/auth/hub-settings";
 

@@ -1,7 +1,6 @@
 import { z } from "zod";
-
-import { VERSION_STATUSES } from "#/lib/roadmap/version-status";
 import { SPEC_RELATION_TYPES } from "#/lib/platform-spec/relations";
+import { VERSION_STATUSES } from "#/lib/roadmap/version-status";
 
 export const seedGitSourceSchema = z.object({
 	repo: z.string().min(1),

@@ -5,7 +5,7 @@ import {
 	domainSpecSchema,
 	featureSpecSchema,
 	platformSpecNodeSchema,
-} from "trudoc/schema/content";
+} from "@cyber-nomad-collective/trudoc/schema/content";
 import { stringify } from "yaml";
 import type { z } from "zod";
 
@@ -42,11 +42,16 @@ export function validateFrontmatterForLevel(
 	};
 }
 
-export function serializeFrontmatterYaml(frontmatter: Record<string, unknown>): string {
+export function serializeFrontmatterYaml(
+	frontmatter: Record<string, unknown>,
+): string {
 	return stringify(frontmatter).trimEnd();
 }
 
-export function buildMdxFile(frontmatter: Record<string, unknown>, body: string): string {
+export function buildMdxFile(
+	frontmatter: Record<string, unknown>,
+	body: string,
+): string {
 	const yaml = stringify(frontmatter).trimEnd();
 	const normalizedBody = body.startsWith("\n") ? body : `\n${body}`;
 	return `---\n${yaml}\n---${normalizedBody.endsWith("\n") ? normalizedBody : `${normalizedBody}\n`}`;

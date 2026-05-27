@@ -34,7 +34,10 @@ function NewProposalChangePage() {
 				proposalId={id}
 				defaultOwner={
 					user
-						? { name: user.name ?? user.login, email: `${user.login}@users.noreply.github.com` }
+						? {
+								name: user.name ?? user.login,
+								email: `${user.login}@users.noreply.github.com`,
+							}
 						: undefined
 				}
 			/>

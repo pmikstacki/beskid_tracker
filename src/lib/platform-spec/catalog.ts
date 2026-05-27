@@ -1,7 +1,9 @@
-import type { PlatformSpecCatalogEntry } from "trudoc/platform-spec/catalog";
+import type { PlatformSpecCatalogEntry } from "@cyber-nomad-collective/trudoc/platform-spec/catalog";
 
-export type { PlatformSpecCatalogEntry, PlatformSpecDocumentBundle } from "trudoc/platform-spec/catalog";
-export { parseCatalogFile, parseDocumentBundle } from "trudoc/platform-spec/catalog";
+export type {
+	PlatformSpecCatalogEntry,
+	PlatformSpecDocumentBundle,
+} from "@cyber-nomad-collective/trudoc/platform-spec/catalog";
 
 export interface PlatformSpecCatalogIndex {
 	generatedAt: string;
@@ -18,7 +20,8 @@ export function searchCatalogEntries(
 
 	const scored = entries
 		.map((entry) => {
-			const hay = `${entry.title} ${entry.slug} ${entry.specLevel ?? ""}`.toLowerCase();
+			const hay =
+				`${entry.title} ${entry.slug} ${entry.specLevel ?? ""}`.toLowerCase();
 			if (hay.includes(q)) {
 				const score = entry.title.toLowerCase().startsWith(q)
 					? 3
@@ -29,9 +32,13 @@ export function searchCatalogEntries(
 			}
 			return null;
 		})
-		.filter((x): x is { entry: PlatformSpecCatalogEntry; score: number } => x != null);
+		.filter(
+			(x): x is { entry: PlatformSpecCatalogEntry; score: number } => x != null,
+		);
 
-	scored.sort((a, b) => b.score - a.score || a.entry.title.localeCompare(b.entry.title));
+	scored.sort(
+		(a, b) => b.score - a.score || a.entry.title.localeCompare(b.entry.title),
+	);
 	return scored.slice(0, limit).map((s) => s.entry);
 }
 
@@ -45,8 +52,10 @@ export function filterCatalogEntries(
 	},
 ): PlatformSpecCatalogEntry[] {
 	return entries.filter((entry) => {
-		if (filters.specLevel && entry.specLevel !== filters.specLevel) return false;
-		if (filters.pathClass && entry.pathClass !== filters.pathClass) return false;
+		if (filters.specLevel && entry.specLevel !== filters.specLevel)
+			return false;
+		if (filters.pathClass && entry.pathClass !== filters.pathClass)
+			return false;
 		if (filters.status && entry.status !== filters.status) return false;
 		if (filters.domain) {
 			const domain = entry.slug.split("/").filter(Boolean)[1];

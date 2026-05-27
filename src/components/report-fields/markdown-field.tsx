@@ -1,13 +1,6 @@
 "use client";
 
-import {
-	Bold,
-	Code,
-	Italic,
-	List,
-	ListOrdered,
-	Quote,
-} from "lucide-react";
+import { Bold, Code, Italic, List, ListOrdered, Quote } from "lucide-react";
 import { useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";

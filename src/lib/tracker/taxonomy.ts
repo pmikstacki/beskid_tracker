@@ -4,10 +4,10 @@
  */
 import {
 	findTitleField,
+	type ReportFormLayout,
 	reportField,
 	reportGroup,
 	reportSection,
-	type ReportFormLayout,
 } from "#/lib/report-issue/fields";
 
 export type TrackerReportKind = "bug" | "task";
@@ -49,28 +49,24 @@ const baseBugLayout = (extra: ReportFormLayout = []): ReportFormLayout => [
 		],
 		"Give maintainers enough context to triage quickly.",
 	),
-	reportSection(
-		"outcome",
-		"Expected vs actual",
-		[
-			reportGroup("bug-outcome", "horizontal", [
-				reportField({
-					id: "expected",
-					kind: "markdown",
-					label: "Expected behavior",
-					placeholder: "What should have happened?",
-					rows: 4,
-				}),
-				reportField({
-					id: "actual",
-					kind: "markdown",
-					label: "Actual behavior",
-					placeholder: "What happened instead?",
-					rows: 4,
-				}),
-			]),
-		],
-	),
+	reportSection("outcome", "Expected vs actual", [
+		reportGroup("bug-outcome", "horizontal", [
+			reportField({
+				id: "expected",
+				kind: "markdown",
+				label: "Expected behavior",
+				placeholder: "What should have happened?",
+				rows: 4,
+			}),
+			reportField({
+				id: "actual",
+				kind: "markdown",
+				label: "Actual behavior",
+				placeholder: "What happened instead?",
+				rows: 4,
+			}),
+		]),
+	]),
 	reportSection(
 		"reproduction",
 		"Steps to reproduce",
@@ -85,37 +81,33 @@ const baseBugLayout = (extra: ReportFormLayout = []): ReportFormLayout => [
 		],
 		"Walk through the smallest path that triggers the bug.",
 	),
-	reportSection(
-		"attachments",
-		"Attachments",
-		[
-			reportField({
-				id: "attachments",
-				kind: "attachments",
-				label: "Files",
-				hint: "Screenshots, logs, or recordings (uploaded after the issue is created).",
-			}),
-		],
-	),
+	reportSection("attachments", "Attachments", [
+		reportField({
+			id: "attachments",
+			kind: "attachments",
+			label: "Files",
+			hint: "Screenshots, logs, or recordings (uploaded after the issue is created).",
+		}),
+	]),
 ];
 
 const baseTaskLayout = (extra: ReportFormLayout = []): ReportFormLayout => [
-	reportSection(
-		"task-overview",
-		"Task",
-		[
-			reportField({
-				id: "title",
-				kind: "title",
-				label: "Summary",
-				required: true,
-				placeholder: "Short outcome-oriented summary",
-			}),
-			...(extra.length > 0
-				? [reportGroup("task-meta", "horizontal", extra, undefined, { dense: true })]
-				: []),
-		],
-	),
+	reportSection("task-overview", "Task", [
+		reportField({
+			id: "title",
+			kind: "title",
+			label: "Summary",
+			required: true,
+			placeholder: "Short outcome-oriented summary",
+		}),
+		...(extra.length > 0
+			? [
+					reportGroup("task-meta", "horizontal", extra, undefined, {
+						dense: true,
+					}),
+				]
+			: []),
+	]),
 	reportSection(
 		"task-description",
 		"Description",
@@ -151,7 +143,8 @@ export const TRACKER_COMPONENTS: TrackerComponent[] = [
 	{
 		id: "compiler",
 		label: "Compiler",
-		description: "Rust workspace under `compiler/` (CLI, LSP, analysis, pipeline).",
+		description:
+			"Rust workspace under `compiler/` (CLI, LSP, analysis, pipeline).",
 		subcomponents: [
 			{ id: "cli", label: "beskid CLI" },
 			{ id: "lsp", label: "Language server" },
@@ -236,7 +229,8 @@ export const TRACKER_COMPONENTS: TrackerComponent[] = [
 	{
 		id: "build",
 		label: "Build & CI",
-		description: "GitHub Actions, Docker, release scripts, superrepo orchestration.",
+		description:
+			"GitHub Actions, Docker, release scripts, superrepo orchestration.",
 		subcomponents: [
 			{ id: "github-actions", label: "GitHub Actions" },
 			{ id: "docker", label: "Docker / Coolify" },

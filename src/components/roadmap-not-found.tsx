@@ -10,7 +10,9 @@ type RoadmapNotFoundProps = {
 };
 
 export function RoadmapNotFound({ layout = "embedded" }: RoadmapNotFoundProps) {
-	const pathname = useRouterState({ select: (state) => state.location.pathname });
+	const pathname = useRouterState({
+		select: (state) => state.location.pathname,
+	});
 
 	const panel = (
 		<div className="roadmap-not-found__panel island-shell w-full max-w-lg rounded-2xl p-8 text-center">
@@ -18,7 +20,9 @@ export function RoadmapNotFound({ layout = "embedded" }: RoadmapNotFoundProps) {
 				<MapPinOff className="size-7" aria-hidden="true" />
 			</div>
 			<p className="island-kicker mt-6">Not found</p>
-			<h1 className="display-title mt-2 text-xl font-bold">This page does not exist</h1>
+			<h1 className="display-title mt-2 text-xl font-bold">
+				This page does not exist
+			</h1>
 			<p className="text-muted-foreground mt-3 text-sm leading-relaxed">
 				The roadmap has no view at{" "}
 				<code className="text-foreground rounded bg-muted px-1.5 py-0.5 text-xs">

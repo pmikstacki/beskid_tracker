@@ -1,12 +1,11 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
-
+import { createPublicBugIssue } from "#/lib/github/issues-service";
+import type { PublicBug, PublicBugStats } from "#/lib/github/types";
 import {
 	fetchPublicBugStatsFromStore,
 	listPublicBugsFromStore,
 } from "#/lib/issues/read-service";
-import { createPublicBugIssue } from "#/lib/github/issues-service";
-import type { PublicBug, PublicBugStats } from "#/lib/github/types";
 import { readSyncState } from "#/lib/storage/issues-repository";
 import { triggerBoardSyncPull } from "#/lib/sync/board-sync-service";
 
@@ -44,7 +43,9 @@ export const listPublicBugsFn = createServerFn({ method: "GET" }).handler(
 			};
 		} catch (error) {
 			const message =
-				error instanceof Error ? error.message : "Failed to load bugs from store";
+				error instanceof Error
+					? error.message
+					: "Failed to load bugs from store";
 			return {
 				bugs: [],
 				rateLimited: true,
@@ -103,8 +104,10 @@ export const getPublicBugStatsFn = createServerFn({ method: "GET" }).handler(
 	},
 );
 
-export const syncIssuesFn = createServerFn({ method: "POST" }).handler(async () => {
-	const { requireSession } = await import("#/server/auth-guard.server");
-	await requireSession();
-	return triggerBoardSyncPull(true);
-});
+export const syncIssuesFn = createServerFn({ method: "POST" }).handler(
+	async () => {
+		const { requireSession } = await import("#/server/auth-guard.server");
+		await requireSession();
+		return triggerBoardSyncPull(true);
+	},
+);

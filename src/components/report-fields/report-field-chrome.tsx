@@ -24,7 +24,9 @@ export function ReportFieldChrome({
 }: ReportFieldChromeProps) {
 	if (variant === "summary") {
 		return (
-			<div className={cn("work-item-field work-item-field--summary", className)}>
+			<div
+				className={cn("work-item-field work-item-field--summary", className)}
+			>
 				<label
 					htmlFor={id}
 					className="text-muted-foreground mb-1 block text-xs font-medium tracking-wide uppercase"
@@ -53,7 +55,9 @@ export function ReportFieldChrome({
 			</label>
 			{children}
 			{hint ? (
-				<p className="text-muted-foreground mt-1.5 text-xs leading-relaxed">{hint}</p>
+				<p className="text-muted-foreground mt-1.5 text-xs leading-relaxed">
+					{hint}
+				</p>
 			) : null}
 		</div>
 	);

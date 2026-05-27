@@ -1,16 +1,15 @@
 import type { Octokit } from "@octokit/rest";
-
-import { repoParams } from "#/lib/github/octokit";
 import { registerVersionLabel } from "#/lib/github/issues-service";
+import { repoParams } from "#/lib/github/octokit";
+import type { ParsedSeedBundle } from "#/lib/seed/parse-uploaded-bundle";
+import { roadmapTaskToIssuePayload } from "#/lib/seed/roadmap-task-to-issue-payload";
+import { seedTaskToRoadmapTask } from "#/lib/seed/to-roadmap-task";
 import {
 	getStoredIssue,
 	persistGithubIssue,
 	recomputeSyncStateFromStore,
 	upsertGithubIssues,
 } from "#/lib/storage/issues-repository";
-import type { ParsedSeedBundle } from "#/lib/seed/parse-uploaded-bundle";
-import { roadmapTaskToIssuePayload } from "#/lib/seed/roadmap-task-to-issue-payload";
-import { seedTaskToRoadmapTask } from "#/lib/seed/to-roadmap-task";
 import type { SyncRunHandle } from "#/lib/sync/sync-run-repository";
 
 const SEED_ID_MARKER = "tracker-seed-id:";
@@ -106,7 +105,9 @@ export async function importSeedBundlesToGitHub(
 			roadmapTaskToIssuePayload(roadmapTask),
 		);
 		upsertGithubIssues(localPayloads);
-		run.log(`Cached ${localPayloads.length} issue(s) locally before GitHub push`);
+		run.log(
+			`Cached ${localPayloads.length} issue(s) locally before GitHub push`,
+		);
 
 		for (const bundle of bundles) {
 			await registerVersionLabel(octokit, bundle.versionId);
@@ -161,9 +162,7 @@ export async function importSeedBundlesToGitHub(
 				}
 			} catch (error) {
 				const message =
-					error instanceof Error
-						? error.message
-						: `Failed on task ${task.id}`;
+					error instanceof Error ? error.message : `Failed on task ${task.id}`;
 				errors.push(`#${task.number} ${task.id}: ${message}`);
 				run.log(message, "error");
 				skipped += 1;

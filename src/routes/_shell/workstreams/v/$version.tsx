@@ -1,9 +1,9 @@
 import { createFileRoute, Link, redirect } from "@tanstack/react-router";
 
 import { ShellVersionsSync } from "#/components/shell-versions-sync";
-import { VersionSwitcher } from "#/components/version-switcher";
 import { Badge } from "#/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "#/components/ui/card";
+import { VersionSwitcher } from "#/components/version-switcher";
 import { getAuthUser } from "#/server/auth";
 import { getWorkstreamDashboard } from "#/server/roadmap";
 
@@ -61,7 +61,9 @@ function WorkstreamsPage() {
 							</CardHeader>
 							<CardContent className="flex flex-wrap gap-2">
 								<Badge variant="secondary">{ws.issueCount} tasks</Badge>
-								<Badge variant="outline">{ws.inProgressCount} in progress</Badge>
+								<Badge variant="outline">
+									{ws.inProgressCount} in progress
+								</Badge>
 								<Badge>{ws.doneCount} done</Badge>
 								{ws.slug === "_unassigned" ? (
 									<Link

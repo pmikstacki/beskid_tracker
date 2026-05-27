@@ -22,7 +22,10 @@ export function taskMatchesFilters(
 	return true;
 }
 
-export function filterTasks(tasks: RoadmapTask[], filters: BoardFilters): RoadmapTask[] {
+export function filterTasks(
+	tasks: RoadmapTask[],
+	filters: BoardFilters,
+): RoadmapTask[] {
 	return tasks.filter((task) => taskMatchesFilters(task, filters));
 }
 

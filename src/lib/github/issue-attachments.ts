@@ -8,7 +8,9 @@ export interface IssueAttachmentUpload {
 }
 
 function sanitizeFileName(name: string): string {
-	return name.replace(/[^a-zA-Z0-9._-]+/g, "-").replace(/^-+|-+$/g, "") || "file";
+	return (
+		name.replace(/[^a-zA-Z0-9._-]+/g, "-").replace(/^-+|-+$/g, "") || "file"
+	);
 }
 
 /** Upload files to the repo and add an issue comment with links. */

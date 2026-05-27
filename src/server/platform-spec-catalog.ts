@@ -2,8 +2,8 @@ import { createServerFn } from "@tanstack/react-start";
 
 import {
 	filterCatalogEntries,
-	searchCatalogEntries,
 	type PlatformSpecCatalogEntry,
+	searchCatalogEntries,
 } from "#/lib/platform-spec/catalog";
 import {
 	loadPlatformSpecCatalog,

@@ -30,11 +30,7 @@ export function assertBoardFilters(
 		);
 	}
 	if (filters.area && !meta.areas.includes(filters.area)) {
-		throw new RoadmapScopeNotFoundError(
-			"area",
-			filters.version,
-			filters.area,
-		);
+		throw new RoadmapScopeNotFoundError("area", filters.version, filters.area);
 	}
 	if (filters.feature && !meta.features.includes(filters.feature)) {
 		throw new RoadmapScopeNotFoundError(

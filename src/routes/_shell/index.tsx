@@ -22,5 +22,7 @@ function TimelineHomePage() {
 	const { shellUser } = Route.useRouteContext();
 	const user = loaderUser ?? shellUser;
 
-	return <RoadmapTimelineHome catalog={catalog} bugStats={bugStats} user={user} />;
+	return (
+		<RoadmapTimelineHome catalog={catalog} bugStats={bugStats} user={user} />
+	);
 }

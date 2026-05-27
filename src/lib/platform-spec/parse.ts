@@ -1,4 +1,4 @@
-import { beskidDocsUrl, BESKID_DOCS_ORIGIN } from "#/lib/beskid-docs-origin";
+import { BESKID_DOCS_ORIGIN, beskidDocsUrl } from "#/lib/beskid-docs-origin";
 
 export interface SpecLink {
 	href: string;

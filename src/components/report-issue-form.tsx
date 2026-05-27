@@ -1,9 +1,15 @@
 "use client";
 
-import { useMemo, useState, type ReactNode } from "react";
+import { type ReactNode, useMemo, useState } from "react";
 
 import { ReportFormLayoutView } from "#/components/report-form-layout";
 import { Button } from "#/components/ui/button";
+import {
+	fileToBase64,
+	type ReportAttachmentDraft,
+	serializeStepsValue,
+	serializeSubtasksValue,
+} from "#/lib/report-issue/field-values";
 import {
 	buildReportBody,
 	collectAttachmentFieldIds,
@@ -11,12 +17,6 @@ import {
 	findTitleField,
 	type ReportFormLayout,
 } from "#/lib/report-issue/fields";
-import {
-	fileToBase64,
-	serializeStepsValue,
-	serializeSubtasksValue,
-	type ReportAttachmentDraft,
-} from "#/lib/report-issue/field-values";
 
 export interface ReportIssueSubmitPayload {
 	values: Record<string, string>;
@@ -106,7 +106,10 @@ export function ReportIssueForm({
 	};
 
 	return (
-		<form className="work-item-form-shell flex flex-col gap-4" onSubmit={handleSubmit}>
+		<form
+			className="work-item-form-shell flex flex-col gap-4"
+			onSubmit={handleSubmit}
+		>
 			<ReportFormLayoutView
 				layout={layout}
 				values={values}

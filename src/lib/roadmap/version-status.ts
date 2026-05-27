@@ -1,8 +1,4 @@
-export const VERSION_STATUSES = [
-	"Planned",
-	"In Progress",
-	"Released",
-] as const;
+export const VERSION_STATUSES = ["Planned", "In Progress", "Released"] as const;
 
 export type VersionStatus = (typeof VERSION_STATUSES)[number];
 

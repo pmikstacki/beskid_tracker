@@ -17,9 +17,7 @@ export function RoadmapScopeTaskList({
 	emptyLabel = "No tasks in this scope.",
 }: RoadmapScopeTaskListProps) {
 	if (tasks.length === 0) {
-		return (
-			<p className="text-muted-foreground text-sm">{emptyLabel}</p>
-		);
+		return <p className="text-muted-foreground text-sm">{emptyLabel}</p>;
 	}
 
 	return (
