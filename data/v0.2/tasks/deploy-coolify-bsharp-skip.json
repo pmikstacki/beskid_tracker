@@ -1,6 +1,5 @@
 {
   "id": "deploy-coolify-bsharp-skip",
-  "number": 266,
   "title": "Skip inactive bsharp submodule on Coolify shallow clone",
   "statusColumn": "Done",
   "priority": "high",
@@ -14,5 +13,8 @@
     "subject": "fix(deploy): skip inactive bsharp submodule on Coolify shallow clone",
     "url": "https://github.com/Cyber-Nomad-Collective/beskid/commit/5fba2e9"
   },
-  "body": "Skip inactive bsharp submodule on Coolify shallow clone.\n\n## Provenance\n- **Repository:** `beskid`\n- **Commit:** [`5fba2e9`](https://github.com/Cyber-Nomad-Collective/beskid/commit/5fba2e9)\n- **Subject:** fix(deploy): skip inactive bsharp submodule on Coolify shallow clone\n- **Completed:** 2026-05-20\n\n## Catalog scope\n- **Delivery version:** v0.2 (Analysis, packages, and platform spec)\n- **Workstream:** `dev-experience`\n- **Deliverable:** `v02-ci-deploy-infra`\n- **Domain:** `tooling`\n\n## Relation\nContributes to deliverable **CI workflows and deploy infra** (`v02-ci-deploy-infra`).\n"
+  "body": "Skip inactive bsharp submodule on Coolify shallow clone.\n\n## Provenance\n- **Repository:** `beskid`\n- **Commit:** [`5fba2e9`](https://github.com/Cyber-Nomad-Collective/beskid/commit/5fba2e9)\n- **Subject:** fix(deploy): skip inactive bsharp submodule on Coolify shallow clone\n- **Completed:** 2026-05-20\n\n## Catalog scope\n- **Delivery version:** v0.2 (Analysis, packages, and platform spec)\n- **Workstream:** `dev-experience`\n- **Deliverable:** `v02-ci-deploy-infra`\n- **Domain:** `tooling`\n\n## Relation\nContributes to deliverable **CI workflows and deploy infra** (`v02-ci-deploy-infra`).\n",
+  "order": 266,
+  "subtasks": [],
+  "$schema": "../schemas/seed/task.schema.json"
 }

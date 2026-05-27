@@ -1,6 +1,5 @@
 {
   "id": "corelib-syscall-coverage",
-  "number": 268,
   "title": "Expand corelib syscall coverage and stdlib tests",
   "statusColumn": "Done",
   "priority": "high",
@@ -15,5 +14,8 @@
     "url": "https://github.com/Cyber-Nomad-Collective/beskid_standard/commit/ee3d83d"
   },
   "milestoneId": "v02-concurrency-runtime",
-  "body": "Expand syscall coverage and stdlib tests.\n\n## Provenance\n- **Repository:** `corelib`\n- **Commit:** [`ee3d83d`](https://github.com/Cyber-Nomad-Collective/beskid_standard/commit/ee3d83d)\n- **Subject:** feat(corelib): expand syscall coverage and stdlib tests\n- **Completed:** 2026-05-05\n\n## Catalog scope\n- **Delivery version:** v0.2 (Analysis, packages, and platform spec)\n- **Workstream:** `codegen-runtime`\n- **Deliverable:** `v02-concurrency-runtime`\n- **Domain:** `core-library`\n\n## Relation\nContributes to deliverable **Fibers, channels, and GC runtime** (`v02-concurrency-runtime`).\n"
+  "body": "Expand syscall coverage and stdlib tests.\n\n## Provenance\n- **Repository:** `corelib`\n- **Commit:** [`ee3d83d`](https://github.com/Cyber-Nomad-Collective/beskid_standard/commit/ee3d83d)\n- **Subject:** feat(corelib): expand syscall coverage and stdlib tests\n- **Completed:** 2026-05-05\n\n## Catalog scope\n- **Delivery version:** v0.2 (Analysis, packages, and platform spec)\n- **Workstream:** `codegen-runtime`\n- **Deliverable:** `v02-concurrency-runtime`\n- **Domain:** `core-library`\n\n## Relation\nContributes to deliverable **Fibers, channels, and GC runtime** (`v02-concurrency-runtime`).\n",
+  "order": 268,
+  "subtasks": [],
+  "$schema": "../schemas/seed/task.schema.json"
 }

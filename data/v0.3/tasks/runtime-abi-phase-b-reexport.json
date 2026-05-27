@@ -1,6 +1,5 @@
 {
   "id": "runtime-abi-phase-b-reexport",
-  "number": 325,
   "title": "Re-export Phase B channel ptr and preempt symbols",
   "statusColumn": "Done",
   "priority": "high",
@@ -14,5 +13,8 @@
     "subject": "fix(abi): re-export Phase B channel ptr and preempt symbols from crate root",
     "url": "https://github.com/Cyber-Nomad-Collective/beskid_compiler/commit/791fac7"
   },
-  "body": "Crate root re-exports Phase B channel pointer and preempt symbols required by composition lowering and frozen ABI tests.\n\n## Provenance\n- **Repository:** `compiler`\n- **Commit:** [`791fac7`](https://github.com/Cyber-Nomad-Collective/beskid_compiler/commit/791fac7)\n- **Subject:** fix(abi): re-export Phase B channel ptr and preempt symbols from crate root\n- **Completed:** 2026-05-23\n\n## Catalog scope\n- **Delivery version:** v0.3 (Macros, concurrency, and stabilization)\n- **Workstream:** `concurrency-runtime`\n- **Domain:** `execution`\n- **Deliverable:** `v03-merge-wave`\n\n## Relation\nContributes to deliverable **v0.3 macro/runtime/ffi/tooling delivery** (`v03-merge-wave`)."
+  "body": "Crate root re-exports Phase B channel pointer and preempt symbols required by composition lowering and frozen ABI tests.\n\n## Provenance\n- **Repository:** `compiler`\n- **Commit:** [`791fac7`](https://github.com/Cyber-Nomad-Collective/beskid_compiler/commit/791fac7)\n- **Subject:** fix(abi): re-export Phase B channel ptr and preempt symbols from crate root\n- **Completed:** 2026-05-23\n\n## Catalog scope\n- **Delivery version:** v0.3 (Macros, concurrency, and stabilization)\n- **Workstream:** `concurrency-runtime`\n- **Domain:** `execution`\n- **Deliverable:** `v03-merge-wave`\n\n## Relation\nContributes to deliverable **v0.3 macro/runtime/ffi/tooling delivery** (`v03-merge-wave`).",
+  "order": 325,
+  "subtasks": [],
+  "$schema": "../schemas/seed/task.schema.json"
 }

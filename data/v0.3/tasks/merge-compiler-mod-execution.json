@@ -1,6 +1,5 @@
 {
   "id": "merge-compiler-mod-execution",
-  "number": 301,
   "title": "Merge compiler-mod-execution into main",
   "statusColumn": "Done",
   "priority": "high",
@@ -14,5 +13,8 @@
     "subject": "merge(v0.3): compiler-mod-execution into main",
     "url": "https://github.com/Cyber-Nomad-Collective/beskid/commit/bf03401"
   },
-  "body": "Merge commit lands **compiler-mod-execution** on main: mod host, SampleMod, and ContractInvoker integration at integrated compiler tip.\n\n## Provenance\n- **Repository:** `beskid`\n- **Commit:** [`bf03401`](https://github.com/Cyber-Nomad-Collective/beskid/commit/bf03401)\n- **Subject:** merge(v0.3): compiler-mod-execution into main\n- **Completed:** 2026-05-23\n\n## Catalog scope\n- **Delivery version:** v0.3 (Macros, concurrency, and stabilization)\n- **Workstream:** `compiler-mods`\n- **Domain:** `compiler`\n- **Deliverable:** `v03-merge-wave`\n\n## Relation\nContributes to deliverable **v0.3 macro/runtime/ffi/tooling delivery** (`v03-merge-wave`)."
+  "body": "Merge commit lands **compiler-mod-execution** on main: mod host, SampleMod, and ContractInvoker integration at integrated compiler tip.\n\n## Provenance\n- **Repository:** `beskid`\n- **Commit:** [`bf03401`](https://github.com/Cyber-Nomad-Collective/beskid/commit/bf03401)\n- **Subject:** merge(v0.3): compiler-mod-execution into main\n- **Completed:** 2026-05-23\n\n## Catalog scope\n- **Delivery version:** v0.3 (Macros, concurrency, and stabilization)\n- **Workstream:** `compiler-mods`\n- **Domain:** `compiler`\n- **Deliverable:** `v03-merge-wave`\n\n## Relation\nContributes to deliverable **v0.3 macro/runtime/ffi/tooling delivery** (`v03-merge-wave`).",
+  "order": 301,
+  "subtasks": [],
+  "$schema": "../schemas/seed/task.schema.json"
 }

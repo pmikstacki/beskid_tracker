@@ -1,6 +1,5 @@
 {
   "id": "research-parser-staged-pipeline",
-  "number": 5,
   "title": "Research: Pest parser plus staged semantic rule pipeline",
   "statusColumn": "Done",
   "priority": "high",
@@ -15,5 +14,8 @@
     "commit": "33eaa35",
     "subject": "Update semantic analysis docs with current diagnostic codes, rule integration status, and type system progress",
     "url": "https://github.com/Cyber-Nomad-Collective/pekan/commit/33eaa35"
-  }
+  },
+  "order": 5,
+  "subtasks": [],
+  "$schema": "../schemas/seed/task.schema.json"
 }

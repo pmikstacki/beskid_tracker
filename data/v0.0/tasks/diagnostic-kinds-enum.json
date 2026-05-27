@@ -1,6 +1,5 @@
 {
   "id": "diagnostic-kinds-enum",
-  "number": 22,
   "title": "SemanticIssueKind diagnostic catalog (60+ variants)",
   "statusColumn": "Done",
   "priority": "medium",
@@ -15,5 +14,8 @@
     "commit": "c308ffb",
     "subject": "Add diagnostic_kinds module with SemanticIssueKind enum and 60+ error/warning variants for semantic analysis",
     "url": "https://github.com/Cyber-Nomad-Collective/pekan/commit/c308ffb"
-  }
+  },
+  "order": 22,
+  "subtasks": [],
+  "$schema": "../schemas/seed/task.schema.json"
 }

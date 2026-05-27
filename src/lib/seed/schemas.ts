@@ -42,7 +42,7 @@ export const seedVersionCutoffSchema = z.object({
 });
 
 export const seedVersionSchema = z.object({
-	$schema: z.string().url().optional(),
+	$schema: z.string().optional(),
 	id: z.string().regex(/^v\d+\.\d+$/),
 	title: z.string().min(1),
 	summary: z.string().min(1),
@@ -52,7 +52,7 @@ export const seedVersionSchema = z.object({
 });
 
 export const seedWorkstreamSchema = z.object({
-	$schema: z.string().url().optional(),
+	$schema: z.string().optional(),
 	slug: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
 	title: z.string().min(1),
 	summary: z.string().min(1),
@@ -60,7 +60,7 @@ export const seedWorkstreamSchema = z.object({
 });
 
 export const seedDeliverableSchema = z.object({
-	$schema: z.string().url().optional(),
+	$schema: z.string().optional(),
 	id: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
 	title: z.string().min(1),
 	description: z.string().optional(),
@@ -72,7 +72,7 @@ export const seedDeliverableSchema = z.object({
 });
 
 export const seedTaskSchema = z.object({
-	$schema: z.string().url().optional(),
+	$schema: z.string().optional(),
 	id: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
 	title: z.string().min(1),
 	statusColumn: z.enum(["Backlog", "In Progress", "Done"]),

@@ -1,6 +1,5 @@
 {
   "id": "research-lsp-pecan-prototype",
-  "number": 23,
   "title": "Research: pecan_lsp in-process services prototype",
   "statusColumn": "Done",
   "priority": "high",
@@ -15,5 +14,8 @@
     "commit": "9424509",
     "subject": "Add LSP services module with hover, definition, references, completions, and symbol extraction utilities",
     "url": "https://github.com/Cyber-Nomad-Collective/pekan/commit/9424509"
-  }
+  },
+  "order": 23,
+  "subtasks": [],
+  "$schema": "../schemas/seed/task.schema.json"
 }

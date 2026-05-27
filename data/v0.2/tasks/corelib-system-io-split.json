@@ -1,6 +1,5 @@
 {
   "id": "corelib-system-io-split",
-  "number": 267,
   "title": "Split System.IO; add console and concurrency packages",
   "statusColumn": "Done",
   "priority": "high",
@@ -15,5 +14,8 @@
     "url": "https://github.com/Cyber-Nomad-Collective/beskid_standard/commit/09ac8fe"
   },
   "milestoneId": "v02-concurrency-runtime",
-  "body": "Corelib: split System.IO, add console/concurrency packages and tests.\n\n## Provenance\n- **Repository:** `corelib`\n- **Commit:** [`09ac8fe`](https://github.com/Cyber-Nomad-Collective/beskid_standard/commit/09ac8fe)\n- **Subject:** corelib: split System.IO, add console/concurrency packages and tests\n- **Completed:** 2026-05-20\n\n## Catalog scope\n- **Delivery version:** v0.2 (Analysis, packages, and platform spec)\n- **Workstream:** `codegen-runtime`\n- **Deliverable:** `v02-concurrency-runtime`\n- **Domain:** `core-library`\n\n## Relation\nContributes to deliverable **Fibers, channels, and GC runtime** (`v02-concurrency-runtime`).\n"
+  "body": "Corelib: split System.IO, add console/concurrency packages and tests.\n\n## Provenance\n- **Repository:** `corelib`\n- **Commit:** [`09ac8fe`](https://github.com/Cyber-Nomad-Collective/beskid_standard/commit/09ac8fe)\n- **Subject:** corelib: split System.IO, add console/concurrency packages and tests\n- **Completed:** 2026-05-20\n\n## Catalog scope\n- **Delivery version:** v0.2 (Analysis, packages, and platform spec)\n- **Workstream:** `codegen-runtime`\n- **Deliverable:** `v02-concurrency-runtime`\n- **Domain:** `core-library`\n\n## Relation\nContributes to deliverable **Fibers, channels, and GC runtime** (`v02-concurrency-runtime`).\n",
+  "order": 267,
+  "subtasks": [],
+  "$schema": "../schemas/seed/task.schema.json"
 }

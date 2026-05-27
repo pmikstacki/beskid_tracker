@@ -1,6 +1,7 @@
 {
   "id": "v04-corelib-complete",
   "title": "corelib full Standard implementation",
-  "number": 5,
-  "description": "compiler/corelib ships complete Core and package surfaces with stubs removed, tier tags honored in api.json, and corelib-quality CI plus pckg publish on main.\n\n## Provenance\n- **Catalog cutoff:** [`aaddd32`](https://github.com/Cyber-Nomad-Collective/beskid/commit/aaddd32) → [`c8e5fc4`](https://github.com/Cyber-Nomad-Collective/beskid/commit/c8e5fc4) on **beskid** (2026-05-26 – 2026-05-27)\n- **Anchor commit:** [`c8e5fc4`](https://github.com/Cyber-Nomad-Collective/beskid/commit/c8e5fc4)\n\n## Catalog scope\n- **Delivery version:** v0.4 (Platform services, auth, and delivery tooling)\n- **Status:** Backlog — compiler quality bump in progress; stub replacement and pckg publish planned\n- **Workstreams:** `compiler-corelib`"
+  "description": "compiler/corelib ships complete Core and package surfaces with stubs removed, tier tags honored in api.json, and corelib-quality CI plus pckg publish on main.\n\n## Provenance\n- **Catalog cutoff:** [`aaddd32`](https://github.com/Cyber-Nomad-Collective/beskid/commit/aaddd32) → [`c8e5fc4`](https://github.com/Cyber-Nomad-Collective/beskid/commit/c8e5fc4) on **beskid** (2026-05-26 – 2026-05-27)\n- **Anchor commit:** [`c8e5fc4`](https://github.com/Cyber-Nomad-Collective/beskid/commit/c8e5fc4)\n\n## Catalog scope\n- **Delivery version:** v0.4 (Platform services, auth, and delivery tooling)\n- **Status:** Backlog — compiler quality bump in progress; stub replacement and pckg publish planned\n- **Workstreams:** `compiler-corelib`",
+  "subtasks": [],
+  "$schema": "../schemas/seed/deliverable.schema.json"
 }

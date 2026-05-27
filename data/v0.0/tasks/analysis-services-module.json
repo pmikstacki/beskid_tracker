@@ -1,6 +1,5 @@
 {
   "id": "analysis-services-module",
-  "number": 19,
   "title": "Analysis services module (input/project resolution and parsing utilities)",
   "statusColumn": "Done",
   "priority": "high",
@@ -14,5 +13,8 @@
     "commit": "0fe2488",
     "subject": "Add beskid_analysis services module with input/project resolution, parsing, and analysis utilities",
     "url": "https://github.com/Cyber-Nomad-Collective/pekan/commit/0fe2488"
-  }
+  },
+  "order": 19,
+  "subtasks": [],
+  "$schema": "../schemas/seed/task.schema.json"
 }

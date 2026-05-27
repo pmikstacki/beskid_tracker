@@ -1,6 +1,5 @@
 {
   "id": "tracker-v04-seed-catalog",
-  "number": 399,
   "title": "v0.4 roadmap seed catalog (version, workstreams, deliverables, tasks)",
   "statusColumn": "Done",
   "priority": "medium",
@@ -13,5 +12,8 @@
     "subject": "fix: add references/bsharp to .gitmodules with update=none",
     "url": "https://github.com/Cyber-Nomad-Collective/beskid/commit/c8e5fc4"
   },
-  "body": "Hand-maintained `data/v0.4/` seed JSON aligned to superrepo commits `aaddd32`–`c8e5fc4`: four primary workstreams, six deliverables, and task provenance for local `ROADMAP_USE_SEED=1` review.\n\n## Provenance\n- **Repository:** `beskid`\n- **Commit:** [`c8e5fc4`](https://github.com/Cyber-Nomad-Collective/beskid/commit/c8e5fc4)\n- **Subject:** fix: add references/bsharp to .gitmodules with update=none\n- **Completed:** 2026-05-27\n\n## Catalog scope\n- **Delivery version:** v0.4 (Platform services, auth, and delivery tooling)\n- **Workstream:** `tracker-implementation`\n- **Deliverable:** `v04-tracker-ship`\n\n## What shipped\n\nHand-maintained `data/v0.4/` seed JSON aligned to superrepo commits `aaddd32`–`c8e5fc4`: four primary workstreams, six deliverables, and task provenance for local `ROADMAP_USE_SEED=1` review."
+  "body": "Hand-maintained `data/v0.4/` seed JSON aligned to superrepo commits `aaddd32`–`c8e5fc4`: four primary workstreams, six deliverables, and task provenance for local `ROADMAP_USE_SEED=1` review.\n\n## Provenance\n- **Repository:** `beskid`\n- **Commit:** [`c8e5fc4`](https://github.com/Cyber-Nomad-Collective/beskid/commit/c8e5fc4)\n- **Subject:** fix: add references/bsharp to .gitmodules with update=none\n- **Completed:** 2026-05-27\n\n## Catalog scope\n- **Delivery version:** v0.4 (Platform services, auth, and delivery tooling)\n- **Workstream:** `tracker-implementation`\n- **Deliverable:** `v04-tracker-ship`\n\n## What shipped\n\nHand-maintained `data/v0.4/` seed JSON aligned to superrepo commits `aaddd32`–`c8e5fc4`: four primary workstreams, six deliverables, and task provenance for local `ROADMAP_USE_SEED=1` review.",
+  "order": 399,
+  "subtasks": [],
+  "$schema": "../schemas/seed/task.schema.json"
 }

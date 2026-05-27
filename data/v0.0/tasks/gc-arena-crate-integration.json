@@ -1,6 +1,5 @@
 {
   "id": "gc-arena-crate-integration",
-  "number": 10,
   "title": "Integrate gc-arena crate with derive macro and JIT alloc hooks",
   "statusColumn": "Done",
   "priority": "high",
@@ -15,5 +14,8 @@
     "commit": "a17c928",
     "subject": "Add gc-arena crate with derive macro, licensing, and comprehensive documentation",
     "url": "https://github.com/Cyber-Nomad-Collective/pekan/commit/a17c928"
-  }
+  },
+  "order": 10,
+  "subtasks": [],
+  "$schema": "../schemas/seed/task.schema.json"
 }

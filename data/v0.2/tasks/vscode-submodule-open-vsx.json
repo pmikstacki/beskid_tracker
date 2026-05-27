@@ -1,6 +1,5 @@
 {
   "id": "vscode-submodule-open-vsx",
-  "number": 251,
   "title": "Add beskid_vscode submodule and Open VSX publish init",
   "statusColumn": "Done",
   "priority": "high",
@@ -14,5 +13,8 @@
     "subject": "feat(ci): add beskid_vscode submodule and init for Open VS X publish",
     "url": "https://github.com/Cyber-Nomad-Collective/beskid/commit/d58dd44"
   },
-  "body": "Add beskid_vscode submodule and init for Open VS X publish.\n\n## Provenance\n- **Repository:** `beskid`\n- **Commit:** [`d58dd44`](https://github.com/Cyber-Nomad-Collective/beskid/commit/d58dd44)\n- **Subject:** feat(ci): add beskid_vscode submodule and init for Open VS X publish\n- **Completed:** 2026-05-01\n\n## Catalog scope\n- **Delivery version:** v0.2 (Analysis, packages, and platform spec)\n- **Workstream:** `editor-extension`\n- **Deliverable:** `v02-editor-extension`\n- **Domain:** `tooling`\n\n## Relation\nContributes to deliverable **VS Code extension & Open VSX** (`v02-editor-extension`).\n"
+  "body": "Add beskid_vscode submodule and init for Open VS X publish.\n\n## Provenance\n- **Repository:** `beskid`\n- **Commit:** [`d58dd44`](https://github.com/Cyber-Nomad-Collective/beskid/commit/d58dd44)\n- **Subject:** feat(ci): add beskid_vscode submodule and init for Open VS X publish\n- **Completed:** 2026-05-01\n\n## Catalog scope\n- **Delivery version:** v0.2 (Analysis, packages, and platform spec)\n- **Workstream:** `editor-extension`\n- **Deliverable:** `v02-editor-extension`\n- **Domain:** `tooling`\n\n## Relation\nContributes to deliverable **VS Code extension & Open VSX** (`v02-editor-extension`).\n",
+  "order": 251,
+  "subtasks": [],
+  "$schema": "../schemas/seed/task.schema.json"
 }

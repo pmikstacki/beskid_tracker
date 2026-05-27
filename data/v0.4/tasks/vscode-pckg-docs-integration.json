@@ -1,6 +1,5 @@
 {
   "id": "vscode-pckg-docs-integration",
-  "number": 403,
   "title": "VS Code: pckg registry, platform-spec, and book deep links",
   "statusColumn": "Backlog",
   "priority": "high",
@@ -12,5 +11,8 @@
     "subject": "fix: add references/bsharp to .gitmodules with update=none",
     "url": "https://github.com/Cyber-Nomad-Collective/beskid/commit/c8e5fc4"
   },
-  "body": "VS Code: pckg registry, platform-spec, and book deep links\n\n## Scope\n\nExtend beskid_vscode beyond cli-latest LSP bootstrap (v0.3): open pckg package docs from workspace, link diagnostics to platform-spec nodes, and surface book/reference URLs in command palette.\n\n## Provenance\n- **Repository:** `beskid`\n- **Commit:** [`c8e5fc4`](https://github.com/Cyber-Nomad-Collective/beskid/commit/c8e5fc4)\n- **Subject:** fix: add references/bsharp to .gitmodules with update=none\n- **Catalog tip:** [`c8e5fc4`](https://github.com/Cyber-Nomad-Collective/beskid/commit/c8e5fc4) (v0.4 cutoff 2026-05-27)\n- **Status:** Backlog\n\n## Catalog scope\n- **Delivery version:** v0.4 (Platform services, auth, and delivery tooling)\n- **Workstream:** `vscode-editor`\n- **Deliverable:** `v04-vscode-pckg-docs`\n\n## Baseline\n\nv0.3 landed inventory docs at `aaddd32`; v0.4 completes integration UX."
+  "body": "VS Code: pckg registry, platform-spec, and book deep links\n\n## Scope\n\nExtend beskid_vscode beyond cli-latest LSP bootstrap (v0.3): open pckg package docs from workspace, link diagnostics to platform-spec nodes, and surface book/reference URLs in command palette.\n\n## Provenance\n- **Repository:** `beskid`\n- **Commit:** [`c8e5fc4`](https://github.com/Cyber-Nomad-Collective/beskid/commit/c8e5fc4)\n- **Subject:** fix: add references/bsharp to .gitmodules with update=none\n- **Catalog tip:** [`c8e5fc4`](https://github.com/Cyber-Nomad-Collective/beskid/commit/c8e5fc4) (v0.4 cutoff 2026-05-27)\n- **Status:** Backlog\n\n## Catalog scope\n- **Delivery version:** v0.4 (Platform services, auth, and delivery tooling)\n- **Workstream:** `vscode-editor`\n- **Deliverable:** `v04-vscode-pckg-docs`\n\n## Baseline\n\nv0.3 landed inventory docs at `aaddd32`; v0.4 completes integration UX.",
+  "order": 403,
+  "subtasks": [],
+  "$schema": "../schemas/seed/task.schema.json"
 }

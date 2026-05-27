@@ -1,6 +1,5 @@
 {
   "id": "pckg-ci-artifact-zip-reader",
-  "number": 247,
   "title": "CI artifact zip reader source paths for package ingest",
   "statusColumn": "Done",
   "priority": "medium",
@@ -13,5 +12,8 @@
     "subject": "fix(ci): add missing Services/Artifacts sources for package zip reader",
     "url": "https://github.com/Cyber-Nomad-Collective/pckg/commit/e3cc8a6"
   },
-  "body": "Add missing Services/Artifacts sources for package zip reader.\n\n## Provenance\n- **Repository:** `pckg`\n- **Commit:** [`e3cc8a6`](https://github.com/Cyber-Nomad-Collective/pckg/commit/e3cc8a6)\n- **Subject:** fix(ci): add missing Services/Artifacts sources for package zip reader\n- **Completed:** 2026-05-18\n\n## Catalog scope\n- **Delivery version:** v0.2 (Analysis, packages, and platform spec)\n- **Workstream:** `pckg-registry`\n- **Domain:** `tooling`\n\n## Relation\nSupports **v0.2 (Analysis, packages, and platform spec)** on workstream `pckg-registry`.\n"
+  "body": "Add missing Services/Artifacts sources for package zip reader.\n\n## Provenance\n- **Repository:** `pckg`\n- **Commit:** [`e3cc8a6`](https://github.com/Cyber-Nomad-Collective/pckg/commit/e3cc8a6)\n- **Subject:** fix(ci): add missing Services/Artifacts sources for package zip reader\n- **Completed:** 2026-05-18\n\n## Catalog scope\n- **Delivery version:** v0.2 (Analysis, packages, and platform spec)\n- **Workstream:** `pckg-registry`\n- **Domain:** `tooling`\n\n## Relation\nSupports **v0.2 (Analysis, packages, and platform spec)** on workstream `pckg-registry`.\n",
+  "order": 247,
+  "subtasks": [],
+  "$schema": "../schemas/seed/task.schema.json"
 }

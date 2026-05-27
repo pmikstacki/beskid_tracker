@@ -1,6 +1,5 @@
 {
   "id": "open-vsx-publish-retry",
-  "number": 138,
   "title": "Retry logic for Open VSX publishing workflow",
   "priority": "medium",
   "workstream": "editor-extension",
@@ -13,5 +12,8 @@
     "url": "https://github.com/Cyber-Nomad-Collective/beskid/commit/6dce9e6"
   },
   "statusColumn": "Done",
-  "body": "Implements **retry logic** for flaky Open VSX publishing steps.\n\n## Provenance\n- **Repository:** `beskid`\n- **Commit:** [`6dce9e6`](https://github.com/Cyber-Nomad-Collective/beskid/commit/6dce9e6)\n- **Subject:** feat(ci): implement retry logic for Open VSX publishing\n- **Completed:** 2026-04-22\n\n## Catalog scope\n- **Delivery version:** v0.1 (Compiler foundation)\n- **Workstream:** `editor-extension`\n- **Deliverable:** `v01-open-vsx`\n\n## Relation\nReliability layer on the Open VSX workflow."
+  "body": "Implements **retry logic** for flaky Open VSX publishing steps.\n\n## Provenance\n- **Repository:** `beskid`\n- **Commit:** [`6dce9e6`](https://github.com/Cyber-Nomad-Collective/beskid/commit/6dce9e6)\n- **Subject:** feat(ci): implement retry logic for Open VSX publishing\n- **Completed:** 2026-04-22\n\n## Catalog scope\n- **Delivery version:** v0.1 (Compiler foundation)\n- **Workstream:** `editor-extension`\n- **Deliverable:** `v01-open-vsx`\n\n## Relation\nReliability layer on the Open VSX workflow.",
+  "order": 138,
+  "subtasks": [],
+  "$schema": "../schemas/seed/task.schema.json"
 }

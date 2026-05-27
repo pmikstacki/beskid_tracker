@@ -1,6 +1,5 @@
 {
   "id": "module-declaration-compat",
-  "number": 130,
   "title": "Restore module declaration compatibility in resolver",
   "priority": "high",
   "workstream": "compiler-foundation",
@@ -14,5 +13,8 @@
     "url": "https://github.com/Cyber-Nomad-Collective/compiler/commit/3c754d3"
   },
   "statusColumn": "Done",
-  "body": "Restores **module declaration** compatibility in resolver and semantic analysis after file-scoped module changes.\n\n## Provenance\n- **Repository:** `compiler`\n- **Commit:** [`3c754d3`](https://github.com/Cyber-Nomad-Collective/compiler/commit/3c754d3)\n- **Subject:** fix: restore module declaration compatibility in resolver and semantics\n- **Completed:** 2026-04-22\n\n## Catalog scope\n- **Delivery version:** v0.1 (Compiler foundation)\n- **Workstream:** `compiler-foundation`\n\n## Relation\nLate v0.1 hardening before v0.2 platform-spec alignment."
+  "body": "Restores **module declaration** compatibility in resolver and semantic analysis after file-scoped module changes.\n\n## Provenance\n- **Repository:** `compiler`\n- **Commit:** [`3c754d3`](https://github.com/Cyber-Nomad-Collective/compiler/commit/3c754d3)\n- **Subject:** fix: restore module declaration compatibility in resolver and semantics\n- **Completed:** 2026-04-22\n\n## Catalog scope\n- **Delivery version:** v0.1 (Compiler foundation)\n- **Workstream:** `compiler-foundation`\n\n## Relation\nLate v0.1 hardening before v0.2 platform-spec alignment.",
+  "order": 130,
+  "subtasks": [],
+  "$schema": "../schemas/seed/task.schema.json"
 }

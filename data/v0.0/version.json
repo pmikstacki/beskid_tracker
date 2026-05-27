@@ -11,5 +11,6 @@
     "endCommitSha": "dd75bff",
     "endCommitRepo": "compiler",
     "rationale": "Covers the deleted pekan repository from Initial Commit (269ac9d, 2026-02-18) through the last Pecan-era compiler snapshot before the dedicated compiler submodule (dd75bff, 2026-03-05). Cascade snapshot commits are omitted. Parallel GC (abfall), production LSP (beskid lsp), and Project.proj/pckg packaging belong to later delivery bands."
-  }
+  },
+  "$schema": "../schemas/seed/version.schema.json"
 }

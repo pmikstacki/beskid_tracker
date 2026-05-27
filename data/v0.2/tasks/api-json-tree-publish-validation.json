@@ -1,6 +1,5 @@
 {
   "id": "api-json-tree-publish-validation",
-  "number": 233,
   "title": "api.json tree UI, template packages, and publish validation",
   "statusColumn": "Done",
   "priority": "high",
@@ -13,5 +12,8 @@
     "subject": "feat(docs): api.json tree UI, template packages, and publish validation",
     "url": "https://github.com/Cyber-Nomad-Collective/pckg/commit/2337393"
   },
-  "body": "Api.json tree UI, template packages, and publish validation.\n\n## Provenance\n- **Repository:** `pckg`\n- **Commit:** [`2337393`](https://github.com/Cyber-Nomad-Collective/pckg/commit/2337393)\n- **Subject:** feat(docs): api.json tree UI, template packages, and publish validation\n- **Completed:** 2026-05-22\n\n## Catalog scope\n- **Delivery version:** v0.2 (Analysis, packages, and platform spec)\n- **Workstream:** `pckg-registry`\n- **Deliverable:** `v02-api-json-contract`\n\n## Relation\nContributes to deliverable **api.json primary contract** (`v02-api-json-contract`).\n"
+  "body": "Api.json tree UI, template packages, and publish validation.\n\n## Provenance\n- **Repository:** `pckg`\n- **Commit:** [`2337393`](https://github.com/Cyber-Nomad-Collective/pckg/commit/2337393)\n- **Subject:** feat(docs): api.json tree UI, template packages, and publish validation\n- **Completed:** 2026-05-22\n\n## Catalog scope\n- **Delivery version:** v0.2 (Analysis, packages, and platform spec)\n- **Workstream:** `pckg-registry`\n- **Deliverable:** `v02-api-json-contract`\n\n## Relation\nContributes to deliverable **api.json primary contract** (`v02-api-json-contract`).\n",
+  "order": 233,
+  "subtasks": [],
+  "$schema": "../schemas/seed/task.schema.json"
 }

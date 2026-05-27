@@ -22,12 +22,8 @@ export function RoadmapCatalogTaskList({
 					className="flex flex-wrap items-start justify-between gap-3 px-4 py-3"
 				>
 					<div className="min-w-0 flex-1">
-						<p className="font-medium">
-							<span className="text-muted-foreground font-mono text-xs">
-								#{task.number}
-							</span>{" "}
-							{task.title}
-						</p>
+						<p className="font-medium">{task.title}</p>
+						<p className="text-muted-foreground font-mono text-xs">{task.id}</p>
 						{task.body ? (
 							<p className="text-muted-foreground mt-1 line-clamp-2 text-sm">
 								{task.body}

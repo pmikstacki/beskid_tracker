@@ -1,6 +1,5 @@
 {
   "id": "research-concurrency-runtime-models",
-  "number": 13,
   "title": "Research: fiber/channel runtime models for later execution bands",
   "statusColumn": "Done",
   "priority": "medium",
@@ -15,5 +14,8 @@
     "commit": "c6e0d5a",
     "subject": "Update Plan.md",
     "url": "https://github.com/Cyber-Nomad-Collective/pekan/commit/c6e0d5a"
-  }
+  },
+  "order": 13,
+  "subtasks": [],
+  "$schema": "../schemas/seed/task.schema.json"
 }

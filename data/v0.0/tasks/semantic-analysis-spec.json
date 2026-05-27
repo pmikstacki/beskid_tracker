@@ -1,6 +1,5 @@
 {
   "id": "semantic-analysis-spec",
-  "number": 2,
   "title": "Author semantic analysis specification and workspace layout",
   "statusColumn": "Done",
   "priority": "high",
@@ -15,5 +14,8 @@
     "commit": "cc55d59",
     "subject": "Add workspace members and semantic analysis documentation",
     "url": "https://github.com/Cyber-Nomad-Collective/pekan/commit/cc55d59"
-  }
+  },
+  "order": 2,
+  "subtasks": [],
+  "$schema": "../schemas/seed/task.schema.json"
 }

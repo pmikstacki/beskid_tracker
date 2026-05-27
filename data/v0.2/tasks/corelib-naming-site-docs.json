@@ -1,6 +1,5 @@
 {
   "id": "corelib-naming-site-docs",
-  "number": 241,
   "title": "Corelib naming across book, site pages, and astro config",
   "statusColumn": "Done",
   "priority": "low",
@@ -13,5 +12,8 @@
     "subject": "docs: corelib naming across site, workstreams, and CI notes",
     "url": "https://github.com/Cyber-Nomad-Collective/beskid/commit/6140c7c"
   },
-  "body": "Corelib naming across site, workstreams, and CI notes.\n\n## Provenance\n- **Repository:** `beskid`\n- **Commit:** [`6140c7c`](https://github.com/Cyber-Nomad-Collective/beskid/commit/6140c7c)\n- **Subject:** docs: corelib naming across site, workstreams, and CI notes\n- **Completed:** 2026-04-23\n\n## Catalog scope\n- **Delivery version:** v0.2 (Analysis, packages, and platform spec)\n- **Workstream:** `docs-site`\n- **Deliverable:** `v02-book-tutorial-wave`\n\n## Relation\nContributes to deliverable **Book tutorial rollout** (`v02-book-tutorial-wave`).\n"
+  "body": "Corelib naming across site, workstreams, and CI notes.\n\n## Provenance\n- **Repository:** `beskid`\n- **Commit:** [`6140c7c`](https://github.com/Cyber-Nomad-Collective/beskid/commit/6140c7c)\n- **Subject:** docs: corelib naming across site, workstreams, and CI notes\n- **Completed:** 2026-04-23\n\n## Catalog scope\n- **Delivery version:** v0.2 (Analysis, packages, and platform spec)\n- **Workstream:** `docs-site`\n- **Deliverable:** `v02-book-tutorial-wave`\n\n## Relation\nContributes to deliverable **Book tutorial rollout** (`v02-book-tutorial-wave`).\n",
+  "order": 241,
+  "subtasks": [],
+  "$schema": "../schemas/seed/task.schema.json"
 }

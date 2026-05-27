@@ -1,10 +1,10 @@
 import {
+	compareSeedDeliverables,
+	compareSeedTasks,
 	type SeedDeliverable,
 	type SeedTask,
 	type SeedVersion,
 	type SeedWorkstream,
-	compareSeedDeliverables,
-	compareSeedTasks,
 	seedDeliverableSchema,
 	seedTaskSchema,
 	seedVersionSchema,

@@ -8,5 +8,6 @@
     "v03-corelib-tier-ship",
     "v03-docs-reader-hardening",
     "v03-pckg-tool-registry"
-  ]
+  ],
+  "$schema": "../schemas/seed/workstream.schema.json"
 }

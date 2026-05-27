@@ -1,6 +1,5 @@
 {
   "id": "pckg-blazor-circuit-hardening",
-  "number": 249,
   "title": "Harden Blazor circuits for profile upload and admin activity",
   "statusColumn": "Done",
   "priority": "low",
@@ -13,5 +12,8 @@
     "subject": "fix(pckg): harden Blazor circuits for profile upload and admin activity",
     "url": "https://github.com/Cyber-Nomad-Collective/pckg/commit/2e97cd6"
   },
-  "body": "Harden Blazor circuits for profile upload and admin activity.\n\n## Provenance\n- **Repository:** `pckg`\n- **Commit:** [`2e97cd6`](https://github.com/Cyber-Nomad-Collective/pckg/commit/2e97cd6)\n- **Subject:** fix(pckg): harden Blazor circuits for profile upload and admin activity\n- **Completed:** 2026-05-20\n\n## Catalog scope\n- **Delivery version:** v0.2 (Analysis, packages, and platform spec)\n- **Workstream:** `pckg-registry`\n- **Domain:** `tooling`\n\n## Relation\nSupports **v0.2 (Analysis, packages, and platform spec)** on workstream `pckg-registry`.\n"
+  "body": "Harden Blazor circuits for profile upload and admin activity.\n\n## Provenance\n- **Repository:** `pckg`\n- **Commit:** [`2e97cd6`](https://github.com/Cyber-Nomad-Collective/pckg/commit/2e97cd6)\n- **Subject:** fix(pckg): harden Blazor circuits for profile upload and admin activity\n- **Completed:** 2026-05-20\n\n## Catalog scope\n- **Delivery version:** v0.2 (Analysis, packages, and platform spec)\n- **Workstream:** `pckg-registry`\n- **Domain:** `tooling`\n\n## Relation\nSupports **v0.2 (Analysis, packages, and platform spec)** on workstream `pckg-registry`.\n",
+  "order": 249,
+  "subtasks": [],
+  "$schema": "../schemas/seed/task.schema.json"
 }

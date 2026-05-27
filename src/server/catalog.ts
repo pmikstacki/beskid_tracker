@@ -18,7 +18,7 @@ import type {
 	RoadmapCatalogVersion,
 } from "#/lib/roadmap/types";
 import { loadAllSeedRoadmapTasks, loadVersionSeed } from "#/lib/seed/load";
-import type { SeedTask } from "#/lib/seed/schemas";
+import { compareSeedTasks, type SeedTask } from "#/lib/seed/schemas";
 
 function assertCatalogVersion(
 	catalog: RoadmapCatalog,
@@ -95,7 +95,7 @@ export const getVersionDashboard = createServerFn({ method: "GET" })
 		const catalog = buildRoadmapCatalog(data.version);
 		const version = assertCatalogVersion(catalog, data.version);
 		const recentTasks = [...seedTasksForVersion(data.version)]
-			.sort((a, b) => b.number - a.number)
+			.sort((a, b) => compareSeedTasks(b, a))
 			.slice(0, 12);
 		return { version, catalog, recentTasks };
 	});
@@ -129,7 +129,7 @@ export const getDeliverableDashboard = createServerFn({ method: "GET" })
 		}
 		const tasks = seedTasksForVersion(data.version)
 			.filter((t) => (t.deliverableId ?? t.milestoneId) === data.deliverableId)
-			.sort((a, b) => a.number - b.number);
+			.sort(compareSeedTasks);
 		return { version, deliverable, tasks, catalog };
 	});
 
@@ -174,7 +174,7 @@ export const getWorkstreamDashboard = createServerFn({ method: "GET" })
 		}
 		const tasks = seedTasksForVersion(data.version)
 			.filter((t) => t.workstream === data.slug)
-			.sort((a, b) => a.number - b.number);
+			.sort(compareSeedTasks);
 		return { version, workstream, tasks, catalog };
 	});
 
@@ -194,7 +194,7 @@ function taxonomyDashboard(
 	const version = assertCatalogVersion(catalog, versionId);
 	const tasks = seedTasksForVersion(versionId)
 		.filter((t) => taskMatchesScope(t, scope, slug))
-		.sort((a, b) => a.number - b.number);
+		.sort(compareSeedTasks);
 	assertScopeSlugInVersion(versionId, scope, slug, tasks);
 	return { version, slug, tasks, catalog };
 }

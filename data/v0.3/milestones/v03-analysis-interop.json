@@ -1,7 +1,8 @@
 {
   "id": "v03-analysis-interop",
   "title": "Analysis interop & codegen polish",
-  "number": 7,
   "description": "ExternalLibrary analysis registry, export-FFI HIR legality, formatter implementation notes, and e2e CLI artifact label alignment in the compiler.",
-  "closedOn": "2026-05-23"
+  "closedOn": "2026-05-23",
+  "subtasks": [],
+  "$schema": "../schemas/seed/deliverable.schema.json"
 }

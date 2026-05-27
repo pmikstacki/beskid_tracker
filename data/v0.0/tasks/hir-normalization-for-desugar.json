@@ -1,6 +1,5 @@
 {
   "id": "hir-normalization-for-desugar",
-  "number": 8,
   "title": "HIR normalization pass (for-loop desugaring)",
   "statusColumn": "Done",
   "priority": "medium",
@@ -15,5 +14,8 @@
     "commit": "68cb1fd",
     "subject": "Add HIR normalization pass with for-loop desugaring to while-loop transformation",
     "url": "https://github.com/Cyber-Nomad-Collective/pekan/commit/68cb1fd"
-  }
+  },
+  "order": 8,
+  "subtasks": [],
+  "$schema": "../schemas/seed/task.schema.json"
 }

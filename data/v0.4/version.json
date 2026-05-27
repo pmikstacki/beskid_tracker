@@ -11,5 +11,6 @@
     "endCommitSha": "c8e5fc4",
     "endCommitRepo": "beskid",
     "rationale": "Starts at v0.3 cut-off tip aaddd32 (2026-05-25). v0.4 work begins 2026-05-26 with tracker submodule, repo manifests, beskid-hub, and nexus registration; peaks with beskid_web_common extraction, web CI/Coolify trudoc paths, auth hub scaffold, and nexus hosting-model commits through HEAD c8e5fc4 (2026-05-27)."
-  }
+  },
+  "$schema": "../schemas/seed/version.schema.json"
 }

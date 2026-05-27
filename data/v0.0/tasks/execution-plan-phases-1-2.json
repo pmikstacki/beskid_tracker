@@ -1,6 +1,5 @@
 {
   "id": "execution-plan-phases-1-2",
-  "number": 6,
   "title": "Close execution plan phases 1–2 (HIR + typing)",
   "statusColumn": "Done",
   "priority": "high",
@@ -14,5 +13,8 @@
     "commit": "01db952",
     "subject": "Update execution plan with Phase 1/2 completion status and Phase 3 kickoff scope",
     "url": "https://github.com/Cyber-Nomad-Collective/pekan/commit/01db952"
-  }
+  },
+  "order": 6,
+  "subtasks": [],
+  "$schema": "../schemas/seed/task.schema.json"
 }

@@ -1,6 +1,5 @@
 {
   "id": "tracker-local-dev-bootstrap",
-  "number": 370,
   "title": "Tracker local dev: run bun install before bun dev",
   "statusColumn": "Backlog",
   "priority": "medium",
@@ -13,5 +12,8 @@
     "commit": "6438ae8",
     "subject": "feat(superrepo): add beskid_tracker submodule, repo manifests, and Beskid hub UI.",
     "url": "https://github.com/Cyber-Nomad-Collective/beskid/commit/6438ae8"
-  }
+  },
+  "order": 370,
+  "subtasks": [],
+  "$schema": "../schemas/seed/task.schema.json"
 }

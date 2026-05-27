@@ -1,6 +1,5 @@
 {
   "id": "open-vsx-ci-green",
-  "number": 255,
   "title": "Green Open VSX publish alongside docs site CI",
   "statusColumn": "Done",
   "priority": "medium",
@@ -14,5 +13,8 @@
     "subject": "ci: green pipelines for docs site, Open VSX publish, and Rust audit",
     "url": "https://github.com/Cyber-Nomad-Collective/beskid/commit/6444332"
   },
-  "body": "Green pipelines for docs site, Open VSX publish, and Rust audit.\n\n## Provenance\n- **Repository:** `beskid`\n- **Commit:** [`6444332`](https://github.com/Cyber-Nomad-Collective/beskid/commit/6444332)\n- **Subject:** ci: green pipelines for docs site, Open VSX publish, and Rust audit\n- **Completed:** 2026-05-08\n\n## Catalog scope\n- **Delivery version:** v0.2 (Analysis, packages, and platform spec)\n- **Workstream:** `editor-extension`\n- **Deliverable:** `v02-editor-extension`\n- **Domain:** `tooling`\n\n## Relation\nContributes to deliverable **VS Code extension & Open VSX** (`v02-editor-extension`).\n"
+  "body": "Green pipelines for docs site, Open VSX publish, and Rust audit.\n\n## Provenance\n- **Repository:** `beskid`\n- **Commit:** [`6444332`](https://github.com/Cyber-Nomad-Collective/beskid/commit/6444332)\n- **Subject:** ci: green pipelines for docs site, Open VSX publish, and Rust audit\n- **Completed:** 2026-05-08\n\n## Catalog scope\n- **Delivery version:** v0.2 (Analysis, packages, and platform spec)\n- **Workstream:** `editor-extension`\n- **Deliverable:** `v02-editor-extension`\n- **Domain:** `tooling`\n\n## Relation\nContributes to deliverable **VS Code extension & Open VSX** (`v02-editor-extension`).\n",
+  "order": 255,
+  "subtasks": [],
+  "$schema": "../schemas/seed/task.schema.json"
 }

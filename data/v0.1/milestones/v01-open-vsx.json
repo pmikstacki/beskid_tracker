@@ -1,7 +1,8 @@
 {
   "id": "v01-open-vsx",
   "title": "Open VSX publish on main",
-  "number": 4,
   "description": "Extension version derivation, namespace bootstrap, and v0.1.0 tag publish workflow.",
-  "closedOn": "2026-04-22"
+  "closedOn": "2026-04-22",
+  "subtasks": [],
+  "$schema": "../schemas/seed/deliverable.schema.json"
 }

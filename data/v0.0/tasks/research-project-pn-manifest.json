@@ -1,6 +1,5 @@
 {
   "id": "research-project-pn-manifest",
-  "number": 16,
   "title": "Research: Zig-style project.pn manifest vs path-driven layout",
   "statusColumn": "Done",
   "priority": "high",
@@ -15,5 +14,8 @@
     "commit": "28141af",
     "subject": "Add build workflow, lockfile lifecycle, and Daggy-based dependency resolution to project system documentation",
     "url": "https://github.com/Cyber-Nomad-Collective/pekan/commit/28141af"
-  }
+  },
+  "order": 16,
+  "subtasks": [],
+  "$schema": "../schemas/seed/task.schema.json"
 }

@@ -1,6 +1,5 @@
 {
   "id": "workspace-crates-restructure",
-  "number": 17,
   "title": "Reorganize workspace from src/ to crates/ and add beskid_abi",
   "statusColumn": "Done",
   "priority": "high",
@@ -14,5 +13,8 @@
     "commit": "c41b01e",
     "subject": "Add beskid_abi crate and reorganize workspace from src/ to crates/ directory structure",
     "url": "https://github.com/Cyber-Nomad-Collective/pekan/commit/c41b01e"
-  }
+  },
+  "order": 17,
+  "subtasks": [],
+  "$schema": "../schemas/seed/task.schema.json"
 }
