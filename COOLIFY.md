@@ -10,8 +10,8 @@ Application: **beskid tracker** (`Cyber-Nomad-Collective/beskid_tracker`, branch
 
 ## Build
 
-- **Drone CI** builds and pushes the image (`.drone.yml`); Coolify pulls only.
-- **`NODE_AUTH_TOKEN`** is a Drone secret for build, not a Coolify build secret.
+- **GitHub Actions** builds and pushes the image (`.github/workflows/container-images.yml`); Coolify pulls only.
+- **`NODE_AUTH_TOKEN`** is a GitHub Actions secret for build, not a Coolify build secret.
 
 ## Runtime secrets
 
