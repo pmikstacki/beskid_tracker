@@ -4,7 +4,6 @@ FROM oven/bun:latest AS build
 WORKDIR /app/beskid_tracker
 
 COPY beskid_tracker/package.json beskid_tracker/bun.lock beskid_tracker/.npmrc ./
-COPY beskid_web_common/packages/beskid-server-observability /app/beskid_web_common/packages/beskid-server-observability
 ARG NODE_AUTH_TOKEN
 ENV NODE_AUTH_TOKEN=${NODE_AUTH_TOKEN}
 RUN bun install --frozen-lockfile
