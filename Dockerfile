@@ -1,14 +1,15 @@
-# Coolify / superrepo: context = repository root, file = beskid_tracker/Dockerfile
+# CI / GHCR: context = beskid_tracker/ (see container-images.yml).
+# Local from superrepo: docker build -f beskid_tracker/Dockerfile beskid_tracker
 FROM oven/bun:latest AS build
 
 WORKDIR /app/beskid_tracker
 
-COPY beskid_tracker/package.json beskid_tracker/bun.lock beskid_tracker/.npmrc ./
+COPY package.json bun.lock .npmrc ./
 ARG NODE_AUTH_TOKEN
 ENV NODE_AUTH_TOKEN=${NODE_AUTH_TOKEN}
 RUN bun install --frozen-lockfile
 
-COPY beskid_tracker/ ./
+COPY . ./
 
 ARG VITE_GITHUB_REPO_DISPLAY_NAME=beskid
 ENV VITE_GITHUB_REPO_DISPLAY_NAME=${VITE_GITHUB_REPO_DISPLAY_NAME}
