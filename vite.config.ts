@@ -9,16 +9,13 @@ import viteReact from "@vitejs/plugin-react";
 import { nitro } from "nitro/vite";
 import { defineConfig } from "vite";
 
+import { packageRoot, packageSrc } from "./vite.resolve-beskid-packages";
+
 const rootDir = path.dirname(fileURLToPath(import.meta.url));
 const require = createRequire(import.meta.url);
-const beskidUiRoot = path.dirname(
-	require.resolve("@beskid/beskid-ui/package.json"),
-);
-const beskidUiSrc = path.join(beskidUiRoot, "src");
-const uiReactRoot = path.resolve(
-	rootDir,
-	"../beskid_web_common/packages/beskid-ui-react",
-);
+
+const beskidUiSrc = packageSrc("@beskid/beskid-ui");
+const uiReactRoot = packageRoot("@beskid/ui-react");
 const uiReactSrc = path.join(uiReactRoot, "src");
 const authClientEntry = path.resolve(
 	rootDir,

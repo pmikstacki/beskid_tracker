@@ -1,8 +1,8 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
-/* ui-react is aliased from the monorepo; scan it so shadcn utilities (rounded-4xl, etc.) emit. */
-@source "../../beskid_web_common/packages/beskid-ui-react/src";
+/* Scan published ui-react for shadcn utilities (rounded-4xl, etc.). */
+@source "../node_modules/@beskid/ui-react/src";
 @source inline("rounded-4xl");
 
 @import "tw-animate-css";
