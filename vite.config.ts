@@ -5,6 +5,7 @@ import { fileURLToPath } from "node:url";
 import tailwindcss from "@tailwindcss/vite";
 import { devtools } from "@tanstack/devtools-vite";
 import { tanstackStart } from "@tanstack/react-start/plugin/vite";
+import { nitro } from "nitro/vite";
 import viteReact from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 
@@ -57,6 +58,7 @@ const resolveAlias = [
 ];
 
 const config = defineConfig({
+	plugins: [devtools(), tailwindcss(), tanstackStart(), nitro({ preset: "bun" }), viteReact()],
 	resolve: {
 		tsconfigPaths: true,
 		alias: resolveAlias,
@@ -67,7 +69,6 @@ const config = defineConfig({
 	optimizeDeps: {
 		include: ["yaml"],
 	},
-	plugins: [devtools(), tailwindcss(), tanstackStart(), viteReact()],
 });
 
 export default config;

@@ -28,7 +28,7 @@ ENV PORT=3000
 
 COPY --from=build /app/beskid_tracker/package.json /app/beskid_tracker/bun.lock ./
 COPY --from=build /app/beskid_tracker/node_modules ./node_modules
-COPY --from=build /app/beskid_tracker/dist ./dist
+COPY --from=build /app/beskid_tracker/.output ./.output
 COPY --from=build /app/beskid_tracker/data ./data
 
 EXPOSE 3000
