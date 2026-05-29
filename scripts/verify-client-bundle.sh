@@ -5,13 +5,15 @@ set -euo pipefail
 root="$(cd "$(dirname "$0")/.." && pwd)"
 assets="${root}/.output/public/assets"
 
+bash "$(dirname "$0")/verify-build-assets.sh" "${root}"
+
 if [[ ! -d "${assets}" ]]; then
 	echo "verify-client-bundle: missing ${assets} — run 'bun run build' first" >&2
 	exit 1
 fi
 
 shopt -s nullglob
-files=("${assets}"/*.js)
+files=( "${assets}"/*.js )
 if [[ ${#files[@]} -eq 0 ]]; then
 	echo "verify-client-bundle: no JS files under ${assets}" >&2
 	exit 1
@@ -23,10 +25,4 @@ if rg -l 'isAbsolute|bun:sqlite|issues\.sqlite|mkdirSync' "${assets}"/*.js >/dev
 	exit 1
 fi
 
-css=( "${root}"/.output/public/assets/styles-*.css )
-if [[ ${#css[@]} -eq 0 ]]; then
-	echo "verify-client-bundle: missing hashed stylesheet under .output/public/assets" >&2
-	exit 1
-fi
-
-echo "verify-client-bundle: ok (${#files[@]} JS chunks, stylesheet ${css[0]##*/})"
+echo "verify-client-bundle: ok (${#files[@]} JS chunks)"

@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "bun --bun vite dev --port 3000",
-    "build": "bun --bun vite build",
+    "build": "bun --bun vite build && bash scripts/sync-root-stylesheet.sh",
     "verify:client-bundle": "bash scripts/verify-client-bundle.sh",
     "start": "bun run .output/server/index.mjs",
     "preview": "bun --bun vite preview",

@@ -40,7 +40,12 @@ Do **not** set `GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET`, or `GITHUB_OAUTH_CALL
 
 The GHCR image runs **Nitro** (`bun run .output/server/index.mjs`), not `vite preview`, so reverse-proxy hostnames work without `preview.allowedHosts`. Rebuild `beskid-tracker` after Dockerfile or `vite.config.ts` changes.
 
-After deploy, confirm static assets: open the site, note the hashed `/assets/styles-*.css` URL in the document, and verify it returns HTTP 200 (a 404 usually means an old image or cached HTML). CI runs `bun run build` and `bun run verify:client-bundle` before the image is pushed.
+After deploy, confirm static assets:
+
+1. Pin `IMAGE_TAG` to the new `sha-*` from CI (avoid stale floating `main` if an old container is still running).
+2. Open the site, note the hashed `/assets/styles-*.css` URL in the document (or `curl -s … | strings | grep styles-`), and verify it returns HTTP **200**. A 404 usually means SSR HTML references a stylesheet hash that is not in the running image — rebuild/redeploy with a fresh tag.
+
+CI and the Docker image run `bun run build` (includes `sync-root-stylesheet.sh`) and `bun run verify:client-bundle` before push.
 
 ## Health
 
