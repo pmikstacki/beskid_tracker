@@ -2,9 +2,8 @@
 
 import { Bold, Code, Italic, List, ListOrdered, Quote } from "lucide-react";
 import { useRef, useState } from "react";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
 
+import { MarkdownContent } from "#/components/markdown-content";
 import { ReportFieldChrome } from "#/components/report-fields/report-field-chrome";
 import { Button } from "#/components/ui/button";
 import { Textarea } from "#/components/ui/textarea";
@@ -149,17 +148,13 @@ export function MarkdownField({
 						className="min-h-[7rem] resize-y rounded-none border-0 bg-transparent px-3 py-2.5 text-sm shadow-none focus-visible:ring-0"
 					/>
 				) : (
-					<div
-						className={cn(
-							"prose prose-sm dark:prose-invert max-w-none min-h-[7rem] px-3 py-2.5",
-							!value.trim() && "text-muted-foreground italic",
-						)}
-					>
-						{value.trim() ? (
-							<ReactMarkdown remarkPlugins={[remarkGfm]}>{value}</ReactMarkdown>
-						) : (
-							<p>Nothing to preview yet.</p>
-						)}
+					<div className="min-h-[7rem] px-3 py-2.5">
+						<MarkdownContent
+							className={cn(!value.trim() && "text-muted-foreground italic")}
+							emptyFallback="Nothing to preview yet."
+						>
+							{value}
+						</MarkdownContent>
 					</div>
 				)}
 			</div>

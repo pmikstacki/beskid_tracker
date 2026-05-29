@@ -2,6 +2,7 @@
 
 import { ExternalLink } from "lucide-react";
 
+import { MarkdownContent } from "#/components/markdown-content";
 import { Badge } from "#/components/ui/badge";
 import { Button } from "#/components/ui/button";
 import {
@@ -52,9 +53,7 @@ export function BugDetailSheet({
 							))}
 					</div>
 					{bug.bodyExcerpt ? (
-						<p className="text-sm leading-relaxed whitespace-pre-wrap">
-							{bug.bodyExcerpt}
-						</p>
+						<MarkdownContent>{bug.bodyExcerpt}</MarkdownContent>
 					) : (
 						<p className="text-muted-foreground text-sm">
 							No description preview.

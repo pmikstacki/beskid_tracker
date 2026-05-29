@@ -15,6 +15,9 @@ import { RoadmapNavTree } from "#/components/roadmap-nav-tree";
 import { ThemeToggle } from "#/components/theme-toggle";
 import { Avatar, AvatarFallback, AvatarImage } from "#/components/ui/avatar";
 import {
+	DialogTrigger,
+} from "#/components/ui/dialog";
+import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuItem,
@@ -232,9 +235,11 @@ export function AppSidebar({
 								<ReportIssueDialog
 									user={reportBugUser ?? user}
 									trigger={
-										<SidebarMenuButton tooltip="Report a bug">
-											<Bug />
-											<span>Report a bug</span>
+										<SidebarMenuButton tooltip="Report a bug" asChild>
+											<DialogTrigger>
+												<Bug />
+												<span>Report a bug</span>
+											</DialogTrigger>
 										</SidebarMenuButton>
 									}
 								/>

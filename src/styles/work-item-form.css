@@ -56,3 +56,17 @@
 .work-item-form__actions button {
 	min-width: 6.5rem;
 }
+
+/* Global border token on * breaks typography; keep prose readable. */
+.prose :where(p, li, ul, ol, blockquote, pre, h1, h2, h3, h4, h5, h6, hr) {
+	border-width: 0;
+}
+
+.prose :where(a) {
+	text-decoration: underline;
+	text-underline-offset: 2px;
+}
+
+.prose :where(code):not(:where(pre *)) {
+	border-width: 1px;
+}

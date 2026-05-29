@@ -53,13 +53,13 @@ export function ReportIssueDialog({
 	return (
 		<Dialog open={open} onOpenChange={setOpen}>
 			{trigger !== false ? (
-				<DialogTrigger asChild>
-					{trigger ?? (
+				trigger ?? (
+					<DialogTrigger asChild>
 						<Button variant="outline" size="sm">
 							{triggerLabel}
 						</Button>
-					)}
-				</DialogTrigger>
+					</DialogTrigger>
+				)
 			) : null}
 			<DialogContent className="work-item-dialog sm:max-w-3xl max-h-[min(92vh,52rem)] overflow-y-auto">
 				<DialogHeader>

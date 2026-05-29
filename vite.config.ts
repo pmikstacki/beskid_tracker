@@ -15,8 +15,9 @@ const beskidUiRoot = path.dirname(
 	require.resolve("@beskid/beskid-ui/package.json"),
 );
 const beskidUiSrc = path.join(beskidUiRoot, "src");
-const uiReactRoot = path.dirname(
-	require.resolve("@beskid/ui-react/package.json"),
+const uiReactRoot = path.resolve(
+	rootDir,
+	"../beskid_web_common/packages/beskid-ui-react",
 );
 const uiReactSrc = path.join(uiReactRoot, "src");
 const authClientEntry = path.resolve(
@@ -36,6 +37,14 @@ const resolveAlias = [
 		replacement: `${trudocSrc}/$1`,
 	},
 	{ find: "@beskid/beskid-ui", replacement: beskidUiSrc },
+	{
+		find: "@beskid/ui-react/styles/shadcn-entry.css",
+		replacement: path.join(uiReactRoot, "src/styles/shadcn-entry.css"),
+	},
+	{
+		find: "@beskid/ui-react",
+		replacement: path.join(uiReactRoot, "src/index.ts"),
+	},
 	{ find: "@beskid/auth-client", replacement: authClientEntry },
 	{
 		find: "@beskid/material-theme",

@@ -101,13 +101,13 @@ export function RoadmapNavTree({
 							className="group/collapsible"
 						>
 							<SidebarMenuItem>
-								<CollapsibleTrigger asChild>
-									<SidebarMenuButton tooltip="Deliverables">
+								<SidebarMenuButton tooltip="Deliverables" asChild>
+									<CollapsibleTrigger>
 										<Flag />
 										<span>Deliverables</span>
 										<ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
-									</SidebarMenuButton>
-								</CollapsibleTrigger>
+									</CollapsibleTrigger>
+								</SidebarMenuButton>
 								<CollapsibleContent>
 									<SidebarMenuSub>
 										{version.deliverables.map((deliverable) => (
@@ -155,13 +155,13 @@ export function RoadmapNavTree({
 							className="group/collapsible"
 						>
 							<SidebarMenuItem>
-								<CollapsibleTrigger asChild>
-									<SidebarMenuButton tooltip="Workstreams">
+								<SidebarMenuButton tooltip="Workstreams" asChild>
+									<CollapsibleTrigger>
 										<LayoutGrid />
 										<span>Workstreams</span>
 										<ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
-									</SidebarMenuButton>
-								</CollapsibleTrigger>
+									</CollapsibleTrigger>
+								</SidebarMenuButton>
 								<CollapsibleContent>
 									<SidebarMenuSub>
 										{version.workstreams.map((ws) => (
