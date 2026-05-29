@@ -1,7 +1,12 @@
+import "@tanstack/react-start/server-only";
+
 import type { HandoffPayload } from "@beskid/auth-client";
 import { buildLoginUrl, verifyHandoffToken } from "@beskid/auth-client";
 
-import { getAuthHubServiceToken, getAuthHubUrl } from "#/lib/auth/hub-settings";
+import {
+	getAuthHubServiceToken,
+	getAuthHubUrl,
+} from "#/lib/auth/hub-settings.server";
 
 export type HubHandoffPayload = HandoffPayload;
 

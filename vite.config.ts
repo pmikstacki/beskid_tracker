@@ -5,8 +5,8 @@ import { fileURLToPath } from "node:url";
 import tailwindcss from "@tailwindcss/vite";
 import { devtools } from "@tanstack/devtools-vite";
 import { tanstackStart } from "@tanstack/react-start/plugin/vite";
-import { nitro } from "nitro/vite";
 import viteReact from "@vitejs/plugin-react";
+import { nitro } from "nitro/vite";
 import { defineConfig } from "vite";
 
 const rootDir = path.dirname(fileURLToPath(import.meta.url));
@@ -58,13 +58,38 @@ const resolveAlias = [
 ];
 
 const config = defineConfig({
-	plugins: [devtools(), tailwindcss(), tanstackStart(), nitro({ preset: "bun" }), viteReact()],
+	plugins: [
+		devtools(),
+		tailwindcss(),
+		tanstackStart(),
+		nitro({ preset: "bun" }),
+		viteReact(),
+	],
 	resolve: {
 		tsconfigPaths: true,
 		alias: resolveAlias,
+		dedupe: [
+			"class-variance-authority",
+			"clsx",
+			"tailwind-merge",
+			"radix-ui",
+			"lucide-react",
+			"next-themes",
+			"sonner",
+			"vaul",
+			"cmdk",
+			"react-day-picker",
+			"react-resizable-panels",
+			"embla-carousel-react",
+			"recharts",
+			"input-otp",
+			"@base-ui/react",
+			"jose",
+		],
 	},
 	ssr: {
 		noExternal: ["trudoc", "yaml"],
+		external: ["bun:sqlite", "node:fs", "node:path"],
 	},
 	optimizeDeps: {
 		include: ["yaml"],

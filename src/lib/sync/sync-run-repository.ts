@@ -1,3 +1,5 @@
+import "@tanstack/react-start/server-only";
+
 import { getIssuesDatabase } from "#/lib/storage/db";
 import type {
 	SyncLogLevel,

@@ -40,6 +40,8 @@ Do **not** set `GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET`, or `GITHUB_OAUTH_CALL
 
 The GHCR image runs **Nitro** (`bun run .output/server/index.mjs`), not `vite preview`, so reverse-proxy hostnames work without `preview.allowedHosts`. Rebuild `beskid-tracker` after Dockerfile or `vite.config.ts` changes.
 
+After deploy, confirm static assets: open the site, note the hashed `/assets/styles-*.css` URL in the document, and verify it returns HTTP 200 (a 404 usually means an old image or cached HTML). CI runs `bun run build` and `bun run verify:client-bundle` before the image is pushed.
+
 ## Health
 
 `wget -q --spider http://127.0.0.1:3000/api/health` (adjust port if overridden)

@@ -1,25 +1,17 @@
 import { createServerFn } from "@tanstack/react-start";
 
-import {
-	filterCatalogEntries,
-	type PlatformSpecCatalogEntry,
-	searchCatalogEntries,
-} from "#/lib/platform-spec/catalog";
-import {
-	loadPlatformSpecCatalog,
-	loadPlatformSpecDocument,
-} from "#/lib/platform-spec/catalog-loader";
+import type { PlatformSpecCatalogEntry } from "#/lib/platform-spec/catalog";
+import * as platformSpecCatalogServer from "#/server/platform-spec-catalog.server";
 
 export const getPlatformSpecCatalog = createServerFn({ method: "GET" }).handler(
-	async () => {
-		const catalog = await loadPlatformSpecCatalog();
-		return catalog;
-	},
+	async () => platformSpecCatalogServer.loadPlatformSpecCatalog(),
 );
 
 export const getPlatformSpecDocument = createServerFn({ method: "GET" })
 	.inputValidator((data: { slug: string }) => data)
-	.handler(async ({ data }) => loadPlatformSpecDocument(data.slug));
+	.handler(async ({ data }) =>
+		platformSpecCatalogServer.loadPlatformSpecDocument(data.slug),
+	);
 
 export const searchPlatformSpecCatalog = createServerFn({ method: "GET" })
 	.inputValidator(
@@ -33,11 +25,11 @@ export const searchPlatformSpecCatalog = createServerFn({ method: "GET" })
 		}) => data,
 	)
 	.handler(async ({ data }): Promise<PlatformSpecCatalogEntry[]> => {
-		const catalog = await loadPlatformSpecCatalog();
+		const catalog = await platformSpecCatalogServer.loadPlatformSpecCatalog();
 		let entries = catalog.entries;
 
 		if (data.specLevel || data.pathClass || data.status || data.domain) {
-			entries = filterCatalogEntries(entries, {
+			entries = platformSpecCatalogServer.filterCatalogEntries(entries, {
 				specLevel: data.specLevel,
 				pathClass: data.pathClass,
 				status: data.status,
@@ -45,5 +37,9 @@ export const searchPlatformSpecCatalog = createServerFn({ method: "GET" })
 			});
 		}
 
-		return searchCatalogEntries(entries, data.query, data.limit ?? 40);
+		return platformSpecCatalogServer.searchCatalogEntries(
+			entries,
+			data.query,
+			data.limit ?? 20,
+		);
 	});

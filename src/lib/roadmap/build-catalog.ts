@@ -1,3 +1,5 @@
+import "@tanstack/react-start/server-only";
+
 import { DEFAULT_DELIVERY_VERSIONS } from "#/lib/github/roadmap-labels";
 import {
 	emptyVersionStats,

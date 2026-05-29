@@ -1,3 +1,5 @@
+import "@tanstack/react-start/server-only";
+
 import { issueToPublicBug } from "#/lib/github/bug-mappers";
 import { type BoardFilters, filterTasks } from "#/lib/github/filters";
 import { issueToRoadmapTask } from "#/lib/github/mappers";

@@ -14,6 +14,7 @@ ARG VITE_GITHUB_REPO_DISPLAY_NAME=beskid
 ENV VITE_GITHUB_REPO_DISPLAY_NAME=${VITE_GITHUB_REPO_DISPLAY_NAME}
 ENV SKIP_ENV_VALIDATION=1
 RUN bun run build
+RUN bun run verify:client-bundle
 
 FROM oven/bun:latest AS runtime
 

@@ -1,39 +1,11 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
-
-import { filterTasks, summarizeWorkstreams } from "#/lib/github/filters";
-import {
-	approveSpecForIssue,
-	createRoadmapIssue,
-	registerVersionLabel,
-} from "#/lib/github/issues-service";
-import { collectBoardMeta } from "#/lib/github/mappers";
 import { canManageRoadmap } from "#/lib/github/permissions";
 import type { BoardPayload } from "#/lib/github/types";
-import {
-	listAllRoadmapTasksFromStore,
-	listRoadmapBoardFromStore,
-	listVersionLabelsFromStore,
-} from "#/lib/issues/read-service";
-import { catalogWorkstreamSlugs } from "#/lib/roadmap/build-catalog";
-import { assertBoardFilters } from "#/lib/roadmap/validate-board-filters";
 import { useSeedData } from "#/lib/seed/config";
-import {
-	listSeedVersionLabels,
-	loadAllSeedRoadmapTasks,
-	tasksToColumns,
-} from "#/lib/seed/load";
-import { getAuthUser } from "#/server/auth";
-
-async function withAuth<T>(
-	fn: (octokit: import("@octokit/rest").Octokit, login: string) => Promise<T>,
-): Promise<T> {
-	const { withOctokit, requireSession } = await import(
-		"#/server/auth-guard.server"
-	);
-	const session = await requireSession();
-	return withOctokit((octokit) => fn(octokit, session.login));
-}
+import { resolveAuthUser } from "#/server/auth.server";
+import { withAuth } from "#/server/auth-guard.server";
+import * as roadmapServer from "#/server/roadmap.server";
 
 export const getBoard = createServerFn({ method: "GET" })
 	.inputValidator(
@@ -48,31 +20,40 @@ export const getBoard = createServerFn({ method: "GET" })
 	.handler(async ({ data }): Promise<BoardPayload> => {
 		if (useSeedData()) {
 			return withAuth(async () => {
-				const all = loadAllSeedRoadmapTasks();
-				const tasks = filterTasks(all, data);
-				const scoped = collectBoardMeta(
+				const all = roadmapServer.loadAllSeedRoadmapTasks();
+				const tasks = roadmapServer.filterTasks(all, data);
+				const scoped = roadmapServer.collectBoardMeta(
 					all.filter((t) => t.version === data.version),
 				);
-				assertBoardFilters(data, scoped, catalogWorkstreamSlugs(data.version));
+				roadmapServer.assertBoardFilters(
+					data,
+					scoped,
+					roadmapServer.catalogWorkstreamSlugs(data.version),
+				);
 				return {
 					meta: {
-						versions: listSeedVersionLabels(),
+						versions: roadmapServer.listSeedVersionLabels(),
 						...scoped,
 						canManage: false,
 					},
-					columns: tasksToColumns(tasks),
+					columns: roadmapServer.tasksToColumns(tasks),
 					tasks,
 				};
 			});
 		}
 		return withAuth(async (octokit, login) => {
-			const versions = await listVersionLabelsFromStore();
-			const { tasks, columns } = await listRoadmapBoardFromStore(data);
-			const all = await listAllRoadmapTasksFromStore();
-			const scoped = collectBoardMeta(
+			const versions = await roadmapServer.listVersionLabelsFromStore();
+			const { tasks, columns } =
+				await roadmapServer.listRoadmapBoardFromStore(data);
+			const all = await roadmapServer.listAllRoadmapTasksFromStore();
+			const scoped = roadmapServer.collectBoardMeta(
 				all.filter((t) => t.version === data.version),
 			);
-			assertBoardFilters(data, scoped, catalogWorkstreamSlugs(data.version));
+			roadmapServer.assertBoardFilters(
+				data,
+				scoped,
+				roadmapServer.catalogWorkstreamSlugs(data.version),
+			);
 			const canManage = await canManageRoadmap(octokit, login);
 
 			return {
@@ -92,23 +73,23 @@ export const getWorkstreamDashboard = createServerFn({ method: "GET" })
 	.handler(async ({ data }) => {
 		if (useSeedData()) {
 			return withAuth(async () => {
-				const all = loadAllSeedRoadmapTasks();
+				const all = roadmapServer.loadAllSeedRoadmapTasks();
 				return {
 					version: data.version,
 					canManage: false,
-					workstreams: summarizeWorkstreams(all, data.version),
-					versions: listSeedVersionLabels(),
+					workstreams: roadmapServer.summarizeWorkstreams(all, data.version),
+					versions: roadmapServer.listSeedVersionLabels(),
 				};
 			});
 		}
 		return withAuth(async (octokit, login) => {
-			const all = await listAllRoadmapTasksFromStore();
+			const all = await roadmapServer.listAllRoadmapTasksFromStore();
 			const canManage = await canManageRoadmap(octokit, login);
 			return {
 				version: data.version,
 				canManage,
-				workstreams: summarizeWorkstreams(all, data.version),
-				versions: await listVersionLabelsFromStore(),
+				workstreams: roadmapServer.summarizeWorkstreams(all, data.version),
+				versions: await roadmapServer.listVersionLabelsFromStore(),
 			};
 		});
 	});
@@ -150,7 +131,9 @@ export const createBoardIssue = createServerFn({ method: "POST" })
 				"Roadmap task creation is disabled while ROADMAP_USE_SEED=1 (read-only seed catalog)",
 			);
 		}
-		return withAuth((octokit) => createRoadmapIssue(octokit, data));
+		return withAuth((octokit) =>
+			roadmapServer.createRoadmapIssue(octokit, data),
+		);
 	});
 
 export const registerVersion = createServerFn({ method: "POST" })
@@ -162,7 +145,7 @@ export const registerVersion = createServerFn({ method: "POST" })
 					"Only the repository owner can define delivery versions",
 				);
 			}
-			await registerVersionLabel(octokit, data.version);
+			await roadmapServer.registerVersionLabel(octokit, data.version);
 			return { version: data.version };
 		});
 	});
@@ -174,13 +157,13 @@ export const approveSpec = createServerFn({ method: "POST" })
 			if (!(await canManageRoadmap(octokit, login))) {
 				throw new Error("Only the repository owner can approve spec linkages");
 			}
-			return approveSpecForIssue(octokit, data.issueNumber);
+			return roadmapServer.approveSpecForIssue(octokit, data.issueNumber);
 		});
 	});
 
 export const getSessionInfo = createServerFn({ method: "GET" }).handler(
 	async () => {
-		const user = await getAuthUser();
+		const user = await resolveAuthUser();
 		if (!user) return { user: null, canManage: false };
 		return withAuth(async (octokit, login) => ({
 			user,

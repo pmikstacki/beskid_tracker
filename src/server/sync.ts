@@ -1,60 +1,41 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
+
 import { canManageRoadmap } from "#/lib/github/permissions";
-import { importSeedBundlesToGitHub } from "#/lib/seed/import-to-github";
 import {
 	parseUploadedSeedBundles,
 	type UploadedSeedFile,
 } from "#/lib/seed/parse-uploaded-bundle";
-import { readSyncState } from "#/lib/storage/issues-repository";
-import { triggerBoardSyncPull } from "#/lib/sync/board-sync-service";
-import {
-	isGithubSyncDisabled,
-	isGithubWebhookConfigured,
-} from "#/lib/sync/github-webhook-config";
-import { hasGithubSyncCredentials } from "#/lib/sync/sync-octokit";
-import {
-	createSyncRun,
-	getActiveSyncRun,
-	getSyncRunById,
-	listRecentSyncRuns,
-	listSyncLogsForRun,
-	listSyncLogsForRunAfter,
-	type SyncLogLine,
-	type SyncRunRecord,
-} from "#/lib/sync/sync-run-repository";
-import type { SyncStatusPayload } from "#/lib/sync/sync-run-types";
+import type {
+	SyncLogLine,
+	SyncRunRecord,
+	SyncStatusPayload,
+} from "#/lib/sync/sync-run-types";
+import { requireSession, withOctokit } from "#/server/auth-guard.server";
+import * as syncServer from "#/server/sync.server";
 
 const uploadedFileSchema = z.object({
 	relativePath: z.string().min(1).max(512),
 	content: z.string().max(512_000),
 });
 
-function resolveSyncMode(): SyncStatusPayload["syncMode"] {
-	if (isGithubSyncDisabled()) return "disabled";
-	if (isGithubWebhookConfigured()) return "webhook";
-	return "unconfigured";
-}
-
 export const getBoardSyncStatusFn = createServerFn({ method: "GET" }).handler(
 	async (): Promise<SyncStatusPayload> => {
-		const state = readSyncState();
-		const activeRun = getActiveSyncRun();
-		const recentRuns = listRecentSyncRuns(8);
+		const state = syncServer.readSyncState();
+		const activeRun = syncServer.getActiveSyncRun();
+		const recentRuns = syncServer.listRecentSyncRuns(8);
 		const logs = activeRun
-			? listSyncLogsForRun(activeRun.id, 250)
+			? syncServer.listSyncLogsForRun(activeRun.id, 250)
 			: recentRuns[0]
-				? listSyncLogsForRun(recentRuns[0].id, 120)
+				? syncServer.listSyncLogsForRun(recentRuns[0].id, 120)
 				: [];
-
-		const syncMode = resolveSyncMode();
 
 		return {
 			state,
 			activeRun,
 			recentRuns,
 			logs,
-			syncMode,
+			syncMode: syncServer.resolveSyncMode(),
 		};
 	},
 );
@@ -73,12 +54,18 @@ export const getSyncRunProgressFn = createServerFn({ method: "GET" })
 		}),
 	)
 	.handler(async ({ data }): Promise<SyncRunProgressPayload> => {
-		const run = data.runId ? getSyncRunById(data.runId) : getActiveSyncRun();
+		const run = data.runId
+			? syncServer.getSyncRunById(data.runId)
+			: syncServer.getActiveSyncRun();
 		if (!run) {
 			return { run: null, logs: [], done: true };
 		}
 
-		const logs = listSyncLogsForRunAfter(run.id, data.afterLogId ?? 0, 300);
+		const logs = syncServer.listSyncLogsForRunAfter(
+			run.id,
+			data.afterLogId ?? 0,
+			300,
+		);
 		return {
 			run,
 			logs,
@@ -88,14 +75,13 @@ export const getSyncRunProgressFn = createServerFn({ method: "GET" })
 
 export const triggerBoardSyncFn = createServerFn({ method: "POST" }).handler(
 	async () => {
-		const { requireSession } = await import("#/server/auth-guard.server");
 		await requireSession();
-		if (!hasGithubSyncCredentials()) {
+		if (!syncServer.hasGithubSyncCredentials()) {
 			throw new Error(
 				"Set GITHUB_SYNC_TOKEN or GITHUB_PUBLIC_READ_TOKEN to run a bootstrap sync",
 			);
 		}
-		return triggerBoardSyncPull(true);
+		return syncServer.triggerBoardSyncPull(true);
 	},
 );
 
@@ -107,9 +93,6 @@ export const importSeedBundleFn = createServerFn({ method: "POST" })
 		}),
 	)
 	.handler(async ({ data }) => {
-		const { withOctokit, requireSession } = await import(
-			"#/server/auth-guard.server"
-		);
 		const session = await requireSession();
 
 		return withOctokit(async (octokit) => {
@@ -117,7 +100,7 @@ export const importSeedBundleFn = createServerFn({ method: "POST" })
 				throw new Error("Only repository maintainers can import seed data");
 			}
 
-			if (getActiveSyncRun()) {
+			if (syncServer.getActiveSyncRun()) {
 				throw new Error(
 					"Another sync is already running. Wait for it to finish.",
 				);
@@ -126,12 +109,12 @@ export const importSeedBundleFn = createServerFn({ method: "POST" })
 			const bundles = parseUploadedSeedBundles(
 				data.files as UploadedSeedFile[],
 			);
-			const run = createSyncRun("import");
+			const run = syncServer.createSyncRun("import");
 			run.log(
 				`Import requested by ${session.login}: ${bundles.length} version(s), dryRun=${Boolean(data.dryRun)}`,
 			);
 
-			return importSeedBundlesToGitHub(octokit, bundles, run, {
+			return syncServer.importSeedBundlesToGitHub(octokit, bundles, run, {
 				dryRun: data.dryRun,
 			});
 		});

@@ -1,7 +1,9 @@
 import { githubProxyBaseUrl } from "@beskid/auth-client";
 import { Octokit } from "@octokit/rest";
 
-import { getAuthHubUrl } from "#/lib/auth/hub-settings";
+import "@tanstack/react-start/server-only";
+
+import { getAuthHubUrl } from "#/lib/auth/hub-settings.server";
 
 export function createHubOctokit(hubUserToken: string): Octokit {
 	const hubUrl = getAuthHubUrl();

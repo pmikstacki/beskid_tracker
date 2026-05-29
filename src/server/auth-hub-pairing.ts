@@ -1,22 +1,36 @@
 import { BeskidAuthClient } from "@beskid/auth-client";
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
-import { env } from "#/env";
-import { saveAuthHubPairing } from "#/lib/auth/hub-settings";
+
+import { env } from "#/env.server";
+import { saveAuthHubPairing } from "#/lib/auth/hub-settings.server";
 import { createOctokit } from "#/lib/github/octokit";
 import { canManageRoadmap } from "#/lib/github/permissions";
+import {
+	createOctokitForSession,
+	requireSession,
+} from "#/server/auth-guard.server";
+import {
+	getAuthHubLoginHref,
+	getAuthHubPairingStatus,
+} from "#/server/auth-hub-pairing.server";
 
 const approveSchema = z.object({
 	code: z.string().min(4),
 	publicUrl: z.string().url(),
 });
 
+export const getAuthHubPairingStatusFn = createServerFn({
+	method: "GET",
+}).handler(async () => getAuthHubPairingStatus());
+
+export const getAuthHubLoginHrefFn = createServerFn({ method: "GET" }).handler(
+	async () => getAuthHubLoginHref(),
+);
+
 export const approveAuthHubPairing = createServerFn({ method: "POST" })
 	.inputValidator(approveSchema)
 	.handler(async ({ data }) => {
-		const { requireSession, createOctokitForSession } = await import(
-			"#/server/auth-guard.server"
-		);
 		const session = await requireSession();
 		const syncToken = env.GITHUB_SYNC_TOKEN?.trim();
 		const octokit = syncToken

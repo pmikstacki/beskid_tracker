@@ -1,4 +1,6 @@
-import { env } from "#/env";
+import "@tanstack/react-start/server-only";
+
+import { env } from "#/env.server";
 import type { RoadmapTask } from "#/lib/github/types";
 import type { GitHubIssuePayload } from "#/lib/storage/stored-issue";
 

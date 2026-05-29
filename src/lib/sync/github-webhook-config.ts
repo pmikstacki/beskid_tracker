@@ -1,4 +1,6 @@
-import { env } from "#/env";
+import "@tanstack/react-start/server-only";
+
+import { env } from "#/env.server";
 import {
 	APP_SETTING_KEYS,
 	deleteAppSetting,

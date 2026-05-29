@@ -1,6 +1,8 @@
+import "@tanstack/react-start/server-only";
+
 import type { Octokit } from "@octokit/rest";
 
-import { env } from "#/env";
+import { env } from "#/env.server";
 import { createOctokit, createPublicReadOctokit } from "#/lib/github/octokit";
 
 export function hasGithubSyncCredentials(): boolean {

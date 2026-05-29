@@ -1,5 +1,7 @@
 import type { Octokit } from "@octokit/rest";
-import { env } from "#/env";
+import "@tanstack/react-start/server-only";
+
+import { env } from "#/env.server";
 import {
 	buildMdxFile,
 	parseFrontmatterJson,

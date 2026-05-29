@@ -10,8 +10,10 @@ import {
 import { createFileRoute, Link, redirect } from "@tanstack/react-router";
 import { useState } from "react";
 import { z } from "zod";
-import { isAuthHubPaired } from "#/lib/auth/hub-settings";
-import { approveAuthHubPairing } from "#/server/auth-hub-pairing";
+import {
+	approveAuthHubPairing,
+	getAuthHubPairingStatusFn,
+} from "#/server/auth-hub-pairing";
 import { getSessionInfo } from "#/server/roadmap";
 
 const searchSchema = z.object({
@@ -28,7 +30,8 @@ export const Route = createFileRoute("/settings/auth/pair")({
 		if (!session.canManage) {
 			throw redirect({ to: "/v/v0.2" });
 		}
-		return { paired: isAuthHubPaired() };
+		const { paired } = await getAuthHubPairingStatusFn();
+		return { paired };
 	},
 	component: AuthHubPairPage,
 });

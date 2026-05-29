@@ -1,13 +1,9 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
-import { createPublicBugIssue } from "#/lib/github/issues-service";
+
 import type { PublicBug, PublicBugStats } from "#/lib/github/types";
-import {
-	fetchPublicBugStatsFromStore,
-	listPublicBugsFromStore,
-} from "#/lib/issues/read-service";
-import { readSyncState } from "#/lib/storage/issues-repository";
-import { triggerBoardSyncPull } from "#/lib/sync/board-sync-service";
+import { requireSession, withOctokit } from "#/server/auth-guard.server";
+import * as publicBugsServer from "#/server/public-bugs.server";
 
 export interface PublicBugsPayload {
 	bugs: PublicBug[];
@@ -22,24 +18,16 @@ export interface PublicBugStatsPayload extends PublicBugStats {
 	message?: string;
 }
 
-function syncStatusMessage(): string | undefined {
-	const state = readSyncState();
-	if (state.lastError && state.openIssueCount === 0) {
-		return `Issue sync failed: ${state.lastError}. Set GITHUB_SYNC_TOKEN or GITHUB_PUBLIC_READ_TOKEN and run bun run sync:issues.`;
-	}
-	return undefined;
-}
-
 export const listPublicBugsFn = createServerFn({ method: "GET" }).handler(
 	async (): Promise<PublicBugsPayload> => {
-		const state = readSyncState();
+		const state = publicBugsServer.readSyncState();
 		try {
-			const bugs = await listPublicBugsFromStore();
+			const bugs = await publicBugsServer.listPublicBugsFromStore();
 			return {
 				bugs,
 				rateLimited: false,
 				cached: Boolean(state.lastSuccessAt),
-				message: syncStatusMessage(),
+				message: publicBugsServer.syncStatusMessage(),
 			};
 		} catch (error) {
 			const message =
@@ -74,21 +62,22 @@ export const createPublicBugFn = createServerFn({ method: "POST" })
 				.optional(),
 		}),
 	)
-	.handler(async ({ data }) => {
-		const { withOctokit } = await import("#/server/auth-guard.server");
-		return withOctokit((octokit) => createPublicBugIssue(octokit, data));
-	});
+	.handler(async ({ data }) =>
+		withOctokit((octokit) =>
+			publicBugsServer.createPublicBugIssue(octokit, data),
+		),
+	);
 
 export const getPublicBugStatsFn = createServerFn({ method: "GET" }).handler(
 	async (): Promise<PublicBugStatsPayload> => {
-		const state = readSyncState();
+		const state = publicBugsServer.readSyncState();
 		try {
-			const stats = await fetchPublicBugStatsFromStore();
+			const stats = await publicBugsServer.fetchPublicBugStatsFromStore();
 			return {
 				...stats,
 				rateLimited: false,
 				cached: Boolean(state.lastSuccessAt),
-				message: syncStatusMessage(),
+				message: publicBugsServer.syncStatusMessage(),
 			};
 		} catch (error) {
 			const message =
@@ -106,8 +95,7 @@ export const getPublicBugStatsFn = createServerFn({ method: "GET" }).handler(
 
 export const syncIssuesFn = createServerFn({ method: "POST" }).handler(
 	async () => {
-		const { requireSession } = await import("#/server/auth-guard.server");
 		await requireSession();
-		return triggerBoardSyncPull(true);
+		return publicBugsServer.triggerBoardSyncPull(true);
 	},
 );

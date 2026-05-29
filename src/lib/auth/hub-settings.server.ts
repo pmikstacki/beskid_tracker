@@ -1,3 +1,5 @@
+import "@tanstack/react-start/server-only";
+
 import {
 	createCipheriv,
 	createDecipheriv,
@@ -5,7 +7,7 @@ import {
 	scryptSync,
 } from "node:crypto";
 
-import { env } from "#/env";
+import { env } from "#/env.server";
 import { getIssuesDatabase } from "#/lib/storage/db";
 
 const ALGO = "aes-256-gcm";

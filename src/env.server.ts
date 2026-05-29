@@ -1,3 +1,5 @@
+import "@tanstack/react-start/server-only";
+
 import { createEnv } from "@t3-oss/env-core";
 import { z } from "zod";
 
@@ -16,10 +18,6 @@ export const env = createEnv({
 		GITHUB_WEBHOOK_SECRET: z.string().min(8).optional(),
 		NODE_ENV: z.enum(["development", "production", "test"]).optional(),
 	},
-	clientPrefix: "VITE_",
-	client: {
-		VITE_GITHUB_REPO_DISPLAY_NAME: z.string().min(1).default("beskid"),
-	},
 	runtimeEnv: {
 		AUTH_HUB_PUBLIC_URL: process.env.AUTH_HUB_PUBLIC_URL,
 		SESSION_SECRET: process.env.SESSION_SECRET,
@@ -32,8 +30,6 @@ export const env = createEnv({
 		TRACKER_PUBLIC_URL: process.env.TRACKER_PUBLIC_URL,
 		GITHUB_WEBHOOK_SECRET: process.env.GITHUB_WEBHOOK_SECRET,
 		NODE_ENV: process.env.NODE_ENV,
-		VITE_GITHUB_REPO_DISPLAY_NAME: import.meta.env
-			.VITE_GITHUB_REPO_DISPLAY_NAME,
 	},
 	emptyStringAsUndefined: true,
 	skipValidation:

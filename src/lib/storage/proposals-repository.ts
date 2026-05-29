@@ -1,3 +1,5 @@
+import "@tanstack/react-start/server-only";
+
 import type { Database } from "bun:sqlite";
 
 import type {

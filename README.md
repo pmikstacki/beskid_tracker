@@ -58,7 +58,8 @@ Pair the tracker with the hub (see [COOLIFY.md](COOLIFY.md)). The hub’s GitHub
 |---------|--------|
 | `bun install` | Install dependencies (`NODE_AUTH_TOKEN` or `.npmrc` with GitHub Packages `read:packages`; see [`.npmrc.example`](.npmrc.example)) |
 | `bun run dev` | Dev server at http://localhost:3000 |
-| `bun run build` | Production build (runs `prebuild` sync) |
+| `bun run build` | Production build (Nitro `.output`) |
+| `bun run verify:client-bundle` | After build: assert client chunks omit SQLite/path APIs and CSS exists |
 | `bun run start` | Production server on port 3000 |
 | `bun run check` | Biome lint/format |
 | `bun run sync:issues` | Pull GitHub Issues into the local SQLite store |

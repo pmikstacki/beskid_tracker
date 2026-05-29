@@ -1,5 +1,6 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
+
 import {
 	getRoadmapIssue,
 	moveIssueToColumn,
@@ -7,19 +8,13 @@ import {
 } from "#/lib/github/issues-service";
 import type { RoadmapColumnId } from "#/lib/github/roadmap-labels";
 import type { RoadmapTask } from "#/lib/github/types";
-
-async function withAuth<T>(
-	fn: (octokit: import("@octokit/rest").Octokit) => Promise<T>,
-): Promise<T> {
-	const { withOctokit } = await import("#/server/auth-guard.server");
-	return withOctokit(fn);
-}
+import { withOctokit } from "#/server/auth-guard.server";
 
 export const getIssue = createServerFn({ method: "GET" })
 	.inputValidator((data: { issueNumber: number }) => data)
 	.handler(
 		async ({ data }): Promise<RoadmapTask | null> =>
-			withAuth((octokit) => getRoadmapIssue(octokit, data.issueNumber)),
+			withOctokit((octokit) => getRoadmapIssue(octokit, data.issueNumber)),
 	);
 
 const columnIdSchema = z.enum(["Backlog", "In Progress", "Done"]);
@@ -33,7 +28,7 @@ export const moveIssueColumn = createServerFn({ method: "POST" })
 	)
 	.handler(
 		async ({ data }): Promise<RoadmapTask> =>
-			withAuth((octokit) =>
+			withOctokit((octokit) =>
 				moveIssueToColumn(
 					octokit,
 					data.issueNumber,
@@ -81,5 +76,5 @@ export const updateIssue = createServerFn({ method: "POST" })
 	)
 	.handler(
 		async ({ data }): Promise<RoadmapTask> =>
-			withAuth((octokit) => updateRoadmapIssue(octokit, data)),
+			withOctokit((octokit) => updateRoadmapIssue(octokit, data)),
 	);

@@ -1,6 +1,8 @@
+import "@tanstack/react-start/server-only";
+
 import { jwtVerify, SignJWT } from "jose";
 
-import { env } from "#/env";
+import { env } from "#/env.server";
 
 export const SESSION_COOKIE_NAME = "beskid_tracker_session";
 

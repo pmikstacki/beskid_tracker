@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import { verifyHubHandoff } from "#/lib/auth/hub-handoff";
+import { verifyHubHandoff } from "#/lib/auth/hub-handoff.server";
 import {
 	clearSessionCookieHeader,
 	sealSession,

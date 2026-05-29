@@ -1,3 +1,5 @@
+import "@tanstack/react-start/server-only";
+
 import { collectBoardMeta } from "#/lib/github/mappers";
 import { DEFAULT_DELIVERY_VERSIONS } from "#/lib/github/roadmap-labels";
 import type { RoadmapColumns, RoadmapTask } from "#/lib/github/types";

@@ -1,7 +1,9 @@
 import type { Octokit } from "@octokit/rest";
 import { getRequest } from "@tanstack/react-start/server";
 
-import { createHubOctokit } from "#/lib/github/hub-octokit";
+import "@tanstack/react-start/server-only";
+
+import { createHubOctokit } from "#/lib/github/hub-octokit.server";
 import { createPublicReadOctokit } from "#/lib/github/octokit";
 import { getSessionFromRequest } from "#/lib/session/cookie";
 

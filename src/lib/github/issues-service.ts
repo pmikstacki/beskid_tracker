@@ -1,3 +1,5 @@
+import "@tanstack/react-start/server-only";
+
 import type { Octokit } from "@octokit/rest";
 import { BUG_LABEL, issueToPublicBug } from "#/lib/github/bug-mappers";
 import {

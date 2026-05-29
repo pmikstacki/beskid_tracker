@@ -1,75 +1,14 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 
-import { collectBoardMeta } from "#/lib/github/mappers";
-import type { RoadmapTask } from "#/lib/github/types";
-import {
-	buildRoadmapCatalog,
-	findCatalogVersion,
-} from "#/lib/roadmap/build-catalog";
-import { buildRoadmapSearchIndex } from "#/lib/roadmap/build-search-index";
-import {
-	type RoadmapScopeKind,
-	RoadmapScopeNotFoundError,
-} from "#/lib/roadmap/scope-not-found";
+import { RoadmapScopeNotFoundError } from "#/lib/roadmap/scope-not-found";
 import type { RoadmapSearchHit } from "#/lib/roadmap/search-index";
 import type {
 	RoadmapCatalog,
 	RoadmapCatalogVersion,
 } from "#/lib/roadmap/types";
-import { loadAllSeedRoadmapTasks, loadVersionSeed } from "#/lib/seed/load";
 import { compareSeedTasks, type SeedTask } from "#/lib/seed/schemas";
-
-function assertCatalogVersion(
-	catalog: RoadmapCatalog,
-	versionId: string,
-): RoadmapCatalogVersion {
-	const version = findCatalogVersion(catalog, versionId);
-	if (!version) {
-		throw new RoadmapScopeNotFoundError("version", versionId, versionId);
-	}
-	return version;
-}
-
-function seedTasksForVersion(versionId: string): SeedTask[] {
-	try {
-		return loadVersionSeed(versionId).tasks;
-	} catch {
-		return [];
-	}
-}
-
-function taskMatchesScope(
-	task: SeedTask,
-	scope: Exclude<RoadmapScopeKind, "version" | "deliverable" | "milestone">,
-	slug: string,
-): boolean {
-	if (scope === "workstream") return task.workstream === slug;
-	if (scope === "domain") return task.domain === slug;
-	if (scope === "area") return task.area === slug;
-	return task.feature === slug;
-}
-
-function assertScopeSlugInVersion(
-	versionId: string,
-	scope: "domain" | "area" | "feature",
-	slug: string,
-	tasks: SeedTask[],
-): void {
-	const versionTasks: RoadmapTask[] = loadAllSeedRoadmapTasks().filter(
-		(t) => t.version === versionId,
-	);
-	const meta = collectBoardMeta(versionTasks);
-	const known =
-		scope === "domain"
-			? meta.domains
-			: scope === "area"
-				? meta.areas
-				: meta.features;
-	if (!known.includes(slug) || tasks.length === 0) {
-		throw new RoadmapScopeNotFoundError(scope, versionId, slug);
-	}
-}
+import * as catalogServer from "#/server/catalog.server";
 
 export const getRoadmapCatalog = createServerFn({ method: "GET" })
 	.inputValidator(
@@ -80,7 +19,7 @@ export const getRoadmapCatalog = createServerFn({ method: "GET" })
 			.optional(),
 	)
 	.handler(async ({ data }): Promise<RoadmapCatalog> => {
-		return buildRoadmapCatalog(data?.version);
+		return catalogServer.buildCatalog(data?.version);
 	});
 
 export interface VersionDashboardPayload {
@@ -92,9 +31,9 @@ export interface VersionDashboardPayload {
 export const getVersionDashboard = createServerFn({ method: "GET" })
 	.inputValidator(z.object({ version: z.string().min(1) }))
 	.handler(async ({ data }): Promise<VersionDashboardPayload> => {
-		const catalog = buildRoadmapCatalog(data.version);
-		const version = assertCatalogVersion(catalog, data.version);
-		const recentTasks = [...seedTasksForVersion(data.version)]
+		const catalog = catalogServer.buildCatalog(data.version);
+		const version = catalogServer.assertCatalogVersion(catalog, data.version);
+		const recentTasks = [...catalogServer.seedTasksForVersion(data.version)]
 			.sort((a, b) => compareSeedTasks(b, a))
 			.slice(0, 12);
 		return { version, catalog, recentTasks };
@@ -115,8 +54,8 @@ export const getDeliverableDashboard = createServerFn({ method: "GET" })
 		}),
 	)
 	.handler(async ({ data }): Promise<DeliverableDashboardPayload> => {
-		const catalog = buildRoadmapCatalog(data.version);
-		const version = assertCatalogVersion(catalog, data.version);
+		const catalog = catalogServer.buildCatalog(data.version);
+		const version = catalogServer.assertCatalogVersion(catalog, data.version);
 		const deliverable = version.deliverables.find(
 			(d) => d.id === data.deliverableId,
 		);
@@ -127,7 +66,8 @@ export const getDeliverableDashboard = createServerFn({ method: "GET" })
 				data.deliverableId,
 			);
 		}
-		const tasks = seedTasksForVersion(data.version)
+		const tasks = catalogServer
+			.seedTasksForVersion(data.version)
 			.filter((t) => (t.deliverableId ?? t.milestoneId) === data.deliverableId)
 			.sort(compareSeedTasks);
 		return { version, deliverable, tasks, catalog };
@@ -162,8 +102,8 @@ export const getWorkstreamDashboard = createServerFn({ method: "GET" })
 		}),
 	)
 	.handler(async ({ data }): Promise<WorkstreamDashboardPayload> => {
-		const catalog = buildRoadmapCatalog(data.version);
-		const version = assertCatalogVersion(catalog, data.version);
+		const catalog = catalogServer.buildCatalog(data.version);
+		const version = catalogServer.assertCatalogVersion(catalog, data.version);
 		const workstream = version.workstreams.find((w) => w.slug === data.slug);
 		if (!workstream) {
 			throw new RoadmapScopeNotFoundError(
@@ -172,7 +112,8 @@ export const getWorkstreamDashboard = createServerFn({ method: "GET" })
 				data.slug,
 			);
 		}
-		const tasks = seedTasksForVersion(data.version)
+		const tasks = catalogServer
+			.seedTasksForVersion(data.version)
 			.filter((t) => t.workstream === data.slug)
 			.sort(compareSeedTasks);
 		return { version, workstream, tasks, catalog };
@@ -190,12 +131,13 @@ function taxonomyDashboard(
 	scope: "domain" | "area" | "feature",
 	slug: string,
 ): TaxonomyDashboardPayload {
-	const catalog = buildRoadmapCatalog(versionId);
-	const version = assertCatalogVersion(catalog, versionId);
-	const tasks = seedTasksForVersion(versionId)
-		.filter((t) => taskMatchesScope(t, scope, slug))
+	const catalog = catalogServer.buildCatalog(versionId);
+	const version = catalogServer.assertCatalogVersion(catalog, versionId);
+	const tasks = catalogServer
+		.seedTasksForVersion(versionId)
+		.filter((t) => catalogServer.taskMatchesScope(t, scope, slug))
 		.sort(compareSeedTasks);
-	assertScopeSlugInVersion(versionId, scope, slug, tasks);
+	catalogServer.assertScopeSlugInVersion(versionId, scope, slug, tasks);
 	return { version, slug, tasks, catalog };
 }
 
@@ -236,5 +178,6 @@ export const getFeatureDashboard = createServerFn({ method: "GET" })
 	);
 
 export const getRoadmapSearchIndex = createServerFn({ method: "GET" }).handler(
-	async (): Promise<RoadmapSearchHit[]> => buildRoadmapSearchIndex(),
+	async (): Promise<RoadmapSearchHit[]> =>
+		catalogServer.loadRoadmapSearchIndex(),
 );

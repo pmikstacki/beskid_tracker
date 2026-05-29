@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import { authHubLoginUrl } from "#/lib/auth/hub-handoff";
+import { authHubLoginUrl } from "#/lib/auth/hub-handoff.server";
 
 export const Route = createFileRoute("/api/auth/github")({
 	server: {

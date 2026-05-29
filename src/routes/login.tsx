@@ -2,7 +2,7 @@ import { AuthPageShell, Button } from "@beskid/ui-react";
 import { createFileRoute } from "@tanstack/react-router";
 import { z } from "zod";
 import { ThemeToggle } from "#/components/theme-toggle";
-import { authHubLoginUrl } from "#/lib/auth/hub-handoff";
+import { getAuthHubLoginHrefFn } from "#/server/auth-hub-pairing";
 
 const loginSearchSchema = z.object({
 	error: z.string().optional(),
@@ -10,12 +10,13 @@ const loginSearchSchema = z.object({
 
 export const Route = createFileRoute("/login")({
 	validateSearch: loginSearchSchema,
+	loader: async () => getAuthHubLoginHrefFn(),
 	component: LoginPage,
 });
 
 function LoginPage() {
 	const { error } = Route.useSearch();
-	const signInHref = authHubLoginUrl() ?? "/api/auth/github";
+	const { signInHref } = Route.useLoaderData();
 
 	return (
 		<div className="page-wrap relative">

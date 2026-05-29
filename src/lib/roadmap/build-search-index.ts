@@ -1,3 +1,5 @@
+import "@tanstack/react-start/server-only";
+
 import { buildRoadmapCatalog } from "#/lib/roadmap/build-catalog";
 import type { RoadmapSearchHit } from "#/lib/roadmap/search-index";
 import { loadAllVersionSeeds } from "#/lib/seed/load";

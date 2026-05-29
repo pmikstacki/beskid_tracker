@@ -1,3 +1,5 @@
+import "@tanstack/react-start/server-only";
+
 import { Database } from "bun:sqlite";
 
 import { ensureTrackerDataDir, issuesDbPath } from "#/lib/storage/paths";
