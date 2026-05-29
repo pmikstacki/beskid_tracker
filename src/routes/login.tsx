@@ -2,15 +2,23 @@ import { AuthPageShell, Button } from "@beskid/ui-react";
 import { createFileRoute } from "@tanstack/react-router";
 import { z } from "zod";
 import { ThemeToggle } from "#/components/theme-toggle";
-import { getAuthHubLoginHrefFn } from "#/server/auth-hub-pairing";
+import { sanitizePostLoginPath } from "#/lib/session/post-login-redirect";
 
 const loginSearchSchema = z.object({
 	error: z.string().optional(),
+	redirect: z.string().optional(),
 });
 
 export const Route = createFileRoute("/login")({
 	validateSearch: loginSearchSchema,
-	loader: async () => getAuthHubLoginHrefFn(),
+	loaderDeps: ({ search }) => ({ redirect: search.redirect }),
+	loader: async ({ deps }) => {
+		const redirectTo = sanitizePostLoginPath(deps.redirect);
+		const signInHref = redirectTo
+			? `/api/auth/github?next=${encodeURIComponent(redirectTo)}`
+			: "/api/auth/github";
+		return { signInHref };
+	},
 	component: LoginPage,
 });
 

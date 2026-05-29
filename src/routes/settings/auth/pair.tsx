@@ -11,7 +11,7 @@ import { createFileRoute, Link, redirect } from "@tanstack/react-router";
 import { useState } from "react";
 import { z } from "zod";
 import {
-	approveAuthHubPairing,
+	completeAuthHubPairingFn,
 	getAuthHubPairingStatusFn,
 } from "#/server/auth-hub-pairing";
 import { getSessionInfo } from "#/server/roadmap";
@@ -22,26 +22,57 @@ const searchSchema = z.object({
 
 export const Route = createFileRoute("/settings/auth/pair")({
 	validateSearch: searchSchema,
-	loader: async () => {
+	loaderDeps: ({ search }) => ({ code: search.code }),
+	loader: async ({ deps }) => {
+		const code = deps.code?.trim();
+		const { paired, defaultPublicUrl } = await getAuthHubPairingStatusFn();
+
+		if (code && defaultPublicUrl && !paired) {
+			const auto = await completeAuthHubPairingFn({
+				data: { code, publicUrl: defaultPublicUrl },
+			});
+			if (auto.ok) {
+				return {
+					paired: true,
+					autoPaired: true,
+					defaultPublicUrl,
+					needsLogin: false,
+				};
+			}
+		}
+
 		const session = await getSessionInfo();
 		if (!session.user) {
-			throw redirect({ to: "/login" });
+			const returnTo = code
+				? `/settings/auth/pair?code=${encodeURIComponent(code)}`
+				: "/settings/auth/pair";
+			throw redirect({
+				to: "/login",
+				search: { redirect: returnTo },
+			});
 		}
 		if (!session.canManage) {
 			throw redirect({ to: "/v/v0.2" });
 		}
-		const { paired } = await getAuthHubPairingStatusFn();
-		return { paired };
+
+		return {
+			paired,
+			autoPaired: false,
+			defaultPublicUrl,
+			needsLogin: false,
+		};
 	},
 	component: AuthHubPairPage,
 });
 
 function AuthHubPairPage() {
 	const { code } = Route.useSearch();
-	const { paired } = Route.useLoaderData();
-	const [publicUrl, setPublicUrl] = useState("");
+	const { paired, autoPaired, defaultPublicUrl } = Route.useLoaderData();
+	const [publicUrl, setPublicUrl] = useState(defaultPublicUrl);
 	const [pairingCode, setPairingCode] = useState(code ?? "");
-	const [message, setMessage] = useState<string | null>(null);
+	const [message, setMessage] = useState<string | null>(
+		autoPaired ? "Auth hub paired successfully. Service token stored locally." : null,
+	);
 	const [error, setError] = useState<string | null>(null);
 	const [busy, setBusy] = useState(false);
 
@@ -51,7 +82,7 @@ function AuthHubPairPage() {
 		setError(null);
 		setMessage(null);
 		try {
-			await approveAuthHubPairing({
+			await completeAuthHubPairingFn({
 				data: {
 					code: pairingCode.trim(),
 					publicUrl: publicUrl.trim(),
@@ -87,42 +118,49 @@ function AuthHubPairPage() {
 				</p>
 			) : null}
 
-			<Card>
-				<CardHeader>
-					<CardTitle>Approve pairing</CardTitle>
-				</CardHeader>
-				<CardContent>
-					<form className="space-y-4" onSubmit={onApprove}>
-						<div className="space-y-2">
-							<Label htmlFor="code">Pairing code</Label>
-							<Input
-								id="code"
-								value={pairingCode}
-								onChange={(e) => setPairingCode(e.target.value)}
-								required
-							/>
-						</div>
-						<div className="space-y-2">
-							<Label htmlFor="publicUrl">This app public URL</Label>
-							<Input
-								id="publicUrl"
-								type="url"
-								placeholder="https://tracker.example.com"
-								value={publicUrl}
-								onChange={(e) => setPublicUrl(e.target.value)}
-								required
-							/>
-						</div>
-						{error ? <p className="text-sm text-destructive">{error}</p> : null}
-						{message ? (
-							<p className="text-sm text-green-600">{message}</p>
-						) : null}
-						<Button type="submit" disabled={busy}>
-							{busy ? "Approving…" : "Approve pairing"}
-						</Button>
-					</form>
-				</CardContent>
-			</Card>
+			{message ? (
+				<p className="rounded-lg border border-border bg-muted/40 px-4 py-3 text-sm text-green-700 dark:text-green-400">
+					{message}
+				</p>
+			) : null}
+
+			{paired && autoPaired ? null : (
+				<Card>
+					<CardHeader>
+						<CardTitle>Approve pairing</CardTitle>
+					</CardHeader>
+					<CardContent>
+						<form className="space-y-4" onSubmit={onApprove}>
+							<div className="space-y-2">
+								<Label htmlFor="code">Pairing code</Label>
+								<Input
+									id="code"
+									value={pairingCode}
+									onChange={(e) => setPairingCode(e.target.value)}
+									required
+								/>
+							</div>
+							<div className="space-y-2">
+								<Label htmlFor="publicUrl">This app public URL</Label>
+								<Input
+									id="publicUrl"
+									type="url"
+									placeholder="https://tracker.example.com"
+									value={publicUrl}
+									onChange={(e) => setPublicUrl(e.target.value)}
+									required
+								/>
+							</div>
+							{error ? (
+								<p className="text-sm text-destructive">{error}</p>
+							) : null}
+							<Button type="submit" disabled={busy}>
+								{busy ? "Approving…" : "Approve pairing"}
+							</Button>
+						</form>
+					</CardContent>
+				</Card>
+			)}
 		</div>
 	);
 }

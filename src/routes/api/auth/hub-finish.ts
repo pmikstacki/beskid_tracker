@@ -2,6 +2,10 @@ import { createFileRoute } from "@tanstack/react-router";
 
 import { verifyHubHandoff } from "#/lib/auth/hub-handoff.server";
 import {
+	clearPostLoginRedirectCookieHeader,
+} from "#/lib/session/post-login-redirect.server";
+import { readPostLoginRedirect } from "#/lib/session/post-login-redirect";
+import {
 	clearSessionCookieHeader,
 	sealSession,
 	sessionCookieHeader,
@@ -35,7 +39,13 @@ export const Route = createFileRoute("/api/auth/hub-finish")({
 						hubSessionId: payload.sessionId,
 					});
 					headers.append("Set-Cookie", sessionCookieHeader(token));
-					headers.set("Location", "/v/v0.2");
+
+					const next = readPostLoginRedirect(request);
+					headers.append(
+						"Set-Cookie",
+						clearPostLoginRedirectCookieHeader(),
+					);
+					headers.set("Location", next ?? "/v/v0.2");
 				} catch {
 					headers.append("Set-Cookie", clearSessionCookieHeader());
 					headers.set("Location", "/login?error=oauth_failed");

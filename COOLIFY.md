@@ -33,7 +33,7 @@ Do **not** set `GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET`, or `GITHUB_OAUTH_CALL
 
 1. Deploy and complete [auth hub](../site/auth/COOLIFY.md) onboarding (GitHub OAuth + hub admin).
 2. Hub admin: **Admin → Service pairing → New** — app `tracker`, public URL = `TRACKER_PUBLIC_URL` (e.g. `https://tracker.beskid-lang.org`).
-3. Tracker admin: **Settings → Auth pairing** — enter the code (stores encrypted service token).
+3. Open the pairing link from the hub (or **Settings → Auth pairing**). When `TRACKER_PUBLIC_URL` is set, the link auto-approves using `GITHUB_SYNC_TOKEN` (no sign-in required). Otherwise sign in as a repo admin and submit the code.
 4. Sign-in: `/login` → hub GitHub OAuth → `/api/auth/hub-finish` → tracker session. GitHub API calls use `AUTH_HUB_PUBLIC_URL/api/v1/github/*`.
 
 ## Production runtime
