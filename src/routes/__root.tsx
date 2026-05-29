@@ -8,6 +8,7 @@ import {
 } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 import type { ComponentProps } from "react";
+import { observabilityMiddleware } from "#/observability-middleware";
 import { RoadmapNotFound } from "#/components/roadmap-not-found";
 import { RoadmapRouteError } from "#/components/roadmap-route-error";
 import { ThemeProvider } from "#/components/theme-provider";
@@ -29,6 +30,9 @@ export interface RouterContext {
 }
 
 export const Route = createRootRouteWithContext<RouterContext>()({
+	server: {
+		middleware: [observabilityMiddleware],
+	},
 	head: () => ({
 		meta: [
 			{ charSet: "utf-8" },

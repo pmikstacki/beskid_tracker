@@ -94,7 +94,7 @@ const config = defineConfig({
 		],
 	},
 	ssr: {
-		noExternal: ["trudoc", "yaml"],
+		noExternal: ["trudoc", "yaml", "@beskid/server-observability"],
 		external: ["bun:sqlite", "node:fs", "node:path"],
 	},
 	optimizeDeps: {

@@ -28,16 +28,18 @@ export const Route = createFileRoute("/settings/auth/pair")({
 		const { paired, defaultPublicUrl } = await getAuthHubPairingStatusFn();
 
 		if (code && defaultPublicUrl && !paired) {
-			const auto = await completeAuthHubPairingFn({
-				data: { code, publicUrl: defaultPublicUrl },
-			});
-			if (auto.ok) {
+			try {
+				await completeAuthHubPairingFn({
+					data: { code, publicUrl: defaultPublicUrl },
+				});
 				return {
 					paired: true,
 					autoPaired: true,
 					defaultPublicUrl,
 					needsLogin: false,
 				};
+			} catch {
+				// fall through to manual pairing / login gate
 			}
 		}
 

@@ -9,9 +9,11 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as MetricsRouteImport } from './routes/metrics'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as ShellRouteImport } from './routes/_shell'
 import { Route as ShellIndexRouteImport } from './routes/_shell/index'
+import { Route as ApiHealthRouteImport } from './routes/api/health'
 import { Route as ShellBugsRouteImport } from './routes/_shell/bugs'
 import { Route as ShellDocsIndexRouteImport } from './routes/_shell/docs/index'
 import { Route as SettingsAuthPairRouteImport } from './routes/settings/auth/pair'
@@ -41,6 +43,11 @@ import { Route as ShellDocsProposalsIdChangesNewRouteImport } from './routes/_sh
 import { Route as ShellDocsProposalsIdChangesChangeIdRouteImport } from './routes/_shell/docs/proposals/$id/changes/$changeId'
 import { Route as ShellVVersionWWorkstreamTasksNewRouteImport } from './routes/_shell/v/$version/w/$workstream/tasks/new'
 
+const MetricsRoute = MetricsRouteImport.update({
+  id: '/metrics',
+  path: '/metrics',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
@@ -54,6 +61,11 @@ const ShellIndexRoute = ShellIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => ShellRoute,
+} as any)
+const ApiHealthRoute = ApiHealthRouteImport.update({
+  id: '/api/health',
+  path: '/api/health',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const ShellBugsRoute = ShellBugsRouteImport.update({
   id: '/bugs',
@@ -212,7 +224,9 @@ const ShellVVersionWWorkstreamTasksNewRoute =
 export interface FileRoutesByFullPath {
   '/': typeof ShellIndexRoute
   '/login': typeof LoginRoute
+  '/metrics': typeof MetricsRoute
   '/bugs': typeof ShellBugsRoute
+  '/api/health': typeof ApiHealthRoute
   '/v/$version': typeof ShellVVersionRouteWithChildren
   '/versions/$version': typeof ShellVersionsVersionRouteWithChildren
   '/api/auth/github': typeof ApiAuthGithubRoute
@@ -243,7 +257,9 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/login': typeof LoginRoute
+  '/metrics': typeof MetricsRoute
   '/bugs': typeof ShellBugsRoute
+  '/api/health': typeof ApiHealthRoute
   '/': typeof ShellIndexRoute
   '/v/$version': typeof ShellVVersionRouteWithChildren
   '/api/auth/github': typeof ApiAuthGithubRoute
@@ -276,7 +292,9 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/_shell': typeof ShellRouteWithChildren
   '/login': typeof LoginRoute
+  '/metrics': typeof MetricsRoute
   '/_shell/bugs': typeof ShellBugsRoute
+  '/api/health': typeof ApiHealthRoute
   '/_shell/': typeof ShellIndexRoute
   '/_shell/v/$version': typeof ShellVVersionRouteWithChildren
   '/_shell/versions/$version': typeof ShellVersionsVersionRouteWithChildren
@@ -311,7 +329,9 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/login'
+    | '/metrics'
     | '/bugs'
+    | '/api/health'
     | '/v/$version'
     | '/versions/$version'
     | '/api/auth/github'
@@ -342,7 +362,9 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/login'
+    | '/metrics'
     | '/bugs'
+    | '/api/health'
     | '/'
     | '/v/$version'
     | '/api/auth/github'
@@ -374,7 +396,9 @@ export interface FileRouteTypes {
     | '__root__'
     | '/_shell'
     | '/login'
+    | '/metrics'
     | '/_shell/bugs'
+    | '/api/health'
     | '/_shell/'
     | '/_shell/v/$version'
     | '/_shell/versions/$version'
@@ -408,6 +432,8 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   ShellRoute: typeof ShellRouteWithChildren
   LoginRoute: typeof LoginRoute
+  MetricsRoute: typeof MetricsRoute
+  ApiHealthRoute: typeof ApiHealthRoute
   ApiAuthGithubRoute: typeof ApiAuthGithubRoute
   ApiAuthHubFinishRoute: typeof ApiAuthHubFinishRoute
   ApiAuthLogoutRoute: typeof ApiAuthLogoutRoute
@@ -418,6 +444,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/metrics': {
+      id: '/metrics'
+      path: '/metrics'
+      fullPath: '/metrics'
+      preLoaderRoute: typeof MetricsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/login': {
       id: '/login'
       path: '/login'
@@ -438,6 +471,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/'
       preLoaderRoute: typeof ShellIndexRouteImport
       parentRoute: typeof ShellRoute
+    }
+    '/api/health': {
+      id: '/api/health'
+      path: '/api/health'
+      fullPath: '/api/health'
+      preLoaderRoute: typeof ApiHealthRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/_shell/bugs': {
       id: '/_shell/bugs'
@@ -731,6 +771,8 @@ const ShellRouteWithChildren = ShellRoute._addFileChildren(ShellRouteChildren)
 const rootRouteChildren: RootRouteChildren = {
   ShellRoute: ShellRouteWithChildren,
   LoginRoute: LoginRoute,
+  MetricsRoute: MetricsRoute,
+  ApiHealthRoute: ApiHealthRoute,
   ApiAuthGithubRoute: ApiAuthGithubRoute,
   ApiAuthHubFinishRoute: ApiAuthHubFinishRoute,
   ApiAuthLogoutRoute: ApiAuthLogoutRoute,

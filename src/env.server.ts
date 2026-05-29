@@ -17,6 +17,9 @@ export const env = createEnv({
 		TRACKER_PUBLIC_URL: z.string().url().optional(),
 		GITHUB_WEBHOOK_SECRET: z.string().min(8).optional(),
 		NODE_ENV: z.enum(["development", "production", "test"]).optional(),
+		LOG_LEVEL: z
+			.enum(["fatal", "error", "warn", "info", "debug", "trace", "silent"])
+			.optional(),
 	},
 	runtimeEnv: {
 		AUTH_HUB_PUBLIC_URL: process.env.AUTH_HUB_PUBLIC_URL,
@@ -30,6 +33,7 @@ export const env = createEnv({
 		TRACKER_PUBLIC_URL: process.env.TRACKER_PUBLIC_URL,
 		GITHUB_WEBHOOK_SECRET: process.env.GITHUB_WEBHOOK_SECRET,
 		NODE_ENV: process.env.NODE_ENV,
+		LOG_LEVEL: process.env.LOG_LEVEL,
 	},
 	emptyStringAsUndefined: true,
 	skipValidation:
