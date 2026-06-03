@@ -18,23 +18,64 @@ import { getSessionInfo } from "#/server/roadmap";
 
 const searchSchema = z.object({
 	code: z.string().optional(),
+	paired: z.string().optional(),
+	pair_error: z.string().optional(),
 });
 
 export const Route = createFileRoute("/settings/auth/pair")({
 	validateSearch: searchSchema,
-	loaderDeps: ({ search }) => ({ code: search.code }),
+	server: {
+		handlers: {
+			GET: async ({ request }) => {
+				const { respondToHubPairingLink } = await import(
+					"#/lib/auth/hub-pairing-handler.server"
+				);
+				const response = await respondToHubPairingLink(request);
+				if (response) return response;
+			},
+		},
+	},
+	loaderDeps: ({ search }) => ({
+		code: search.code,
+		paired: search.paired,
+		pair_error: search.pair_error,
+	}),
 	loader: async ({ deps }) => {
 		const code = deps.code?.trim();
+		const pairError = deps.pair_error?.trim();
+		const justPaired = deps.paired === "1";
 		const { paired, defaultPublicUrl } = await getAuthHubPairingStatusFn();
 
-		if (code && defaultPublicUrl && !paired) {
+		if (justPaired || paired) {
+			return {
+				paired: true,
+				autoPaired: justPaired,
+				defaultPublicUrl,
+				autoPairError: null,
+				needsLogin: false,
+			};
+		}
+
+		if (pairError) {
+			return {
+				paired: false,
+				autoPaired: false,
+				defaultPublicUrl,
+				autoPairError: pairError,
+				needsLogin: false,
+			};
+		}
+
+		// Hub ?code= links: approve on the server (no login). Handler above runs first;
+		// loader fallback covers builds where the handler is not invoked.
+		if (code && !paired) {
 			try {
-				await completeAuthHubPairingFn({
+				const result = await completeAuthHubPairingFn({
 					data: { code, publicUrl: defaultPublicUrl },
 				});
 				return {
 					paired: true,
-					autoPaired: true,
+					autoPaired: !result.alreadyPaired,
 					defaultPublicUrl,
 					autoPairError: null,
 					needsLogin: false,
@@ -53,12 +94,9 @@ export const Route = createFileRoute("/settings/auth/pair")({
 
 		const session = await getSessionInfo();
 		if (!session.user) {
-			const returnTo = code
-				? `/settings/auth/pair?code=${encodeURIComponent(code)}`
-				: "/settings/auth/pair";
 			throw redirect({
 				to: "/login",
-				search: { redirect: returnTo },
+				search: { redirect: "/settings/auth/pair" },
 			});
 		}
 		if (!session.canManage) {
@@ -66,7 +104,7 @@ export const Route = createFileRoute("/settings/auth/pair")({
 		}
 
 		return {
-			paired,
+			paired: false,
 			autoPaired: false,
 			defaultPublicUrl,
 			autoPairError: null,
@@ -119,8 +157,8 @@ function AuthHubPairPage() {
 				</Link>
 				<h1 className="mt-2 text-2xl font-semibold">Auth hub pairing</h1>
 				<p className="text-sm text-muted-foreground">
-					Approve a pairing code from the auth hub admin. The handoff secret is
-					stored locally and never shown in the browser.
+					Approve a pairing code from the auth hub admin. The service token is
+					stored on the server and never shown in the browser.
 				</p>
 			</div>
 
@@ -133,6 +171,12 @@ function AuthHubPairPage() {
 			{message ? (
 				<p className="rounded-lg border border-border bg-muted/40 px-4 py-3 text-sm text-green-700 dark:text-green-400">
 					{message}
+				</p>
+			) : null}
+
+			{error ? (
+				<p className="rounded-lg border border-destructive/40 bg-destructive/10 px-4 py-3 text-sm text-destructive">
+					{error}
 				</p>
 			) : null}
 
@@ -163,9 +207,6 @@ function AuthHubPairPage() {
 									required
 								/>
 							</div>
-							{error ? (
-								<p className="text-sm text-destructive">{error}</p>
-							) : null}
 							<Button type="submit" disabled={busy}>
 								{busy ? "Approving…" : "Approve pairing"}
 							</Button>

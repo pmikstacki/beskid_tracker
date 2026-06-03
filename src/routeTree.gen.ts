@@ -18,6 +18,7 @@ import { Route as ShellBugsRouteImport } from './routes/_shell/bugs'
 import { Route as ShellDocsIndexRouteImport } from './routes/_shell/docs/index'
 import { Route as SettingsAuthPairRouteImport } from './routes/settings/auth/pair'
 import { Route as ApiWebhooksGithubRouteImport } from './routes/api/webhooks/github'
+import { Route as ApiAuthPairRouteImport } from './routes/api/auth/pair'
 import { Route as ApiAuthMeRouteImport } from './routes/api/auth/me'
 import { Route as ApiAuthLogoutRouteImport } from './routes/api/auth/logout'
 import { Route as ApiAuthHubFinishRouteImport } from './routes/api/auth/hub-finish'
@@ -27,6 +28,7 @@ import { Route as ShellVVersionRouteImport } from './routes/_shell/v/$version'
 import { Route as ShellVersionsVersionIndexRouteImport } from './routes/_shell/versions/$version/index'
 import { Route as ShellDocsProposalsIndexRouteImport } from './routes/_shell/docs/proposals/index'
 import { Route as ShellDocsCatalogIndexRouteImport } from './routes/_shell/docs/catalog/index'
+import { Route as ApiAdminAuthPairRouteImport } from './routes/api/admin/auth/pair'
 import { Route as ShellWorkstreamsVVersionRouteImport } from './routes/_shell/workstreams/v/$version'
 import { Route as ShellDocsProposalsNewRouteImport } from './routes/_shell/docs/proposals/new'
 import { Route as ShellDocsCatalogSlugRouteImport } from './routes/_shell/docs/catalog/$slug'
@@ -87,6 +89,11 @@ const ApiWebhooksGithubRoute = ApiWebhooksGithubRouteImport.update({
   path: '/api/webhooks/github',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiAuthPairRoute = ApiAuthPairRouteImport.update({
+  id: '/api/auth/pair',
+  path: '/api/auth/pair',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiAuthMeRoute = ApiAuthMeRouteImport.update({
   id: '/api/auth/me',
   path: '/api/auth/me',
@@ -132,6 +139,11 @@ const ShellDocsCatalogIndexRoute = ShellDocsCatalogIndexRouteImport.update({
   id: '/docs/catalog/',
   path: '/docs/catalog/',
   getParentRoute: () => ShellRoute,
+} as any)
+const ApiAdminAuthPairRoute = ApiAdminAuthPairRouteImport.update({
+  id: '/api/admin/auth/pair',
+  path: '/api/admin/auth/pair',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const ShellWorkstreamsVVersionRoute =
   ShellWorkstreamsVVersionRouteImport.update({
@@ -233,12 +245,14 @@ export interface FileRoutesByFullPath {
   '/api/auth/hub-finish': typeof ApiAuthHubFinishRoute
   '/api/auth/logout': typeof ApiAuthLogoutRoute
   '/api/auth/me': typeof ApiAuthMeRoute
+  '/api/auth/pair': typeof ApiAuthPairRoute
   '/api/webhooks/github': typeof ApiWebhooksGithubRoute
   '/settings/auth/pair': typeof SettingsAuthPairRoute
   '/docs/': typeof ShellDocsIndexRoute
   '/docs/catalog/$slug': typeof ShellDocsCatalogSlugRoute
   '/docs/proposals/new': typeof ShellDocsProposalsNewRoute
   '/workstreams/v/$version': typeof ShellWorkstreamsVVersionRoute
+  '/api/admin/auth/pair': typeof ApiAdminAuthPairRoute
   '/docs/catalog/': typeof ShellDocsCatalogIndexRoute
   '/docs/proposals/': typeof ShellDocsProposalsIndexRoute
   '/versions/$version/': typeof ShellVersionsVersionIndexRoute
@@ -266,12 +280,14 @@ export interface FileRoutesByTo {
   '/api/auth/hub-finish': typeof ApiAuthHubFinishRoute
   '/api/auth/logout': typeof ApiAuthLogoutRoute
   '/api/auth/me': typeof ApiAuthMeRoute
+  '/api/auth/pair': typeof ApiAuthPairRoute
   '/api/webhooks/github': typeof ApiWebhooksGithubRoute
   '/settings/auth/pair': typeof SettingsAuthPairRoute
   '/docs': typeof ShellDocsIndexRoute
   '/docs/catalog/$slug': typeof ShellDocsCatalogSlugRoute
   '/docs/proposals/new': typeof ShellDocsProposalsNewRoute
   '/workstreams/v/$version': typeof ShellWorkstreamsVVersionRoute
+  '/api/admin/auth/pair': typeof ApiAdminAuthPairRoute
   '/docs/catalog': typeof ShellDocsCatalogIndexRoute
   '/docs/proposals': typeof ShellDocsProposalsIndexRoute
   '/versions/$version': typeof ShellVersionsVersionIndexRoute
@@ -302,12 +318,14 @@ export interface FileRoutesById {
   '/api/auth/hub-finish': typeof ApiAuthHubFinishRoute
   '/api/auth/logout': typeof ApiAuthLogoutRoute
   '/api/auth/me': typeof ApiAuthMeRoute
+  '/api/auth/pair': typeof ApiAuthPairRoute
   '/api/webhooks/github': typeof ApiWebhooksGithubRoute
   '/settings/auth/pair': typeof SettingsAuthPairRoute
   '/_shell/docs/': typeof ShellDocsIndexRoute
   '/_shell/docs/catalog/$slug': typeof ShellDocsCatalogSlugRoute
   '/_shell/docs/proposals/new': typeof ShellDocsProposalsNewRoute
   '/_shell/workstreams/v/$version': typeof ShellWorkstreamsVVersionRoute
+  '/api/admin/auth/pair': typeof ApiAdminAuthPairRoute
   '/_shell/docs/catalog/': typeof ShellDocsCatalogIndexRoute
   '/_shell/docs/proposals/': typeof ShellDocsProposalsIndexRoute
   '/_shell/versions/$version/': typeof ShellVersionsVersionIndexRoute
@@ -338,12 +356,14 @@ export interface FileRouteTypes {
     | '/api/auth/hub-finish'
     | '/api/auth/logout'
     | '/api/auth/me'
+    | '/api/auth/pair'
     | '/api/webhooks/github'
     | '/settings/auth/pair'
     | '/docs/'
     | '/docs/catalog/$slug'
     | '/docs/proposals/new'
     | '/workstreams/v/$version'
+    | '/api/admin/auth/pair'
     | '/docs/catalog/'
     | '/docs/proposals/'
     | '/versions/$version/'
@@ -371,12 +391,14 @@ export interface FileRouteTypes {
     | '/api/auth/hub-finish'
     | '/api/auth/logout'
     | '/api/auth/me'
+    | '/api/auth/pair'
     | '/api/webhooks/github'
     | '/settings/auth/pair'
     | '/docs'
     | '/docs/catalog/$slug'
     | '/docs/proposals/new'
     | '/workstreams/v/$version'
+    | '/api/admin/auth/pair'
     | '/docs/catalog'
     | '/docs/proposals'
     | '/versions/$version'
@@ -406,12 +428,14 @@ export interface FileRouteTypes {
     | '/api/auth/hub-finish'
     | '/api/auth/logout'
     | '/api/auth/me'
+    | '/api/auth/pair'
     | '/api/webhooks/github'
     | '/settings/auth/pair'
     | '/_shell/docs/'
     | '/_shell/docs/catalog/$slug'
     | '/_shell/docs/proposals/new'
     | '/_shell/workstreams/v/$version'
+    | '/api/admin/auth/pair'
     | '/_shell/docs/catalog/'
     | '/_shell/docs/proposals/'
     | '/_shell/versions/$version/'
@@ -438,8 +462,10 @@ export interface RootRouteChildren {
   ApiAuthHubFinishRoute: typeof ApiAuthHubFinishRoute
   ApiAuthLogoutRoute: typeof ApiAuthLogoutRoute
   ApiAuthMeRoute: typeof ApiAuthMeRoute
+  ApiAuthPairRoute: typeof ApiAuthPairRoute
   ApiWebhooksGithubRoute: typeof ApiWebhooksGithubRoute
   SettingsAuthPairRoute: typeof SettingsAuthPairRoute
+  ApiAdminAuthPairRoute: typeof ApiAdminAuthPairRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -507,6 +533,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiWebhooksGithubRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/auth/pair': {
+      id: '/api/auth/pair'
+      path: '/api/auth/pair'
+      fullPath: '/api/auth/pair'
+      preLoaderRoute: typeof ApiAuthPairRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/auth/me': {
       id: '/api/auth/me'
       path: '/api/auth/me'
@@ -569,6 +602,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/docs/catalog/'
       preLoaderRoute: typeof ShellDocsCatalogIndexRouteImport
       parentRoute: typeof ShellRoute
+    }
+    '/api/admin/auth/pair': {
+      id: '/api/admin/auth/pair'
+      path: '/api/admin/auth/pair'
+      fullPath: '/api/admin/auth/pair'
+      preLoaderRoute: typeof ApiAdminAuthPairRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/_shell/workstreams/v/$version': {
       id: '/_shell/workstreams/v/$version'
@@ -777,8 +817,10 @@ const rootRouteChildren: RootRouteChildren = {
   ApiAuthHubFinishRoute: ApiAuthHubFinishRoute,
   ApiAuthLogoutRoute: ApiAuthLogoutRoute,
   ApiAuthMeRoute: ApiAuthMeRoute,
+  ApiAuthPairRoute: ApiAuthPairRoute,
   ApiWebhooksGithubRoute: ApiWebhooksGithubRoute,
   SettingsAuthPairRoute: SettingsAuthPairRoute,
+  ApiAdminAuthPairRoute: ApiAdminAuthPairRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

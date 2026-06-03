@@ -7,11 +7,27 @@ import { env } from "#/env.server";
 import { createOctokit } from "#/lib/github/octokit";
 import { canManageRoadmap } from "#/lib/github/permissions";
 import { saveAuthHubPairing, isAuthHubPaired } from "#/lib/auth/hub-settings.server";
+import { resolveTrackerPublicOrigin } from "#/lib/sync/github-webhook-config";
 import { createOctokitForSession } from "#/server/auth-guard.server";
 import { getSessionFromRequest } from "#/lib/session/cookie";
 
-export function resolveTrackerPublicUrl(): string | null {
-	return env.TRACKER_PUBLIC_URL?.trim().replace(/\/$/, "") ?? null;
+/** Public origin sent to the auth hub when approving pairing (env, then DB, then fallback). */
+export function resolveTrackerPublicUrlForPairing(): string {
+	const fromEnv = env.TRACKER_PUBLIC_URL?.trim().replace(/\/$/, "");
+	return fromEnv || resolveTrackerPublicOrigin();
+}
+
+export function pairingFailureMessage(
+	reason: "auth_required" | "not_configured" | "invalid",
+): string {
+	switch (reason) {
+		case "auth_required":
+			return "Server cannot approve pairing: set TRACKER_PAIRING_APPROVER_LOGIN or GITHUB_SYNC_TOKEN on the tracker, or sign in as a repo admin.";
+		case "not_configured":
+			return "AUTH_HUB_PUBLIC_URL is not configured on the tracker.";
+		default:
+			return "Invalid pairing request (missing code or public URL).";
+	}
 }
 
 async function resolvePairingApproverLogin(): Promise<string | null> {
