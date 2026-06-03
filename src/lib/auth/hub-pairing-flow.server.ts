@@ -15,6 +15,11 @@ export function resolveTrackerPublicUrl(): string | null {
 }
 
 async function resolvePairingApproverLogin(): Promise<string | null> {
+	const configured = env.TRACKER_PAIRING_APPROVER_LOGIN?.trim();
+	if (configured) {
+		return configured;
+	}
+
 	const request = getRequest();
 	const session = await getSessionFromRequest(request);
 

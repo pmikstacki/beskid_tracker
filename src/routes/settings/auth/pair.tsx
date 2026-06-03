@@ -36,10 +36,18 @@ export const Route = createFileRoute("/settings/auth/pair")({
 					paired: true,
 					autoPaired: true,
 					defaultPublicUrl,
+					autoPairError: null,
 					needsLogin: false,
 				};
-			} catch {
-				// fall through to manual pairing / login gate
+			} catch (err) {
+				return {
+					paired: false,
+					autoPaired: false,
+					defaultPublicUrl,
+					autoPairError:
+						err instanceof Error ? err.message : "Pairing failed",
+					needsLogin: false,
+				};
 			}
 		}
 
@@ -61,6 +69,7 @@ export const Route = createFileRoute("/settings/auth/pair")({
 			paired,
 			autoPaired: false,
 			defaultPublicUrl,
+			autoPairError: null,
 			needsLogin: false,
 		};
 	},
@@ -69,13 +78,14 @@ export const Route = createFileRoute("/settings/auth/pair")({
 
 function AuthHubPairPage() {
 	const { code } = Route.useSearch();
-	const { paired, autoPaired, defaultPublicUrl } = Route.useLoaderData();
+	const { paired, autoPaired, defaultPublicUrl, autoPairError } =
+		Route.useLoaderData();
 	const [publicUrl, setPublicUrl] = useState(defaultPublicUrl);
 	const [pairingCode, setPairingCode] = useState(code ?? "");
 	const [message, setMessage] = useState<string | null>(
 		autoPaired ? "Auth hub paired successfully. Service token stored locally." : null,
 	);
-	const [error, setError] = useState<string | null>(null);
+	const [error, setError] = useState<string | null>(autoPairError);
 	const [busy, setBusy] = useState(false);
 
 	async function onApprove(event: React.FormEvent) {
