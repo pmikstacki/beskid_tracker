@@ -33,8 +33,11 @@ Do **not** set `GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET`, or `GITHUB_OAUTH_CALL
 
 1. Deploy and complete [auth hub](../site/auth/COOLIFY.md) onboarding (GitHub OAuth + hub admin).
 2. Hub admin: **Admin → Service pairing → New** — app `tracker`, public URL = `TRACKER_PUBLIC_URL` (e.g. `https://tracker.beskid-lang.org`).
-3. Open the pairing link from the hub (`https://tracker…/settings/auth/pair?code=…`). The server auto-approves on that GET when `TRACKER_PAIRING_APPROVER_LOGIN` or `GITHUB_SYNC_TOKEN` is set, then redirects to `?paired=1` or `?pair_error=…`. `/api/auth/pair?code=…` is a compatibility alias. Otherwise sign in as a repo admin and submit the code manually.
-4. Sign-in: `/login` → hub GitHub OAuth → `/api/auth/hub-finish` → tracker session. GitHub API calls use `AUTH_HUB_PUBLIC_URL/api/v1/github/*`.
+3. Open **`/settings/auth/pair`** (or `/onboarding`, which redirects there). Enter auth hub URL, pairing code, tracker public URL, and your GitHub login as approver — same fields as Nexus **Connect Beskid Auth**.
+4. Hub pairing links (`/settings/auth/pair?code=…`) redirect to `GET /api/auth/pair` for server-side approve when approver login is stored (setup wizard) or `TRACKER_PAIRING_APPROVER_LOGIN` / `GITHUB_SYNC_TOKEN` is set.
+5. Sign-in: `/login` → hub GitHub OAuth → `/api/auth/hub-finish` → tracker session.
+
+Optional: `TRACKER_SETUP_TOKEN` — required to re-run setup when already paired.
 
 ## Production runtime
 

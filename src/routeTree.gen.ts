@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as OnboardingRouteImport } from './routes/onboarding'
 import { Route as MetricsRouteImport } from './routes/metrics'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as ShellRouteImport } from './routes/_shell'
@@ -23,11 +24,13 @@ import { Route as ApiAuthMeRouteImport } from './routes/api/auth/me'
 import { Route as ApiAuthLogoutRouteImport } from './routes/api/auth/logout'
 import { Route as ApiAuthHubFinishRouteImport } from './routes/api/auth/hub-finish'
 import { Route as ApiAuthGithubRouteImport } from './routes/api/auth/github'
+import { Route as ApiAdminSetupRouteImport } from './routes/api/admin/setup'
 import { Route as ShellVersionsVersionRouteImport } from './routes/_shell/versions/$version'
 import { Route as ShellVVersionRouteImport } from './routes/_shell/v/$version'
 import { Route as ShellVersionsVersionIndexRouteImport } from './routes/_shell/versions/$version/index'
 import { Route as ShellDocsProposalsIndexRouteImport } from './routes/_shell/docs/proposals/index'
 import { Route as ShellDocsCatalogIndexRouteImport } from './routes/_shell/docs/catalog/index'
+import { Route as ApiAdminSetupStatusRouteImport } from './routes/api/admin/setup/status'
 import { Route as ApiAdminAuthPairRouteImport } from './routes/api/admin/auth/pair'
 import { Route as ShellWorkstreamsVVersionRouteImport } from './routes/_shell/workstreams/v/$version'
 import { Route as ShellDocsProposalsNewRouteImport } from './routes/_shell/docs/proposals/new'
@@ -45,6 +48,11 @@ import { Route as ShellDocsProposalsIdChangesNewRouteImport } from './routes/_sh
 import { Route as ShellDocsProposalsIdChangesChangeIdRouteImport } from './routes/_shell/docs/proposals/$id/changes/$changeId'
 import { Route as ShellVVersionWWorkstreamTasksNewRouteImport } from './routes/_shell/v/$version/w/$workstream/tasks/new'
 
+const OnboardingRoute = OnboardingRouteImport.update({
+  id: '/onboarding',
+  path: '/onboarding',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MetricsRoute = MetricsRouteImport.update({
   id: '/metrics',
   path: '/metrics',
@@ -114,6 +122,11 @@ const ApiAuthGithubRoute = ApiAuthGithubRouteImport.update({
   path: '/api/auth/github',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiAdminSetupRoute = ApiAdminSetupRouteImport.update({
+  id: '/api/admin/setup',
+  path: '/api/admin/setup',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ShellVersionsVersionRoute = ShellVersionsVersionRouteImport.update({
   id: '/versions/$version',
   path: '/versions/$version',
@@ -139,6 +152,11 @@ const ShellDocsCatalogIndexRoute = ShellDocsCatalogIndexRouteImport.update({
   id: '/docs/catalog/',
   path: '/docs/catalog/',
   getParentRoute: () => ShellRoute,
+} as any)
+const ApiAdminSetupStatusRoute = ApiAdminSetupStatusRouteImport.update({
+  id: '/status',
+  path: '/status',
+  getParentRoute: () => ApiAdminSetupRoute,
 } as any)
 const ApiAdminAuthPairRoute = ApiAdminAuthPairRouteImport.update({
   id: '/api/admin/auth/pair',
@@ -237,10 +255,12 @@ export interface FileRoutesByFullPath {
   '/': typeof ShellIndexRoute
   '/login': typeof LoginRoute
   '/metrics': typeof MetricsRoute
+  '/onboarding': typeof OnboardingRoute
   '/bugs': typeof ShellBugsRoute
   '/api/health': typeof ApiHealthRoute
   '/v/$version': typeof ShellVVersionRouteWithChildren
   '/versions/$version': typeof ShellVersionsVersionRouteWithChildren
+  '/api/admin/setup': typeof ApiAdminSetupRouteWithChildren
   '/api/auth/github': typeof ApiAuthGithubRoute
   '/api/auth/hub-finish': typeof ApiAuthHubFinishRoute
   '/api/auth/logout': typeof ApiAuthLogoutRoute
@@ -253,6 +273,7 @@ export interface FileRoutesByFullPath {
   '/docs/proposals/new': typeof ShellDocsProposalsNewRoute
   '/workstreams/v/$version': typeof ShellWorkstreamsVVersionRoute
   '/api/admin/auth/pair': typeof ApiAdminAuthPairRoute
+  '/api/admin/setup/status': typeof ApiAdminSetupStatusRoute
   '/docs/catalog/': typeof ShellDocsCatalogIndexRoute
   '/docs/proposals/': typeof ShellDocsProposalsIndexRoute
   '/versions/$version/': typeof ShellVersionsVersionIndexRoute
@@ -272,10 +293,12 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/login': typeof LoginRoute
   '/metrics': typeof MetricsRoute
+  '/onboarding': typeof OnboardingRoute
   '/bugs': typeof ShellBugsRoute
   '/api/health': typeof ApiHealthRoute
   '/': typeof ShellIndexRoute
   '/v/$version': typeof ShellVVersionRouteWithChildren
+  '/api/admin/setup': typeof ApiAdminSetupRouteWithChildren
   '/api/auth/github': typeof ApiAuthGithubRoute
   '/api/auth/hub-finish': typeof ApiAuthHubFinishRoute
   '/api/auth/logout': typeof ApiAuthLogoutRoute
@@ -288,6 +311,7 @@ export interface FileRoutesByTo {
   '/docs/proposals/new': typeof ShellDocsProposalsNewRoute
   '/workstreams/v/$version': typeof ShellWorkstreamsVVersionRoute
   '/api/admin/auth/pair': typeof ApiAdminAuthPairRoute
+  '/api/admin/setup/status': typeof ApiAdminSetupStatusRoute
   '/docs/catalog': typeof ShellDocsCatalogIndexRoute
   '/docs/proposals': typeof ShellDocsProposalsIndexRoute
   '/versions/$version': typeof ShellVersionsVersionIndexRoute
@@ -309,11 +333,13 @@ export interface FileRoutesById {
   '/_shell': typeof ShellRouteWithChildren
   '/login': typeof LoginRoute
   '/metrics': typeof MetricsRoute
+  '/onboarding': typeof OnboardingRoute
   '/_shell/bugs': typeof ShellBugsRoute
   '/api/health': typeof ApiHealthRoute
   '/_shell/': typeof ShellIndexRoute
   '/_shell/v/$version': typeof ShellVVersionRouteWithChildren
   '/_shell/versions/$version': typeof ShellVersionsVersionRouteWithChildren
+  '/api/admin/setup': typeof ApiAdminSetupRouteWithChildren
   '/api/auth/github': typeof ApiAuthGithubRoute
   '/api/auth/hub-finish': typeof ApiAuthHubFinishRoute
   '/api/auth/logout': typeof ApiAuthLogoutRoute
@@ -326,6 +352,7 @@ export interface FileRoutesById {
   '/_shell/docs/proposals/new': typeof ShellDocsProposalsNewRoute
   '/_shell/workstreams/v/$version': typeof ShellWorkstreamsVVersionRoute
   '/api/admin/auth/pair': typeof ApiAdminAuthPairRoute
+  '/api/admin/setup/status': typeof ApiAdminSetupStatusRoute
   '/_shell/docs/catalog/': typeof ShellDocsCatalogIndexRoute
   '/_shell/docs/proposals/': typeof ShellDocsProposalsIndexRoute
   '/_shell/versions/$version/': typeof ShellVersionsVersionIndexRoute
@@ -348,10 +375,12 @@ export interface FileRouteTypes {
     | '/'
     | '/login'
     | '/metrics'
+    | '/onboarding'
     | '/bugs'
     | '/api/health'
     | '/v/$version'
     | '/versions/$version'
+    | '/api/admin/setup'
     | '/api/auth/github'
     | '/api/auth/hub-finish'
     | '/api/auth/logout'
@@ -364,6 +393,7 @@ export interface FileRouteTypes {
     | '/docs/proposals/new'
     | '/workstreams/v/$version'
     | '/api/admin/auth/pair'
+    | '/api/admin/setup/status'
     | '/docs/catalog/'
     | '/docs/proposals/'
     | '/versions/$version/'
@@ -383,10 +413,12 @@ export interface FileRouteTypes {
   to:
     | '/login'
     | '/metrics'
+    | '/onboarding'
     | '/bugs'
     | '/api/health'
     | '/'
     | '/v/$version'
+    | '/api/admin/setup'
     | '/api/auth/github'
     | '/api/auth/hub-finish'
     | '/api/auth/logout'
@@ -399,6 +431,7 @@ export interface FileRouteTypes {
     | '/docs/proposals/new'
     | '/workstreams/v/$version'
     | '/api/admin/auth/pair'
+    | '/api/admin/setup/status'
     | '/docs/catalog'
     | '/docs/proposals'
     | '/versions/$version'
@@ -419,11 +452,13 @@ export interface FileRouteTypes {
     | '/_shell'
     | '/login'
     | '/metrics'
+    | '/onboarding'
     | '/_shell/bugs'
     | '/api/health'
     | '/_shell/'
     | '/_shell/v/$version'
     | '/_shell/versions/$version'
+    | '/api/admin/setup'
     | '/api/auth/github'
     | '/api/auth/hub-finish'
     | '/api/auth/logout'
@@ -436,6 +471,7 @@ export interface FileRouteTypes {
     | '/_shell/docs/proposals/new'
     | '/_shell/workstreams/v/$version'
     | '/api/admin/auth/pair'
+    | '/api/admin/setup/status'
     | '/_shell/docs/catalog/'
     | '/_shell/docs/proposals/'
     | '/_shell/versions/$version/'
@@ -457,7 +493,9 @@ export interface RootRouteChildren {
   ShellRoute: typeof ShellRouteWithChildren
   LoginRoute: typeof LoginRoute
   MetricsRoute: typeof MetricsRoute
+  OnboardingRoute: typeof OnboardingRoute
   ApiHealthRoute: typeof ApiHealthRoute
+  ApiAdminSetupRoute: typeof ApiAdminSetupRouteWithChildren
   ApiAuthGithubRoute: typeof ApiAuthGithubRoute
   ApiAuthHubFinishRoute: typeof ApiAuthHubFinishRoute
   ApiAuthLogoutRoute: typeof ApiAuthLogoutRoute
@@ -470,6 +508,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/onboarding': {
+      id: '/onboarding'
+      path: '/onboarding'
+      fullPath: '/onboarding'
+      preLoaderRoute: typeof OnboardingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/metrics': {
       id: '/metrics'
       path: '/metrics'
@@ -568,6 +613,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiAuthGithubRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/admin/setup': {
+      id: '/api/admin/setup'
+      path: '/api/admin/setup'
+      fullPath: '/api/admin/setup'
+      preLoaderRoute: typeof ApiAdminSetupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/_shell/versions/$version': {
       id: '/_shell/versions/$version'
       path: '/versions/$version'
@@ -602,6 +654,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/docs/catalog/'
       preLoaderRoute: typeof ShellDocsCatalogIndexRouteImport
       parentRoute: typeof ShellRoute
+    }
+    '/api/admin/setup/status': {
+      id: '/api/admin/setup/status'
+      path: '/status'
+      fullPath: '/api/admin/setup/status'
+      preLoaderRoute: typeof ApiAdminSetupStatusRouteImport
+      parentRoute: typeof ApiAdminSetupRoute
     }
     '/api/admin/auth/pair': {
       id: '/api/admin/auth/pair'
@@ -808,11 +867,25 @@ const ShellRouteChildren: ShellRouteChildren = {
 
 const ShellRouteWithChildren = ShellRoute._addFileChildren(ShellRouteChildren)
 
+interface ApiAdminSetupRouteChildren {
+  ApiAdminSetupStatusRoute: typeof ApiAdminSetupStatusRoute
+}
+
+const ApiAdminSetupRouteChildren: ApiAdminSetupRouteChildren = {
+  ApiAdminSetupStatusRoute: ApiAdminSetupStatusRoute,
+}
+
+const ApiAdminSetupRouteWithChildren = ApiAdminSetupRoute._addFileChildren(
+  ApiAdminSetupRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   ShellRoute: ShellRouteWithChildren,
   LoginRoute: LoginRoute,
   MetricsRoute: MetricsRoute,
+  OnboardingRoute: OnboardingRoute,
   ApiHealthRoute: ApiHealthRoute,
+  ApiAdminSetupRoute: ApiAdminSetupRouteWithChildren,
   ApiAuthGithubRoute: ApiAuthGithubRoute,
   ApiAuthHubFinishRoute: ApiAuthHubFinishRoute,
   ApiAuthLogoutRoute: ApiAuthLogoutRoute,

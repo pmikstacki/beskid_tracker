@@ -6,7 +6,11 @@ import { getRequest } from "@tanstack/react-start/server";
 import { env } from "#/env.server";
 import { createOctokit } from "#/lib/github/octokit";
 import { canManageRoadmap } from "#/lib/github/permissions";
-import { saveAuthHubPairing, isAuthHubPaired } from "#/lib/auth/hub-settings.server";
+import {
+	getStoredPairingApproverLogin,
+	saveAuthHubPairing,
+	savePairingApproverLogin,
+} from "#/lib/auth/hub-settings.server";
 import { resolveTrackerPublicOrigin } from "#/lib/sync/github-webhook-config";
 import { createOctokitForSession } from "#/server/auth-guard.server";
 import { getSessionFromRequest } from "#/lib/session/cookie";
@@ -36,6 +40,11 @@ async function resolvePairingApproverLogin(): Promise<string | null> {
 		return configured;
 	}
 
+	const stored = getStoredPairingApproverLogin()?.trim();
+	if (stored) {
+		return stored;
+	}
+
 	const request = getRequest();
 	const session = await getSessionFromRequest(request);
 
@@ -58,26 +67,19 @@ async function resolvePairingApproverLogin(): Promise<string | null> {
 	return null;
 }
 
-export async function completeAuthHubPairing(input: {
+/** Same contract as Beskid Nexus `POST /api/admin/auth/pair`. */
+export async function approveAuthHubPairing(input: {
 	code: string;
 	publicUrl: string;
+	approverLogin: string;
 }): Promise<
-	| { ok: true; alreadyPaired: boolean }
-	| { ok: false; reason: "auth_required" | "not_configured" | "invalid" }
+	{ ok: true } | { ok: false; reason: "not_configured" | "invalid" }
 > {
 	const code = input.code.trim();
 	const publicUrl = input.publicUrl.trim().replace(/\/$/, "");
-	if (!code || !publicUrl) {
+	const approverLogin = input.approverLogin.trim();
+	if (!code || !publicUrl || !approverLogin) {
 		return { ok: false, reason: "invalid" };
-	}
-
-	if (isAuthHubPaired()) {
-		return { ok: true, alreadyPaired: true };
-	}
-
-	const approverLogin = await resolvePairingApproverLogin();
-	if (!approverLogin) {
-		return { ok: false, reason: "auth_required" };
 	}
 
 	const hubUrl = env.AUTH_HUB_PUBLIC_URL?.trim();
@@ -94,5 +96,35 @@ export async function completeAuthHubPairing(input: {
 	});
 
 	saveAuthHubPairing(hubUrl, result.serviceToken);
-	return { ok: true, alreadyPaired: false };
+	return { ok: true };
+}
+
+/** Server-side autopair (hub link or sync token). */
+export async function completeAuthHubPairing(input: {
+	code: string;
+	publicUrl: string;
+}): Promise<
+	| { ok: true }
+	| { ok: false; reason: "auth_required" | "not_configured" | "invalid" }
+> {
+	const code = input.code.trim();
+	const publicUrl = input.publicUrl.trim().replace(/\/$/, "");
+	if (!code || !publicUrl) {
+		return { ok: false, reason: "invalid" };
+	}
+
+	const approverLogin = await resolvePairingApproverLogin();
+	if (!approverLogin) {
+		return { ok: false, reason: "auth_required" };
+	}
+
+	const result = await approveAuthHubPairing({
+		code,
+		publicUrl,
+		approverLogin,
+	});
+	if (!result.ok) {
+		return result;
+	}
+	return { ok: true };
 }

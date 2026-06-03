@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { z } from "zod";
 
 import {
-	completeAuthHubPairing,
+	approveAuthHubPairing,
 	pairingFailureMessage,
 } from "#/lib/auth/hub-pairing-flow.server";
 import { createOctokitForSession } from "#/server/auth-guard.server";
@@ -45,14 +45,17 @@ export const Route = createFileRoute("/api/admin/auth/pair")({
 				}
 
 				try {
-					const result = await completeAuthHubPairing(parsed.data);
+					const result = await approveAuthHubPairing({
+						...parsed.data,
+						approverLogin: session.login,
+					});
 					if (!result.ok) {
 						return Response.json(
 							{ error: pairingFailureMessage(result.reason) },
 							{ status: 400 },
 						);
 					}
-					return Response.json({ ok: true, alreadyPaired: result.alreadyPaired });
+					return Response.json({ ok: true });
 				} catch (err) {
 					const message =
 						err instanceof Error ? err.message : "Pairing failed";

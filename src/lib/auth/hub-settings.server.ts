@@ -16,6 +16,7 @@ const TAG_LEN = 16;
 
 const KEY_HUB_URL = "auth_hub_url";
 const KEY_SERVICE_TOKEN = "auth_hub_service_token";
+const KEY_PAIRING_APPROVER_LOGIN = "tracker_pairing_approver_login";
 
 function encryptionKey(): Buffer {
 	return scryptSync(env.SESSION_SECRET, "beskid-tracker-auth-hub", 32);
@@ -84,6 +85,14 @@ export function getAuthHubServiceToken(): string | null {
 export function saveAuthHubPairing(hubUrl: string, serviceToken: string): void {
 	setSetting(KEY_HUB_URL, hubUrl.replace(/\/$/, ""));
 	setSetting(KEY_SERVICE_TOKEN, encrypt(serviceToken));
+}
+
+export function getStoredPairingApproverLogin(): string | null {
+	return getSetting(KEY_PAIRING_APPROVER_LOGIN);
+}
+
+export function savePairingApproverLogin(login: string): void {
+	setSetting(KEY_PAIRING_APPROVER_LOGIN, login.trim().toLowerCase());
 }
 
 export function isAuthHubPaired(): boolean {

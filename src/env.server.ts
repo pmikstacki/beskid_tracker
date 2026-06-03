@@ -15,6 +15,8 @@ export const env = createEnv({
 		GITHUB_SYNC_TOKEN: z.string().min(1).optional(),
 		/** GitHub login used for server-side pairing when no admin session or sync token. */
 		TRACKER_PAIRING_APPROVER_LOGIN: z.string().min(1).optional(),
+		/** Protects re-running onboarding / setup when the tracker is already paired. */
+		TRACKER_SETUP_TOKEN: z.string().min(8).optional(),
 		TRACKER_DATA_DIR: z.string().min(1).optional(),
 		TRACKER_PUBLIC_URL: z.string().url().optional(),
 		GITHUB_WEBHOOK_SECRET: z.string().min(8).optional(),
@@ -32,6 +34,7 @@ export const env = createEnv({
 		GITHUB_PUBLIC_READ_TOKEN: process.env.GITHUB_PUBLIC_READ_TOKEN,
 		GITHUB_SYNC_TOKEN: process.env.GITHUB_SYNC_TOKEN,
 		TRACKER_PAIRING_APPROVER_LOGIN: process.env.TRACKER_PAIRING_APPROVER_LOGIN,
+		TRACKER_SETUP_TOKEN: process.env.TRACKER_SETUP_TOKEN,
 		TRACKER_DATA_DIR: process.env.TRACKER_DATA_DIR,
 		TRACKER_PUBLIC_URL: process.env.TRACKER_PUBLIC_URL,
 		GITHUB_WEBHOOK_SECRET: process.env.GITHUB_WEBHOOK_SECRET,

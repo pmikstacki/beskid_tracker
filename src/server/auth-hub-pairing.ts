@@ -30,12 +30,13 @@ export const completeAuthHubPairingFn = createServerFn({ method: "POST" })
 					"Sign in as a repository admin, or set GITHUB_SYNC_TOKEN or TRACKER_PAIRING_APPROVER_LOGIN on the tracker service",
 				);
 			}
-			if (result.reason === "not_configured") {
-				throw new Error("AUTH_HUB_PUBLIC_URL is not configured");
-			}
-			throw new Error("Invalid pairing request");
+			throw new Error(
+				result.reason === "not_configured"
+					? "AUTH_HUB_PUBLIC_URL is not configured"
+					: "Invalid pairing request",
+			);
 		}
-		return result;
+		return { ok: true as const };
 	});
 
 /** @deprecated use completeAuthHubPairingFn */
