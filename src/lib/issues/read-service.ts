@@ -6,6 +6,7 @@ import { issueToRoadmapTask } from "#/lib/github/mappers";
 import {
 	DEFAULT_DELIVERY_VERSIONS,
 	isRoadmapVersionLabel,
+	versionFromMilestoneTitle,
 } from "#/lib/github/roadmap-labels";
 import type {
 	PublicBug,
@@ -18,13 +19,13 @@ import {
 	countStoredIssues,
 	getStoredIssue,
 	listStoredOpenBugs,
-	listStoredOpenIssues,
+	listStoredRoadmapIssues,
 	listStoredRepoLabels,
 } from "#/lib/storage/issues-repository";
 import { ensureIssuesSyncedReady } from "#/lib/sync/github-issues-sync";
 
 function tasksFromStore(): RoadmapTask[] {
-	return listStoredOpenIssues()
+	return listStoredRoadmapIssues()
 		.map(issueToRoadmapTask)
 		.filter((task): task is RoadmapTask => task !== null);
 }
@@ -78,10 +79,17 @@ export function getRoadmapIssueFromStore(
 
 export async function listVersionLabelsFromStore(): Promise<string[]> {
 	await ensureIssuesSyncedReady();
+	const fromMilestones = listStoredRoadmapIssues()
+		.map((issue) => versionFromMilestoneTitle(issue.milestone?.title))
+		.filter((version): version is string => Boolean(version));
 	const fromRepo = listStoredRepoLabels()
 		.filter((name) => isRoadmapVersionLabel(name))
 		.map((name) => name.slice("roadmap/version/".length));
-	const merged = new Set([...DEFAULT_DELIVERY_VERSIONS, ...fromRepo]);
+	const merged = new Set([
+		...DEFAULT_DELIVERY_VERSIONS,
+		...fromMilestones,
+		...fromRepo,
+	]);
 	return [...merged].sort();
 }
 

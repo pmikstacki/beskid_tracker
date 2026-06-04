@@ -6,8 +6,8 @@ export interface SpecLink {
 	title?: string;
 }
 
-const SPEC_PATH_RE = /\/platform-spec\/[\w./-]*/i;
-const SPEC_MARKER_RE = /^Spec:\s*(\/platform-spec\/[^\s]+)\s*$/im;
+const SPEC_PATH_RE = /\/platform-spec\/[\w./-]*/gi;
+const SPEC_MARKER_RE = /^Spec:\s*(\/platform-spec\/[^\s]+)\s*$/gim;
 const MARKDOWN_LINK_RE = /\[([^\]]*)\]\(([^)]+)\)/g;
 
 function normalizeSpecPath(raw: string): string | null {

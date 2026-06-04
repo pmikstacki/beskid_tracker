@@ -4,6 +4,7 @@ import type { Octokit } from "@octokit/rest";
 
 import { BUG_LABEL } from "#/lib/github/bug-mappers";
 import { repoParams } from "#/lib/github/octokit";
+import { ROADMAP_STATUS_LABELS } from "#/lib/github/roadmap-labels";
 import {
 	deleteIssuesExcept,
 	replaceRepoLabels,
@@ -82,22 +83,30 @@ export async function runBoardSyncPull(options?: {
 	try {
 		run.setPhase("Fetching open issues");
 		const openIssues = await paginateIssues(octokit, { state: "open" });
-		run.setProgress(1, 3);
+		run.setProgress(1, 4);
 		run.log(`Fetched ${openIssues.length} open issues`);
+
+		run.setPhase("Fetching closed roadmap tasks");
+		const closedRoadmap = await paginateIssues(octokit, {
+			state: "closed",
+			labels: ROADMAP_STATUS_LABELS.done,
+		});
+		run.setProgress(2, 4);
+		run.log(`Fetched ${closedRoadmap.length} closed roadmap tasks`);
 
 		run.setPhase("Fetching closed bugs");
 		const closedBugs = await paginateIssues(octokit, {
 			state: "closed",
 			labels: BUG_LABEL,
 		});
-		run.setProgress(2, 3);
+		run.setProgress(3, 4);
 		run.log(`Fetched ${closedBugs.length} closed bugs`);
 
 		await syncRepoLabels(octokit, run);
 
 		run.setPhase("Writing local cache");
 		const byNumber = new Map<number, GitHubIssuePayload>();
-		for (const issue of [...openIssues, ...closedBugs]) {
+		for (const issue of [...openIssues, ...closedRoadmap, ...closedBugs]) {
 			byNumber.set(issue.number, issue);
 		}
 

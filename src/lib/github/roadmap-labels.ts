@@ -25,6 +25,21 @@ export const DEFAULT_DELIVERY_VERSIONS = [
 
 export type DeliveryVersion = (typeof DEFAULT_DELIVERY_VERSIONS)[number];
 
+/** Delivery band id carried on GitHub Milestone titles (e.g. v0.2). */
+export const DELIVERY_VERSION_ID_RE = /^v\d+\.\d+$/;
+
+export function isDeliveryVersionId(value: string): boolean {
+	return DELIVERY_VERSION_ID_RE.test(value);
+}
+
+export function versionFromMilestoneTitle(
+	title: string | null | undefined,
+): string | undefined {
+	if (!title) return undefined;
+	const trimmed = title.trim();
+	return isDeliveryVersionId(trimmed) ? trimmed : undefined;
+}
+
 export const ROADMAP_WORKSTREAM_PREFIX = "roadmap/workstream/";
 
 export const ROADMAP_DOMAIN_PREFIX = "roadmap/domain/";

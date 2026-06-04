@@ -3,6 +3,7 @@ import "@tanstack/react-start/server-only";
 import type { Database } from "bun:sqlite";
 
 import { BUG_LABEL } from "#/lib/github/bug-mappers";
+import { versionFromMilestoneTitle } from "#/lib/github/roadmap-labels";
 import { getIssuesDatabase } from "#/lib/storage/db";
 import {
 	type GitHubIssuePayload,
@@ -22,6 +23,11 @@ function hasBugLabel(issue: GitHubIssuePayload): boolean {
 
 function isPullRequest(issue: GitHubIssuePayload): boolean {
 	return Boolean(issue.pull_request);
+}
+
+function hasRoadmapLabel(issue: GitHubIssuePayload): boolean {
+	if (versionFromMilestoneTitle(issue.milestone?.title)) return true;
+	return labelNamesFromPayload(issue).some((name) => name.startsWith("roadmap/"));
 }
 
 export function upsertGithubIssue(
@@ -129,6 +135,24 @@ export function listStoredOpenIssues(): GitHubIssuePayload[] {
 		.map((row) => parseIssuePayload(row.payload));
 }
 
+/** Open roadmap issues plus closed issues that remain on kanban boards. */
+export function listStoredRoadmapIssues(): GitHubIssuePayload[] {
+	const db = getIssuesDatabase();
+	return db
+		.query<{ payload: string }, []>(
+			`
+			SELECT payload FROM github_issues
+			WHERE is_pull_request = 0 AND state IN ('open', 'closed')
+			ORDER BY number ASC
+			`,
+		)
+		.all()
+		.map((row) => parseIssuePayload(row.payload))
+		.filter(
+			(issue) => issue.state === "open" || hasRoadmapLabel(issue),
+		);
+}
+
 export function listStoredOpenBugs(): GitHubIssuePayload[] {
 	const db = getIssuesDatabase();
 	return db
@@ -141,6 +165,22 @@ export function listStoredOpenBugs(): GitHubIssuePayload[] {
 		)
 		.all()
 		.map((row) => parseIssuePayload(row.payload));
+}
+
+/** Finds a mirrored issue whose body contains the tracker seed-id marker. */
+export function findStoredIssueNumberBySeedId(taskId: string): number | undefined {
+	const marker = `tracker-seed-id:${taskId}`;
+	const db = getIssuesDatabase();
+	const rows = db
+		.query<{ number: number; payload: string }, []>(
+			"SELECT number, payload FROM github_issues WHERE is_pull_request = 0",
+		)
+		.all();
+	for (const row of rows) {
+		const issue = parseIssuePayload(row.payload);
+		if ((issue.body ?? "").includes(marker)) return row.number;
+	}
+	return undefined;
 }
 
 export function getStoredIssue(number: number): GitHubIssuePayload | null {

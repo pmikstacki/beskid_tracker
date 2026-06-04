@@ -6,7 +6,6 @@ import {
 	priorityLabel,
 	ROADMAP_SPEC_APPROVAL,
 	statusLabelForColumn,
-	versionLabel,
 	workstreamLabel,
 } from "#/lib/github/roadmap-labels";
 import type { RoadmapTask } from "#/lib/github/types";
@@ -60,9 +59,8 @@ function seedSubtasksToRows(subtasks: SeedSubtask[]): SubtaskRow[] {
 	}));
 }
 
-function buildLabelNames(versionId: string, task: SeedTask): string[] {
+function buildLabelNames(task: SeedTask): string[] {
 	const labels = [
-		versionLabel(versionId),
 		statusLabelForColumn(task.statusColumn),
 		priorityLabel(task.priority),
 	];
@@ -131,6 +129,6 @@ export function seedTaskToRoadmapTask(
 		milestone: deliverable
 			? { title: deliverable.title, number: 0 }
 			: undefined,
-		labelNames: buildLabelNames(version.id, task),
+		labelNames: buildLabelNames(task),
 	};
 }

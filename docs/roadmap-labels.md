@@ -1,6 +1,6 @@
 # Roadmap GitHub labels
 
-The [Beskid Tracker](https://github.com/Cyber-Nomad-Collective/beskid/tree/main/beskid_tracker) app maps kanban columns, delivery versions, workstreams, and platform-spec scope to labels on **Cyber-Nomad-Collective/beskid** issues. Issue bodies store structured spec relations in a `roadmap-spec` fenced JSON block.
+The [Beskid Tracker](https://github.com/Cyber-Nomad-Collective/beskid/tree/main/beskid_tracker) app maps kanban columns, workstreams, and platform-spec scope to labels on **Cyber-Nomad-Collective/beskid** issues. **Delivery versions** use [GitHub Milestones](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones) (milestone title = `v0.2`, etc.). Issue bodies store structured spec relations in a `roadmap-spec` fenced JSON block.
 
 ## Public bugs
 
@@ -18,7 +18,7 @@ The tracker mirrors issues in SQLite (`bun run sync:issues` or automatic backgro
 | `roadmap/status/in-progress` | In Progress |
 | `roadmap/status/done` | Done |
 
-Issues without a status label appear in **Backlog**. Dragging a card updates labels via the GitHub API.
+Issues without a status label appear in **Backlog**. Closed issues without a status label appear in **Done**. Dragging a card updates labels and GitHub issue state: **Done** closes the issue; moving out of **Done** reopens it.
 
 ## Priority
 
@@ -28,18 +28,16 @@ Issues without a status label appear in **Backlog**. Dragging a card updates lab
 | `roadmap/priority/medium` | Medium |
 | `roadmap/priority/low` | Low (default when no priority label) |
 
-## Delivery version
+## Delivery version (GitHub Milestone)
 
-Each roadmap issue belongs to exactly one delivery band:
+Each roadmap issue belongs to exactly one delivery band via a **GitHub Milestone** whose title is the version id (`v0.1`, `v0.2`, …). The kanban board at `/v/v0.2` lists issues assigned to the `v0.2` milestone. Only the **repository owner** (or org admin) can register additional delivery versions from the UI (creates the milestone if missing).
 
-| Label | Meaning |
-|-------|---------|
-| `roadmap/version/v0.1` | v0.1 delivery |
-| `roadmap/version/v0.2` | v0.2 delivery |
-| `roadmap/version/v0.3` | v0.3 delivery |
-| `roadmap/version/v0.4` | v0.4 delivery |
+**Legacy:** Older issues may still carry `roadmap/version/*` labels. The tracker reads those labels as a fallback when no version milestone is set. New issues and imports should use milestones only—not `roadmap/version/*` labels.
 
-The kanban board at `/v/v0.2` (for example) lists open issues with the matching version label. Only the **repository owner** (or org admin) can register additional `roadmap/version/*` labels from the UI.
+| Legacy label | Meaning |
+|--------------|---------|
+| `roadmap/version/v0.1` | v0.1 (fallback only) |
+| `roadmap/version/v0.2` | v0.2 (fallback only) |
 
 ## Workstream
 

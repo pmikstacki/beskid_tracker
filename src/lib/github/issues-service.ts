@@ -6,9 +6,12 @@ import {
 	issueToRoadmapTask,
 	scopeLabelsFromRelation,
 } from "#/lib/github/mappers";
+import {
+	ensureVersionMilestone,
+	listVersionMilestones,
+} from "#/lib/github/milestones-service";
 import { repoParams } from "#/lib/github/octokit";
 import {
-	DEFAULT_DELIVERY_VERSIONS,
 	isRoadmapStatusLabel,
 	isRoadmapVersionLabel,
 	priorityLabel,
@@ -16,7 +19,6 @@ import {
 	type RoadmapColumnId,
 	statusLabelForColumn,
 	stripRoadmapScopedLabels,
-	versionLabel,
 	workstreamLabel,
 } from "#/lib/github/roadmap-labels";
 import type { PublicBug, RoadmapTask } from "#/lib/github/types";
@@ -61,40 +63,21 @@ export async function getRoadmapIssue(
 }
 
 export async function listVersionLabels(octokit: Octokit): Promise<string[]> {
-	const { data } = await octokit.issues.listLabelsForRepo(repoParams());
-	const fromGithub = data
-		.map((l) => l.name)
-		.filter((name): name is string =>
-			Boolean(name && isRoadmapVersionLabel(name)),
-		)
-		.map((name) => name.slice("roadmap/version/".length));
-
-	const merged = new Set([...DEFAULT_DELIVERY_VERSIONS, ...fromGithub]);
-	return [...merged].sort();
+	return listVersionMilestones(octokit);
 }
 
+/** Ensures a GitHub Milestone exists for the delivery version (replaces legacy version labels). */
 export async function registerVersionLabel(
 	octokit: Octokit,
 	version: string,
 ): Promise<void> {
-	const name = versionLabel(version);
-	try {
-		await octokit.issues.getLabel({ ...repoParams(), name });
-	} catch {
-		await octokit.issues.createLabel({
-			...repoParams(),
-			name,
-			color: "006a68",
-			description: `Roadmap delivery band ${version}`,
-		});
-	}
+	await ensureVersionMilestone(octokit, version);
 }
 
 function buildLabelsForCreate(input: CreateIssueInput): string[] {
 	const labels = [
 		statusLabelForColumn(input.statusColumn),
 		priorityLabel(input.priority),
-		versionLabel(input.version),
 		ROADMAP_SPEC_APPROVAL.pending,
 	];
 
@@ -145,6 +128,12 @@ export async function moveIssueToColumn(
 		...repoParams(),
 		issue_number: issueNumber,
 		labels: nextLabels,
+	});
+
+	await octokit.rest.issues.update({
+		...repoParams(),
+		issue_number: issueNumber,
+		state: targetColumn === "Done" ? "closed" : "open",
 	});
 
 	const data = await fetchGithubIssue(octokit, issueNumber);
@@ -221,12 +210,15 @@ export async function createRoadmapIssue(
 		input.body.trim(),
 		input.specRelations,
 	);
+	const milestone = await ensureVersionMilestone(octokit, input.version);
 
 	const { data } = await octokit.rest.issues.create({
 		...repoParams(),
 		title: input.title,
 		body: body || undefined,
 		labels: buildLabelsForCreate(input),
+		milestone: milestone.number,
+		state: input.statusColumn === "Done" ? "closed" : "open",
 	});
 
 	persistGithubIssue(data);
@@ -285,7 +277,6 @@ export async function updateRoadmapIssue(
 	} else {
 		nextLabels.push(priorityLabel(existing.priority));
 	}
-	nextLabels.push(versionLabel(existing.version));
 	if (input.workstream ?? existing.workstream) {
 		nextLabels.push(workstreamLabel(input.workstream ?? existing.workstream!));
 	}
@@ -306,6 +297,13 @@ export async function updateRoadmapIssue(
 		...repoParams(),
 		issue_number: input.issueNumber,
 		labels: nextLabels,
+	});
+
+	const milestone = await ensureVersionMilestone(octokit, existing.version);
+	await octokit.rest.issues.update({
+		...repoParams(),
+		issue_number: input.issueNumber,
+		milestone: milestone.number,
 	});
 
 	const data = await fetchGithubIssue(octokit, input.issueNumber);

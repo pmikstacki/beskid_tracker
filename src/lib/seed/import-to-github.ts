@@ -1,12 +1,12 @@
 import type { Octokit } from "@octokit/rest";
-import { registerVersionLabel } from "#/lib/github/issues-service";
+import { ensureVersionMilestone } from "#/lib/github/milestones-service";
 import { repoParams } from "#/lib/github/octokit";
 import { createSuperrepoVersionTags } from "#/lib/github/version-release";
 import type { ParsedSeedBundle } from "#/lib/seed/parse-uploaded-bundle";
 import { roadmapTaskToIssuePayload } from "#/lib/seed/roadmap-task-to-issue-payload";
 import { seedTaskToRoadmapTask } from "#/lib/seed/to-roadmap-task";
 import {
-	getStoredIssue,
+	findStoredIssueNumberBySeedId,
 	persistGithubIssue,
 	recomputeSyncStateFromStore,
 	upsertGithubIssues,
@@ -57,10 +57,13 @@ export async function importSeedBundlesToGitHub(
 		title: string;
 		body: string;
 		labels: string[];
-		existedInCache: boolean;
+		milestoneNumber: number;
+		state: "open" | "closed";
+		issueNumber?: number;
 	};
 
 	const pending: PendingPush[] = [];
+	const milestoneByVersion = new Map<string, number>();
 
 	for (const bundle of bundles) {
 		run.setPhase(`Version ${bundle.versionId}`);
@@ -76,47 +79,65 @@ export async function importSeedBundlesToGitHub(
 			processed += 1;
 			run.setProgress(processed, totalTasks);
 
+			const existingIssueNumber = findStoredIssueNumberBySeedId(task.id);
 			const roadmapTask = seedTaskToRoadmapTask(
 				bundle.version,
 				task,
 				deliverableMap,
+				existingIssueNumber ?? 0,
 			);
 			const body = bodyWithSeedId(roadmapTask.body, task.id);
-			const existedInCache = Boolean(getStoredIssue(task.number));
 
 			if (options?.dryRun) {
 				run.log(
-					`[dry-run] #${task.number} ${existedInCache ? "update" : "create"} — ${roadmapTask.title}`,
+					`[dry-run] ${existingIssueNumber ? `#${existingIssueNumber}` : "create"} — ${roadmapTask.title} (${task.id})`,
 				);
-				if (existedInCache) updated += 1;
+				if (existingIssueNumber) updated += 1;
 				else created += 1;
 				continue;
 			}
 
+			let milestoneNumber = milestoneByVersion.get(bundle.versionId);
+			if (milestoneNumber === undefined) {
+				const milestone = await ensureVersionMilestone(
+					octokit,
+					bundle.versionId,
+				);
+				milestoneNumber = milestone.number;
+				milestoneByVersion.set(bundle.versionId, milestoneNumber);
+			}
+
+			const state =
+				roadmapTask.statusColumn === "Done" ? "closed" : ("open" as const);
+			const milestone = { title: bundle.versionId, number: milestoneNumber };
+
 			pending.push({
 				task,
-				roadmapTask: { ...roadmapTask, body },
+				roadmapTask: {
+					...roadmapTask,
+					body,
+					milestone,
+					number: existingIssueNumber ?? roadmapTask.number,
+				},
 				title: roadmapTask.title,
 				body,
 				labels: roadmapTask.labelNames,
-				existedInCache,
+				milestoneNumber,
+				state,
+				issueNumber: existingIssueNumber,
 			});
 		}
 	}
 
 	if (!options?.dryRun && pending.length > 0) {
 		run.setPhase("Writing local cache (DB first)");
-		const localPayloads = pending.map(({ roadmapTask }) =>
-			roadmapTaskToIssuePayload(roadmapTask),
+		const localPayloads = pending.map(({ roadmapTask, state }) =>
+			roadmapTaskToIssuePayload(roadmapTask, { state }),
 		);
 		upsertGithubIssues(localPayloads);
 		run.log(
 			`Cached ${localPayloads.length} issue(s) locally before GitHub push`,
 		);
-
-		for (const bundle of bundles) {
-			await registerVersionLabel(octokit, bundle.versionId);
-		}
 
 		run.setPhase("Pushing to GitHub");
 		let pushIndex = 0;
@@ -125,50 +146,48 @@ export async function importSeedBundlesToGitHub(
 			pushIndex += 1;
 			run.setProgress(pushIndex, pending.length);
 
-			const { task, title, body, labels, existedInCache } = item;
+			const { task, title, body, labels, milestoneNumber, state, issueNumber } =
+				item;
 
 			try {
-				if (existedInCache) {
+				if (issueNumber !== undefined) {
 					await octokit.rest.issues.update({
 						...repoParams(),
-						issue_number: task.number,
+						issue_number: issueNumber,
 						title,
 						body,
+						state,
+						milestone: milestoneNumber,
 					});
 					await octokit.rest.issues.setLabels({
 						...repoParams(),
-						issue_number: task.number,
+						issue_number: issueNumber,
 						labels,
 					});
 					const { data } = await octokit.rest.issues.get({
 						...repoParams(),
-						issue_number: task.number,
+						issue_number: issueNumber,
 					});
 					persistGithubIssue(data);
 					updated += 1;
-					run.log(`Updated #${task.number}: ${title}`);
+					run.log(`Updated #${issueNumber}: ${title}`);
 				} else {
 					const { data } = await octokit.rest.issues.create({
 						...repoParams(),
 						title,
 						body,
 						labels,
+						milestone: milestoneNumber,
+						state,
 					});
 					persistGithubIssue(data);
-					if (data.number !== task.number) {
-						run.log(
-							`Created #${data.number} for seed #${task.number} (${task.id}) — numbers differ`,
-							"warn",
-						);
-					} else {
-						run.log(`Created #${data.number}: ${title}`);
-					}
+					run.log(`Created #${data.number}: ${title} (${task.id})`);
 					created += 1;
 				}
 			} catch (error) {
 				const message =
 					error instanceof Error ? error.message : `Failed on task ${task.id}`;
-				errors.push(`#${task.number} ${task.id}: ${message}`);
+				errors.push(`${task.id}: ${message}`);
 				run.log(message, "error");
 				skipped += 1;
 			}

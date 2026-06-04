@@ -14,6 +14,7 @@ import {
 	type RoadmapColumnId,
 	specApprovalFromLabels,
 	versionFromLabel,
+	versionFromMilestoneTitle,
 	workstreamFromLabel,
 } from "#/lib/github/roadmap-labels";
 import type { RoadmapColumns, RoadmapTask } from "#/lib/github/types";
@@ -42,11 +43,17 @@ export function issueToRoadmapTask(issue: GitHubIssue): RoadmapTask | null {
 	const body = issue.body ?? "";
 
 	const statusLabel = labelNames.find(isRoadmapStatusLabel);
-	const statusColumn: RoadmapColumnId = statusLabel
+	let statusColumn: RoadmapColumnId = statusLabel
 		? columnIdForStatusLabel(statusLabel)
 		: "Backlog";
+	if (!statusLabel && issue.state === "closed") {
+		statusColumn = "Done";
+	}
 
-	const version = labelNames.map(versionFromLabel).find(Boolean) ?? "v0.2";
+	const version =
+		versionFromMilestoneTitle(issue.milestone?.title) ??
+		labelNames.map(versionFromLabel).find(Boolean) ??
+		"v0.2";
 
 	const parsedBlock = parseSpecRelationsBlock(body);
 	const legacy = parseSpecLinks(body).map((link) => ({
