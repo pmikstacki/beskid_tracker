@@ -3,6 +3,7 @@
 import { useMutation } from "@tanstack/react-query";
 import { Link, useRouter } from "@tanstack/react-router";
 
+import { MarkdownContent } from "#/components/markdown-content";
 import { Badge } from "#/components/ui/badge";
 import { Button } from "#/components/ui/button";
 import type {
@@ -58,9 +59,9 @@ export function SpecProposalDetail({
 					<h1 className="text-2xl font-semibold">{initial.title}</h1>
 					<Badge variant="outline">{initial.status}</Badge>
 				</div>
-				{initial.summary ? (
-					<p className="text-muted-foreground text-sm">{initial.summary}</p>
-				) : null}
+				<MarkdownContent optional className="max-w-2xl">
+					{initial.summary ?? ""}
+				</MarkdownContent>
 				{initial.prUrl ? (
 					<a
 						href={initial.prUrl}

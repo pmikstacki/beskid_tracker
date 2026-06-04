@@ -1,8 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
 
 import { DocsHubTabs } from "#/components/docs-hub-tabs";
+import { MarkdownContent } from "#/components/markdown-content";
 import { Badge } from "#/components/ui/badge";
 import { Button } from "#/components/ui/button";
 import { beskidDocsUrl } from "#/lib/beskid-docs-origin";
@@ -53,9 +52,7 @@ function DocsCatalogDocumentPage() {
 					{doc.repoPath}
 				</p>
 			</header>
-			<article className="prose prose-neutral dark:prose-invert max-w-none">
-				<ReactMarkdown remarkPlugins={[remarkGfm]}>{doc.body}</ReactMarkdown>
-			</article>
+			<MarkdownContent size="md">{doc.body}</MarkdownContent>
 		</main>
 	);
 }

@@ -84,7 +84,7 @@ export async function loadPlatformSpecCatalog(): Promise<PlatformSpecCatalogInde
 		);
 	}
 
-	const parsed = parseCatalogFile(await response.json());
+	const parsed = parseCatalogFile(await readJsonResponse(response, url));
 	cachedCatalog = parsed as PlatformSpecCatalogIndex;
 	cachedAt = now;
 	return cachedCatalog;
@@ -105,5 +105,29 @@ export async function loadPlatformSpecDocument(
 	if (!response.ok) {
 		throw new Error(`Failed to load document (${response.status}) from ${url}`);
 	}
-	return parseDocumentBundle(await response.json());
+	return parseDocumentBundle(await readJsonResponse(response, url));
+}
+
+async function readJsonResponse(
+	response: Response,
+	url: string,
+): Promise<unknown> {
+	const contentType = response.headers.get("content-type") ?? "";
+	const text = await response.text();
+	if (
+		!contentType.includes("application/json") &&
+		!contentType.includes("+json")
+	) {
+		const preview = text.trimStart().slice(0, 40);
+		throw new Error(
+			`Expected JSON from ${url} but received ${contentType || "unknown type"} (${preview.startsWith("<!") ? "HTML page" : preview}). ` +
+				"Redeploy site/website after prebuild publishes /generated/platform-spec-catalog.json.",
+		);
+	}
+	try {
+		return JSON.parse(text) as unknown;
+	} catch (error) {
+		const message = error instanceof Error ? error.message : "invalid JSON";
+		throw new Error(`Failed to parse JSON from ${url}: ${message}`);
+	}
 }

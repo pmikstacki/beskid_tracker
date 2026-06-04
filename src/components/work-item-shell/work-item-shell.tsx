@@ -1,6 +1,8 @@
 "use client";
 
 import type { ReactNode } from "react";
+
+import { MarkdownContent } from "#/components/markdown-content";
 import {
 	Dialog,
 	DialogContent,
@@ -91,11 +93,9 @@ export function WorkItemShell({
 					) : null}
 					<div className="px-6 pt-6">
 						{header}
-						{description ? (
-							<p className="text-muted-foreground mt-2 pr-4 text-sm leading-relaxed">
-								{description}
-							</p>
-						) : null}
+						<MarkdownContent optional className="mt-2 max-w-2xl pr-4">
+							{description ?? ""}
+						</MarkdownContent>
 					</div>
 					<div className="min-h-0 flex-1 overflow-y-auto px-6 pb-6">
 						{children}

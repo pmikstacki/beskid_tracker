@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 
+import { MarkdownContent } from "#/components/markdown-content";
 import { RoadmapScopeTaskList } from "#/components/roadmap-scope-task-list";
 import { RoadmapStatWidgets } from "#/components/roadmap-stat-widgets";
 import { ShellVersionsSync } from "#/components/shell-versions-sync";
@@ -34,9 +35,13 @@ function VersionOverviewPage() {
 							<h1 className="display-title mt-1 text-2xl font-bold md:text-3xl">
 								{version.id}: {version.title}
 							</h1>
-							<p className="text-muted-foreground mt-3 max-w-2xl text-sm leading-relaxed">
+							<MarkdownContent
+								optional
+								size="md"
+								className="mt-3 max-w-2xl"
+							>
 								{version.summary}
-							</p>
+							</MarkdownContent>
 						</div>
 						<Badge variant={versionStatusBadgeVariant(version.status)}>
 							{versionStatusLabel(version.status)}
@@ -69,9 +74,19 @@ function VersionOverviewPage() {
 												</Link>
 											</CardTitle>
 										</CardHeader>
-										<CardContent className="text-muted-foreground pt-0 text-xs">
-											{deliverable.stats.tasksDone} /{" "}
-											{deliverable.stats.tasksTotal} tasks done
+										<CardContent className="flex flex-col gap-2 pt-0 text-xs">
+											{deliverable.description ? (
+												<MarkdownContent
+													optional
+													className="text-xs [&_p]:text-xs [&_li]:text-xs"
+												>
+													{deliverable.description}
+												</MarkdownContent>
+											) : null}
+											<p className="text-muted-foreground">
+												{deliverable.stats.tasksDone} /{" "}
+												{deliverable.stats.tasksTotal} tasks done
+											</p>
 										</CardContent>
 									</Card>
 								</li>
@@ -102,7 +117,12 @@ function VersionOverviewPage() {
 											</CardTitle>
 										</CardHeader>
 										<CardContent className="text-muted-foreground flex flex-col gap-2 pt-0 text-xs">
-											<p>{ws.summary}</p>
+											<MarkdownContent
+												optional
+												className="text-xs [&_p]:text-xs [&_li]:text-xs"
+											>
+												{ws.summary}
+											</MarkdownContent>
 											<Link
 												to="/versions/$version/workstreams/$slug"
 												params={{ version: version.id, slug: ws.slug }}

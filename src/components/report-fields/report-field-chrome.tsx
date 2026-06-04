@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 
+import { MarkdownContent } from "#/components/markdown-content";
 import { cn } from "#/lib/utils";
 
 interface ReportFieldChromeProps {
@@ -76,9 +77,12 @@ export function ReportFormSection({
 		<section className="work-item-section">
 			<header className="work-item-section__header">
 				<h3 className="work-item-section__title">{title}</h3>
-				{description ? (
-					<p className="work-item-section__description">{description}</p>
-				) : null}
+				<MarkdownContent
+					optional
+					className="work-item-section__description max-w-2xl"
+				>
+					{description ?? ""}
+				</MarkdownContent>
 			</header>
 			<div className="work-item-section__body">{children}</div>
 		</section>

@@ -2,18 +2,14 @@ import "@tanstack/react-start/server-only";
 
 import type { Octokit } from "@octokit/rest";
 import { BUG_LABEL, issueToPublicBug } from "#/lib/github/bug-mappers";
-import {
-	issueToRoadmapTask,
-	scopeLabelsFromRelation,
-} from "#/lib/github/mappers";
+import { issueToRoadmapTask, scopeLabelsFromRelation } from "#/lib/github/mappers";
+import { buildRoadmapIssueLabels } from "#/lib/github/roadmap-issue-labels";
 import {
 	ensureVersionMilestone,
 	listVersionMilestones,
 } from "#/lib/github/milestones-service";
 import { repoParams } from "#/lib/github/octokit";
 import {
-	isRoadmapStatusLabel,
-	isRoadmapVersionLabel,
 	priorityLabel,
 	ROADMAP_SPEC_APPROVAL,
 	type RoadmapColumnId,
@@ -106,23 +102,12 @@ export async function moveIssueToColumn(
 		issue_number: issueNumber,
 	});
 
-	const currentLabels = (issue.labels ?? [])
-		.map((label) => (typeof label === "string" ? label : label.name))
-		.filter((name): name is string => Boolean(name));
+	const existing = issueToRoadmapTask(issue);
+	if (!existing) {
+		throw new Error(`Issue #${issueNumber} is not a roadmap task`);
+	}
 
-	const nextLabels = [
-		...stripRoadmapScopedLabels(currentLabels),
-		...currentLabels.filter(
-			(n) =>
-				isRoadmapVersionLabel(n) ||
-				n.startsWith("roadmap/workstream/") ||
-				n.startsWith("roadmap/domain/") ||
-				n.startsWith("roadmap/area/") ||
-				n.startsWith("roadmap/feature/") ||
-				n.startsWith("roadmap/spec-approval/"),
-		),
-		statusLabelForColumn(targetColumn),
-	];
+	const nextLabels = buildRoadmapIssueLabels(existing, { statusColumn: targetColumn });
 
 	await octokit.rest.issues.setLabels({
 		...repoParams(),
@@ -269,29 +254,13 @@ export async function updateRoadmapIssue(
 		});
 	}
 
-	let nextLabels = stripRoadmapScopedLabels(existing.labelNames);
-	nextLabels = nextLabels.filter((n) => !isRoadmapStatusLabel(n));
-	nextLabels.push(statusLabelForColumn(existing.statusColumn));
-	if (input.priority) {
-		nextLabels.push(priorityLabel(input.priority));
-	} else {
-		nextLabels.push(priorityLabel(existing.priority));
-	}
-	if (input.workstream ?? existing.workstream) {
-		nextLabels.push(workstreamLabel(input.workstream ?? existing.workstream!));
-	}
-	const approval =
-		existing.specApproval === "approved"
-			? ROADMAP_SPEC_APPROVAL.approved
-			: ROADMAP_SPEC_APPROVAL.pending;
-	nextLabels.push(approval);
-
-	const relations = input.specRelations ?? existing.specRelations;
-	for (const relation of relations) {
-		for (const label of scopeLabelsFromRelation(relation)) {
-			if (!nextLabels.includes(label)) nextLabels.push(label);
-		}
-	}
+	const taskForLabels: RoadmapTask = {
+		...existing,
+		priority: input.priority ?? existing.priority,
+		workstream: input.workstream ?? existing.workstream,
+		specRelations: input.specRelations ?? existing.specRelations,
+	};
+	const nextLabels = buildRoadmapIssueLabels(taskForLabels);
 
 	await octokit.rest.issues.setLabels({
 		...repoParams(),

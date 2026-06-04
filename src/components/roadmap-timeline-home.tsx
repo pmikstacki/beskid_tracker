@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { CircleDot } from "lucide-react";
 
 import { GitHubRateLimitAlert } from "#/components/github-rate-limit-alert";
+import { MarkdownContent } from "#/components/markdown-content";
 import {
 	Timeline,
 	TimelineDot,
@@ -118,9 +119,9 @@ export function RoadmapTimelineHome({
 											{versionStatusLabel(version.status)}
 										</Badge>
 									</div>
-									<p className="text-muted-foreground text-sm leading-relaxed">
+									<MarkdownContent optional className="text-sm">
 										{version.summary}
-									</p>
+									</MarkdownContent>
 								</CardHeader>
 								<CardContent className="space-y-4 pt-0">
 									<RoadmapStatWidgets stats={version.stats} compact />

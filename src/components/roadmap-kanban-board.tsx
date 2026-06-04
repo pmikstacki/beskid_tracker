@@ -1,5 +1,6 @@
 "use client";
 
+import { arrayMove } from "@dnd-kit/sortable";
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
@@ -13,6 +14,7 @@ import {
 	KanbanItem,
 	KanbanItemHandle,
 	KanbanOverlay,
+	type KanbanMoveEvent,
 } from "#/components/reui/kanban";
 import { SpecRelationsList } from "#/components/spec-relations-list";
 import { Badge } from "#/components/ui/badge";
@@ -28,32 +30,45 @@ const PRIORITY_LABEL = {
 	low: "Low",
 } as const;
 
-function findColumnMove(
+function applyKanbanMove(
 	prev: RoadmapColumns,
-	next: RoadmapColumns,
-): { issueNumber: number; targetColumn: RoadmapColumnId } | null {
-	const prevColumnById = new Map<string, RoadmapColumnId>();
-	for (const [columnId, items] of Object.entries(prev) as [
-		RoadmapColumnId,
-		RoadmapTask[],
-	][]) {
-		for (const item of items) {
-			prevColumnById.set(item.id, columnId);
-		}
+	event: KanbanMoveEvent,
+): {
+	next: RoadmapColumns;
+	move: { issueNumber: number; targetColumn: RoadmapColumnId } | null;
+} {
+	const { activeContainer, overContainer, activeIndex, overIndex } = event;
+	const from = activeContainer as RoadmapColumnId;
+	const to = overContainer as RoadmapColumnId;
+
+	if (from === to) {
+		return {
+			next: {
+				...prev,
+				[from]: arrayMove([...prev[from]], activeIndex, overIndex),
+			},
+			move: null,
+		};
 	}
 
-	for (const [columnId, items] of Object.entries(next) as [
-		RoadmapColumnId,
-		RoadmapTask[],
-	][]) {
-		for (const item of items) {
-			const previous = prevColumnById.get(item.id);
-			if (previous && previous !== columnId) {
-				return { issueNumber: item.number, targetColumn: columnId };
-			}
-		}
+	const source = [...prev[from]];
+	const target = [...prev[to]];
+	const [moved] = source.splice(activeIndex, 1);
+	if (!moved) {
+		return { next: prev, move: null };
 	}
-	return null;
+
+	const updated: RoadmapTask = { ...moved, statusColumn: to };
+	target.splice(overIndex, 0, updated);
+
+	return {
+		next: {
+			...prev,
+			[from]: source,
+			[to]: target,
+		},
+		move: { issueNumber: moved.number, targetColumn: to },
+	};
 }
 
 interface RoadmapKanbanBoardProps {
@@ -72,13 +87,13 @@ export function RoadmapKanbanBoard({
 
 	const tasksById = useMemo(() => {
 		const map = new Map<string, RoadmapTask>();
-		for (const items of Object.values(initialColumns)) {
+		for (const items of Object.values(columns)) {
 			for (const task of items) {
 				map.set(task.id, task);
 			}
 		}
 		return map;
-	}, [initialColumns]);
+	}, [columns]);
 
 	useEffect(() => {
 		setColumns(initialColumns);
@@ -97,13 +112,14 @@ export function RoadmapKanbanBoard({
 		},
 	});
 
-	const handleColumnsChange = (next: Record<string, RoadmapTask[]>) => {
-		const columnsNext = next as RoadmapColumns;
-		const move = findColumnMove(columns, columnsNext);
-		setColumns(columnsNext);
-		if (move && !moveMutation.isPending) {
-			moveMutation.mutate(move);
-		}
+	const handleMove = (event: KanbanMoveEvent) => {
+		setColumns((prev) => {
+			const { next, move } = applyKanbanMove(prev, event);
+			if (move && !moveMutation.isPending) {
+				moveMutation.mutate(move);
+			}
+			return next;
+		});
 	};
 
 	const openTask = (taskId: string) => {
@@ -117,7 +133,7 @@ export function RoadmapKanbanBoard({
 		<>
 			<Kanban
 				value={columns}
-				onValueChange={handleColumnsChange}
+				onMove={handleMove}
 				getItemValue={(item) => item.id}
 				className="w-full"
 			>

@@ -4,6 +4,7 @@ import { Link } from "@tanstack/react-router";
 import { ArrowLeft, Maximize2, Minimize2, X } from "lucide-react";
 import type { ReactNode } from "react";
 
+import { MarkdownContent } from "#/components/markdown-content";
 import { Button } from "#/components/ui/button";
 import type { WorkItemPresentation } from "#/components/work-item-shell/work-item-shell";
 import { cn } from "#/lib/utils";
@@ -72,11 +73,9 @@ export function WorkItemShellHeader({
 					>
 						{title}
 					</h2>
-					{description ? (
-						<p className="text-muted-foreground mt-1 text-sm leading-relaxed">
-							{description}
-						</p>
-					) : null}
+					<MarkdownContent optional className="mt-1 max-w-2xl">
+						{description ?? ""}
+					</MarkdownContent>
 				</div>
 				<div className="flex shrink-0 items-center gap-0.5">
 					{actions}

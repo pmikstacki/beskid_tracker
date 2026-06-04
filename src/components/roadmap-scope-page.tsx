@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
+import { MarkdownContent } from "#/components/markdown-content";
 import { RoadmapScopeTaskList } from "#/components/roadmap-scope-task-list";
 import { RoadmapStatWidgets } from "#/components/roadmap-stat-widgets";
 import { ShellVersionsSync } from "#/components/shell-versions-sync";
@@ -36,11 +37,13 @@ export function RoadmapScopePage({
 				<div>
 					<p className="island-kicker">{scopeKindLabel(scope)}</p>
 					<h1 className="display-title mt-1 text-2xl font-bold">{title}</h1>
-					{subtitle ? (
-						<p className="text-muted-foreground mt-2 max-w-2xl text-sm">
-							{subtitle}
-						</p>
-					) : null}
+					<MarkdownContent
+						optional
+						size="md"
+						className="mt-2 max-w-2xl"
+					>
+						{subtitle ?? ""}
+					</MarkdownContent>
 					<p className="text-muted-foreground mt-2 font-mono text-xs">
 						{version.id} · <span className="text-foreground">{slug}</span>
 					</p>
