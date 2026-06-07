@@ -1,9 +1,9 @@
 import { filterTasks, summarizeWorkstreams } from "#/lib/github/filters";
 import {
 	approveSpecForIssue,
-	createRoadmapIssue,
+	createRoadmapIssueForSession,
 	registerVersionLabel,
-} from "#/lib/github/issues-service";
+} from "#/lib/tracker/roadmap-write-service";
 import { collectBoardMeta } from "#/lib/github/mappers";
 import type { BoardPayload } from "#/lib/github/types";
 import {
@@ -29,7 +29,7 @@ export {
 	listSeedVersionLabels,
 	loadAllSeedRoadmapTasks,
 	tasksToColumns,
-	createRoadmapIssue,
+	createRoadmapIssueForSession as createRoadmapIssue,
 	registerVersionLabel,
 	approveSpecForIssue,
 	catalogWorkstreamSlugs,

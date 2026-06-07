@@ -2,6 +2,7 @@ import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 
 import type { PublicBug, PublicBugStats } from "#/lib/github/types";
+import { hasTrackerData } from "#/lib/tracker/read-service";
 import { requireSession, withOctokit } from "#/server/auth-guard.server";
 import * as publicBugsServer from "#/server/public-bugs.server";
 
@@ -20,24 +21,23 @@ export interface PublicBugStatsPayload extends PublicBugStats {
 
 export const listPublicBugsFn = createServerFn({ method: "GET" }).handler(
 	async (): Promise<PublicBugsPayload> => {
-		const state = publicBugsServer.readSyncState();
 		try {
 			const bugs = await publicBugsServer.listPublicBugsFromStore();
 			return {
 				bugs,
 				rateLimited: false,
-				cached: Boolean(state.lastSuccessAt),
+				cached: hasTrackerData(),
 				message: publicBugsServer.syncStatusMessage(),
 			};
 		} catch (error) {
 			const message =
 				error instanceof Error
 					? error.message
-					: "Failed to load bugs from store";
+					: "Failed to load bugs from database";
 			return {
 				bugs: [],
 				rateLimited: true,
-				cached: Boolean(state.lastSuccessAt),
+				cached: false,
 				message,
 			};
 		}
@@ -70,13 +70,12 @@ export const createPublicBugFn = createServerFn({ method: "POST" })
 
 export const getPublicBugStatsFn = createServerFn({ method: "GET" }).handler(
 	async (): Promise<PublicBugStatsPayload> => {
-		const state = publicBugsServer.readSyncState();
 		try {
 			const stats = await publicBugsServer.fetchPublicBugStatsFromStore();
 			return {
 				...stats,
 				rateLimited: false,
-				cached: Boolean(state.lastSuccessAt),
+				cached: hasTrackerData(),
 				message: publicBugsServer.syncStatusMessage(),
 			};
 		} catch (error) {
@@ -86,7 +85,7 @@ export const getPublicBugStatsFn = createServerFn({ method: "GET" }).handler(
 				open: 0,
 				closed: 0,
 				rateLimited: true,
-				cached: Boolean(state.lastSuccessAt),
+				cached: false,
 				message,
 			};
 		}
@@ -96,6 +95,6 @@ export const getPublicBugStatsFn = createServerFn({ method: "GET" }).handler(
 export const syncIssuesFn = createServerFn({ method: "POST" }).handler(
 	async () => {
 		await requireSession();
-		return publicBugsServer.triggerBoardSyncPull(true);
+		return publicBugsServer.triggerGithubSyncExport();
 	},
 );

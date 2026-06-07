@@ -1,6 +1,6 @@
 import type { Database } from "bun:sqlite";
 
-export const SCHEMA_VERSION = 4;
+export const SCHEMA_VERSION = 5;
 
 export function migrateSchema(db: Database): void {
 	db.run(`
@@ -48,6 +48,192 @@ export function migrateSchema(db: Database): void {
 			db.run("INSERT INTO schema_meta (key, value) VALUES ('version', '4')");
 		}
 	}
+
+	if (current < 5) {
+		applyV5(db);
+		db.run("UPDATE schema_meta SET value = '5' WHERE key = 'version'");
+		if (!versionRow) {
+			db.run("INSERT INTO schema_meta (key, value) VALUES ('version', '5')");
+		}
+	}
+}
+
+function applyV5(db: Database): void {
+	db.run(`
+		CREATE TABLE IF NOT EXISTS tracker_versions (
+			id TEXT PRIMARY KEY,
+			title TEXT NOT NULL,
+			summary TEXT NOT NULL,
+			theme TEXT NOT NULL,
+			status TEXT NOT NULL DEFAULT 'Planned',
+			cutoff_json TEXT NOT NULL,
+			sort_key INTEGER NOT NULL DEFAULT 0,
+			created_at TEXT NOT NULL,
+			updated_at TEXT NOT NULL
+		);
+	`);
+
+	db.run(`
+		CREATE TABLE IF NOT EXISTS tracker_workstreams (
+			version_id TEXT NOT NULL,
+			slug TEXT NOT NULL,
+			title TEXT NOT NULL,
+			summary TEXT NOT NULL,
+			sort_order INTEGER NOT NULL DEFAULT 0,
+			created_at TEXT NOT NULL,
+			updated_at TEXT NOT NULL,
+			PRIMARY KEY (version_id, slug),
+			FOREIGN KEY (version_id) REFERENCES tracker_versions(id) ON DELETE CASCADE
+		);
+	`);
+
+	db.run(`
+		CREATE TABLE IF NOT EXISTS tracker_deliverables (
+			version_id TEXT NOT NULL,
+			id TEXT NOT NULL,
+			title TEXT NOT NULL,
+			description TEXT,
+			closed_on TEXT,
+			created_at TEXT NOT NULL,
+			updated_at TEXT NOT NULL,
+			PRIMARY KEY (version_id, id),
+			FOREIGN KEY (version_id) REFERENCES tracker_versions(id) ON DELETE CASCADE
+		);
+	`);
+
+	db.run(`
+		CREATE TABLE IF NOT EXISTS tracker_tasks (
+			version_id TEXT NOT NULL,
+			id TEXT NOT NULL,
+			title TEXT NOT NULL,
+			status_column TEXT NOT NULL,
+			priority TEXT NOT NULL DEFAULT 'medium',
+			workstream TEXT,
+			domain TEXT,
+			area TEXT,
+			feature TEXT,
+			owner TEXT,
+			sort_order INTEGER,
+			deliverable_id TEXT,
+			body TEXT NOT NULL DEFAULT '',
+			spec_approval TEXT,
+			completed_at TEXT,
+			source_json TEXT NOT NULL,
+			local_updated_at TEXT NOT NULL,
+			created_at TEXT NOT NULL,
+			updated_at TEXT NOT NULL,
+			PRIMARY KEY (version_id, id),
+			FOREIGN KEY (version_id) REFERENCES tracker_versions(id) ON DELETE CASCADE
+		);
+	`);
+
+	db.run(`
+		CREATE INDEX IF NOT EXISTS idx_tracker_tasks_version_status
+		ON tracker_tasks (version_id, status_column);
+	`);
+
+	db.run(`
+		CREATE TABLE IF NOT EXISTS tracker_task_subtasks (
+			id INTEGER PRIMARY KEY AUTOINCREMENT,
+			version_id TEXT NOT NULL,
+			task_id TEXT NOT NULL,
+			text TEXT NOT NULL,
+			done INTEGER NOT NULL DEFAULT 0,
+			sort_order INTEGER NOT NULL DEFAULT 0,
+			FOREIGN KEY (version_id, task_id) REFERENCES tracker_tasks(version_id, id) ON DELETE CASCADE
+		);
+	`);
+
+	db.run(`
+		CREATE INDEX IF NOT EXISTS idx_tracker_task_subtasks_task
+		ON tracker_task_subtasks (version_id, task_id, sort_order);
+	`);
+
+	db.run(`
+		CREATE TABLE IF NOT EXISTS tracker_task_spec_relations (
+			id INTEGER PRIMARY KEY AUTOINCREMENT,
+			version_id TEXT NOT NULL,
+			task_id TEXT NOT NULL,
+			path TEXT NOT NULL,
+			href TEXT,
+			title TEXT,
+			level TEXT,
+			relation TEXT NOT NULL,
+			required INTEGER NOT NULL DEFAULT 0,
+			sort_order INTEGER NOT NULL DEFAULT 0,
+			FOREIGN KEY (version_id, task_id) REFERENCES tracker_tasks(version_id, id) ON DELETE CASCADE
+		);
+	`);
+
+	db.run(`
+		CREATE INDEX IF NOT EXISTS idx_tracker_task_spec_relations_task
+		ON tracker_task_spec_relations (version_id, task_id, sort_order);
+	`);
+
+	db.run(`
+		CREATE TABLE IF NOT EXISTS tracker_bugs (
+			id TEXT PRIMARY KEY,
+			title TEXT NOT NULL,
+			body TEXT NOT NULL DEFAULT '',
+			state TEXT NOT NULL DEFAULT 'open',
+			author TEXT,
+			component_id TEXT,
+			subcomponent_id TEXT,
+			fields_json TEXT NOT NULL DEFAULT '{}',
+			local_updated_at TEXT NOT NULL,
+			created_at TEXT NOT NULL,
+			updated_at TEXT NOT NULL
+		);
+	`);
+
+	db.run(`
+		CREATE INDEX IF NOT EXISTS idx_tracker_bugs_state
+		ON tracker_bugs (state);
+	`);
+
+	db.run(`
+		CREATE TABLE IF NOT EXISTS github_issue_links (
+			entity_type TEXT NOT NULL,
+			entity_id TEXT NOT NULL,
+			github_number INTEGER NOT NULL,
+			github_url TEXT NOT NULL,
+			github_updated_at TEXT,
+			last_synced_at TEXT,
+			sync_state TEXT NOT NULL DEFAULT 'pending',
+			PRIMARY KEY (entity_type, entity_id)
+		);
+	`);
+
+	db.run(`
+		CREATE UNIQUE INDEX IF NOT EXISTS idx_github_issue_links_number
+		ON github_issue_links (github_number);
+	`);
+
+	db.run(`
+		CREATE TABLE IF NOT EXISTS github_sync_outbox (
+			id TEXT PRIMARY KEY,
+			entity_type TEXT NOT NULL,
+			entity_id TEXT NOT NULL,
+			operation TEXT NOT NULL,
+			payload_json TEXT NOT NULL DEFAULT '{}',
+			attempts INTEGER NOT NULL DEFAULT 0,
+			last_error TEXT,
+			created_at TEXT NOT NULL
+		);
+	`);
+
+	db.run(`
+		CREATE INDEX IF NOT EXISTS idx_github_sync_outbox_created
+		ON github_sync_outbox (created_at ASC);
+	`);
+
+	db.run(`
+		CREATE TABLE IF NOT EXISTS sync_settings (
+			key TEXT PRIMARY KEY,
+			value TEXT NOT NULL,
+			updated_at TEXT NOT NULL
+		);
+	`);
 }
 
 function applyV4(db: Database): void {

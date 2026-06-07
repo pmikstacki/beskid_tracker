@@ -14,6 +14,11 @@ import type {
 	RoadmapCatalogWorkstream,
 } from "#/lib/roadmap/types";
 import type { VersionStatus } from "#/lib/roadmap/version-status";
+import { resolveActiveVersionId } from "#/lib/tracker/active-version";
+import {
+	hasTrackerCatalogData,
+	loadAllVersionSeedsFromDb,
+} from "#/lib/tracker/load-from-db";
 import { type LoadedVersionSeed, loadAllVersionSeeds } from "#/lib/seed/load";
 import type { SeedTask, SeedVersion } from "#/lib/seed/schemas";
 
@@ -143,10 +148,18 @@ export function catalogWorkstreamSlugs(versionId: string): string[] {
 	return version?.workstreams.map((w) => w.slug) ?? [];
 }
 
+function loadCatalogBundles(): LoadedVersionSeed[] {
+	if (hasTrackerCatalogData()) {
+		const fromDb = loadAllVersionSeedsFromDb();
+		if (fromDb.length > 0) return fromDb;
+	}
+	return loadAllVersionSeeds();
+}
+
 export function buildRoadmapCatalog(
 	preferredVersionId?: string,
 ): RoadmapCatalog {
-	const bundles = loadAllVersionSeeds();
+	const bundles = loadCatalogBundles();
 	if (bundles.length === 0) return fallbackCatalog();
 
 	const versions = bundles.map(buildVersionEntry);
@@ -161,10 +174,14 @@ export function buildRoadmapCatalog(
 		};
 	}
 
+	const resolvedActive =
+		resolveActiveVersionId(
+			versions.map((version) => ({ id: version.id, status: version.status })),
+		) ?? versions.at(-1)?.id ?? "v0.2";
 	const activeVersionId =
 		preferredVersionId && versions.some((v) => v.id === preferredVersionId)
 			? preferredVersionId
-			: (versions.at(-1)?.id ?? "v0.2");
+			: resolvedActive;
 
 	return { versions, totals, activeVersionId };
 }

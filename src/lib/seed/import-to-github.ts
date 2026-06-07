@@ -13,10 +13,18 @@ import {
 } from "#/lib/storage/issues-repository";
 import type { SyncRunHandle } from "#/lib/sync/sync-run-repository";
 
-const SEED_ID_MARKER = "tracker-seed-id:";
+export const TRACKER_SEED_ID_MARKER = "tracker-seed-id:";
+
+const SEED_ID_PATTERN = new RegExp(
+	`${TRACKER_SEED_ID_MARKER}([a-z0-9]+(?:-[a-z0-9]+)*)`,
+);
 
 export function seedIdMarker(taskId: string): string {
-	return `<!-- ${SEED_ID_MARKER}${taskId} -->`;
+	return `<!-- ${TRACKER_SEED_ID_MARKER}${taskId} -->`;
+}
+
+export function parseSeedIdFromBody(body: string): string | undefined {
+	return SEED_ID_PATTERN.exec(body)?.[1];
 }
 
 function bodyWithSeedId(body: string, taskId: string): string {

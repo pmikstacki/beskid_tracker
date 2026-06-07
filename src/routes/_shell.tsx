@@ -1,7 +1,6 @@
 import { createFileRoute, Outlet, redirect } from "@tanstack/react-router";
 
 import { AppShell } from "#/components/app-shell";
-import { useSeedData } from "#/lib/seed/config";
 import { getAuthUser } from "#/server/auth";
 import { getAuthHubPairingStatusFn } from "#/server/auth-hub-pairing";
 import { getRoadmapCatalog, getRoadmapSearchIndex } from "#/server/catalog";
@@ -9,11 +8,9 @@ import { getSessionInfo } from "#/server/roadmap";
 
 export const Route = createFileRoute("/_shell")({
 	beforeLoad: async () => {
-		if (!useSeedData()) {
-			const { paired } = await getAuthHubPairingStatusFn();
-			if (!paired) {
-				throw redirect({ to: "/settings/auth/pair" });
-			}
+		const { paired } = await getAuthHubPairingStatusFn();
+		if (!paired) {
+			throw redirect({ to: "/settings/auth/pair" });
 		}
 
 		const [user, catalog, searchIndex, session] = await Promise.all([

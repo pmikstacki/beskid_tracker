@@ -1,4 +1,3 @@
-export { useSeedData } from "#/lib/seed/config";
 export {
 	collectSeedBoardMeta,
 	type LoadedVersionSeed,

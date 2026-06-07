@@ -1,6 +1,6 @@
 # Roadmap seed catalog (v0.0–v0.4)
 
-Hand-maintained planning catalog for local development and review. JSON entities are validated against [JSON Schema](../schemas/seed/index.json) (exported from Zod via `bun run seed:schema:export`).
+Hand-maintained planning catalog for **import** into the tracker database (or legacy GitHub seed import). JSON entities are validated against [JSON Schema](../schemas/seed/index.json) (exported from Zod via `bun run seed:schema:export`).
 
 Each delivery version has:
 
@@ -30,13 +30,13 @@ Validate after edits:
 bun run seed:validate
 ```
 
-Load in the app (read-only; no GitHub issue mutations):
+Load in the app after import (Settings → Import seed JSON):
 
 ```bash
-ROADMAP_USE_SEED=1 bun run dev
+bun run dev
 ```
 
-Production continues to use GitHub Issues as the source of truth unless `ROADMAP_USE_SEED=1` is set explicitly.
+The tracker reads catalog and kanban from SQLite once seed data is imported. Seed JSON on disk is still used as fallback when the database has no versions yet.
 
 ## Omitted entity types
 

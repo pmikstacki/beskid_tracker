@@ -6,9 +6,9 @@ import { type ReactNode, useState } from "react";
 
 import { AppSidebar } from "#/components/app-sidebar";
 import {
-	BoardSyncDrawer,
-	BoardSyncHeaderButton,
-} from "#/components/board-sync-drawer";
+	TrackerSettingsDialog,
+	TrackerSettingsHeaderButton,
+} from "#/components/tracker-settings-dialog";
 import { RoadmapGlobalSearch } from "#/components/roadmap-global-search";
 import { ShellUiProvider, useShellUi } from "#/components/shell-versions-sync";
 import { Separator } from "#/components/ui/separator";
@@ -42,7 +42,7 @@ function AppShellInner({
 	const activeVersionId = routeVersion ?? defaultVersionId;
 	const pathname = useRouterState({ select: (s) => s.location.pathname });
 	const globalView = pathname.startsWith("/bugs");
-	const [syncOpen, setSyncOpen] = useState(false);
+	const [settingsOpen, setSettingsOpen] = useState(false);
 
 	return (
 		<SidebarProvider defaultOpen>
@@ -67,9 +67,9 @@ function AppShellInner({
 					<div className="ml-auto flex min-w-0 max-w-2xl flex-1 items-center justify-end gap-2">
 						<RoadmapGlobalSearch hits={searchIndex} />
 						{user ? (
-							<BoardSyncHeaderButton
-								open={syncOpen}
-								onOpenChange={setSyncOpen}
+							<TrackerSettingsHeaderButton
+								open={settingsOpen}
+								onOpenChange={setSettingsOpen}
 							/>
 						) : null}
 						<BeskidHub />
@@ -80,9 +80,9 @@ function AppShellInner({
 						{children}
 					</div>
 					{user ? (
-						<BoardSyncDrawer
-							open={syncOpen}
-							onOpenChange={setSyncOpen}
+						<TrackerSettingsDialog
+							open={settingsOpen}
+							onOpenChange={setSettingsOpen}
 							canManage={canManageRoadmap}
 						/>
 					) : null}

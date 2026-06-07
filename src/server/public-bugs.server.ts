@@ -1,23 +1,37 @@
-import { createPublicBugIssue } from "#/lib/github/issues-service";
+import { createPublicBugForSession } from "#/lib/tracker/bug-write-service";
 import {
 	fetchPublicBugStatsFromStore,
 	listPublicBugsFromStore,
 } from "#/lib/issues/read-service";
-import { readSyncState } from "#/lib/storage/issues-repository";
-import { triggerBoardSyncPull } from "#/lib/sync/board-sync-service";
+import { hasTrackerData } from "#/lib/tracker/read-service";
+import { getTrackerSyncSettings } from "#/lib/tracker/sync-settings";
+import { drainGithubSyncOutbox } from "#/lib/tracker/process-outbox";
+import { createSyncOctokit, hasGithubSyncCredentials } from "#/lib/sync/sync-octokit";
 
 export {
-	createPublicBugIssue,
+	createPublicBugForSession as createPublicBugIssue,
 	listPublicBugsFromStore,
 	fetchPublicBugStatsFromStore,
-	readSyncState,
-	triggerBoardSyncPull,
 };
 
-export function syncStatusMessage(): string | undefined {
-	const state = readSyncState();
-	if (state.lastError && state.openIssueCount === 0) {
-		return `Issue sync failed: ${state.lastError}. Set GITHUB_SYNC_TOKEN or GITHUB_PUBLIC_READ_TOKEN and run bun run sync:issues.`;
+export async function triggerGithubSyncExport() {
+	if (!hasGithubSyncCredentials()) {
+		throw new Error(
+			"Set GITHUB_SYNC_TOKEN or GITHUB_PUBLIC_READ_TOKEN to export to GitHub",
+		);
 	}
+	return drainGithubSyncOutbox(createSyncOctokit());
+}
+
+export function syncStatusMessage(): string | undefined {
+	if (!hasTrackerData()) {
+		return "Tracker database is empty. Import seed JSON from Settings → Sync actions.";
+	}
+
+	const settings = getTrackerSyncSettings();
+	if (settings.outboxDepth > 0) {
+		return `${settings.outboxDepth} change(s) waiting to export to GitHub.`;
+	}
+
 	return undefined;
 }

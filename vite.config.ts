@@ -1,4 +1,5 @@
 import { createRequire } from "node:module";
+import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -14,9 +15,15 @@ import { packageRoot, packageSrc } from "./vite.resolve-beskid-packages";
 const rootDir = path.dirname(fileURLToPath(import.meta.url));
 const require = createRequire(import.meta.url);
 
-const beskidUiSrc = packageSrc("@beskid/beskid-ui");
-const uiReactRoot = packageRoot("@beskid/ui-react");
+const uiReactLocal = path.resolve(
+	rootDir,
+	"../beskid_web_common/packages/beskid-ui-react",
+);
+const uiReactRoot = fs.existsSync(path.join(uiReactLocal, "package.json"))
+	? uiReactLocal
+	: packageRoot("@beskid/ui-react");
 const uiReactSrc = path.join(uiReactRoot, "src");
+const beskidUiSrc = packageSrc("@beskid/beskid-ui");
 const authClientEntry = path.resolve(
 	rootDir,
 	"node_modules/@beskid/auth-client/src/index.ts",
@@ -37,6 +44,10 @@ const resolveAlias = [
 	{
 		find: "@beskid/ui-react/styles/shadcn-entry.css",
 		replacement: path.join(uiReactRoot, "src/styles/shadcn-entry.css"),
+	},
+	{
+		find: "@beskid/ui-react/settings",
+		replacement: path.join(uiReactRoot, "src/components/settings/index.ts"),
 	},
 	{
 		find: "@beskid/ui-react",

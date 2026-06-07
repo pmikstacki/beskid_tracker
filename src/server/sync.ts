@@ -11,7 +11,18 @@ import type {
 	SyncRunRecord,
 	SyncStatusPayload,
 } from "#/lib/sync/sync-run-types";
-import { requireSession, withOctokit } from "#/server/auth-guard.server";
+import { createSyncOctokit, hasGithubSyncCredentials } from "#/lib/sync/sync-octokit";
+import {
+	getTrackerSyncSettings,
+	updateTrackerSyncSettings,
+	type TrackerSyncSettings,
+	type UpdateTrackerSyncSettingsInput,
+} from "#/lib/tracker/sync-settings";
+import type { GithubExportResult } from "#/lib/tracker/github-export-service";
+import { upsertParsedSeedBundles } from "#/lib/tracker/import-catalog";
+import type { CatalogImportSummary } from "#/lib/tracker/import-catalog";
+import { drainGithubSyncOutbox } from "#/lib/tracker/process-outbox";
+import { requireSession, requireMaintainer, withOctokit } from "#/server/auth-guard.server";
 import * as syncServer from "#/server/sync.server";
 
 const uploadedFileSchema = z.object({
@@ -85,6 +96,45 @@ export const triggerBoardSyncFn = createServerFn({ method: "POST" }).handler(
 	},
 );
 
+export const getSyncSettingsFn = createServerFn({ method: "GET" }).handler(
+	async (): Promise<TrackerSyncSettings> => {
+		await requireMaintainer();
+		return getTrackerSyncSettings();
+	},
+);
+
+export const updateSyncSettingsFn = createServerFn({ method: "POST" })
+	.inputValidator(
+		z.object({
+			enabled: z.boolean().optional(),
+			activeVersionOverride: z.string().nullable().optional(),
+			exportBugs: z.boolean().optional(),
+			exportActiveVersionTasks: z.boolean().optional(),
+		}),
+	)
+	.handler(async ({ data }): Promise<TrackerSyncSettings> => {
+		await requireMaintainer();
+		const input: UpdateTrackerSyncSettingsInput = {
+			enabled: data.enabled,
+			activeVersionOverride: data.activeVersionOverride,
+			exportBugs: data.exportBugs,
+			exportActiveVersionTasks: data.exportActiveVersionTasks,
+		};
+		return updateTrackerSyncSettings(input);
+	});
+
+export const triggerGithubExportFn = createServerFn({ method: "POST" }).handler(
+	async (): Promise<GithubExportResult> => {
+		await requireMaintainer();
+		if (!hasGithubSyncCredentials()) {
+			throw new Error(
+				"Set GITHUB_SYNC_TOKEN or GITHUB_PUBLIC_READ_TOKEN to export to GitHub",
+			);
+		}
+		return drainGithubSyncOutbox(createSyncOctokit());
+	},
+);
+
 export const importSeedBundleFn = createServerFn({ method: "POST" })
 	.inputValidator(
 		z.object({
@@ -92,7 +142,7 @@ export const importSeedBundleFn = createServerFn({ method: "POST" })
 			dryRun: z.boolean().optional(),
 		}),
 	)
-	.handler(async ({ data }) => {
+	.handler(async ({ data }): Promise<CatalogImportSummary> => {
 		const session = await requireSession();
 
 		return withOctokit(async (octokit) => {
@@ -100,22 +150,28 @@ export const importSeedBundleFn = createServerFn({ method: "POST" })
 				throw new Error("Only repository maintainers can import seed data");
 			}
 
-			if (syncServer.getActiveSyncRun()) {
-				throw new Error(
-					"Another sync is already running. Wait for it to finish.",
-				);
-			}
-
 			const bundles = parseUploadedSeedBundles(
 				data.files as UploadedSeedFile[],
 			);
-			const run = syncServer.createSyncRun("import");
-			run.log(
-				`Import requested by ${session.login}: ${bundles.length} version(s), dryRun=${Boolean(data.dryRun)}`,
-			);
 
-			return syncServer.importSeedBundlesToGitHub(octokit, bundles, run, {
-				dryRun: data.dryRun,
-			});
+			if (data.dryRun) {
+				return {
+					versionsUpserted: bundles.length,
+					workstreamsUpserted: bundles.reduce(
+						(sum, bundle) => sum + bundle.workstreams.length,
+						0,
+					),
+					deliverablesUpserted: bundles.reduce(
+						(sum, bundle) => sum + bundle.deliverables.length,
+						0,
+					),
+					tasksUpserted: bundles.reduce(
+						(sum, bundle) => sum + bundle.tasks.length,
+						0,
+					),
+				};
+			}
+
+			return upsertParsedSeedBundles(bundles);
 		});
 	});

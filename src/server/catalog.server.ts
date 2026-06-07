@@ -1,5 +1,4 @@
 import { collectBoardMeta } from "#/lib/github/mappers";
-import type { RoadmapTask } from "#/lib/github/types";
 import {
 	buildRoadmapCatalog,
 	findCatalogVersion,
@@ -13,8 +12,14 @@ import type {
 	RoadmapCatalog,
 	RoadmapCatalogVersion,
 } from "#/lib/roadmap/types";
-import { loadAllSeedRoadmapTasks, loadVersionSeed } from "#/lib/seed/load";
+import { loadVersionSeed } from "#/lib/seed/load";
 import type { SeedTask } from "#/lib/seed/schemas";
+import {
+	hasTrackerCatalogData,
+	loadVersionSeedFromDb,
+} from "#/lib/tracker/load-from-db";
+import { trackerTaskToRoadmapTask } from "#/lib/tracker/mappers";
+import { listTrackerTasksWithLinks } from "#/lib/tracker/repositories/tasks-repository";
 
 export function buildCatalog(version?: string): RoadmapCatalog {
 	return buildRoadmapCatalog(version);
@@ -33,6 +38,9 @@ export function assertCatalogVersion(
 
 export function seedTasksForVersion(versionId: string): SeedTask[] {
 	try {
+		if (hasTrackerCatalogData()) {
+			return loadVersionSeedFromDb(versionId).tasks;
+		}
 		return loadVersionSeed(versionId).tasks;
 	} catch {
 		return [];
@@ -56,8 +64,8 @@ export function assertScopeSlugInVersion(
 	slug: string,
 	tasks: SeedTask[],
 ): void {
-	const versionTasks: RoadmapTask[] = loadAllSeedRoadmapTasks().filter(
-		(t) => t.version === versionId,
+	const versionTasks = listTrackerTasksWithLinks(versionId).map(
+		trackerTaskToRoadmapTask,
 	);
 	const meta = collectBoardMeta(versionTasks);
 	const known =

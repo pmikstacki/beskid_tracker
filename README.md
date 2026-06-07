@@ -1,12 +1,16 @@
 # Beskid Tracker
 
-[TanStack Start](https://tanstack.com/start) tracker and roadmap planner for the [Cyber-Nomad-Collective/beskid](https://github.com/Cyber-Nomad-Collective/beskid) superrepo. Public bug reports and the delivery timeline are version-agnostic; kanban boards are per delivery version. **GitHub Issues remain the source of truth** for creates and updates; the app mirrors open issues (and closed `bug`-labeled issues) in a local **SQLite** store and serves reads from that mirror so anonymous traffic does not hammer the GitHub REST API. Issue changes arrive via **GitHub webhooks** (no background REST polling). Configure the webhook on the **Settings** tab in the sync drawer, or set `GITHUB_WEBHOOK_SECRET` in the environment. Each issue belongs to a **delivery version** (`v0.1`–`v0.4`); the kanban board is per version. [Platform specification](https://beskid-lang.org/platform-spec/) nodes are linked with typed relations in issue bodies; the repo owner approves spec linkages.
+[TanStack Start](https://tanstack.com/start) tracker and roadmap planner for the [Cyber-Nomad-Collective/beskid](https://github.com/Cyber-Nomad-Collective/beskid) superrepo. Public bug reports and the delivery timeline are version-agnostic; kanban boards are per delivery version.
+
+The tracker **SQLite database** is the source of truth for versions, roadmap tasks, and bugs. GitHub Issues receive **bidirectional sync** for the **active delivery version** (highest semver among `In Progress`, else highest overall) and **all bugs**. Import seed JSON from **Settings → Sync actions → Import seed JSON**; configure webhook and sync scope in the settings dialog (gear icon in the header).
+
+Each issue belongs to a **delivery version** (`v0.1`–`v0.4`); the kanban board is per version. [Platform specification](https://beskid-lang.org/platform-spec/) nodes are linked with typed relations; the repo owner approves spec linkages.
 
 ## Stack
 
 - TanStack Start + Router + Query
 - [Beskid Auth hub](../site/auth/README.md) for GitHub sign-in; `@octokit/rest` via hub proxy for writes and reads
-- SQLite issue mirror (`bun:sqlite`, default `data/runtime/issues.sqlite`)
+- SQLite tracker database (`bun:sqlite`, default `data/runtime/issues.sqlite`)
 - Encrypted session cookie (`jose`)
 - Tailwind CSS v4, shadcn/ui (Radix Maia), ReUI Kanban
 
@@ -47,7 +51,7 @@ cp .env.example .env
 | `TRACKER_DATA_DIR` | SQLite directory (default `data/runtime`) — mount as a volume in Docker |
 | `GITHUB_WEBHOOK_SECRET` | Webhook HMAC secret (overrides Settings tab; optional in dev) |
 | `TRACKER_PUBLIC_URL` | Public origin for webhook URL (optional; Settings tab can override) |
-| `ISSUES_SYNC_DISABLED` | Set `1` to disable sync (read-only empty store) |
+| `ISSUES_SYNC_DISABLED` | Set `1` to disable GitHub webhook/sync export |
 | *(none)* | Platform spec pages and nav JSON always use `https://beskid-lang.org` |
 
 Pair the tracker with the hub (see [COOLIFY.md](COOLIFY.md)). The hub’s GitHub OAuth app needs scopes **`read:user`** and **`repo`** (or **`public_repo`** for a public repository).
@@ -62,7 +66,7 @@ Pair the tracker with the hub (see [COOLIFY.md](COOLIFY.md)). The hub’s GitHub
 | `bun run verify:client-bundle` | After build: assert client chunks omit SQLite/path APIs and CSS exists |
 | `bun run start` | Production server on port 3000 |
 | `bun run check` | Biome lint/format |
-| `bun run sync:issues` | Pull GitHub Issues into the local SQLite store |
+| `bun run sync:issues` | Backfill normalized tables from legacy `github_issues` mirror (one-time migration aid) |
 
 ## Docker
 
@@ -122,17 +126,17 @@ Sidebar **Bugs** is global (no delivery version). **Hub** opens the cross-site B
 
 Historical completed work for **v0.0–v0.3** lives under [`data/`](data/) as JSON (one file per entity). See [`data/README.md`](data/README.md). Validate with `bun run seed:validate`.
 
-Set `ROADMAP_USE_SEED=1` to serve the kanban and workstreams dashboards from that catalog locally (read-only; issue create/approve still require GitHub when seed mode is off).
+Import into SQLite via Settings or `importCatalogBundleFn`. Validate seed JSON with `bun run seed:validate`.
 
 ## Layout
 
 - `src/routes/` — UI and `/api/auth/*` server routes
 - `src/server/` — `createServerFn` handlers (`roadmap.ts`, `issues.ts`, `public-bugs.ts`)
-- `src/lib/storage/` — SQLite schema and issue repository
-- `src/lib/sync/` — GitHub → SQLite sync (webhooks + manual bootstrap)
+- `src/lib/storage/` — SQLite schema and repositories
+- `src/lib/sync/` — GitHub webhook inbound + export outbox
+- `src/lib/tracker/` — domain model, import, read/write services
 - `src/routes/api/webhooks/` — GitHub issue webhook receiver
-- `src/lib/issues/` — read path from the local mirror
-- `src/lib/github/` — labels, mappers, filters, GitHub write helpers
+- `src/lib/github/` — label encoding for GitHub export, permissions, filters
 - `src/lib/seed/` — Zod schemas, disk loader, `RoadmapTask` mapping
 - `src/lib/platform-spec/` — spec relations block, nav search, and **docs management** (full catalog + per-doc bundles from `/generated/platform-spec-catalog.json`, proposal drafts in SQLite, PR submit via GitHub API)
 

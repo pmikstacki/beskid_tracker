@@ -1,28 +1,34 @@
 #!/usr/bin/env bun
 /**
- * Pull GitHub Issues into the local SQLite store (used by the tracker UI).
+ * Migration helper: pull GitHub Issues into the legacy mirror, then backfill
+ * normalized tracker tables.
  *
  * Usage:
  *   bun run sync:issues
  *
- * Requires GITHUB_SYNC_TOKEN or GITHUB_PUBLIC_READ_TOKEN (or unauthenticated,
- * subject to low rate limits).
+ * Prefer Settings → Import seed JSON for fresh installs. Requires
+ * GITHUB_SYNC_TOKEN or GITHUB_PUBLIC_READ_TOKEN.
  */
 
-import { readSyncState } from "#/lib/storage/issues-repository";
+import { backfillFromGithubMirror } from "#/lib/tracker/backfill-from-github";
 import { runGitHubIssuesSync } from "#/lib/sync/github-issues-sync";
 
 const result = await runGitHubIssuesSync();
 
 if (!result.ok) {
-	console.error(`Sync failed: ${result.error ?? "unknown error"}`);
+	console.error(`Pull failed: ${result.error ?? "unknown error"}`);
 	process.exit(1);
 }
 
-const state = readSyncState();
 console.log(
-	`Synced ${result.openCount} open issues (${result.bugCount} with bug label); removed ${result.removed} stale rows.`,
+	`Pulled ${result.openCount} open issues (${result.bugCount} with bug label); removed ${result.removed} stale mirror rows.`,
 );
-if (state.lastSuccessAt) {
-	console.log(`Last success: ${state.lastSuccessAt}`);
+
+const backfill = backfillFromGithubMirror();
+console.log(
+	`Backfill: ${backfill.tasksUpserted} tasks, ${backfill.bugsUpserted} bugs, ${backfill.linksCreated} links (${backfill.skipped} skipped).`,
+);
+if (backfill.errors.length > 0) {
+	console.error(`Backfill errors: ${backfill.errors.join("; ")}`);
+	process.exit(1);
 }

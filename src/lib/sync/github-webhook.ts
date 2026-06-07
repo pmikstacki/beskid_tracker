@@ -2,16 +2,11 @@ import "@tanstack/react-start/server-only";
 
 import { createHmac, timingSafeEqual } from "node:crypto";
 
-import {
-	deleteStoredIssue,
-	persistGithubIssue,
-	recomputeSyncStateFromStore,
-} from "#/lib/storage/issues-repository";
 import type { GitHubIssuePayload } from "#/lib/storage/stored-issue";
+import { applyGithubIssueInbound } from "#/lib/tracker/github-inbound-service";
 import {
 	getGithubWebhookSecret,
 	isGithubWebhookConfigured,
-	recordGithubWebhookDelivery,
 } from "#/lib/sync/github-webhook-config";
 
 export {
@@ -56,12 +51,5 @@ export function handleGithubIssuesWebhook(payload: IssuesWebhookPayload): void {
 	if (!issue?.number) return;
 	if (issue.pull_request) return;
 
-	if (payload.action === "deleted") {
-		deleteStoredIssue(issue.number);
-	} else {
-		persistGithubIssue(issue);
-	}
-
-	recordGithubWebhookDelivery(payload.action);
-	recomputeSyncStateFromStore();
+	applyGithubIssueInbound(payload);
 }

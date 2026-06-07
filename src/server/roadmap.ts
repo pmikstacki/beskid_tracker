@@ -2,7 +2,6 @@ import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 import { canManageRoadmap } from "#/lib/github/permissions";
 import type { BoardPayload } from "#/lib/github/types";
-import { useSeedData } from "#/lib/seed/config";
 import { resolveAuthUser } from "#/server/auth.server";
 import { withAuth } from "#/server/auth-guard.server";
 import * as roadmapServer from "#/server/roadmap.server";
@@ -18,29 +17,6 @@ export const getBoard = createServerFn({ method: "GET" })
 		}),
 	)
 	.handler(async ({ data }): Promise<BoardPayload> => {
-		if (useSeedData()) {
-			return withAuth(async () => {
-				const all = roadmapServer.loadAllSeedRoadmapTasks();
-				const tasks = roadmapServer.filterTasks(all, data);
-				const scoped = roadmapServer.collectBoardMeta(
-					all.filter((t) => t.version === data.version),
-				);
-				roadmapServer.assertBoardFilters(
-					data,
-					scoped,
-					roadmapServer.catalogWorkstreamSlugs(data.version),
-				);
-				return {
-					meta: {
-						versions: roadmapServer.listSeedVersionLabels(),
-						...scoped,
-						canManage: false,
-					},
-					columns: roadmapServer.tasksToColumns(tasks),
-					tasks,
-				};
-			});
-		}
 		return withAuth(async (octokit, login) => {
 			const versions = await roadmapServer.listVersionLabelsFromStore();
 			const { tasks, columns } =
@@ -71,17 +47,6 @@ export const getBoard = createServerFn({ method: "GET" })
 export const getWorkstreamDashboard = createServerFn({ method: "GET" })
 	.inputValidator(z.object({ version: z.string().min(1) }))
 	.handler(async ({ data }) => {
-		if (useSeedData()) {
-			return withAuth(async () => {
-				const all = roadmapServer.loadAllSeedRoadmapTasks();
-				return {
-					version: data.version,
-					canManage: false,
-					workstreams: roadmapServer.summarizeWorkstreams(all, data.version),
-					versions: roadmapServer.listSeedVersionLabels(),
-				};
-			});
-		}
 		return withAuth(async (octokit, login) => {
 			const all = await roadmapServer.listAllRoadmapTasksFromStore();
 			const canManage = await canManageRoadmap(octokit, login);
@@ -126,11 +91,6 @@ export const createBoardIssue = createServerFn({ method: "POST" })
 		}),
 	)
 	.handler(async ({ data }) => {
-		if (useSeedData()) {
-			throw new Error(
-				"Roadmap task creation is disabled while ROADMAP_USE_SEED=1 (read-only seed catalog)",
-			);
-		}
 		return withAuth((octokit) =>
 			roadmapServer.createRoadmapIssue(octokit, data),
 		);
