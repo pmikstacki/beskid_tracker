@@ -1,18 +1,23 @@
 {
   "id": "corelib-stub-replacement",
-  "title": "Replace remaining corelib stubs with Standard implementations",
-  "statusColumn": "Backlog",
+  "title": "Corelib API completion after matrix green (collections + host FS)",
+  "statusColumn": "In Progress",
   "priority": "high",
   "workstream": "compiler-corelib",
   "deliverableId": "v04-corelib-complete",
   "source": {
     "repo": "beskid",
-    "commit": "c8e5fc4",
-    "subject": "fix: add references/bsharp to .gitmodules with update=none",
-    "url": "https://github.com/Cyber-Nomad-Collective/beskid/commit/c8e5fc4"
+    "commit": "ee88edf",
+    "subject": "BSOL Stability Pass",
+    "url": "https://github.com/Cyber-Nomad-Collective/beskid/commit/ee88edf"
   },
-  "body": "Replace remaining corelib stubs with Standard implementations\n\n## Scope\n\nFinish `compiler/corelib` packages beyond tier-tagged v0.3 slice: Core, System I/O split surfaces, collections/FS/Path parity with platform-spec, and api.json without placeholder stubs.\n\n## Provenance\n- **Repository:** `beskid`\n- **Commit:** [`c8e5fc4`](https://github.com/Cyber-Nomad-Collective/beskid/commit/c8e5fc4)\n- **Subject:** fix: add references/bsharp to .gitmodules with update=none\n- **Catalog tip:** [`c8e5fc4`](https://github.com/Cyber-Nomad-Collective/beskid/commit/c8e5fc4) (v0.4 cutoff 2026-05-27)\n- **Status:** Backlog\n\n## Catalog scope\n- **Delivery version:** v0.4 (Platform services, auth, and delivery tooling)\n- **Workstream:** `compiler-corelib`\n- **Deliverable:** `v04-corelib-complete`\n\n## Depends on\n\n`compiler-quality-submodule-bump` (In Progress).",
+  "body": "Narrowed to **Wave 5 API completion** only — intentional count-only stubs remain until `corelib-matrix-green` (42/42) exits.\n\n## Scope (after matrix green)\n\n- Collection backing storage wiring → `corelib-collections-storage-wiring`\n- Host-backed `System.FS` → `corelib-system-fs-host-backed`\n- pckg publish evidence → `corelib-quality-pckg-publish-main`\n\n## Landed (infra, not API semantics)\n\n- Corelib shapes and spine tests on main (`b73d49d`, `e628d08`)\n- Import codemod + typecheck gates (wave tasks Done)\n\n## Provenance\n- **Repository:** `beskid`\n- **Catalog tip:** [`ee88edf`](https://github.com/Cyber-Nomad-Collective/beskid/commit/ee88edf) (2026-06-07)\n\n## Catalog scope\n- **Delivery version:** v0.4\n- **Workstream:** `compiler-corelib`\n- **Deliverable:** `v04-corelib-complete`",
   "order": 401,
-  "subtasks": [],
+  "subtasks": [
+    { "text": "42/42 matrix green (prerequisite)", "done": false },
+    { "text": "Collection storage wiring", "done": false },
+    { "text": "Host-backed System.FS", "done": false },
+    { "text": "corelib-quality CI + pckg publish", "done": false }
+  ],
   "$schema": "../schemas/seed/task.schema.json"
 }

@@ -7,12 +7,17 @@
   "deliverableId": "v04-nexus-operational",
   "source": {
     "repo": "beskid",
-    "commit": "c8e5fc4",
-    "subject": "fix: add references/bsharp to .gitmodules with update=none",
-    "url": "https://github.com/Cyber-Nomad-Collective/beskid/commit/c8e5fc4"
+    "commit": "49c49d7",
+    "subject": "Tracker deployment fixes, Added nexus to the hub",
+    "url": "https://github.com/Cyber-Nomad-Collective/beskid/commit/49c49d7"
   },
-  "body": "Move nexus to standalone Coolify hosting model\n\n## Scope\n\n- Production smoke on catalog analyze + OAuth against auth hub\n- Document env matrix in nexus README/COOLIFY\n\n## Provenance\n- **Repository:** `beskid`\n- **Commit:** [`c8e5fc4`](https://github.com/Cyber-Nomad-Collective/beskid/commit/c8e5fc4)\n- **Subject:** fix: add references/bsharp to .gitmodules with update=none\n- **Catalog tip:** [`c8e5fc4`](https://github.com/Cyber-Nomad-Collective/beskid/commit/c8e5fc4) (v0.4 cutoff 2026-05-27)\n- **Status:** In Progress\n\n## Catalog scope\n- **Delivery version:** v0.4 (Platform services, auth, and delivery tooling)\n- **Workstream:** `nexus`\n- **Deliverable:** `v04-nexus-operational`\n\n## In progress\n\nbeskid_nexus deploys as its own Coolify service (`gitnexus serve` port 8452, `GITNEXUS_HOME` volume) per AGENTS hosting matrix; submodule bump tracks docker-compose and runtime catalog changes.\n\n## Remaining\n\n- Production smoke on catalog analyze + OAuth against auth hub\n- Document env matrix in nexus README/COOLIFY",
+  "body": "beskid_nexus deploys as its own Coolify service with hub registration and docker-compose runtime catalog.\n\n## Landed\n\n- Nexus added to Beskid hub service catalog (`49c49d7`)\n- Green Ladybug/native Docker CI\n- COOLIFY.md env matrix and operator validation steps\n\n## Remaining (production evidence required)\n\n- Coolify service healthy on port **8452** with `GITNEXUS_HOME` volume\n- `AUTH_HUB_PUBLIC_URL` + `SESSION_SECRET` wired for OAuth analyze UI\n- Post-deploy catalog analyze smoke against compiler superrepo graph\n\n## Provenance\n- **Repository:** `beskid`\n- **Catalog tip:** [`49c49d7`](https://github.com/Cyber-Nomad-Collective/beskid/commit/49c49d7) (2026-05-29)\n\n## Catalog scope\n- **Delivery version:** v0.4\n- **Workstream:** `nexus`\n- **Deliverable:** `v04-nexus-operational`",
   "order": 395,
-  "subtasks": [],
+  "subtasks": [
+    { "text": "Hub catalog entry for nexus", "done": true },
+    { "text": "COOLIFY.md env matrix documented", "done": true },
+    { "text": "Production container healthy on 8452", "done": false },
+    { "text": "OAuth analyze UI smoke", "done": false }
+  ],
   "$schema": "../schemas/seed/task.schema.json"
 }

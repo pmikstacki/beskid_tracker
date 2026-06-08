@@ -38,6 +38,8 @@ Each roadmap issue belongs to exactly one delivery band via a **GitHub Milestone
 |--------------|---------|
 | `roadmap/version/v0.1` | v0.1 (fallback only) |
 | `roadmap/version/v0.2` | v0.2 (fallback only) |
+| `roadmap/version/v0.3` | v0.3 (fallback only) |
+| `roadmap/version/v0.4` | v0.4 (fallback only) |
 
 ## Workstream
 

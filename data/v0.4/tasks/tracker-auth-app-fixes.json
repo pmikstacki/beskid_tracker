@@ -1,18 +1,23 @@
 {
   "id": "tracker-auth-app-fixes",
   "title": "Tracker app fixes for auth hub handoff",
-  "statusColumn": "In Progress",
+  "statusColumn": "Done",
   "priority": "high",
   "workstream": "tracker-implementation",
+  "completedAt": "2026-06-03",
   "deliverableId": "v04-tracker-ship",
   "source": {
     "repo": "beskid",
-    "commit": "c8e5fc4",
-    "subject": "fix: add references/bsharp to .gitmodules with update=none",
-    "url": "https://github.com/Cyber-Nomad-Collective/beskid/commit/c8e5fc4"
+    "commit": "574a84c",
+    "subject": "Update tracker to support autopairing",
+    "url": "https://github.com/Cyber-Nomad-Collective/beskid/commit/574a84c"
   },
-  "body": "Tracker app fixes for auth hub handoff\n\n## Scope\n\nbeskid_tracker submodule bump addressing auth session routes, protected kanban views, and hub launcher alignment after site/auth scaffold.\n\n## Provenance\n- **Repository:** `beskid`\n- **Commit:** [`c8e5fc4`](https://github.com/Cyber-Nomad-Collective/beskid/commit/c8e5fc4)\n- **Subject:** fix: add references/bsharp to .gitmodules with update=none\n- **Catalog tip:** [`c8e5fc4`](https://github.com/Cyber-Nomad-Collective/beskid/commit/c8e5fc4) (v0.4 cutoff 2026-05-27)\n- **Status:** In Progress\n\n## Catalog scope\n- **Delivery version:** v0.4 (Platform services, auth, and delivery tooling)\n- **Workstream:** `tracker-implementation`\n- **Deliverable:** `v04-tracker-ship`\n\n## In progress\n\nbeskid_tracker submodule bump addressing auth session routes, protected kanban views, and hub launcher alignment after site/auth scaffold.",
+  "body": "Tracker auth hub handoff: session routes, protected kanban, hub launcher, and autopairing flow.\n\n## What shipped\n\n- Auth/Tracker refactor (`801f1e2`) — hub session wiring and protected shell\n- Auto pairing fixes (`742f086`, `1e3e3cf`, `574a84c`) — `/settings/auth/pair?code=` flow\n- Auth session fixes (`988f4e6`)\n\n## Provenance\n- **Repository:** `beskid`\n- **Commit:** [`574a84c`](https://github.com/Cyber-Nomad-Collective/beskid/commit/574a84c)\n- **Completed:** 2026-06-03\n\n## Catalog scope\n- **Delivery version:** v0.4\n- **Workstream:** `tracker-implementation`\n- **Deliverable:** `v04-tracker-ship`",
   "order": 394,
-  "subtasks": [],
+  "subtasks": [
+    { "text": "Hub session routes and protected kanban shell", "done": true },
+    { "text": "Autopairing via hub redirect cookie", "done": true },
+    { "text": "BeskidHub launcher in app navbar", "done": true }
+  ],
   "$schema": "../schemas/seed/task.schema.json"
 }

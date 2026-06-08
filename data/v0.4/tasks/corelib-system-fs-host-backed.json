@@ -1,0 +1,18 @@
+{
+  "id": "corelib-system-fs-host-backed",
+  "title": "Host-backed System.FS (replace heuristic stubs)",
+  "statusColumn": "Backlog",
+  "priority": "high",
+  "workstream": "compiler-corelib",
+  "deliverableId": "v04-corelib-complete",
+  "source": {
+    "repo": "beskid",
+    "commit": "ee88edf",
+    "subject": "BSOL Stability Pass",
+    "url": "https://github.com/Cyber-Nomad-Collective/beskid/commit/ee88edf"
+  },
+  "body": "After matrix green: host-backed `System.FS` via `beskid_host` + ABI registration; replace heuristic stubs exercised by [`FsTests.bd`](compiler/corelib/beskid_corelib/tests/corelib_tests/src/system/FsTests.bd).\n\n## Sequencing\n\n**Blocked on** `corelib-matrix-green` and `corelib-collections-storage-wiring`.\n\n## Provenance\n- **Repository:** `beskid`\n- **Catalog tip:** [`ee88edf`](https://github.com/Cyber-Nomad-Collective/beskid/commit/ee88edf) (2026-06-07)\n\n## Catalog scope\n- **Delivery version:** v0.4\n- **Workstream:** `compiler-corelib`\n- **Deliverable:** `v04-corelib-complete`",
+  "order": 421,
+  "subtasks": [],
+  "$schema": "../schemas/seed/task.schema.json"
+}

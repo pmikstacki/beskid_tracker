@@ -61,3 +61,7 @@ cp .env.example .env
 # Start site/auth on :8090, complete onboarding, pair tracker
 bun install && bun run dev
 ```
+
+## Platform matrix
+
+Cross-service URLs, OpenBao paths, and shared auth variables: [beskid_infra/docs/deploy-matrix.md](../beskid_infra/docs/deploy-matrix.md).

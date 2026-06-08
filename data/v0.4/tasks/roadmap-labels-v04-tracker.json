@@ -1,7 +1,7 @@
 {
   "id": "roadmap-labels-v04-tracker",
   "title": "roadmap/version/v0.4 labels in tracker and GitHub",
-  "statusColumn": "Backlog",
+  "statusColumn": "In Progress",
   "priority": "low",
   "workstream": "tracker-implementation",
   "deliverableId": "v04-tracker-ship",
@@ -11,8 +11,12 @@
     "subject": "fix: add references/bsharp to .gitmodules with update=none",
     "url": "https://github.com/Cyber-Nomad-Collective/beskid/commit/c8e5fc4"
   },
-  "body": "roadmap/version/v0.4 labels in tracker and GitHub\n\n## Scope\n\nRestore/sync `docs/roadmap-labels.md` content removed in auth refactor (`510f302`); ensure `roadmap/version/v0.4` label exists on Cyber-Nomad-Collective/beskid and tracker taxonomy matches seed versions.\n\n## Provenance\n- **Repository:** `beskid`\n- **Commit:** [`c8e5fc4`](https://github.com/Cyber-Nomad-Collective/beskid/commit/c8e5fc4)\n- **Subject:** fix: add references/bsharp to .gitmodules with update=none\n- **Catalog tip:** [`c8e5fc4`](https://github.com/Cyber-Nomad-Collective/beskid/commit/c8e5fc4) (v0.4 cutoff 2026-05-27)\n- **Status:** Backlog\n\n## Catalog scope\n- **Delivery version:** v0.4 (Platform services, auth, and delivery tooling)\n- **Workstream:** `tracker-implementation`\n- **Deliverable:** `v04-tracker-ship`",
+  "body": "Ensure tracker taxonomy and GitHub labels align with v0.4 seed versions.\n\n## Landed\n\n- Restored [`docs/roadmap-labels.md`](../../docs/roadmap-labels.md) at superrepo root (mirrors `beskid_tracker/docs/roadmap-labels.md`)\n- `setup-github-labels.sh` includes `roadmap/version/v0.4`\n\n## Remaining\n\n- Confirm `roadmap/version/v0.4` label exists on Cyber-Nomad-Collective/beskid (operator: `bash beskid_tracker/scripts/setup-github-labels.sh`)\n- Scoped export smoke after production webhook validation\n\n## Provenance\n- **Repository:** `beskid`\n- **Commit:** [`c8e5fc4`](https://github.com/Cyber-Nomad-Collective/beskid/commit/c8e5fc4)\n- **Catalog tip:** [`c8e5fc4`](https://github.com/Cyber-Nomad-Collective/beskid/commit/c8e5fc4) (v0.4 cutoff 2026-05-27)\n\n## Catalog scope\n- **Delivery version:** v0.4\n- **Workstream:** `tracker-implementation`\n- **Deliverable:** `v04-tracker-ship`",
   "order": 407,
-  "subtasks": [],
+  "subtasks": [
+    { "text": "Restore docs/roadmap-labels.md", "done": true },
+    { "text": "roadmap/version/v0.4 label on GitHub repo", "done": false },
+    { "text": "Scoped export uses v0.4 milestone/label", "done": false }
+  ],
   "$schema": "../schemas/seed/task.schema.json"
 }

@@ -1,16 +1,16 @@
 {
   "id": "v0.4",
   "title": "Platform services, auth, and delivery tooling",
-  "summary": "v0.4 pivots after the truncated v0.3 line (aaddd32) into four workstreams: shared web auth and beskid_web_common, beskid_tracker as the roadmap product, beskid_nexus knowledge graph hosting, and superrepo CI/CD plus manifest cleanup. Through c8e5fc4 (2026-05-26–27) the superrepo lands beskid_hub/trudoc extraction, site/auth OAuth hub, nexus submodule with green Docker CI, treesitter registration, lazygit recursive push, and ongoing tracker/auth/nexus hosting hardening. Remaining delivery: full platform DX, verify-all CI, tracker production mirror, nexus serve path, corelib stub completion, and VS Code ↔ pckg/docs integration.",
+  "summary": "v0.4 pivots after v0.3 (aaddd32) into platform-facing delivery: shared web auth and beskid_web_common, beskid_tracker as the roadmap product (SQLite source of truth with scoped GitHub sync), beskid_nexus hosting, and superrepo CI/CD with Coolify deploy. Through ee88edf (2026-05-26–06-07) the line lands auth hub autopairing, hub launcher across services, tracker container CI, observability packages, kanban UX fixes, and ongoing corelib/compiler stabilization toward v0.4 closure.",
   "theme": "Auth hub, web_common, tracker, nexus, CI/CD, corelib, editor DX",
   "status": "In Progress",
   "cutoff": {
     "startDate": "2026-05-26",
-    "endDate": "2026-05-27",
+    "endDate": "2026-06-07",
     "startCommitSha": "aaddd32",
-    "endCommitSha": "c8e5fc4",
+    "endCommitSha": "ee88edf",
     "endCommitRepo": "beskid",
-    "rationale": "Starts at v0.3 cut-off tip aaddd32 (2026-05-25). v0.4 work begins 2026-05-26 with tracker submodule, repo manifests, beskid-hub, and nexus registration; peaks with beskid_web_common extraction, web CI/Coolify trudoc paths, auth hub scaffold, and nexus hosting-model commits through HEAD c8e5fc4 (2026-05-27)."
+    "rationale": "Starts at v0.3 cut-off tip aaddd32 (2026-05-25). Initial v0.4 burst (2026-05-26–27) lands tracker submodule, hub/trudoc extraction, nexus CI, and auth scaffold through c8e5fc4. May 29–June 7 extends auth/tracker production hardening (801f1e2–ee88edf): autopairing, package sync, container CI, SQLite tracker model, and BSOL stability on main."
   },
   "$schema": "../schemas/seed/version.schema.json"
 }
