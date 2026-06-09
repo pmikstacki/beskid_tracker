@@ -6,9 +6,8 @@ import { beskidDocsUrl } from "#/lib/beskid-docs-origin";
 
 export { encodeCatalogDocSlug, decodeCatalogDocSlug };
 
-export const PLATFORM_SPEC_CATALOG_PATH =
-	"/generated/platform-spec-catalog.json";
-export const PLATFORM_SPEC_DOCS_PREFIX = "/generated/platform-spec-docs/";
+export const PLATFORM_SPEC_CATALOG_PATH = "/api/v1/catalog";
+export const PLATFORM_SPEC_DOCS_PREFIX = "/api/v1/docs/";
 
 export function platformSpecCatalogUrl(): string {
 	return beskidDocsUrl(PLATFORM_SPEC_CATALOG_PATH);
@@ -16,6 +15,6 @@ export function platformSpecCatalogUrl(): string {
 
 export function platformSpecDocBundleUrl(slug: string): string {
 	return beskidDocsUrl(
-		`${PLATFORM_SPEC_DOCS_PREFIX}${encodeCatalogDocSlug(slug)}.json`,
+		`${PLATFORM_SPEC_DOCS_PREFIX}${encodeURIComponent(slug)}`,
 	);
 }

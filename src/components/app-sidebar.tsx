@@ -12,6 +12,7 @@ import {
 
 import { ReportIssueDialog } from "#/components/report-issue-dialog";
 import { RoadmapNavTree } from "#/components/roadmap-nav-tree";
+import { PLATFORM_SPEC_ORIGIN } from "#/lib/beskid-docs-origin";
 import { ThemeToggle } from "#/components/theme-toggle";
 import { Avatar, AvatarFallback, AvatarImage } from "#/components/ui/avatar";
 import {
@@ -60,7 +61,6 @@ export function AppSidebar({
 	const pathname = useRouterState({ select: (s) => s.location.pathname });
 	const onRoadmapHome = pathname === "/";
 	const onBugs = pathname.startsWith("/bugs");
-	const onDocs = pathname.startsWith("/docs");
 	const activeVersion =
 		version ??
 		(pathname.match(/\/versions\/([^/]+)/)?.[1] as string | undefined) ??
@@ -203,15 +203,16 @@ export function AppSidebar({
 								</SidebarMenuButton>
 							</SidebarMenuItem>
 							<SidebarMenuItem>
-								<SidebarMenuButton
-									asChild
-									isActive={onDocs}
-									tooltip="Platform spec"
-								>
-									<Link to="/docs/catalog">
+								<SidebarMenuButton asChild tooltip="Platform spec">
+									<a
+										href={`${PLATFORM_SPEC_ORIGIN}/platform-spec/`}
+										target="_blank"
+										rel="noreferrer"
+									>
 										<FileText />
 										<span>Platform spec</span>
-									</Link>
+										<ExternalLink className="ml-auto size-3.5 opacity-60" />
+									</a>
 								</SidebarMenuButton>
 							</SidebarMenuItem>
 						</SidebarMenu>
