@@ -17,3 +17,14 @@ __unconfig*
 todos.json
 data/runtime/*
 !data/runtime/.gitkeep
+
+# Lockfiles
+bun.lock
+
+# Build artifacts
+**/*.trace
+**/*.zip
+**/*.tar.gz
+**/*.tgz
+package-lock.json
+**/*.bun
