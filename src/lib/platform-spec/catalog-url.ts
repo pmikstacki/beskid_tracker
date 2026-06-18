@@ -1,7 +1,7 @@
 import {
 	decodeCatalogDocSlug,
 	encodeCatalogDocSlug,
-} from "@cyber-nomad-collective/trudoc/platform-spec/catalog";
+} from "@cyber-nomad-collective/spec-core";
 import { beskidDocsUrl } from "#/lib/beskid-docs-origin";
 
 export { encodeCatalogDocSlug, decodeCatalogDocSlug };
