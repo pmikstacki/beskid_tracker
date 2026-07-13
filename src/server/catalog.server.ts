@@ -19,7 +19,7 @@ import {
 	loadVersionSeedFromDb,
 } from "#/lib/tracker/load-from-db";
 import { trackerTaskToRoadmapTask } from "#/lib/tracker/mappers";
-import { listTrackerTasksWithLinks } from "#/lib/tracker/repositories/tasks-repository";
+import { listTrackerTasksForBoard } from "#/lib/tracker/repositories/tasks-repository";
 
 export function buildCatalog(version?: string): RoadmapCatalog {
 	return buildRoadmapCatalog(version);
@@ -64,7 +64,7 @@ export function assertScopeSlugInVersion(
 	slug: string,
 	tasks: SeedTask[],
 ): void {
-	const versionTasks = listTrackerTasksWithLinks(versionId).map(
+	const versionTasks = listTrackerTasksForBoard(versionId).map(
 		trackerTaskToRoadmapTask,
 	);
 	const meta = collectBoardMeta(versionTasks);

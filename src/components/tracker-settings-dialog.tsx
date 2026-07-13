@@ -1,24 +1,17 @@
 "use client";
 
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
-	Database,
-	Download,
-	RefreshCw,
-	Settings2,
-	Upload,
-} from "lucide-react";
+	defineSettingsRegistry,
+	SettingsDialog,
+} from "@beskid/ui-react/settings";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { Bug, Download, Settings2, Upload } from "lucide-react";
 import { useMemo, useState } from "react";
 import { toast } from "sonner";
 
 import { CatalogImportDialog } from "#/components/catalog-import-dialog";
 import { Button } from "#/components/ui/button";
 import {
-	defineSettingsRegistry,
-	SettingsDialog,
-} from "@beskid/ui-react/settings";
-import {
-	backfillFromGithubMirrorFn,
 	getImportPreviewFn,
 	importCatalogBundleFn,
 } from "#/server/catalog-import";
@@ -27,9 +20,7 @@ import {
 	updateGithubWebhookSettingsFn,
 } from "#/server/github-sync-settings";
 import {
-	getBoardSyncStatusFn,
 	getSyncSettingsFn,
-	triggerBoardSyncFn,
 	triggerGithubExportFn,
 	updateSyncSettingsFn,
 } from "#/server/sync";
@@ -37,11 +28,8 @@ import {
 type TrackerSettingsValues = {
 	syncEnabled: boolean;
 	exportBugs: boolean;
-	exportActiveVersionTasks: boolean;
-	activeVersionOverride: string;
 	publicOrigin: string;
 	webhookSecret: string;
-	resolvedActiveVersion: string;
 	repoFullName: string;
 	webhookUrl: string;
 	outboxDepth: number;
@@ -55,64 +43,27 @@ function SyncActionsPanel({
 	onImportOpen: () => void;
 }) {
 	const queryClient = useQueryClient();
-	const statusQuery = useQuery({
-		queryKey: ["board-sync-status"],
-		queryFn: () => getBoardSyncStatusFn(),
-		refetchInterval: (query) =>
-			query.state.data?.activeRun ? 1500 : 8000,
-	});
-
-	const pullMutation = useMutation({
-		mutationFn: () => triggerBoardSyncFn(),
-		onSuccess: () => {
-			toast.success("Bootstrap pull started");
-			void queryClient.invalidateQueries({ queryKey: ["board-sync-status"] });
-		},
-		onError: (error) => {
-			toast.error(
-				error instanceof Error ? error.message : "Bootstrap pull failed",
-			);
-		},
-	});
-
 	const exportMutation = useMutation({
 		mutationFn: () => triggerGithubExportFn(),
 		onSuccess: (result) => {
 			toast.success(
-				`Exported ${result.processed} item(s) to GitHub (${result.failed} failed)`,
+				`Exported ${result.succeeded} bug(s) to GitHub (${result.failed} failed)`,
 			);
 			void queryClient.invalidateQueries({ queryKey: ["tracker-settings"] });
 		},
 		onError: (error) => {
 			toast.error(
-				error instanceof Error ? error.message : "GitHub export failed",
+				error instanceof Error ? error.message : "GitHub bug export failed",
 			);
 		},
 	});
-
-	const backfillMutation = useMutation({
-		mutationFn: () => backfillFromGithubMirrorFn(),
-		onSuccess: (summary) => {
-			toast.success(
-				`Backfill complete: ${summary.tasksUpserted} tasks, ${summary.bugsUpserted} bugs`,
-			);
-			void queryClient.invalidateQueries();
-		},
-		onError: (error) => {
-			toast.error(
-				error instanceof Error ? error.message : "Backfill failed",
-			);
-		},
-	});
-
-	const payload = statusQuery.data;
 
 	return (
 		<div className="space-y-3 rounded-md border border-border/60 bg-muted/10 p-3">
-			<p className="text-sm font-medium">Manual sync</p>
+			<p className="text-sm font-medium">Manual actions</p>
 			<p className="text-muted-foreground text-xs leading-relaxed">
-				Tracker DB is the source of truth. Export pushes scoped changes to
-				GitHub; bootstrap pull refreshes the legacy mirror for backfill.
+				Tracker is the source of truth for roadmap tasks. GitHub synchronization
+				is limited to bugs.
 			</p>
 			<div className="flex flex-wrap gap-2">
 				<Button
@@ -123,27 +74,7 @@ function SyncActionsPanel({
 					onClick={() => exportMutation.mutate()}
 				>
 					<Upload className="size-3.5" />
-					Export to GitHub
-				</Button>
-				<Button
-					type="button"
-					size="sm"
-					variant="outline"
-					disabled={!canManage || pullMutation.isPending}
-					onClick={() => pullMutation.mutate()}
-				>
-					<RefreshCw className="size-3.5" />
-					Bootstrap pull
-				</Button>
-				<Button
-					type="button"
-					size="sm"
-					variant="outline"
-					disabled={!canManage || backfillMutation.isPending}
-					onClick={() => backfillMutation.mutate()}
-				>
-					<Database className="size-3.5" />
-					Backfill from mirror
+					Export bugs
 				</Button>
 				<Button
 					type="button"
@@ -153,44 +84,31 @@ function SyncActionsPanel({
 					onClick={onImportOpen}
 				>
 					<Download className="size-3.5" />
-					Import seed JSON
+					Import catalog
 				</Button>
 			</div>
-			{payload?.state.lastError ? (
-				<p className="text-destructive text-xs">{payload.state.lastError}</p>
-			) : null}
 		</div>
 	);
 }
 
-function buildRegistry(
-	canManage: boolean,
-	onImportOpen: () => void,
-) {
+function buildRegistry(canManage: boolean, onImportOpen: () => void) {
 	return defineSettingsRegistry<TrackerSettingsValues>({
 		groups: [
 			{
-				id: "github-sync",
-				label: "GitHub Sync",
-				icon: RefreshCw,
+				id: "github-bugs",
+				label: "GitHub Bugs",
+				icon: Bug,
 				sections: [
 					{
 						id: "scope",
-						title: "Sync scope",
+						title: "Bug synchronization",
 						description:
-							"Only the active delivery version and all bugs sync with GitHub Issues.",
-						keywords: ["active", "version", "bugs", "export"],
+							"Only tracker bugs are exported to and updated from GitHub Issues.",
 						fields: [
 							{
 								id: "syncEnabled",
 								kind: "switch",
-								label: "Enable GitHub sync",
-								description: "Push and apply inbound webhook updates when enabled.",
-							},
-							{
-								id: "exportActiveVersionTasks",
-								kind: "switch",
-								label: "Export active version tasks",
+								label: "Enable GitHub bug sync",
 							},
 							{
 								id: "exportBugs",
@@ -198,53 +116,24 @@ function buildRegistry(
 								label: "Export bugs",
 							},
 							{
-								id: "resolvedActiveVersion",
-								kind: "readonly",
-								label: "Resolved active version",
-							},
-							{
-								id: "activeVersionOverride",
-								kind: "text",
-								label: "Active version override",
-								placeholder: "v0.4",
-								description: "Leave blank to use catalog status rules.",
-							},
-							{
 								id: "outboxDepth",
 								kind: "readonly",
-								label: "Pending outbox entries",
+								label: "Pending bug exports",
 							},
 						],
 					},
 					{
 						id: "connection",
-						title: "Repository",
-						description: "GitHub repository linked for issue sync.",
-						fields: [
-							{
-								id: "repoFullName",
-								kind: "readonly",
-								label: "Repository",
-							},
-						],
-					},
-					{
-						id: "webhook",
-						title: "Webhook",
+						title: "Repository webhook",
 						description:
-							"Inbound issue events update the tracker database when in sync scope.",
-						keywords: ["webhook", "secret", "url"],
+							"Inbound GitHub issue events are accepted only for bugs.",
 						fields: [
-							{
-								id: "webhookUrl",
-								kind: "readonly",
-								label: "Webhook payload URL",
-							},
+							{ id: "repoFullName", kind: "readonly", label: "Repository" },
+							{ id: "webhookUrl", kind: "readonly", label: "Webhook URL" },
 							{
 								id: "publicOrigin",
 								kind: "url",
 								label: "Public tracker URL",
-								placeholder: "https://tracker.beskid-lang.org",
 							},
 							{
 								id: "webhookSecret",
@@ -256,8 +145,7 @@ function buildRegistry(
 					},
 					{
 						id: "actions",
-						title: "Sync actions",
-						description: "Manual export, bootstrap, backfill, and catalog import.",
+						title: "Actions",
 						fields: [
 							{
 								id: "syncEnabled",
@@ -313,7 +201,6 @@ export function TrackerSettingsDialog({
 }: TrackerSettingsDialogProps) {
 	const queryClient = useQueryClient();
 	const [importOpen, setImportOpen] = useState(false);
-
 	const settingsQuery = useQuery({
 		queryKey: ["tracker-settings"],
 		queryFn: async () => {
@@ -325,23 +212,18 @@ export function TrackerSettingsDialog({
 		},
 		enabled: open && canManage,
 	});
-
 	const registry = useMemo(
 		() => buildRegistry(canManage, () => setImportOpen(true)),
 		[canManage],
 	);
-
 	const values = useMemo((): TrackerSettingsValues => {
 		const webhook = settingsQuery.data?.webhook;
 		const sync = settingsQuery.data?.sync;
 		return {
 			syncEnabled: sync?.enabled ?? false,
 			exportBugs: sync?.exportBugs ?? true,
-			exportActiveVersionTasks: sync?.exportActiveVersionTasks ?? true,
-			activeVersionOverride: sync?.activeVersionOverride ?? "",
 			publicOrigin: webhook?.publicOrigin ?? "",
 			webhookSecret: "",
-			resolvedActiveVersion: sync?.resolvedActiveVersionId ?? "—",
 			repoFullName: webhook?.repoFullName ?? "—",
 			webhookUrl: webhook?.webhookUrl ?? "—",
 			outboxDepth: sync?.outboxDepth ?? 0,
@@ -350,14 +232,8 @@ export function TrackerSettingsDialog({
 
 	const handleSave = async (draft: TrackerSettingsValues) => {
 		await updateSyncSettingsFn({
-			data: {
-				enabled: draft.syncEnabled,
-				exportBugs: draft.exportBugs,
-				exportActiveVersionTasks: draft.exportActiveVersionTasks,
-				activeVersionOverride: draft.activeVersionOverride.trim() || null,
-			},
+			data: { enabled: draft.syncEnabled, exportBugs: draft.exportBugs },
 		});
-
 		await updateGithubWebhookSettingsFn({
 			data: {
 				publicOrigin: draft.publicOrigin.trim() || undefined,
@@ -366,18 +242,17 @@ export function TrackerSettingsDialog({
 					: {}),
 			},
 		});
-
 		toast.success("Settings saved");
 		void queryClient.invalidateQueries({ queryKey: ["tracker-settings"] });
-		void queryClient.invalidateQueries({ queryKey: ["board-sync-status"] });
-		void queryClient.invalidateQueries({ queryKey: ["github-webhook-settings"] });
+		void queryClient.invalidateQueries({
+			queryKey: ["github-webhook-settings"],
+		});
 	};
 
 	if (!canManage) return null;
-
 	return (
 		<>
-			<SettingsDialog
+			<SettingsDialog<TrackerSettingsValues>
 				open={open}
 				onOpenChange={onOpenChange}
 				registry={registry}
@@ -385,16 +260,16 @@ export function TrackerSettingsDialog({
 				onSave={handleSave}
 				defaultSectionId="scope"
 				title="Tracker settings"
-				description="Catalog import, GitHub sync scope, and webhook configuration."
-			/>
+				description="Catalog import and GitHub bug synchronization."
+			>
+				{null}
+			</SettingsDialog>
 			<CatalogImportDialog
 				open={importOpen}
 				onOpenChange={setImportOpen}
 				onImport={async (files) => importCatalogBundleFn({ data: { files } })}
 				onPreview={async (files) => getImportPreviewFn({ data: { files } })}
-				onComplete={() => {
-					void queryClient.invalidateQueries();
-				}}
+				onComplete={() => void queryClient.invalidateQueries()}
 			/>
 		</>
 	);

@@ -41,7 +41,7 @@ interface StepsFieldProps {
 	placeholder?: string;
 	hint?: string;
 	disabled?: boolean;
-	/** Numbered repro steps (bugs) or GitHub checklist rows (roadmap subtasks). */
+	/** Numbered repro steps for bugs or tracker-native roadmap subtasks. */
 	variant?: "numbered" | "checklist";
 	addLabel?: string;
 }

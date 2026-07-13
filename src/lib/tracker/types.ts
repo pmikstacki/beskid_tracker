@@ -1,12 +1,16 @@
-import type { PublicBug, RoadmapPriority, SpecApprovalStatus } from "#/lib/github/types";
 import type { RoadmapColumnId } from "#/lib/github/roadmap-labels";
+import type {
+	PublicBug,
+	RoadmapPriority,
+	SpecApprovalStatus,
+} from "#/lib/github/types";
 import type { SpecRelationType } from "#/lib/platform-spec/relations";
 import type { VersionStatus } from "#/lib/roadmap/version-status";
 import type { SeedGitSource, SeedVersion } from "#/lib/seed/schemas";
 
 type SeedVersionCutoff = SeedVersion["cutoff"];
 
-export type TrackerEntityType = "task" | "bug";
+export type TrackerEntityType = "bug";
 
 export type GithubSyncState = "pending" | "synced" | "conflict" | "error";
 
@@ -79,6 +83,7 @@ export interface TrackerTaskSpecRelationRow {
 	id: number;
 	version_id: string;
 	task_id: string;
+	standard_id: string | null;
 	path: string;
 	href: string | null;
 	title: string | null;
@@ -170,6 +175,7 @@ export interface TrackerTaskSubtask {
 
 export interface TrackerTaskSpecRelation {
 	id: number;
+	standardId?: string;
 	path: string;
 	href?: string;
 	title?: string;
@@ -238,8 +244,7 @@ export interface GithubSyncOutboxEntry {
 	createdAt: string;
 }
 
-export interface TrackerTaskWithLink extends TrackerTask {
-	githubLink?: GithubIssueLink;
+export interface TrackerTaskWithContext extends TrackerTask {
 	deliverableTitle?: string;
 	displayNumber?: number;
 }
@@ -249,18 +254,3 @@ export interface TrackerBugWithLink extends TrackerBug {
 }
 
 export type { PublicBug, RoadmapPriority, SpecApprovalStatus };
-
-export function trackerTaskEntityId(versionId: string, taskId: string): string {
-	return `${versionId}:${taskId}`;
-}
-
-export function parseTrackerTaskEntityId(
-	entityId: string,
-): { versionId: string; taskId: string } | null {
-	const separator = entityId.indexOf(":");
-	if (separator <= 0) return null;
-	return {
-		versionId: entityId.slice(0, separator),
-		taskId: entityId.slice(separator + 1),
-	};
-}

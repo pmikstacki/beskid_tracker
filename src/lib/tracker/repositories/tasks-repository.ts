@@ -1,8 +1,16 @@
 import "@tanstack/react-start/server-only";
 
 import type { Database } from "bun:sqlite";
-
-import { rowToTrackerDeliverable, rowToTrackerTask } from "#/lib/tracker/mappers";
+import type {
+	SeedDeliverable,
+	SeedTask,
+	SeedWorkstream,
+} from "#/lib/seed/schemas";
+import { getIssuesDatabase } from "#/lib/storage/db";
+import {
+	rowToTrackerDeliverable,
+	rowToTrackerTask,
+} from "#/lib/tracker/mappers";
 import type {
 	TrackerDeliverable,
 	TrackerDeliverableRow,
@@ -10,16 +18,8 @@ import type {
 	TrackerTaskRow,
 	TrackerTaskSpecRelationRow,
 	TrackerTaskSubtaskRow,
-	TrackerTaskWithLink,
+	TrackerTaskWithContext,
 } from "#/lib/tracker/types";
-import { trackerTaskEntityId } from "#/lib/tracker/types";
-import { getIssuesDatabase } from "#/lib/storage/db";
-import type {
-	SeedDeliverable,
-	SeedTask,
-	SeedWorkstream,
-} from "#/lib/seed/schemas";
-import { getGithubIssueLink } from "#/lib/tracker/repositories/github-links-repository";
 
 function nowIso(): string {
 	return new Date().toISOString();
@@ -118,12 +118,13 @@ function replaceTaskSpecRelations(
 		db.run(
 			`
 			INSERT INTO tracker_task_spec_relations (
-				version_id, task_id, path, href, title, level, relation, required, sort_order
-			) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+				version_id, task_id, standard_id, path, href, title, level, relation, required, sort_order
+			) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
 			`,
 			[
 				versionId,
 				taskId,
+				relation.standardId ?? null,
 				relation.path,
 				relation.href ?? null,
 				relation.title ?? null,
@@ -252,7 +253,7 @@ function listSpecRelationRowsForTask(
 	return db
 		.query<TrackerTaskSpecRelationRow, [string, string]>(
 			`
-			SELECT id, version_id, task_id, path, href, title, level, relation, required, sort_order
+			SELECT id, version_id, task_id, standard_id, path, href, title, level, relation, required, sort_order
 			FROM tracker_task_spec_relations
 			WHERE version_id = ? AND task_id = ?
 			ORDER BY sort_order ASC, id ASC
@@ -281,7 +282,11 @@ export function getTrackerTask(
 		.get(versionId, taskId);
 	if (!row) return null;
 	const subtasks = listSubtaskRowsForTask(database, versionId, taskId);
-	const specRelations = listSpecRelationRowsForTask(database, versionId, taskId);
+	const specRelations = listSpecRelationRowsForTask(
+		database,
+		versionId,
+		taskId,
+	);
 	return rowToTrackerTask(row, subtasks, specRelations);
 }
 
@@ -315,10 +320,10 @@ function getDeliverableTitle(
 	return row?.title;
 }
 
-export function listTrackerTasksWithLinks(
+export function listTrackerTasksForBoard(
 	versionId?: string,
 	db?: Database,
-): TrackerTaskWithLink[] {
+): TrackerTaskWithContext[] {
 	const database = db ?? getIssuesDatabase();
 	const rows = listTrackerTaskRows(database, versionId);
 	return rows.map((row, index) => {
@@ -329,12 +334,8 @@ export function listTrackerTasksWithLinks(
 			row.id,
 		);
 		const task = rowToTrackerTask(row, subtasks, specRelations);
-		const entityId = trackerTaskEntityId(row.version_id, row.id);
-		const githubLink =
-			getGithubIssueLink("task", entityId, database) ?? undefined;
 		return {
 			...task,
-			githubLink,
 			deliverableTitle: getDeliverableTitle(
 				database,
 				row.version_id,
@@ -343,173 +344,6 @@ export function listTrackerTasksWithLinks(
 			displayNumber: row.sort_order ?? index + 1,
 		};
 	});
-}
-
-export interface ApplyInboundTrackerTaskInput {
-	title: string;
-	statusColumn: string;
-	priority: string;
-	workstream?: string;
-	domain?: string;
-	area?: string;
-	feature?: string;
-	owner?: string;
-	body: string;
-	specApproval?: string;
-	completedAt?: string;
-	subtasks: { text: string; done: boolean }[];
-	specRelations: {
-		path: string;
-		href?: string;
-		title?: string;
-		level?: string;
-		relation: string;
-		required: boolean;
-	}[];
-	localUpdatedAt: string;
-}
-
-function replaceInboundTaskSubtasks(
-	db: Database,
-	versionId: string,
-	taskId: string,
-	subtasks: ApplyInboundTrackerTaskInput["subtasks"],
-): void {
-	db.run(
-		"DELETE FROM tracker_task_subtasks WHERE version_id = ? AND task_id = ?",
-		[versionId, taskId],
-	);
-	for (const [index, subtask] of subtasks.entries()) {
-		db.run(
-			`
-			INSERT INTO tracker_task_subtasks (version_id, task_id, text, done, sort_order)
-			VALUES (?, ?, ?, ?, ?)
-			`,
-			[versionId, taskId, subtask.text, subtask.done ? 1 : 0, index],
-		);
-	}
-}
-
-function replaceInboundTaskSpecRelations(
-	db: Database,
-	versionId: string,
-	taskId: string,
-	specRelations: ApplyInboundTrackerTaskInput["specRelations"],
-): void {
-	db.run(
-		"DELETE FROM tracker_task_spec_relations WHERE version_id = ? AND task_id = ?",
-		[versionId, taskId],
-	);
-	for (const [index, relation] of specRelations.entries()) {
-		db.run(
-			`
-			INSERT INTO tracker_task_spec_relations (
-				version_id, task_id, path, href, title, level, relation, required, sort_order
-			) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
-			`,
-			[
-				versionId,
-				taskId,
-				relation.path,
-				relation.href ?? null,
-				relation.title ?? null,
-				relation.level ?? null,
-				relation.relation,
-				relation.required ? 1 : 0,
-				index,
-			],
-		);
-	}
-}
-
-export function applyInboundTrackerTask(
-	db: Database,
-	versionId: string,
-	taskId: string,
-	input: ApplyInboundTrackerTaskInput,
-): void {
-	const now = nowIso();
-	const existing = db
-		.query<{ version_id: string }, [string, string]>(
-			"SELECT version_id FROM tracker_tasks WHERE version_id = ? AND id = ?",
-		)
-		.get(versionId, taskId);
-
-	if (existing) {
-		db.run(
-			`
-			UPDATE tracker_tasks SET
-				title = ?,
-				status_column = ?,
-				priority = ?,
-				workstream = ?,
-				domain = ?,
-				area = ?,
-				feature = ?,
-				owner = ?,
-				body = ?,
-				spec_approval = ?,
-				completed_at = ?,
-				local_updated_at = ?,
-				updated_at = ?
-			WHERE version_id = ? AND id = ?
-			`,
-			[
-				input.title,
-				input.statusColumn,
-				input.priority,
-				input.workstream ?? null,
-				input.domain ?? null,
-				input.area ?? null,
-				input.feature ?? null,
-				input.owner ?? null,
-				input.body,
-				input.specApproval ?? null,
-				input.completedAt ?? null,
-				input.localUpdatedAt,
-				now,
-				versionId,
-				taskId,
-			],
-		);
-	} else {
-		db.run(
-			`
-			INSERT INTO tracker_tasks (
-				version_id, id, title, status_column, priority, workstream, domain, area, feature,
-				owner, sort_order, deliverable_id, body, spec_approval, completed_at, source_json,
-				local_updated_at, created_at, updated_at
-			) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NULL, NULL, ?, ?, ?, ?, ?, ?, ?)
-			`,
-			[
-				versionId,
-				taskId,
-				input.title,
-				input.statusColumn,
-				input.priority,
-				input.workstream ?? null,
-				input.domain ?? null,
-				input.area ?? null,
-				input.feature ?? null,
-				input.owner ?? null,
-				input.body,
-				input.specApproval ?? null,
-				input.completedAt ?? null,
-				JSON.stringify({
-					repo: "beskid",
-					commit: "0000000",
-					subject: input.title,
-					url: undefined,
-				}),
-				input.localUpdatedAt,
-				now,
-				now,
-			],
-		);
-	}
-
-	replaceInboundTaskSubtasks(db, versionId, taskId, input.subtasks);
-	replaceInboundTaskSpecRelations(db, versionId, taskId, input.specRelations);
 }
 
 export function listTrackerDeliverables(

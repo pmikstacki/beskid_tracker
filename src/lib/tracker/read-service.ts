@@ -17,20 +17,11 @@ import {
 	countTrackerBugs,
 	listTrackerBugsWithLinks,
 } from "#/lib/tracker/repositories/bugs-repository";
-import {
-	getGithubIssueLink,
-	getGithubIssueLinkByNumber,
-} from "#/lib/tracker/repositories/github-links-repository";
-import {
-	getTrackerTask,
-	listTrackerDeliverables,
-	listTrackerTasksWithLinks,
-} from "#/lib/tracker/repositories/tasks-repository";
+import { listTrackerTasksForBoard } from "#/lib/tracker/repositories/tasks-repository";
 import { listTrackerVersions } from "#/lib/tracker/repositories/versions-repository";
-import { parseTrackerTaskEntityId } from "#/lib/tracker/types";
 
 export async function listAllRoadmapTasks(): Promise<RoadmapTask[]> {
-	return listTrackerTasksWithLinks().map(trackerTaskToRoadmapTask);
+	return listTrackerTasksForBoard().map(trackerTaskToRoadmapTask);
 }
 
 export async function listPublicBugs(): Promise<PublicBug[]> {
@@ -64,31 +55,6 @@ export function buildRoadmapColumns(tasks: RoadmapTask[]): RoadmapColumns {
 		columns[key].sort((a, b) => a.number - b.number);
 	}
 	return columns;
-}
-
-export function getRoadmapIssue(issueNumber: number): RoadmapTask | null {
-	const link = getGithubIssueLinkByNumber(issueNumber);
-	if (!link || link.entityType !== "task") return null;
-
-	const parsed = parseTrackerTaskEntityId(link.entityId);
-	if (!parsed) return null;
-
-	const task = getTrackerTask(parsed.versionId, parsed.taskId);
-	if (!task) return null;
-
-	const githubLink = getGithubIssueLink("task", link.entityId) ?? undefined;
-	const deliverableTitle = task.deliverableId
-		? listTrackerDeliverables(parsed.versionId).find(
-				(deliverable) => deliverable.id === task.deliverableId,
-			)?.title
-		: undefined;
-
-	return trackerTaskToRoadmapTask({
-		...task,
-		githubLink,
-		deliverableTitle,
-		displayNumber: issueNumber,
-	});
 }
 
 export async function listVersionLabels(): Promise<string[]> {

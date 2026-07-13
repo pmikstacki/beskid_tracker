@@ -180,7 +180,7 @@ export function CreateTaskForm({
 			pending={mutation.isPending}
 			submitDisabled={!specReady}
 			footer={roadmapFooter}
-			submitLabel={mutation.isPending ? "Creating…" : "Create task on GitHub"}
+			submitLabel={mutation.isPending ? "Creating…" : "Create task"}
 			errorMessage={
 				mutation.isError
 					? mutation.error instanceof Error

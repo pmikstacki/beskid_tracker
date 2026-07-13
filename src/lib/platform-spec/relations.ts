@@ -11,6 +11,7 @@ export const SPEC_RELATION_TYPES = [
 export type SpecRelationType = (typeof SPEC_RELATION_TYPES)[number];
 
 export interface SpecRelation {
+	standardId?: string;
 	path: string;
 	href: string;
 	title?: string;
@@ -18,12 +19,6 @@ export interface SpecRelation {
 	relation: SpecRelationType;
 	required: boolean;
 }
-
-export interface SpecRelationsBlock {
-	relations: SpecRelation[];
-}
-
-const ROADMAP_SPEC_FENCE = /```roadmap-spec\s*\n([\s\S]*?)\n```/;
 
 export function specPathToHref(path: string): string {
 	return beskidDocsUrl(path);
@@ -47,52 +42,6 @@ export function hierarchyFromSlug(slug: string): {
 		feature: parts.length >= 4 ? parts[3] : undefined,
 		level,
 	};
-}
-
-export function parseSpecRelationsBlock(body: string): SpecRelationsBlock {
-	const match = body.match(ROADMAP_SPEC_FENCE);
-	if (!match?.[1]) {
-		return { relations: [] };
-	}
-	try {
-		const parsed = JSON.parse(match[1]) as SpecRelationsBlock;
-		if (!Array.isArray(parsed.relations)) {
-			return { relations: [] };
-		}
-		return {
-			relations: parsed.relations
-				.filter(
-					(r) => typeof r.path === "string" && r.path.includes("platform-spec"),
-				)
-				.map((r) => ({
-					path: r.path,
-					href: r.href ?? specPathToHref(r.path),
-					title: r.title,
-					level: r.level,
-					relation: SPEC_RELATION_TYPES.includes(r.relation as SpecRelationType)
-						? (r.relation as SpecRelationType)
-						: "tracks",
-					required: Boolean(r.required),
-				})),
-		};
-	} catch {
-		return { relations: [] };
-	}
-}
-
-export function serializeSpecRelationsBlock(relations: SpecRelation[]): string {
-	if (relations.length === 0) return "";
-	const payload: SpecRelationsBlock = { relations };
-	return `\n\`\`\`roadmap-spec\n${JSON.stringify(payload, null, 2)}\n\`\`\`\n`;
-}
-
-export function upsertSpecRelationsInBody(
-	body: string,
-	relations: SpecRelation[],
-): string {
-	const without = body.replace(ROADMAP_SPEC_FENCE, "").trimEnd();
-	const block = serializeSpecRelationsBlock(relations);
-	return without.length > 0 ? `${without}\n${block}` : block.trim();
 }
 
 export function mergeLegacySpecLinks(

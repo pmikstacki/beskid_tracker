@@ -1,8 +1,3 @@
-import { readSyncState } from "#/lib/storage/issues-repository";
-import {
-	getTrackerSyncSettings,
-	type TrackerSyncSettings,
-} from "#/lib/tracker/sync-settings";
 import {
 	clearGithubWebhookSecretInDatabase,
 	getGithubWebhookSecretFromEnv,
@@ -19,6 +14,10 @@ import {
 	setTrackerPublicOrigin,
 } from "#/lib/sync/github-webhook-config";
 import { provisionRepositoryIssuesWebhook } from "#/lib/sync/github-webhook-provision";
+import {
+	getTrackerSyncSettings,
+	type TrackerSyncSettings,
+} from "#/lib/tracker/sync-settings";
 
 export type GithubWebhookSecretSource = ReturnType<
 	typeof getGithubWebhookSecretSource
@@ -37,7 +36,6 @@ export {
 
 export function buildGithubWebhookSettings() {
 	const delivery = readGithubWebhookDeliveryMeta();
-	const state = readSyncState();
 	const syncSettings = getTrackerSyncSettings();
 
 	return {
@@ -52,8 +50,6 @@ export function buildGithubWebhookSettings() {
 		lastWebhookAt: delivery.lastAt,
 		lastWebhookAction: delivery.lastAction,
 		syncDisabled: isGithubSyncDisabled(),
-		lastBootstrapAt: state.lastSuccessAt,
-		openIssueCount: state.openIssueCount,
 		syncSettings,
 	};
 }

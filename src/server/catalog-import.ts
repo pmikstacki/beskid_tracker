@@ -7,10 +7,6 @@ import {
 	type UploadedSeedFile,
 } from "#/lib/seed/parse-uploaded-bundle";
 import {
-	type BackfillFromGithubSummary,
-	backfillFromGithubMirror,
-} from "#/lib/tracker/backfill-from-github";
-import {
 	type CatalogImportSummary,
 	upsertParsedSeedBundles,
 } from "#/lib/tracker/import-catalog";
@@ -79,18 +75,3 @@ export const importCatalogBundleFn = createServerFn({ method: "POST" })
 			return upsertParsedSeedBundles(bundles);
 		});
 	});
-
-export const backfillFromGithubMirrorFn = createServerFn({
-	method: "POST",
-}).handler(async (): Promise<BackfillFromGithubSummary> => {
-	const session = await requireSession();
-
-	return withOctokit(async (octokit) => {
-		if (!(await canManageRoadmap(octokit, session.login))) {
-			throw new Error(
-				"Only repository maintainers can backfill from the GitHub mirror",
-			);
-		}
-		return backfillFromGithubMirror();
-	});
-});

@@ -1,11 +1,10 @@
 import { describe, expect, it } from "vitest";
-
+import type { ParsedSeedBundle } from "#/lib/seed/parse-uploaded-bundle";
 import { closeIssuesDatabase, getIssuesDatabase } from "#/lib/storage/db";
 import { upsertParsedSeedBundle } from "#/lib/tracker/import-catalog";
 import { trackerTaskToRoadmapTask } from "#/lib/tracker/mappers";
-import { listTrackerTasksWithLinks } from "#/lib/tracker/repositories/tasks-repository";
+import { listTrackerTasksForBoard } from "#/lib/tracker/repositories/tasks-repository";
 import { listTrackerVersions } from "#/lib/tracker/repositories/versions-repository";
-import type { ParsedSeedBundle } from "#/lib/seed/parse-uploaded-bundle";
 
 const sampleBundle: ParsedSeedBundle = {
 	versionId: "v9.9",
@@ -64,7 +63,7 @@ describe("catalog import", () => {
 		expect(summary.tasksUpserted).toBe(1);
 		expect(listTrackerVersions(db).some((v) => v.id === "v9.9")).toBe(true);
 
-		const tasks = listTrackerTasksWithLinks("v9.9", db);
+		const tasks = listTrackerTasksForBoard("v9.9", db);
 		expect(tasks).toHaveLength(1);
 		const roadmapTask = trackerTaskToRoadmapTask(tasks[0]);
 		expect(roadmapTask.title).toBe("First task");

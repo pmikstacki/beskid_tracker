@@ -10,7 +10,7 @@ import type { AuthUser, PublicBug } from "#/lib/github/types";
 interface PublicBugListProps {
 	bugs: PublicBug[];
 	user: AuthUser | null;
-	/** Unfiltered bug count from GitHub (before meta search). */
+	/** Unfiltered tracker bug count before meta search. */
 	catalogCount?: number;
 	rateLimited?: boolean;
 }
@@ -35,7 +35,7 @@ export function PublicBugList({
 			<div className="rounded-2xl border border-border/60 bg-card/40 p-8 text-center">
 				<p className="text-muted-foreground text-sm">
 					{rateLimited ? (
-						"Could not load bugs from the local issue store. Check server sync configuration or run bun run sync:issues."
+						"Could not load bugs from the tracker database. Check the bug webhook and export configuration."
 					) : noSearchMatches ? (
 						"No bugs match your search. Try different keywords or clear the search bar."
 					) : (

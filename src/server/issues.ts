@@ -1,21 +1,20 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
-
+import type { RoadmapColumnId } from "#/lib/github/roadmap-labels";
+import type { RoadmapTask } from "#/lib/github/types";
 import {
 	getRoadmapIssueForSession,
 	moveIssueToColumnForSession,
 	updateRoadmapIssueForSession,
 } from "#/lib/tracker/issue-write-service";
-import type { RoadmapColumnId } from "#/lib/github/roadmap-labels";
-import type { RoadmapTask } from "#/lib/github/types";
 import { withOctokit } from "#/server/auth-guard.server";
 
 export const getIssue = createServerFn({ method: "GET" })
-	.inputValidator((data: { issueNumber: number }) => data)
+	.inputValidator((data: { versionId: string; taskId: string }) => data)
 	.handler(
 		async ({ data }): Promise<RoadmapTask | null> =>
 			withOctokit((octokit) =>
-				getRoadmapIssueForSession(octokit, data.issueNumber),
+				getRoadmapIssueForSession(octokit, data.versionId, data.taskId),
 			),
 	);
 
@@ -24,7 +23,8 @@ const columnIdSchema = z.enum(["Backlog", "In Progress", "Done"]);
 export const moveIssueColumn = createServerFn({ method: "POST" })
 	.inputValidator(
 		z.object({
-			issueNumber: z.number().int().positive(),
+			versionId: z.string().min(1),
+			taskId: z.string().min(1),
 			targetColumn: columnIdSchema,
 		}),
 	)
@@ -33,7 +33,8 @@ export const moveIssueColumn = createServerFn({ method: "POST" })
 			withOctokit((octokit) =>
 				moveIssueToColumnForSession(
 					octokit,
-					data.issueNumber,
+					data.versionId,
+					data.taskId,
 					data.targetColumn as RoadmapColumnId,
 				),
 			),
@@ -42,7 +43,8 @@ export const moveIssueColumn = createServerFn({ method: "POST" })
 export const updateIssue = createServerFn({ method: "POST" })
 	.inputValidator(
 		z.object({
-			issueNumber: z.number().int().positive(),
+			versionId: z.string().min(1),
+			taskId: z.string().min(1),
 			title: z.string().min(1).max(256).optional(),
 			body: z.string().max(65536).optional(),
 			priority: z.enum(["high", "medium", "low"]).optional(),

@@ -13,6 +13,7 @@ export const seedGitSourceSchema = z.object({
 });
 
 export const seedSpecRelationSchema = z.object({
+	standardId: z.string().min(1).optional(),
 	path: z.string().min(1),
 	href: z.string().url().optional(),
 	title: z.string().optional(),

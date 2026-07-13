@@ -2,9 +2,9 @@
 
 [TanStack Start](https://tanstack.com/start) tracker and roadmap planner for the [Cyber-Nomad-Collective/beskid](https://github.com/Cyber-Nomad-Collective/beskid) superrepo. Public bug reports and the delivery timeline are version-agnostic; kanban boards are per delivery version.
 
-The tracker **SQLite database** is the source of truth for versions, roadmap tasks, and bugs. GitHub Issues receive **bidirectional sync** for the **active delivery version** (highest semver among `In Progress`, else highest overall) and **all bugs**. Import seed JSON from **Settings → Sync actions → Import seed JSON**; configure webhook and sync scope in the settings dialog (gear icon in the header).
+The tracker **SQLite database** is the source of truth for versions, roadmap tasks, and bugs. GitHub Issues are used only as the external bug-reporting surface; roadmap tasks never export to or import from GitHub. Import catalog JSON from **Settings → Actions → Import catalog** and configure the bug webhook in the settings dialog.
 
-Each issue belongs to a **delivery version** (`v0.1`–`v0.4`); the kanban board is per version. [Platform specification](https://beskid-lang.org/platform-spec/) nodes are linked with typed relations; the repo owner approves spec linkages.
+Each task belongs to a **delivery version** (`v0.1`–`v0.4`); the kanban board is per version. [Platform specification](https://beskid-lang.org/platform-spec/) entries are linked by stable OpenSpec identifiers and typed relations; the repo owner approves spec linkages.
 
 ## Stack
 
@@ -25,13 +25,9 @@ Visual design follows **beskid-lang.org** and **pckg** Material teal tokens from
 
 When updating site chrome, keep `shadcn-theme.css` in sync or extend shared tokens in beskid-ui (`--beskid-material-seed`, `--beskid-fluent-accent`, `--beskid-fluent-neutral` in `theme.material.css`). **pckg** maps the same seed into Fluent UI Blazor via `FluentDesignTheme` / `loading-theme` `primary-color` and `neutral-color`.
 
-## GitHub labels
+## GitHub bugs
 
-Kanban columns and priorities use repository labels. See [docs/roadmap-labels.md](../docs/roadmap-labels.md) and run:
-
-```bash
-bash scripts/setup-github-labels.sh
-```
+Only issues carrying the `bug` label participate in synchronization. Roadmap status, priority, versions, workstreams, and specification links are tracker-native data.
 
 ## Environment
 
@@ -46,8 +42,8 @@ cp .env.example .env
 | `AUTH_HUB_PUBLIC_URL` | Shared auth hub (GitHub OAuth lives there only) |
 | `SESSION_SECRET` | 32+ byte secret (`openssl rand -base64 32`) |
 | `GITHUB_REPO_OWNER` / `GITHUB_REPO_NAME` | Default: `Cyber-Nomad-Collective` / `beskid` |
-| `GITHUB_SYNC_TOKEN` | PAT for background issue sync (falls back to `GITHUB_PUBLIC_READ_TOKEN`) |
-| `GITHUB_PUBLIC_READ_TOKEN` | Optional PAT used for sync when `GITHUB_SYNC_TOKEN` is unset |
+| `GITHUB_SYNC_TOKEN` | PAT for bug issue export (falls back to `GITHUB_PUBLIC_READ_TOKEN`) |
+| `GITHUB_PUBLIC_READ_TOKEN` | Optional PAT used for bug sync when `GITHUB_SYNC_TOKEN` is unset |
 | `TRACKER_DATA_DIR` | SQLite directory (default `data/runtime`) — mount as a volume in Docker |
 | `GITHUB_WEBHOOK_SECRET` | Webhook HMAC secret (overrides Settings tab; optional in dev) |
 | `TRACKER_PUBLIC_URL` | Public origin for webhook URL (optional; Settings tab can override) |
@@ -66,7 +62,6 @@ Pair the tracker with the hub (see [COOLIFY.md](COOLIFY.md)). The hub’s GitHub
 | `bun run verify:client-bundle` | After build: assert client chunks omit SQLite/path APIs and CSS exists |
 | `bun run start` | Production server on port 3000 |
 | `bun run check` | Biome lint/format |
-| `bun run sync:issues` | Backfill normalized tables from legacy `github_issues` mirror (one-time migration aid) |
 
 ## Docker
 
@@ -97,7 +92,7 @@ Runtime requires `AUTH_HUB_PUBLIC_URL`, `SESSION_SECRET`, and hub pairing (see [
 - `AUTH_HUB_PUBLIC_URL`
 - `SESSION_SECRET`
 - Optional: `GITHUB_REPO_OWNER`, `GITHUB_REPO_NAME`, `GITHUB_SYNC_TOKEN` or `GITHUB_PUBLIC_READ_TOKEN`
-- Persistent volume on `data/runtime` (or `TRACKER_DATA_DIR`) so the issue mirror survives redeploys
+- Persistent volume on `data/runtime` (or `TRACKER_DATA_DIR`) so tracker data survives redeploys
 
 Build uses `SKIP_ENV_VALIDATION=1`; validation runs at runtime when the container starts.
 
@@ -144,7 +139,7 @@ Import into SQLite via Settings or `importCatalogBundleFn`. Validate seed JSON w
 
 Shared **design-system** primitives live in [`@beskid/ui-react`](../beskid_web_common/packages/beskid-ui-react) (Button, Input, Sheet, theme CSS). The tracker imports them via path aliases (`#/components/ui/*` → the package) so shadcn-style imports stay consistent across Beskid apps.
 
-**App-specific** UI remains under `src/components/` (~60 files): kanban board, roadmap navigation, report/issue forms (`StepsField`, subtasks checklist), spec relation editors, seed import, app shell, and ReUI wrappers. Those modules encode tracker domain behavior and GitHub issue workflows—not generic layout primitives—so they were not moved into the shared package during the ui-react migration.
+**App-specific** UI remains under `src/components/`: kanban board, roadmap navigation, report forms, subtasks, OpenSpec relation editors, catalog import, app shell, and ReUI wrappers. These modules encode tracker domain behavior and remain separate from generic shared UI primitives.
 
 ## Auth flow
 

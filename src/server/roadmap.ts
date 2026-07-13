@@ -96,28 +96,16 @@ export const createBoardIssue = createServerFn({ method: "POST" })
 		);
 	});
 
-export const registerVersion = createServerFn({ method: "POST" })
-	.inputValidator(z.object({ version: z.string().regex(/^v\d+\.\d+$/) }))
-	.handler(async ({ data }) => {
-		return withAuth(async (octokit, login) => {
-			if (!(await canManageRoadmap(octokit, login))) {
-				throw new Error(
-					"Only the repository owner can define delivery versions",
-				);
-			}
-			await roadmapServer.registerVersionLabel(octokit, data.version);
-			return { version: data.version };
-		});
-	});
-
 export const approveSpec = createServerFn({ method: "POST" })
-	.inputValidator(z.object({ issueNumber: z.number().int().positive() }))
+	.inputValidator(
+		z.object({ versionId: z.string().min(1), taskId: z.string().min(1) }),
+	)
 	.handler(async ({ data }) => {
 		return withAuth(async (octokit, login) => {
 			if (!(await canManageRoadmap(octokit, login))) {
 				throw new Error("Only the repository owner can approve spec linkages");
 			}
-			return roadmapServer.approveSpecForIssue(octokit, data.issueNumber);
+			return roadmapServer.approveTaskSpec(data.versionId, data.taskId);
 		});
 	});
 

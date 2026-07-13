@@ -54,7 +54,7 @@ export function GithubWebhookSettingsPanel() {
 			void queryClient.invalidateQueries({
 				queryKey: ["github-webhook-settings"],
 			});
-			void queryClient.invalidateQueries({ queryKey: ["board-sync-status"] });
+			void queryClient.invalidateQueries({ queryKey: ["bug-sync-status"] });
 		},
 		onError: (error) => {
 			setStatusIsError(true);
@@ -83,7 +83,7 @@ export function GithubWebhookSettingsPanel() {
 			void queryClient.invalidateQueries({
 				queryKey: ["github-webhook-settings"],
 			});
-			void queryClient.invalidateQueries({ queryKey: ["board-sync-status"] });
+			void queryClient.invalidateQueries({ queryKey: ["bug-sync-status"] });
 		},
 		onError: (error) => {
 			setStatusIsError(true);

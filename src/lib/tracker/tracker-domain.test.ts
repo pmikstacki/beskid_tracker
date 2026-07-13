@@ -5,10 +5,8 @@ import {
 	parseSemverVersion,
 	resolveActiveVersionId,
 } from "#/lib/tracker/active-version";
-import {
-	isBugInGithubSyncScope,
-	isTaskInGithubSyncScope,
-} from "#/lib/tracker/sync-scope";
+import { trackerTaskToRoadmapTask } from "#/lib/tracker/mappers";
+import { isBugInGithubSyncScope } from "#/lib/tracker/sync-scope";
 import type { TrackerTask } from "#/lib/tracker/types";
 
 describe("active-version", () => {
@@ -42,25 +40,33 @@ describe("active-version", () => {
 });
 
 describe("sync-scope", () => {
-	const task = (versionId: string): TrackerTask => ({
-		versionId,
-		id: "sample",
-		title: "Sample",
-		statusColumn: "Backlog",
-		priority: "medium",
-		body: "",
-		specRelations: [],
-		subtasks: [],
-		source: { repo: "beskid", commit: "abc", subject: "x" },
-		localUpdatedAt: "2026-01-01T00:00:00.000Z",
-	});
-
-	it("includes active version tasks only", () => {
-		expect(isTaskInGithubSyncScope(task("v0.4"), "v0.4")).toBe(true);
-		expect(isTaskInGithubSyncScope(task("v0.3"), "v0.4")).toBe(false);
-	});
-
 	it("includes all bugs", () => {
 		expect(isBugInGithubSyncScope({ id: "bug-1" })).toBe(true);
+	});
+});
+
+describe("tracker-native task identity", () => {
+	it("uses the catalog task id rather than a GitHub issue identity", () => {
+		const mapped = trackerTaskToRoadmapTask({
+			...({
+				versionId: "v0.4",
+				id: "native-task",
+				title: "Native task",
+				statusColumn: "Backlog",
+				priority: "medium",
+				body: "",
+				specRelations: [],
+				subtasks: [],
+				source: { repo: "beskid", commit: "abc", subject: "Native task" },
+				localUpdatedAt: "2026-01-01T00:00:00.000Z",
+				createdAt: "2026-01-01T00:00:00.000Z",
+				updatedAt: "2026-01-01T00:00:00.000Z",
+			} satisfies TrackerTask),
+			displayNumber: 3,
+		});
+
+		expect(mapped.id).toBe("native-task");
+		expect(mapped.number).toBe(3);
+		expect(mapped.htmlUrl).not.toContain("github.com");
 	});
 });

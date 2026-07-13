@@ -13,8 +13,8 @@ import {
 	KanbanColumnContent,
 	KanbanItem,
 	KanbanItemHandle,
-	KanbanOverlay,
 	type KanbanMoveEvent,
+	KanbanOverlay,
 } from "#/components/reui/kanban";
 import { SpecRelationsList } from "#/components/spec-relations-list";
 import { Badge } from "#/components/ui/badge";
@@ -35,7 +35,11 @@ function applyKanbanMove(
 	event: KanbanMoveEvent,
 ): {
 	next: RoadmapColumns;
-	move: { issueNumber: number; targetColumn: RoadmapColumnId } | null;
+	move: {
+		versionId: string;
+		taskId: string;
+		targetColumn: RoadmapColumnId;
+	} | null;
 } {
 	const { activeContainer, overContainer, activeIndex, overIndex } = event;
 	const from = activeContainer as RoadmapColumnId;
@@ -67,7 +71,7 @@ function applyKanbanMove(
 			[from]: source,
 			[to]: target,
 		},
-		move: { issueNumber: moved.number, targetColumn: to },
+		move: { versionId: moved.version, taskId: moved.id, targetColumn: to },
 	};
 }
 
@@ -101,7 +105,8 @@ export function RoadmapKanbanBoard({
 
 	const moveMutation = useMutation({
 		mutationFn: (input: {
-			issueNumber: number;
+			versionId: string;
+			taskId: string;
 			targetColumn: RoadmapColumnId;
 		}) => moveIssueColumn({ data: input }),
 		onSuccess: async () => {
@@ -133,6 +138,7 @@ export function RoadmapKanbanBoard({
 		<>
 			<Kanban
 				value={columns}
+				onValueChange={(next) => setColumns(next as RoadmapColumns)}
 				onMove={handleMove}
 				getItemValue={(item) => item.id}
 				className="w-full"

@@ -9,21 +9,23 @@ import type { SpecRelation } from "#/lib/platform-spec/relations";
 import { suggestPlatformSpecNavForIssue } from "#/server/platform-spec";
 
 interface IssueSpecSuggestionsWidgetProps {
-	issueNumber: number;
+	versionId: string;
+	taskId: string;
 	relations: SpecRelation[];
 	onQuickAdd: (next: SpecRelation) => void;
 }
 
 export function IssueSpecSuggestionsWidget({
-	issueNumber,
+	versionId,
+	taskId,
 	relations,
 	onQuickAdd,
 }: IssueSpecSuggestionsWidgetProps) {
 	const { data: suggestions = [], isLoading } = useQuery({
-		queryKey: ["platform-spec-suggestions", issueNumber],
+		queryKey: ["platform-spec-suggestions", versionId, taskId],
 		queryFn: () =>
 			suggestPlatformSpecNavForIssue({
-				data: { issueNumber, limit: 6 },
+				data: { versionId, taskId, limit: 6 },
 			}),
 		staleTime: 60_000,
 	});
@@ -83,6 +85,7 @@ export function IssueSpecSuggestionsWidget({
 								disabled={linked}
 								onClick={() =>
 									onQuickAdd({
+										standardId: suggestion.standardId,
 										path: suggestion.href.replace(/\/+$/, ""),
 										href: suggestion.href,
 										title: suggestion.title,

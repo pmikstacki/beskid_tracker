@@ -5,35 +5,35 @@ import {
 	featureLabel,
 	priorityLabel,
 	ROADMAP_SPEC_APPROVAL,
-	statusLabelForColumn,
 	type RoadmapColumnId,
+	statusLabelForColumn,
 	workstreamLabel,
 } from "#/lib/github/roadmap-labels";
 import type { PublicBug, RoadmapTask } from "#/lib/github/types";
-import type { SpecRelation, SpecRelationType } from "#/lib/platform-spec/relations";
+import type {
+	SpecRelation,
+	SpecRelationType,
+} from "#/lib/platform-spec/relations";
 import type { SubtaskRow } from "#/lib/report-issue/field-values";
 import { normalizeVersionStatus } from "#/lib/roadmap/version-status";
 import type { SeedGitSource } from "#/lib/seed/schemas";
 import type {
+	GithubIssueLink,
 	GithubIssueLinkRow,
+	TrackerBug,
 	TrackerBugRow,
+	TrackerBugWithLink,
+	TrackerDeliverable,
 	TrackerDeliverableRow,
+	TrackerTask,
 	TrackerTaskRow,
+	TrackerTaskSpecRelation,
 	TrackerTaskSpecRelationRow,
+	TrackerTaskSubtask,
 	TrackerTaskSubtaskRow,
+	TrackerTaskWithContext,
+	TrackerVersion,
 	TrackerVersionRow,
-} from "#/lib/tracker/types";
-import {
-	type GithubIssueLink,
-	type TrackerBug,
-	type TrackerBugWithLink,
-	type TrackerDeliverable,
-	type TrackerTask,
-	type TrackerTaskSpecRelation,
-	type TrackerTaskSubtask,
-	type TrackerTaskWithLink,
-	type TrackerVersion,
-	trackerTaskEntityId,
 } from "#/lib/tracker/types";
 
 function parseJson<T>(raw: string, fallback: T): T {
@@ -94,6 +94,7 @@ export function rowToTrackerTaskSpecRelation(
 ): TrackerTaskSpecRelation {
 	return {
 		id: row.id,
+		standardId: row.standard_id ?? undefined,
 		path: row.path,
 		href: row.href ?? undefined,
 		title: row.title ?? undefined,
@@ -123,7 +124,8 @@ export function rowToTrackerTask(
 		sortOrder: row.sort_order ?? undefined,
 		deliverableId: row.deliverable_id ?? undefined,
 		body: row.body,
-		specApproval: (row.spec_approval as TrackerTask["specApproval"]) ?? undefined,
+		specApproval:
+			(row.spec_approval as TrackerTask["specApproval"]) ?? undefined,
 		completedAt: row.completed_at ?? undefined,
 		source: parseJson<SeedGitSource>(row.source_json, {
 			repo: "beskid",
@@ -195,6 +197,7 @@ function relationsToSpecRelations(
 	relations: TrackerTaskSpecRelation[],
 ): SpecRelation[] {
 	return relations.map((relation) => ({
+		standardId: relation.standardId,
 		path: relation.path,
 		href: relation.href ?? beskidDocsUrl(relation.path),
 		title: relation.title,
@@ -211,17 +214,13 @@ function bodyExcerpt(body: string, max = 240): string {
 }
 
 export function trackerTaskToRoadmapTask(
-	task: TrackerTaskWithLink,
+	task: TrackerTaskWithContext,
 ): RoadmapTask {
 	const specRelations = relationsToSpecRelations(task.specRelations);
-	const githubNumber = task.githubLink?.githubNumber;
-	const displayNumber =
-		task.displayNumber ?? githubNumber ?? task.sortOrder ?? 0;
+	const displayNumber = task.displayNumber ?? task.sortOrder ?? 0;
 
 	return {
-		id: githubNumber
-			? String(githubNumber)
-			: `db:${trackerTaskEntityId(task.versionId, task.id)}`,
+		id: task.id,
 		number: displayNumber,
 		title: task.title,
 		owner: task.owner ?? task.source.repo,
@@ -231,17 +230,13 @@ export function trackerTaskToRoadmapTask(
 		specRelations,
 		subtasks: subtasksToRows(task.subtasks),
 		specApproval:
-			task.specApproval ??
-			(specRelations.length > 0 ? "approved" : undefined),
+			task.specApproval ?? (specRelations.length > 0 ? "approved" : undefined),
 		version: task.versionId,
 		workstream: task.workstream,
 		domain: task.domain,
 		area: task.area,
 		feature: task.feature,
-		htmlUrl:
-			task.githubLink?.githubUrl ??
-			task.source.url ??
-			beskidDocsUrl(`/tracker/tasks/${task.versionId}/${task.id}`),
+		htmlUrl: beskidDocsUrl(`/tracker/tasks/${task.versionId}/${task.id}`),
 		milestone: task.deliverableTitle
 			? { title: task.deliverableTitle, number: 0 }
 			: undefined,
@@ -256,8 +251,7 @@ export function trackerBugToPublicBug(bug: TrackerBugWithLink): PublicBug {
 		title: bug.title,
 		state: bug.state,
 		htmlUrl:
-			bug.githubLink?.githubUrl ??
-			beskidDocsUrl(`/tracker/bugs/${bug.id}`),
+			bug.githubLink?.githubUrl ?? beskidDocsUrl(`/tracker/bugs/${bug.id}`),
 		createdAt: bug.createdAt,
 		labels: ["bug"],
 		bodyExcerpt: bodyExcerpt(bug.body),

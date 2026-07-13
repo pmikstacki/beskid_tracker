@@ -16,6 +16,10 @@ export interface FlatSpecNavEntry {
 	href: string;
 	title: string;
 	level: string;
+	/** Stable OpenSpec catalog identifier, when supplied by the catalog. */
+	standardId?: string;
+	/** Revision that supplied the stable identifier. */
+	catalogRevision?: string;
 	domain?: string;
 	area?: string;
 	feature?: string;

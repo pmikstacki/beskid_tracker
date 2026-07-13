@@ -1,9 +1,8 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
-
+import type { TrackerSyncSettings } from "#/lib/tracker/sync-settings";
 import { requireMaintainer, withOctokit } from "#/server/auth-guard.server";
 import type { GithubWebhookSecretSource } from "#/server/github-sync-settings.server";
-import type { TrackerSyncSettings } from "#/lib/tracker/sync-settings";
 import * as githubSyncServer from "#/server/github-sync-settings.server";
 
 export interface GithubWebhookSettingsPayload {
@@ -18,8 +17,6 @@ export interface GithubWebhookSettingsPayload {
 	lastWebhookAt: string | null;
 	lastWebhookAction: string | null;
 	syncDisabled: boolean;
-	lastBootstrapAt: string | null;
-	openIssueCount: number;
 	syncSettings: TrackerSyncSettings;
 }
 

@@ -7,9 +7,7 @@ import type { SyncSettingRow } from "#/lib/tracker/types";
 
 export const SYNC_SETTING_KEYS = {
 	enabled: "sync.enabled",
-	activeVersionOverride: "sync.active_version_override",
 	exportBugs: "sync.export_bugs",
-	exportActiveVersionTasks: "sync.export_active_version_tasks",
 	lastExportAt: "sync.last_export_at",
 	lastInboundAt: "sync.last_inbound_at",
 } as const;

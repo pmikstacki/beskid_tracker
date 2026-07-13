@@ -5,6 +5,7 @@ import { withAuth } from "#/server/auth-guard.server";
 import * as platformSpecServer from "#/server/platform-spec.server";
 
 export interface IssueSpecSuggestion {
+	standardId?: string;
 	slug: string;
 	href: string;
 	title: string;
@@ -26,13 +27,15 @@ export const searchPlatformSpecNav = createServerFn({ method: "GET" })
 	});
 
 export const suggestPlatformSpecNavForIssue = createServerFn({ method: "GET" })
-	.inputValidator((data: { issueNumber: number; limit?: number }) => data)
+	.inputValidator(
+		(data: { versionId: string; taskId: string; limit?: number }) => data,
+	)
 	.handler(
 		async ({ data }): Promise<IssueSpecSuggestion[]> =>
-			withAuth((octokit) =>
-				platformSpecServer.suggestPlatformSpecNavForIssueNumber(
-					octokit,
-					data.issueNumber,
+			withAuth(() =>
+				platformSpecServer.suggestPlatformSpecNavForTask(
+					data.versionId,
+					data.taskId,
 					data.limit ?? 8,
 				),
 			),

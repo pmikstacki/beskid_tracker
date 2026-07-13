@@ -47,6 +47,7 @@ export function SpecRelationEditor({
 	});
 
 	const addRelation = (entry: {
+		standardId?: string;
 		href: string;
 		title: string;
 		level: string;
@@ -56,6 +57,7 @@ export function SpecRelationEditor({
 		onChange([
 			...relations,
 			{
+				standardId: entry.standardId,
 				path,
 				href: entry.href,
 				title: entry.title,
@@ -92,7 +94,7 @@ export function SpecRelationEditor({
 						<div className="min-w-0">
 							<p className="truncate text-sm font-medium">{relation.title}</p>
 							<p className="text-muted-foreground truncate font-mono text-xs">
-								{relation.path}
+								{relation.standardId ?? relation.path}
 							</p>
 						</div>
 						<Button

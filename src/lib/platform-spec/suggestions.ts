@@ -100,7 +100,7 @@ function lexicalScore(
 	return { score, matchedTerms };
 }
 
-export function suggestPlatformSpecEntriesForIssue(
+export function suggestPlatformSpecEntriesForTask(
 	entries: FlatSpecNavEntry[],
 	task: RoadmapTask,
 	limit = 8,

@@ -4,7 +4,7 @@ export interface StepRow {
 	text: string;
 }
 
-/** Checklist row for roadmap subtasks (GitHub task list + roadmap-subtasks fence). */
+/** Checklist row for tracker-native roadmap subtasks. */
 export interface SubtaskRow {
 	id: string;
 	text: string;
@@ -71,7 +71,7 @@ function emptySubtaskRow(): SubtaskRow {
 	return { id: newSubtaskId(), text: "", done: false };
 }
 
-/** Parse subtask editor value (JSON rows or GitHub `- [ ]` lines). */
+/** Parse a tracker subtask editor value. Legacy markdown rows remain readable. */
 export function parseSubtasksValue(raw: string): SubtaskRow[] {
 	if (!raw.trim()) return [emptySubtaskRow()];
 	try {
@@ -102,7 +102,7 @@ export function serializeSubtasksValue(rows: SubtaskRow[]): string {
 	return JSON.stringify(rows.length > 0 ? rows : [emptySubtaskRow()]);
 }
 
-/** GitHub-flavored task list for issue bodies (native checklist UI on github.com). */
+/** Legacy markdown checklist serializer retained for historical task bodies. */
 export function subtasksToMarkdown(rows: SubtaskRow[]): string {
 	return rows
 		.filter((row) => row.text.trim())

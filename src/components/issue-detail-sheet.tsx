@@ -2,7 +2,6 @@
 
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "@tanstack/react-router";
-import { ExternalLink } from "lucide-react";
 import { useEffect, useState } from "react";
 
 import { IssueSpecSuggestionsWidget } from "#/components/issue-spec-suggestions-widget";
@@ -77,7 +76,8 @@ export function IssueDetailSheet({
 			if (!task) throw new Error("No issue selected");
 			return updateIssue({
 				data: {
-					issueNumber: task.number,
+					versionId: task.version,
+					taskId: task.id,
 					body,
 					specRelations,
 					subtasks: subtasksFromFormValue(subtasksValue),
@@ -93,7 +93,9 @@ export function IssueDetailSheet({
 	const approveMutation = useMutation({
 		mutationFn: () => {
 			if (!task) throw new Error("No issue selected");
-			return approveSpec({ data: { issueNumber: task.number } });
+			return approveSpec({
+				data: { versionId: task.version, taskId: task.id },
+			});
 		},
 		onSuccess: async () => {
 			await router.invalidate();
@@ -152,7 +154,8 @@ export function IssueDetailSheet({
 						approval={task.specApproval}
 					/>
 					<IssueSpecSuggestionsWidget
-						issueNumber={task.number}
+						versionId={task.version}
+						taskId={task.id}
 						relations={specRelations}
 						onQuickAdd={handleQuickAddSuggestion}
 					/>
@@ -173,7 +176,8 @@ export function IssueDetailSheet({
 							onValueChange={(value) =>
 								updateIssue({
 									data: {
-										issueNumber: task.number,
+										versionId: task.version,
+										taskId: task.id,
 										priority: value as "high" | "medium" | "low",
 									},
 								}).then(() => router.invalidate())
@@ -204,7 +208,7 @@ export function IssueDetailSheet({
 						value={subtasksValue}
 						onChange={setSubtasksValue}
 						placeholder="Describe this subtask…"
-						hint="Checked items use GitHub `- [x]` task-list syntax on save."
+						hint="Checked items are stored as tracker-native subtasks."
 						disabled={saveMutation.isPending}
 						variant="checklist"
 						addLabel="Add subtask"
@@ -219,13 +223,7 @@ export function IssueDetailSheet({
 						onClick={() => saveMutation.mutate()}
 						disabled={saveMutation.isPending}
 					>
-						Save to GitHub
-					</Button>
-					<Button variant="outline" asChild>
-						<a href={task.htmlUrl} target="_blank" rel="noopener noreferrer">
-							Open on GitHub
-							<ExternalLink className="size-3.5" />
-						</a>
+						Save task
 					</Button>
 				</SheetFooter>
 			</SheetContent>

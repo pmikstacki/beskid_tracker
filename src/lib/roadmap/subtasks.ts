@@ -15,7 +15,7 @@ const ROADMAP_SUBTASKS_FENCE = /```roadmap-subtasks\s*\n([\s\S]*?)\n```/;
 
 const SUBTASKS_HEADING = /### Subtasks\s*\n(?:- \[[ xX]\].*\n?)+/;
 
-/** Parse canonical subtasks from issue body (fence first, then GitHub task list). */
+/** Parse subtasks from a historical task body (fence first, then markdown list). */
 export function parseSubtasksBlock(body: string): RoadmapSubtasksBlock {
 	const fenceMatch = body.match(ROADMAP_SUBTASKS_FENCE);
 	if (fenceMatch?.[1]) {
@@ -73,7 +73,7 @@ export function stripSubtasksFromBody(body: string): string {
 		.trim();
 }
 
-/** Write GitHub task-list markdown + roadmap-subtasks fence into issue body. */
+/** Serialize historical markdown checklist data. New task writes use normalized rows. */
 export function upsertSubtasksInBody(
 	body: string,
 	items: SubtaskRow[],

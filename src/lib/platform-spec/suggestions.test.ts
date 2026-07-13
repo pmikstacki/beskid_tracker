@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 
 import type { RoadmapTask } from "#/lib/github/types";
 import type { FlatSpecNavEntry } from "#/lib/platform-spec/nav";
-import { suggestPlatformSpecEntriesForIssue } from "#/lib/platform-spec/suggestions";
+import { suggestPlatformSpecEntriesForTask } from "#/lib/platform-spec/suggestions";
 
 const ENTRIES: FlatSpecNavEntry[] = [
 	{
@@ -53,14 +53,14 @@ function makeTask(patch: Partial<RoadmapTask>): RoadmapTask {
 	};
 }
 
-describe("suggestPlatformSpecEntriesForIssue", () => {
+describe("suggestPlatformSpecEntriesForTask", () => {
 	it("prioritizes scoped and lexical matches", () => {
 		const task = makeTask({
 			domain: "compiler",
 			area: "lsp",
 			feature: "project-graph",
 		});
-		const suggestions = suggestPlatformSpecEntriesForIssue(ENTRIES, task, 3);
+		const suggestions = suggestPlatformSpecEntriesForTask(ENTRIES, task, 3);
 
 		expect(suggestions).toHaveLength(2);
 		expect(suggestions[0]?.entry.slug).toBe("compiler/lsp/project-graph");
@@ -79,7 +79,7 @@ describe("suggestPlatformSpecEntriesForIssue", () => {
 				},
 			],
 		});
-		const suggestions = suggestPlatformSpecEntriesForIssue(ENTRIES, task, 5);
+		const suggestions = suggestPlatformSpecEntriesForTask(ENTRIES, task, 5);
 		const linked = suggestions.find(
 			(entry) => entry.entry.slug === "compiler/lsp/project-graph",
 		);
@@ -95,8 +95,8 @@ describe("suggestPlatformSpecEntriesForIssue", () => {
 			area: undefined,
 			feature: undefined,
 		});
-		const suggestionsA = suggestPlatformSpecEntriesForIssue(ENTRIES, task, 2);
-		const suggestionsB = suggestPlatformSpecEntriesForIssue(ENTRIES, task, 2);
+		const suggestionsA = suggestPlatformSpecEntriesForTask(ENTRIES, task, 2);
+		const suggestionsB = suggestPlatformSpecEntriesForTask(ENTRIES, task, 2);
 
 		expect(suggestionsA.map((it) => it.entry.href)).toEqual(
 			suggestionsB.map((it) => it.entry.href),

@@ -34,7 +34,7 @@ function LoginPage() {
 			<AuthPageShell
 				kicker="Beskid"
 				title="Tracker"
-				description="Sign in with GitHub to manage tasks on Cyber-Nomad-Collective/beskid. All planning data lives in GitHub — this app is a stateless view and editor."
+				description="Sign in through the Beskid auth hub to manage tracker-native roadmap tasks. GitHub is used only for public bug issues."
 				error={
 					error
 						? "Sign-in failed. Check auth hub pairing and try again."

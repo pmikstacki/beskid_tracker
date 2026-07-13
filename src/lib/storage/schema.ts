@@ -1,6 +1,6 @@
 import type { Database } from "bun:sqlite";
 
-export const SCHEMA_VERSION = 5;
+export const SCHEMA_VERSION = 7;
 
 export function migrateSchema(db: Database): void {
 	db.run(`
@@ -19,7 +19,10 @@ export function migrateSchema(db: Database): void {
 	const current = versionRow ? Number.parseInt(versionRow.value, 10) : 0;
 
 	if (current < 1) {
-		applyV1(db);
+		// V1 contains the retired whole-repository GitHub mirror. Existing
+		// versioned databases still need its historical upgrade path, while a
+		// fresh database can start directly from the retained schemas below.
+		if (versionRow) applyV1(db);
 		db.run(
 			"INSERT OR REPLACE INTO schema_meta (key, value) VALUES ('version', '1')",
 		);
@@ -28,34 +31,59 @@ export function migrateSchema(db: Database): void {
 	if (current < 2) {
 		applyV2(db);
 		db.run("UPDATE schema_meta SET value = '2' WHERE key = 'version'");
-		if (!versionRow) {
-			db.run("INSERT INTO schema_meta (key, value) VALUES ('version', '2')");
-		}
 	}
 
 	if (current < 3) {
 		applyV3(db);
 		db.run("UPDATE schema_meta SET value = '3' WHERE key = 'version'");
-		if (!versionRow) {
-			db.run("INSERT INTO schema_meta (key, value) VALUES ('version', '3')");
-		}
 	}
 
 	if (current < 4) {
 		applyV4(db);
 		db.run("UPDATE schema_meta SET value = '4' WHERE key = 'version'");
-		if (!versionRow) {
-			db.run("INSERT INTO schema_meta (key, value) VALUES ('version', '4')");
-		}
 	}
 
 	if (current < 5) {
 		applyV5(db);
 		db.run("UPDATE schema_meta SET value = '5' WHERE key = 'version'");
-		if (!versionRow) {
-			db.run("INSERT INTO schema_meta (key, value) VALUES ('version', '5')");
-		}
 	}
+
+	if (current < 6) {
+		applyV6(db);
+		db.run("UPDATE schema_meta SET value = '6' WHERE key = 'version'");
+	}
+
+	if (current < 7) {
+		applyV7(db);
+		db.run("UPDATE schema_meta SET value = '7' WHERE key = 'version'");
+	}
+}
+
+function applyV7(db: Database): void {
+	const column = db
+		.query<{ name: string }, []>(
+			"SELECT name FROM pragma_table_info('tracker_task_spec_relations') WHERE name = 'standard_id'",
+		)
+		.get();
+	if (!column) {
+		db.run(
+			"ALTER TABLE tracker_task_spec_relations ADD COLUMN standard_id TEXT",
+		);
+	}
+}
+
+function applyV6(db: Database): void {
+	const tx = db.transaction(() => {
+		db.run("DELETE FROM github_sync_outbox WHERE entity_type <> 'bug'");
+		db.run("DELETE FROM github_issue_links WHERE entity_type <> 'bug'");
+		db.run(
+			"DELETE FROM sync_settings WHERE key IN ('sync.export_active_version_tasks', 'sync.active_version_override')",
+		);
+		db.run("DROP TABLE IF EXISTS repo_labels");
+		db.run("DROP TABLE IF EXISTS sync_state");
+		db.run("DROP TABLE IF EXISTS github_issues");
+	});
+	tx();
 }
 
 function applyV5(db: Database): void {

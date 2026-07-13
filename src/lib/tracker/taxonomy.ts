@@ -131,7 +131,7 @@ const baseTaskLayout = (extra: ReportFormLayout = []): ReportFormLayout => [
 				kind: "subtasks",
 				label: "Subtasks",
 				placeholder: "Describe this subtask…",
-				hint: "Checklist items sync to GitHub task lists and a roadmap-subtasks block in the issue body.",
+				hint: "Checklist items are stored as ordered tracker-native subtasks.",
 			}),
 		],
 		"Break work into trackable steps. Checked items map to GitHub `- [x]` syntax.",

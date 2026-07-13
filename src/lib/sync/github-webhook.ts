@@ -4,10 +4,6 @@ import { createHmac, timingSafeEqual } from "node:crypto";
 
 import type { GitHubIssuePayload } from "#/lib/storage/stored-issue";
 import { applyGithubIssueInbound } from "#/lib/tracker/github-inbound-service";
-import {
-	getGithubWebhookSecret,
-	isGithubWebhookConfigured,
-} from "#/lib/sync/github-webhook-config";
 
 export {
 	getGithubWebhookSecret,

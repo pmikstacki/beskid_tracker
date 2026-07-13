@@ -9,10 +9,7 @@ import {
 	workstreamLabel,
 } from "#/lib/github/roadmap-labels";
 import type { RoadmapTask } from "#/lib/github/types";
-import {
-	type SpecRelation,
-	serializeSpecRelationsBlock,
-} from "#/lib/platform-spec/relations";
+import type { SpecRelation } from "#/lib/platform-spec/relations";
 import type { SubtaskRow } from "#/lib/report-issue/field-values";
 
 import type {
@@ -42,6 +39,7 @@ function normalizeRelations(
 	relations: SeedTask["specRelations"],
 ): SpecRelation[] {
 	return relations.map((relation) => ({
+		standardId: relation.standardId,
 		path: relation.path,
 		href: relation.href ?? beskidDocsUrl(relation.path),
 		title: relation.title,
@@ -77,7 +75,6 @@ function buildLabelNames(task: SeedTask): string[] {
 }
 
 function buildBody(version: SeedVersion, task: SeedTask): string {
-	const relations = normalizeRelations(task.specRelations);
 	const provenance = [
 		`Seed task derived from git history (${version.id} cutoff ${version.cutoff.endDate}).`,
 		"",
@@ -91,9 +88,7 @@ function buildBody(version: SeedVersion, task: SeedTask): string {
 		provenance.push(`| Completed | ${task.completedAt} |`);
 	}
 	const sections = [task.body?.trim(), provenance.join("\n")].filter(Boolean);
-	const body = sections.join("\n\n");
-	if (relations.length === 0) return body;
-	return `${body}\n\n${serializeSpecRelationsBlock(relations)}`;
+	return sections.join("\n\n");
 }
 
 export function seedTaskToRoadmapTask(
@@ -109,7 +104,7 @@ export function seedTaskToRoadmapTask(
 		: undefined;
 
 	return {
-		id: `seed:${version.id}:${task.id}`,
+		id: task.id,
 		number: displayNumber,
 		title: task.title,
 		owner: task.owner ?? "beskid",

@@ -2,46 +2,37 @@ import "@tanstack/react-start/server-only";
 
 import type { Octokit } from "@octokit/rest";
 
-import type { UpdateIssueInput } from "#/lib/github/issues-service";
 import type { RoadmapColumnId } from "#/lib/github/roadmap-labels";
 import type { RoadmapTask } from "#/lib/github/types";
-import { drainGithubSyncOutbox } from "#/lib/tracker/process-outbox";
+import { trackerTaskToRoadmapTask } from "#/lib/tracker/mappers";
+import { getTrackerTask } from "#/lib/tracker/repositories/tasks-repository";
 import {
-	getRoadmapTaskByIssueNumber,
 	moveRoadmapTaskToColumn,
+	type UpdateRoadmapTaskInput,
 	updateRoadmapTask,
 } from "#/lib/tracker/task-service";
 
 export async function getRoadmapIssueForSession(
 	_octokit: Octokit,
-	issueNumber: number,
+	versionId: string,
+	taskId: string,
 ): Promise<RoadmapTask | null> {
-	return getRoadmapTaskByIssueNumber(issueNumber);
+	const task = getTrackerTask(versionId, taskId);
+	return task ? trackerTaskToRoadmapTask({ ...task }) : null;
 }
 
 export async function moveIssueToColumnForSession(
-	octokit: Octokit,
-	issueNumber: number,
+	_octokit: Octokit,
+	versionId: string,
+	taskId: string,
 	targetColumn: RoadmapColumnId,
 ): Promise<RoadmapTask> {
-	const task = await moveRoadmapTaskToColumn({ issueNumber }, targetColumn);
-	await drainGithubSyncOutbox(octokit).catch(() => undefined);
-	return task;
+	return moveRoadmapTaskToColumn({ versionId, taskId }, targetColumn);
 }
 
 export async function updateRoadmapIssueForSession(
-	octokit: Octokit,
-	input: UpdateIssueInput,
+	_octokit: Octokit,
+	input: UpdateRoadmapTaskInput,
 ): Promise<RoadmapTask> {
-	const task = await updateRoadmapTask({
-		issueNumber: input.issueNumber,
-		title: input.title,
-		body: input.body,
-		priority: input.priority,
-		specRelations: input.specRelations,
-		subtasks: input.subtasks,
-		workstream: input.workstream,
-	});
-	await drainGithubSyncOutbox(octokit).catch(() => undefined);
-	return task;
+	return updateRoadmapTask(input);
 }

@@ -19,8 +19,7 @@
     "seed:validate": "bun run scripts/validate-seed.ts",
     "seed:schema:export": "bun run scripts/export-seed-json-schema.ts",
     "seed:migrate": "bun run scripts/migrate-seed-catalog.ts",
-    "sync:beskid-packages": "bash ../scripts/sync-beskid-packages.sh beskid_tracker",
-    "sync:issues": "bun run scripts/sync-github-issues.ts"
+    "sync:beskid-packages": "bash ../scripts/sync-beskid-packages.sh beskid_tracker"
   },
   "engines": {
     "bun": ">=1.2.0"
