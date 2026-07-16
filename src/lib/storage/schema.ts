@@ -1,6 +1,6 @@
 import type { Database } from "bun:sqlite";
 
-export const SCHEMA_VERSION = 7;
+export const SCHEMA_VERSION = 8;
 
 export function migrateSchema(db: Database): void {
 	db.run(`
@@ -57,6 +57,28 @@ export function migrateSchema(db: Database): void {
 		applyV7(db);
 		db.run("UPDATE schema_meta SET value = '7' WHERE key = 'version'");
 	}
+
+	if (current < 8) {
+		applyV8(db);
+		db.run("UPDATE schema_meta SET value = '8' WHERE key = 'version'");
+	}
+}
+
+function addColumnIfMissing(db: Database, table: string, column: string, sql: string): void {
+	const existing = db
+		.query<{ name: string }, []>(
+			`SELECT name FROM pragma_table_info('${table}') WHERE name = '${column}'`,
+		)
+		.get();
+	if (!existing) db.run(`ALTER TABLE ${table} ADD COLUMN ${sql}`);
+}
+
+function applyV8(db: Database): void {
+	addColumnIfMissing(db, "tracker_versions", "visibility", "visibility TEXT NOT NULL DEFAULT 'internal'");
+	addColumnIfMissing(db, "tracker_versions", "catalog_revision", "catalog_revision TEXT");
+	addColumnIfMissing(db, "tracker_task_spec_relations", "catalog_revision", "catalog_revision TEXT");
+	addColumnIfMissing(db, "tracker_tasks", "provenance_start_sha", "provenance_start_sha TEXT");
+	addColumnIfMissing(db, "tracker_tasks", "provenance_end_sha", "provenance_end_sha TEXT");
 }
 
 function applyV7(db: Database): void {

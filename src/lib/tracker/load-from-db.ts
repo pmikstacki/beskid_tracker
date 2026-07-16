@@ -85,6 +85,8 @@ function taskToSeed(task: TrackerTask): SeedTask {
 		completedAt: task.completedAt,
 		deliverableId: task.deliverableId,
 		specRelations: task.specRelations.map((relation) => ({
+			standardId: relation.standardId,
+			catalogRevision: relation.catalogRevision,
 			path: relation.path,
 			href: relation.href,
 			title: relation.title,

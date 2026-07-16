@@ -1,0 +1,12 @@
+{
+  "bands": [
+    {
+      "versionId": "v0.4",
+      "repository": "beskid",
+      "startSha": "7f529572",
+      "endSha": "7f529572",
+      "workstream": "release",
+      "catalogRevision": "sha256:openspec-v0.4"
+    }
+  ]
+}

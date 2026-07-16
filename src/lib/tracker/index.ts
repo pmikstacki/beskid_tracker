@@ -24,6 +24,12 @@ export {
 	upsertParsedSeedBundles,
 } from "#/lib/tracker/import-catalog";
 export {
+	applyTrackerReconciliation,
+	planTrackerReconciliation,
+	type ReconciliationPlan,
+	type ReconciliationSummary,
+} from "#/lib/tracker/reconciliation";
+export {
 	hasTrackerCatalogData,
 	loadAllVersionSeedsFromDb,
 	loadVersionSeedFromDb,

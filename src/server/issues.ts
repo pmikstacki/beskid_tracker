@@ -26,6 +26,7 @@ export const moveIssueColumn = createServerFn({ method: "POST" })
 			versionId: z.string().min(1),
 			taskId: z.string().min(1),
 			targetColumn: columnIdSchema,
+			targetIndex: z.number().int().nonnegative(),
 		}),
 	)
 	.handler(
@@ -36,6 +37,7 @@ export const moveIssueColumn = createServerFn({ method: "POST" })
 					data.versionId,
 					data.taskId,
 					data.targetColumn as RoadmapColumnId,
+					data.targetIndex,
 				),
 			),
 	);

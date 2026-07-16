@@ -118,13 +118,14 @@ function replaceTaskSpecRelations(
 		db.run(
 			`
 			INSERT INTO tracker_task_spec_relations (
-				version_id, task_id, standard_id, path, href, title, level, relation, required, sort_order
-			) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+				version_id, task_id, standard_id, catalog_revision, path, href, title, level, relation, required, sort_order
+			) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
 			`,
 			[
 				versionId,
 				taskId,
 				relation.standardId ?? null,
+				relation.catalogRevision ?? null,
 				relation.path,
 				relation.href ?? null,
 				relation.title ?? null,
@@ -142,6 +143,18 @@ export function upsertTrackerTask(
 	versionId: string,
 	task: SeedTask,
 ): void {
+	if (task.workstream) {
+		const workstream = db
+			.query<{ slug: string }, [string, string]>(
+				"SELECT slug FROM tracker_workstreams WHERE version_id = ? AND slug = ?",
+			)
+			.get(versionId, task.workstream);
+		if (!workstream) {
+			throw new Error(
+				`Unknown workstream ${task.workstream} for version ${versionId}`,
+			);
+		}
+	}
 	const now = nowIso();
 	const deliverableId = task.deliverableId ?? task.milestoneId ?? null;
 	db.run(
@@ -149,8 +162,8 @@ export function upsertTrackerTask(
 		INSERT INTO tracker_tasks (
 			version_id, id, title, status_column, priority, workstream, domain, area, feature,
 			owner, sort_order, deliverable_id, body, spec_approval, completed_at, source_json,
-			local_updated_at, created_at, updated_at
-		) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+			local_updated_at, provenance_start_sha, provenance_end_sha, created_at, updated_at
+		) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
 		ON CONFLICT(version_id, id) DO UPDATE SET
 			title = excluded.title,
 			status_column = excluded.status_column,
@@ -167,6 +180,8 @@ export function upsertTrackerTask(
 			completed_at = excluded.completed_at,
 			source_json = excluded.source_json,
 			local_updated_at = excluded.local_updated_at,
+			provenance_start_sha = excluded.provenance_start_sha,
+			provenance_end_sha = excluded.provenance_end_sha,
 			updated_at = excluded.updated_at
 		`,
 		[
@@ -187,6 +202,8 @@ export function upsertTrackerTask(
 			task.completedAt ?? null,
 			JSON.stringify(task.source),
 			now,
+			task.source.commit,
+			task.source.commit,
 			now,
 			now,
 		],
@@ -253,7 +270,7 @@ function listSpecRelationRowsForTask(
 	return db
 		.query<TrackerTaskSpecRelationRow, [string, string]>(
 			`
-			SELECT id, version_id, task_id, standard_id, path, href, title, level, relation, required, sort_order
+			SELECT id, version_id, task_id, standard_id, catalog_revision, path, href, title, level, relation, required, sort_order
 			FROM tracker_task_spec_relations
 			WHERE version_id = ? AND task_id = ?
 			ORDER BY sort_order ASC, id ASC

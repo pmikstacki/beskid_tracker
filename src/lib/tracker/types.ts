@@ -24,6 +24,8 @@ export interface TrackerVersionRow {
 	status: string;
 	cutoff_json: string;
 	sort_key: number;
+	visibility: string;
+	catalog_revision: string | null;
 	created_at: string;
 	updated_at: string;
 }
@@ -84,6 +86,7 @@ export interface TrackerTaskSpecRelationRow {
 	version_id: string;
 	task_id: string;
 	standard_id: string | null;
+	catalog_revision: string | null;
 	path: string;
 	href: string | null;
 	title: string | null;
@@ -142,6 +145,8 @@ export interface TrackerVersion {
 	status: VersionStatus;
 	cutoff: SeedVersionCutoff;
 	sortKey: number;
+	visibility: "internal" | "public";
+	catalogRevision?: string;
 	createdAt: string;
 	updatedAt: string;
 }
@@ -176,6 +181,7 @@ export interface TrackerTaskSubtask {
 export interface TrackerTaskSpecRelation {
 	id: number;
 	standardId?: string;
+	catalogRevision?: string;
 	path: string;
 	href?: string;
 	title?: string;

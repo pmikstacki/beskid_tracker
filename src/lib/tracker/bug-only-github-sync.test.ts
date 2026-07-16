@@ -70,7 +70,7 @@ describe("bug-only GitHub sync", () => {
 		db.run("UPDATE schema_meta SET value = '5' WHERE key = 'version'");
 		migrateSchema(db);
 
-		expect(SCHEMA_VERSION).toBe(7);
+		expect(SCHEMA_VERSION).toBe(8);
 		expect(
 			db
 				.query<{ name: string }, []>(

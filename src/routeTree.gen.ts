@@ -28,6 +28,9 @@ import { Route as ApiAdminSetupRouteImport } from './routes/api/admin/setup'
 import { Route as ShellVersionsVersionRouteImport } from './routes/_shell/versions/$version'
 import { Route as ShellVVersionRouteImport } from './routes/_shell/v/$version'
 import { Route as ShellVersionsVersionIndexRouteImport } from './routes/_shell/versions/$version/index'
+import { Route as ApiV1LinksTargetRouteImport } from './routes/api/v1/links/$target'
+import { Route as ApiV1DeliveryLatestRouteImport } from './routes/api/v1/delivery/latest'
+import { Route as ApiV1DeliveryVersionRouteImport } from './routes/api/v1/delivery/$version'
 import { Route as ApiAdminSetupStatusRouteImport } from './routes/api/admin/setup/status'
 import { Route as ApiAdminAuthPairRouteImport } from './routes/api/admin/auth/pair'
 import { Route as ShellWorkstreamsVVersionRouteImport } from './routes/_shell/workstreams/v/$version'
@@ -136,6 +139,21 @@ const ShellVersionsVersionIndexRoute =
     path: '/',
     getParentRoute: () => ShellVersionsVersionRoute,
   } as any)
+const ApiV1LinksTargetRoute = ApiV1LinksTargetRouteImport.update({
+  id: '/api/v1/links/$target',
+  path: '/api/v1/links/$target',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiV1DeliveryLatestRoute = ApiV1DeliveryLatestRouteImport.update({
+  id: '/api/v1/delivery/latest',
+  path: '/api/v1/delivery/latest',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiV1DeliveryVersionRoute = ApiV1DeliveryVersionRouteImport.update({
+  id: '/api/v1/delivery/$version',
+  path: '/api/v1/delivery/$version',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiAdminSetupStatusRoute = ApiAdminSetupStatusRouteImport.update({
   id: '/status',
   path: '/status',
@@ -227,6 +245,9 @@ export interface FileRoutesByFullPath {
   '/workstreams/v/$version': typeof ShellWorkstreamsVVersionRoute
   '/api/admin/auth/pair': typeof ApiAdminAuthPairRoute
   '/api/admin/setup/status': typeof ApiAdminSetupStatusRoute
+  '/api/v1/delivery/$version': typeof ApiV1DeliveryVersionRoute
+  '/api/v1/delivery/latest': typeof ApiV1DeliveryLatestRoute
+  '/api/v1/links/$target': typeof ApiV1LinksTargetRoute
   '/versions/$version/': typeof ShellVersionsVersionIndexRoute
   '/v/$version/tasks/new': typeof ShellVVersionTasksNewRoute
   '/v/$version/w/$workstream': typeof ShellVVersionWWorkstreamRouteWithChildren
@@ -258,6 +279,9 @@ export interface FileRoutesByTo {
   '/workstreams/v/$version': typeof ShellWorkstreamsVVersionRoute
   '/api/admin/auth/pair': typeof ApiAdminAuthPairRoute
   '/api/admin/setup/status': typeof ApiAdminSetupStatusRoute
+  '/api/v1/delivery/$version': typeof ApiV1DeliveryVersionRoute
+  '/api/v1/delivery/latest': typeof ApiV1DeliveryLatestRoute
+  '/api/v1/links/$target': typeof ApiV1LinksTargetRoute
   '/versions/$version': typeof ShellVersionsVersionIndexRoute
   '/v/$version/tasks/new': typeof ShellVVersionTasksNewRoute
   '/v/$version/w/$workstream': typeof ShellVVersionWWorkstreamRouteWithChildren
@@ -292,6 +316,9 @@ export interface FileRoutesById {
   '/_shell/workstreams/v/$version': typeof ShellWorkstreamsVVersionRoute
   '/api/admin/auth/pair': typeof ApiAdminAuthPairRoute
   '/api/admin/setup/status': typeof ApiAdminSetupStatusRoute
+  '/api/v1/delivery/$version': typeof ApiV1DeliveryVersionRoute
+  '/api/v1/delivery/latest': typeof ApiV1DeliveryLatestRoute
+  '/api/v1/links/$target': typeof ApiV1LinksTargetRoute
   '/_shell/versions/$version/': typeof ShellVersionsVersionIndexRoute
   '/_shell/v/$version/tasks/new': typeof ShellVVersionTasksNewRoute
   '/_shell/v/$version/w/$workstream': typeof ShellVVersionWWorkstreamRouteWithChildren
@@ -326,6 +353,9 @@ export interface FileRouteTypes {
     | '/workstreams/v/$version'
     | '/api/admin/auth/pair'
     | '/api/admin/setup/status'
+    | '/api/v1/delivery/$version'
+    | '/api/v1/delivery/latest'
+    | '/api/v1/links/$target'
     | '/versions/$version/'
     | '/v/$version/tasks/new'
     | '/v/$version/w/$workstream'
@@ -357,6 +387,9 @@ export interface FileRouteTypes {
     | '/workstreams/v/$version'
     | '/api/admin/auth/pair'
     | '/api/admin/setup/status'
+    | '/api/v1/delivery/$version'
+    | '/api/v1/delivery/latest'
+    | '/api/v1/links/$target'
     | '/versions/$version'
     | '/v/$version/tasks/new'
     | '/v/$version/w/$workstream'
@@ -390,6 +423,9 @@ export interface FileRouteTypes {
     | '/_shell/workstreams/v/$version'
     | '/api/admin/auth/pair'
     | '/api/admin/setup/status'
+    | '/api/v1/delivery/$version'
+    | '/api/v1/delivery/latest'
+    | '/api/v1/links/$target'
     | '/_shell/versions/$version/'
     | '/_shell/v/$version/tasks/new'
     | '/_shell/v/$version/w/$workstream'
@@ -417,6 +453,9 @@ export interface RootRouteChildren {
   ApiWebhooksGithubRoute: typeof ApiWebhooksGithubRoute
   SettingsAuthPairRoute: typeof SettingsAuthPairRoute
   ApiAdminAuthPairRoute: typeof ApiAdminAuthPairRoute
+  ApiV1DeliveryVersionRoute: typeof ApiV1DeliveryVersionRoute
+  ApiV1DeliveryLatestRoute: typeof ApiV1DeliveryLatestRoute
+  ApiV1LinksTargetRoute: typeof ApiV1LinksTargetRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -553,6 +592,27 @@ declare module '@tanstack/react-router' {
       fullPath: '/versions/$version/'
       preLoaderRoute: typeof ShellVersionsVersionIndexRouteImport
       parentRoute: typeof ShellVersionsVersionRoute
+    }
+    '/api/v1/links/$target': {
+      id: '/api/v1/links/$target'
+      path: '/api/v1/links/$target'
+      fullPath: '/api/v1/links/$target'
+      preLoaderRoute: typeof ApiV1LinksTargetRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/v1/delivery/latest': {
+      id: '/api/v1/delivery/latest'
+      path: '/api/v1/delivery/latest'
+      fullPath: '/api/v1/delivery/latest'
+      preLoaderRoute: typeof ApiV1DeliveryLatestRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/v1/delivery/$version': {
+      id: '/api/v1/delivery/$version'
+      path: '/api/v1/delivery/$version'
+      fullPath: '/api/v1/delivery/$version'
+      preLoaderRoute: typeof ApiV1DeliveryVersionRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/api/admin/setup/status': {
       id: '/api/admin/setup/status'
@@ -743,16 +803,10 @@ const rootRouteChildren: RootRouteChildren = {
   ApiWebhooksGithubRoute: ApiWebhooksGithubRoute,
   SettingsAuthPairRoute: SettingsAuthPairRoute,
   ApiAdminAuthPairRoute: ApiAdminAuthPairRoute,
+  ApiV1DeliveryVersionRoute: ApiV1DeliveryVersionRoute,
+  ApiV1DeliveryLatestRoute: ApiV1DeliveryLatestRoute,
+  ApiV1LinksTargetRoute: ApiV1LinksTargetRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { createStart } from '@tanstack/react-start'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-  }
-}

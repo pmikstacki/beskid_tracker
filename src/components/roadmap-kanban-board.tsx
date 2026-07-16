@@ -16,19 +16,12 @@ import {
 	type KanbanMoveEvent,
 	KanbanOverlay,
 } from "#/components/reui/kanban";
-import { SpecRelationsList } from "#/components/spec-relations-list";
+import { TaskDisplay } from "#/components/task-display";
 import { Badge } from "#/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "#/components/ui/card";
 import type { RoadmapColumnId } from "#/lib/github/roadmap-labels";
 import type { RoadmapColumns, RoadmapTask } from "#/lib/github/types";
-import { subtasksProgress } from "#/lib/roadmap/subtasks";
 import { moveIssueColumn } from "#/server/issues";
-
-const PRIORITY_LABEL = {
-	high: "High",
-	medium: "Medium",
-	low: "Low",
-} as const;
 
 function applyKanbanMove(
 	prev: RoadmapColumns,
@@ -39,6 +32,7 @@ function applyKanbanMove(
 		versionId: string;
 		taskId: string;
 		targetColumn: RoadmapColumnId;
+		targetIndex: number;
 	} | null;
 } {
 	const { activeContainer, overContainer, activeIndex, overIndex } = event;
@@ -51,7 +45,12 @@ function applyKanbanMove(
 				...prev,
 				[from]: arrayMove([...prev[from]], activeIndex, overIndex),
 			},
-			move: null,
+			move: {
+				versionId: prev[from][activeIndex]?.version ?? "",
+				taskId: prev[from][activeIndex]?.id ?? "",
+				targetColumn: to,
+				targetIndex: overIndex,
+			},
 		};
 	}
 
@@ -71,7 +70,12 @@ function applyKanbanMove(
 			[from]: source,
 			[to]: target,
 		},
-		move: { versionId: moved.version, taskId: moved.id, targetColumn: to },
+		move: {
+			versionId: moved.version,
+			taskId: moved.id,
+			targetColumn: to,
+			targetIndex: overIndex,
+		},
 	};
 }
 
@@ -108,20 +112,25 @@ export function RoadmapKanbanBoard({
 			versionId: string;
 			taskId: string;
 			targetColumn: RoadmapColumnId;
-		}) => moveIssueColumn({ data: input }),
+			targetIndex: number;
+			rollback: RoadmapColumns;
+		}) => {
+			const { rollback: _rollback, ...data } = input;
+			return moveIssueColumn({ data });
+		},
 		onSuccess: async () => {
 			await router.invalidate();
 		},
-		onError: () => {
-			setColumns(initialColumns);
+		onError: (_error, input) => {
+			setColumns(input.rollback);
 		},
 	});
 
 	const handleMove = (event: KanbanMoveEvent) => {
 		setColumns((prev) => {
 			const { next, move } = applyKanbanMove(prev, event);
-			if (move && !moveMutation.isPending) {
-				moveMutation.mutate(move);
+			if (move?.taskId && !moveMutation.isPending) {
+				moveMutation.mutate({ ...move, rollback: prev });
 			}
 			return next;
 		});
@@ -162,9 +171,7 @@ export function RoadmapKanbanBoard({
 								value={columnId}
 								className="flex min-h-48 flex-col gap-3"
 							>
-								{items.map((item) => {
-									const subtaskStats = subtasksProgress(item.subtasks);
-									return (
+								{items.map((item) => (
 										<KanbanItem key={item.id} value={item.id}>
 											<KanbanItemHandle>
 												<Card
@@ -172,68 +179,13 @@ export function RoadmapKanbanBoard({
 													className="kanban-card cursor-grab py-4 active:cursor-grabbing"
 													onClick={() => openTask(item.id)}
 												>
-													<CardHeader className="border-0 px-4 py-0">
-														<CardTitle className="text-sm leading-snug">
-															<span className="text-muted-foreground mr-1.5 font-mono text-xs">
-																#{item.number}
-															</span>
-															{item.title}
-														</CardTitle>
-													</CardHeader>
-													<CardContent className="flex flex-col gap-2 px-4 pt-3">
-														<div className="flex flex-wrap gap-1.5">
-															<Badge
-																variant={
-																	item.priority === "high"
-																		? "destructive"
-																		: item.priority === "medium"
-																			? "default"
-																			: "secondary"
-																}
-															>
-																{PRIORITY_LABEL[item.priority]}
-															</Badge>
-															{item.workstream ? (
-																<Badge
-																	variant="outline"
-																	className="font-normal"
-																>
-																	{item.workstream}
-																</Badge>
-															) : null}
-															{item.specApproval === "pending" ? (
-																<Badge
-																	variant="secondary"
-																	className="font-normal"
-																>
-																	Spec pending
-																</Badge>
-															) : null}
-															{subtaskStats.total > 0 ? (
-																<Badge
-																	variant="outline"
-																	className="font-normal"
-																>
-																	{subtaskStats.done}/{subtaskStats.total}{" "}
-																	subtasks
-																</Badge>
-															) : null}
-														</div>
-														{item.specRelations.length > 0 ? (
-															<SpecRelationsList
-																relations={item.specRelations}
-																compact
-															/>
-														) : null}
-														<p className="text-muted-foreground text-xs">
-															{item.owner || "Unassigned"}
-														</p>
+													<CardContent className="px-4 pt-0">
+														<TaskDisplay task={item} variant="card" />
 													</CardContent>
 												</Card>
 											</KanbanItemHandle>
 										</KanbanItem>
-									);
-								})}
+									))}
 							</KanbanColumnContent>
 						</KanbanColumn>
 					))}

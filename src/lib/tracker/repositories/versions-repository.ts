@@ -16,14 +16,15 @@ function nowIso(): string {
 export function upsertTrackerVersion(
 	db: Database,
 	version: SeedVersion,
+	metadata: { visibility?: "internal" | "public"; catalogRevision?: string } = {},
 ): void {
 	const now = nowIso();
 	const status = normalizeVersionStatus(version.status);
 	db.run(
 		`
 		INSERT INTO tracker_versions (
-			id, title, summary, theme, status, cutoff_json, sort_key, created_at, updated_at
-		) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+			id, title, summary, theme, status, cutoff_json, sort_key, visibility, catalog_revision, created_at, updated_at
+		) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
 		ON CONFLICT(id) DO UPDATE SET
 			title = excluded.title,
 			summary = excluded.summary,
@@ -31,6 +32,8 @@ export function upsertTrackerVersion(
 			status = excluded.status,
 			cutoff_json = excluded.cutoff_json,
 			sort_key = excluded.sort_key,
+			visibility = excluded.visibility,
+			catalog_revision = excluded.catalog_revision,
 			updated_at = excluded.updated_at
 		`,
 		[
@@ -41,6 +44,8 @@ export function upsertTrackerVersion(
 			status,
 			JSON.stringify(version.cutoff),
 			semverSortKey(version.id),
+			metadata.visibility ?? "internal",
+			metadata.catalogRevision ?? null,
 			now,
 			now,
 		],
@@ -51,7 +56,7 @@ export function listTrackerVersionRows(db: Database): TrackerVersionRow[] {
 	return db
 		.query<TrackerVersionRow, []>(
 			`
-			SELECT id, title, summary, theme, status, cutoff_json, sort_key, created_at, updated_at
+			SELECT id, title, summary, theme, status, cutoff_json, sort_key, visibility, catalog_revision, created_at, updated_at
 			FROM tracker_versions
 			ORDER BY sort_key ASC, id ASC
 			`,
@@ -72,7 +77,7 @@ export function getTrackerVersion(
 	const row = database
 		.query<TrackerVersionRow, [string]>(
 			`
-			SELECT id, title, summary, theme, status, cutoff_json, sort_key, created_at, updated_at
+			SELECT id, title, summary, theme, status, cutoff_json, sort_key, visibility, catalog_revision, created_at, updated_at
 			FROM tracker_versions
 			WHERE id = ?
 			`,

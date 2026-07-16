@@ -26,8 +26,9 @@ export async function moveIssueToColumnForSession(
 	versionId: string,
 	taskId: string,
 	targetColumn: RoadmapColumnId,
+	targetIndex: number,
 ): Promise<RoadmapTask> {
-	return moveRoadmapTaskToColumn({ versionId, taskId }, targetColumn);
+	return moveRoadmapTaskToColumn({ versionId, taskId }, targetColumn, targetIndex);
 }
 
 export async function updateRoadmapIssueForSession(

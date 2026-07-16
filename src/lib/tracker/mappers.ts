@@ -59,6 +59,8 @@ export function rowToTrackerVersion(row: TrackerVersionRow): TrackerVersion {
 			rationale: "",
 		}),
 		sortKey: row.sort_key,
+		visibility: row.visibility === "public" ? "public" : "internal",
+		catalogRevision: row.catalog_revision ?? undefined,
 		createdAt: row.created_at,
 		updatedAt: row.updated_at,
 	};
@@ -95,6 +97,7 @@ export function rowToTrackerTaskSpecRelation(
 	return {
 		id: row.id,
 		standardId: row.standard_id ?? undefined,
+		catalogRevision: row.catalog_revision ?? undefined,
 		path: row.path,
 		href: row.href ?? undefined,
 		title: row.title ?? undefined,

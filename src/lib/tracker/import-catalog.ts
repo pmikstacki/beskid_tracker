@@ -22,7 +22,19 @@ function upsertBundleInTransaction(
 	db: Database,
 	bundle: ParsedSeedBundle,
 ): CatalogImportSummary {
-	upsertTrackerVersion(db, bundle.version);
+	const catalogRevisions = new Set(
+		bundle.tasks.flatMap((task) =>
+			task.specRelations.flatMap((relation) =>
+				relation.catalogRevision ? [relation.catalogRevision] : [],
+			),
+		),
+	);
+	if (catalogRevisions.size > 1) {
+		throw new Error(`Multiple catalog revisions for version ${bundle.versionId}`);
+	}
+	upsertTrackerVersion(db, bundle.version, {
+		catalogRevision: catalogRevisions.values().next().value,
+	});
 
 	for (const workstream of bundle.workstreams) {
 		upsertTrackerWorkstream(db, bundle.versionId, workstream);

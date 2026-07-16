@@ -3,6 +3,7 @@ import "@tanstack/react-start/server-only";
 import type { Database } from "bun:sqlite";
 
 import type { RoadmapColumnId } from "#/lib/github/roadmap-labels";
+import { ROADMAP_COLUMNS } from "#/lib/github/roadmap-labels";
 import type { RoadmapTask } from "#/lib/github/types";
 import type { SpecRelation } from "#/lib/platform-spec/relations";
 import type { SubtaskRow } from "#/lib/report-issue/field-values";
@@ -11,6 +12,7 @@ import { getIssuesDatabase } from "#/lib/storage/db";
 import { trackerTaskToRoadmapTask } from "#/lib/tracker/mappers";
 import {
 	getTrackerTask,
+	listTrackerTasks,
 	listTrackerDeliverables,
 	upsertTrackerTask,
 } from "#/lib/tracker/repositories/tasks-repository";
@@ -208,9 +210,46 @@ export async function updateRoadmapTask(
 export async function moveRoadmapTaskToColumn(
 	ref: TaskRef,
 	targetColumn: RoadmapColumnId,
+	targetIndex: number,
 	db?: Database,
 ): Promise<RoadmapTask> {
-	return updateRoadmapTask({ ...ref, statusColumn: targetColumn }, db);
+	const database = db ?? getIssuesDatabase();
+	const task = getTrackerTask(ref.versionId, ref.taskId, database);
+	if (!task) {
+		throw new Error(`Task ${ref.versionId}:${ref.taskId} not found`);
+	}
+
+	const tasks = listTrackerTasks(ref.versionId, database);
+	const columns = new Map<RoadmapColumnId, typeof tasks>();
+	for (const column of ROADMAP_COLUMNS) columns.set(column.id, []);
+	for (const item of tasks) columns.get(item.statusColumn)?.push(item);
+	for (const items of columns.values()) {
+		const index = items.findIndex((item) => item.id === ref.taskId);
+		if (index >= 0) items.splice(index, 1);
+	}
+	const destination = columns.get(targetColumn);
+	if (!destination) throw new Error(`Unknown roadmap column ${targetColumn}`);
+	destination.splice(Math.max(0, Math.min(targetIndex, destination.length)), 0, {
+		...task,
+		statusColumn: targetColumn,
+	});
+
+	const ordered = ROADMAP_COLUMNS.flatMap((column) => columns.get(column.id) ?? []);
+	database.run("BEGIN");
+	try {
+		for (const [index, item] of ordered.entries()) {
+			database.run(
+				"UPDATE tracker_tasks SET status_column = ?, sort_order = ?, updated_at = ? WHERE version_id = ? AND id = ?",
+				[item.statusColumn, index, new Date().toISOString(), ref.versionId, item.id],
+			);
+		}
+		database.run("COMMIT");
+	} catch (error) {
+		database.run("ROLLBACK");
+		throw error;
+	}
+
+	return taskToRoadmapTask(ref.versionId, ref.taskId, database);
 }
 
 export async function approveTaskSpec(
