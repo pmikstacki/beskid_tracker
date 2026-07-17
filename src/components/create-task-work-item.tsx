@@ -23,6 +23,8 @@ function taskPreview(version: string, workstream?: string): RoadmapTask {
 		body: "",
 		specRelations: [],
 		subtasks: [],
+		repoPaths: [],
+		specApproval: undefined,
 		version,
 		workstream,
 		htmlUrl: "",

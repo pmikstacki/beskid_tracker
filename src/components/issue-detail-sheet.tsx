@@ -5,6 +5,7 @@ import { useRouter } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 
 import { IssueSpecSuggestionsWidget } from "#/components/issue-spec-suggestions-widget";
+import { RepoPathField } from "#/components/repo-path-field";
 import { StepsField } from "#/components/report-fields/steps-field";
 import { SpecRelationEditor } from "#/components/spec-relation-editor";
 import { SpecRelationsList } from "#/components/spec-relations-list";
@@ -60,6 +61,7 @@ export function IssueDetailSheet({
 	const [body, setBody] = useState("");
 	const [subtasksValue, setSubtasksValue] = useState("");
 	const [specRelations, setSpecRelations] = useState<SpecRelation[]>([]);
+	const [repoPaths, setRepoPaths] = useState<string[]>([]);
 	const [workstream, setWorkstream] = useState<string | undefined>();
 
 	useEffect(() => {
@@ -67,6 +69,7 @@ export function IssueDetailSheet({
 			setBody(stripSubtasksFromBody(task.body));
 			setSubtasksValue(subtasksToFormValue(task.subtasks));
 			setSpecRelations(task.specRelations);
+			setRepoPaths(task.repoPaths ?? []);
 			setWorkstream(task.workstream);
 		}
 	}, [task]);
@@ -80,6 +83,7 @@ export function IssueDetailSheet({
 					taskId: task.id,
 					body,
 					specRelations,
+					repoPaths,
 					subtasks: subtasksFromFormValue(subtasksValue),
 					workstream,
 				},
@@ -216,6 +220,11 @@ export function IssueDetailSheet({
 					<SpecRelationEditor
 						relations={specRelations}
 						onChange={setSpecRelations}
+					/>
+					<RepoPathField
+						paths={repoPaths}
+						onChange={setRepoPaths}
+						disabled={saveMutation.isPending}
 					/>
 				</div>
 				<SheetFooter className="flex-row flex-wrap gap-2">

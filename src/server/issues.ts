@@ -69,6 +69,7 @@ export const updateIssue = createServerFn({ method: "POST" })
 				)
 				.optional(),
 			workstream: z.string().optional(),
+			repoPaths: z.array(z.string().min(1).max(512)).max(32).optional(),
 			subtasks: z
 				.array(
 					z.object({

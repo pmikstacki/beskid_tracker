@@ -86,6 +86,7 @@ export const createBoardIssue = createServerFn({ method: "POST" })
 					required: z.boolean(),
 				}),
 			),
+			repoPaths: z.array(z.string().min(1).max(512)).max(32).default([]),
 			componentId: z.string().min(1).max(64),
 			subcomponentId: z.string().min(1).max(64),
 		}),

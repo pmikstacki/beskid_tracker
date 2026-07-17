@@ -50,6 +50,14 @@ const resolveAlias = [
 		replacement: path.join(uiReactRoot, "src/components/settings/index.ts"),
 	},
 	{
+		find: "@beskid/ui-react/explorer",
+		replacement: path.join(uiReactRoot, "src/explorer/index.ts"),
+	},
+	{
+		find: "@beskid/ui-react/graph",
+		replacement: path.join(uiReactRoot, "src/graph/index.ts"),
+	},
+	{
 		find: "@beskid/ui-react",
 		replacement: path.join(uiReactRoot, "src/index.ts"),
 	},

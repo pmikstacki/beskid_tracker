@@ -26,6 +26,7 @@ export interface CreateRoadmapTaskInput {
 	version: string;
 	workstream?: string;
 	specRelations: SpecRelation[];
+	repoPaths?: string[];
 	taskId?: string;
 	owner?: string;
 }
@@ -37,6 +38,7 @@ export interface UpdateRoadmapTaskInput {
 	body?: string;
 	priority?: "high" | "medium" | "low";
 	specRelations?: SpecRelation[];
+	repoPaths?: string[];
 	subtasks?: SubtaskRow[];
 	workstream?: string;
 	statusColumn?: RoadmapColumnId;
@@ -113,6 +115,7 @@ function trackerTaskToSeedTask(task: TrackerTask, taskId: string): SeedTask {
 		})),
 		specApproval: task.specApproval,
 		body: task.body,
+		repoPaths: task.repoPaths ?? [],
 		subtasks: task.subtasks.map((step) => ({
 			text: step.text,
 			done: step.done,
@@ -160,6 +163,7 @@ export async function createRoadmapTask(
 		specRelations: specRelationsToSeed(input.specRelations),
 		specApproval: input.specRelations.length > 0 ? "pending" : undefined,
 		body: input.body.trim(),
+		repoPaths: input.repoPaths ?? [],
 		subtasks: [],
 		source: {
 			repo: "beskid",
@@ -197,6 +201,9 @@ export async function updateRoadmapTask(
 		seedTask.specApproval = input.specApproval;
 	if (input.specRelations !== undefined) {
 		seedTask.specRelations = specRelationsToSeed(input.specRelations);
+	}
+	if (input.repoPaths !== undefined) {
+		seedTask.repoPaths = input.repoPaths;
 	}
 	if (input.subtasks !== undefined) {
 		seedTask.subtasks = subtasksToSeed(input.subtasks);

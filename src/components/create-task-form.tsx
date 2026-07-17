@@ -4,6 +4,7 @@ import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "@tanstack/react-router";
 import { useState } from "react";
 
+import { RepoPathField } from "#/components/repo-path-field";
 import { SpecRelationEditor } from "#/components/spec-relation-editor";
 import { TrackerReportForm } from "#/components/tracker-report-form";
 import { Input } from "#/components/ui/input";
@@ -44,6 +45,7 @@ export function CreateTaskForm({
 	);
 	const [customWorkstream, setCustomWorkstream] = useState("");
 	const [specRelations, setSpecRelations] = useState<SpecRelation[]>([]);
+	const [repoPaths, setRepoPaths] = useState<string[]>([]);
 
 	const hasRequiredRelation = specRelations.some((r) => r.required);
 	const specReady = specRelations.length > 0 && hasRequiredRelation;
@@ -68,6 +70,7 @@ export function CreateTaskForm({
 							? slugifyWorkstream(customWorkstream)
 							: workstream),
 					specRelations,
+					repoPaths,
 					componentId: payload.componentId,
 					subcomponentId: payload.subcomponentId,
 				},
@@ -85,6 +88,7 @@ export function CreateTaskForm({
 		setWorkstream(defaultWorkstream);
 		setCustomWorkstream("");
 		setSpecRelations([]);
+		setRepoPaths([]);
 	};
 
 	const roadmapFooter = (
@@ -171,6 +175,7 @@ export function CreateTaskForm({
 					Mark at least one spec relation as required.
 				</p>
 			) : null}
+			<RepoPathField paths={repoPaths} onChange={setRepoPaths} />
 		</div>
 	);
 

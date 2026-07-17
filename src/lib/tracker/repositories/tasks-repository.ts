@@ -162,8 +162,8 @@ export function upsertTrackerTask(
 		INSERT INTO tracker_tasks (
 			version_id, id, title, status_column, priority, workstream, domain, area, feature,
 			owner, sort_order, deliverable_id, body, spec_approval, completed_at, source_json,
-			local_updated_at, provenance_start_sha, provenance_end_sha, created_at, updated_at
-		) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+			repo_paths_json, local_updated_at, provenance_start_sha, provenance_end_sha, created_at, updated_at
+		) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
 		ON CONFLICT(version_id, id) DO UPDATE SET
 			title = excluded.title,
 			status_column = excluded.status_column,
@@ -179,6 +179,7 @@ export function upsertTrackerTask(
 			spec_approval = excluded.spec_approval,
 			completed_at = excluded.completed_at,
 			source_json = excluded.source_json,
+			repo_paths_json = excluded.repo_paths_json,
 			local_updated_at = excluded.local_updated_at,
 			provenance_start_sha = excluded.provenance_start_sha,
 			provenance_end_sha = excluded.provenance_end_sha,
@@ -201,6 +202,7 @@ export function upsertTrackerTask(
 			task.specApproval ?? null,
 			task.completedAt ?? null,
 			JSON.stringify(task.source),
+			JSON.stringify(task.repoPaths ?? []),
 			now,
 			task.source.commit,
 			task.source.commit,
@@ -223,7 +225,7 @@ export function listTrackerTaskRows(
 				SELECT
 					version_id, id, title, status_column, priority, workstream, domain, area, feature,
 					owner, sort_order, deliverable_id, body, spec_approval, completed_at, source_json,
-					local_updated_at, created_at, updated_at
+					repo_paths_json, local_updated_at, created_at, updated_at
 				FROM tracker_tasks
 				WHERE version_id = ?
 				ORDER BY sort_order ASC, id ASC
@@ -237,7 +239,7 @@ export function listTrackerTaskRows(
 			SELECT
 				version_id, id, title, status_column, priority, workstream, domain, area, feature,
 				owner, sort_order, deliverable_id, body, spec_approval, completed_at, source_json,
-				local_updated_at, created_at, updated_at
+				repo_paths_json, local_updated_at, created_at, updated_at
 			FROM tracker_tasks
 			ORDER BY version_id ASC, sort_order ASC, id ASC
 			`,
@@ -291,7 +293,7 @@ export function getTrackerTask(
 			SELECT
 				version_id, id, title, status_column, priority, workstream, domain, area, feature,
 				owner, sort_order, deliverable_id, body, spec_approval, completed_at, source_json,
-				local_updated_at, created_at, updated_at
+				repo_paths_json, local_updated_at, created_at, updated_at
 			FROM tracker_tasks
 			WHERE version_id = ? AND id = ?
 			`,

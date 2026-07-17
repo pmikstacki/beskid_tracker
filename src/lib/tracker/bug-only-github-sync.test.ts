@@ -70,7 +70,7 @@ describe("bug-only GitHub sync", () => {
 		db.run("UPDATE schema_meta SET value = '5' WHERE key = 'version'");
 		migrateSchema(db);
 
-		expect(SCHEMA_VERSION).toBe(8);
+		expect(SCHEMA_VERSION).toBe(9);
 		expect(
 			db
 				.query<{ name: string }, []>(
@@ -78,6 +78,13 @@ describe("bug-only GitHub sync", () => {
 				)
 				.get()?.name,
 		).toBe("standard_id");
+		expect(
+			db
+				.query<{ name: string }, []>(
+					"SELECT name FROM pragma_table_info('tracker_tasks') WHERE name = 'repo_paths_json'",
+				)
+				.get()?.name,
+		).toBe("repo_paths_json");
 		expect(
 			db
 				.query<{ count: number }, []>(

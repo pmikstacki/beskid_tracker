@@ -96,6 +96,8 @@ export const seedTaskSchema = z.object({
 	specRelations: z.array(seedSpecRelationSchema).default([]),
 	specApproval: z.enum(["pending", "approved"]).optional(),
 	body: z.string().optional(),
+	/** Repo-relative paths attached via RepoExplorerDialog (task metadata). */
+	repoPaths: z.array(z.string().min(1)).optional(),
 	subtasks: z.array(seedSubtaskSchema).default([]),
 	source: seedGitSourceSchema,
 });

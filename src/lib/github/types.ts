@@ -16,6 +16,8 @@ export interface RoadmapTask {
 	body: string;
 	specRelations: SpecRelation[];
 	subtasks: SubtaskRow[];
+	/** Repo-relative source paths attached to this task. */
+	repoPaths?: string[];
 	specApproval: SpecApprovalStatus;
 	version: string;
 	workstream?: string;

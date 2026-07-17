@@ -113,6 +113,7 @@ export function seedTaskToRoadmapTask(
 		body: buildBody(version, task),
 		specRelations,
 		subtasks: seedSubtasksToRows(task.subtasks),
+		repoPaths: task.repoPaths,
 		specApproval:
 			task.specApproval ?? (specRelations.length > 0 ? "approved" : undefined),
 		version: version.id,

@@ -114,6 +114,13 @@
     "body": {
       "type": "string"
     },
+    "repoPaths": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
     "subtasks": {
       "default": [],
       "type": "array",

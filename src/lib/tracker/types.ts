@@ -67,6 +67,7 @@ export interface TrackerTaskRow {
 	spec_approval: string | null;
 	completed_at: string | null;
 	source_json: string;
+	repo_paths_json: string;
 	local_updated_at: string;
 	created_at: string;
 	updated_at: string;
@@ -208,6 +209,7 @@ export interface TrackerTask {
 	specApproval?: SpecApprovalStatus;
 	completedAt?: string;
 	source: SeedGitSource;
+	repoPaths?: string[];
 	subtasks: TrackerTaskSubtask[];
 	specRelations: TrackerTaskSpecRelation[];
 	localUpdatedAt: string;

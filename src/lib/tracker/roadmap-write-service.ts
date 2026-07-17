@@ -26,6 +26,7 @@ export async function createRoadmapIssueForSession(
 		version: input.version,
 		workstream: input.workstream,
 		specRelations: input.specRelations,
+		repoPaths: input.repoPaths,
 	};
 
 	return createRoadmapTask(taskInput);

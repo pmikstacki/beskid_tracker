@@ -135,6 +135,9 @@ export function rowToTrackerTask(
 			commit: "0000000",
 			subject: row.title,
 		}),
+		repoPaths: parseJson<string[]>(row.repo_paths_json ?? "[]", []).filter(
+			(path) => typeof path === "string" && path.length > 0,
+		),
 		subtasks: subtasks.map(rowToTrackerTaskSubtask),
 		specRelations: specRelations.map(rowToTrackerTaskSpecRelation),
 		localUpdatedAt: row.local_updated_at,
@@ -232,6 +235,7 @@ export function trackerTaskToRoadmapTask(
 		body: task.body,
 		specRelations,
 		subtasks: subtasksToRows(task.subtasks),
+		repoPaths: task.repoPaths,
 		specApproval:
 			task.specApproval ?? (specRelations.length > 0 ? "approved" : undefined),
 		version: task.versionId,
