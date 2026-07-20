@@ -20,7 +20,8 @@
     "seed:schema:export": "bun run scripts/export-seed-json-schema.ts",
     "seed:migrate": "bun run scripts/migrate-seed-catalog.ts",
     "backfill:plan": "bun run scripts/plan-history-backfill.ts",
-    "backfill:apply": "bun run scripts/plan-history-backfill.ts --apply",
+    "reconcile:plan": "bun run scripts/reconcile-delivery.ts --dry-run",
+    "reconcile:apply": "bun run scripts/reconcile-delivery.ts --apply",
     "sync:beskid-packages": "bash ../scripts/sync-beskid-packages.sh beskid_tracker"
   },
   "engines": {

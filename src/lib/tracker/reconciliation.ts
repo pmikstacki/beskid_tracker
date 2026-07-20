@@ -8,7 +8,7 @@ import { upsertTrackerTask } from "#/lib/tracker/repositories/tasks-repository";
 
 export interface ReconciliationCatalog {
 	revision: string;
-	links: TrackerSpecLink[];
+	links: Array<Pick<TrackerSpecLink, "standardId" | "catalogRevision">>;
 }
 
 export interface ReconciliationPlan {

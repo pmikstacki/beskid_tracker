@@ -95,7 +95,6 @@ const fixtureCatalog = {
 		{
 			standardId: "req:parser",
 			catalogRevision: "catalog-5",
-			relation: "implements" as const,
 		},
 	],
 };
