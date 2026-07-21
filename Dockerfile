@@ -1,13 +1,19 @@
-# CI / GHCR: context = beskid_tracker/ (see platform-delivery.yml).
-# Local from tracker checkout: docker build -f Dockerfile .
+# syntax=docker/dockerfile:1.7
+# CI / GHCR (platform-delivery): context = beskid_tracker/, plus named BuildKit
+# context `web_common` -> ./beskid_web_common so file:../beskid_web_common resolves.
+# Local: docker build -f Dockerfile --build-context web_common=../beskid_web_common .
 FROM oven/bun:1.3.14 AS build
 
 WORKDIR /app/beskid_tracker
 
 COPY package.json bun.lock .npmrc ./
+COPY --from=web_common package.json bun.lock /app/beskid_web_common/
+COPY --from=web_common packages /app/beskid_web_common/packages
 ARG NODE_AUTH_TOKEN
 ENV NODE_AUTH_TOKEN=${NODE_AUTH_TOKEN}
-RUN bun install --frozen-lockfile
+ENV BUN_INSTALL_CACHE_DIR=/bun-cache
+RUN --mount=type=cache,target=/bun-cache bun install --cwd=/app/beskid_web_common --frozen-lockfile
+RUN --mount=type=cache,target=/bun-cache bun install --frozen-lockfile
 
 COPY . ./
 
