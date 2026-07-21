@@ -5,6 +5,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      # Superrepo sibling required for file:../beskid_web_common @beskid/ui-react.
+      additional_contexts:
+        web_common: ../beskid_web_common
       args:
         NODE_AUTH_TOKEN: ${NODE_AUTH_TOKEN:-}
         VITE_GITHUB_REPO_DISPLAY_NAME: ${VITE_GITHUB_REPO_DISPLAY_NAME:-beskid}
