@@ -1,15 +1,21 @@
-# CI / GHCR: context = beskid_tracker/ (see container-images.yml).
-# Local from superrepo: docker build -f beskid_tracker/Dockerfile beskid_tracker
-FROM oven/bun:latest AS build
+# syntax=docker/dockerfile:1.7
+# CI / GHCR: context = repository root (see platform-delivery.yml).
+# Local: docker build -f beskid_tracker/Dockerfile .
+FROM oven/bun:1.3.14 AS build
 
+WORKDIR /app
+
+# file: @beskid/* deps resolve through the superrepo layout.
+COPY beskid_web_common ./beskid_web_common
+COPY beskid_tracker/package.json beskid_tracker/bun.lock beskid_tracker/.npmrc ./beskid_tracker/
 WORKDIR /app/beskid_tracker
 
-COPY package.json bun.lock .npmrc ./
 ARG NODE_AUTH_TOKEN
 ENV NODE_AUTH_TOKEN=${NODE_AUTH_TOKEN}
-RUN bun install --frozen-lockfile
+ENV BUN_INSTALL_CACHE_DIR=/bun-cache
+RUN --mount=type=cache,target=/bun-cache bun install --frozen-lockfile
 
-COPY . ./
+COPY beskid_tracker/ ./
 
 ARG VITE_GITHUB_REPO_DISPLAY_NAME=beskid
 ENV VITE_GITHUB_REPO_DISPLAY_NAME=${VITE_GITHUB_REPO_DISPLAY_NAME}
@@ -17,7 +23,7 @@ ENV SKIP_ENV_VALIDATION=1
 RUN bun run build
 RUN bun run verify:client-bundle
 
-FROM oven/bun:latest AS runtime
+FROM oven/bun:1.3.14 AS runtime
 
 RUN apt-get update \
   && apt-get install -y --no-install-recommends wget \
