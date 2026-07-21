@@ -7,7 +7,7 @@ FROM oven/bun:1.3.14 AS build
 WORKDIR /app/beskid_tracker
 
 COPY package.json bun.lock .npmrc ./
-COPY --from=web_common package.json bun.lock /app/beskid_web_common/
+COPY --from=web_common package.json bun.lock tsconfig.base.json /app/beskid_web_common/
 COPY --from=web_common packages /app/beskid_web_common/packages
 ARG NODE_AUTH_TOKEN
 ENV NODE_AUTH_TOKEN=${NODE_AUTH_TOKEN}
