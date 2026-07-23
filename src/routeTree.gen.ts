@@ -9,49 +9,44 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as OnboardingRouteImport } from './routes/onboarding'
-import { Route as MetricsRouteImport } from './routes/metrics'
-import { Route as LoginRouteImport } from './routes/login'
 import { Route as ShellRouteImport } from './routes/_shell'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as MetricsRouteImport } from './routes/metrics'
+import { Route as OnboardingRouteImport } from './routes/onboarding'
 import { Route as ShellIndexRouteImport } from './routes/_shell/index'
-import { Route as ApiHealthRouteImport } from './routes/api/health'
 import { Route as ShellBugsRouteImport } from './routes/_shell/bugs'
+import { Route as ApiHealthRouteImport } from './routes/api/health'
 import { Route as ShellDocsIndexRouteImport } from './routes/_shell/docs/index'
-import { Route as SettingsAuthPairRouteImport } from './routes/settings/auth/pair'
-import { Route as ApiWebhooksGithubRouteImport } from './routes/api/webhooks/github'
-import { Route as ApiAuthPairRouteImport } from './routes/api/auth/pair'
-import { Route as ApiAuthMeRouteImport } from './routes/api/auth/me'
-import { Route as ApiAuthLogoutRouteImport } from './routes/api/auth/logout'
-import { Route as ApiAuthHubFinishRouteImport } from './routes/api/auth/hub-finish'
-import { Route as ApiAuthGithubRouteImport } from './routes/api/auth/github'
-import { Route as ApiAdminSetupRouteImport } from './routes/api/admin/setup'
-import { Route as ShellVersionsVersionRouteImport } from './routes/_shell/versions/$version'
 import { Route as ShellVVersionRouteImport } from './routes/_shell/v/$version'
+import { Route as ShellVersionsVersionRouteImport } from './routes/_shell/versions/$version'
+import { Route as ApiAdminSetupRouteImport } from './routes/api/admin/setup'
+import { Route as ApiAuthGithubRouteImport } from './routes/api/auth/github'
+import { Route as ApiAuthHubFinishRouteImport } from './routes/api/auth/hub-finish'
+import { Route as ApiAuthLogoutRouteImport } from './routes/api/auth/logout'
+import { Route as ApiAuthMeRouteImport } from './routes/api/auth/me'
+import { Route as ApiAuthPairRouteImport } from './routes/api/auth/pair'
+import { Route as ApiV1TasksRouteImport } from './routes/api/v1/tasks'
+import { Route as ApiWebhooksGithubRouteImport } from './routes/api/webhooks/github'
+import { Route as SettingsAuthPairRouteImport } from './routes/settings/auth/pair'
 import { Route as ShellVersionsVersionIndexRouteImport } from './routes/_shell/versions/$version/index'
-import { Route as ApiV1LinksTargetRouteImport } from './routes/api/v1/links/$target'
-import { Route as ApiV1DeliveryLatestRouteImport } from './routes/api/v1/delivery/latest'
-import { Route as ApiV1DeliveryVersionRouteImport } from './routes/api/v1/delivery/$version'
-import { Route as ApiAdminSetupStatusRouteImport } from './routes/api/admin/setup/status'
-import { Route as ApiAdminAuthPairRouteImport } from './routes/api/admin/auth/pair'
 import { Route as ShellWorkstreamsVVersionRouteImport } from './routes/_shell/workstreams/v/$version'
-import { Route as ShellVersionsVersionWorkstreamsSlugRouteImport } from './routes/_shell/versions/$version/workstreams/$slug'
-import { Route as ShellVersionsVersionMilestonesMilestoneIdRouteImport } from './routes/_shell/versions/$version/milestones/$milestoneId'
-import { Route as ShellVersionsVersionFeatureSlugRouteImport } from './routes/_shell/versions/$version/feature/$slug'
-import { Route as ShellVersionsVersionDomainSlugRouteImport } from './routes/_shell/versions/$version/domain/$slug'
-import { Route as ShellVersionsVersionDeliverablesDeliverableIdRouteImport } from './routes/_shell/versions/$version/deliverables/$deliverableId'
-import { Route as ShellVersionsVersionAreaSlugRouteImport } from './routes/_shell/versions/$version/area/$slug'
-import { Route as ShellVVersionWWorkstreamRouteImport } from './routes/_shell/v/$version/w/$workstream'
+import { Route as ApiAdminAuthPairRouteImport } from './routes/api/admin/auth/pair'
+import { Route as ApiAdminSetupStatusRouteImport } from './routes/api/admin/setup/status'
+import { Route as ApiV1DeliveryVersionRouteImport } from './routes/api/v1/delivery/$version'
+import { Route as ApiV1DeliveryLatestRouteImport } from './routes/api/v1/delivery/latest'
+import { Route as ApiV1LinksTargetRouteImport } from './routes/api/v1/links/$target'
 import { Route as ShellVVersionTasksNewRouteImport } from './routes/_shell/v/$version/tasks/new'
+import { Route as ShellVVersionWWorkstreamRouteImport } from './routes/_shell/v/$version/w/$workstream'
+import { Route as ShellVersionsVersionAreaSlugRouteImport } from './routes/_shell/versions/$version/area/$slug'
+import { Route as ShellVersionsVersionDeliverablesDeliverableIdRouteImport } from './routes/_shell/versions/$version/deliverables/$deliverableId'
+import { Route as ShellVersionsVersionDomainSlugRouteImport } from './routes/_shell/versions/$version/domain/$slug'
+import { Route as ShellVersionsVersionFeatureSlugRouteImport } from './routes/_shell/versions/$version/feature/$slug'
+import { Route as ShellVersionsVersionMilestonesMilestoneIdRouteImport } from './routes/_shell/versions/$version/milestones/$milestoneId'
+import { Route as ShellVersionsVersionWorkstreamsSlugRouteImport } from './routes/_shell/versions/$version/workstreams/$slug'
 import { Route as ShellVVersionWWorkstreamTasksNewRouteImport } from './routes/_shell/v/$version/w/$workstream/tasks/new'
 
-const OnboardingRoute = OnboardingRouteImport.update({
-  id: '/onboarding',
-  path: '/onboarding',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MetricsRoute = MetricsRouteImport.update({
-  id: '/metrics',
-  path: '/metrics',
+const ShellRoute = ShellRouteImport.update({
+  id: '/_shell',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LoginRoute = LoginRouteImport.update({
@@ -59,8 +54,14 @@ const LoginRoute = LoginRouteImport.update({
   path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ShellRoute = ShellRouteImport.update({
-  id: '/_shell',
+const MetricsRoute = MetricsRouteImport.update({
+  id: '/metrics',
+  path: '/metrics',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OnboardingRoute = OnboardingRouteImport.update({
+  id: '/onboarding',
+  path: '/onboarding',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ShellIndexRoute = ShellIndexRouteImport.update({
@@ -68,64 +69,19 @@ const ShellIndexRoute = ShellIndexRouteImport.update({
   path: '/',
   getParentRoute: () => ShellRoute,
 } as any)
-const ApiHealthRoute = ApiHealthRouteImport.update({
-  id: '/api/health',
-  path: '/api/health',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const ShellBugsRoute = ShellBugsRouteImport.update({
   id: '/bugs',
   path: '/bugs',
   getParentRoute: () => ShellRoute,
 } as any)
+const ApiHealthRoute = ApiHealthRouteImport.update({
+  id: '/api/health',
+  path: '/api/health',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ShellDocsIndexRoute = ShellDocsIndexRouteImport.update({
   id: '/docs/',
   path: '/docs/',
-  getParentRoute: () => ShellRoute,
-} as any)
-const SettingsAuthPairRoute = SettingsAuthPairRouteImport.update({
-  id: '/settings/auth/pair',
-  path: '/settings/auth/pair',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ApiWebhooksGithubRoute = ApiWebhooksGithubRouteImport.update({
-  id: '/api/webhooks/github',
-  path: '/api/webhooks/github',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ApiAuthPairRoute = ApiAuthPairRouteImport.update({
-  id: '/api/auth/pair',
-  path: '/api/auth/pair',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ApiAuthMeRoute = ApiAuthMeRouteImport.update({
-  id: '/api/auth/me',
-  path: '/api/auth/me',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ApiAuthLogoutRoute = ApiAuthLogoutRouteImport.update({
-  id: '/api/auth/logout',
-  path: '/api/auth/logout',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ApiAuthHubFinishRoute = ApiAuthHubFinishRouteImport.update({
-  id: '/api/auth/hub-finish',
-  path: '/api/auth/hub-finish',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ApiAuthGithubRoute = ApiAuthGithubRouteImport.update({
-  id: '/api/auth/github',
-  path: '/api/auth/github',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ApiAdminSetupRoute = ApiAdminSetupRouteImport.update({
-  id: '/api/admin/setup',
-  path: '/api/admin/setup',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ShellVersionsVersionRoute = ShellVersionsVersionRouteImport.update({
-  id: '/versions/$version',
-  path: '/versions/$version',
   getParentRoute: () => ShellRoute,
 } as any)
 const ShellVVersionRoute = ShellVVersionRouteImport.update({
@@ -133,25 +89,71 @@ const ShellVVersionRoute = ShellVVersionRouteImport.update({
   path: '/v/$version',
   getParentRoute: () => ShellRoute,
 } as any)
+const ShellVersionsVersionRoute = ShellVersionsVersionRouteImport.update({
+  id: '/versions/$version',
+  path: '/versions/$version',
+  getParentRoute: () => ShellRoute,
+} as any)
+const ApiAdminSetupRoute = ApiAdminSetupRouteImport.update({
+  id: '/api/admin/setup',
+  path: '/api/admin/setup',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAuthGithubRoute = ApiAuthGithubRouteImport.update({
+  id: '/api/auth/github',
+  path: '/api/auth/github',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAuthHubFinishRoute = ApiAuthHubFinishRouteImport.update({
+  id: '/api/auth/hub-finish',
+  path: '/api/auth/hub-finish',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAuthLogoutRoute = ApiAuthLogoutRouteImport.update({
+  id: '/api/auth/logout',
+  path: '/api/auth/logout',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAuthMeRoute = ApiAuthMeRouteImport.update({
+  id: '/api/auth/me',
+  path: '/api/auth/me',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAuthPairRoute = ApiAuthPairRouteImport.update({
+  id: '/api/auth/pair',
+  path: '/api/auth/pair',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiV1TasksRoute = ApiV1TasksRouteImport.update({
+  id: '/api/v1/tasks',
+  path: '/api/v1/tasks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiWebhooksGithubRoute = ApiWebhooksGithubRouteImport.update({
+  id: '/api/webhooks/github',
+  path: '/api/webhooks/github',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsAuthPairRoute = SettingsAuthPairRouteImport.update({
+  id: '/settings/auth/pair',
+  path: '/settings/auth/pair',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ShellVersionsVersionIndexRoute =
   ShellVersionsVersionIndexRouteImport.update({
     id: '/',
     path: '/',
     getParentRoute: () => ShellVersionsVersionRoute,
   } as any)
-const ApiV1LinksTargetRoute = ApiV1LinksTargetRouteImport.update({
-  id: '/api/v1/links/$target',
-  path: '/api/v1/links/$target',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ApiV1DeliveryLatestRoute = ApiV1DeliveryLatestRouteImport.update({
-  id: '/api/v1/delivery/latest',
-  path: '/api/v1/delivery/latest',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ApiV1DeliveryVersionRoute = ApiV1DeliveryVersionRouteImport.update({
-  id: '/api/v1/delivery/$version',
-  path: '/api/v1/delivery/$version',
+const ShellWorkstreamsVVersionRoute =
+  ShellWorkstreamsVVersionRouteImport.update({
+    id: '/workstreams/v/$version',
+    path: '/workstreams/v/$version',
+    getParentRoute: () => ShellRoute,
+  } as any)
+const ApiAdminAuthPairRoute = ApiAdminAuthPairRouteImport.update({
+  id: '/api/admin/auth/pair',
+  path: '/api/admin/auth/pair',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiAdminSetupStatusRoute = ApiAdminSetupStatusRouteImport.update({
@@ -159,39 +161,36 @@ const ApiAdminSetupStatusRoute = ApiAdminSetupStatusRouteImport.update({
   path: '/status',
   getParentRoute: () => ApiAdminSetupRoute,
 } as any)
-const ApiAdminAuthPairRoute = ApiAdminAuthPairRouteImport.update({
-  id: '/api/admin/auth/pair',
-  path: '/api/admin/auth/pair',
+const ApiV1DeliveryVersionRoute = ApiV1DeliveryVersionRouteImport.update({
+  id: '/api/v1/delivery/$version',
+  path: '/api/v1/delivery/$version',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ShellWorkstreamsVVersionRoute =
-  ShellWorkstreamsVVersionRouteImport.update({
-    id: '/workstreams/v/$version',
-    path: '/workstreams/v/$version',
-    getParentRoute: () => ShellRoute,
+const ApiV1DeliveryLatestRoute = ApiV1DeliveryLatestRouteImport.update({
+  id: '/api/v1/delivery/latest',
+  path: '/api/v1/delivery/latest',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiV1LinksTargetRoute = ApiV1LinksTargetRouteImport.update({
+  id: '/api/v1/links/$target',
+  path: '/api/v1/links/$target',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ShellVVersionTasksNewRoute = ShellVVersionTasksNewRouteImport.update({
+  id: '/tasks/new',
+  path: '/tasks/new',
+  getParentRoute: () => ShellVVersionRoute,
+} as any)
+const ShellVVersionWWorkstreamRoute =
+  ShellVVersionWWorkstreamRouteImport.update({
+    id: '/w/$workstream',
+    path: '/w/$workstream',
+    getParentRoute: () => ShellVVersionRoute,
   } as any)
-const ShellVersionsVersionWorkstreamsSlugRoute =
-  ShellVersionsVersionWorkstreamsSlugRouteImport.update({
-    id: '/workstreams/$slug',
-    path: '/workstreams/$slug',
-    getParentRoute: () => ShellVersionsVersionRoute,
-  } as any)
-const ShellVersionsVersionMilestonesMilestoneIdRoute =
-  ShellVersionsVersionMilestonesMilestoneIdRouteImport.update({
-    id: '/milestones/$milestoneId',
-    path: '/milestones/$milestoneId',
-    getParentRoute: () => ShellVersionsVersionRoute,
-  } as any)
-const ShellVersionsVersionFeatureSlugRoute =
-  ShellVersionsVersionFeatureSlugRouteImport.update({
-    id: '/feature/$slug',
-    path: '/feature/$slug',
-    getParentRoute: () => ShellVersionsVersionRoute,
-  } as any)
-const ShellVersionsVersionDomainSlugRoute =
-  ShellVersionsVersionDomainSlugRouteImport.update({
-    id: '/domain/$slug',
-    path: '/domain/$slug',
+const ShellVersionsVersionAreaSlugRoute =
+  ShellVersionsVersionAreaSlugRouteImport.update({
+    id: '/area/$slug',
+    path: '/area/$slug',
     getParentRoute: () => ShellVersionsVersionRoute,
   } as any)
 const ShellVersionsVersionDeliverablesDeliverableIdRoute =
@@ -200,23 +199,30 @@ const ShellVersionsVersionDeliverablesDeliverableIdRoute =
     path: '/deliverables/$deliverableId',
     getParentRoute: () => ShellVersionsVersionRoute,
   } as any)
-const ShellVersionsVersionAreaSlugRoute =
-  ShellVersionsVersionAreaSlugRouteImport.update({
-    id: '/area/$slug',
-    path: '/area/$slug',
+const ShellVersionsVersionDomainSlugRoute =
+  ShellVersionsVersionDomainSlugRouteImport.update({
+    id: '/domain/$slug',
+    path: '/domain/$slug',
     getParentRoute: () => ShellVersionsVersionRoute,
   } as any)
-const ShellVVersionWWorkstreamRoute =
-  ShellVVersionWWorkstreamRouteImport.update({
-    id: '/w/$workstream',
-    path: '/w/$workstream',
-    getParentRoute: () => ShellVVersionRoute,
+const ShellVersionsVersionFeatureSlugRoute =
+  ShellVersionsVersionFeatureSlugRouteImport.update({
+    id: '/feature/$slug',
+    path: '/feature/$slug',
+    getParentRoute: () => ShellVersionsVersionRoute,
   } as any)
-const ShellVVersionTasksNewRoute = ShellVVersionTasksNewRouteImport.update({
-  id: '/tasks/new',
-  path: '/tasks/new',
-  getParentRoute: () => ShellVVersionRoute,
-} as any)
+const ShellVersionsVersionMilestonesMilestoneIdRoute =
+  ShellVersionsVersionMilestonesMilestoneIdRouteImport.update({
+    id: '/milestones/$milestoneId',
+    path: '/milestones/$milestoneId',
+    getParentRoute: () => ShellVersionsVersionRoute,
+  } as any)
+const ShellVersionsVersionWorkstreamsSlugRoute =
+  ShellVersionsVersionWorkstreamsSlugRouteImport.update({
+    id: '/workstreams/$slug',
+    path: '/workstreams/$slug',
+    getParentRoute: () => ShellVersionsVersionRoute,
+  } as any)
 const ShellVVersionWWorkstreamTasksNewRoute =
   ShellVVersionWWorkstreamTasksNewRouteImport.update({
     id: '/tasks/new',
@@ -239,6 +245,7 @@ export interface FileRoutesByFullPath {
   '/api/auth/logout': typeof ApiAuthLogoutRoute
   '/api/auth/me': typeof ApiAuthMeRoute
   '/api/auth/pair': typeof ApiAuthPairRoute
+  '/api/v1/tasks': typeof ApiV1TasksRoute
   '/api/webhooks/github': typeof ApiWebhooksGithubRoute
   '/settings/auth/pair': typeof SettingsAuthPairRoute
   '/docs/': typeof ShellDocsIndexRoute
@@ -273,6 +280,7 @@ export interface FileRoutesByTo {
   '/api/auth/logout': typeof ApiAuthLogoutRoute
   '/api/auth/me': typeof ApiAuthMeRoute
   '/api/auth/pair': typeof ApiAuthPairRoute
+  '/api/v1/tasks': typeof ApiV1TasksRoute
   '/api/webhooks/github': typeof ApiWebhooksGithubRoute
   '/settings/auth/pair': typeof SettingsAuthPairRoute
   '/docs': typeof ShellDocsIndexRoute
@@ -310,6 +318,7 @@ export interface FileRoutesById {
   '/api/auth/logout': typeof ApiAuthLogoutRoute
   '/api/auth/me': typeof ApiAuthMeRoute
   '/api/auth/pair': typeof ApiAuthPairRoute
+  '/api/v1/tasks': typeof ApiV1TasksRoute
   '/api/webhooks/github': typeof ApiWebhooksGithubRoute
   '/settings/auth/pair': typeof SettingsAuthPairRoute
   '/_shell/docs/': typeof ShellDocsIndexRoute
@@ -347,6 +356,7 @@ export interface FileRouteTypes {
     | '/api/auth/logout'
     | '/api/auth/me'
     | '/api/auth/pair'
+    | '/api/v1/tasks'
     | '/api/webhooks/github'
     | '/settings/auth/pair'
     | '/docs/'
@@ -381,6 +391,7 @@ export interface FileRouteTypes {
     | '/api/auth/logout'
     | '/api/auth/me'
     | '/api/auth/pair'
+    | '/api/v1/tasks'
     | '/api/webhooks/github'
     | '/settings/auth/pair'
     | '/docs'
@@ -417,6 +428,7 @@ export interface FileRouteTypes {
     | '/api/auth/logout'
     | '/api/auth/me'
     | '/api/auth/pair'
+    | '/api/v1/tasks'
     | '/api/webhooks/github'
     | '/settings/auth/pair'
     | '/_shell/docs/'
@@ -450,6 +462,7 @@ export interface RootRouteChildren {
   ApiAuthLogoutRoute: typeof ApiAuthLogoutRoute
   ApiAuthMeRoute: typeof ApiAuthMeRoute
   ApiAuthPairRoute: typeof ApiAuthPairRoute
+  ApiV1TasksRoute: typeof ApiV1TasksRoute
   ApiWebhooksGithubRoute: typeof ApiWebhooksGithubRoute
   SettingsAuthPairRoute: typeof SettingsAuthPairRoute
   ApiAdminAuthPairRoute: typeof ApiAdminAuthPairRoute
@@ -460,18 +473,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/onboarding': {
-      id: '/onboarding'
-      path: '/onboarding'
-      fullPath: '/onboarding'
-      preLoaderRoute: typeof OnboardingRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/metrics': {
-      id: '/metrics'
-      path: '/metrics'
-      fullPath: '/metrics'
-      preLoaderRoute: typeof MetricsRouteImport
+    '/_shell': {
+      id: '/_shell'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof ShellRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/login': {
@@ -481,11 +487,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_shell': {
-      id: '/_shell'
-      path: ''
-      fullPath: '/'
-      preLoaderRoute: typeof ShellRouteImport
+    '/metrics': {
+      id: '/metrics'
+      path: '/metrics'
+      fullPath: '/metrics'
+      preLoaderRoute: typeof MetricsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/onboarding': {
+      id: '/onboarding'
+      path: '/onboarding'
+      fullPath: '/onboarding'
+      preLoaderRoute: typeof OnboardingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_shell/': {
@@ -495,13 +508,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ShellIndexRouteImport
       parentRoute: typeof ShellRoute
     }
-    '/api/health': {
-      id: '/api/health'
-      path: '/api/health'
-      fullPath: '/api/health'
-      preLoaderRoute: typeof ApiHealthRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/_shell/bugs': {
       id: '/_shell/bugs'
       path: '/bugs'
@@ -509,74 +515,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ShellBugsRouteImport
       parentRoute: typeof ShellRoute
     }
+    '/api/health': {
+      id: '/api/health'
+      path: '/api/health'
+      fullPath: '/api/health'
+      preLoaderRoute: typeof ApiHealthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/_shell/docs/': {
       id: '/_shell/docs/'
       path: '/docs'
       fullPath: '/docs/'
       preLoaderRoute: typeof ShellDocsIndexRouteImport
-      parentRoute: typeof ShellRoute
-    }
-    '/settings/auth/pair': {
-      id: '/settings/auth/pair'
-      path: '/settings/auth/pair'
-      fullPath: '/settings/auth/pair'
-      preLoaderRoute: typeof SettingsAuthPairRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/api/webhooks/github': {
-      id: '/api/webhooks/github'
-      path: '/api/webhooks/github'
-      fullPath: '/api/webhooks/github'
-      preLoaderRoute: typeof ApiWebhooksGithubRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/api/auth/pair': {
-      id: '/api/auth/pair'
-      path: '/api/auth/pair'
-      fullPath: '/api/auth/pair'
-      preLoaderRoute: typeof ApiAuthPairRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/api/auth/me': {
-      id: '/api/auth/me'
-      path: '/api/auth/me'
-      fullPath: '/api/auth/me'
-      preLoaderRoute: typeof ApiAuthMeRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/api/auth/logout': {
-      id: '/api/auth/logout'
-      path: '/api/auth/logout'
-      fullPath: '/api/auth/logout'
-      preLoaderRoute: typeof ApiAuthLogoutRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/api/auth/hub-finish': {
-      id: '/api/auth/hub-finish'
-      path: '/api/auth/hub-finish'
-      fullPath: '/api/auth/hub-finish'
-      preLoaderRoute: typeof ApiAuthHubFinishRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/api/auth/github': {
-      id: '/api/auth/github'
-      path: '/api/auth/github'
-      fullPath: '/api/auth/github'
-      preLoaderRoute: typeof ApiAuthGithubRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/api/admin/setup': {
-      id: '/api/admin/setup'
-      path: '/api/admin/setup'
-      fullPath: '/api/admin/setup'
-      preLoaderRoute: typeof ApiAdminSetupRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/_shell/versions/$version': {
-      id: '/_shell/versions/$version'
-      path: '/versions/$version'
-      fullPath: '/versions/$version'
-      preLoaderRoute: typeof ShellVersionsVersionRouteImport
       parentRoute: typeof ShellRoute
     }
     '/_shell/v/$version': {
@@ -586,6 +536,76 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ShellVVersionRouteImport
       parentRoute: typeof ShellRoute
     }
+    '/_shell/versions/$version': {
+      id: '/_shell/versions/$version'
+      path: '/versions/$version'
+      fullPath: '/versions/$version'
+      preLoaderRoute: typeof ShellVersionsVersionRouteImport
+      parentRoute: typeof ShellRoute
+    }
+    '/api/admin/setup': {
+      id: '/api/admin/setup'
+      path: '/api/admin/setup'
+      fullPath: '/api/admin/setup'
+      preLoaderRoute: typeof ApiAdminSetupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/auth/github': {
+      id: '/api/auth/github'
+      path: '/api/auth/github'
+      fullPath: '/api/auth/github'
+      preLoaderRoute: typeof ApiAuthGithubRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/auth/hub-finish': {
+      id: '/api/auth/hub-finish'
+      path: '/api/auth/hub-finish'
+      fullPath: '/api/auth/hub-finish'
+      preLoaderRoute: typeof ApiAuthHubFinishRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/auth/logout': {
+      id: '/api/auth/logout'
+      path: '/api/auth/logout'
+      fullPath: '/api/auth/logout'
+      preLoaderRoute: typeof ApiAuthLogoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/auth/me': {
+      id: '/api/auth/me'
+      path: '/api/auth/me'
+      fullPath: '/api/auth/me'
+      preLoaderRoute: typeof ApiAuthMeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/auth/pair': {
+      id: '/api/auth/pair'
+      path: '/api/auth/pair'
+      fullPath: '/api/auth/pair'
+      preLoaderRoute: typeof ApiAuthPairRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/v1/tasks': {
+      id: '/api/v1/tasks'
+      path: '/api/v1/tasks'
+      fullPath: '/api/v1/tasks'
+      preLoaderRoute: typeof ApiV1TasksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/webhooks/github': {
+      id: '/api/webhooks/github'
+      path: '/api/webhooks/github'
+      fullPath: '/api/webhooks/github'
+      preLoaderRoute: typeof ApiWebhooksGithubRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings/auth/pair': {
+      id: '/settings/auth/pair'
+      path: '/settings/auth/pair'
+      fullPath: '/settings/auth/pair'
+      preLoaderRoute: typeof SettingsAuthPairRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/_shell/versions/$version/': {
       id: '/_shell/versions/$version/'
       path: '/'
@@ -593,25 +613,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ShellVersionsVersionIndexRouteImport
       parentRoute: typeof ShellVersionsVersionRoute
     }
-    '/api/v1/links/$target': {
-      id: '/api/v1/links/$target'
-      path: '/api/v1/links/$target'
-      fullPath: '/api/v1/links/$target'
-      preLoaderRoute: typeof ApiV1LinksTargetRouteImport
-      parentRoute: typeof rootRouteImport
+    '/_shell/workstreams/v/$version': {
+      id: '/_shell/workstreams/v/$version'
+      path: '/workstreams/v/$version'
+      fullPath: '/workstreams/v/$version'
+      preLoaderRoute: typeof ShellWorkstreamsVVersionRouteImport
+      parentRoute: typeof ShellRoute
     }
-    '/api/v1/delivery/latest': {
-      id: '/api/v1/delivery/latest'
-      path: '/api/v1/delivery/latest'
-      fullPath: '/api/v1/delivery/latest'
-      preLoaderRoute: typeof ApiV1DeliveryLatestRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/api/v1/delivery/$version': {
-      id: '/api/v1/delivery/$version'
-      path: '/api/v1/delivery/$version'
-      fullPath: '/api/v1/delivery/$version'
-      preLoaderRoute: typeof ApiV1DeliveryVersionRouteImport
+    '/api/admin/auth/pair': {
+      id: '/api/admin/auth/pair'
+      path: '/api/admin/auth/pair'
+      fullPath: '/api/admin/auth/pair'
+      preLoaderRoute: typeof ApiAdminAuthPairRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/admin/setup/status': {
@@ -621,46 +634,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiAdminSetupStatusRouteImport
       parentRoute: typeof ApiAdminSetupRoute
     }
-    '/api/admin/auth/pair': {
-      id: '/api/admin/auth/pair'
-      path: '/api/admin/auth/pair'
-      fullPath: '/api/admin/auth/pair'
-      preLoaderRoute: typeof ApiAdminAuthPairRouteImport
+    '/api/v1/delivery/$version': {
+      id: '/api/v1/delivery/$version'
+      path: '/api/v1/delivery/$version'
+      fullPath: '/api/v1/delivery/$version'
+      preLoaderRoute: typeof ApiV1DeliveryVersionRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_shell/workstreams/v/$version': {
-      id: '/_shell/workstreams/v/$version'
-      path: '/workstreams/v/$version'
-      fullPath: '/workstreams/v/$version'
-      preLoaderRoute: typeof ShellWorkstreamsVVersionRouteImport
-      parentRoute: typeof ShellRoute
+    '/api/v1/delivery/latest': {
+      id: '/api/v1/delivery/latest'
+      path: '/api/v1/delivery/latest'
+      fullPath: '/api/v1/delivery/latest'
+      preLoaderRoute: typeof ApiV1DeliveryLatestRouteImport
+      parentRoute: typeof rootRouteImport
     }
-    '/_shell/versions/$version/workstreams/$slug': {
-      id: '/_shell/versions/$version/workstreams/$slug'
-      path: '/workstreams/$slug'
-      fullPath: '/versions/$version/workstreams/$slug'
-      preLoaderRoute: typeof ShellVersionsVersionWorkstreamsSlugRouteImport
-      parentRoute: typeof ShellVersionsVersionRoute
+    '/api/v1/links/$target': {
+      id: '/api/v1/links/$target'
+      path: '/api/v1/links/$target'
+      fullPath: '/api/v1/links/$target'
+      preLoaderRoute: typeof ApiV1LinksTargetRouteImport
+      parentRoute: typeof rootRouteImport
     }
-    '/_shell/versions/$version/milestones/$milestoneId': {
-      id: '/_shell/versions/$version/milestones/$milestoneId'
-      path: '/milestones/$milestoneId'
-      fullPath: '/versions/$version/milestones/$milestoneId'
-      preLoaderRoute: typeof ShellVersionsVersionMilestonesMilestoneIdRouteImport
-      parentRoute: typeof ShellVersionsVersionRoute
+    '/_shell/v/$version/tasks/new': {
+      id: '/_shell/v/$version/tasks/new'
+      path: '/tasks/new'
+      fullPath: '/v/$version/tasks/new'
+      preLoaderRoute: typeof ShellVVersionTasksNewRouteImport
+      parentRoute: typeof ShellVVersionRoute
     }
-    '/_shell/versions/$version/feature/$slug': {
-      id: '/_shell/versions/$version/feature/$slug'
-      path: '/feature/$slug'
-      fullPath: '/versions/$version/feature/$slug'
-      preLoaderRoute: typeof ShellVersionsVersionFeatureSlugRouteImport
-      parentRoute: typeof ShellVersionsVersionRoute
+    '/_shell/v/$version/w/$workstream': {
+      id: '/_shell/v/$version/w/$workstream'
+      path: '/w/$workstream'
+      fullPath: '/v/$version/w/$workstream'
+      preLoaderRoute: typeof ShellVVersionWWorkstreamRouteImport
+      parentRoute: typeof ShellVVersionRoute
     }
-    '/_shell/versions/$version/domain/$slug': {
-      id: '/_shell/versions/$version/domain/$slug'
-      path: '/domain/$slug'
-      fullPath: '/versions/$version/domain/$slug'
-      preLoaderRoute: typeof ShellVersionsVersionDomainSlugRouteImport
+    '/_shell/versions/$version/area/$slug': {
+      id: '/_shell/versions/$version/area/$slug'
+      path: '/area/$slug'
+      fullPath: '/versions/$version/area/$slug'
+      preLoaderRoute: typeof ShellVersionsVersionAreaSlugRouteImport
       parentRoute: typeof ShellVersionsVersionRoute
     }
     '/_shell/versions/$version/deliverables/$deliverableId': {
@@ -670,26 +683,33 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ShellVersionsVersionDeliverablesDeliverableIdRouteImport
       parentRoute: typeof ShellVersionsVersionRoute
     }
-    '/_shell/versions/$version/area/$slug': {
-      id: '/_shell/versions/$version/area/$slug'
-      path: '/area/$slug'
-      fullPath: '/versions/$version/area/$slug'
-      preLoaderRoute: typeof ShellVersionsVersionAreaSlugRouteImport
+    '/_shell/versions/$version/domain/$slug': {
+      id: '/_shell/versions/$version/domain/$slug'
+      path: '/domain/$slug'
+      fullPath: '/versions/$version/domain/$slug'
+      preLoaderRoute: typeof ShellVersionsVersionDomainSlugRouteImport
       parentRoute: typeof ShellVersionsVersionRoute
     }
-    '/_shell/v/$version/w/$workstream': {
-      id: '/_shell/v/$version/w/$workstream'
-      path: '/w/$workstream'
-      fullPath: '/v/$version/w/$workstream'
-      preLoaderRoute: typeof ShellVVersionWWorkstreamRouteImport
-      parentRoute: typeof ShellVVersionRoute
+    '/_shell/versions/$version/feature/$slug': {
+      id: '/_shell/versions/$version/feature/$slug'
+      path: '/feature/$slug'
+      fullPath: '/versions/$version/feature/$slug'
+      preLoaderRoute: typeof ShellVersionsVersionFeatureSlugRouteImport
+      parentRoute: typeof ShellVersionsVersionRoute
     }
-    '/_shell/v/$version/tasks/new': {
-      id: '/_shell/v/$version/tasks/new'
-      path: '/tasks/new'
-      fullPath: '/v/$version/tasks/new'
-      preLoaderRoute: typeof ShellVVersionTasksNewRouteImport
-      parentRoute: typeof ShellVVersionRoute
+    '/_shell/versions/$version/milestones/$milestoneId': {
+      id: '/_shell/versions/$version/milestones/$milestoneId'
+      path: '/milestones/$milestoneId'
+      fullPath: '/versions/$version/milestones/$milestoneId'
+      preLoaderRoute: typeof ShellVersionsVersionMilestonesMilestoneIdRouteImport
+      parentRoute: typeof ShellVersionsVersionRoute
+    }
+    '/_shell/versions/$version/workstreams/$slug': {
+      id: '/_shell/versions/$version/workstreams/$slug'
+      path: '/workstreams/$slug'
+      fullPath: '/versions/$version/workstreams/$slug'
+      preLoaderRoute: typeof ShellVersionsVersionWorkstreamsSlugRouteImport
+      parentRoute: typeof ShellVersionsVersionRoute
     }
     '/_shell/v/$version/w/$workstream/tasks/new': {
       id: '/_shell/v/$version/w/$workstream/tasks/new'
@@ -800,6 +820,7 @@ const rootRouteChildren: RootRouteChildren = {
   ApiAuthLogoutRoute: ApiAuthLogoutRoute,
   ApiAuthMeRoute: ApiAuthMeRoute,
   ApiAuthPairRoute: ApiAuthPairRoute,
+  ApiV1TasksRoute: ApiV1TasksRoute,
   ApiWebhooksGithubRoute: ApiWebhooksGithubRoute,
   SettingsAuthPairRoute: SettingsAuthPairRoute,
   ApiAdminAuthPairRoute: ApiAdminAuthPairRoute,
