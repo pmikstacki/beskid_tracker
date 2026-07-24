@@ -11,8 +11,8 @@ COPY package.json bun.lock .npmrc ./
 COPY --from=web_common . /app/beskid_web_common
 ARG NODE_AUTH_TOKEN
 ENV NODE_AUTH_TOKEN=${NODE_AUTH_TOKEN}
-ENV BUN_INSTALL_CACHE_DIR=/bun-cache
-RUN --mount=type=cache,target=/bun-cache bun install --cwd=/app/beskid_web_common --frozen-lockfile
+
+RUN npm install -g pnpm@10.17.1 && pnpm install --dir /app/beskid_web_common --frozen-lockfile --config.package-import-method=copy
 RUN --mount=type=cache,target=/bun-cache bun install --frozen-lockfile
 
 COPY . ./
