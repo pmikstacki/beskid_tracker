@@ -49,3 +49,13 @@ Items planned under v0.3 but **cut off** at `aaddd32` (not re-seeded here): late
 Seed tasks anchor to **`source.commit`** on the landing repo (`beskid` unless submodule-only). `In Progress` / `Backlog` tasks use the latest known superrepo tip (`ee88edf`) when work is ongoing without a final landing SHA.
 
 Import seed JSON into tracker SQLite via Settings → Import catalog, or `importCatalogBundleFn`. Validate with `bun run seed:validate`.
+
+## v0.4 closure (2026-07-24)
+
+| Period | Theme | Anchor commits |
+|--------|-------|----------------|
+| **20–24 Jul** | Compiler W0–W6 Done + W7 evidence | `17442fb9` all state merge; `790adad6` parser + ISLE; `aad9b219` MethodDefinition + ForStatement ISLE; catalog revision `f011a8cb2e46` (185 caps, 524 reqs) |
+
+Compiler waves complete: W0 (generation-safe facts), W1 (semantic authority), W2 (ISLE inventory), W3 (exact ABI-v5 kits), W4 (codegen/LSP migration), W5 (canonical runtime + Linux kits), W6 (HIR/legacy retirement). W7 release sign-off in progress.
+
+**Remaining for 0.4 sign-off:** LambdaExpression ISLE (CYB-173), TryExpression desugaring (CYB-174), macOS arm64 kit (CYB-170), Windows x86-64 kit (CYB-171), tracker seed data sync (CYB-177).

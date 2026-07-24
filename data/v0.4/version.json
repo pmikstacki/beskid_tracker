@@ -1,16 +1,16 @@
 {
   "id": "v0.4",
   "title": "Platform services, auth, and delivery tooling",
-  "summary": "v0.4 pivots after v0.3 (aaddd32) into platform-facing delivery: shared web auth and beskid_web_common, beskid_tracker as the roadmap product (SQLite source of truth with scoped GitHub sync), beskid_nexus hosting, and superrepo CI/CD with Coolify deploy. Through ee88edf (2026-05-26–06-07) the line lands auth hub autopairing, hub launcher across services, tracker container CI, observability packages, kanban UX fixes, and ongoing corelib/compiler stabilization toward v0.4 closure.",
+  "summary": "v0.4 landed compiler waves W0–W6 (HIR-free ISLE production path, canonical ABI-v5 runtime, Linux x86-64 kits, HIR/legacy retirement, corelib gates), platform services (auth hub, tracker SQLite SOT, nexus hosting), CI/CD (pnpm cutover, Docker Hub rate-limit fix, platform delivery), and site updates (learn curriculum, platform-spec reader chrome, website book). OpenSpec catalog: 185 capabilities, 524 requirements (rev f011a8cb2e46). W7 release evidence in progress.",
   "theme": "Auth hub, web_common, tracker, nexus, CI/CD, corelib, editor DX",
-  "status": "In Progress",
+  "status": "In Progress (release closure)",
   "cutoff": {
     "startDate": "2026-05-26",
-    "endDate": "2026-06-07",
+    "endDate": "2026-07-24",
     "startCommitSha": "aaddd32",
-    "endCommitSha": "ee88edf",
+    "endCommitSha": "17442fb9",
     "endCommitRepo": "beskid",
-    "rationale": "Starts at v0.3 cut-off tip aaddd32 (2026-05-25). Initial v0.4 burst (2026-05-26–27) lands tracker submodule, hub/trudoc extraction, nexus CI, and auth scaffold through c8e5fc4. May 29–June 7 extends auth/tracker production hardening (801f1e2–ee88edf): autopairing, package sync, container CI, SQLite tracker model, and BSOL stability on main."
+    "rationale": "Starts at v0.3 cut-off tip aaddd32 (2026-05-25). v0.4 burst through 2026-07-24 lands compiler W0–W6 Done (HIR-free ISLE, ABI-v5 kits, HIR retirement), pnpm migration, catalog rebuild, platform-spec editor fixes, learn curriculum expansion. End commit: 17442fb9 (2026-07-24)."
   },
   "$schema": "../schemas/seed/version.schema.json"
 }

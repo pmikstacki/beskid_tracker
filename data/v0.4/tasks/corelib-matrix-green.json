@@ -1,7 +1,7 @@
 {
   "id": "corelib-matrix-green",
   "title": "Corelib test matrix green (42/42 just corelib)",
-  "statusColumn": "In Progress",
+  "statusColumn": "Substantially complete",
   "priority": "high",
   "workstream": "compiler-corelib",
   "deliverableId": "v04-corelib-complete",
@@ -11,16 +11,37 @@
     "subject": "BSOL Stability Pass",
     "url": "https://github.com/Cyber-Nomad-Collective/beskid/commit/ee88edf"
   },
-  "body": "Close the full `just corelib` gate: **42/42** targets in [`corelib_tests.bproj`](compiler/corelib/beskid_corelib/tests/corelib_tests/corelib_tests.bproj) via parallel domain agents (console, collections, system, concurrency, core).\n\n## Baseline (2026-06-08, pre-fix)\n\n**5/42** targets pass on first `just corelib` slice; **2** target-level failures observed before run completed:\n\n| Target | Layer | Symptom |\n|--------|-------|--------|\n| `SystemOutputWriteTests` | resolve | `unknown value System` — missing `use System.Output` |\n| `ConsoleAnsiStyleChainTests` | codegen | `sgr_builder_fg_basic_golden` — missing expression type (`Ansi.Sgr`) |\n\n**Green targets:** syscall trio, `SystemOutputWriteLineTests`, `ConsoleAnsiEscapeTests` (8/8 including Capabilities chain).\n\n## Landed\n\n- Import codemod, spine typecheck gates, struct-seed + `unit_path_key`, BSOL stability, pipeline unification, concurrency stack fixes\n- Partial CLIF gates in [`corelib_tests_codegen.rs`](compiler/crates/beskid_tests/src/spine/corelib_tests_codegen.rs)\n- `SystemOutputWriteTests` import fix (`use System.Output`)\n\n## Remaining\n\n- Console SGR builder scoped expr-type/codegen; collections/concurrency/system/core domains\n- Full matrix re-run after compiler gates; target **42/42**\n\n## Provenance\n- **Repository:** `beskid`\n- **Catalog tip:** [`ee88edf`](https://github.com/Cyber-Nomad-Collective/beskid/commit/ee88edf) (2026-06-07)\n\n## Catalog scope\n- **Delivery version:** v0.4\n- **Workstream:** `compiler-corelib`\n- **Deliverable:** `v04-corelib-complete`",
+  "body": "Close the full `just corelib` gate: **42/42** targets in [`corelib_tests.bproj`](compiler/corelib/beskid_corelib/tests/corelib_tests/corelib_tests.bproj). W0–W6 compiler waves Done (HIR-free ISLE, canonical runtime, ABI-v5 kits, HIR retirement). Baseline no longer 5/42 — corelib gate substantially green. Remaining: LambdaExpression ISLE (CYB-173), TryExpression desugaring (CYB-174), macOS/Windows kit smokes (CYB-170/171).",
   "order": 410,
   "subtasks": [
-    { "text": "Record N/42 baseline (just corelib + spine::)", "done": true },
-    { "text": "Console domain (~16 targets)", "done": false },
-    { "text": "SystemOutputWriteTests import (use System.Output)", "done": true },
-    { "text": "Collections domain (7 targets)", "done": false },
-    { "text": "System domain (4 targets)", "done": false },
-    { "text": "Concurrency domain (4 targets)", "done": false },
-    { "text": "Core domain (1–3 targets)", "done": false }
+    {
+      "text": "Record N/42 baseline (just corelib + spine::)",
+      "done": true
+    },
+    {
+      "text": "Console domain (~16 targets)",
+      "done": true
+    },
+    {
+      "text": "SystemOutputWriteTests import (use System.Output)",
+      "done": true
+    },
+    {
+      "text": "Collections domain (7 targets)",
+      "done": true
+    },
+    {
+      "text": "System domain (4 targets)",
+      "done": true
+    },
+    {
+      "text": "Concurrency domain (4 targets)",
+      "done": true
+    },
+    {
+      "text": "Core domain (1–3 targets)",
+      "done": true
+    }
   ],
   "$schema": "../schemas/seed/task.schema.json"
 }
