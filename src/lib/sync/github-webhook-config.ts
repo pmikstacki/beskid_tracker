@@ -46,8 +46,9 @@ export function resolveTrackerPublicOrigin(): string {
 	const stored = getAppSetting(APP_SETTING_KEYS.trackerPublicOrigin)?.trim();
 	if (stored) return stored.replace(/\/$/, "");
 
+			const callback = process.env.GITHUB_OAUTH_CALLBACK_URL;
+	if (!callback) return "http://localhost:3000";
 	try {
-		const callback = env.GITHUB_OAUTH_CALLBACK_URL;
 		return new URL(callback).origin;
 	} catch {
 		return "http://localhost:3000";

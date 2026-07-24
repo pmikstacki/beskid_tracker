@@ -1,6 +1,7 @@
 import "@tanstack/react-start/server-only";
 
-import { Database } from "bun:sqlite";
+import type { Database } from "#/lib/storage/sqlite";
+import { openSqlite } from "#/lib/storage/sqlite";
 
 import { ensureTrackerDataDir, issuesDbPath } from "#/lib/storage/paths";
 import { migrateSchema } from "#/lib/storage/schema";
@@ -10,7 +11,7 @@ let dbInstance: Database | null = null;
 export function getIssuesDatabase(): Database {
 	if (!dbInstance) {
 		ensureTrackerDataDir();
-		dbInstance = new Database(issuesDbPath(), { create: true });
+		dbInstance = openSqlite(issuesDbPath());
 		migrateSchema(dbInstance);
 	}
 	return dbInstance;

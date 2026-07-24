@@ -13,6 +13,7 @@ import { getBoard } from "#/server/roadmap";
 
 export const Route = createFileRoute("/_shell/v/$version/tasks/new")({
 	validateSearch: boardSearchSchema.omit({ create: true }),
+	loaderDeps: ({ search }) => search,
 	...roadmapScopeRouteOptions,
 	beforeLoad: async () => {
 		const user = await getAuthUser();

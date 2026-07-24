@@ -89,7 +89,7 @@ function updateSyncRun(
 ): void {
 	const db = getIssuesDatabase();
 	const sets: string[] = [];
-	const values: unknown[] = [];
+		const values: unknown[] = [];
 
 	if (patch.status !== undefined) {
 		sets.push("status = ?");
@@ -122,7 +122,7 @@ function updateSyncRun(
 
 	if (sets.length === 0) return;
 	values.push(id);
-	db.run(`UPDATE sync_runs SET ${sets.join(", ")} WHERE id = ?`, values);
+	db.run(`UPDATE sync_runs SET ${sets.join(", ")} WHERE id = ?`, values as any[]);
 }
 
 export function appendSyncLog(

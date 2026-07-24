@@ -9,7 +9,6 @@ import { canManageRoadmap } from "#/lib/github/permissions";
 import {
 	getStoredPairingApproverLogin,
 	saveAuthHubPairing,
-	savePairingApproverLogin,
 } from "#/lib/auth/hub-settings.server";
 import { resolveTrackerPublicOrigin } from "#/lib/sync/github-webhook-config";
 import { createOctokitForSession } from "#/server/auth-guard.server";

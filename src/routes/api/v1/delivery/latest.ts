@@ -1,4 +1,4 @@
-import type { Database } from "bun:sqlite";
+import type { Database } from "#/lib/storage/sqlite";
 import { createFileRoute } from "@tanstack/react-router";
 
 import { getIssuesDatabase } from "#/lib/storage/db";

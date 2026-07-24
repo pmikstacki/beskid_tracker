@@ -28,6 +28,8 @@ describe("api/v1/tasks helpers", () => {
 					id: "one",
 					specRelations: [
 						{
+							id: 1,
+							sortOrder: 0,
 							standardId: "language--syntax--blocks",
 							catalogRevision: "rev-a",
 							path: "openspec/specs/language--syntax--blocks/spec.md",
@@ -40,6 +42,8 @@ describe("api/v1/tasks helpers", () => {
 					id: "two",
 					specRelations: [
 						{
+							id: 1,
+							sortOrder: 0,
 							standardId: "language--syntax--blocks",
 							catalogRevision: "rev-b",
 							path: "openspec/specs/language--syntax--blocks/spec.md",
@@ -63,6 +67,8 @@ describe("api/v1/tasks helpers", () => {
 					title: "Wire blocks",
 					specRelations: [
 						{
+						id: 1,
+							sortOrder: 0,
 							standardId: "language--syntax--blocks",
 							catalogRevision: "rev-a",
 							path: "x",

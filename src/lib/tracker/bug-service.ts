@@ -1,6 +1,6 @@
 import "@tanstack/react-start/server-only";
 
-import type { Database } from "bun:sqlite";
+import type { Database } from "#/lib/storage/sqlite";
 
 import type { PublicBug } from "#/lib/github/types";
 import { getIssuesDatabase } from "#/lib/storage/db";

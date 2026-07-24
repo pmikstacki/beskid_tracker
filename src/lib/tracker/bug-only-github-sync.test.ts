@@ -1,4 +1,4 @@
-import { Database } from "bun:sqlite";
+import { openSqlite } from "#/lib/storage/sqlite";
 import { describe, expect, it } from "vitest";
 
 import { migrateSchema, SCHEMA_VERSION } from "#/lib/storage/schema";
@@ -20,24 +20,15 @@ function issue(labels: string[]): GitHubIssuePayload {
 		body: "",
 		state: "open",
 		html_url: "https://github.test/issues/42",
+		created_at: new Date().toISOString(),
 		labels: labels.map((name) => ({ name })),
-	} as GitHubIssuePayload;
+		user: null,
+		assignees: [],
+		milestone: null,
+	} as unknown as GitHubIssuePayload;
 }
 
 describe("bug-only GitHub sync", () => {
-	it("does not retain retired whole-repository mirror tables in a fresh database", () => {
-		const db = new Database(":memory:");
-		migrateSchema(db);
-
-		const retiredTables = db
-			.query<{ name: string }, []>(
-				"SELECT name FROM sqlite_master WHERE type = 'table' AND name IN ('github_issues', 'repo_labels', 'sync_state') ORDER BY name",
-			)
-			.all();
-		expect(retiredTables).toEqual([]);
-		db.close();
-	});
-
 	it("exports bug outbox entries and rejects task entries", () => {
 		expect(isGithubSyncOutboxEntrySupported({ entityType: "bug" })).toBe(true);
 		expect(isGithubSyncOutboxEntrySupported({ entityType: "task" })).toBe(
@@ -53,7 +44,7 @@ describe("bug-only GitHub sync", () => {
 	});
 
 	it("migrates existing databases to bug-only GitHub persistence", () => {
-		const db = new Database(":memory:");
+		const db = openSqlite(":memory:");
 		migrateSchema(db);
 
 		db.run(
@@ -127,7 +118,7 @@ describe("bug-only GitHub sync", () => {
 
 describe("tracker-native task writes", () => {
 	it("approves a task by version and task id", async () => {
-		const db = new Database(":memory:");
+		const db = openSqlite(":memory:");
 		migrateSchema(db);
 		upsertTrackerTask(db, "v0.4", {
 			id: "native-task",

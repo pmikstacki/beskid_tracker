@@ -1,6 +1,6 @@
 import "@tanstack/react-start/server-only";
 
-import type { Database } from "bun:sqlite";
+import type { Database } from "#/lib/storage/sqlite";
 
 import { rowToGithubIssueLink } from "#/lib/tracker/mappers";
 import type {

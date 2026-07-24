@@ -1,4 +1,4 @@
-import type { Database } from "bun:sqlite";
+import type { Database } from "#/lib/storage/sqlite";
 import { createHash } from "node:crypto";
 
 import type { TrackerSpecLink } from "#/lib/tracker/delivery-contract";

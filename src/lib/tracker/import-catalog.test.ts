@@ -67,6 +67,7 @@ const sampleBundle: ParsedSeedBundle = {
 describe("catalog import", () => {
 	it("upserts seed bundle into normalized tables", () => {
 		const db = getIssuesDatabase();
+		upsertTrackerVersion(db, sampleBundle.version);
 		const summary = upsertParsedSeedBundle(sampleBundle, db);
 		expect(summary.tasksUpserted).toBe(1);
 		expect(summary.conflicts).toBe(0);

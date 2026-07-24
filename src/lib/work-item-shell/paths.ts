@@ -2,6 +2,7 @@ import type {
 	BoardFilterState,
 	BoardSearchParams,
 } from "#/lib/roadmap/board-search";
+import type { WorkItemShellRouteTarget } from "#/components/work-item-shell/work-item-shell";
 
 export function boardSearchFromFilters(
 	filters: BoardFilterState,
@@ -44,7 +45,7 @@ export function createTaskFullscreenTo(
 	version: string,
 	search?: BoardSearchParams,
 	workstream?: string,
-) {
+): WorkItemShellRouteTarget {
 	if (workstream) {
 		return {
 			to: "/v/$version/w/$workstream/tasks/new" as const,

@@ -8,18 +8,15 @@ import { MarkdownContent } from "#/components/markdown-content";
 import { Button } from "#/components/ui/button";
 import type { WorkItemPresentation } from "#/components/work-item-shell/work-item-shell";
 import { cn } from "#/lib/utils";
+import type { BoardSearchParams } from "#/lib/roadmap/board-search";
 
 export interface WorkItemShellHeaderProps {
 	presentation: WorkItemPresentation;
 	title: string;
 	description?: string;
 	onClose?: () => void;
-	expandTo?: { to: string; params?: Record<string, string>; search?: unknown };
-	collapseTo?: {
-		to: string;
-		params?: Record<string, string>;
-		search?: unknown;
-	};
+	expandTo?: { to: string; params?: Record<string, string>; search?: BoardSearchParams | undefined };
+	collapseTo?: { to: string; params?: Record<string, string>; search?: BoardSearchParams | undefined };
 	actions?: ReactNode;
 }
 

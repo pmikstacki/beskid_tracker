@@ -3,9 +3,24 @@ import type { RestEndpointMethodTypes } from "@octokit/rest";
 export type GitHubIssuePayload =
 	RestEndpointMethodTypes["issues"]["listForRepo"]["response"]["data"][number];
 
+export type StoredIssuePayload = Pick<
+	GitHubIssuePayload,
+	| "number"
+	| "title"
+	| "body"
+	| "state"
+	| "html_url"
+	| "created_at"
+	| "pull_request"
+	| "labels"
+	| "user"
+	| "assignees"
+	| "milestone"
+>;
+
 export function issuePayloadFromGithub(
 	issue: GitHubIssuePayload,
-): GitHubIssuePayload {
+): StoredIssuePayload {
 	return {
 		number: issue.number,
 		title: issue.title,
@@ -21,10 +36,10 @@ export function issuePayloadFromGithub(
 	};
 }
 
-export function serializeIssuePayload(issue: GitHubIssuePayload): string {
-	return JSON.stringify(issuePayloadFromGithub(issue));
+export function serializeIssuePayload(issue: StoredIssuePayload): string {
+	return JSON.stringify(issue);
 }
 
-export function parseIssuePayload(raw: string): GitHubIssuePayload {
-	return JSON.parse(raw) as GitHubIssuePayload;
+export function parseIssuePayload(raw: string): StoredIssuePayload {
+	return JSON.parse(raw) as StoredIssuePayload;
 }

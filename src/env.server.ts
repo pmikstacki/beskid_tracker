@@ -19,6 +19,7 @@ export const env = createEnv({
 		TRACKER_SETUP_TOKEN: z.string().min(8).optional(),
 		TRACKER_DATA_DIR: z.string().min(1).optional(),
 		TRACKER_PUBLIC_URL: z.string().url().optional(),
+				GITHUB_OAUTH_CALLBACK_URL: z.string().url().optional(),
 		GITHUB_WEBHOOK_SECRET: z.string().min(8).optional(),
 		NODE_ENV: z.enum(["development", "production", "test"]).optional(),
 		LOG_LEVEL: z
@@ -37,6 +38,7 @@ export const env = createEnv({
 		TRACKER_SETUP_TOKEN: process.env.TRACKER_SETUP_TOKEN,
 		TRACKER_DATA_DIR: process.env.TRACKER_DATA_DIR,
 		TRACKER_PUBLIC_URL: process.env.TRACKER_PUBLIC_URL,
+		GITHUB_OAUTH_CALLBACK_URL: process.env.GITHUB_OAUTH_CALLBACK_URL,
 		GITHUB_WEBHOOK_SECRET: process.env.GITHUB_WEBHOOK_SECRET,
 		NODE_ENV: process.env.NODE_ENV,
 		LOG_LEVEL: process.env.LOG_LEVEL,

@@ -11,13 +11,14 @@ import {
 } from "#/components/ui/dialog";
 import { WorkItemShellHeader } from "#/components/work-item-shell/work-item-shell-header";
 import { cn } from "#/lib/utils";
+import type { BoardSearchParams } from "#/lib/roadmap/board-search";
 
 export type WorkItemPresentation = "dialog" | "page" | "pane";
 
 export interface WorkItemShellRouteTarget {
 	to: string;
 	params?: Record<string, string>;
-	search?: unknown;
+	search?: BoardSearchParams | undefined;
 }
 
 export interface WorkItemShellProps {

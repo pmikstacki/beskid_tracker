@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { Database } from "bun:sqlite";
+import { openSqlite } from "#/lib/storage/sqlite";
 
 import type { RoadmapTask } from "#/lib/github/types";
 import {
@@ -48,7 +48,7 @@ describe("task display configuration", () => {
 	});
 
 	it("persists a same-column reorder", async () => {
-		const db = new Database(":memory:");
+		const db = openSqlite(":memory:");
 		migrateSchema(db);
 		for (const [id, order] of [
 			["one", 0],

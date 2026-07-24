@@ -1,4 +1,5 @@
-import { Database } from "bun:sqlite";
+import type { Database } from "#/lib/storage/sqlite";
+import { openSqlite } from "#/lib/storage/sqlite";
 import { describe, expect, test } from "vitest";
 
 import { migrateSchema } from "#/lib/storage/schema";
@@ -9,7 +10,7 @@ import {
 } from "./latest";
 
 function fixtureDb(): Database {
-	const db = new Database(":memory:");
+	const db = openSqlite(":memory:");
 	migrateSchema(db);
 	for (const [id, status, visibility, catalogRevision] of [
 		["v0.4", "Released", "public", "catalog-4"],

@@ -6,7 +6,8 @@
  *   bun run scripts/reconcile-delivery.ts --dry-run
  *   bun run scripts/reconcile-delivery.ts --apply [--version v0.5]
  */
-import { Database } from "bun:sqlite";
+import type { Database } from "#/lib/storage/sqlite";
+import { openSqlite } from "#/lib/storage/sqlite";
 
 import { loadAllVersionSeeds } from "#/lib/seed/load";
 import type { ParsedSeedBundle } from "#/lib/seed/parse-uploaded-bundle";
@@ -83,12 +84,12 @@ function ensureScaffold(db: Database, bundle: ParsedSeedBundle): void {
 
 function openDatabase(path: string | undefined, dryRun: boolean): Database {
 	if (dryRun && !path) {
-		const db = new Database(":memory:");
+		const db = openSqlite(":memory:");
 		migrateSchema(db);
 		return db;
 	}
 	ensureTrackerDataDir();
-	const db = new Database(path ?? issuesDbPath(), { create: true });
+	const db = openSqlite(path ?? issuesDbPath());
 	migrateSchema(db);
 	return db;
 }

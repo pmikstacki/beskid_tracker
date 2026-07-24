@@ -1,4 +1,5 @@
-import { Database } from "bun:sqlite";
+import type { Database } from "#/lib/storage/sqlite";
+import { openSqlite } from "#/lib/storage/sqlite";
 import { describe, expect, it } from "vitest";
 
 import type { ParsedSeedBundle } from "#/lib/seed/parse-uploaded-bundle";
@@ -59,7 +60,7 @@ const fixtureSeed: ParsedSeedBundle = {
 };
 
 function fixtureDb(): Database {
-	const db = new Database(":memory:");
+	const db = openSqlite(":memory:");
 	migrateSchema(db);
 	upsertTrackerVersion(db, fixtureSeed.version);
 	upsertTrackerWorkstream(db, fixtureSeed.versionId, fixtureSeed.workstreams[0]);
@@ -82,7 +83,7 @@ function fixtureDb(): Database {
 				relation: "implements",
 				required: true,
 			},
-		] as never,
+		],
 		subtasks: [],
 		source,
 	});

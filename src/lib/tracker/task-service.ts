@@ -1,6 +1,6 @@
 import "@tanstack/react-start/server-only";
 
-import type { Database } from "bun:sqlite";
+import type { Database } from "#/lib/storage/sqlite";
 
 import type { RoadmapColumnId } from "#/lib/github/roadmap-labels";
 import { ROADMAP_COLUMNS } from "#/lib/github/roadmap-labels";
