@@ -7,7 +7,7 @@ RUN corepack enable && corepack prepare pnpm@10.17.1 --activate
 
 WORKDIR /app/beskid_tracker
 
-COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml .npmrc ./
 # Full checkout: package sources need tsconfig.base.json for Vite transforms.
 COPY --from=web_common . /app/beskid_web_common
 ARG NODE_AUTH_TOKEN
