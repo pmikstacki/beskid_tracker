@@ -91,7 +91,11 @@ describe("catalog import", () => {
 	it("does not overwrite locally diverged tasks during reconciliation import", () => {
 		const db = getIssuesDatabase();
 		upsertTrackerVersion(db, sampleBundle.version);
-		upsertTrackerWorkstream(db, sampleBundle.versionId, sampleBundle.workstreams[0]);
+		upsertTrackerWorkstream(
+			db,
+			sampleBundle.versionId,
+			sampleBundle.workstreams[0],
+		);
 		upsertTrackerTask(db, sampleBundle.versionId, {
 			...sampleBundle.tasks[0],
 			title: "Locally edited",

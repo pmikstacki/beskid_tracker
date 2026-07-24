@@ -34,9 +34,7 @@ export function RelatedTopicsField({
 				rows={6}
 				disabled={disabled}
 				className="font-mono text-xs"
-				placeholder={
-					'[{"type":"Feature","title":"…","href":"/platform-spec/…/"}]'
-				}
+				placeholder={'[{"type":"Feature","title":"…","href":"/platform-spec/…/"}]'}
 			/>
 			{hint ? (
 				<p className="text-muted-foreground mt-1.5 text-xs">{hint}</p>

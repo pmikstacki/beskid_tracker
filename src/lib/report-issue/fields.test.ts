@@ -44,9 +44,7 @@ describe("report form layout", () => {
 			]),
 		];
 
-		expect(buildReportBody(layout, { note: "hello" })).toBe(
-			"### Note\n\nhello",
-		);
+		expect(buildReportBody(layout, { note: "hello" })).toBe("### Note\n\nhello");
 	});
 
 	it("serializes reproduction steps into numbered markdown", () => {

@@ -19,7 +19,7 @@ export const env = createEnv({
 		TRACKER_SETUP_TOKEN: z.string().min(8).optional(),
 		TRACKER_DATA_DIR: z.string().min(1).optional(),
 		TRACKER_PUBLIC_URL: z.string().url().optional(),
-				GITHUB_OAUTH_CALLBACK_URL: z.string().url().optional(),
+		GITHUB_OAUTH_CALLBACK_URL: z.string().url().optional(),
 		GITHUB_WEBHOOK_SECRET: z.string().min(8).optional(),
 		NODE_ENV: z.enum(["development", "production", "test"]).optional(),
 		LOG_LEVEL: z

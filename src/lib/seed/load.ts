@@ -35,8 +35,8 @@ export function loadVersionSeed(versionId: string): LoadedVersionSeed {
 		readJsonFile(`${seedVersionDir(versionId)}/version.json`),
 	);
 
-	const workstreams = listEntityJsonFiles(versionId, "workstreams").map(
-		(file) => seedWorkstreamSchema.parse(readJsonFile(file)),
+	const workstreams = listEntityJsonFiles(versionId, "workstreams").map((file) =>
+		seedWorkstreamSchema.parse(readJsonFile(file)),
 	);
 	const deliverableFiles = listEntityJsonFiles(versionId, "deliverables");
 	const legacyMilestoneFiles =

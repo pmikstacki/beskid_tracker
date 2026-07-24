@@ -1,9 +1,10 @@
 import { describe, expect, it } from "vitest";
-
-import { filterTasksBySpecLink, publicTaskView } from "./tasks";
 import type { TrackerTask } from "#/lib/tracker/types";
+import { filterTasksBySpecLink, publicTaskView } from "./tasks";
 
-function task(partial: Partial<TrackerTask> & Pick<TrackerTask, "id">): TrackerTask {
+function task(
+	partial: Partial<TrackerTask> & Pick<TrackerTask, "id">,
+): TrackerTask {
 	return {
 		versionId: "v0.5",
 		title: partial.title ?? partial.id,
@@ -67,7 +68,7 @@ describe("api/v1/tasks helpers", () => {
 					title: "Wire blocks",
 					specRelations: [
 						{
-						id: 1,
+							id: 1,
 							sortOrder: 0,
 							standardId: "language--syntax--blocks",
 							catalogRevision: "rev-a",

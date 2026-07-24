@@ -91,9 +91,7 @@ function entryToNavEntry(value: unknown): FlatSpecNavEntry | null {
 	if (!rawSlug || !title) return null;
 
 	const slug = normalizeSlug(rawSlug);
-	const href = rawHref
-		? rawHref.replace(/^https?:\/\/[^/]+/i, "")
-		: `/${slug}/`;
+	const href = rawHref ? rawHref.replace(/^https?:\/\/[^/]+/i, "") : `/${slug}/`;
 	const level =
 		firstString(record, ["specLevel", "level", "kind", "type"]) ??
 		(firstString(record, ["requirementAnchor", "requirement_anchor"])
@@ -125,11 +123,8 @@ function requirementNavEntries(
 		const standardId = firstString(item, ["stableId", "stable_id", "id"]);
 		const title = firstString(item, ["title", "name", "summary"]);
 		const anchor =
-			firstString(item, [
-				"anchor",
-				"requirementAnchor",
-				"requirement_anchor",
-			]) ?? standardId;
+			firstString(item, ["anchor", "requirementAnchor", "requirement_anchor"]) ??
+			standardId;
 		if (!title || !anchor) return [];
 		return [
 			{

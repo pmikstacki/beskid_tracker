@@ -5,9 +5,9 @@ import {
 	approveAuthHubPairing,
 	pairingFailureMessage,
 } from "#/lib/auth/hub-pairing-flow.server";
-import { createOctokitForSession } from "#/server/auth-guard.server";
 import { canManageRoadmap } from "#/lib/github/permissions";
 import { getSessionFromRequest } from "#/lib/session/cookie";
+import { createOctokitForSession } from "#/server/auth-guard.server";
 
 const bodySchema = z.object({
 	code: z.string().min(4),
@@ -57,8 +57,7 @@ export const Route = createFileRoute("/api/admin/auth/pair")({
 					}
 					return Response.json({ ok: true });
 				} catch (err) {
-					const message =
-						err instanceof Error ? err.message : "Pairing failed";
+					const message = err instanceof Error ? err.message : "Pairing failed";
 					return Response.json({ error: message }, { status: 400 });
 				}
 			},

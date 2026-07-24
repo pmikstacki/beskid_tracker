@@ -5,12 +5,12 @@ import { useRouterState } from "@tanstack/react-router";
 import { type ReactNode, useState } from "react";
 
 import { AppSidebar } from "#/components/app-sidebar";
+import { RoadmapGlobalSearch } from "#/components/roadmap-global-search";
+import { ShellUiProvider, useShellUi } from "#/components/shell-versions-sync";
 import {
 	TrackerSettingsDialog,
 	TrackerSettingsHeaderButton,
 } from "#/components/tracker-settings-dialog";
-import { RoadmapGlobalSearch } from "#/components/roadmap-global-search";
-import { ShellUiProvider, useShellUi } from "#/components/shell-versions-sync";
 import { Separator } from "#/components/ui/separator";
 import {
 	SidebarInset,
@@ -60,9 +60,7 @@ function AppShellInner({
 						<Separator orientation="vertical" className="mr-2 h-6" />
 						<p className="island-kicker hidden shrink-0 sm:block">Beskid</p>
 						<span className="text-muted-foreground hidden sm:inline">/</span>
-						<span className="hidden truncate font-semibold md:inline">
-							Tracker
-						</span>
+						<span className="hidden truncate font-semibold md:inline">Tracker</span>
 					</div>
 					<div className="ml-auto flex min-w-0 max-w-2xl flex-1 items-center justify-end gap-2">
 						<RoadmapGlobalSearch hits={searchIndex} />

@@ -18,32 +18,30 @@ export interface DeliveryLatest {
 
 export type TypedLinkTarget =
 	| {
-		kind: "tracker-version";
-		versionId: string;
-	}
+			kind: "tracker-version";
+			versionId: string;
+	  }
 	| {
-		kind: "tracker-task";
-		versionId: string;
-		taskId: string;
-	}
+			kind: "tracker-task";
+			versionId: string;
+			taskId: string;
+	  }
 	| {
-		kind: "openspec";
-		standardId: string;
-		catalogRevision: string;
-	}
+			kind: "openspec";
+			standardId: string;
+			catalogRevision: string;
+	  }
 	| {
-		kind: "github-bug";
-		repository: string;
-		issueNumber: number;
-	};
+			kind: "github-bug";
+			repository: string;
+			issueNumber: number;
+	  };
 
 export function assertTrackerSpecLink(
 	link: Pick<TrackerSpecLink, "standardId" | "catalogRevision">,
 ): void {
 	if (!link.standardId || !link.catalogRevision) {
-		throw new Error(
-			"OpenSpec link requires standardId and catalogRevision",
-		);
+		throw new Error("OpenSpec link requires standardId and catalogRevision");
 	}
 }
 

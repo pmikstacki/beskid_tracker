@@ -52,8 +52,7 @@ export function IssueSpecSuggestionsWidget({
 					</p>
 				) : null}
 				{suggestions.map((suggestion) => {
-					const linked =
-						suggestion.alreadyLinked || hasRelation(suggestion.href);
+					const linked = suggestion.alreadyLinked || hasRelation(suggestion.href);
 					return (
 						<div
 							key={suggestion.href}
@@ -69,10 +68,7 @@ export function IssueSpecSuggestionsWidget({
 										{suggestion.level}
 									</Badge>
 									{suggestion.matchedTerms.slice(0, 3).map((term) => (
-										<Badge
-											key={`${suggestion.href}-${term}`}
-											variant="secondary"
-										>
+										<Badge key={`${suggestion.href}-${term}`} variant="secondary">
 											{term}
 										</Badge>
 									))}

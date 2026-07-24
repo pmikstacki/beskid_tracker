@@ -1,9 +1,8 @@
 import "@tanstack/react-start/server-only";
 
-import type { Database } from "#/lib/storage/sqlite";
-
 import type { PublicBug } from "#/lib/github/types";
 import { getIssuesDatabase } from "#/lib/storage/db";
+import type { Database } from "#/lib/storage/sqlite";
 import { trackerBugToPublicBug } from "#/lib/tracker/mappers";
 import {
 	type UpsertTrackerBugInput,

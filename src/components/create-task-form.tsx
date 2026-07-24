@@ -139,9 +139,7 @@ export function CreateTaskForm({
 					) : (
 						<Select
 							value={workstream ?? "__none__"}
-							onValueChange={(v) =>
-								setWorkstream(v === "__none__" ? undefined : v)
-							}
+							onValueChange={(v) => setWorkstream(v === "__none__" ? undefined : v)}
 						>
 							<SelectTrigger>
 								<SelectValue placeholder="Optional" />
@@ -166,10 +164,7 @@ export function CreateTaskForm({
 					placeholder="e.g. compiler-pipeline"
 				/>
 			) : null}
-			<SpecRelationEditor
-				relations={specRelations}
-				onChange={setSpecRelations}
-			/>
+			<SpecRelationEditor relations={specRelations} onChange={setSpecRelations} />
 			{specRelations.length > 0 && !hasRequiredRelation ? (
 				<p className="text-muted-foreground text-xs">
 					Mark at least one spec relation as required.

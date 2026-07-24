@@ -137,9 +137,7 @@ export function RoadmapGlobalSearch({ hits }: RoadmapGlobalSearchProps) {
 										>
 											<Icon className="size-4 opacity-70" />
 											<div className="flex min-w-0 flex-col gap-0.5">
-												<span className="truncate font-medium">
-													{hit.title}
-												</span>
+												<span className="truncate font-medium">{hit.title}</span>
 												<span className="text-muted-foreground truncate text-xs">
 													{hit.subtitle}
 												</span>

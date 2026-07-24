@@ -10,8 +10,8 @@ import {
 	DialogTitle,
 } from "#/components/ui/dialog";
 import { WorkItemShellHeader } from "#/components/work-item-shell/work-item-shell-header";
-import { cn } from "#/lib/utils";
 import type { BoardSearchParams } from "#/lib/roadmap/board-search";
+import { cn } from "#/lib/utils";
 
 export type WorkItemPresentation = "dialog" | "page" | "pane";
 
@@ -88,9 +88,7 @@ export function WorkItemShell({
 				>
 					<DialogTitle className="sr-only">{title}</DialogTitle>
 					{description ? (
-						<DialogDescription className="sr-only">
-							{description}
-						</DialogDescription>
+						<DialogDescription className="sr-only">{description}</DialogDescription>
 					) : null}
 					<div className="px-6 pt-6">
 						{header}
@@ -98,9 +96,7 @@ export function WorkItemShell({
 							{description ?? ""}
 						</MarkdownContent>
 					</div>
-					<div className="min-h-0 flex-1 overflow-y-auto px-6 pb-6">
-						{children}
-					</div>
+					<div className="min-h-0 flex-1 overflow-y-auto px-6 pb-6">{children}</div>
 				</DialogContent>
 			</Dialog>
 		);

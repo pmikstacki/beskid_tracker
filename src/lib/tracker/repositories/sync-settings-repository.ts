@@ -1,8 +1,7 @@
 import "@tanstack/react-start/server-only";
 
-import type { Database } from "#/lib/storage/sqlite";
-
 import { getIssuesDatabase } from "#/lib/storage/db";
+import type { Database } from "#/lib/storage/sqlite";
 import type { SyncSettingRow } from "#/lib/tracker/types";
 
 export const SYNC_SETTING_KEYS = {

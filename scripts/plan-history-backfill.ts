@@ -1,8 +1,8 @@
 import { readFile } from "node:fs/promises";
 
 import {
-	planHistoryBackfill,
 	type HistoryCommit,
+	planHistoryBackfill,
 	type VersionBandLedger,
 } from "#/lib/tracker/history-backfill";
 
@@ -14,7 +14,9 @@ function option(name: string): string | undefined {
 const ledgerPath = option("--ledger");
 if (!ledgerPath) throw new Error("--ledger is required");
 
-const ledger = JSON.parse(await readFile(ledgerPath, "utf8")) as VersionBandLedger;
+const ledger = JSON.parse(
+	await readFile(ledgerPath, "utf8"),
+) as VersionBandLedger;
 const commitsPath = option("--commits");
 const commits = commitsPath
 	? (JSON.parse(await readFile(commitsPath, "utf8")) as HistoryCommit[])

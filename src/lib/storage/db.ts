@@ -1,10 +1,9 @@
 import "@tanstack/react-start/server-only";
 
-import type { Database } from "#/lib/storage/sqlite";
-import { openSqlite } from "#/lib/storage/sqlite";
-
 import { ensureTrackerDataDir, issuesDbPath } from "#/lib/storage/paths";
 import { migrateSchema } from "#/lib/storage/schema";
+import type { Database } from "#/lib/storage/sqlite";
+import { openSqlite } from "#/lib/storage/sqlite";
 
 let dbInstance: Database | null = null;
 

@@ -1,5 +1,6 @@
 import "@tanstack/react-start/server-only";
 
+import { normalizeVersionStatus } from "#/lib/roadmap/version-status";
 import type { LoadedVersionSeed } from "#/lib/seed/load";
 import type {
 	SeedDeliverable,
@@ -8,7 +9,6 @@ import type {
 	SeedWorkstream,
 } from "#/lib/seed/schemas";
 import { compareSeedDeliverables, compareSeedTasks } from "#/lib/seed/schemas";
-import { normalizeVersionStatus } from "#/lib/roadmap/version-status";
 import { getIssuesDatabase } from "#/lib/storage/db";
 import {
 	listTrackerDeliverables,

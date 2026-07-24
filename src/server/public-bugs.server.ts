@@ -1,17 +1,20 @@
-import { createPublicBugForSession } from "#/lib/tracker/bug-write-service";
 import {
 	fetchPublicBugStatsFromStore,
 	listPublicBugsFromStore,
 } from "#/lib/issues/read-service";
+import {
+	createSyncOctokit,
+	hasGithubSyncCredentials,
+} from "#/lib/sync/sync-octokit";
+import { createPublicBugForSession } from "#/lib/tracker/bug-write-service";
+import { drainGithubSyncOutbox } from "#/lib/tracker/process-outbox";
 import { hasTrackerData } from "#/lib/tracker/read-service";
 import { getTrackerSyncSettings } from "#/lib/tracker/sync-settings";
-import { drainGithubSyncOutbox } from "#/lib/tracker/process-outbox";
-import { createSyncOctokit, hasGithubSyncCredentials } from "#/lib/sync/sync-octokit";
 
 export {
 	createPublicBugForSession as createPublicBugIssue,
-	listPublicBugsFromStore,
 	fetchPublicBugStatsFromStore,
+	listPublicBugsFromStore,
 };
 
 export async function triggerGithubSyncExport() {

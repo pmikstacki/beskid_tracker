@@ -134,8 +134,7 @@ export function GithubWebhookSettingsPanel() {
 				)}
 				{settings.secretSource !== "none" ? (
 					<Badge variant="outline" className="font-normal">
-						Secret:{" "}
-						{settings.secretSource === "env" ? "environment" : "database"}
+						Secret: {settings.secretSource === "env" ? "environment" : "database"}
 					</Badge>
 				) : null}
 			</div>
@@ -162,11 +161,7 @@ export function GithubWebhookSettingsPanel() {
 						onClick={() => void copyWebhookUrl()}
 						title="Copy webhook URL"
 					>
-						{copied ? (
-							<Check className="size-3.5" />
-						) : (
-							<Copy className="size-3.5" />
-						)}
+						{copied ? <Check className="size-3.5" /> : <Copy className="size-3.5" />}
 					</Button>
 				</div>
 				<p className="text-muted-foreground text-[11px]">
@@ -208,21 +203,13 @@ export function GithubWebhookSettingsPanel() {
 						Create webhook via API
 					</Button>
 					<Button type="button" size="sm" variant="outline" asChild>
-						<a
-							href={settings.githubNewWebhookUrl}
-							target="_blank"
-							rel="noreferrer"
-						>
+						<a href={settings.githubNewWebhookUrl} target="_blank" rel="noreferrer">
 							<ExternalLink className="size-3.5" />
 							Open GitHub webhook form
 						</a>
 					</Button>
 					<Button type="button" size="sm" variant="ghost" asChild>
-						<a
-							href={settings.githubWebhooksUrl}
-							target="_blank"
-							rel="noreferrer"
-						>
+						<a href={settings.githubWebhooksUrl} target="_blank" rel="noreferrer">
 							Manage hooks
 						</a>
 					</Button>
@@ -240,9 +227,8 @@ export function GithubWebhookSettingsPanel() {
 				/>
 				<p className="text-muted-foreground text-[11px]">
 					Used to build the webhook URL shown above. Override when the app sits
-					behind a proxy, or set{" "}
-					<code className="text-xs">TRACKER_PUBLIC_URL</code> in the
-					environment.
+					behind a proxy, or set <code className="text-xs">TRACKER_PUBLIC_URL</code>{" "}
+					in the environment.
 				</p>
 			</div>
 
@@ -268,8 +254,8 @@ export function GithubWebhookSettingsPanel() {
 					</p>
 				) : (
 					<p className="text-muted-foreground text-[11px]">
-						Must match the secret on the GitHub webhook. Saved locally until you
-						clear the field and save.
+						Must match the secret on the GitHub webhook. Saved locally until you clear
+						the field and save.
 					</p>
 				)}
 				{!secretLocked ? (
@@ -291,9 +277,7 @@ export function GithubWebhookSettingsPanel() {
 					<time dateTime={settings.lastWebhookAt}>
 						{new Date(settings.lastWebhookAt).toLocaleString()}
 					</time>
-					{settings.lastWebhookAction
-						? ` · ${settings.lastWebhookAction}`
-						: null}
+					{settings.lastWebhookAction ? ` · ${settings.lastWebhookAction}` : null}
 				</p>
 			) : (
 				<p className="text-muted-foreground text-xs">

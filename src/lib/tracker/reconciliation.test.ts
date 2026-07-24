@@ -1,15 +1,17 @@
-import type { Database } from "#/lib/storage/sqlite";
-import { openSqlite } from "#/lib/storage/sqlite";
 import { describe, expect, it } from "vitest";
-
 import type { ParsedSeedBundle } from "#/lib/seed/parse-uploaded-bundle";
 import { migrateSchema } from "#/lib/storage/schema";
+import type { Database } from "#/lib/storage/sqlite";
+import { openSqlite } from "#/lib/storage/sqlite";
 import {
 	applyTrackerReconciliation,
 	planTrackerReconciliation,
 } from "#/lib/tracker/reconciliation";
+import {
+	upsertTrackerTask,
+	upsertTrackerWorkstream,
+} from "#/lib/tracker/repositories/tasks-repository";
 import { upsertTrackerVersion } from "#/lib/tracker/repositories/versions-repository";
-import { upsertTrackerTask, upsertTrackerWorkstream } from "#/lib/tracker/repositories/tasks-repository";
 
 const source = {
 	repo: "beskid" as const,
@@ -116,8 +118,9 @@ describe("tracker reconciliation", () => {
 		expect(plan.conflicts).toEqual([
 			{ taskId: "edited-task", reason: "local-and-seed-diverged" },
 		]);
-		expect(database.query("SELECT count(*) AS count FROM tracker_tasks").get())
-			.toMatchObject({ count: 2 });
+		expect(
+			database.query("SELECT count(*) AS count FROM tracker_tasks").get(),
+		).toMatchObject({ count: 2 });
 	});
 
 	it("requires an approved proposal digest before applying mutations", () => {

@@ -4,8 +4,8 @@ import type { Octokit } from "@octokit/rest";
 
 import { createSyncOctokit } from "#/lib/sync/sync-octokit";
 import {
-	processGithubSyncOutboxEntries,
 	type GithubExportResult,
+	processGithubSyncOutboxEntries,
 } from "#/lib/tracker/github-export-service";
 
 export type { GithubExportResult };

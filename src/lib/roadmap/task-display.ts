@@ -30,8 +30,7 @@ export function selectTaskProperties(
 		workstream: task.workstream,
 		status: task.statusColumn,
 		owner: task.owner,
-		specApproval:
-			task.specApproval === "pending" ? "Spec pending" : undefined,
+		specApproval: task.specApproval === "pending" ? "Spec pending" : undefined,
 	};
 
 	return (config.properties ?? TASK_DISPLAY_PROPERTIES).flatMap((property) => {
@@ -40,7 +39,9 @@ export function selectTaskProperties(
 	});
 }
 
-export function taskStatusClassName(status: RoadmapTask["statusColumn"]): string {
+export function taskStatusClassName(
+	status: RoadmapTask["statusColumn"],
+): string {
 	if (status === "Done") return "bg-emerald-600 text-white";
 	if (status === "In Progress") return "bg-sky-600 text-white";
 	return "bg-slate-600 text-white";

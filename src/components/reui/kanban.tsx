@@ -283,11 +283,7 @@ function Kanban<T>({
 				const activeIndex = columnIds.indexOf(active.id as string);
 				const overIndex = columnIds.indexOf(over.id as string);
 				if (activeIndex !== overIndex) {
-					const newOrder = arrayMove(
-						Object.keys(columns),
-						activeIndex,
-						overIndex,
-					);
+					const newOrder = arrayMove(Object.keys(columns), activeIndex, overIndex);
 					const newColumns: Record<string, T[]> = {};
 					newOrder.forEach((key) => {
 						newColumns[key] = columns[key];
@@ -301,11 +297,7 @@ function Kanban<T>({
 			const overContainer = findContainer(over.id);
 
 			// Handle item reordering within the same column
-			if (
-				activeContainer &&
-				overContainer &&
-				activeContainer === overContainer
-			) {
+			if (activeContainer && overContainer && activeContainer === overContainer) {
 				const container = activeContainer;
 				const activeIndex = columns[container].findIndex(
 					(item: T) => getItemValue(item) === active.id,
@@ -722,9 +714,7 @@ function KanbanOverlay({ children, className, ...props }: KanbanOverlayProps) {
 			className={cn("z-50", activeId && "cursor-grabbing", className)}
 			{...props}
 		>
-			<IsOverlayContext.Provider value={true}>
-				{content}
-			</IsOverlayContext.Provider>
+			<IsOverlayContext.Provider value={true}>{content}</IsOverlayContext.Provider>
 		</DragOverlay>,
 		document.body,
 	);
@@ -734,9 +724,9 @@ export {
 	Kanban,
 	KanbanBoard,
 	KanbanColumn,
+	KanbanColumnContent,
 	KanbanColumnHandle,
 	KanbanItem,
 	KanbanItemHandle,
-	KanbanColumnContent,
 	KanbanOverlay,
 };

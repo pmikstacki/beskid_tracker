@@ -1,16 +1,16 @@
 {
-  "id": "v0.4",
-  "title": "Platform services, auth, and delivery tooling",
-  "summary": "v0.4 landed compiler waves W0–W6 (HIR-free ISLE production path, canonical ABI-v5 runtime, Linux x86-64 kits, HIR/legacy retirement, corelib gates), platform services (auth hub, tracker SQLite SOT, nexus hosting), CI/CD (pnpm cutover, Docker Hub rate-limit fix, platform delivery), and site updates (learn curriculum, platform-spec reader chrome, website book). OpenSpec catalog: 185 capabilities, 524 requirements (rev f011a8cb2e46). W7 release evidence in progress.",
-  "theme": "Auth hub, web_common, tracker, nexus, CI/CD, corelib, editor DX",
-  "status": "In Progress (release closure)",
-  "cutoff": {
-    "startDate": "2026-05-26",
-    "endDate": "2026-07-24",
-    "startCommitSha": "aaddd32",
-    "endCommitSha": "17442fb9",
-    "endCommitRepo": "beskid",
-    "rationale": "Starts at v0.3 cut-off tip aaddd32 (2026-05-25). v0.4 burst through 2026-07-24 lands compiler W0–W6 Done (HIR-free ISLE, ABI-v5 kits, HIR retirement), pnpm migration, catalog rebuild, platform-spec editor fixes, learn curriculum expansion. End commit: 17442fb9 (2026-07-24)."
-  },
-  "$schema": "../schemas/seed/version.schema.json"
+	"id": "v0.4",
+	"title": "Platform services, auth, and delivery tooling",
+	"summary": "v0.4 landed compiler waves W0–W6 (HIR-free ISLE production path, canonical ABI-v5 runtime, Linux x86-64 kits, HIR/legacy retirement, corelib gates), platform services (auth hub, tracker SQLite SOT, nexus hosting), CI/CD (pnpm cutover, Docker Hub rate-limit fix, platform delivery), and site updates (learn curriculum, platform-spec reader chrome, website book). OpenSpec catalog: 185 capabilities, 524 requirements (rev f011a8cb2e46). W7 release evidence in progress.",
+	"theme": "Auth hub, web_common, tracker, nexus, CI/CD, corelib, editor DX",
+	"status": "In Progress (release closure)",
+	"cutoff": {
+		"startDate": "2026-05-26",
+		"endDate": "2026-07-24",
+		"startCommitSha": "aaddd32",
+		"endCommitSha": "17442fb9",
+		"endCommitRepo": "beskid",
+		"rationale": "Starts at v0.3 cut-off tip aaddd32 (2026-05-25). v0.4 burst through 2026-07-24 lands compiler W0–W6 Done (HIR-free ISLE, ABI-v5 kits, HIR retirement), pnpm migration, catalog rebuild, platform-spec editor fixes, learn curriculum expansion. End commit: 17442fb9 (2026-07-24)."
+	},
+	"$schema": "../schemas/seed/version.schema.json"
 }

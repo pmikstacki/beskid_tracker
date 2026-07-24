@@ -1,19 +1,19 @@
 import "@tanstack/react-start/server-only";
 
-import type { Database } from "#/lib/storage/sqlite";
+import type { ParsedSeedBundle } from "#/lib/seed/parse-uploaded-bundle";
 
 import { getIssuesDatabase } from "#/lib/storage/db";
-import type { ParsedSeedBundle } from "#/lib/seed/parse-uploaded-bundle";
+import type { Database } from "#/lib/storage/sqlite";
 import {
 	applyTrackerReconciliation,
 	planTrackerReconciliation,
 	type ReconciliationCatalog,
 } from "#/lib/tracker/reconciliation";
-import { upsertTrackerVersion } from "#/lib/tracker/repositories/versions-repository";
 import {
 	upsertTrackerDeliverable,
 	upsertTrackerWorkstream,
 } from "#/lib/tracker/repositories/tasks-repository";
+import { upsertTrackerVersion } from "#/lib/tracker/repositories/versions-repository";
 
 export interface CatalogImportSummary {
 	versionsUpserted: number;

@@ -36,9 +36,7 @@ function LoginPage() {
 				title="Tracker"
 				description="Sign in through the Beskid auth hub to manage tracker-native roadmap tasks. GitHub is used only for public bug issues."
 				error={
-					error
-						? "Sign-in failed. Check auth hub pairing and try again."
-						: undefined
+					error ? "Sign-in failed. Check auth hub pairing and try again." : undefined
 				}
 				footer={
 					<>

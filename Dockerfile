@@ -10,8 +10,6 @@ WORKDIR /app/beskid_tracker
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml .npmrc ./
 # Full checkout: package sources need tsconfig.base.json for Vite transforms.
 COPY --from=web_common . /app/beskid_web_common
-ARG NODE_AUTH_TOKEN
-ENV NODE_AUTH_TOKEN=${NODE_AUTH_TOKEN}
 
 RUN --mount=type=cache,target=/root/.local/share/pnpm/store pnpm install --dir /app/beskid_web_common --frozen-lockfile
 RUN --mount=type=cache,target=/root/.local/share/pnpm/store pnpm install --frozen-lockfile

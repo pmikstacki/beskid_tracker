@@ -43,7 +43,10 @@ fs.mkdirSync(outDir, { recursive: true });
 writeSchema("git-source.schema.json", seedGitSourceSchema.toJSONSchema());
 writeSchema("spec-relation.schema.json", seedSpecRelationSchema.toJSONSchema());
 writeSchema("subtask.schema.json", seedSubtaskSchema.toJSONSchema());
-writeSchema("version-cutoff.schema.json", seedVersionCutoffSchema.toJSONSchema());
+writeSchema(
+	"version-cutoff.schema.json",
+	seedVersionCutoffSchema.toJSONSchema(),
+);
 writeSchema("version.schema.json", seedVersionSchema.toJSONSchema());
 writeSchema("workstream.schema.json", seedWorkstreamSchema.toJSONSchema());
 writeSchema("deliverable.schema.json", seedDeliverableSchema.toJSONSchema());

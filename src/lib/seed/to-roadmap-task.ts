@@ -122,9 +122,7 @@ export function seedTaskToRoadmapTask(
 		area: task.area,
 		feature: task.feature,
 		htmlUrl: task.source.url ?? commitUrl(task.source.repo, task.source.commit),
-		milestone: deliverable
-			? { title: deliverable.title, number: 0 }
-			: undefined,
+		milestone: deliverable ? { title: deliverable.title, number: 0 } : undefined,
 		labelNames: buildLabelNames(task),
 	};
 }

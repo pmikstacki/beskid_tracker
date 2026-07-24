@@ -126,11 +126,7 @@ export function VersionBoardView({
 	}, [filteredColumns]);
 
 	const metaQuery = filters.q ?? "";
-	const expandTo = createTaskFullscreenTo(
-		version,
-		boardSearch,
-		fixedWorkstream,
-	);
+	const expandTo = createTaskFullscreenTo(version, boardSearch, fixedWorkstream);
 
 	const filterWorkstreams = fixedWorkstream ? [] : board.meta.workstreams;
 
@@ -188,9 +184,7 @@ export function VersionBoardView({
 
 				<BoardFilterPanel
 					query={metaQuery}
-					onQueryChange={(q) =>
-						syncFiltersToUrl({ ...filters, q: q || undefined })
-					}
+					onQueryChange={(q) => syncFiltersToUrl({ ...filters, q: q || undefined })}
 					workstreams={filterWorkstreams}
 					domains={board.meta.domains}
 					areas={board.meta.areas}

@@ -52,8 +52,7 @@ export const Route = createFileRoute("/api/v1/tasks")({
 				} catch (error) {
 					return Response.json(
 						{
-							error:
-								error instanceof Error ? error.message : "Invalid link",
+							error: error instanceof Error ? error.message : "Invalid link",
 						},
 						{ status: 400 },
 					);
@@ -87,8 +86,7 @@ export const Route = createFileRoute("/api/v1/tasks")({
 				) {
 					return Response.json(
 						{
-							error:
-								"standardId, catalogRevision, and title are required",
+							error: "standardId, catalogRevision, and title are required",
 						},
 						{ status: 400 },
 					);
@@ -101,8 +99,7 @@ export const Route = createFileRoute("/api/v1/tasks")({
 				} catch (error) {
 					return Response.json(
 						{
-							error:
-								error instanceof Error ? error.message : "Invalid link",
+							error: error instanceof Error ? error.message : "Invalid link",
 						},
 						{ status: 400 },
 					);
@@ -111,13 +108,10 @@ export const Route = createFileRoute("/api/v1/tasks")({
 				const db = getIssuesDatabase();
 				const versions = listTrackerVersions(db);
 				const version =
-					versions.find(
-						(entry) => entry.catalogRevision === body.catalogRevision,
-					) ??
+					versions.find((entry) => entry.catalogRevision === body.catalogRevision) ??
 					versions
 						.filter(
-							(entry) =>
-								entry.status === "Released" && entry.visibility === "public",
+							(entry) => entry.status === "Released" && entry.visibility === "public",
 						)
 						.sort((a, b) => b.sortKey - a.sortKey)[0] ??
 					versions[0];

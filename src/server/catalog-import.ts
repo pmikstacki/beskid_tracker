@@ -69,9 +69,7 @@ export const importCatalogBundleFn = createServerFn({ method: "POST" })
 				throw new Error("Only repository maintainers can import catalog data");
 			}
 
-			const bundles = parseUploadedSeedBundles(
-				data.files as UploadedSeedFile[],
-			);
+			const bundles = parseUploadedSeedBundles(data.files as UploadedSeedFile[]);
 			return upsertParsedSeedBundles(bundles);
 		});
 	});

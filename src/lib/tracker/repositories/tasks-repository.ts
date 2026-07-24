@@ -1,12 +1,12 @@
 import "@tanstack/react-start/server-only";
 
-import type { Database } from "#/lib/storage/sqlite";
 import type {
 	SeedDeliverable,
 	SeedTask,
 	SeedWorkstream,
 } from "#/lib/seed/schemas";
 import { getIssuesDatabase } from "#/lib/storage/db";
+import type { Database } from "#/lib/storage/sqlite";
 import {
 	rowToTrackerDeliverable,
 	rowToTrackerTask,
@@ -301,11 +301,7 @@ export function getTrackerTask(
 		.get(versionId, taskId);
 	if (!row) return null;
 	const subtasks = listSubtaskRowsForTask(database, versionId, taskId);
-	const specRelations = listSpecRelationRowsForTask(
-		database,
-		versionId,
-		taskId,
-	);
+	const specRelations = listSpecRelationRowsForTask(database, versionId, taskId);
 	return rowToTrackerTask(row, subtasks, specRelations);
 }
 

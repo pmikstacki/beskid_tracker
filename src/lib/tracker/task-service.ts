@@ -1,7 +1,5 @@
 import "@tanstack/react-start/server-only";
 
-import type { Database } from "#/lib/storage/sqlite";
-
 import type { RoadmapColumnId } from "#/lib/github/roadmap-labels";
 import { ROADMAP_COLUMNS } from "#/lib/github/roadmap-labels";
 import type { RoadmapTask } from "#/lib/github/types";
@@ -9,11 +7,12 @@ import type { SpecRelation } from "#/lib/platform-spec/relations";
 import type { SubtaskRow } from "#/lib/report-issue/field-values";
 import type { SeedSubtask, SeedTask } from "#/lib/seed/schemas";
 import { getIssuesDatabase } from "#/lib/storage/db";
+import type { Database } from "#/lib/storage/sqlite";
 import { trackerTaskToRoadmapTask } from "#/lib/tracker/mappers";
 import {
 	getTrackerTask,
-	listTrackerTasks,
 	listTrackerDeliverables,
+	listTrackerTasks,
 	upsertTrackerTask,
 } from "#/lib/tracker/repositories/tasks-repository";
 import type { TrackerTask } from "#/lib/tracker/types";
@@ -241,13 +240,21 @@ export async function moveRoadmapTaskToColumn(
 		statusColumn: targetColumn,
 	});
 
-	const ordered = ROADMAP_COLUMNS.flatMap((column) => columns.get(column.id) ?? []);
+	const ordered = ROADMAP_COLUMNS.flatMap(
+		(column) => columns.get(column.id) ?? [],
+	);
 	database.run("BEGIN");
 	try {
 		for (const [index, item] of ordered.entries()) {
 			database.run(
 				"UPDATE tracker_tasks SET status_column = ?, sort_order = ?, updated_at = ? WHERE version_id = ? AND id = ?",
-				[item.statusColumn, index, new Date().toISOString(), ref.versionId, item.id],
+				[
+					item.statusColumn,
+					index,
+					new Date().toISOString(),
+					ref.versionId,
+					item.id,
+				],
 			);
 		}
 		database.run("COMMIT");

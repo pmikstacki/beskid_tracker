@@ -125,12 +125,7 @@ export function RoadmapMetaSearchBar({
 				{showStructuredFilters ? (
 					<Popover open={filtersOpen} onOpenChange={setFiltersOpen}>
 						<PopoverTrigger asChild>
-							<Button
-								type="button"
-								variant="outline"
-								size="sm"
-								className="gap-1.5"
-							>
+							<Button type="button" variant="outline" size="sm" className="gap-1.5">
 								<SlidersHorizontal className="size-3.5" />
 								Filters
 							</Button>
@@ -147,33 +142,25 @@ export function RoadmapMetaSearchBar({
 									label="Workstream"
 									value={parsed.workstream ?? ALL}
 									options={workstreams}
-									onChange={(v) =>
-										appendToken("workstream", v === ALL ? undefined : v)
-									}
+									onChange={(v) => appendToken("workstream", v === ALL ? undefined : v)}
 								/>
 								<FilterSelect
 									label="Domain"
 									value={parsed.domain ?? ALL}
 									options={domains}
-									onChange={(v) =>
-										appendToken("domain", v === ALL ? undefined : v)
-									}
+									onChange={(v) => appendToken("domain", v === ALL ? undefined : v)}
 								/>
 								<FilterSelect
 									label="Area"
 									value={parsed.area ?? ALL}
 									options={areas}
-									onChange={(v) =>
-										appendToken("area", v === ALL ? undefined : v)
-									}
+									onChange={(v) => appendToken("area", v === ALL ? undefined : v)}
 								/>
 								<FilterSelect
 									label="Feature"
 									value={parsed.feature ?? ALL}
 									options={features}
-									onChange={(v) =>
-										appendToken("feature", v === ALL ? undefined : v)
-									}
+									onChange={(v) => appendToken("feature", v === ALL ? undefined : v)}
 								/>
 								<FilterSelect
 									label="Status"
@@ -232,9 +219,7 @@ export function RoadmapMetaSearchBar({
 							<button
 								type="button"
 								className="hover:bg-muted rounded-sm p-0.5"
-								onClick={() =>
-									onChange(removeTokenFromQuery(value, chip.removeToken))
-								}
+								onClick={() => onChange(removeTokenFromQuery(value, chip.removeToken))}
 								aria-label={`Remove ${chip.label}`}
 							>
 								<X className="size-3" />

@@ -1,7 +1,7 @@
 import "@tanstack/react-start/server-only";
 
-import type { Database } from "#/lib/storage/sqlite";
 import { getIssuesDatabase } from "#/lib/storage/db";
+import type { Database } from "#/lib/storage/sqlite";
 import { countGithubSyncOutbox } from "#/lib/tracker/repositories/outbox-repository";
 import {
 	getSyncSetting,

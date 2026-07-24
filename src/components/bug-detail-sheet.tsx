@@ -55,9 +55,7 @@ export function BugDetailSheet({
 					{bug.bodyExcerpt ? (
 						<MarkdownContent>{bug.bodyExcerpt}</MarkdownContent>
 					) : (
-						<p className="text-muted-foreground text-sm">
-							No description preview.
-						</p>
+						<p className="text-muted-foreground text-sm">No description preview.</p>
 					)}
 				</div>
 				<SheetFooter>

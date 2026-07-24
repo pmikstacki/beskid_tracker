@@ -1,7 +1,6 @@
-import { openSqlite } from "#/lib/storage/sqlite";
 import { describe, expect, it } from "vitest";
-
 import { migrateSchema, SCHEMA_VERSION } from "#/lib/storage/schema";
+import { openSqlite } from "#/lib/storage/sqlite";
 import type { GitHubIssuePayload } from "#/lib/storage/stored-issue";
 import {
 	classifyGithubIssueForSync,
@@ -31,9 +30,7 @@ function issue(labels: string[]): GitHubIssuePayload {
 describe("bug-only GitHub sync", () => {
 	it("exports bug outbox entries and rejects task entries", () => {
 		expect(isGithubSyncOutboxEntrySupported({ entityType: "bug" })).toBe(true);
-		expect(isGithubSyncOutboxEntrySupported({ entityType: "task" })).toBe(
-			false,
-		);
+		expect(isGithubSyncOutboxEntrySupported({ entityType: "task" })).toBe(false);
 	});
 
 	it("accepts bug webhook issues and rejects roadmap tasks", () => {

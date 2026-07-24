@@ -76,16 +76,16 @@ export function AuthHubSetupWizard({
 				<CardDescription>
 					Tracker signs in through the shared auth hub. On the hub, open{" "}
 					<strong>Admin → Pairing</strong>, create a code for app{" "}
-					<code className="text-xs">tracker</code>, then enter it below. The
-					approver login must match a GitHub repo admin on{" "}
+					<code className="text-xs">tracker</code>, then enter it below. The approver
+					login must match a GitHub repo admin on{" "}
 					<code className="text-xs">Cyber-Nomad-Collective/beskid</code>.
 				</CardDescription>
 			</CardHeader>
 			<CardContent>
 				{!hasSessionSecret ? (
 					<p className="mb-4 rounded-lg border border-destructive/40 bg-destructive/10 px-3 py-2 text-sm text-destructive">
-						Set <code className="text-xs">SESSION_SECRET</code> (32+ characters)
-						on the tracker service before pairing.
+						Set <code className="text-xs">SESSION_SECRET</code> (32+ characters) on
+						the tracker service before pairing.
 					</p>
 				) : null}
 
@@ -154,7 +154,11 @@ export function AuthHubSetupWizard({
 						</p>
 					) : null}
 
-					<Button type="submit" className="w-full" disabled={busy || !hasSessionSecret}>
+					<Button
+						type="submit"
+						className="w-full"
+						disabled={busy || !hasSessionSecret}
+					>
 						{busy ? "Saving…" : "Save and pair with auth hub"}
 					</Button>
 				</form>

@@ -106,11 +106,7 @@ export const getWorkstreamDashboard = createServerFn({ method: "GET" })
 		const version = catalogServer.assertCatalogVersion(catalog, data.version);
 		const workstream = version.workstreams.find((w) => w.slug === data.slug);
 		if (!workstream) {
-			throw new RoadmapScopeNotFoundError(
-				"workstream",
-				data.version,
-				data.slug,
-			);
+			throw new RoadmapScopeNotFoundError("workstream", data.version, data.slug);
 		}
 		const tasks = catalogServer
 			.seedTasksForVersion(data.version)

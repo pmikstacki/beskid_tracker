@@ -1,7 +1,6 @@
-import type { Database } from "#/lib/storage/sqlite";
 import { createFileRoute } from "@tanstack/react-router";
-
 import { getIssuesDatabase } from "#/lib/storage/db";
+import type { Database } from "#/lib/storage/sqlite";
 import { listTrackerTasks } from "#/lib/tracker/repositories/tasks-repository";
 import {
 	getTrackerVersion,
@@ -57,16 +56,17 @@ function toDelivery(version: TrackerVersion, db: Database) {
 
 export async function latestDelivery(db: Database = getIssuesDatabase()) {
 	const versions = listTrackerVersions(db).filter(isPublicReleased);
-	const latest = versions.sort((a, b) => b.sortKey - a.sortKey || b.id.localeCompare(a.id))[0];
+	const latest = versions.sort(
+		(a, b) => b.sortKey - a.sortKey || b.id.localeCompare(a.id),
+	)[0];
 	return latest ? toDelivery(latest, db) : null;
 }
 
-export async function deliveryByVersion(
-	db: Database,
-	version: string,
-) {
+export async function deliveryByVersion(db: Database, version: string) {
 	const candidate = getTrackerVersion(trackerVersionId(version), db);
-	return candidate && isPublicReleased(candidate) ? toDelivery(candidate, db) : null;
+	return candidate && isPublicReleased(candidate)
+		? toDelivery(candidate, db)
+		: null;
 }
 
 export const Route = createFileRoute("/api/v1/delivery/latest")({

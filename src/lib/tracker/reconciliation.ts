@@ -1,10 +1,11 @@
-import type { Database } from "#/lib/storage/sqlite";
 import { createHash } from "node:crypto";
-
-import type { TrackerSpecLink } from "#/lib/tracker/delivery-contract";
 import type { ParsedSeedBundle } from "#/lib/seed/parse-uploaded-bundle";
-import { listTrackerTasks } from "#/lib/tracker/repositories/tasks-repository";
-import { upsertTrackerTask } from "#/lib/tracker/repositories/tasks-repository";
+import type { Database } from "#/lib/storage/sqlite";
+import type { TrackerSpecLink } from "#/lib/tracker/delivery-contract";
+import {
+	listTrackerTasks,
+	upsertTrackerTask,
+} from "#/lib/tracker/repositories/tasks-repository";
 
 export interface ReconciliationCatalog {
 	revision: string;
@@ -45,7 +46,9 @@ function canonicalJson(value: unknown): string {
 	return JSON.stringify(value);
 }
 
-function proposalDigest(value: Omit<ReconciliationPlan, "proposalDigest" | "approvedProposalDigest">): string {
+function proposalDigest(
+	value: Omit<ReconciliationPlan, "proposalDigest" | "approvedProposalDigest">,
+): string {
 	return createHash("sha256").update(canonicalJson(value)).digest("hex");
 }
 

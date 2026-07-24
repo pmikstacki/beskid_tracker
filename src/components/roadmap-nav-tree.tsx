@@ -58,11 +58,7 @@ export function RoadmapNavTree({
 				<SidebarMenu className="mt-1">
 					<SidebarMenuItem>
 						{signedIn ? (
-							<SidebarMenuButton
-								asChild
-								isActive={onVersionDash}
-								tooltip="Overview"
-							>
+							<SidebarMenuButton asChild isActive={onVersionDash} tooltip="Overview">
 								<Link to="/versions/$version" params={{ version: version.id }}>
 									<LayoutGrid />
 									<span>Version overview</span>
@@ -81,8 +77,7 @@ export function RoadmapNavTree({
 							<SidebarMenuButton
 								asChild
 								isActive={
-									pathname === `/v/${version.id}` ||
-									pathname === `/v/${version.id}/`
+									pathname === `/v/${version.id}` || pathname === `/v/${version.id}/`
 								}
 								tooltip="All workstreams"
 							>
@@ -115,10 +110,8 @@ export function RoadmapNavTree({
 												<SidebarMenuSubButton
 													asChild
 													isActive={
-														pathname ===
-															`${versionPrefix}/deliverables/${deliverable.id}` ||
-														pathname ===
-															`${versionPrefix}/milestones/${deliverable.id}`
+														pathname === `${versionPrefix}/deliverables/${deliverable.id}` ||
+														pathname === `${versionPrefix}/milestones/${deliverable.id}`
 													}
 												>
 													<Link
@@ -128,9 +121,7 @@ export function RoadmapNavTree({
 															deliverableId: deliverable.id,
 														}}
 													>
-														<span className="truncate">
-															{deliverable.title}
-														</span>
+														<span className="truncate">{deliverable.title}</span>
 													</Link>
 												</SidebarMenuSubButton>
 											</SidebarMenuSubItem>
@@ -170,9 +161,7 @@ export function RoadmapNavTree({
 													asChild
 													isActive={
 														pathname === `/v/${version.id}/w/${ws.slug}` ||
-														pathname.startsWith(
-															`/v/${version.id}/w/${ws.slug}/`,
-														)
+														pathname.startsWith(`/v/${version.id}/w/${ws.slug}/`)
 													}
 												>
 													<Link

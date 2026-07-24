@@ -7,7 +7,11 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-
+import {
+	listSeedVersionIds,
+	readJsonFile,
+	seedVersionDir,
+} from "#/lib/seed/paths";
 import {
 	SEED_JSON_SCHEMA_DIR,
 	seedDeliverableSchema,
@@ -15,7 +19,6 @@ import {
 	seedVersionSchema,
 	seedWorkstreamSchema,
 } from "#/lib/seed/schemas";
-import { listSeedVersionIds, readJsonFile, seedVersionDir } from "#/lib/seed/paths";
 
 const packageRoot = path.resolve(
 	path.dirname(fileURLToPath(import.meta.url)),
@@ -48,7 +51,9 @@ function migrateTask(raw: Record<string, unknown>): Record<string, unknown> {
 	return next;
 }
 
-function migrateDeliverable(raw: Record<string, unknown>): Record<string, unknown> {
+function migrateDeliverable(
+	raw: Record<string, unknown>,
+): Record<string, unknown> {
 	const next = { ...raw };
 	delete next.number;
 	if (!Array.isArray(next.subtasks)) {
@@ -58,7 +63,9 @@ function migrateDeliverable(raw: Record<string, unknown>): Record<string, unknow
 	return next;
 }
 
-function migrateWorkstream(raw: Record<string, unknown>): Record<string, unknown> {
+function migrateWorkstream(
+	raw: Record<string, unknown>,
+): Record<string, unknown> {
 	return { ...raw, $schema: schemaRef("workstream.schema.json") };
 }
 

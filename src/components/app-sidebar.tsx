@@ -12,12 +12,9 @@ import {
 
 import { ReportIssueDialog } from "#/components/report-issue-dialog";
 import { RoadmapNavTree } from "#/components/roadmap-nav-tree";
-import { PLATFORM_SPEC_ORIGIN } from "#/lib/beskid-docs-origin";
 import { ThemeToggle } from "#/components/theme-toggle";
 import { Avatar, AvatarFallback, AvatarImage } from "#/components/ui/avatar";
-import {
-	DialogTrigger,
-} from "#/components/ui/dialog";
+import { DialogTrigger } from "#/components/ui/dialog";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -38,6 +35,7 @@ import {
 	SidebarMenuItem,
 	SidebarRail,
 } from "#/components/ui/sidebar";
+import { PLATFORM_SPEC_ORIGIN } from "#/lib/beskid-docs-origin";
 import { DEFAULT_DELIVERY_VERSIONS } from "#/lib/github/roadmap-labels";
 import type { AuthUser } from "#/lib/github/types";
 import type { RoadmapCatalogVersion } from "#/lib/roadmap/types";
@@ -73,9 +71,7 @@ export function AppSidebar({
 			summary: "Roadmap delivery version.",
 			theme: "",
 			status:
-				index < DEFAULT_DELIVERY_VERSIONS.length - 1
-					? "Released"
-					: "In Progress",
+				index < DEFAULT_DELIVERY_VERSIONS.length - 1 ? "Released" : "In Progress",
 			cutoff: {
 				startDate: "2026-01-01",
 				endDate: "2026-12-31",
@@ -137,10 +133,7 @@ export function AppSidebar({
 						<SidebarMenuItem>
 							<SidebarMenuButton size="lg" asChild className="mb-1">
 								{user ? (
-									<Link
-										to="/versions/$version"
-										params={{ version: selectedVersion.id }}
-									>
+									<Link to="/versions/$version" params={{ version: selectedVersion.id }}>
 										<img
 											src="/favicon.svg"
 											alt=""
@@ -183,11 +176,7 @@ export function AppSidebar({
 					<SidebarGroupContent>
 						<SidebarMenu>
 							<SidebarMenuItem>
-								<SidebarMenuButton
-									asChild
-									isActive={onRoadmapHome}
-									tooltip="Roadmap"
-								>
+								<SidebarMenuButton asChild isActive={onRoadmapHome} tooltip="Roadmap">
 									<Link to="/">
 										<MapIcon />
 										<span>Roadmap</span>
@@ -301,11 +290,7 @@ export function AppSidebar({
 									</DropdownMenuItem>
 									<DropdownMenuSeparator />
 									<DropdownMenuItem asChild>
-										<form
-											action="/api/auth/logout"
-											method="post"
-											className="w-full"
-										>
+										<form action="/api/auth/logout" method="post" className="w-full">
 											<button
 												type="submit"
 												className="flex w-full cursor-pointer items-center gap-2"

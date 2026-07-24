@@ -4,15 +4,15 @@ import { BeskidAuthClient } from "@beskid/auth-client";
 import { getRequest } from "@tanstack/react-start/server";
 
 import { env } from "#/env.server";
-import { createOctokit } from "#/lib/github/octokit";
-import { canManageRoadmap } from "#/lib/github/permissions";
 import {
 	getStoredPairingApproverLogin,
 	saveAuthHubPairing,
 } from "#/lib/auth/hub-settings.server";
+import { createOctokit } from "#/lib/github/octokit";
+import { canManageRoadmap } from "#/lib/github/permissions";
+import { getSessionFromRequest } from "#/lib/session/cookie";
 import { resolveTrackerPublicOrigin } from "#/lib/sync/github-webhook-config";
 import { createOctokitForSession } from "#/server/auth-guard.server";
-import { getSessionFromRequest } from "#/lib/session/cookie";
 
 /** Public origin sent to the auth hub when approving pairing (env, then DB, then fallback). */
 export function resolveTrackerPublicUrlForPairing(): string {

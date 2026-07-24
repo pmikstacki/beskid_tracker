@@ -28,10 +28,10 @@ export type { TrackerSyncSettings };
 export {
 	clearGithubWebhookSecretInDatabase,
 	getGithubWebhookSecretFromEnv,
+	getTrackerSyncSettings,
+	provisionRepositoryIssuesWebhook,
 	setGithubWebhookSecretInDatabase,
 	setTrackerPublicOrigin,
-	provisionRepositoryIssuesWebhook,
-	getTrackerSyncSettings,
 };
 
 export function buildGithubWebhookSettings() {

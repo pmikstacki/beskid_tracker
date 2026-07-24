@@ -172,20 +172,20 @@ export function RoadmapKanbanBoard({
 								className="flex min-h-48 flex-col gap-3"
 							>
 								{items.map((item) => (
-										<KanbanItem key={item.id} value={item.id}>
-											<KanbanItemHandle>
-												<Card
-													size="sm"
-													className="kanban-card cursor-grab py-4 active:cursor-grabbing"
-													onClick={() => openTask(item.id)}
-												>
-													<CardContent className="px-4 pt-0">
-														<TaskDisplay task={item} variant="card" />
-													</CardContent>
-												</Card>
-											</KanbanItemHandle>
-										</KanbanItem>
-									))}
+									<KanbanItem key={item.id} value={item.id}>
+										<KanbanItemHandle>
+											<Card
+												size="sm"
+												className="kanban-card cursor-grab py-4 active:cursor-grabbing"
+												onClick={() => openTask(item.id)}
+											>
+												<CardContent className="px-4 pt-0">
+													<TaskDisplay task={item} variant="card" />
+												</CardContent>
+											</Card>
+										</KanbanItemHandle>
+									</KanbanItem>
+								))}
 							</KanbanColumnContent>
 						</KanbanColumn>
 					))}

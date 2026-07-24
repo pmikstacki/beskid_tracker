@@ -35,11 +35,7 @@ function VersionOverviewPage() {
 							<h1 className="display-title mt-1 text-2xl font-bold md:text-3xl">
 								{version.id}: {version.title}
 							</h1>
-							<MarkdownContent
-								optional
-								size="md"
-								className="mt-3 max-w-2xl"
-							>
+							<MarkdownContent optional size="md" className="mt-3 max-w-2xl">
 								{version.summary}
 							</MarkdownContent>
 						</div>
@@ -84,8 +80,8 @@ function VersionOverviewPage() {
 												</MarkdownContent>
 											) : null}
 											<p className="text-muted-foreground">
-												{deliverable.stats.tasksDone} /{" "}
-												{deliverable.stats.tasksTotal} tasks done
+												{deliverable.stats.tasksDone} / {deliverable.stats.tasksTotal} tasks
+												done
 											</p>
 										</CardContent>
 									</Card>

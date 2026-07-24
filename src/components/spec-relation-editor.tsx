@@ -81,8 +81,8 @@ export function SpecRelationEditor({
 		<div className="space-y-3">
 			<Label>Platform spec relations</Label>
 			<p className="text-muted-foreground text-xs">
-				Link normative spec nodes. Mark at least one as required. Metadata
-				follows platform-spec hierarchy (domain, area, feature).
+				Link normative spec nodes. Mark at least one as required. Metadata follows
+				platform-spec hierarchy (domain, area, feature).
 			</p>
 
 			{relations.map((relation, index) => (
@@ -128,9 +128,7 @@ export function SpecRelationEditor({
 							<Switch
 								id={`required-${index}`}
 								checked={relation.required}
-								onCheckedChange={(checked) =>
-									updateAt(index, { required: checked })
-								}
+								onCheckedChange={(checked) => updateAt(index, { required: checked })}
 							/>
 							<Label htmlFor={`required-${index}`} className="text-xs">
 								Required

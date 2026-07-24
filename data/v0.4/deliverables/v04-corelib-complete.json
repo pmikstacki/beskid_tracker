@@ -1,7 +1,7 @@
 {
-  "id": "v04-corelib-complete",
-  "title": "corelib full Standard implementation",
-  "description": "compiler/corelib ships complete Core and package surfaces with stubs removed, tier tags honored in api.json, and corelib-quality CI plus pckg publish on main. W0–W6 waves Done — HIR-free ISLE lowering (MethodDefinition, ForStatement, closure/capture, syscall, Core.Output, Core.Error), canonical ABI-v5 runtime (lifecycle, traps, TLS, Linux x86-64 debug/release kits), HIR/legacy retirement, and binary-provenance gates authoritative. Remaining ISLE gaps (LambdaExpression W4.2 carryover, TryExpression desugaring) tracked as CYB-173/174. Status: Substantially complete; W7 sign-off evidence in progress.",
-  "subtasks": [],
-  "$schema": "../schemas/seed/deliverable.schema.json"
+	"id": "v04-corelib-complete",
+	"title": "corelib full Standard implementation",
+	"description": "compiler/corelib ships complete Core and package surfaces with stubs removed, tier tags honored in api.json, and corelib-quality CI plus pckg publish on main. W0–W6 waves Done — HIR-free ISLE lowering (MethodDefinition, ForStatement, closure/capture, syscall, Core.Output, Core.Error), canonical ABI-v5 runtime (lifecycle, traps, TLS, Linux x86-64 debug/release kits), HIR/legacy retirement, and binary-provenance gates authoritative. Remaining ISLE gaps (LambdaExpression W4.2 carryover, TryExpression desugaring) tracked as CYB-173/174. Status: Substantially complete; W7 sign-off evidence in progress.",
+	"subtasks": [],
+	"$schema": "../schemas/seed/deliverable.schema.json"
 }

@@ -1,13 +1,15 @@
 import { describe, expect, it } from "vitest";
-import { openSqlite } from "#/lib/storage/sqlite";
-
 import type { RoadmapTask } from "#/lib/github/types";
 import {
 	selectTaskProperties,
 	type TaskDisplayConfig,
 } from "#/lib/roadmap/task-display";
 import { migrateSchema } from "#/lib/storage/schema";
-import { listTrackerTasks, upsertTrackerTask } from "#/lib/tracker/repositories/tasks-repository";
+import { openSqlite } from "#/lib/storage/sqlite";
+import {
+	listTrackerTasks,
+	upsertTrackerTask,
+} from "#/lib/tracker/repositories/tasks-repository";
 import { moveRoadmapTaskToColumn } from "#/lib/tracker/task-service";
 
 const task: RoadmapTask = {
@@ -41,9 +43,12 @@ describe("task display configuration", () => {
 
 	it("omits unset configured properties", () => {
 		expect(
-			selectTaskProperties({ ...task, workstream: undefined }, {
-				properties: ["workstream", "owner"],
-			}),
+			selectTaskProperties(
+				{ ...task, workstream: undefined },
+				{
+					properties: ["workstream", "owner"],
+				},
+			),
 		).toEqual([["owner", "compiler-team"]]);
 	});
 

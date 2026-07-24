@@ -37,11 +37,7 @@ export function RoadmapScopePage({
 				<div>
 					<p className="island-kicker">{scopeKindLabel(scope)}</p>
 					<h1 className="display-title mt-1 text-2xl font-bold">{title}</h1>
-					<MarkdownContent
-						optional
-						size="md"
-						className="mt-2 max-w-2xl"
-					>
+					<MarkdownContent optional size="md" className="mt-2 max-w-2xl">
 						{subtitle ?? ""}
 					</MarkdownContent>
 					<p className="text-muted-foreground mt-2 font-mono text-xs">

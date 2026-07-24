@@ -73,7 +73,12 @@ export function planHistoryBackfill(
 		const exact = candidates.filter(
 			(band) => band.startSha === commit.sha || band.endSha === commit.sha,
 		);
-		const selected = exact.length === 1 ? exact[0] : candidates.length === 1 ? candidates[0] : undefined;
+		const selected =
+			exact.length === 1
+				? exact[0]
+				: candidates.length === 1
+					? candidates[0]
+					: undefined;
 		if (!selected) {
 			unmapped.push({ sha: commit.sha, confidence: "unmapped" });
 			continue;

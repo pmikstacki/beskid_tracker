@@ -52,15 +52,15 @@ export function ReportIssueDialog({
 
 	return (
 		<Dialog open={open} onOpenChange={setOpen}>
-			{trigger !== false ? (
-				trigger ?? (
-					<DialogTrigger asChild>
-						<Button variant="outline" size="sm">
-							{triggerLabel}
-						</Button>
-					</DialogTrigger>
-				)
-			) : null}
+			{trigger !== false
+				? (trigger ?? (
+						<DialogTrigger asChild>
+							<Button variant="outline" size="sm">
+								{triggerLabel}
+							</Button>
+						</DialogTrigger>
+					))
+				: null}
 			<DialogContent className="work-item-dialog sm:max-w-3xl max-h-[min(92vh,52rem)] overflow-y-auto">
 				<DialogHeader>
 					<DialogTitle>{title}</DialogTitle>
@@ -86,9 +86,7 @@ export function ReportIssueDialog({
 									componentId: payload.componentId,
 									subcomponentId: payload.subcomponentId,
 									attachments:
-										payload.attachments.length > 0
-											? payload.attachments
-											: undefined,
+										payload.attachments.length > 0 ? payload.attachments : undefined,
 								},
 							})
 						}
@@ -98,15 +96,11 @@ export function ReportIssueDialog({
 				) : (
 					<div className="space-y-4">
 						<p className="text-muted-foreground text-sm">
-							Sign in with GitHub to file a bug through the tracker. Your
-							account will be attributed on the task.
+							Sign in with GitHub to file a bug through the tracker. Your account will
+							be attributed on the task.
 						</p>
 						<div className="flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
-							<Button
-								type="button"
-								variant="outline"
-								onClick={() => setOpen(false)}
-							>
+							<Button type="button" variant="outline" onClick={() => setOpen(false)}>
 								Cancel
 							</Button>
 							<Button asChild>

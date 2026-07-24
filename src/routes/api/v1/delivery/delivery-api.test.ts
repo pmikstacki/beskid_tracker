@@ -1,13 +1,9 @@
+import { describe, expect, test } from "vitest";
+import { migrateSchema } from "#/lib/storage/schema";
 import type { Database } from "#/lib/storage/sqlite";
 import { openSqlite } from "#/lib/storage/sqlite";
-import { describe, expect, test } from "vitest";
-
-import { migrateSchema } from "#/lib/storage/schema";
 import { upsertTrackerVersion } from "#/lib/tracker/repositories/versions-repository";
-import {
-	deliveryByVersion,
-	latestDelivery,
-} from "./latest";
+import { deliveryByVersion, latestDelivery } from "./latest";
 
 function fixtureDb(): Database {
 	const db = openSqlite(":memory:");

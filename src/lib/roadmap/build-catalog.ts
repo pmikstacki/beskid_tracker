@@ -14,13 +14,13 @@ import type {
 	RoadmapCatalogWorkstream,
 } from "#/lib/roadmap/types";
 import type { VersionStatus } from "#/lib/roadmap/version-status";
+import { type LoadedVersionSeed, loadAllVersionSeeds } from "#/lib/seed/load";
+import type { SeedTask, SeedVersion } from "#/lib/seed/schemas";
 import { resolveActiveVersionId } from "#/lib/tracker/active-version";
 import {
 	hasTrackerCatalogData,
 	loadAllVersionSeedsFromDb,
 } from "#/lib/tracker/load-from-db";
-import { type LoadedVersionSeed, loadAllVersionSeeds } from "#/lib/seed/load";
-import type { SeedTask, SeedVersion } from "#/lib/seed/schemas";
 
 function inferStatus(version: SeedVersion): VersionStatus {
 	if (version.status) return version.status;
@@ -177,7 +177,9 @@ export function buildRoadmapCatalog(
 	const resolvedActive =
 		resolveActiveVersionId(
 			versions.map((version) => ({ id: version.id, status: version.status })),
-		) ?? versions.at(-1)?.id ?? "v0.2";
+		) ??
+		versions.at(-1)?.id ??
+		"v0.2";
 	const activeVersionId =
 		preferredVersionId && versions.some((v) => v.id === preferredVersionId)
 			? preferredVersionId

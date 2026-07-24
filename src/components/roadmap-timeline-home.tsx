@@ -39,9 +39,9 @@ export function RoadmapTimelineHome({
 					Beskid delivery roadmap
 				</h1>
 				<p className="text-muted-foreground mt-3 max-w-2xl text-sm leading-relaxed">
-					Public view of delivery versions, deliverables, and workstreams from
-					the planning catalog. Sign in to open the kanban board and manage
-					roadmap tasks.
+					Public view of delivery versions, deliverables, and workstreams from the
+					planning catalog. Sign in to open the kanban board and manage roadmap
+					tasks.
 				</p>
 				<div className="mt-6 flex flex-wrap gap-2">
 					<Button variant="outline" size="sm" asChild>
@@ -92,10 +92,7 @@ export function RoadmapTimelineHome({
 				<Timeline>
 					{catalog.versions.map((version) => (
 						<TimelineItem key={version.id}>
-							<TimelineDot
-								aria-hidden
-								className="text-primary border-primary/40"
-							>
+							<TimelineDot aria-hidden className="text-primary border-primary/40">
 								<CircleDot className="size-3.5" />
 							</TimelineDot>
 							<Card className="dashboard-widget island-shell flex-1">

@@ -55,8 +55,8 @@ function BugTrackerPage() {
 					</h1>
 					<p className="text-muted-foreground mt-2 max-w-2xl text-sm">
 						Public issues on the superrepo labeled{" "}
-						<code className="text-xs">bug</code>. Search by title, author,
-						labels, or <code className="text-xs">#number</code>.
+						<code className="text-xs">bug</code>. Search by title, author, labels, or{" "}
+						<code className="text-xs">#number</code>.
 					</p>
 				</div>
 				<ReportIssueDialog user={user} />

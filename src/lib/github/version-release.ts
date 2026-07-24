@@ -63,9 +63,7 @@ export function collectVersionReleaseCandidates(
 		});
 	}
 
-	candidates.sort((a, b) =>
-		compareDeliveryVersionIds(a.versionId, b.versionId),
-	);
+	candidates.sort((a, b) => compareDeliveryVersionIds(a.versionId, b.versionId));
 	return candidates;
 }
 

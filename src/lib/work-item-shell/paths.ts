@@ -1,8 +1,8 @@
+import type { WorkItemShellRouteTarget } from "#/components/work-item-shell/work-item-shell";
 import type {
 	BoardFilterState,
 	BoardSearchParams,
 } from "#/lib/roadmap/board-search";
-import type { WorkItemShellRouteTarget } from "#/components/work-item-shell/work-item-shell";
 
 export function boardSearchFromFilters(
 	filters: BoardFilterState,

@@ -5,8 +5,7 @@ export function isGitHubRateLimitError(error: unknown): boolean {
 	if (error.status !== 403) return false;
 	const message = error.message.toLowerCase();
 	return (
-		message.includes("rate limit") ||
-		message.includes("api rate limit exceeded")
+		message.includes("rate limit") || message.includes("api rate limit exceeded")
 	);
 }
 

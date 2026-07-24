@@ -92,9 +92,7 @@ export const createBoardIssue = createServerFn({ method: "POST" })
 		}),
 	)
 	.handler(async ({ data }) => {
-		return withAuth((octokit) =>
-			roadmapServer.createRoadmapIssue(octokit, data),
-		);
+		return withAuth((octokit) => roadmapServer.createRoadmapIssue(octokit, data));
 	});
 
 export const approveSpec = createServerFn({ method: "POST" })

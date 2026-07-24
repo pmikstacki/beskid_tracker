@@ -64,14 +64,10 @@ function WorkstreamCreateTaskPage() {
 				defaultWorkstream={workstream}
 				collapseTo={collapseTo}
 				onCreated={() => {
-					void navigate(
-						workstreamBoardRouteTo(version, workstream, boardSearch),
-					);
+					void navigate(workstreamBoardRouteTo(version, workstream, boardSearch));
 				}}
 				onClose={() => {
-					void navigate(
-						workstreamBoardRouteTo(version, workstream, boardSearch),
-					);
+					void navigate(workstreamBoardRouteTo(version, workstream, boardSearch));
 				}}
 			/>
 		</div>

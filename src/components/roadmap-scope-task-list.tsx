@@ -36,9 +36,7 @@ export function RoadmapScopeTaskList({
 						<Card className="kanban-card">
 							<CardHeader className="gap-2 pb-2">
 								<div className="flex flex-wrap items-start justify-between gap-2">
-									<CardTitle className="text-base font-semibold">
-										{task.title}
-									</CardTitle>
+									<CardTitle className="text-base font-semibold">{task.title}</CardTitle>
 									<div className="flex flex-wrap gap-1.5">
 										<Badge variant="secondary">{task.statusColumn}</Badge>
 										<Badge variant="outline">{task.priority}</Badge>

@@ -1,7 +1,7 @@
 import "@tanstack/react-start/server-only";
 
+import { getIssuesDatabase } from "#/lib/storage/db";
 import type { Database } from "#/lib/storage/sqlite";
-
 import { rowToGithubIssueLink } from "#/lib/tracker/mappers";
 import type {
 	GithubIssueLink,
@@ -9,7 +9,6 @@ import type {
 	GithubSyncState,
 	TrackerEntityType,
 } from "#/lib/tracker/types";
-import { getIssuesDatabase } from "#/lib/storage/db";
 
 function nowIso(): string {
 	return new Date().toISOString();

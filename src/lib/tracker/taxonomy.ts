@@ -86,7 +86,8 @@ const baseBugLayout = (extra: ReportFormLayout = []): ReportFormLayout => [
 			id: "attachments",
 			kind: "attachments",
 			label: "Files",
-			hint: "Screenshots, logs, or recordings (uploaded after the issue is created).",
+			hint:
+				"Screenshots, logs, or recordings (uploaded after the issue is created).",
 		}),
 	]),
 ];

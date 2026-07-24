@@ -72,15 +72,11 @@ export function hasTrackerData(): boolean {
 			.get()?.count ?? 0;
 	const tasks =
 		db
-			.query<{ count: number }, []>(
-				"SELECT COUNT(*) AS count FROM tracker_tasks",
-			)
+			.query<{ count: number }, []>("SELECT COUNT(*) AS count FROM tracker_tasks")
 			.get()?.count ?? 0;
 	const bugs =
 		db
-			.query<{ count: number }, []>(
-				"SELECT COUNT(*) AS count FROM tracker_bugs",
-			)
+			.query<{ count: number }, []>("SELECT COUNT(*) AS count FROM tracker_bugs")
 			.get()?.count ?? 0;
 	return versions > 0 || tasks > 0 || bugs > 0;
 }

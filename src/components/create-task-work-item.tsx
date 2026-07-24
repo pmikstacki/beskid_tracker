@@ -1,5 +1,6 @@
 "use client";
 
+import { Group, Panel, Separator } from "react-resizable-panels";
 import { CreateTaskForm } from "#/components/create-task-form";
 import { TaskDisplay } from "#/components/task-display";
 import {
@@ -8,7 +9,6 @@ import {
 	type WorkItemShellRouteTarget,
 } from "#/components/work-item-shell/work-item-shell";
 import type { RoadmapTask } from "#/lib/github/types";
-import { Group, Panel, Separator } from "react-resizable-panels";
 
 const TASK_TITLE = "Create roadmap task";
 
@@ -36,8 +36,8 @@ function taskDescription(version: string) {
 	return (
 		<>
 			Tasks are GitHub issues labeled for version{" "}
-			<span className="font-mono">{version}</span>, workstream, and spec
-			relations. Fields depend on the component you select.
+			<span className="font-mono">{version}</span>, workstream, and spec relations.
+			Fields depend on the component you select.
 		</>
 	);
 }
@@ -118,7 +118,11 @@ export function CreateTaskWorkItem({
 							/>
 						</Panel>
 						<Separator className="hidden w-px bg-border md:block" />
-						<Panel defaultSize="30%" minSize="20%" className="border-t border-border pt-4 md:border-t-0 md:pt-0 md:pl-4">
+						<Panel
+							defaultSize="30%"
+							minSize="20%"
+							className="border-t border-border pt-4 md:border-t-0 md:pt-0 md:pl-4"
+						>
 							<p className="text-muted-foreground mb-3 text-xs font-medium uppercase tracking-wide">
 								Preview
 							</p>

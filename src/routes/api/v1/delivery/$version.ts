@@ -7,7 +7,10 @@ export const Route = createFileRoute("/api/v1/delivery/$version")({
 	server: {
 		handlers: {
 			GET: async ({ params }) => {
-				const delivery = await deliveryByVersion(getIssuesDatabase(), params.version);
+				const delivery = await deliveryByVersion(
+					getIssuesDatabase(),
+					params.version,
+				);
 				return delivery
 					? Response.json(delivery, {
 							headers: { "Cache-Control": "public, max-age=300" },

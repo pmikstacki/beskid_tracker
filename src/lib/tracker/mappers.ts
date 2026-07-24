@@ -127,8 +127,7 @@ export function rowToTrackerTask(
 		sortOrder: row.sort_order ?? undefined,
 		deliverableId: row.deliverable_id ?? undefined,
 		body: row.body,
-		specApproval:
-			(row.spec_approval as TrackerTask["specApproval"]) ?? undefined,
+		specApproval: (row.spec_approval as TrackerTask["specApproval"]) ?? undefined,
 		completedAt: row.completed_at ?? undefined,
 		source: parseJson<SeedGitSource>(row.source_json, {
 			repo: "beskid",

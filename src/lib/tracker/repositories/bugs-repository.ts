@@ -1,15 +1,14 @@
 import "@tanstack/react-start/server-only";
 
+import { getIssuesDatabase } from "#/lib/storage/db";
 import type { Database } from "#/lib/storage/sqlite";
-
 import { rowToTrackerBug } from "#/lib/tracker/mappers";
+import { getGithubIssueLink } from "#/lib/tracker/repositories/github-links-repository";
 import type {
 	TrackerBug,
 	TrackerBugRow,
 	TrackerBugWithLink,
 } from "#/lib/tracker/types";
-import { getIssuesDatabase } from "#/lib/storage/db";
-import { getGithubIssueLink } from "#/lib/tracker/repositories/github-links-repository";
 
 function nowIso(): string {
 	return new Date().toISOString();
@@ -95,10 +94,7 @@ export function listTrackerBugRows(
 		.all();
 }
 
-export function getTrackerBug(
-	bugId: string,
-	db?: Database,
-): TrackerBug | null {
+export function getTrackerBug(bugId: string, db?: Database): TrackerBug | null {
 	const database = db ?? getIssuesDatabase();
 	const row = database
 		.query<TrackerBugRow, [string]>(
@@ -129,8 +125,7 @@ export function listTrackerBugsWithLinks(
 	const database = db ?? getIssuesDatabase();
 	return listTrackerBugRows(database, state).map((row) => {
 		const bug = rowToTrackerBug(row);
-		const githubLink =
-			getGithubIssueLink("bug", bug.id, database) ?? undefined;
+		const githubLink = getGithubIssueLink("bug", bug.id, database) ?? undefined;
 		return { ...bug, githubLink };
 	});
 }
@@ -198,9 +193,10 @@ export function applyInboundTrackerBug(
 	);
 }
 
-export function countTrackerBugs(
-	db?: Database,
-): { open: number; closed: number } {
+export function countTrackerBugs(db?: Database): {
+	open: number;
+	closed: number;
+} {
 	const database = db ?? getIssuesDatabase();
 	const open =
 		database

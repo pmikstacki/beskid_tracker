@@ -28,9 +28,7 @@ export function SpecParentField({
 				className="text-foreground/90 mb-1.5 block text-sm font-medium"
 			>
 				{label}
-				{required ? (
-					<span className="text-destructive ml-0.5">*</span>
-				) : null}
+				{required ? <span className="text-destructive ml-0.5">*</span> : null}
 			</label>
 			<Input
 				id={id}

@@ -8,11 +8,11 @@ import {
 } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 import type { ComponentProps } from "react";
-import { observabilityMiddleware } from "#/observability-middleware";
 import { RoadmapNotFound } from "#/components/roadmap-not-found";
 import { RoadmapRouteError } from "#/components/roadmap-route-error";
 import { ThemeProvider } from "#/components/theme-provider";
 import { TooltipProvider } from "#/components/ui/tooltip";
+import { observabilityMiddleware } from "#/observability-middleware";
 import TanStackQueryDevtools from "../integrations/tanstack-query/devtools";
 
 import appCss from "../styles.css?url";

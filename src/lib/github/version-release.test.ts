@@ -28,9 +28,7 @@ function version(
 
 describe("compareDeliveryVersionIds", () => {
 	it("sorts delivery versions numerically", () => {
-		const ids = ["v0.10", "v0.2", "v0.1", "v0.3"].sort(
-			compareDeliveryVersionIds,
-		);
+		const ids = ["v0.10", "v0.2", "v0.1", "v0.3"].sort(compareDeliveryVersionIds);
 		expect(ids).toEqual(["v0.1", "v0.2", "v0.3", "v0.10"]);
 	});
 });

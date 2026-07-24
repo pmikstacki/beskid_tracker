@@ -6,15 +6,21 @@ import { DatabaseSync } from "node:sqlite";
 
 export type Database = {
 	exec(sql: string): void;
-	run(sql: string, ...bindings: unknown[]): { changes: number; lastInsertRowid: number | bigint };
+	run(
+		sql: string,
+		...bindings: unknown[]
+	): { changes: number; lastInsertRowid: number | bigint };
 	query<TRow = Record<string, unknown>, TParams extends unknown[] = unknown[]>(
-		sql: string
+		sql: string,
 	): {
 		get(...bindings: TParams): TRow | null;
 		all(...bindings: TParams): TRow[];
 	};
 	prepare(sql: string): {
-		run(...bindings: unknown[]): { changes: number; lastInsertRowid: number | bigint };
+		run(...bindings: unknown[]): {
+			changes: number;
+			lastInsertRowid: number | bigint;
+		};
 		get<T = unknown>(...bindings: unknown[]): T | null;
 		all<T = unknown>(...bindings: unknown[]): T[];
 	};
@@ -35,23 +41,34 @@ export function openSqlite(path: string): Database {
 	let txDepth = 0;
 
 	return {
-		exec(sql: string) { raw.exec(sql); },
+		exec(sql: string) {
+			raw.exec(sql);
+		},
 		run(sql: string, ...bindings: unknown[]) {
-			if (bindings.length === 0) { raw.exec(sql); return { changes: 0, lastInsertRowid: 0 }; }
+			if (bindings.length === 0) {
+				raw.exec(sql);
+				return { changes: 0, lastInsertRowid: 0 };
+			}
 			const params = normalizeBindings(bindings);
-			raw.prepare(sql).run(...params as any);
-			return raw.prepare("SELECT changes() as changes, last_insert_rowid() as lastInsertRowid").get() ?? { changes: 0, lastInsertRowid: 0 };
+			raw.prepare(sql).run(...(params as any));
+			return (
+				raw
+					.prepare(
+						"SELECT changes() as changes, last_insert_rowid() as lastInsertRowid",
+					)
+					.get() ?? { changes: 0, lastInsertRowid: 0 }
+			);
 		},
 		query(sql: string) {
 			const stmt = raw.prepare(sql);
 			return {
 				get(...bindings: unknown[]) {
 					const params = normalizeBindings(bindings);
-					return stmt.get(...params as any) ?? null;
+					return stmt.get(...(params as any)) ?? null;
 				},
 				all(...bindings: unknown[]) {
 					const params = normalizeBindings(bindings);
-					return stmt.all(...params as any);
+					return stmt.all(...(params as any));
 				},
 			};
 		},
@@ -60,12 +77,16 @@ export function openSqlite(path: string): Database {
 			return {
 				run(...bindings: unknown[]) {
 					const params = normalizeBindings(bindings);
-					return stmt.run(...params as any);
+					return stmt.run(...(params as any));
 				},
 				// biome-ignore lint/suspicious/noExplicitAny: generic bridging
-				get(...bindings: unknown[]) { return (stmt.get(...bindings) as any) ?? null; },
+				get(...bindings: unknown[]) {
+					return (stmt.get(...bindings) as any) ?? null;
+				},
 				// biome-ignore lint/suspicious/noExplicitAny: generic bridging
-				all(...bindings: unknown[]) { return stmt.all(...bindings) as any; },
+				all(...bindings: unknown[]) {
+					return stmt.all(...bindings) as any;
+				},
 			};
 		},
 		transaction<T extends (...args: never[]) => unknown>(fn: T): T {
@@ -78,7 +99,7 @@ export function openSqlite(path: string): Database {
 					if (txDepth === 1) raw.exec("COMMIT");
 					else raw.exec(`RELEASE sp_${txDepth}`);
 					return result;
-				// biome-ignore lint/suspicious/noExplicitAny: re-throw merge
+					// biome-ignore lint/suspicious/noExplicitAny: re-throw merge
 				} catch (e: any) {
 					if (txDepth === 1) raw.exec("ROLLBACK");
 					else raw.exec(`ROLLBACK TO sp_${txDepth}`);
@@ -88,6 +109,8 @@ export function openSqlite(path: string): Database {
 				}
 			}) as T;
 		},
-		close() { raw.close(); },
+		close() {
+			raw.close();
+		},
 	} as any as Database;
 }

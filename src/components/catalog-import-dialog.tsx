@@ -13,9 +13,9 @@ import {
 	DialogHeader,
 	DialogTitle,
 } from "#/components/ui/dialog";
-import type { ImportPreviewSummary } from "#/server/catalog-import";
 import type { CatalogImportSummary } from "#/lib/tracker/import-catalog";
 import { cn } from "#/lib/utils";
+import type { ImportPreviewSummary } from "#/server/catalog-import";
 
 interface CatalogImportDialogProps {
 	open: boolean;
@@ -51,9 +51,7 @@ export function CatalogImportDialog({
 			);
 		},
 		onError: (error) => {
-			setStatusMessage(
-				error instanceof Error ? error.message : "Preview failed",
-			);
+			setStatusMessage(error instanceof Error ? error.message : "Preview failed");
 		},
 	});
 
@@ -66,9 +64,7 @@ export function CatalogImportDialog({
 			onComplete?.();
 		},
 		onError: (error) => {
-			setStatusMessage(
-				error instanceof Error ? error.message : "Import failed",
-			);
+			setStatusMessage(error instanceof Error ? error.message : "Import failed");
 		},
 	});
 

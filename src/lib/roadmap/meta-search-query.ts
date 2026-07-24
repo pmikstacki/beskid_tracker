@@ -108,10 +108,7 @@ export function parseMetaQuery(raw: string): ParsedMetaQuery {
 			}
 			case "spec":
 				parsed.specLinked =
-					value === "linked" ||
-					value === "yes" ||
-					value === "true" ||
-					value === "1";
+					value === "linked" || value === "yes" || value === "true" || value === "1";
 				if (
 					value === "none" ||
 					value === "no" ||

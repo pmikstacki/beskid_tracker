@@ -1,13 +1,12 @@
 import "@tanstack/react-start/server-only";
 
+import { normalizeVersionStatus } from "#/lib/roadmap/version-status";
+import type { SeedVersion } from "#/lib/seed/schemas";
+import { getIssuesDatabase } from "#/lib/storage/db";
 import type { Database } from "#/lib/storage/sqlite";
-
 import { semverSortKey } from "#/lib/tracker/active-version";
 import { rowToTrackerVersion } from "#/lib/tracker/mappers";
 import type { TrackerVersion, TrackerVersionRow } from "#/lib/tracker/types";
-import { getIssuesDatabase } from "#/lib/storage/db";
-import type { SeedVersion } from "#/lib/seed/schemas";
-import { normalizeVersionStatus } from "#/lib/roadmap/version-status";
 
 function nowIso(): string {
 	return new Date().toISOString();
@@ -16,7 +15,10 @@ function nowIso(): string {
 export function upsertTrackerVersion(
 	db: Database,
 	version: SeedVersion,
-	metadata: { visibility?: "internal" | "public"; catalogRevision?: string } = {},
+	metadata: {
+		visibility?: "internal" | "public";
+		catalogRevision?: string;
+	} = {},
 ): void {
 	const now = nowIso();
 	const status = normalizeVersionStatus(version.status);

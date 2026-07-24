@@ -69,7 +69,12 @@ export function migrateSchema(db: Database): void {
 	}
 }
 
-function addColumnIfMissing(db: Database, table: string, column: string, sql: string): void {
+function addColumnIfMissing(
+	db: Database,
+	table: string,
+	column: string,
+	sql: string,
+): void {
 	const existing = db
 		.query<{ name: string }, []>(
 			`SELECT name FROM pragma_table_info('${table}') WHERE name = '${column}'`,
@@ -79,11 +84,36 @@ function addColumnIfMissing(db: Database, table: string, column: string, sql: st
 }
 
 function applyV8(db: Database): void {
-	addColumnIfMissing(db, "tracker_versions", "visibility", "visibility TEXT NOT NULL DEFAULT 'internal'");
-	addColumnIfMissing(db, "tracker_versions", "catalog_revision", "catalog_revision TEXT");
-	addColumnIfMissing(db, "tracker_task_spec_relations", "catalog_revision", "catalog_revision TEXT");
-	addColumnIfMissing(db, "tracker_tasks", "provenance_start_sha", "provenance_start_sha TEXT");
-	addColumnIfMissing(db, "tracker_tasks", "provenance_end_sha", "provenance_end_sha TEXT");
+	addColumnIfMissing(
+		db,
+		"tracker_versions",
+		"visibility",
+		"visibility TEXT NOT NULL DEFAULT 'internal'",
+	);
+	addColumnIfMissing(
+		db,
+		"tracker_versions",
+		"catalog_revision",
+		"catalog_revision TEXT",
+	);
+	addColumnIfMissing(
+		db,
+		"tracker_task_spec_relations",
+		"catalog_revision",
+		"catalog_revision TEXT",
+	);
+	addColumnIfMissing(
+		db,
+		"tracker_tasks",
+		"provenance_start_sha",
+		"provenance_start_sha TEXT",
+	);
+	addColumnIfMissing(
+		db,
+		"tracker_tasks",
+		"provenance_end_sha",
+		"provenance_end_sha TEXT",
+	);
 }
 
 function applyV9(db: Database): void {
@@ -102,9 +132,7 @@ function applyV7(db: Database): void {
 		)
 		.get();
 	if (!column) {
-		db.run(
-			"ALTER TABLE tracker_task_spec_relations ADD COLUMN standard_id TEXT",
-		);
+		db.run("ALTER TABLE tracker_task_spec_relations ADD COLUMN standard_id TEXT");
 	}
 }
 

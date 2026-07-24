@@ -1,6 +1,6 @@
 "use client";
 
-import { RepoExplorerDialog, type RepoEntry } from "@beskid/ui-react/explorer";
+import { type RepoEntry, RepoExplorerDialog } from "@beskid/ui-react/explorer";
 import { sampleRepo } from "@beskid/ui-react/graph";
 import { FolderOpen, Trash2 } from "lucide-react";
 import { useMemo, useState } from "react";
@@ -45,8 +45,8 @@ export function RepoPathField({
 				<div>
 					<Label>Repository paths</Label>
 					<p className="text-muted-foreground text-xs">
-						Attach repo-relative source paths to this task (fixture browser until
-						live listing is wired).
+						Attach repo-relative source paths to this task (fixture browser until live
+						listing is wired).
 					</p>
 				</div>
 				<Button
@@ -83,7 +83,9 @@ export function RepoPathField({
 					))}
 				</ul>
 			) : (
-				<p className="text-muted-foreground text-xs">No repository paths attached.</p>
+				<p className="text-muted-foreground text-xs">
+					No repository paths attached.
+				</p>
 			)}
 
 			<RepoExplorerDialog

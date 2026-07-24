@@ -6,13 +6,13 @@
  *   bun run scripts/reconcile-delivery.ts --dry-run
  *   bun run scripts/reconcile-delivery.ts --apply [--version v0.5]
  */
-import type { Database } from "#/lib/storage/sqlite";
-import { openSqlite } from "#/lib/storage/sqlite";
 
 import { loadAllVersionSeeds } from "#/lib/seed/load";
 import type { ParsedSeedBundle } from "#/lib/seed/parse-uploaded-bundle";
 import { ensureTrackerDataDir, issuesDbPath } from "#/lib/storage/paths";
 import { migrateSchema } from "#/lib/storage/schema";
+import type { Database } from "#/lib/storage/sqlite";
+import { openSqlite } from "#/lib/storage/sqlite";
 import {
 	applyTrackerReconciliation,
 	planTrackerReconciliation,

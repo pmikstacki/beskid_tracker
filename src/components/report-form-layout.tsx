@@ -32,10 +32,7 @@ export interface ReportFormLayoutProps {
 	attachments: Record<string, ReportAttachmentDraft[]>;
 	pending?: boolean;
 	onValueChange: (id: string, value: string) => void;
-	onAttachmentsChange: (
-		fieldId: string,
-		files: ReportAttachmentDraft[],
-	) => void;
+	onAttachmentsChange: (fieldId: string, files: ReportAttachmentDraft[]) => void;
 }
 
 export function ReportFormLayoutView({
@@ -76,10 +73,7 @@ function ReportFormNodeView({
 	attachments: Record<string, ReportAttachmentDraft[]>;
 	pending?: boolean;
 	onValueChange: (id: string, value: string) => void;
-	onAttachmentsChange: (
-		fieldId: string,
-		files: ReportAttachmentDraft[],
-	) => void;
+	onAttachmentsChange: (fieldId: string, files: ReportAttachmentDraft[]) => void;
 }) {
 	if (node.type === "section") {
 		return (
@@ -132,10 +126,7 @@ function ReportSectionView({
 	attachments: Record<string, ReportAttachmentDraft[]>;
 	pending?: boolean;
 	onValueChange: (id: string, value: string) => void;
-	onAttachmentsChange: (
-		fieldId: string,
-		files: ReportAttachmentDraft[],
-	) => void;
+	onAttachmentsChange: (fieldId: string, files: ReportAttachmentDraft[]) => void;
 }) {
 	return (
 		<ReportFormSection title={section.title} description={section.description}>
@@ -174,10 +165,7 @@ function ReportFieldGroupView({
 	attachments: Record<string, ReportAttachmentDraft[]>;
 	pending?: boolean;
 	onValueChange: (id: string, value: string) => void;
-	onAttachmentsChange: (
-		fieldId: string,
-		files: ReportAttachmentDraft[],
-	) => void;
+	onAttachmentsChange: (fieldId: string, files: ReportAttachmentDraft[]) => void;
 }) {
 	const isHorizontal = group.layout === "horizontal";
 	const childCount = group.children.length;
@@ -239,9 +227,7 @@ function ReportFieldGroupView({
 			)}
 		>
 			{group.label ? (
-				<p className="text-muted-foreground text-xs font-medium">
-					{group.label}
-				</p>
+				<p className="text-muted-foreground text-xs font-medium">{group.label}</p>
 			) : null}
 			{grid}
 		</div>
@@ -261,10 +247,7 @@ function ReportFieldControl({
 	attachmentFiles: ReportAttachmentDraft[];
 	pending?: boolean;
 	onValueChange: (id: string, value: string) => void;
-	onAttachmentsChange: (
-		fieldId: string,
-		files: ReportAttachmentDraft[],
-	) => void;
+	onAttachmentsChange: (fieldId: string, files: ReportAttachmentDraft[]) => void;
 }) {
 	const fieldId = `report-${field.id}`;
 	const rows = field.rows ?? (field.kind === "textarea" ? 4 : undefined);

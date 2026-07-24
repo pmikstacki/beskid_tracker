@@ -61,9 +61,7 @@ function WorkstreamsPage() {
 							</CardHeader>
 							<CardContent className="flex flex-wrap gap-2">
 								<Badge variant="secondary">{ws.issueCount} tasks</Badge>
-								<Badge variant="outline">
-									{ws.inProgressCount} in progress
-								</Badge>
+								<Badge variant="outline">{ws.inProgressCount} in progress</Badge>
 								<Badge>{ws.doneCount} done</Badge>
 								{ws.slug === "_unassigned" ? (
 									<Link

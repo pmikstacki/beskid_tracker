@@ -33,13 +33,7 @@ export const seedVersionCutoffSchema = z.object({
 	endDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
 	startCommitSha: z.string().optional(),
 	endCommitSha: z.string().min(7),
-	endCommitRepo: z.enum([
-		"beskid",
-		"compiler",
-		"pckg",
-		"site",
-		"beskid_vscode",
-	]),
+	endCommitRepo: z.enum(["beskid", "compiler", "pckg", "site", "beskid_vscode"]),
 	rationale: z.string().min(1),
 });
 

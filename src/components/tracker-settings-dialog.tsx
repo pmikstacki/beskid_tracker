@@ -62,8 +62,8 @@ function SyncActionsPanel({
 		<div className="space-y-3 rounded-md border border-border/60 bg-muted/10 p-3">
 			<p className="text-sm font-medium">Manual actions</p>
 			<p className="text-muted-foreground text-xs leading-relaxed">
-				Tracker is the source of truth for roadmap tasks. GitHub synchronization
-				is limited to bugs.
+				Tracker is the source of truth for roadmap tasks. GitHub synchronization is
+				limited to bugs.
 			</p>
 			<div className="flex flex-wrap gap-2">
 				<Button
@@ -125,8 +125,7 @@ function buildRegistry(canManage: boolean, onImportOpen: () => void) {
 					{
 						id: "connection",
 						title: "Repository webhook",
-						description:
-							"Inbound GitHub issue events are accepted only for bugs.",
+						description: "Inbound GitHub issue events are accepted only for bugs.",
 						fields: [
 							{ id: "repoFullName", kind: "readonly", label: "Repository" },
 							{ id: "webhookUrl", kind: "readonly", label: "Webhook URL" },
@@ -152,10 +151,7 @@ function buildRegistry(canManage: boolean, onImportOpen: () => void) {
 								kind: "custom",
 								label: "Actions",
 								render: () => (
-									<SyncActionsPanel
-										canManage={canManage}
-										onImportOpen={onImportOpen}
-									/>
+									<SyncActionsPanel canManage={canManage} onImportOpen={onImportOpen} />
 								),
 							},
 						],
