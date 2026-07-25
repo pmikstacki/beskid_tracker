@@ -39,7 +39,7 @@ export function searchRoadmapIndex(
 	if (!q) return hits.filter((h) => h.kind === "nav").slice(0, limit);
 
 	return hits
-		.map((hit) => ({ hit, score: hitScore(hit.keywords + " " + hit.title, q) }))
+		.map((hit) => ({ hit, score: hitScore(`${hit.keywords} ${hit.title}`, q) }))
 		.filter((entry) => entry.score > 0)
 		.sort((a, b) => b.score - a.score)
 		.slice(0, limit)
