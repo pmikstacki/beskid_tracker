@@ -3,7 +3,10 @@
 # context `web_common` -> ./beskid_web_common so file:../beskid_web_common resolves.
 # Local: docker build -f Dockerfile --build-context web_common=../beskid_web_common .
 FROM node:24-alpine AS build
-RUN corepack enable && corepack prepare pnpm@10.17.1 --activate
+# The Tracker build and client-bundle verifier are Bash scripts. Alpine ships
+# only BusyBox sh, so install Bash in the disposable build stage rather than
+# the production runtime image.
+RUN apk add --no-cache bash && corepack enable && corepack prepare pnpm@10.17.1 --activate
 
 WORKDIR /app/beskid_tracker
 
