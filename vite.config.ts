@@ -1,5 +1,4 @@
 import fs from "node:fs";
-import { createRequire } from "node:module";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -13,8 +12,6 @@ import { defineConfig } from "vite";
 import { packageRoot, packageSrc } from "./vite.resolve-beskid-packages";
 
 const rootDir = path.dirname(fileURLToPath(import.meta.url));
-const require = createRequire(import.meta.url);
-
 const uiReactLocal = path.resolve(
 	rootDir,
 	"../beskid_web_common/packages/beskid-ui-react",
@@ -30,9 +27,7 @@ const authClientEntry = path.resolve(
 );
 /** ESM build — `yaml/dist/index.js` is CJS and breaks Vite SSR under Bun (`require is not defined`). */
 const yamlEsm = path.resolve(rootDir, "node_modules/yaml/browser/index.js");
-const trudocRoot = path.dirname(
-	require.resolve("@cyber-nomad-collective/trudoc/package.json"),
-);
+const trudocRoot = packageRoot("@cyber-nomad-collective/trudoc");
 const trudocSrc = path.join(trudocRoot, "src");
 
 const resolveAlias = [
