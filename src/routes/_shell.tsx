@@ -1,13 +1,21 @@
 import { createFileRoute, Outlet, redirect } from "@tanstack/react-router";
 
 import { AppShell } from "#/components/app-shell";
-import { getAuthUser } from "#/server/auth";
-import { getAuthHubPairingStatusFn } from "#/server/auth-hub-pairing";
-import { getRoadmapCatalog, getRoadmapSearchIndex } from "#/server/catalog";
-import { getSessionInfo } from "#/server/roadmap";
 
 export const Route = createFileRoute("/_shell")({
 	beforeLoad: async () => {
+		const [authHubPairing, auth, catalogModule, roadmap] = await Promise.all([
+			import("#/server/auth-hub-pairing"),
+			import("#/server/auth"),
+			import("#/server/catalog"),
+			import("#/server/roadmap"),
+		]);
+		const {
+			getAuthHubPairingStatusFn,
+		} = authHubPairing;
+		const { getAuthUser } = auth;
+		const { getRoadmapCatalog, getRoadmapSearchIndex } = catalogModule;
+		const { getSessionInfo } = roadmap;
 		const { paired } = await getAuthHubPairingStatusFn();
 		if (!paired) {
 			throw redirect({ to: "/settings/auth/pair" });
