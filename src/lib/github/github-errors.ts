@@ -1,7 +1,20 @@
-import { RequestError } from "@octokit/request-error";
+type GitHubRequestError = {
+	status: number;
+	message: string;
+};
+
+function isGitHubRequestError(error: unknown): error is GitHubRequestError {
+	if (typeof error !== "object" || error === null) return false;
+	return (
+		"status" in error &&
+		"message" in error &&
+		typeof (error as { status?: unknown }).status === "number" &&
+		typeof (error as { message?: unknown }).message === "string"
+	);
+}
 
 export function isGitHubRateLimitError(error: unknown): boolean {
-	if (!(error instanceof RequestError)) return false;
+	if (!isGitHubRequestError(error)) return false;
 	if (error.status !== 403) return false;
 	const message = error.message.toLowerCase();
 	return (
@@ -10,7 +23,7 @@ export function isGitHubRateLimitError(error: unknown): boolean {
 }
 
 export function githubErrorMessage(error: unknown): string {
-	if (error instanceof RequestError) {
+	if (isGitHubRequestError(error)) {
 		if (isGitHubRateLimitError(error)) {
 			return "GitHub API rate limit exceeded. Set GITHUB_PUBLIC_READ_TOKEN or sign in, then retry in a few minutes.";
 		}
