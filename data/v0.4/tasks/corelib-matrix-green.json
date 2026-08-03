@@ -1,7 +1,7 @@
 {
 	"id": "corelib-matrix-green",
-	"title": "Corelib test matrix green (42/42 just corelib)",
-	"statusColumn": "Substantially complete",
+	"title": "Corelib test matrix and release evidence (fresh run required)",
+	"statusColumn": "In Progress",
 	"priority": "high",
 	"workstream": "compiler-corelib",
 	"deliverableId": "v04-corelib-complete",
@@ -11,36 +11,36 @@
 		"subject": "BSOL Stability Pass",
 		"url": "https://github.com/Cyber-Nomad-Collective/beskid/commit/ee88edf"
 	},
-	"body": "Close the full `just corelib` gate: **42/42** targets in [`corelib_tests.bproj`](compiler/corelib/beskid_corelib/tests/corelib_tests/corelib_tests.bproj). W0–W6 compiler waves Done (HIR-free ISLE, canonical runtime, ABI-v5 kits, HIR retirement). Baseline no longer 5/42 — corelib gate substantially green. Remaining: LambdaExpression ISLE (CYB-173), TryExpression desugaring (CYB-174), macOS/Windows kit smokes (CYB-170/171).",
+	"body": "Record a fresh corelib gate for the reconciled compiler candidate and attach the exact command, compiler/corelib pins, target count, and retained report. This task is not complete until the active OpenSpec release ledger's migration, retirement, runtime-kit, and sign-off obligations have current evidence. Historical 42/42 and wave-completion statements are not release evidence.",
 	"order": 410,
 	"subtasks": [
 		{
-			"text": "Record N/42 baseline (just corelib + spine::)",
-			"done": true
+			"text": "Record fresh baseline (just corelib + spine::)",
+			"done": false
 		},
 		{
 			"text": "Console domain (~16 targets)",
-			"done": true
+			"done": false
 		},
 		{
 			"text": "SystemOutputWriteTests import (use System.Output)",
-			"done": true
+			"done": false
 		},
 		{
 			"text": "Collections domain (7 targets)",
-			"done": true
+			"done": false
 		},
 		{
 			"text": "System domain (4 targets)",
-			"done": true
+			"done": false
 		},
 		{
 			"text": "Concurrency domain (4 targets)",
-			"done": true
+			"done": false
 		},
 		{
 			"text": "Core domain (1–3 targets)",
-			"done": true
+			"done": false
 		}
 	],
 	"$schema": "../schemas/seed/task.schema.json"
