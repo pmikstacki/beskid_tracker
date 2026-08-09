@@ -1,6 +1,6 @@
 {
 	"id": "corelib-collections-storage-wiring",
-	"title": "Wire collection backing storage (array_get/array_set)",
+	"title": "Wire rooted Core.Collections backing storage",
 	"statusColumn": "Backlog",
 	"priority": "high",
 	"workstream": "compiler-corelib",
@@ -11,8 +11,13 @@
 		"subject": "BSOL Stability Pass",
 		"url": "https://github.com/Cyber-Nomad-Collective/beskid/commit/ee88edf"
 	},
-	"body": "After matrix green: wire collection backing storage per platform-spec tier rules; replace count-only placeholders in foundation `Collections/*` (e.g. [`List.bd`](compiler/corelib/packages/foundation/src/Collections/List.bd)).\n\n## Sequencing\n\n**Blocked on** `corelib-matrix-green` (42/42) — do not parallelize with resolve/codegen waves.\n\n## Provenance\n- **Repository:** `beskid`\n- **Catalog tip:** [`ee88edf`](https://github.com/Cyber-Nomad-Collective/beskid/commit/ee88edf) (2026-06-07)\n\n## Catalog scope\n- **Delivery version:** v0.4\n- **Workstream:** `compiler-corelib`\n- **Deliverable:** `v04-corelib-complete`",
+	"body": "The read-only implementation audit and validated `complete-v0-4-corelib-runtime-contracts` OpenSpec change are complete. Production implementation has not begun. The required design hard-cuts public APIs to `Core.Collections.*`, retains direct bounds-checked ISLE indexing as the sole Get/Set path, and adds one manifest-owned rooted typed-grow operation; it explicitly does not add `array_get`/`array_set` ABI symbols or preserve `Collections.*` aliases. Correctness also requires specialization-aware array/aggregate descriptors, managed aggregate construction roots, and pointer-store barriers.\n\n## Sequencing\n\nBlocked on a fresh 61/61 Corelib matrix and the aggregate rooting/barrier prerequisite.\n\n**Linear:** [CYB-184](https://linear.app/cybernomad-it/issue/CYB-184/v04-implement-rooted-corecollections-backing-storage)",
 	"order": 420,
-	"subtasks": [],
+	"subtasks": [
+		{ "text": "Validate normative Core.Collections/rooted-grow contract", "done": true },
+		{ "text": "Recover 61/61 Corelib prerequisite", "done": false },
+		{ "text": "Implement specialization-aware rooted typed growth", "done": false },
+		{ "text": "Hard-cut Core.Collections APIs and behavior tests", "done": false }
+	],
 	"$schema": "../schemas/seed/task.schema.json"
 }

@@ -26,7 +26,7 @@ v0.4 opens immediately after the **truncated v0.3** release at `aaddd32`. Scope 
 | **v04-cicd-realized** | Web CI action, trudoc paths, nexus smoke, verify-all | Partial — CI + tracker container landed; verify-all skeleton at `docs/orchestrate/verify-all-on-main-v04.md` |
 | **v04-tracker-ship** | Submodule, SQLite SOT, scoped GitHub sync, auth integration | In progress — core product landed; production webhook validation remains |
 | **v04-nexus-operational** | Submodule, native CI, `gitnexus serve` hosting | In progress — hub entry + COOLIFY docs landed; production smoke backlog |
-| **v04-corelib-complete** | Compiler waves; 42/42 matrix; API completion | In progress — infra waves Done; matrix green + pckg publish backlog |
+| **v04-corelib-complete** | Compiler structure; 61-target matrix; API/runtime completion | In progress — fresh baseline 20/61; collection, Core.FS, native-kit, and publish evidence remain |
 | **v04-vscode-pckg-docs** | pckg + platform-spec + docs in editor | Mostly done — vscode tasks Done; specBaseUrl, symbol links, pckg health landed; diagnostic→spec + Open VSX deferred |
 
 ## Workstreams
@@ -56,6 +56,6 @@ Import seed JSON into tracker SQLite via Settings → Import catalog, or `import
 |--------|-------|----------------|
 | **20–24 Jul** | Compiler W0–W6 Done + W7 evidence | `17442fb9` all state merge; `790adad6` parser + ISLE; `aad9b219` MethodDefinition + ForStatement ISLE; catalog revision `f011a8cb2e46` (185 caps, 524 reqs) |
 
-Compiler waves complete: W0 (generation-safe facts), W1 (semantic authority), W2 (ISLE inventory), W3 (exact ABI-v5 kits), W4 (codegen/LSP migration), W5 (canonical runtime + Linux kits), W6 (HIR/legacy retirement). W7 release sign-off in progress.
+Historical W0–W6 wave work is present, but current source-tip release evidence does not support calling the compiler/Corelib/runtime complete. On 2026-08-09 the release CLI built and the explicit runtime kit staged, while the EOF-bound authoritative Corelib matrix finished at 20/61 passing. The historical apparent hang was stdin job control, not a compiler deadlock. Structural splits completed for the semantic contract, ISLE library, package store, GC, TypeChecker expressions, and module emission; remaining qualified monoliths are tracked separately.
 
-**Remaining for 0.4 sign-off:** LambdaExpression ISLE (CYB-173), TryExpression desugaring (CYB-174), macOS arm64 kit (CYB-170), Windows x86-64 kit (CYB-171), tracker seed data sync (CYB-177).
+**Remaining for 0.4 sign-off:** recover 61/61 Corelib and harness performance; complete semantic/enum/generic lowering gaps; implement rooted Core.Collections and canonical host-backed Core.FS; retire all Corelib stubs; correct per-artifact runtime-kit verification; obtain fresh Linux, macOS arm64, and Windows x86-64 debug/release static/shared JIT+AOT evidence; finish tracker/release sign-off.

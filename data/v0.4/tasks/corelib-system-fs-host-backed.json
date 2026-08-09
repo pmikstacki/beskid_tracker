@@ -1,6 +1,6 @@
 {
 	"id": "corelib-system-fs-host-backed",
-	"title": "Host-backed System.FS (replace heuristic stubs)",
+	"title": "Host-backed Core.FS through canonical ABI-v5 adapters",
 	"statusColumn": "Backlog",
 	"priority": "high",
 	"workstream": "compiler-corelib",
@@ -11,8 +11,13 @@
 		"subject": "BSOL Stability Pass",
 		"url": "https://github.com/Cyber-Nomad-Collective/beskid/commit/ee88edf"
 	},
-	"body": "After matrix green: host-backed `System.FS` via `beskid_host` + ABI registration; replace heuristic stubs exercised by [`FsTests.bd`](compiler/corelib/beskid_corelib/tests/corelib_tests/src/system/FsTests.bd).\n\n## Sequencing\n\n**Blocked on** `corelib-matrix-green` and `corelib-collections-storage-wiring`.\n\n## Provenance\n- **Repository:** `beskid`\n- **Catalog tip:** [`ee88edf`](https://github.com/Cyber-Nomad-Collective/beskid/commit/ee88edf) (2026-06-07)\n\n## Catalog scope\n- **Delivery version:** v0.4\n- **Workstream:** `compiler-corelib`\n- **Deliverable:** `v04-corelib-complete`",
+	"body": "The read-only FS authority audit and validated `complete-v0-4-corelib-runtime-contracts` OpenSpec change are complete. Production implementation has not begun. The required design is `Core.FS` only, using manifest-owned ABI-v5 canonical runtime adapters on Linux x86-64, macOS arm64, and Windows x86-64. Legacy `System.FS`, `beskid_host` dispatch, heuristic results, aliases, fallbacks, and fabricated success must be removed. The contract adds real `Result<Unit, E>`, typed `BeskidFsStatus`, and `Exists -> Result<bool, FsError>` so absence is successful false while adapter failure is an error.\n\n## Sequencing\n\nBlocked on fresh 61/61 Corelib, collection storage, generic-unit Result support, and the typed adapter status channel.\n\n**Linear:** [CYB-185](https://linear.app/cybernomad-it/issue/CYB-185/v04-implement-canonical-host-backed-corefs)",
 	"order": 421,
-	"subtasks": [],
+	"subtasks": [
+		{ "text": "Validate normative Core.FS/status/authority contract", "done": true },
+		{ "text": "Recover matrix and collection prerequisites", "done": false },
+		{ "text": "Implement Result<Unit,E> and typed FS status channel", "done": false },
+		{ "text": "Implement three-target canonical adapters and purge System.FS", "done": false }
+	],
 	"$schema": "../schemas/seed/task.schema.json"
 }

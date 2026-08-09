@@ -11,14 +11,12 @@
 		"subject": "BSOL Stability Pass",
 		"url": "https://github.com/Cyber-Nomad-Collective/beskid/commit/ee88edf"
 	},
-	"body": "After functional matrix green: reuse `Engine` per target in test harness; single `beskid test --all-targets` in [`run_corelib_tests.py`](compiler/corelib/ci/run_corelib_tests.py).\n\n## Acceptance\n\n- Full 42-target matrix under **5 minutes**\n- Simple assert targets under **200ms**\n\n## Blocked on\n\n`corelib-matrix-green` exit (42/42 functional pass)\n\n## Provenance\n- **Repository:** `beskid`\n- **Catalog tip:** [`ee88edf`](https://github.com/Cyber-Nomad-Collective/beskid/commit/ee88edf) (2026-06-07)\n\n## Catalog scope\n- **Delivery version:** v0.4\n- **Workstream:** `compiler-corelib`\n- **Deliverable:** `v04-corelib-complete`",
+	"body": "The current production gate is one `beskid test --all-targets --plain` invocation over 61 manifest entries; the historical `compiler/corelib/ci/run_corelib_tests.py` path no longer exists. Fresh evidence found no compiler deadlock: inherited PTY stdin stopped `SystemInputReadTests` with SIGTTIN, while `</dev/null` produced deterministic EOF and completed every sampled target. The first EOF-bound five-minute run completed 49 targets (18 pass / 31 fail); the remaining 12 completed separately, yielding a full 20/61 functional baseline. Repeated materialization and typechecking consumed 245s system time and remain the performance bottleneck.\n\n## Acceptance\n\n- Fresh functional matrix is 61/61\n- One EOF-bound `--all-targets` run completes under **5 minutes**\n- Simple assertion targets complete under **200ms**\n\n## Blocked on\n\nFunctional `corelib-matrix-green` exit (61/61).\n\n**Linear:** [CYB-181](https://linear.app/cybernomad-it/issue/CYB-181/v04-recover-authoritative-61-target-corelib-matrix-and-bounded-harness)",
 	"order": 412,
 	"subtasks": [
 		{ "text": "Engine reuse per target in test harness", "done": true },
-		{
-			"text": "Single --all-targets CI run in run_corelib_tests.py",
-			"done": true
-		},
+		{ "text": "Single 61-target --all-targets production invocation", "done": true },
+		{ "text": "Deterministic EOF stdin binding with harness regression", "done": true },
 		{ "text": "Sub-5min matrix acceptance evidence", "done": false }
 	],
 	"$schema": "../schemas/seed/task.schema.json"

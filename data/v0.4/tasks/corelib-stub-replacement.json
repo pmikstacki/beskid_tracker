@@ -1,6 +1,6 @@
 {
 	"id": "corelib-stub-replacement",
-	"title": "Corelib API completion after matrix green (collections + host FS)",
+	"title": "Corelib API completion and stub retirement",
 	"statusColumn": "In Progress",
 	"priority": "high",
 	"workstream": "compiler-corelib",
@@ -11,12 +11,13 @@
 		"subject": "BSOL Stability Pass",
 		"url": "https://github.com/Cyber-Nomad-Collective/beskid/commit/ee88edf"
 	},
-	"body": "Narrowed to **Wave 5 API completion** only — intentional count-only stubs remain until `corelib-matrix-green` (42/42) exits.\n\n## Scope (after matrix green)\n\n- Collection backing storage wiring → `corelib-collections-storage-wiring`\n- Host-backed `System.FS` → `corelib-system-fs-host-backed`\n- pckg publish evidence → `corelib-quality-pckg-publish-main`\n\n## Landed (infra, not API semantics)\n\n- Corelib shapes and spine tests on main (`b73d49d`, `e628d08`)\n- Import codemod + typecheck gates (wave tasks Done)\n\n## Provenance\n- **Repository:** `beskid`\n- **Catalog tip:** [`ee88edf`](https://github.com/Cyber-Nomad-Collective/beskid/commit/ee88edf) (2026-06-07)\n\n## Catalog scope\n- **Delivery version:** v0.4\n- **Workstream:** `compiler-corelib`\n- **Deliverable:** `v04-corelib-complete`",
+	"body": "Wave 5 API completion is in progress, but no production collection or filesystem stub can be marked replaced yet. The normative implementation contract is now complete and validated: Core.Collections rooted typed growth, Core.FS typed canonical adapters, Result<Unit,E>, no legacy namespaces or compatibility fallbacks, bounded 61-target verification, and three-target runtime-kit evidence. Implementation remains sequenced behind functional matrix recovery.\n\n## Remaining\n\n- Rooted Core.Collections backing storage → `corelib-collections-storage-wiring`\n- Host-backed Core.FS → `corelib-system-fs-host-backed`\n- Complete placeholder/legacy scan and API-shape gate\n- Corelib quality CI and pckg publish evidence\n\n**Linear:** [CYB-186](https://linear.app/cybernomad-it/issue/CYB-186/v04-complete-corelib-api-and-purge-all-stubs)",
 	"order": 401,
 	"subtasks": [
-		{ "text": "42/42 matrix green (prerequisite)", "done": false },
+		{ "text": "Validated normative API/runtime contract", "done": true },
+		{ "text": "61/61 matrix green (prerequisite)", "done": false },
 		{ "text": "Collection storage wiring", "done": false },
-		{ "text": "Host-backed System.FS", "done": false },
+		{ "text": "Host-backed Core.FS", "done": false },
 		{ "text": "corelib-quality CI + pckg publish", "done": false }
 	],
 	"$schema": "../schemas/seed/task.schema.json"

@@ -1,0 +1,30 @@
+{
+	"id": "compiler-large-file-structural-splits",
+	"title": "Split remaining mixed-responsibility compiler monoliths",
+	"statusColumn": "In Progress",
+	"priority": "medium",
+	"workstream": "compiler-corelib",
+	"deliverableId": "v04-corelib-complete",
+	"source": {
+		"repo": "beskid",
+		"commit": "17442fb9",
+		"subject": "v0.4 historical planning cutoff",
+		"url": "https://github.com/Cyber-Nomad-Collective/beskid/commit/17442fb9"
+	},
+	"body": "Refactor authored production files with multiple independently changing responsibilities into thin explicit facades and focused implementation modules. Preserve one implementation per construct, public paths, generation-bound Salsa authority, TypedProgram-to-ISLE lowering, diagnostic ordering, and fail-closed runtime behavior. Completed splits have static declaration/body/export parity and buildability; remaining targets must receive GitNexus impact review, implementation files under the agreed size threshold, focused Cargo verification after each structurally complete wave, and no compatibility duplicate paths.\n\n**Linear:** [CYB-183](https://linear.app/cybernomad-it/issue/CYB-183/v04-split-remaining-mixed-responsibility-compiler-monoliths)",
+	"order": 409,
+	"subtasks": [
+		{ "text": "Split semantic_contract.rs", "done": true },
+		{ "text": "Split beskid_isle lib.rs", "done": true },
+		{ "text": "Split beskid_pckg_store lib.rs", "done": true },
+		{ "text": "Split canonical Runtime/Mem/Gc.bd", "done": true },
+		{ "text": "Split TypeChecker expressions.rs", "done": true },
+		{ "text": "Split codegen module_emission.rs", "done": true },
+		{ "text": "Split manifest v5.rs and codegen.rs", "done": false },
+		{ "text": "Split community routes, heap, document service, and assembly loader", "done": false },
+		{ "text": "Split shell host and call-expression lowering", "done": false },
+		{ "text": "Audit remaining 600+ LOC authored mixed-responsibility files", "done": false },
+		{ "text": "Run final Cargo and duplicate/LOC/change-impact verification", "done": false }
+	],
+	"$schema": "../schemas/seed/task.schema.json"
+}

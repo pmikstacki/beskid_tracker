@@ -1,7 +1,7 @@
 {
 	"id": "v04-corelib-complete",
 	"title": "corelib full Standard implementation",
-	"description": "compiler/corelib ships complete Core and package surfaces with stubs removed, tier tags honored in api.json, and corelib-quality CI plus pckg publish on main. W0–W6 waves Done — HIR-free ISLE lowering (MethodDefinition, ForStatement, closure/capture, syscall, Core.Output, Core.Error), canonical ABI-v5 runtime (lifecycle, traps, TLS, Linux x86-64 debug/release kits), HIR/legacy retirement, and binary-provenance gates authoritative. Remaining ISLE gaps (LambdaExpression W4.2 carryover, TryExpression desugaring) tracked as CYB-173/174. Status: Substantially complete; W7 sign-off evidence in progress.",
+	"description": "In progress. Structural compiler/runtime refactors and the normative Corelib/runtime completion contract are complete, but functional and release evidence is not green. The fresh source-tip Corelib baseline is 20/61 passing with no per-target hang after deterministic EOF binding; semantic ABI, enum-layout, generic, and codegen failures remain. Rooted Core.Collections storage and host-backed Core.FS are specified but not implemented. Runtime-kit verification currently lacks valid per-artifact static/shared policy and fresh runner-native proof for Linux x86-64, macOS arm64, and Windows x86-64. Completion requires 61/61 Corelib, full stub retirement, corelib-quality/pckg evidence, and native debug/release static/shared JIT+AOT evidence on all three targets.",
 	"subtasks": [],
 	"$schema": "../schemas/seed/deliverable.schema.json"
 }
