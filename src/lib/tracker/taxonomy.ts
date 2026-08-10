@@ -159,7 +159,7 @@ export const TRACKER_COMPONENTS: TrackerComponent[] = [
 				id: "beskid_version",
 				kind: "text",
 				label: "CLI / Beskid version",
-				placeholder: "cli-latest, local build…",
+				placeholder: "cli-stable, local build…",
 			}),
 			reportField({
 				id: "repro_command",
