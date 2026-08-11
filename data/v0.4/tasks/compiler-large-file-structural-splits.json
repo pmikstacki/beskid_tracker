@@ -1,7 +1,7 @@
 {
 	"id": "compiler-large-file-structural-splits",
-	"title": "Split remaining mixed-responsibility compiler monoliths",
-	"statusColumn": "In Progress",
+	"title": "Complete the 0.4-required compiler structural split wave",
+	"statusColumn": "Done",
 	"priority": "medium",
 	"workstream": "compiler-corelib",
 	"deliverableId": "v04-corelib-complete",
@@ -11,7 +11,7 @@
 		"subject": "v0.4 historical planning cutoff",
 		"url": "https://github.com/Cyber-Nomad-Collective/beskid/commit/17442fb9"
 	},
-	"body": "Refactor authored production files with multiple independently changing responsibilities into thin explicit facades and focused implementation modules. Preserve one implementation per construct, public paths, generation-bound Salsa authority, TypedProgram-to-ISLE lowering, diagnostic ordering, and fail-closed runtime behavior. Completed splits have static declaration/body/export parity and buildability; remaining targets must receive GitNexus impact review, implementation files under the agreed size threshold, focused Cargo verification after each structurally complete wave, and no compatibility duplicate paths.\n\n**Linear:** [CYB-183](https://linear.app/cybernomad-it/issue/CYB-183/v04-split-remaining-mixed-responsibility-compiler-monoliths)",
+	"body": "The 0.4-required structural wave is complete for semantic_contract, beskid_isle, beskid_pckg_store, canonical Runtime/Mem/Gc, TypeChecker expressions, and codegen module emission. The remaining manifest/codegen, community-route, heap, document-service, assembly-loader, shell-host, and call-expression splits are structural/LOC cleanup without a normative 0.4 release obligation. The accepted 0.4 boundary moves that residual work beyond 0.4 unless a new bounded issue proves a concrete correctness, authority, testability, legacy-deletion, or release-gate dependency. No compatibility duplicate is authorized.\n\n**Linear:** [CYB-183](https://linear.app/cybernomad-it/issue/CYB-183/v04-split-remaining-mixed-responsibility-compiler-monoliths) records the completed wave and canceled residual 0.4 scope; [CYB-193](https://linear.app/cybernomad-it/issue/CYB-193/decide-which-remaining-compiler-monolith-splits-belong-in-04) records the accepted boundary rule.",
 	"order": 409,
 	"subtasks": [
 		{ "text": "Split semantic_contract.rs", "done": true },
@@ -20,11 +20,8 @@
 		{ "text": "Split canonical Runtime/Mem/Gc.bd", "done": true },
 		{ "text": "Split TypeChecker expressions.rs", "done": true },
 		{ "text": "Split codegen module_emission.rs", "done": true },
-		{ "text": "Split manifest v5.rs and codegen.rs", "done": false },
-		{ "text": "Split community routes, heap, document service, and assembly loader", "done": false },
-		{ "text": "Split shell host and call-expression lowering", "done": false },
-		{ "text": "Audit remaining 600+ LOC authored mixed-responsibility files", "done": false },
-		{ "text": "Run final Cargo and duplicate/LOC/change-impact verification", "done": false }
+		{ "text": "Move residual structural-only splits beyond 0.4 unless a concrete gate dependency is proven", "done": true },
+		{ "text": "Preserve the no-compatibility-duplicate rule for any future bounded split", "done": true }
 	],
 	"$schema": "../schemas/seed/task.schema.json"
 }
