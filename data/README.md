@@ -1,4 +1,4 @@
-# Roadmap seed catalog (v0.0–v0.4)
+# Roadmap seed catalog (v0.0–v0.5)
 
 Hand-maintained planning catalog for **import** into the tracker database (or legacy GitHub seed import). JSON entities are validated against [JSON Schema](../schemas/seed/index.json) (exported from Zod via `bun run seed:schema:export`).
 
@@ -22,7 +22,7 @@ Each delivery version has:
 
 Legacy **`number`** on tasks or deliverables is removed; run `bun run seed:migrate` once if importing old JSON.
 
-Catalog layout lives under `data/v0.0/` … `data/v0.4/` (one JSON file per entity).
+Catalog layout lives under `data/v0.0/` … `data/v0.5/` (one JSON file per entity). v0.5 is spec-planned only (status `Planned`); its band, article, and workstreams are seeded, but no task files exist yet — tasks will be seeded when implementation begins and 0.4 sign-off closes.
 
 Validate after edits:
 
@@ -43,4 +43,3 @@ The tracker reads catalog and kanban from SQLite once seed data is imported. See
 | Entity | Reason |
 |--------|--------|
 | **Public bugs** (`bug` label) | Separate anonymous route; seed is for version-scoped roadmap planning only |
-| **v0.5+** | Not represented in this seed catalog |
