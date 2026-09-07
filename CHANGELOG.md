@@ -20,3 +20,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Align the tracker Biome CLI with the platform configuration schema.
 - Declare the `tsx` runner used by delivery reconciliation scripts.
 - Apply the platform Biome preset's safe formatting and import-order fixes.
+- Keep TanStack's generated route tree in generator-owned form and synchronize
+  active v0.4 delivery facts to the expanded 67-target Corelib manifest while
+  retaining the dated 61-target results as historical evidence.
