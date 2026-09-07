@@ -5,8 +5,8 @@ import {
 	approveAuthHubPairing,
 	pairingFailureMessage,
 } from "#/lib/auth/hub-pairing-flow.server";
-import { canManageRoadmap } from "#/lib/github/permissions";
 import { getAuthHubServiceToken } from "#/lib/auth/hub-settings.server";
+import { canManageRoadmap } from "#/lib/github/permissions";
 import { getSessionFromRequest } from "#/lib/session/cookie";
 import { createOctokitForSession } from "#/server/auth-guard.server";
 

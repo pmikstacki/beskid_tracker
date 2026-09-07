@@ -15,8 +15,14 @@
 	"order": 412,
 	"subtasks": [
 		{ "text": "Engine reuse per target in test harness", "done": true },
-		{ "text": "Single 61-target --all-targets production invocation", "done": true },
-		{ "text": "Deterministic EOF stdin binding with harness regression", "done": true },
+		{
+			"text": "Single 61-target --all-targets production invocation",
+			"done": true
+		},
+		{
+			"text": "Deterministic EOF stdin binding with harness regression",
+			"done": true
+		},
 		{ "text": "Sub-5min matrix acceptance evidence", "done": false }
 	],
 	"$schema": "../schemas/seed/task.schema.json"

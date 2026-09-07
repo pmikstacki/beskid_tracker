@@ -10,9 +10,7 @@ export const Route = createFileRoute("/_shell")({
 			import("#/server/catalog"),
 			import("#/server/roadmap"),
 		]);
-		const {
-			getAuthHubPairingStatusFn,
-		} = authHubPairing;
+		const { getAuthHubPairingStatusFn } = authHubPairing;
 		const { getAuthUser } = auth;
 		const { getRoadmapCatalog, getRoadmapSearchIndex } = catalogModule;
 		const { getSessionInfo } = roadmap;

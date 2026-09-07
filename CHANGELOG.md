@@ -17,3 +17,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   `beskid-lang.org/docs/standard/` documentation surface.
 - Load the normative catalog directly from the root OpenSpec repository and
   remove compatibility calls to the retired Platform Spec APIs.
+- Align the tracker Biome CLI with the platform configuration schema.
+- Declare the `tsx` runner used by delivery reconciliation scripts.
+- Apply the platform Biome preset's safe formatting and import-order fixes.

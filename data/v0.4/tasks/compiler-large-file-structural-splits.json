@@ -20,8 +20,14 @@
 		{ "text": "Split canonical Runtime/Mem/Gc.bd", "done": true },
 		{ "text": "Split TypeChecker expressions.rs", "done": true },
 		{ "text": "Split codegen module_emission.rs", "done": true },
-		{ "text": "Move residual structural-only splits beyond 0.4 unless a concrete gate dependency is proven", "done": true },
-		{ "text": "Preserve the no-compatibility-duplicate rule for any future bounded split", "done": true }
+		{
+			"text": "Move residual structural-only splits beyond 0.4 unless a concrete gate dependency is proven",
+			"done": true
+		},
+		{
+			"text": "Preserve the no-compatibility-duplicate rule for any future bounded split",
+			"done": true
+		}
 	],
 	"$schema": "../schemas/seed/task.schema.json"
 }

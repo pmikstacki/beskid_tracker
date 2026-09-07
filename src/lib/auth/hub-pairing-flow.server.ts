@@ -1,13 +1,12 @@
 import "@tanstack/react-start/server-only";
 
-import { getRequest } from "@tanstack/react-start/server";
-
-import { env } from "#/env.server";
 import {
-	approveAuthHubPairing as approveAuthHubPairingShared,
 	type AuthHubPairingFailureReason,
+	approveAuthHubPairing as approveAuthHubPairingShared,
 	pairingFailureMessage as pairingFailureMessageShared,
 } from "@beskid/auth-client";
+import { getRequest } from "@tanstack/react-start/server";
+import { env } from "#/env.server";
 import {
 	getStoredPairingApproverLogin,
 	saveAuthHubPairing,
