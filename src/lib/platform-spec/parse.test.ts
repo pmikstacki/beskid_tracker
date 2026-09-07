@@ -19,6 +19,11 @@ describe("parseSpecLinks", () => {
 				"/platform-spec/site/docs",
 			]),
 		);
+		expect(links.map((link) => link.href)).toEqual([
+			"https://beskid-lang.org/docs/standard/",
+			"https://beskid-lang.org/docs/standard/",
+			"https://beskid-lang.org/docs/standard/",
+		]);
 	});
 
 	it("returns empty array for empty body", () => {

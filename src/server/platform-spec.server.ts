@@ -1,14 +1,8 @@
-import {
-	openSpecCatalogUrl,
-	platformSpecCatalogUrl,
-} from "#/lib/platform-spec/catalog-url";
+import { openSpecCatalogUrl } from "#/lib/platform-spec/catalog-url";
 import {
 	type FlatSpecNavEntry,
-	flattenNavTree,
-	type PlatformSpecNavTreeFile,
 	searchNavEntries,
 } from "#/lib/platform-spec/nav";
-import { platformSpecNavTreeUrl } from "#/lib/platform-spec/nav-tree-url";
 import { parseOpenSpecCatalogNav } from "#/lib/platform-spec/open-spec-catalog";
 import { suggestPlatformSpecEntriesForTask } from "#/lib/platform-spec/suggestions";
 import { trackerTaskToRoadmapTask } from "#/lib/tracker/mappers";
@@ -35,33 +29,19 @@ export async function loadNavEntries(): Promise<FlatSpecNavEntry[]> {
 		return cachedEntries;
 	}
 
-	const errors: string[] = [];
-	for (const url of [platformSpecCatalogUrl(), openSpecCatalogUrl()]) {
-		try {
-			const catalog = parseOpenSpecCatalogNav(await fetchJson(url));
-			if (catalog.entries.length > 0) {
-				cachedEntries = catalog.entries;
-				cachedAt = now;
-				return cachedEntries;
-			}
-			errors.push(`empty catalog from ${url}`);
-		} catch (error) {
-			errors.push(error instanceof Error ? error.message : String(error));
-		}
-	}
-
-	// Compatibility only: remove after all deployments expose an OpenSpec catalog.
+	const url = openSpecCatalogUrl();
 	try {
-		const parsed = (await fetchJson(
-			platformSpecNavTreeUrl(),
-		)) as PlatformSpecNavTreeFile;
-		cachedEntries = flattenNavTree(parsed.tree);
+		const catalog = parseOpenSpecCatalogNav(await fetchJson(url));
+		if (catalog.entries.length === 0) {
+			throw new Error(`empty catalog from ${url}`);
+		}
+		cachedEntries = catalog.entries;
 		cachedAt = now;
 		return cachedEntries;
 	} catch (error) {
-		errors.push(error instanceof Error ? error.message : String(error));
 		if (cachedEntries) return cachedEntries;
-		throw new Error(`Failed to load OpenSpec catalog: ${errors.join("; ")}`);
+		const detail = error instanceof Error ? error.message : String(error);
+		throw new Error(`Failed to load OpenSpec catalog: ${detail}`);
 	}
 }
 

@@ -41,10 +41,10 @@ function LoginPage() {
 				footer={
 					<>
 						<a
-							href="https://beskid-lang.org/platform-spec/"
+							href="https://beskid-lang.org/docs/standard/"
 							className="underline-offset-4 hover:underline"
 						>
-							Platform specification
+							Beskid Standard
 						</a>
 						{" · "}
 						<a

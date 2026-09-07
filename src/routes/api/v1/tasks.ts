@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 
+import { BESKID_STANDARD_URL } from "#/lib/beskid-docs-origin";
 import { getIssuesDatabase } from "#/lib/storage/db";
 import { assertTrackerSpecLink } from "#/lib/tracker/delivery-contract";
 import { listTrackerTasks } from "#/lib/tracker/repositories/tasks-repository";
@@ -134,7 +135,7 @@ export const Route = createFileRoute("/api/v1/tasks")({
 							{
 								standardId: body.standardId.trim(),
 								path,
-								href: `https://spec.beskid-lang.org/platform-spec/capabilities/${body.standardId.trim()}/`,
+								href: BESKID_STANDARD_URL,
 								relation: "tracks",
 								required: false,
 							},

@@ -1,4 +1,7 @@
-import { BESKID_DOCS_ORIGIN, beskidDocsUrl } from "#/lib/beskid-docs-origin";
+import {
+	BESKID_DOCS_ORIGIN,
+	BESKID_STANDARD_URL,
+} from "#/lib/beskid-docs-origin";
 
 export interface SpecLink {
 	href: string;
@@ -28,7 +31,7 @@ function normalizeSpecPath(raw: string): string | null {
 
 function toSpecLink(path: string, title?: string): SpecLink {
 	return {
-		href: beskidDocsUrl(path),
+		href: BESKID_STANDARD_URL,
 		path,
 		title,
 	};

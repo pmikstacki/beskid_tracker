@@ -4,7 +4,7 @@
 
 The tracker **SQLite database** is the source of truth for versions, roadmap tasks, and bugs. GitHub Issues are used only as the external bug-reporting surface; roadmap tasks never export to or import from GitHub. Import catalog JSON from **Settings → Actions → Import catalog** and configure the bug webhook in the settings dialog.
 
-Each task belongs to a **delivery version** (`v0.1`–`v0.4`); the kanban board is per version. [Platform specification](https://beskid-lang.org/platform-spec/) entries are linked by stable OpenSpec identifiers and typed relations; the repo owner approves spec linkages.
+Each task belongs to a **delivery version** (`v0.1`–`v0.4`); the kanban board is per version. [Beskid Standard](https://beskid-lang.org/docs/standard/) entries are linked by stable OpenSpec identifiers and typed relations; the repo owner approves standard linkages.
 
 ## Stack
 
@@ -133,7 +133,7 @@ Import into SQLite via Settings or `importCatalogBundleFn`. Validate seed JSON w
 - `src/routes/api/webhooks/` — GitHub issue webhook receiver
 - `src/lib/github/` — label encoding for GitHub export, permissions, filters
 - `src/lib/seed/` — Zod schemas, disk loader, `RoadmapTask` mapping
-- `src/lib/platform-spec/` — spec relations block, nav search, and **docs management** (full catalog + per-doc bundles from `/generated/platform-spec-catalog.json`, proposal drafts in SQLite, PR submit via GitHub API)
+- `src/lib/platform-spec/` — standard relations, canonical OpenSpec catalog search, proposal drafts in SQLite, and PR submission via the GitHub API
 
 ## UI packages vs app components
 

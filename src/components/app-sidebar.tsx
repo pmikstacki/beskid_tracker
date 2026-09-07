@@ -35,7 +35,7 @@ import {
 	SidebarMenuItem,
 	SidebarRail,
 } from "#/components/ui/sidebar";
-import { PLATFORM_SPEC_ORIGIN } from "#/lib/beskid-docs-origin";
+import { BESKID_STANDARD_URL } from "#/lib/beskid-docs-origin";
 import { DEFAULT_DELIVERY_VERSIONS } from "#/lib/github/roadmap-labels";
 import type { AuthUser } from "#/lib/github/types";
 import type { RoadmapCatalogVersion } from "#/lib/roadmap/types";
@@ -192,14 +192,10 @@ export function AppSidebar({
 								</SidebarMenuButton>
 							</SidebarMenuItem>
 							<SidebarMenuItem>
-								<SidebarMenuButton asChild tooltip="Platform spec">
-									<a
-										href={`${PLATFORM_SPEC_ORIGIN}/platform-spec/`}
-										target="_blank"
-										rel="noreferrer"
-									>
+								<SidebarMenuButton asChild tooltip="Beskid standard">
+									<a href={BESKID_STANDARD_URL} target="_blank" rel="noreferrer">
 										<FileText />
-										<span>Platform spec</span>
+										<span>Beskid standard</span>
 										<ExternalLink className="ml-auto size-3.5 opacity-60" />
 									</a>
 								</SidebarMenuButton>

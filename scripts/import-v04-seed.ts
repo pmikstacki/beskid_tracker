@@ -9,7 +9,7 @@
  */
 
 import { readdirSync, readFileSync, statSync } from "node:fs";
-import { basename, join, relative, resolve } from "node:path";
+import { join, relative, resolve } from "node:path";
 import {
 	parseUploadedSeedBundles,
 	type UploadedSeedFile,
@@ -44,10 +44,7 @@ function collectFiles(dir: string): UploadedSeedFile[] {
 
 				// v0.4/tasks/corelib-matrix-green.json: "Substantially complete" → "Done"
 				if (entry === "corelib-matrix-green.json" && relPath.startsWith("v0.4")) {
-					content = content.replace(
-						'"Substantially complete"',
-						'"Done"',
-					);
+					content = content.replace('"Substantially complete"', '"Done"');
 				}
 
 				files.push({ relativePath: relPath, content });
@@ -55,7 +52,7 @@ function collectFiles(dir: string): UploadedSeedFile[] {
 		}
 	}
 
-	walk(V04_DIR);
+	walk(dir);
 	return files;
 }
 
