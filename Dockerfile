@@ -27,6 +27,8 @@ RUN pnpm run verify:client-bundle
 
 FROM node:24-alpine AS runtime
 
+LABEL org.opencontainers.image.licenses="AGPL-3.0-only"
+
 RUN apk add --no-cache wget
 
 WORKDIR /app/beskid_tracker
@@ -38,6 +40,7 @@ COPY --from=build /app/beskid_tracker/package.json /app/beskid_tracker/pnpm-lock
 COPY --from=build /app/beskid_tracker/node_modules ./node_modules
 COPY --from=build /app/beskid_tracker/.output ./.output
 COPY --from=build /app/beskid_tracker/data ./data
+COPY LICENSE /usr/share/licenses/beskid-tracker/LICENSE
 
 EXPOSE 3000
 

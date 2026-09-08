@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- License the hosted Tracker service under `AGPL-3.0-only`, declare the SPDX
+  identifier in package and OCI metadata, and include the license text in the
+  runtime image.
+
 ### Fixed
 
 - Use Authentik's trusted forwarded identity for Tracker sessions and start

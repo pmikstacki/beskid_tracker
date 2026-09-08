@@ -147,3 +147,13 @@ Shared **design-system** primitives live in [`@beskid/ui-react`](../beskid_web_c
 2. Hub OAuth → `GET /api/auth/hub-finish` — verify handoff, set session cookie, redirect `/v/v0.2`
 3. `POST /api/auth/logout` — clear session
 4. `/` is public; kanban and workstreams require sign-in
+
+## License
+
+Beskid Tracker is licensed under the
+[GNU Affero General Public License v3.0 only](LICENSE). Users interacting with
+a modified hosted version must be offered the corresponding source as required
+by that license.
+
+Third-party dependencies and components remain under their respective
+licenses.
