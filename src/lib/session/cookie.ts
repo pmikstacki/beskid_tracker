@@ -76,9 +76,7 @@ export async function getSessionFromRequest(
 			name: request.headers.get("x-authentik-name"),
 			avatarUrl: `https://github.com/${encodeURIComponent(authentikLogin)}.png`,
 			hubUserToken:
-				process.env.GITHUB_SYNC_TOKEN?.trim() ||
-				env.GITHUB_PUBLIC_READ_TOKEN ||
-				"",
+				process.env.GITHUB_SYNC_TOKEN?.trim() || env.GITHUB_PUBLIC_READ_TOKEN || "",
 			hubSessionId: request.headers.get("x-authentik-uid") || authentikLogin,
 		};
 	}
