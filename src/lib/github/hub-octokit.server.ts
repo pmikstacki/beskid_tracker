@@ -1,17 +1,14 @@
-import { githubProxyBaseUrl } from "@beskid/auth-client";
 import { Octokit } from "@octokit/rest";
 
 import "@tanstack/react-start/server-only";
 
-import { getAuthHubUrl } from "#/lib/auth/hub-settings.server";
-
+/**
+ * Tracker operations are authorized by Authentik at the edge. GitHub calls use
+ * the server-side integration credential; no browser token or retired hub is
+ * involved.
+ */
 export function createHubOctokit(hubUserToken: string): Octokit {
-	const hubUrl = getAuthHubUrl();
-	if (!hubUrl) {
-		throw new Error("Auth hub URL is not configured");
-	}
 	return new Octokit({
-		auth: hubUserToken,
-		baseUrl: githubProxyBaseUrl(hubUrl),
+		auth: hubUserToken || undefined,
 	});
 }

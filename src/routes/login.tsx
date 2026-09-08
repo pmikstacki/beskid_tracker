@@ -34,9 +34,9 @@ function LoginPage() {
 			<AuthPageShell
 				kicker="Beskid"
 				title="Tracker"
-				description="Sign in through the Beskid auth hub to manage tracker-native roadmap tasks. GitHub is used only for public bug issues."
+				description="Sign in with GitHub through Beskid Authentik to manage tracker-native roadmap tasks."
 				error={
-					error ? "Sign-in failed. Check auth hub pairing and try again." : undefined
+					error ? "Sign-in failed. Try the Authentik sign-in again." : undefined
 				}
 				footer={
 					<>

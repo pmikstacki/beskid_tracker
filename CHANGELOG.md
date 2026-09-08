@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Use Authentik's trusted forwarded identity for Tracker sessions and start
+  browser sign-in through the local Authentik outpost. Tracker no longer
+  requires the retired Auth Hub pairing flow at runtime.
+
 - Honor the seed directory passed to the v0.4 import helper and remove its
   unused path import so the repository typecheck remains clean.
 - Refresh the local shared-UI lock snapshot for its declared graph type

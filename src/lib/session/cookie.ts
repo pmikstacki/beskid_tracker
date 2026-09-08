@@ -10,7 +10,7 @@ export interface SessionPayload {
 	login: string;
 	avatarUrl: string;
 	name: string | null;
-	/** Handoff JWT — GitHub API via auth hub proxy. */
+	/** Server-side GitHub integration token; never sent to the browser. */
 	hubUserToken: string;
 	hubSessionId: string;
 }
@@ -69,6 +69,20 @@ export function readSessionCookie(request: Request): string | null {
 export async function getSessionFromRequest(
 	request: Request,
 ): Promise<SessionPayload | null> {
+	const authentikLogin = request.headers.get("x-authentik-username");
+	if (authentikLogin) {
+		return {
+			login: authentikLogin,
+			name: request.headers.get("x-authentik-name"),
+			avatarUrl: `https://github.com/${encodeURIComponent(authentikLogin)}.png`,
+			hubUserToken:
+				process.env.GITHUB_SYNC_TOKEN?.trim() ||
+				env.GITHUB_PUBLIC_READ_TOKEN ||
+				"",
+			hubSessionId: request.headers.get("x-authentik-uid") || authentikLogin,
+		};
+	}
+
 	const token = readSessionCookie(request);
 	if (!token) return null;
 	return unsealSession(token);
