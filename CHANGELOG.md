@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Document AppVeyor publication to `cr.beskid-lang.org` and Watchtower-only
+  production reconciliation in place of the retired GitHub/Coolify path.
 - License the hosted Tracker service under `AGPL-3.0-only`, declare the SPDX
   identifier in package and OCI metadata, and include the license text in the
   runtime image.

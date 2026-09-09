@@ -1,21 +1,22 @@
-# Coolify: Beskid Tracker
+# Production: Beskid Tracker
 
 Application: **beskid tracker** (`Cyber-Nomad-Collective/beskid_tracker`, branch `main`, repository root).
 
 ## Compose entry
 
-**Coolify (GHCR):** [`docker-compose.coolify.yml`](docker-compose.coolify.yml) — `ghcr.io/cyber-nomad-collective/beskid-tracker:${IMAGE_TAG}`
+**Production:** [`../beskid_sites/deploy/docker-compose.yml`](../beskid_sites/deploy/docker-compose.yml) uses `cr.beskid-lang.org/beskid/tracker:production`; Watchtower owns reconciliation.
 
 **Local build:** [`docker-compose.yml`](docker-compose.yml)
 
 ## Build
 
-- **GitHub Actions** builds and pushes the image (`.github/workflows/container-images.yml`); Coolify pulls only.
-- **`NODE_AUTH_TOKEN`** is a GitHub Actions secret for build, not a Coolify build secret.
+- The root AppVeyor `linux-platform` lane builds and publishes the immutable
+  `sha-*` and controlled `production` tags.
+- `NODE_AUTH_TOKEN` is a CI build secret, never a production runtime secret.
 
 ## Runtime secrets
 
-Set in Coolify **Environment Variables** (runtime-only secrets: uncheck **Available at buildtime**).
+Store runtime values in OpenBao and materialize them through the standalone production deployment script.
 
 | Variable | Required | Notes |
 |----------|----------|--------|
@@ -41,14 +42,14 @@ Optional: `TRACKER_SETUP_TOKEN` — required to re-run setup when already paired
 
 ## Production runtime
 
-The GHCR image runs **Nitro** (`bun run .output/server/index.mjs`), not `vite preview`, so reverse-proxy hostnames work without `preview.allowedHosts`. Rebuild `beskid-tracker` after Dockerfile or `vite.config.ts` changes.
+The private-registry image runs **Nitro** (`bun run .output/server/index.mjs`), not `vite preview`, so reverse-proxy hostnames work without `preview.allowedHosts`. Rebuild `beskid-tracker` after Dockerfile or `vite.config.ts` changes.
 
 After deploy, confirm static assets:
 
 1. Pin `IMAGE_TAG` to the new `sha-*` from CI (avoid stale floating `main` if an old container is still running).
 2. Open the site, note the hashed `/assets/styles-*.css` URL in the document (or `curl -s … | strings | grep styles-`), and verify it returns HTTP **200**. A 404 usually means SSR HTML references a stylesheet hash that is not in the running image — rebuild/redeploy with a fresh tag.
 
-CI and the Docker image run `bun run build` (includes `sync-root-stylesheet.sh`) and `bun run verify:client-bundle` before push.
+CI and the Docker image run the package build and client-bundle verification before push.
 
 ## Health
 
@@ -64,4 +65,4 @@ bun install && bun run dev
 
 ## Platform matrix
 
-Cross-service URLs, OpenBao paths, and shared auth variables: [beskid_infra/docs/deploy-matrix.md](../beskid_infra/docs/deploy-matrix.md).
+Cross-service runtime and rollback guidance: [beskid_sites/deploy/README.md](../beskid_sites/deploy/README.md).
