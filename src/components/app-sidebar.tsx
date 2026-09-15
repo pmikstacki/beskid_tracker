@@ -135,11 +135,18 @@ export function AppSidebar({
 								{user ? (
 									<Link to="/versions/$version" params={{ version: selectedVersion.id }}>
 										<img
-											src="/favicon.svg"
+											src="/logo.svg"
 											alt=""
 											width={28}
 											height={28}
-											className="size-7 shrink-0 rounded-md"
+											className="block size-7 shrink-0 dark:hidden"
+										/>
+										<img
+											src="/logo-dark.svg"
+											alt=""
+											width={28}
+											height={28}
+											className="hidden size-7 shrink-0 dark:block"
 										/>
 										<div className="grid flex-1 text-left text-sm leading-tight">
 											<span className="truncate font-semibold">Beskid</span>
@@ -151,11 +158,18 @@ export function AppSidebar({
 								) : (
 									<Link to="/">
 										<img
-											src="/favicon.svg"
+											src="/logo.svg"
 											alt=""
 											width={28}
 											height={28}
-											className="size-7 shrink-0 rounded-md"
+											className="block size-7 shrink-0 dark:hidden"
+										/>
+										<img
+											src="/logo-dark.svg"
+											alt=""
+											width={28}
+											height={28}
+											className="hidden size-7 shrink-0 dark:block"
 										/>
 										<div className="grid flex-1 text-left text-sm leading-tight">
 											<span className="truncate font-semibold">Beskid</span>

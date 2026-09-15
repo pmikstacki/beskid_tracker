@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html) when applicable.
 
 ## [Unreleased]
+### Changed
+
+- Apply canonical Emerald Ridge branding to application icons and browser assets.
+
 
 ### Changed
 
@@ -16,6 +20,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   runtime image.
 
 ### Fixed
+
+- Align the root router-core override with React Router’s required 1.171.28 release, restoring the production build’s `isAbsoluteUrl` import.
 
 - Use Authentik's trusted forwarded identity for Tracker sessions and start
   browser sign-in through the local Authentik outpost. Tracker no longer
